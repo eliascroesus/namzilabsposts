@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — Meet Namzi (9:16)</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  /* 1080×1920. Keep the story between y=240 and y=1500 (Reels/TikTok UI). */
+  .world { position: absolute; inset: 0; }
+  .abs { position: absolute; }
+  .wmask { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.04em 0.14em 0; margin-bottom: -0.14em; }
+  .wi { display: inline-block; will-change: transform; }
+  .head { left: 90px; top: 250px; width: 900px; font-size: 112px; }
+  .rings { left: 40px; top: 560px; width: 1000px; height: 740px; overflow: visible; }
+  .nzw { left: 200px; top: 605px; width: 680px; transform-origin: 340px 325px; }
+  .nzw svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .flash { width: 900px; height: 900px; border-radius: 50%; left: 90px; top: 480px; background: radial-gradient(circle, rgba(120,160,255,.55), rgba(86,140,255,0) 60%); }
+  .stage { position: absolute; inset: 0; transform: translateY(90px); }
+  .chip { position: absolute; height: 88px; font-size: 33px; padding: 0 32px 0 18px; gap: 16px; }
+  .chip .mark { width: 50px; height: 50px; }
+  .rec { display: inline-flex; align-items: center; gap: 16px; height: 88px; padding: 0 32px 0 18px; border-radius: 999px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); font-size: 35px; font-weight: 650; letter-spacing: -0.02em; white-space: nowrap; }
+  .rec .mark { width: 50px; height: 50px; }
+  .one { display: inline-flex; align-items: center; gap: 16px; height: 96px; padding: 0 36px 0 18px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 38px; font-weight: 750; letter-spacing: -0.025em; box-shadow: var(--shadow-blue); white-space: nowrap; }
+  .one .av { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,.2); display: grid; place-items: center; font-size: 28px; font-weight: 800; }
+  .end { left: 0; top: 470px; width: 1080px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .end .lock { display: flex; align-items: center; gap: 20px; font-size: 60px; font-weight: 800; letter-spacing: -0.05em; }
+  .end .lock .logo { width: 96px; height: 96px; }
+  .end .tagline { font-size: 100px; font-weight: 800; letter-spacing: -0.05em; line-height: .96; margin-top: 54px; width: 900px; }
+  .end .tagline em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .end .go { margin-top: 50px; }
+</style>
+</head>
+<body>
+<div class="canvas s-story paper">
+  <div class="ruled" id="ruled"></div>
+  <div class="world" id="world">
+    <div class="stage">
+    <div class="abs flash" id="flash"></div>
+    <svg class="abs rings" id="rings" viewBox="0 0 1000 740">
+      <defs><linearGradient id="lensg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a3c1ff"/><stop offset=".5" stop-color="#6593ff"/><stop offset="1" stop-color="#3566e0"/></linearGradient></defs>
+      <g id="lens" style="transform-origin:500px 370px"><path d="M500 122A280 280 0 0 1 500 618A280 280 0 0 1 500 122Z" fill="url(#lensg)"/></g>
+      <circle id="rl" cx="370" cy="370" r="280" fill="none" stroke="#14141c" stroke-width="10"/>
+      <circle id="rr" cx="630" cy="370" r="280" fill="none" stroke="#14141c" stroke-width="10"/>
+    </svg>
+
+    <h1 class="abs h1 head" id="h1">Hi. I'm <em>Namzi.</em></h1>
+    <h1 class="abs h1 head" id="h2">I live between your <em>tools.</em></h1>
+    <h1 class="abs h1 head" id="h3">I count everyone <em>once.</em></h1>
+    <h1 class="abs h1 head" id="h4">And I bring <em>receipts.</em></h1>
+
+    <span class="chip" id="c1" style="left:40px;top:700px"><span class="mark" data-src="calendly"></span>Calendly</span>
+    <span class="chip" id="c2" style="left:720px;top:620px"><span class="mark" data-src="stripe"></span>Stripe</span>
+    <span class="chip" id="c3" style="left:40px;top:1110px"><span class="mark" data-src="close"></span>Close</span>
+    <span class="chip" id="c4" style="left:760px;top:1060px"><span class="mark" data-src="shopify"></span>Shopify</span>
+    <span class="chip" id="c5" style="left:640px;top:1330px"><span class="mark" data-src="gsheets"></span>Sheets</span>
+
+    <span class="abs rec" id="r1" style="left:70px;top:540px"><span class="mark" data-src="calendly"></span>dave@example.com</span>
+    <span class="abs rec" id="r2" style="left:640px;top:650px"><span class="mark" data-src="close"></span>Dave M.</span>
+    <span class="abs rec" id="r3" style="left:120px;top:760px"><span class="mark" data-src="aircall"></span>+44 7700 900123</span>
+    <span class="abs one" id="one" style="left:262px;top:650px"><span class="av">D</span>Dave · counted once</span>
+
+    <div class="abs nzw" id="nzw"></div>
+    </div>
+
+    <div class="abs end" id="end">
+      <div class="lock" id="lock"><span class="logo"></span>Namzilabs</div>
+      <div class="tagline" id="tag">The number between your <em>tools.</em></div>
+      <div class="go" id="go"><span class="btn">Start free · namzilabs.co</span></div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+<script>
+const { ease: E } = NZ;
+const tl = new NZ.Timeline({ duration: 12.6, tail: 1.6 });
+const $ = (id) => document.getElementById(id);
+const words = (id, at, gap = 0.07) => tl.stagger(NZ.splitWords("#" + id), { at, dur: 0.75, ease: E.out, from: { y: 150 }, to: { y: 0 } }, gap);
+const out = (id, at) => tl.add("#" + id, { at, dur: 0.4, ease: E.in, to: { opacity: 0, y: -40, blur: 8 } });
+
+/* 1 · two tools meet; the overlap lights up */
+tl.add("#rl", { at: 0.1, dur: 1.1, ease: E.springSoft, from: { x: -320, opacity: 0 }, to: { x: 0, opacity: 1 } });
+tl.add("#rr", { at: 0.1, dur: 1.1, ease: E.springSoft, from: { x: 320, opacity: 0 }, to: { x: 0, opacity: 1 } });
+tl.add("#lens", { at: 0.95, dur: 0.8, ease: E.back, from: { sy: 0, sx: 0.4, opacity: 0 }, to: { sy: 1, sx: 1, opacity: 1 } });
+tl.add("#flash", { at: 0.95, dur: 0.5, ease: E.out, from: { scale: 0.3, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+tl.add("#flash", { at: 1.5, dur: 1.2, ease: E.out, to: { scale: 1.15, opacity: 0.35 } });
+
+/* 2 · the lens becomes Namzi */
+tl.add("#lens", { at: 1.95, dur: 0.3, ease: E.in, to: { sx: 1.18, sy: 1.1, opacity: 0 } });
+tl.add("#nzw", { at: 1.95, dur: 1.1, ease: E.springBouncy, from: { scale: 0.62, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+tl.set("#nzw", 1.95, { opacity: 1 });
+words("h1", 2.35);
+out("h1", 4.55);
+
+/* 3 · between your tools */
+tl.add("#rings", { at: 4.5, dur: 0.8, ease: E.inOut, to: { opacity: 0.22, scale: 1.06 } });
+tl.add("#nzw", { at: 4.5, dur: 0.9, ease: E.inOut, to: { scale: 0.8, y: 120 } });
+words("h2", 4.85);
+["#c1", "#c2", "#c3", "#c4", "#c5"].forEach((c, i) => {
+  tl.add(c, { at: 5.2 + i * 0.16, dur: 0.9, ease: E.spring, from: { scale: 0.4, opacity: 0, y: 30 }, to: { scale: 1, opacity: 1, y: 0 } });
+  tl.add(c, { at: 6.85 + i * 0.05, dur: 0.45, ease: E.in, to: { scale: 0.7, opacity: 0, blur: 6 } });
+});
+out("h2", 6.85);
+
+/* 4 · three rows, one Dave */
+words("h3", 7.2);
+[["#r1", -420], ["#r2", 420], ["#r3", -420]].forEach(([r, dx], i) => {
+  tl.add(r, { at: 7.35 + i * 0.14, dur: 0.8, ease: E.spring, from: { x: dx, opacity: 0 }, to: { x: 0, opacity: 1 } });
+});
+tl.add("#r1", { at: 8.55, dur: 0.55, ease: E.inOut, to: { x: 220, y: 110, scale: 0.6, opacity: 0 } });
+tl.add("#r2", { at: 8.6, dur: 0.55, ease: E.inOut, to: { x: -200, y: 10, scale: 0.6, opacity: 0 } });
+tl.add("#r3", { at: 8.65, dur: 0.55, ease: E.inOut, to: { x: 150, y: -100, scale: 0.6, opacity: 0 } });
+tl.add("#one", { at: 8.95, dur: 0.9, ease: E.springBouncy, from: { scale: 0.3, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+out("h3", 9.85);
+tl.add("#one", { at: 9.85, dur: 0.4, ease: E.in, to: { opacity: 0, y: -30, blur: 6 } });
+
+/* 5 · receipts */
+words("h4", 10.15);
+out("h4", 11.6);
+tl.add("#rings", { at: 11.5, dur: 0.5, ease: E.in, to: { opacity: 0 } });
+
+/* end card: Namzi steps down to wave goodbye */
+tl.add("#nzw", { at: 11.55, dur: 1.0, ease: E.inOut, to: { scale: 0.56, y: 330 } });
+tl.add("#lock", { at: 11.8, dur: 1.0, ease: E.spring, from: { scale: 0.8, opacity: 0, y: 20 }, to: { scale: 1, opacity: 1, y: 0 } });
+tl.stagger(NZ.splitWords("#tag"), { at: 11.95, dur: 0.8, ease: E.out, from: { y: 130 }, to: { y: 0 } }, 0.06);
+tl.add("#go", { at: 12.45, dur: 0.9, ease: E.spring, from: { scale: 0.85, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+tl.set("#end", 0, { opacity: 1 });
+
+/* Namzi, redrawn every frame */
+const BLINKS = [3.15, 5.95, 8.2, 10.9, 13.3, 14.05];
+const tri = (x) => (x < 0 || x > 1 ? 0 : 1 - Math.abs(x * 2 - 1));
+function namzi(t) {
+  const o = { mood: "happy", pose: "down", look: [0, 0.1], blink: 0, squash: 0, wave: 0, talk: 0 };
+  // pop out of the lens: stretch, land, settle
+  if (t >= 1.95 && t < 3.2) { const k = t - 1.95; o.squash = -0.8 * Math.exp(-5 * k) * Math.cos(13 * k); }
+  if (t < 4.55) { o.pose = "wave"; o.wave = t > 2.5 ? Math.sin((t - 2.5) * 9) : 0; }
+  if (t >= 2.35 && t < 3.3) o.talk = Math.abs(Math.sin((t - 2.35) * 11));
+  if (t >= 4.55 && t < 7.0) { // between your tools: look round at them
+    const chips = [[-0.9, -0.6], [0.8, -0.8], [-1, 0.4], [1, 0.2], [0.7, 0.9]];
+    const i = Math.min(4, Math.max(0, Math.floor((t - 5.2) / 0.32)));
+    o.look = t < 5.2 ? [0, 0.1] : chips[i];
+    if (t >= 4.85 && t < 5.9) o.talk = Math.abs(Math.sin((t - 4.85) * 10)) * 0.8;
+  }
+  if (t >= 7.0 && t < 8.95) { o.mood = "suspicious"; o.pose = "hold"; o.prop = "magnifier"; o.look = [0.2 * Math.sin(t * 3), -0.9]; }
+  if (t >= 8.95 && t < 10.0) { o.mood = "joy"; o.pose = "up"; o.fx = ["sparkle"]; }
+  if (t >= 10.0 && t < 11.55) { o.mood = "smug"; o.pose = "carry"; o.prop = "receipt"; }
+  if (t >= 10.15 && t < 10.9) o.talk = Math.abs(Math.sin((t - 10.15) * 11)) * 0.7;
+  if (t >= 11.55) { o.pose = "wave"; o.wave = Math.sin((t - 11.55) * 7); }
+  for (const b of BLINKS) o.blink = Math.max(o.blink, tri((t - b) / 0.2));
+  if (o.mood === "joy") o.blink = 0;
+  return o;
+}
+
+tl.every((t) => {
+  $("nzw").innerHTML = NZ.mascot(namzi(t));
+  $("ruled").style.transform = `translate3d(0, ${-(t * 6) % 88}px, 0)`;
+  for (const [i, c] of ["c1", "c2", "c3", "c4", "c5"].entries()) $(c).style.translate = `0 ${Math.sin(t * 1.6 + i) * 6}px`;
+  $("world").style.transform = `scale(${1 + Math.min(t, 14) * 0.001})`;
+});
+
+NZ.mount(tl, { width: 1080, height: 1920 });
+</script>
+</body>
+</html>

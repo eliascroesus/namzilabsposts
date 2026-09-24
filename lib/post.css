@@ -66,3 +66,8 @@
 .rcp .ln.total .k { color: var(--ink); font-weight: 750; }
 .rcp .ln.total .v { font-weight: 800; }
 .rcp .foot2 { margin-top: 18px; text-align: center; font-size: 21px; color: var(--faint); font-weight: 550; }
+
+/* Namzi, the mascot (lib/mascot.js): size the box, the SVG fills its width */
+.namzi { display: block; }
+.namzi svg { width: 100%; height: auto; display: block; overflow: visible; }
+.namzi.flip svg { transform: scaleX(-1); }

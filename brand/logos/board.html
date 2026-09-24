@@ -64,6 +64,24 @@
   </div>
 </div>
 
+<div class="canvas overview paper" data-still="00-overview-2">
+  <div class="ruled"></div>
+  <div class="ov-head">
+    <div>
+      <div class="eyebrow"><span class="dot blue"></span> Logo concepts · round two</div>
+      <div class="h1" style="margin-top:18px;font-size:104px">Five more, one with a <em>face.</em></div>
+    </div>
+    <div class="small" style="text-align:right;line-height:1.5">Namzilabs · September 2026<br>Primary stays 01 Between · 06 is its social twin</div>
+  </div>
+  <div class="ov-grid">
+    <div class="ov-card pick"><img class="ic" src="06-namzi/app-icon.svg"><div><div class="num">06 · Social twin</div><div class="t">Namzi</div></div><div class="d">The mascot's face: the lens from 01, looking back at you.</div><img class="lk" src="06-namzi/lockup-light.svg"></div>
+    <div class="ov-card"><img class="ic" src="07-hash/app-icon.svg"><div><div class="num">07</div><div class="t">Hash</div></div><div class="d"># is the number; the blue is the space between the lines.</div><img class="lk" src="07-hash/lockup-light.svg"></div>
+    <div class="ov-card"><img class="ic" src="08-wire/app-icon.svg"><div><div class="num">08</div><div class="t">Wire</div></div><div class="d">A flow wire from a tool to the answer, bent into a Z.</div><img class="lk" src="08-wire/lockup-light.svg"></div>
+    <div class="ov-card"><img class="ic" src="09-pillars/app-icon.svg"><div><div class="num">09</div><div class="t">Pillars</div></div><div class="d">An N: two tools apart, and the line that connects them.</div><img class="lk" src="09-pillars/lockup-light.svg"></div>
+    <div class="ov-card"><img class="ic" src="10-tittle/app-icon.svg"><div><div class="num">10</div><div class="t">Tittle</div></div><div class="d">Lowercase, with the Between mark as the dot on the i.</div><img class="lk" src="10-tittle/lockup-light.svg" style="height:40px;margin-bottom:4px"></div>
+  </div>
+</div>
+
 <template id="board">
   <div class="canvas board paper">
     <div class="ruled"></div>
@@ -112,6 +130,11 @@
     ["03-receipt", "03", "Receipt", "Every number shows its working. A receipt: the lines that went in, and the total that came out, in blue. Ownable in a category full of pie charts."],
     ["04-bridge", "04", "Bridge", "A lowercase n standing on two tools. The arch is the metric that spans them — and it spells the first letter of the name."],
     ["05-merge", "05", "Merge", "The current mark's two dots, finally touching: two records become one person. Continuity with the site today, with the story built into the shape."],
+    ["06-namzi", "06 · Social twin", "Namzi", "The mascot's face as a mark: the lens from 01, looking back at you. Warmer than 01, and made for where people talk: avatars, stickers, replies."],
+    ["07-hash", "07", "Hash", "# is the number. The blue square is the space between the lines: the number between your tools, as a symbol everyone already reads."],
+    ["08-wire", "08", "Wire", "A flow wire from a tool to the answer, bent into a Z for Namzi. The product's flow builder, drawn in one stroke."],
+    ["09-pillars", "09", "Pillars", "An N for Namzilabs: two tools standing apart, and the blue line that finally connects them."],
+    ["10-tittle", "10", "Tittle", "A lowercase wordmark whose i is dotted with the Between mark. Quiet at a glance; a small reward up close."],
   ];
   const tpl = document.getElementById("board");
   for (const [id, num, name, idea] of concepts) {

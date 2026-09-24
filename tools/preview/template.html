@@ -1,0 +1,567 @@
+<title>Namzilabs Content Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  :root {
+    --bg: #f6f7fb; --surface: #ffffff; --surface-2: #eef1f8; --text: #14141c; --muted: #5c5c6b; --faint: #8b8c9b;
+    --line: #e4e6ef; --accent: #2f5fd8; --accent-ink: #ffffff; --accent-soft: #eef4ff; --accent-line: #c9d8ff;
+    --red: #e0442c; --red-soft: #fff1ee; --green: #16a34a; --amber: #b7791f; --amber-soft: #fff7e6;
+    --shadow: 0 1px 2px rgba(20,20,40,.06), 0 10px 30px -12px rgba(20,30,70,.18);
+    --check: #e9ebf2; --check-2: #ffffff;
+    --serif: "Instrument Serif", "Times New Roman", serif;
+    --sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0d14; --surface: #141824; --surface-2: #1b2030; --text: #eef0f7; --muted: #a9aec0; --faint: #7f8499;
+      --line: #262c3d; --accent: #6f9bff; --accent-ink: #0b0d14; --accent-soft: #19223d; --accent-line: #2d3d6b;
+      --red: #ff7a63; --red-soft: #2a1714; --green: #4ade80; --amber: #f5b454; --amber-soft: #2a2213;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.6);
+      --check: #1e2332; --check-2: #151926;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0d14; --surface: #141824; --surface-2: #1b2030; --text: #eef0f7; --muted: #a9aec0; --faint: #7f8499;
+    --line: #262c3d; --accent: #6f9bff; --accent-ink: #0b0d14; --accent-soft: #19223d; --accent-line: #2d3d6b;
+    --red: #ff7a63; --red-soft: #2a1714; --green: #4ade80; --amber: #f5b454; --amber-soft: #2a2213;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.6);
+    --check: #1e2332; --check-2: #151926;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 450 15px/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+  img, video, svg { display: block; max-width: 100%; }
+  button { font: inherit; color: inherit; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 28px; } }
+
+  /* header */
+  .hero { padding-top: 36px; padding-bottom: 20px; }
+  .brandrow { display: flex; align-items: center; gap: 10px; font-weight: 750; letter-spacing: -0.02em; font-size: 16px; }
+  .brandrow svg { width: 30px; height: 30px; border-radius: 8px; }
+  .kit { font-size: 12px; font-weight: 650; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 999px; padding: 3px 10px; letter-spacing: 0; }
+  h1 { font-size: clamp(38px, 7vw, 68px); line-height: .98; letter-spacing: -0.045em; font-weight: 800; margin: 22px 0 0; text-wrap: balance; }
+  h1 em, h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .sub { color: var(--muted); font-size: 17px; max-width: 640px; margin: 14px 0 0; text-wrap: pretty; }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 22px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .stat { font-size: 13px; font-weight: 600; color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+  .stat b { color: var(--text); }
+
+  /* buttons */
+  .btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: 12px; padding: 9px 14px; font-weight: 650; font-size: 14px; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background .15s, border-color .15s, transform .1s; }
+  .btn:hover { border-color: var(--accent-line); background: var(--accent-soft); }
+  .btn:active { transform: translateY(1px); }
+  .btn svg { width: 16px; height: 16px; flex: none; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); padding: 12px 18px; font-size: 15px; }
+  .btn.primary:hover { filter: brightness(1.06); }
+  .btn.small { padding: 6px 10px; font-size: 13px; border-radius: 10px; }
+  .btn.ghost { background: transparent; }
+  .btn[disabled] { opacity: .5; cursor: progress; }
+  .muted { color: var(--muted); }
+  .faint { color: var(--faint); font-size: 13px; }
+  :focus-visible { outline: 3px solid var(--accent-line); outline-offset: 2px; border-radius: 8px; }
+
+  /* nav */
+  nav.tabs { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  nav.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+  nav.tabs a { flex: none; text-decoration: none; color: var(--muted); font-weight: 650; font-size: 14px; padding: 12px 12px; border-bottom: 2px solid transparent; }
+  nav.tabs a.on { color: var(--text); border-bottom-color: var(--accent); }
+
+  section { padding: 34px 0 10px; scroll-margin-top: 50px; }
+  .shead { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 20px; margin-bottom: 18px; }
+  h2 { font-size: clamp(28px, 4.4vw, 40px); letter-spacing: -0.04em; line-height: 1; margin: 0; font-weight: 800; }
+  .shead p { margin: 6px 0 0; color: var(--muted); max-width: 620px; }
+
+  /* filters */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 7px 13px; font-size: 13px; font-weight: 650; cursor: pointer; color: var(--muted); }
+  .chip.on { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .chip .n { opacity: .6; margin-left: 4px; font-variant-numeric: tabular-nums; }
+
+  /* cards */
+  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(46%, 250px), 1fr)); }
+  @media (min-width: 720px) { .grid { gap: 14px; } }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow); }
+  .thumb { position: relative; background: var(--surface-2); cursor: zoom-in; border: 0; padding: 0; width: 100%; display: block; }
+  .thumb img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+  .thumb .count { position: absolute; right: 10px; top: 10px; background: rgba(10,12,20,.72); color: #fff; font-size: 12px; font-weight: 650; border-radius: 999px; padding: 4px 9px; }
+  .cbody { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .ctitle { font-weight: 750; letter-spacing: -0.02em; font-size: 16px; line-height: 1.25; }
+  .ctitle .no { color: var(--faint); font-weight: 650; margin-right: 6px; font-variant-numeric: tabular-nums; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; }
+  .badge { font-size: 11.5px; font-weight: 650; border-radius: 999px; padding: 3px 8px; background: var(--surface-2); color: var(--muted); }
+  .badge.aud { background: var(--accent-soft); color: var(--accent); }
+  .badge.nz { background: #e8f0ff; color: #2f5fd8; }
+  .badge.hold { background: var(--amber-soft); color: var(--amber); }
+  .cact { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
+  .cact .btn { flex: 1 1 auto; justify-content: center; }
+  @media (max-width: 560px) { .cbody { padding: 10px 10px 12px; } .ctitle { font-size: 14.5px; } .badge { font-size: 11px; } .cact .btn .sz { display: none; } }
+
+  /* videos */
+  .vgrid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(46%, 210px), 1fr)); }
+  .vthumb { position: relative; aspect-ratio: 9 / 16; background: #000; cursor: pointer; border: 0; padding: 0; width: 100%; display: block; }
+  .vthumb img, .vthumb video { width: 100%; height: 100%; object-fit: cover; }
+  .vthumb.sq { aspect-ratio: 1; }
+  .play { position: absolute; inset: 0; display: grid; place-items: center; }
+  .play span { width: 58px; height: 58px; border-radius: 50%; background: rgba(255,255,255,.92); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+  .play svg { width: 22px; height: 22px; margin-left: 3px; color: #14141c; }
+  .dur { position: absolute; left: 10px; bottom: 10px; background: rgba(10,12,20,.72); color: #fff; font-size: 12px; font-weight: 650; border-radius: 999px; padding: 3px 8px; }
+
+  /* logos */
+  .boards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); margin-bottom: 18px; }
+  .boards button { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; padding: 0; cursor: zoom-in; background: var(--surface); }
+  .lgrid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); }
+  .licon { padding: 18px; background: var(--surface-2); display: grid; place-items: center; }
+  .licon svg { width: 62%; height: auto; border-radius: 22%; box-shadow: 0 16px 40px -18px rgba(20,30,80,.55); }
+  .lock { height: 34px; display: flex; align-items: center; }
+  .lock svg { height: 30px; width: auto; }
+  .files { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* mascot */
+  .sgrid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(46%, 170px), 1fr)); }
+  .sticker { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+  .checker { aspect-ratio: 1; background: repeating-conic-gradient(var(--check) 0 25%, var(--check-2) 0 50%) 0 0 / 20px 20px; display: grid; place-items: center; padding: 8px; }
+  .checker img { width: 100%; height: 100%; object-fit: contain; }
+  .sticker .row { display: flex; flex-direction: column; gap: 8px; padding: 9px 10px 10px; }
+  .sticker .lab { font-size: 13px; font-weight: 650; line-height: 1.25; }
+  .sticker .sbtns { display: flex; gap: 6px; }
+  .sticker .sbtns .btn { flex: 1; justify-content: center; }
+
+  /* docs */
+  .docs { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); }
+  .doc { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; gap: 12px; align-items: center; }
+  .doc .t { flex: 1; min-width: 0; }
+  .doc .t b { display: block; font-size: 15px; letter-spacing: -0.01em; }
+  .doc .t span { font-size: 13px; color: var(--muted); }
+
+  .note { border: 1px solid var(--line); background: var(--surface); border-radius: 16px; padding: 14px 16px; font-size: 14px; color: var(--muted); }
+  .note b { color: var(--text); }
+  footer { padding-top: 40px; padding-bottom: 60px; color: var(--faint); font-size: 13px; }
+
+  /* modal */
+  .modal { position: fixed; inset: 0; z-index: 50; display: none; background: rgba(8,10,18,.62); backdrop-filter: blur(4px); }
+  .modal.open { display: block; }
+  .sheet { position: absolute; inset: 0; overflow-y: auto; background: var(--bg); }
+  @media (min-width: 900px) { .sheet { inset: 24px; border-radius: 22px; border: 1px solid var(--line); box-shadow: var(--shadow); } }
+  .mhead { position: sticky; top: 0; z-index: 3; display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .mhead .ttl { flex: 1; min-width: 0; font-weight: 750; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mbody { display: grid; gap: 22px; padding: 18px 16px 40px; }
+  @media (min-width: 900px) { .mbody { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); padding: 22px 24px 40px; align-items: start; } .viewer { position: sticky; top: 70px; } }
+  .stage { background: var(--surface-2); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: grid; place-items: center; }
+  .stage img { max-height: 70vh; width: auto; margin: 0 auto; }
+  .strip { display: flex; gap: 8px; overflow-x: auto; padding: 10px 2px 4px; }
+  .strip button { flex: none; border: 2px solid transparent; border-radius: 10px; padding: 0; overflow: hidden; background: var(--surface-2); cursor: pointer; }
+  .strip button.on { border-color: var(--accent); }
+  .strip img { height: 76px; width: auto; }
+  .vactions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .capblock { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+  .capblock + .capblock { margin-top: 12px; }
+  .caphead { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .caphead b { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
+  .captext { white-space: pre-wrap; font-size: 14.5px; line-height: 1.55; margin: 0; font-family: var(--sans); word-break: break-word; }
+  .claims { background: var(--amber-soft); border-color: transparent; }
+  .claims ul, .md ul { margin: 0; padding-left: 18px; }
+  .claims li, .md li { margin: 4px 0; font-size: 14px; }
+  .md p { margin: 6px 0; font-size: 14px; }
+  .md code, .claims code { font-size: 12.5px; background: var(--surface-2); padding: 1px 5px; border-radius: 5px; }
+  .meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; margin: 0 0 12px; }
+  .meta dt { color: var(--faint); font-weight: 650; }
+  .meta dd { margin: 0; }
+
+  /* toast */
+  .toast { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%) translateY(20px); z-index: 80; background: var(--text); color: var(--bg); border-radius: 14px; padding: 11px 16px; font-size: 14px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,.3); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; max-width: calc(100vw - 32px); }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .bar { height: 4px; border-radius: 2px; background: color-mix(in srgb, var(--bg) 30%, transparent); margin-top: 8px; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--accent-line); transition: width .15s; }
+  .hidden { display: none !important; }
+</style>
+
+<header class="wrap hero">
+  <div class="brandrow"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#14141c"/><circle cx="26" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.6"/><circle cx="38" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.6"/><path d="M32 20.4a13 13 0 0 1 0 23.2a13 13 0 0 1 0-23.2Z" fill="#568cff"/></svg>Namzilabs <span class="kit">Content kit</span></div>
+  <h1>Everything, ready to <em>post.</em></h1>
+  <p class="sub" id="sub"></p>
+  <div class="cta">
+    <button class="btn primary" data-zip="all"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Download everything</button>
+    <span class="faint" id="allsize"></span>
+    <a class="btn ghost" id="repo" target="_blank" rel="noopener">GitHub repo ↗</a>
+  </div>
+  <div class="stats" id="stats"></div>
+  <p class="faint" id="dlnote" style="margin:14px 0 0">Every download asks you to confirm the save.</p>
+</header>
+
+<nav class="tabs"><div class="wrap" id="tabs">
+  <a href="#posts">Posts</a><a href="#videos">Videos</a><a href="#logos">Logos</a><a href="#mascot">Namzi</a><a href="#docs">Docs</a>
+</div></nav>
+
+<main class="wrap">
+  <section id="posts">
+    <div class="shead"><div><h2>Posts</h2><p>Instagram carousels and X images, each with its captions, alt text and a claims check. Tap one to see every slide and copy the copy.</p></div>
+      <button class="btn" data-zip="posts">Download all posts</button></div>
+    <div class="filters" id="pfilters"></div>
+    <div class="grid" id="pgrid"></div>
+  </section>
+
+  <section id="videos">
+    <div class="shead"><div><h2>Videos</h2><p>60fps, rendered frame by frame. Silent by design: add a trending sound in the app.</p></div>
+      <button class="btn" data-zip="videos">Download all videos</button></div>
+    <div class="filters" id="vfilters"></div>
+    <div class="vgrid" id="vgrid"></div>
+  </section>
+
+  <section id="logos">
+    <div class="shead"><div><h2>Logos</h2><p>Ten concepts. <b>01 Between</b> is the recommended mark; <b>06 Namzi</b> is its social twin. Each comes as SVG (colour, white, ink, app icons, lockups) plus a 1024px profile picture.</p></div>
+      <button class="btn" data-zip="logos">Download all logos</button></div>
+    <div class="boards" id="lboards"></div>
+    <div class="lgrid" id="lgrid"></div>
+  </section>
+
+  <section id="mascot">
+    <div class="shead"><div><h2>Meet <em>Namzi.</em></h2><p>The blue lens from the logo, with a face. For social only: stickers for Stories and replies, and avatars for profile pictures.</p></div>
+      <button class="btn" data-zip="mascot">Download Namzi pack</button></div>
+    <div class="boards" id="mboards"></div>
+    <div class="sgrid" id="sgrid"></div>
+  </section>
+
+  <section id="docs">
+    <div class="shead"><div><h2>Docs</h2><p>The plan behind the content: strategy, brand kit, and four research reports.</p></div>
+      <button class="btn" data-zip="docs">Download all docs</button></div>
+    <div class="note" style="margin-bottom:14px"><b>Before you post:</b> every number in these images is example data. Read the claims rules in the strategy (§11): no invented proof, label demo data, and nothing about the AI connection or ad platforms until they're live.</div>
+    <div class="docs" id="docs-list"></div>
+  </section>
+</main>
+<footer class="wrap">Made in code: every image and video here is rendered from HTML in the repo, so any word can be changed and re-rendered on-brand. <span id="gen"></span></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mttl">
+  <div class="sheet" id="sheet">
+    <div class="mhead"><span class="ttl" id="mttl"></span><button class="btn small" id="mzip"></button><button class="btn small" id="mclose" aria-label="Close">✕</button></div>
+    <div class="mbody" id="mbody"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="tmsg"></span><div class="bar hidden" id="tbar"><i></i></div></div>
+
+<!--MANIFEST-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+(() => {
+  "use strict";
+  const M = JSON.parse(document.getElementById("manifest").textContent);
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const mb = (n) => (n >= 1e6 ? (n / 1e6).toFixed(n >= 1e7 ? 0 : 1) + " MB" : Math.max(1, Math.round(n / 1e3)) + " KB");
+  const AUD = { sales: "Sales teams & info products", agencies: "Agencies", creators: "Creators", ecommerce: "E-commerce", founders: "Brand owners & founders", everyone: "Everyone" };
+  const ICON_DL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>';
+  const ICON_COPY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>';
+
+  /* ── downloads: the viewer's save prompt, or plain links elsewhere ───── */
+  let saver = null;        // the downloads capability, when this view has it
+  let mode = "pending";    // "capability" | "browser" | "links"
+  const inViewer = !!(window.claude && typeof window.claude.use === "function");
+  if (inViewer) {
+    window.claude.use("downloads").then((ns) => { saver = ns; mode = ns ? "capability" : "links"; if (!ns) linksOnly(); }).catch(() => { mode = "links"; linksOnly(); });
+  } else mode = "browser";
+  function linksOnly() {
+    $("#dlnote").innerHTML = `Downloads aren't available in this view. Get everything from the <a href="${esc(M.repo.zip)}" target="_blank" rel="noopener">repo ZIP ↗</a>, or open single files below.`;
+    document.querySelectorAll("[data-zip]").forEach((b) => b.classList.add("hidden"));
+  }
+
+  let busy = false;
+  const toastEl = $("#toast");
+  let toastTimer;
+  function toast(msg, { progress = null, sticky = false } = {}) {
+    $("#tmsg").textContent = msg;
+    const bar = $("#tbar");
+    bar.classList.toggle("hidden", progress === null);
+    if (progress !== null) bar.firstElementChild.style.width = `${Math.round(progress * 100)}%`;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    if (!sticky) toastTimer = setTimeout(() => toastEl.classList.remove("show"), 3200);
+  }
+
+  async function blobOf(f) {
+    if (f.text !== undefined) return new Blob([f.text], { type: f.type || "text/plain" });
+    const r = await fetch(f.path);
+    if (!r.ok) throw new Error(`Couldn't load ${f.path}`);
+    return await r.blob();
+  }
+  async function deliver(filename, blob) {
+    if (mode === "capability" && saver) {
+      try {
+        await saver.save({ filename, data: blob });
+        toast(`Saved ${filename}`);
+      } catch (e) {
+        const code = e && e.code;
+        if (code === "declined") toast("Download cancelled");
+        else if (code === "rate_limited") toast("A save prompt is already open. Finish it first.");
+        else if (code === "too_large") toast("Too large for this device. Try a smaller set.");
+        else if (code === "bad_request" || code === "transform_error") toast("Couldn't save that file.");
+        else { mode = "links"; linksOnly(); toast("Downloads aren't available here. Use the repo link."); }
+      }
+      return;
+    }
+    // a normal browser tab (the page opened from the repo)
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+  }
+  async function saveOne(f, name) {
+    if (busy) return toast("One download at a time");
+    if (mode === "links") return window.open(f.path, "_blank", "noopener");
+    busy = true;
+    try { toast(`Preparing ${name}…`, { sticky: true }); await deliver(name, await blobOf(f)); }
+    catch (e) { toast(e.message || "Download failed"); }
+    finally { busy = false; }
+  }
+  async function saveZip(name, files) {
+    if (busy) return toast("One download at a time");
+    if (mode === "links") return window.open(M.repo.zip, "_blank", "noopener");
+    if (!window.JSZip) return toast("The ZIP tool didn't load. Download files one by one.");
+    busy = true;
+    try {
+      const zip = new JSZip();
+      let done = 0;
+      const total = files.length;
+      toast(`Collecting ${total} files…`, { progress: 0, sticky: true });
+      const queue = files.slice();
+      const work = async () => {
+        while (queue.length) {
+          const f = queue.shift();
+          zip.file(f.zipPath, await blobOf(f), { binary: true });
+          done++;
+          toast(`Collecting ${done} / ${total} files…`, { progress: (done / total) * 0.8, sticky: true });
+        }
+      };
+      await Promise.all([work(), work(), work(), work()]);
+      const blob = await zip.generateAsync({ type: "blob", compression: "STORE" }, (m) => toast(`Zipping… ${Math.round(m.percent)}%`, { progress: 0.8 + (m.percent / 100) * 0.2, sticky: true }));
+      toast(`Ready: ${name} (${mb(blob.size)})`, { progress: 1, sticky: true });
+      await deliver(name, blob);
+    } catch (e) { toast(e.message || "Download failed"); }
+    finally { busy = false; }
+  }
+
+  async function copy(text) {
+    try { await navigator.clipboard.writeText(text); return toast("Copied"); } catch {}
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch {}
+    ta.remove();
+    toast(ok ? "Copied" : "Select the text and copy it");
+  }
+
+  /* ── file sets for ZIPs ─────────────────────────────────────────────── */
+  const postFiles = (p, prefix = `${p.dir}/`) => [...p.images.map((im) => ({ ...im, zipPath: prefix + im.name })), { text: p.md, type: "text/markdown", zipPath: prefix + "captions.md" }];
+  const logoFiles = (l, prefix = `${l.id}/`) => [...l.svgs.map((s) => ({ text: s.text, type: "image/svg+xml", zipPath: prefix + s.name })), ...(l.profile ? [{ ...l.profile, zipPath: prefix + "profile-1024.png" }] : []), ...(l.board ? [{ ...l.board, zipPath: prefix + "board.png" }] : [])];
+  const sets = {
+    posts: () => M.posts.flatMap((p) => postFiles(p, `posts/${p.dir}/`)),
+    videos: () => [...M.videos.flatMap((v) => [{ ...v.file, zipPath: `videos/${v.dir}/${v.file.name}` }, { ...v.poster, zipPath: `videos/${v.dir}/poster.jpg` }]), { text: M.videoReadme, type: "text/markdown", zipPath: "videos/README.md" }],
+    logos: () => [...M.logos.concepts.flatMap((l) => logoFiles(l, `logos/${l.id}/`)), ...M.logos.overviews.map((b) => ({ ...b, zipPath: `logos/${b.name}` })), ...M.logos.wordmarks.map((w) => ({ text: w.text, type: "image/svg+xml", zipPath: `logos/${w.name}` }))],
+    mascot: () => [...M.mascot.stickers.flatMap((s) => [{ ...s.png, zipPath: `namzi/stickers/${s.png.name}` }, { text: s.svg, type: "image/svg+xml", zipPath: `namzi/stickers/${s.png.name.replace(".png", ".svg")}` }]), ...M.mascot.avatars.map((a) => ({ ...a, zipPath: `namzi/avatars/${a.name}` })), ...M.mascot.boards.map((b) => ({ ...b, zipPath: `namzi/${b.name}` }))],
+    docs: () => M.docs.map((d) => ({ ...d, zipPath: `docs/${d.name}` })),
+  };
+  sets.all = () => ["posts", "videos", "logos", "mascot", "docs"].flatMap((k) => sets[k]().map((f) => ({ ...f, zipPath: `namzilabs-content/${f.zipPath}` })));
+  const zipNames = { all: "namzilabs-content.zip", posts: "namzilabs-posts.zip", videos: "namzilabs-videos.zip", logos: "namzilabs-logos.zip", mascot: "namzi-mascot.zip", docs: "namzilabs-docs.zip" };
+  const bytes = (fs) => fs.reduce((n, f) => n + (f.size || (f.text ? f.text.length : 0)), 0);
+  document.querySelectorAll("[data-zip]").forEach((b) => {
+    const k = b.dataset.zip;
+    b.addEventListener("click", () => saveZip(zipNames[k], sets[k]()));
+    if (k !== "all") b.insertAdjacentHTML("beforeend", ` <span class="faint">${mb(bytes(sets[k]()))}</span>`);
+  });
+
+  /* ── header ─────────────────────────────────────────────────────────── */
+  const nSlides = M.posts.reduce((n, p) => n + p.images.length, 0);
+  $("#sub").textContent = `${M.posts.length} posts (${nSlides} images), ${M.videos.length} videos, ${M.logos.concepts.length} logo concepts and Namzi the mascot. Preview anything, copy the captions, and download single files or whole sets.`;
+  $("#allsize").textContent = `ZIP · ${mb(bytes(sets.all()))}`;
+  $("#repo").href = M.repo.url;
+  $("#stats").innerHTML = [["Posts", M.posts.length], ["Images", nSlides], ["Videos", M.videos.length], ["Logo concepts", M.logos.concepts.length], ["Stickers", M.mascot.stickers.length]].map(([k, v]) => `<span class="stat"><b>${v}</b> ${k}</span>`).join("");
+  $("#gen").textContent = `Built ${M.built}.`;
+
+  /* ── posts ──────────────────────────────────────────────────────────── */
+  let pf = "all";
+  const pcount = (k) => (k === "all" ? M.posts.length : k === "namzi" ? M.posts.filter((p) => p.mascot).length : M.posts.filter((p) => p.audiences.includes(k)).length);
+  function renderPostFilters() {
+    const keys = ["all", ...Object.keys(AUD).filter((k) => pcount(k)), "namzi"];
+    $("#pfilters").innerHTML = keys.map((k) => `<button class="chip${pf === k ? " on" : ""}" data-f="${k}">${k === "all" ? "All" : k === "namzi" ? "With Namzi" : AUD[k]}<span class="n">${pcount(k)}</span></button>`).join("");
+  }
+  $("#pfilters").addEventListener("click", (e) => { const b = e.target.closest("[data-f]"); if (!b) return; pf = b.dataset.f; renderPostFilters(); renderPosts(); });
+  function renderPosts() {
+    const list = M.posts.filter((p) => pf === "all" || (pf === "namzi" ? p.mascot : p.audiences.includes(pf)));
+    $("#pgrid").innerHTML = list.map((p) => {
+      const cover = p.images[0];
+      const badges = [...p.audiences.map((a) => `<span class="badge aud">${esc(AUD[a])}</span>`), p.mascot ? '<span class="badge nz">Namzi</span>' : "", p.hold ? '<span class="badge hold">Hold until live</span>' : "", `<span class="badge">${esc(p.formatShort)}</span>`].join("");
+      return `<article class="card"><button class="thumb" data-open="${p.dir}" aria-label="Open ${esc(p.title)}"><img loading="lazy" src="${esc(cover.path)}" alt="${esc(p.title)}">${p.images.length > 1 ? `<span class="count">${p.images.length} images</span>` : ""}</button>
+        <div class="cbody"><div class="ctitle"><span class="no">${p.num}</span>${esc(p.title)}</div><div class="badges">${badges}</div>
+        <div class="cact"><button class="btn small" data-open="${p.dir}">Open</button><button class="btn small" data-pzip="${p.dir}" title="Images + captions">${ICON_DL}ZIP<span class="sz">&nbsp;· ${mb(bytes(postFiles(p)))}</span></button></div></div></article>`;
+    }).join("");
+  }
+  $("#pgrid").addEventListener("click", (e) => {
+    const o = e.target.closest("[data-open]"); if (o) return openPost(o.dataset.open);
+    const z = e.target.closest("[data-pzip]"); if (z) { const p = M.posts.find((x) => x.dir === z.dataset.pzip); saveZip(`namzilabs-${p.dir}.zip`, postFiles(p)); }
+  });
+
+  function capBlock(label, text, extra = "") {
+    return `<div class="capblock ${extra}"><div class="caphead"><b>${esc(label)}</b><button class="btn small" data-copy>${ICON_COPY}Copy</button></div><pre class="captext">${esc(text)}</pre></div>`;
+  }
+  function mdLite(s) {
+    const inline = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1");
+    const lines = s.split("\n");
+    let html = "", inList = false;
+    for (const ln of lines) {
+      const m = ln.match(/^\s*[-*]\s+(.*)$/);
+      if (m) { if (!inList) { html += "<ul>"; inList = true; } html += `<li>${inline(m[1])}</li>`; continue; }
+      if (inList) { html += "</ul>"; inList = false; }
+      if (ln.trim()) html += `<p>${inline(ln)}</p>`;
+    }
+    if (inList) html += "</ul>";
+    return html;
+  }
+
+  let cur = null, curIdx = 0;
+  function openPost(dir) {
+    const p = M.posts.find((x) => x.dir === dir);
+    cur = p; curIdx = 0;
+    $("#mttl").textContent = `${p.num} · ${p.title}`;
+    $("#mzip").innerHTML = `${ICON_DL}Post ZIP`;
+    $("#mzip").onclick = () => saveZip(`namzilabs-${p.dir}.zip`, postFiles(p));
+    const caps = p.sections.map((s) => {
+      if (s.kind === "caption") return capBlock(s.title, s.text);
+      if (s.kind === "x") return s.blocks.map((b, i) => capBlock(`${s.title} · ${b.label}`, b.text)).join("");
+      if (s.kind === "claims") return `<div class="capblock claims"><div class="caphead"><b>${esc(s.title)}</b></div><div class="md">${mdLite(s.text)}</div></div>`;
+      if (s.kind === "alt") return capBlock(s.title, s.text);
+      return `<div class="capblock"><div class="caphead"><b>${esc(s.title)}</b></div><div class="md">${mdLite(s.text)}</div></div>`;
+    }).join("");
+    $("#mbody").innerHTML = `<div class="viewer"><div class="stage"><img id="mimg" alt=""></div><div class="strip" id="mstrip">${p.images.map((im, i) => `<button data-i="${i}" aria-label="${esc(im.name)}"><img loading="lazy" src="${esc(im.path)}" alt=""></button>`).join("")}</div>
+      <div class="vactions"><button class="btn small" id="mone">${ICON_DL}<span id="monelab"></span></button><button class="btn small" data-copyall>${ICON_COPY}Copy all captions</button></div></div>
+      <div><dl class="meta"><dt>For</dt><dd>${esc(p.for)}</dd><dt>Job</dt><dd>${esc(p.job)}</dd><dt>Format</dt><dd>${esc(p.format)}</dd></dl>${caps}</div>`;
+    showImg(0);
+    $("#modal").classList.add("open");
+    $("#sheet").scrollTop = 0;
+    document.body.style.overflow = "hidden";
+    $("#mclose").focus();
+  }
+  function showImg(i) {
+    const im = cur.images[i]; curIdx = i;
+    $("#mimg").src = im.path; $("#mimg").alt = `${cur.title}, ${im.name}`;
+    $("#monelab").textContent = `${im.name} · ${im.w}×${im.h} · ${mb(im.size)}`;
+    document.querySelectorAll("#mstrip button").forEach((b) => b.classList.toggle("on", Number(b.dataset.i) === i));
+  }
+  function closeModal() { $("#modal").classList.remove("open"); document.body.style.overflow = ""; }
+  $("#mclose").addEventListener("click", closeModal);
+  $("#modal").addEventListener("click", (e) => { if (e.target.id === "modal") closeModal(); });
+  document.addEventListener("keydown", (e) => {
+    if (!$("#modal").classList.contains("open")) return;
+    if (e.key === "Escape") closeModal();
+    if (cur && cur.images && (e.key === "ArrowRight" || e.key === "ArrowLeft")) showImg((curIdx + (e.key === "ArrowRight" ? 1 : cur.images.length - 1)) % cur.images.length);
+  });
+  $("#mbody").addEventListener("click", (e) => {
+    const s = e.target.closest("#mstrip button"); if (s) return showImg(Number(s.dataset.i));
+    if (e.target.closest("#mone")) { const im = cur.images[curIdx]; return saveOne(im, `${cur.dir}-${im.name}`); }
+    const c = e.target.closest("[data-copy]"); if (c) return copy(c.closest(".capblock").querySelector(".captext").textContent);
+    if (e.target.closest("[data-copyall]")) return copy(cur.md);
+    const b = e.target.closest("[data-board]"); if (b) return;
+  });
+
+  /* ── videos ─────────────────────────────────────────────────────────── */
+  let vf = "all";
+  const vcount = (k) => (k === "all" ? M.videos.length : k === "namzi" ? M.videos.filter((v) => v.mascot).length : M.videos.filter((v) => v.audiences.includes(k)).length);
+  function renderVideoFilters() {
+    const keys = ["all", ...Object.keys(AUD).filter((k) => vcount(k)), "namzi"];
+    $("#vfilters").innerHTML = keys.map((k) => `<button class="chip${vf === k ? " on" : ""}" data-f="${k}">${k === "all" ? "All" : k === "namzi" ? "With Namzi" : AUD[k]}<span class="n">${vcount(k)}</span></button>`).join("");
+  }
+  $("#vfilters").addEventListener("click", (e) => { const b = e.target.closest("[data-f]"); if (!b) return; vf = b.dataset.f; renderVideoFilters(); renderVideos(); });
+  function renderVideos() {
+    const list = M.videos.filter((v) => vf === "all" || (vf === "namzi" ? v.mascot : v.audiences.includes(vf)));
+    $("#vgrid").innerHTML = list.map((v) => `<article class="card"><button class="vthumb${v.square ? " sq" : ""}" data-play="${v.dir}" aria-label="Play ${esc(v.title)}"><img loading="lazy" src="${esc(v.poster.path)}" alt="${esc(v.title)}"><span class="play"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5Z"/></svg></span></span><span class="dur">${esc(v.duration)}</span></button>
+      <div class="cbody"><div class="ctitle"><span class="no">${v.num}</span>${esc(v.title)}</div><div class="badges">${v.audiences.map((a) => `<span class="badge aud">${esc(AUD[a])}</span>`).join("")}${v.mascot ? '<span class="badge nz">Namzi</span>' : ""}${v.hold ? '<span class="badge hold">Hold until live</span>' : ""}</div>
+      <div class="cact"><button class="btn small" data-vdl="${v.dir}">${ICON_DL}MP4<span class="sz">&nbsp;· ${mb(v.file.size)}</span></button>${v.caption ? `<button class="btn small" data-vcap="${v.dir}">Captions</button>` : ""}</div></div></article>`).join("");
+  }
+  $("#vgrid").addEventListener("click", (e) => {
+    const p = e.target.closest("[data-play]");
+    if (p) {
+      const v = M.videos.find((x) => x.dir === p.dataset.play);
+      p.innerHTML = `<video src="${esc(v.file.path)}" poster="${esc(v.poster.path)}" controls autoplay playsinline muted loop></video>`;
+      p.removeAttribute("data-play"); p.style.cursor = "default";
+      return;
+    }
+    const d = e.target.closest("[data-vdl]"); if (d) { const v = M.videos.find((x) => x.dir === d.dataset.vdl); return saveOne(v.file, v.file.name); }
+    const c = e.target.closest("[data-vcap]"); if (c) return openVideoCaptions(c.dataset.vcap);
+  });
+  function openVideoCaptions(dir) {
+    const v = M.videos.find((x) => x.dir === dir);
+    cur = null;
+    $("#mttl").textContent = `${v.num} · ${v.title}`;
+    $("#mzip").innerHTML = `${ICON_DL}MP4`;
+    $("#mzip").onclick = () => saveOne(v.file, v.file.name);
+    $("#mbody").innerHTML = `<div class="viewer"><div class="stage"><video src="${esc(v.file.path)}" poster="${esc(v.poster.path)}" controls playsinline style="max-height:70vh;width:auto"></video></div>
+      <div class="vactions"><button class="btn small" data-poster>${ICON_DL}Poster JPG</button></div></div>
+      <div>${v.caption.map((c) => capBlock(c.label, c.text)).join("")}</div>`;
+    $("#mbody").querySelector("[data-poster]").onclick = () => saveOne(v.poster, `${v.dir}-poster.jpg`);
+    $("#modal").classList.add("open"); $("#sheet").scrollTop = 0; document.body.style.overflow = "hidden";
+  }
+
+  /* ── logos ──────────────────────────────────────────────────────────── */
+  $("#lboards").innerHTML = M.logos.overviews.map((b) => `<button data-img="${esc(b.path)}" aria-label="Open ${esc(b.name)}"><img loading="lazy" src="${esc(b.path)}" alt="${esc(b.name)}"></button>`).join("");
+  $("#lgrid").innerHTML = M.logos.concepts.map((l) => {
+    const icon = l.svgs.find((s) => s.name === "app-icon.svg");
+    const lock = l.svgs.find((s) => s.name === "lockup-light.svg");
+    const tag = l.id.startsWith("01") ? '<span class="badge aud">Recommended</span>' : l.id.startsWith("06") ? '<span class="badge nz">Social twin</span>' : "";
+    return `<article class="card"><div class="licon">${icon.text}</div><div class="cbody"><div class="ctitle"><span class="no">${l.id.slice(0, 2)}</span>${esc(l.name)} ${tag}</div><div class="faint">${esc(l.idea)}</div>
+      <div class="files">${l.profile ? `<button class="btn small" data-lf="${l.id}|profile">${ICON_DL}Profile PNG</button>` : ""}${l.board ? `<button class="btn small" data-lf="${l.id}|board">${ICON_DL}Board</button>` : ""}<button class="btn small" data-lz="${l.id}">${ICON_DL}All files</button></div>
+      <details><summary class="faint" style="cursor:pointer">SVG files</summary><div class="files" style="margin-top:8px">${l.svgs.map((s) => `<button class="btn small" data-lf="${l.id}|${s.name}">${esc(s.name.replace(".svg", ""))}</button>`).join("")}</div></details></div></article>`;
+  }).join("");
+  $("#lgrid").addEventListener("click", (e) => {
+    const f = e.target.closest("[data-lf]");
+    if (f) {
+      const [id, which] = f.dataset.lf.split("|");
+      const l = M.logos.concepts.find((x) => x.id === id);
+      if (which === "profile") return saveOne(l.profile, `namzilabs-${id}-profile-1024.png`);
+      if (which === "board") return saveOne(l.board, `namzilabs-${id}-board.png`);
+      const s = l.svgs.find((x) => x.name === which);
+      return saveOne({ text: s.text, type: "image/svg+xml" }, `namzilabs-${id}-${s.name}`);
+    }
+    const z = e.target.closest("[data-lz]"); if (z) { const l = M.logos.concepts.find((x) => x.id === z.dataset.lz); saveZip(`namzilabs-logo-${l.id}.zip`, logoFiles(l)); }
+  });
+
+  /* ── mascot ─────────────────────────────────────────────────────────── */
+  $("#mboards").innerHTML = M.mascot.boards.map((b) => `<button data-img="${esc(b.path)}" aria-label="Open ${esc(b.name)}"><img loading="lazy" src="${esc(b.path)}" alt="${esc(b.name)}"></button>`).join("");
+  $("#sgrid").innerHTML = [...M.mascot.stickers.map((s) => ({ label: s.label, png: s.png, svg: s.svg })), ...M.mascot.avatars.map((a) => ({ label: a.label, png: a, avatar: true }))].map((s, i) =>
+    `<div class="sticker"><div class="checker"><img loading="lazy" src="${esc(s.png.path)}" alt="Namzi: ${esc(s.label)}"${s.avatar ? ' style="border-radius:50%"' : ""}></div><div class="row"><span class="lab">${esc(s.label)}</span><span class="sbtns"><button class="btn small" data-sp="${i}" aria-label="Download PNG">${ICON_DL}PNG</button>${s.svg ? `<button class="btn small" data-ss="${i}" aria-label="Download SVG">${ICON_DL}SVG</button>` : ""}</span></div></div>`).join("");
+  const allStickers = [...M.mascot.stickers.map((s) => ({ png: s.png, svg: s.svg })), ...M.mascot.avatars.map((a) => ({ png: a }))];
+  $("#sgrid").addEventListener("click", (e) => {
+    const p = e.target.closest("[data-sp]"); if (p) { const s = allStickers[Number(p.dataset.sp)]; return saveOne(s.png, s.png.name); }
+    const v = e.target.closest("[data-ss]"); if (v) { const s = allStickers[Number(v.dataset.ss)]; return saveOne({ text: s.svg, type: "image/svg+xml" }, s.png.name.replace(".png", ".svg")); }
+  });
+
+  /* big images (boards) open in the viewer */
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-img]"); if (!b) return;
+    const path = b.dataset.img;
+    const all = [...M.logos.overviews, ...M.mascot.boards, ...M.logos.concepts.map((l) => l.board).filter(Boolean)];
+    const f = all.find((x) => x.path === path);
+    cur = null;
+    $("#mttl").textContent = f.name;
+    $("#mzip").innerHTML = `${ICON_DL}PNG · ${mb(f.size)}`;
+    $("#mzip").onclick = () => saveOne(f, f.name);
+    $("#mbody").innerHTML = `<div class="stage" style="grid-column:1/-1"><img src="${esc(path)}" alt="${esc(f.name)}" style="max-height:80vh"></div>`;
+    $("#modal").classList.add("open"); $("#sheet").scrollTop = 0; document.body.style.overflow = "hidden";
+  });
+
+  /* ── docs ───────────────────────────────────────────────────────────── */
+  $("#docs-list").innerHTML = M.docs.map((d, i) => `<div class="doc"><div class="t"><b>${esc(d.title)}</b><span>${esc(d.desc)} · ${mb(d.size)}</span></div><button class="btn small" data-doc="${i}">${ICON_DL}.md</button></div>`).join("");
+  $("#docs-list").addEventListener("click", (e) => { const b = e.target.closest("[data-doc]"); if (b) { const d = M.docs[Number(b.dataset.doc)]; saveOne(d, d.name); } });
+
+  /* nav highlight */
+  const links = [...document.querySelectorAll("#tabs a")];
+  const io = new IntersectionObserver((es) => { for (const en of es) if (en.isIntersecting) links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id)); }, { rootMargin: "-45% 0px -50% 0px" });
+  document.querySelectorAll("main section").forEach((s) => io.observe(s));
+
+  renderPostFilters(); renderPosts(); renderVideoFilters(); renderVideos();
+})();
+</script>

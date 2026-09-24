@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 23 — The EOD report vs the receipts</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .eod { display: flex; gap: 20px; align-items: flex-start; padding: 26px 30px 28px; border-radius: 28px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); }
+  .eod .av { width: 62px; height: 62px; border-radius: 16px; background: #ffd9a8; color: #7a4300; display: grid; place-items: center; font-size: 25px; font-weight: 800; flex: none; }
+  .eod .who { font-size: 23px; font-weight: 750; letter-spacing: -0.015em; }
+  .eod .who span { font-weight: 500; color: var(--faint); margin-left: 8px; font-size: 20px; }
+  .eod pre { font-family: var(--sans); font-size: 31px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.38; margin-top: 6px; white-space: pre-wrap; }
+  .vs { border-radius: var(--r-card); background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-3); overflow: hidden; }
+  .vs .hdr, .vs .rw { display: grid; grid-template-columns: 1.05fr 0.8fr 1.35fr; align-items: center; column-gap: 16px; padding: 0 30px; }
+  .vs .hdr { height: 66px; background: var(--paper-2); font-size: 20px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+  .vs .rw { min-height: 118px; border-top: 1px solid var(--line); font-size: 30px; font-weight: 650; letter-spacing: -0.02em; }
+  .vs .rw .m { color: var(--ink-2); }
+  .vs .rw .said { color: var(--red); text-decoration: line-through; text-decoration-thickness: 3px; font-variant-numeric: tabular-nums; }
+  .vs .rw .said.ok { text-decoration: none; }
+  .vs .rw .real { display: flex; align-items: center; gap: 14px; font-variant-numeric: tabular-nums; font-size: 34px; font-weight: 800; }
+  .vs .rw .real .mark { width: 40px; height: 40px; }
+  .vs .rw .real small { display: block; font-size: 19px; font-weight: 550; color: var(--faint); letter-spacing: -0.005em; margin-top: 2px; }
+  .vs .rw .real.dim { color: var(--faint); font-weight: 650; font-size: 26px; }
+</style>
+</head>
+<body>
+
+<template id="table">
+  <div class="vs">
+    <div class="hdr"><span></span><span>EOD says</span><span>The tools say</span></div>
+    <div class="rw"><span class="m">Dials</span><span class="said">120</span><span class="real"><span class="mark" data-src="aircall"></span><span>87<small>Aircall, calls placed</small></span></span></div>
+    <div class="rw"><span class="m">Conversations</span><span class="said">34</span><span class="real"><span class="mark" data-src="aircall"></span><span>21<small>Aircall, over 2 minutes</small></span></span></div>
+    <div class="rw"><span class="m">Booked</span><span class="said">11</span><span class="real"><span class="mark" data-src="calendly"></span><span>5 new<small>Calendly, +2 reschedules counted once</small></span></span></div>
+    <div class="rw"><span class="m">Energy</span><span class="said ok">🔥🔥🔥</span><span class="real dim">Not a column. Yet.</span></div>
+  </div>
+</template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For sales teams</span></div>
+  <h1 class="h1" style="margin-top:34px;font-size:96px">The EOD report vs the <em>receipts.</em></h1>
+  <div class="eod" style="margin-top:34px">
+    <span class="av">JS</span>
+    <div><div class="who">Jordan<span>setter · 6:47 pm</span></div><pre>EOD ✅  Dials 120 · Convos 34 · Booked 11
+Energy 🔥🔥🔥</pre></div>
+  </div>
+  <div data-slot style="margin-top:22px"></div>
+  <div class="foot" style="padding-top:26px"><span class="demo">Example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 70px 50px;flex-direction:row;gap:50px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 560px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:40px;font-size:88px">The EOD report vs the <em>receipts.</em></h1>
+    <div class="eod" style="margin-top:30px;padding:20px 24px">
+      <span class="av" style="width:52px;height:52px;font-size:21px">JS</span>
+      <div><div class="who">Jordan<span>setter · 6:47 pm</span></div><pre style="font-size:25px">EOD ✅ Dials 120 · Convos 34 · Booked 11 · Energy 🔥🔥🔥</pre></div>
+    </div>
+    <div class="demo" style="margin-top:auto">Example data · namzilabs.co</div>
+  </div>
+  <div data-slot style="flex:1;align-self:center"></div>
+</div>
+
+<script>
+  const t = document.getElementById("table");
+  for (const s of document.querySelectorAll("[data-slot]")) s.appendChild(t.content.cloneNode(true));
+  const x = document.querySelector('[data-still="x-01"] .vs');
+  x.querySelectorAll(".rw").forEach((r) => (r.style.minHeight = "130px"));
+  // the Instagram table gets taller rows and bigger numbers
+  const ig = document.querySelector('[data-still="ig-01"] .vs');
+  ig.querySelectorAll(".rw").forEach((r) => (r.style.minHeight = "146px", r.style.fontSize = "33px"));
+  ig.querySelectorAll(".real").forEach((r) => (r.style.fontSize = r.classList.contains("dim") ? "28px" : "40px"));
+  ig.querySelectorAll(".real small").forEach((r) => (r.style.fontSize = "21px"));
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

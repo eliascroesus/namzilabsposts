@@ -55,9 +55,9 @@ Why this order: group 1 feels the cross-tool pain hardest and has no good tool f
 
 | Pillar | What it is | Share of posts | Examples in this repo |
 |---|---|---|---|
-| **Receipts** | A number that unfolds into its working. The brand's signature visual. | 25% | Post 08, video 04, post 01 slide 4 |
-| **Recipes: "Tool A + Tool B = metric"** | One cross-tool metric: formula, why it matters, example. A series with a post for every useful source pair. | 30% | Post 02, 04, 05, 06, 07 |
-| **Relatable pain** | POV, memes, Monday-morning chaos. Made to be sent. | 20% | Post 03, video 03 |
+| **Receipts** | A number that unfolds into its working. The brand's signature visual. | 25% | Post 08, 20, 23, video 04, 09, 10 |
+| **Recipes: "Tool A + Tool B = metric"** | One cross-tool metric: formula, why it matters, example. A series with a post for every useful source pair. | 30% | Post 02, 04, 05, 06, 07, 24 |
+| **Relatable pain** | POV, memes, bingo cards, group chats, Monday-morning chaos. Made to be sent. Namzi, the mascot, lives here. | 20% | Post 03, 13–19, 21, 22, video 03, 07, 08 |
 | **Watch me build** | 15–30s product demos: Get data → Match → Calculate → Publish. | 15% | Video 02, video 01 |
 | **Build in public** | Founder receipts: numbers first, one honest admission, then what's next. | 10% | Post 10 |
 
@@ -152,6 +152,29 @@ One 60–90-minute recording session a week feeds all of it: 5–7 clips, 2 caro
 | 28 | "Month in receipts" | "Month in receipts" | — |
 | When live | **Post 12 + video 05** (AI connection launch) | Same | Same |
 
+### Days 31–60: the second batch
+
+This batch leans funnier (bingo, group chats, dictionary entries, a red-string board) and introduces **Namzi**, the mascot, for recall. Each ICP gets at least two posts. Keep Namzi to at most one post in four.
+
+| Day | X | Instagram | Video |
+|---|---|---|---|
+| 31 | Post 13 (meet Namzi) | Post 13 carousel | Video 07 (meet Namzi) |
+| 33 | Post 18 (things your CRM believes) | Post 18 | — |
+| 35 | Post 15 (launch bingo): ask for scores in replies | Post 15 | — |
+| 37 | Post 24 thread (reply-to-meeting rate) | Post 24 carousel | — |
+| 39 | Post 21 (how many showed?) | Post 21 | Video 09 (EOD report) |
+| 41 | Post 14 (group chat) | Post 14 | Video 08 (group chat) |
+| 43 | Post 17 (where Monday goes) | Post 17 | — |
+| 45 | Post 22 thread (the dictionary, one entry per reply) | Post 22 carousel | — |
+| 47 | Post 20 (screenshot vs receipt) | Post 20 carousel | Video 10 (launch receipt) |
+| 49 | Post 19 (red-string board) | Post 19 | — |
+| 51 | Post 23 (EOD report) | Post 23 | — |
+| 53 | Post 16 (red flags) | Post 16 | — |
+| 56 | "Month 2 in receipts" | "Month 2 in receipts" | Best performer, recut with a new hook |
+| 58 | Namzi sticker drop: stickers in Stories, reply with them all week | Stories | — |
+
+The stickers in [`brand/mascot/stickers/`](brand/mascot/stickers/) are ready for Stories and replies today. Next step: animate a few of them into GIFs and upload them to a GIPHY brand channel, which is how stickers become searchable inside Instagram Stories. Every use is a small ad.
+
 Every day, alongside the calendar: 30–50 replies on X and 15–20 comments on Instagram in the niche Lists. That's where the first 1,000 followers come from. ([03 §7](research/03-growth-content-playbook.md))
 
 ---
@@ -174,6 +197,7 @@ Every day, alongside the calendar: 30–50 replies on X and 15–20 comments on 
 4. **"Read-only" wording:** say "never edits your data". Don't say "can't change anything in your tools". Some connectors register a webhook in your account so updates arrive instantly.
 5. **"33 tools":** these are the live, connectable sources. 36 exist in code, but 3 await platform approval.
 6. **Never show a real customer's numbers** without written permission. Use example workspaces.
+   - **Namzi follows the same rules.** The mascot reacts; it never makes a claim the brand couldn't make.
 7. **Free:** "free to start, no card" is true today; there are no paid plans. Update everything when pricing launches.
 
 ---

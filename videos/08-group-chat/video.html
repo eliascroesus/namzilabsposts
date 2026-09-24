@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — If your tools had a group chat (9:16)</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  .world { position: absolute; inset: 0; }
+  .abs { position: absolute; }
+  .wmask { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.04em 0.14em 0; margin-bottom: -0.14em; }
+  .wi { display: inline-block; will-change: transform; }
+  .head { left: 90px; top: 250px; width: 900px; font-size: 100px; }
+  .phone { left: 60px; top: 520px; width: 960px; height: 980px; border-radius: 52px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-3); overflow: hidden; }
+  .chead { position: absolute; left: 0; right: 0; top: 0; height: 112px; display: flex; align-items: center; gap: 20px; padding: 0 34px; border-bottom: 1px solid var(--line); background: #fbfbfd; z-index: 2; }
+  .stack { display: flex; }
+  .stack .mark-disc { width: 58px; height: 58px; margin-left: -16px; border: 3px solid #fbfbfd; box-shadow: none; }
+  .stack .mark-disc:first-child { margin-left: 0; }
+  .chead .t { font-size: 30px; font-weight: 750; letter-spacing: -0.02em; }
+  .chead .t small { display: block; font-size: 21px; font-weight: 500; color: var(--faint); margin-top: 2px; }
+  .view { position: absolute; left: 0; right: 0; top: 112px; bottom: 0; overflow: hidden; }
+  .list { position: absolute; left: 0; right: 0; top: 0; padding: 28px 30px 30px; display: flex; flex-direction: column; gap: 16px; }
+  .row { position: relative; display: flex; gap: 14px; align-items: flex-end; max-width: 88%; transform-origin: 0 100%; }
+  .row.me { align-self: flex-end; transform-origin: 100% 100%; }
+  .av { width: 70px; height: 70px; flex: none; border-radius: 50%; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; }
+  .av .mark { width: 42px; height: 42px; }
+  .av.nz { background: var(--blue-50); border-color: var(--blue-100); }
+  .av.nz svg { width: 70px; height: 70px; display: block; }
+  .bub { position: relative; background: #eef0f5; border-radius: 34px 34px 34px 10px; padding: 17px 28px 19px; font-size: 38px; line-height: 1.26; letter-spacing: -0.016em; }
+  .bub .n { display: block; font-size: 24px; font-weight: 650; color: var(--faint); margin-bottom: 3px; }
+  .me .bub { background: var(--blue); color: #fff; border-radius: 34px 34px 10px 34px; }
+  .nzb { background: #fff; border: 2px solid var(--blue-100); box-shadow: 0 12px 30px -14px rgba(47,95,216,.45); }
+  .nzb .n { color: var(--blue); }
+  .nzb b { font-weight: 750; }
+  .att { margin-top: 14px; display: flex; align-items: center; gap: 16px; padding: 14px 18px; border-radius: 20px; background: var(--paper); border: 1px solid var(--line); font-size: 28px; font-weight: 650; color: var(--ink-2); }
+  .att svg { width: 46px; height: 46px; flex: none; }
+  .att small { display: block; font-size: 22px; font-weight: 500; color: var(--faint); }
+  .typing { position: absolute; left: 84px; bottom: 0; height: 76px; padding: 0 28px; border-radius: 34px 34px 34px 10px; background: #eef0f5; display: flex; align-items: center; gap: 9px; transform-origin: 0 100%; }
+  .typing i { width: 15px; height: 15px; border-radius: 50%; background: #9a9cac; display: block; }
+  .tap { position: absolute; right: -26px; top: -24px; width: 64px; height: 64px; border-radius: 50%; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); display: grid; place-items: center; font-size: 34px; }
+  .peek { left: 840px; top: 700px; width: 420px; z-index: 5; transform-origin: 100% 60%; }
+  .peek svg, .bignz svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .bignz { left: 330px; top: 1090px; width: 420px; z-index: 5; }
+  .bignz svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .end { left: 0; top: 400px; width: 1080px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .end .pre { font-size: 50px; font-weight: 700; letter-spacing: -0.035em; color: var(--muted); }
+  .end .big { font-size: 118px; font-weight: 800; letter-spacing: -0.052em; line-height: .95; width: 920px; margin-top: 18px; }
+  .end .big em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .end .lock { margin-top: 80px; display: flex; align-items: center; gap: 18px; font-size: 48px; font-weight: 800; letter-spacing: -0.045em; }
+  .end .lock .logo { width: 76px; height: 76px; }
+  .end .go { margin-top: 34px; }
+  .demo { left: 0; width: 1080px; text-align: center; top: 1520px; font-size: 22px; font-weight: 550; color: var(--faint); }
+</style>
+</head>
+<body>
+<div class="canvas s-story paper">
+  <div class="ruled" id="ruled"></div>
+  <div class="world" id="world">
+    <h1 class="abs h1 head" id="head">If your tools had a group <em>chat.</em></h1>
+    <div class="abs phone" id="phone">
+      <div class="chead">
+        <div class="stack"><span class="mark-disc"><span class="mark" data-src="shopify"></span></span><span class="mark-disc"><span class="mark" data-src="klaviyo"></span></span><span class="mark-disc"><span class="mark" data-src="ganalytics"></span></span></div>
+        <div class="t">Weekly numbers 📈<small>Shopify, Klaviyo, GA, Sheets, you, Namzi</small></div>
+      </div>
+      <div class="view"><div class="list" id="list">
+        <div class="row" id="m1"><span class="av"><span class="mark" data-src="shopify"></span></span><div class="bub"><span class="n">Shopify</span>we did $48.2k this week 🎉</div></div>
+        <div class="row" id="m2"><span class="av"><span class="mark" data-src="klaviyo"></span></span><div class="bub"><span class="n">Klaviyo</span>email drove $31.9k of that btw 💅</div></div>
+        <div class="row" id="m3"><span class="av"><span class="mark" data-src="ganalytics"></span></span><div class="bub"><span class="n">Google Analytics</span>email made $22.4k.<span class="tap" id="tap">🙄</span></div></div>
+        <div class="row" id="m4"><span class="av"><span class="mark" data-src="gsheets"></span></span><div class="bub"><span class="n">Google Sheets</span>can someone update me. last edit: 3 weeks ago</div></div>
+        <div class="row me" id="m5"><div class="bub">so how much actually came from our list??</div></div>
+        <div class="row" id="m6"><span class="av nz" id="nzav"></span><div class="bub nzb"><span class="n">Namzi</span>Matched <b>781 orders</b> to Klaviyo profiles by email. Refunds left out. <b><span id="amt">$29.4k</span>, 61% of sales.</b>
+          <div class="att"><svg viewBox="0 0 64 64"><path d="M17 9h30a4 4 0 0 1 4 4v42l-4.75-4-4.75 4-4.75-4-4.75 4-4.75-4-4.75 4-4.75-4-4.75 4V13a4 4 0 0 1 4-4Z" fill="#2f5fd8"/><rect x="21" y="17" width="17" height="3.8" rx="1.9" fill="#fff"/><rect x="21" y="25" width="11" height="3.8" rx="1.9" fill="#fff"/><rect x="21" y="37" width="22" height="7" rx="3.5" fill="#fff"/></svg><div>The receipt<small>read · matched · left out</small></div></div></div></div>
+        <div class="row" id="m7"><span class="av"><span class="mark" data-src="shopify"></span></span><div class="bub">…ok that's actually useful</div></div>
+      </div></div>
+    </div>
+    <div class="abs peek" id="peek"></div>
+    <div class="abs bignz" id="bignz"></div>
+    <div class="abs demo" id="demo">Example data</div>
+
+    <div class="abs end" id="end">
+      <div class="pre" id="pre">Every tool takes credit.</div>
+      <div class="big" id="big">One shows its <em>working.</em></div>
+      <div class="lock" id="lock"><span class="logo"></span>Namzilabs</div>
+      <div class="go" id="go"><span class="btn">Start free · namzilabs.co</span></div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+<script>
+const { ease: E } = NZ;
+const $ = (id) => document.getElementById(id);
+$("nzav").innerHTML = NZ.mascot({ mood: "happy", crop: "face" });
+
+// typing indicators, one per incoming message
+const MSGS = [["m1", 1.75], ["m2", 2.95], ["m3", 4.1], ["m4", 5.75], ["m5", 6.9, true], ["m6", 8.45], ["m7", 10.55]];
+for (const [id, , me] of MSGS) {
+  if (me) continue;
+  const ty = document.createElement("div");
+  ty.className = "typing"; ty.id = id + "t"; ty.innerHTML = "<i></i><i></i><i></i>";
+  $(id).appendChild(ty);
+}
+
+function build() {
+  const tl = new NZ.Timeline({ duration: 14.2, tail: 1.6 });
+  tl.stagger(NZ.splitWords("#head"), { at: 0.15, dur: 0.75, ease: E.out, from: { y: 130 }, to: { y: 0 } }, 0.06);
+  tl.add("#phone", { at: 0.55, dur: 1.0, ease: E.spring, from: { y: 160, opacity: 0, scale: 0.96 }, to: { y: 0, opacity: 1, scale: 1 } });
+  tl.add("#demo", { at: 1.0, dur: 0.6, ease: E.out, from: { opacity: 0 }, to: { opacity: 1 } });
+
+  // messages: typing, then the bubble; the list scrolls like a real chat
+  const viewH = 980 - 112;
+  const list = $("list");
+  const listTop = list.getBoundingClientRect().top;
+  let lastScroll = 0;
+  for (const [id, at, me] of MSGS) {
+    const row = $(id);
+    if (!me) {
+      tl.add("#" + id + "t", { at: at - 0.55, dur: 0.4, ease: E.back, from: { scale: 0.3, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+      tl.add("#" + id + "t", { at, dur: 0.12, ease: E.linear, to: { opacity: 0 } });
+    }
+    tl.add(row.querySelector(".bub"), { at, dur: 0.7, ease: E.springBouncy, from: { scale: 0.5, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+    tl.add(row.querySelector(".av") || [], { at, dur: 0.5, ease: E.out, from: { opacity: 0 }, to: { opacity: 1 } });
+    const bottom = row.getBoundingClientRect().bottom - listTop + 30;
+    const scroll = Math.max(0, bottom - viewH);
+    if (scroll > lastScroll) {
+      tl.add("#list", { at: at - (me ? 0.1 : 0.55), dur: 0.6, ease: E.inOut, from: { y: -lastScroll }, to: { y: -scroll } });
+      lastScroll = scroll;
+    }
+  }
+  tl.set("#list", 0, { y: 0 });
+  tl.add("#tap", { at: 4.8, dur: 0.6, ease: E.springBouncy, from: { scale: 0, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+  tl.call(8.45, 1.1, NZ.counter("#amt", 0, 29.4, { prefix: "$", suffix: "k", decimals: 1 }), { ease: E.out });
+
+  // Namzi peeks in from the edge when Klaviyo takes credit
+  tl.add("#peek", { at: 3.25, dur: 0.8, ease: E.spring, from: { x: 420, rotate: 0 }, to: { x: 0, rotate: -12 } });
+  tl.add("#peek", { at: 4.75, dur: 0.5, ease: E.in, to: { x: 440, rotate: 0 } });
+  // and closes the video holding the receipt
+  tl.add("#bignz", { at: 13.1, dur: 1.0, ease: E.spring, from: { y: 520, opacity: 1 }, to: { y: 0, opacity: 1 } });
+
+  // out: the chat blurs away; the line lands
+  for (const id of ["#phone", "#head", "#demo"]) tl.add(id, { at: 11.6, dur: 0.5, ease: E.in, to: { opacity: 0, blur: 10, y: -30 } });
+  tl.add("#pre", { at: 11.95, dur: 0.7, ease: E.out, from: { opacity: 0, y: 30 }, to: { opacity: 1, y: 0 } });
+  tl.stagger(NZ.splitWords("#big"), { at: 12.25, dur: 0.8, ease: E.out, from: { y: 150 }, to: { y: 0 } }, 0.07);
+  tl.add("#lock", { at: 12.9, dur: 1.0, ease: E.spring, from: { scale: 0.8, opacity: 0, y: 20 }, to: { scale: 1, opacity: 1, y: 0 } });
+  tl.add("#go", { at: 13.25, dur: 0.9, ease: E.spring, from: { scale: 0.85, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+  tl.set("#pre", 0, { opacity: 0 });
+
+  const BL = [14.4, 15.2];
+  tl.every((t) => {
+    // typing dots bounce
+    for (const [id, , me] of MSGS) {
+      if (me) continue;
+      $(id + "t").querySelectorAll("i").forEach((d, k) => (d.style.transform = `translateY(${Math.min(0, Math.sin(t * 12 - k * 0.9)) * 7}px)`));
+    }
+    const blink = BL.reduce((m, b) => Math.max(m, t > b && t < b + 0.2 ? 1 - Math.abs((t - b) / 0.1 - 1) : 0), 0);
+    $("peek").innerHTML = t > 3.2 && t < 5.3 ? NZ.mascot({ mood: "sideeye", look: [-1, 0.25], shadow: false }) : "";
+    const k = t - 13.1;
+    $("bignz").innerHTML = t > 13.05 ? NZ.mascot({ mood: "smug", pose: "carry", prop: "receipt", blink, squash: k < 1.2 ? -0.5 * Math.exp(-6 * k) * Math.cos(12 * k) : 0 }) : "";
+    $("ruled").style.transform = `translate3d(0, ${-(t * 6) % 88}px, 0)`;
+    $("world").style.transform = `scale(${1 + Math.min(t, 16) * 0.0012})`;
+  });
+  return tl;
+}
+
+// build once fonts are in, so the chat can measure itself
+window.__ready = document.fonts.ready.then(() => {
+  NZ.hydrateMarks();
+  const tl = build();
+  NZ.mount(tl, { width: 1080, height: 1920 });
+  return window.__ready;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 19 — Explaining where our revenue number comes from</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .cork { position: relative; border-radius: 22px; overflow: hidden; border: 14px solid #8a5a2e;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,.12), inset 0 10px 40px rgba(60,30,0,.35), 0 30px 60px -24px rgba(60,30,0,.45);
+    background-color: #c8965f;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='c'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .27  0 0 0 0 .1  0 0 0 1.6 -.55'/></filter><rect width='240' height='240' filter='url(%23c)'/></svg>"); }
+  .it { position: absolute; transform: rotate(var(--r, 0deg)); }
+  .pc { display: inline-flex; align-items: center; gap: 12px; padding: 14px 20px 14px 14px; background: #fff; border-radius: 14px; box-shadow: 0 8px 18px -8px rgba(40,20,0,.6); font-size: 24px; font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; color: var(--ink); }
+  .pc .mark { width: 38px; height: 38px; }
+  .pc small { display: block; font-size: 18px; font-weight: 550; color: var(--muted); margin-top: 2px; letter-spacing: -0.005em; }
+  .sticky { width: 210px; padding: 22px 20px 26px; font-family: var(--serif); font-style: italic; font-size: 33px; line-height: 1.02; color: #3b2f00; box-shadow: 0 14px 22px -12px rgba(40,20,0,.7); }
+  .sticky.y { background: #ffe57a; }
+  .sticky.p { background: #ffc9d3; color: #5a1224; }
+  .sticky.b { background: #cfe0ff; color: #0e2a6b; }
+  .sheet { width: 250px; padding: 18px 18px 22px; background: #fff; box-shadow: 0 12px 22px -10px rgba(40,20,0,.6); font-size: 17px; font-weight: 700; color: var(--ink); }
+  .sheet .rw { height: 13px; border-radius: 3px; background: #e6e8ef; margin-top: 9px; }
+  .sheet .rw.r { background: #ffd6cf; }
+  .sheet .fn { display: flex; align-items: center; gap: 8px; }
+  .sheet .fn .mark { width: 24px; height: 24px; }
+  .strings { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+  .pin { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; z-index: 6;
+    background: radial-gradient(circle at 35% 30%, #ff9a8a 0 18%, #e2382a 40%, #9c1b12 100%); box-shadow: 0 4px 6px rgba(40,10,0,.45); }
+  .answer { display: flex; align-items: center; gap: 24px; padding: 26px 30px; }
+  .answer .rc { width: 64px; height: 64px; flex: none; }
+  .answer .t { flex: 1; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+  .answer .t small { display: block; font-size: 22px; font-weight: 500; color: var(--muted); margin-top: 4px; letter-spacing: -0.01em; }
+  .answer .v { font-size: 64px; font-weight: 800; letter-spacing: -0.05em; color: var(--blue); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<template id="board">
+  <div class="it" data-pin style="left:34px;top:40px;--r:-3deg"><span class="pc"><span class="mark" data-src="shopify"></span><span>Shopify<small>$48.2k this week</small></span></span></div>
+  <div class="it" data-pin style="left:500px;top:30px;--r:4deg"><span class="pc"><span class="mark" data-src="klaviyo"></span><span>Klaviyo<small>$31.9k “attributed”</small></span></span></div>
+  <div class="it sticky y" data-pin style="left:318px;top:176px;--r:-6deg">why is this 0??</div>
+  <div class="it" data-pin style="left:560px;top:250px;--r:-4deg"><span class="pc"><span class="mark" data-src="ganalytics"></span><span>GA4<small>“data thresholds applied”</small></span></span></div>
+  <div class="it sheet" data-pin style="left:40px;top:250px;--r:3deg"><div class="fn"><span class="mark" data-src="gsheets"></span>FINAL_v7_REAL.xlsx</div><div class="rw" style="width:90%"></div><div class="rw r" style="width:70%"></div><div class="rw" style="width:84%"></div><div class="rw" style="width:60%"></div></div>
+  <div class="it sticky b" data-pin style="left:318px;top:430px;--r:4deg">don't touch this zap</div>
+  <div class="it sticky p" data-pin style="left:620px;top:420px;--r:7deg">same customer ×3?</div>
+  <div class="it sticky y" data-pin style="left:56px;top:500px;--r:-5deg">refunds??</div>
+</template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01" style="padding-bottom:64px">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For brand owners</span></div>
+  <h1 class="h1" style="margin-top:30px;font-size:84px">Me explaining where our revenue number comes <em>from:</em></h1>
+  <div class="cork" data-board style="margin-top:32px;height:710px"></div>
+  <div class="card answer" style="margin-top:26px">
+    <svg class="rc" viewBox="0 0 64 64"><path d="M17 9h30a4 4 0 0 1 4 4v42l-4.75-4-4.75 4-4.75-4-4.75 4-4.75-4-4.75 4-4.75-4-4.75 4V13a4 4 0 0 1 4-4Z" fill="#2f5fd8"/><rect x="21" y="17" width="17" height="3.8" rx="1.9" fill="#fff"/><rect x="21" y="25" width="11" height="3.8" rx="1.9" fill="#fff"/><rect x="21" y="37" width="22" height="7" rx="3.5" fill="#fff"/></svg>
+    <div class="t">Or: one number, with the working shown.<small>781 orders matched by email · 12 refunds left out</small></div>
+    <div class="v">$29.4k</div>
+  </div>
+  <div class="foot" style="padding-top:22px"><span class="demo">Example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 64px 50px;flex-direction:row;gap:50px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 520px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:40px;font-size:80px">Me explaining where our revenue number comes <em>from:</em></h1>
+    <p class="lead" style="margin-top:26px;font-size:29px">Or: one number, with the working shown. <b style="color:var(--blue)">$29.4k</b> from your list, 12 refunds left out.</p>
+    <div class="demo" style="margin-top:auto">Example data · namzilabs.co</div>
+  </div>
+  <div class="cork" data-board style="flex:1;height:790px"></div>
+</div>
+
+<script>
+  const tpl = document.getElementById("board");
+  for (const b of document.querySelectorAll("[data-board]")) b.appendChild(tpl.content.cloneNode(true));
+  // the X board is wider and shorter: nudge a few things
+  const xb = document.querySelector('[data-still="x-01"] [data-board]');
+  const its = xb.querySelectorAll(".it");
+  its[3].style.left = "600px"; its[6].style.left = "640px"; its[5].style.top = "440px"; its[7].style.top = "560px";
+
+  // red string: connect pins with a gentle sag, drawn above everything
+  const LINKS = [[0, 2], [2, 4], [1, 3], [3, 6], [4, 7], [2, 5], [5, 1], [6, 7], [0, 1], [3, 5]];
+  function strings(board) {
+    const bb = board.getBoundingClientRect();
+    const pins = [...board.querySelectorAll("[data-pin]")].map((el) => {
+      const r = el.getBoundingClientRect();
+      const p = { x: r.left - bb.left + r.width * 0.5, y: r.top - bb.top + 1 };
+      const dot = document.createElement("span");
+      dot.className = "pin"; dot.style.left = `${p.x}px`; dot.style.top = `${p.y}px`;
+      board.appendChild(dot);
+      return p;
+    });
+    const w = bb.width, h = bb.height;
+    const paths = LINKS.map(([a, b]) => {
+      const A = pins[a], B = pins[b];
+      const mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2 + Math.hypot(B.x - A.x, B.y - A.y) * 0.08;
+      return `<path d="M${A.x} ${A.y}Q${mx} ${my} ${B.x} ${B.y}" fill="none" stroke="#c9241b" stroke-width="3.2" stroke-linecap="round"/>`;
+    }).join("");
+    board.insertAdjacentHTML("beforeend", `<svg class="strings" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="filter:drop-shadow(0 3px 2px rgba(40,10,0,.35))">${paths}</svg>`);
+  }
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>
+  NZ.still();
+  window.__ready = window.__ready.then(() => { document.querySelectorAll("[data-board]").forEach(strings); return true; });
+</script>
+</body>
+</html>

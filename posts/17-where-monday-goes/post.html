@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 17 — Where Monday goes</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .donut { position: relative; flex: none; }
+  .donut svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .donut .mid { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; }
+  .donut .mid b { display: block; font-size: 120px; font-weight: 800; letter-spacing: -0.06em; color: var(--blue); line-height: .9; font-variant-numeric: tabular-nums; }
+  .donut .mid span { display: block; font-size: 26px; font-weight: 650; color: var(--ink-2); letter-spacing: -0.015em; margin-top: 10px; }
+  .legend { display: flex; flex-direction: column; gap: 14px; }
+  .lg { display: flex; align-items: center; gap: 18px; font-size: 29px; font-weight: 600; letter-spacing: -0.018em; color: var(--ink); }
+  .lg i { width: 26px; height: 26px; border-radius: 8px; flex: none; }
+  .lg .t { flex: 1; }
+  .lg b { font-weight: 750; font-variant-numeric: tabular-nums; min-width: 72px; text-align: right; }
+  .lg.win { color: var(--blue); }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For agencies</span></div>
+  <h1 class="h1" style="margin-top:36px;font-size:96px">Agency owners: where Monday <em>goes.</em></h1>
+  <div style="display:flex;justify-content:center;margin-top:30px"><div class="donut" data-donut style="width:480px;height:480px"></div></div>
+  <div class="legend" data-legend style="margin-top:40px"></div>
+  <p class="lead" style="margin-top:30px;font-size:29px;color:var(--ink-2);display:flex;align-items:center;gap:14px"><span class="dot blue"></span>Build the client report once. Namzilabs keeps it live.</p>
+  <div class="foot"><span class="demo">Example data (and feelings)</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:60px 76px 52px;flex-direction:row;gap:60px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 600px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:40px;font-size:80px">Agency owners: where Monday <em>goes.</em></h1>
+    <div class="legend" data-legend style="margin-top:34px;gap:10px" data-size="25"></div>
+    <div class="demo" style="margin-top:auto">Example data (and feelings) · namzilabs.co</div>
+  </div>
+  <div style="flex:1;display:grid;place-items:center"><div class="donut" data-donut style="width:640px;height:640px"></div></div>
+</div>
+
+<script>
+  const S = [
+    ["Explaining why the numbers don't match", 31, "#f0553d"],
+    ["Exporting CSVs from six tools", 28, "#f37b67"],
+    ["Screenshotting dashboards for clients", 24, "#f6a293"],
+    ["Fixing the sheet someone “tidied”", 11, "#f9c9c0"],
+    ["Actual strategy", 6, "#2f5fd8"],
+  ];
+  const R = 200, C = 2 * Math.PI * R, GAP = 5;
+  for (const el of document.querySelectorAll("[data-donut]")) {
+    let acc = 0;
+    const arcs = S.map(([, p, col], i) => {
+      const len = (p / 100) * C;
+      const win = i === S.length - 1;
+      const a = `<circle cx="250" cy="250" r="${R}" fill="none" stroke="${col}" stroke-width="${win ? 112 : 86}" stroke-dasharray="${len - GAP} ${C}" stroke-dashoffset="${-acc}" transform="rotate(-90 250 250)"/>`;
+      acc += len;
+      return a;
+    }).join("");
+    el.innerHTML = `<svg viewBox="0 0 500 500">${arcs}</svg><div class="mid"><div><b>6%</b><span>actual strategy</span></div></div>`;
+  }
+  for (const el of document.querySelectorAll("[data-legend]")) {
+    el.innerHTML = S.map(([t, p, col], i) => `<div class="lg${i === S.length - 1 ? " win" : ""}"${el.dataset.size ? ` style="font-size:${el.dataset.size}px"` : ""}><i style="background:${col}"></i><span class="t">${t}</span><b>${p}%</b></div>`).join("");
+  }
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

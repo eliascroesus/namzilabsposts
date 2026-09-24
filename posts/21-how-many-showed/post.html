@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 21 — How many showed?</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .msgcard { display: flex; gap: 20px; align-items: flex-start; padding: 26px 30px; border-radius: 28px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); }
+  .msgcard .av { width: 64px; height: 64px; border-radius: 16px; background: #ffd9a8; color: #7a4300; display: grid; place-items: center; font-size: 26px; font-weight: 800; flex: none; }
+  .msgcard .who { font-size: 24px; font-weight: 750; letter-spacing: -0.015em; }
+  .msgcard .who span { font-weight: 500; color: var(--faint); margin-left: 8px; font-size: 20px; }
+  .msgcard .txt { font-size: 38px; font-weight: 600; letter-spacing: -0.025em; margin-top: 4px; line-height: 1.2; }
+  .react { position: relative; border-radius: 40px; overflow: hidden; background: radial-gradient(80% 70% at 50% 30%, #eef4ff, #dce8ff); border: 1px solid var(--blue-100); }
+  .react .namzi { position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%); }
+  .punch { font-size: 132px; font-weight: 800; letter-spacing: -0.05em; line-height: .95; }
+  .punch em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: var(--blue); }
+  .facts { display: flex; gap: 12px; flex-wrap: wrap; }
+  .fc { display: inline-flex; align-items: center; gap: 10px; height: 58px; padding: 0 24px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: 25px; font-weight: 650; letter-spacing: -0.015em; box-shadow: var(--shadow-1); font-variant-numeric: tabular-nums; }
+  .fc b { font-weight: 800; }
+  .fc.red b { color: var(--red); }
+  .fc.blue { background: var(--blue); color: #fff; border-color: var(--blue); }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For sales teams</span></div>
+  <div class="msgcard" style="margin-top:36px">
+    <span class="av">JS</span>
+    <div><div class="who">Jordan<span>setter · 5:02 pm</span></div><div class="txt">I booked 41 calls this week 💪</div></div>
+  </div>
+  <div class="react" style="margin-top:26px;height:560px">
+    <div class="namzi" data-mood="sideeye" data-crop="face" data-look="-0.85,-0.75" style="width:600px"></div>
+  </div>
+  <div class="punch" style="margin-top:34px">How many <em>showed?</em></div>
+  <div class="facts" style="margin-top:26px">
+    <span class="fc">Booked <b>41</b></span><span class="fc red">Held <b>19</b></span><span class="fc blue">Show rate <b>46%</b></span>
+  </div>
+  <div class="foot"><span class="demo">Example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:60px 70px 52px;flex-direction:row;gap:50px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 700px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <div class="msgcard" style="margin-top:44px">
+      <span class="av">JS</span>
+      <div><div class="who">Jordan<span>setter · 5:02 pm</span></div><div class="txt">I booked 41 calls this week 💪</div></div>
+    </div>
+    <div class="punch" style="margin-top:40px;font-size:120px">How many <em>showed?</em></div>
+    <div class="facts" style="margin-top:auto"><span class="fc">Booked <b>41</b></span><span class="fc red">Held <b>19</b></span><span class="fc blue">Show rate <b>46%</b></span></div>
+  </div>
+  <div class="react" style="flex:1">
+    <div class="namzi" data-mood="sideeye" data-crop="face" data-look="-1,0.1" style="width:640px"></div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+<script>NZ.hydrateMascots(); NZ.still();</script>
+</body>
+</html>

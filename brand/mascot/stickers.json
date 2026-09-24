@@ -1,0 +1,152 @@
+[
+  {
+    "file": "stickers/namzi-wave.png",
+    "svg": "stickers/namzi-wave.svg",
+    "label": "Hi!",
+    "mood": "happy",
+    "pose": "wave"
+  },
+  {
+    "file": "stickers/namzi-celebrate.png",
+    "svg": "stickers/namzi-celebrate.svg",
+    "label": "Numbers are up (for real)",
+    "mood": "joy",
+    "pose": "up"
+  },
+  {
+    "file": "stickers/namzi-receipt.png",
+    "svg": "stickers/namzi-receipt.svg",
+    "label": "Receipts",
+    "mood": "smug",
+    "pose": "hold",
+    "prop": "receipt"
+  },
+  {
+    "file": "stickers/namzi-presenting.png",
+    "svg": "stickers/namzi-presenting.svg",
+    "label": "Here's the working",
+    "mood": "happy",
+    "pose": "carry",
+    "prop": "receipt"
+  },
+  {
+    "file": "stickers/namzi-magnifier.png",
+    "svg": "stickers/namzi-magnifier.svg",
+    "label": "Checking the source",
+    "mood": "suspicious",
+    "pose": "hold",
+    "prop": "magnifier"
+  },
+  {
+    "file": "stickers/namzi-red-flag.png",
+    "svg": "stickers/namzi-red-flag.svg",
+    "label": "Red flag",
+    "mood": "stern",
+    "pose": "hold",
+    "prop": "redflag"
+  },
+  {
+    "file": "stickers/namzi-green-flag.png",
+    "svg": "stickers/namzi-green-flag.svg",
+    "label": "Green flag",
+    "mood": "happy",
+    "pose": "holdL",
+    "prop": "greenflag"
+  },
+  {
+    "file": "stickers/namzi-side-eye.png",
+    "svg": "stickers/namzi-side-eye.svg",
+    "label": "Side-eye",
+    "mood": "sideeye",
+    "pose": "hip"
+  },
+  {
+    "file": "stickers/namzi-shocked.png",
+    "svg": "stickers/namzi-shocked.svg",
+    "label": "Wait, what?",
+    "mood": "shocked",
+    "pose": "up"
+  },
+  {
+    "file": "stickers/namzi-monday.png",
+    "svg": "stickers/namzi-monday.svg",
+    "label": "Monday, 9:07",
+    "mood": "sleepy",
+    "pose": "hold",
+    "prop": "coffee"
+  },
+  {
+    "file": "stickers/namzi-shrug.png",
+    "svg": "stickers/namzi-shrug.svg",
+    "label": "Roughly?",
+    "mood": "neutral",
+    "pose": "shrug",
+    "fx": [
+      "question"
+    ]
+  },
+  {
+    "file": "stickers/namzi-facepalm.png",
+    "svg": "stickers/namzi-facepalm.svg",
+    "label": "#REF!",
+    "mood": "sad",
+    "pose": "facepalm"
+  },
+  {
+    "file": "stickers/namzi-point.png",
+    "svg": "stickers/namzi-point.svg",
+    "label": "Look at this",
+    "mood": "happy",
+    "pose": "point"
+  },
+  {
+    "file": "stickers/namzi-think.png",
+    "svg": "stickers/namzi-think.svg",
+    "label": "Hmm",
+    "mood": "neutral",
+    "pose": "think",
+    "look": [
+      0.6,
+      -0.8
+    ]
+  },
+  {
+    "file": "stickers/namzi-nervous.png",
+    "svg": "stickers/namzi-nervous.svg",
+    "label": "Where's that number from?",
+    "mood": "nervous",
+    "pose": "down"
+  },
+  {
+    "file": "stickers/namzi-count-once.png",
+    "svg": "stickers/namzi-count-once.svg",
+    "label": "Count once",
+    "mood": "neutral",
+    "pose": "sign",
+    "sign": [
+      "COUNT",
+      "ONCE."
+    ]
+  },
+  {
+    "file": "stickers/namzi-source.png",
+    "svg": "stickers/namzi-source.svg",
+    "label": "Source?",
+    "mood": "suspicious",
+    "pose": "sign",
+    "sign": [
+      "SOURCE?"
+    ]
+  },
+  {
+    "file": "stickers/namzi-held-not-booked.png",
+    "svg": "stickers/namzi-held-not-booked.svg",
+    "label": "Held, not booked",
+    "mood": "stern",
+    "pose": "sign",
+    "sign": [
+      "HELD,",
+      "NOT BOOKED"
+    ]
+  }
+]

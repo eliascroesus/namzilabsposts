@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzi — sticker stage</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  /* a transparent stage: tools/export-mascot.mjs draws one sticker at a time here */
+  html, body { background: transparent; }
+  body { padding: 0; }
+  #stage { width: 1024px; height: 1024px; display: grid; place-items: center; position: relative; overflow: hidden; }
+  #stage > svg { width: 100%; height: 100%; display: block; }
+  #stage.contain > svg { width: auto; height: 1000px; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="../../lib/mascot.js"></script>
+</body>
+</html>

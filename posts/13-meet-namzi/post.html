@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 13 — Meet Namzi</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .stage { position: relative; flex: 1; }
+  .rings { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .stage .chip { position: absolute; }
+
+  /* the dating profile */
+  .prof { position: relative; margin: 34px auto 0; width: 860px; border-radius: 48px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-3); overflow: hidden; }
+  .prof .photo { height: 420px; position: relative; overflow: hidden; background: linear-gradient(150deg, #16305e 0%, #22438f 60%, #2b53ae 100%); }
+  .prof .photo::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 60% at 30% 10%, rgba(255,255,255,.18), transparent 60%); }
+  .prof .photo .namzi { position: absolute; left: 50%; bottom: -88px; width: 430px; transform: translateX(-50%); z-index: 1; }
+  .prof .badge { position: absolute; left: 30px; top: 28px; z-index: 2; display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 20px; border-radius: 999px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.26); color: #fff; font-size: 21px; font-weight: 650; }
+  .prof .who { padding: 30px 40px 6px; display: flex; align-items: baseline; gap: 14px; }
+  .prof .who b { font-size: 64px; font-weight: 800; letter-spacing: -0.045em; }
+  .prof .who span { font-size: 44px; font-weight: 500; color: var(--faint); letter-spacing: -0.03em; }
+  .prof .facts { display: flex; gap: 12px; padding: 8px 40px 24px; flex-wrap: wrap; }
+  .fact { display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 20px; border-radius: 999px; background: var(--paper-2); font-size: 22px; font-weight: 600; color: var(--ink-2); letter-spacing: -0.01em; }
+  .fact svg { width: 22px; height: 22px; color: var(--blue); }
+  .prompt { margin: 0 28px 14px; padding: 22px 30px 26px; border-radius: 30px; background: var(--paper); border: 1px solid var(--line); }
+  .prompt .q { font-size: 21px; font-weight: 650; color: var(--muted); letter-spacing: -0.005em; }
+  .prompt .a { font-size: 38px; font-weight: 750; letter-spacing: -0.03em; margin-top: 6px; line-height: 1.12; }
+  .prompt .a em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  .acts { display: flex; justify-content: center; gap: 30px; margin-top: -8px; position: relative; z-index: 3; }
+  .act { width: 104px; height: 104px; border-radius: 50%; display: grid; place-items: center; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-3); }
+  .act svg { width: 44px; height: 44px; }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">1 / 3</span></div>
+  <h1 class="h-hero" style="margin-top:44px;font-size:168px">Meet <em>Namzi.</em></h1>
+  <p class="lead" style="margin-top:22px;font-size:40px;color:var(--ink-2)">It lives between your tools.</p>
+  <div class="stage">
+    <svg class="rings" width="1000" height="640" viewBox="0 0 1000 640"><circle cx="345" cy="320" r="300" fill="none" stroke="#c9cedd" stroke-width="3" stroke-dasharray="2 13" stroke-linecap="round"/><circle cx="655" cy="320" r="300" fill="none" stroke="#c9cedd" stroke-width="3" stroke-dasharray="2 13" stroke-linecap="round"/></svg>
+    <span class="chip" style="left:-18px;top:118px"><span class="mark" data-src="calendly"></span>Calendly</span>
+    <span class="chip" style="right:-22px;top:60px"><span class="mark" data-src="stripe"></span>Stripe</span>
+    <span class="chip" style="left:10px;bottom:118px"><span class="mark" data-src="close"></span>Close</span>
+    <span class="chip" style="right:-6px;bottom:170px"><span class="mark" data-src="gsheets"></span>Sheets</span>
+    <div class="namzi" data-mood="happy" data-pose="wave" style="position:absolute;left:50%;top:50%;width:520px;transform:translate(-50%,-46%)"></div>
+  </div>
+  <div class="foot"><span class="site">namzilabs.co</span><span class="swipe">See its dating profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<div class="canvas s-portrait paper frame" data-still="ig-02" style="padding-bottom:60px">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">2 / 3</span></div>
+  <div class="prof">
+    <div class="photo">
+      <span class="badge"><span class="dot live"></span>Active between your tools</span>
+      <div class="namzi" data-mood="smug" data-pose="carry" data-prop="receipt" data-dark="true" data-shadow="false"></div>
+    </div>
+    <div class="who"><b>Namzi</b><span>· new here</span></div>
+    <div class="facts">
+      <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Between Calendly and Stripe</span>
+      <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Counts things once</span>
+    </div>
+    <div class="prompt"><div class="q">My most irrational fear</div><div class="a">A revenue number with no <em>source.</em></div></div>
+    <div class="prompt"><div class="q">I'll fall for you if</div><div class="a">you count each sale once.</div></div>
+    <div class="prompt" style="margin-bottom:34px"><div class="q">Dealbreaker</div><div class="a">Calling it "held" when they didn't show.</div></div>
+  </div>
+  <div class="acts">
+    <span class="act"><svg viewBox="0 0 24 24" fill="none" stroke="#8b8c9b" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+    <span class="act" style="background:var(--blue);border-color:var(--blue)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 21C5 15.5 2.5 12.2 2.5 8.6A5 5 0 0 1 12 6a5 5 0 0 1 9.5 2.6C21.5 12.2 19 15.5 12 21Z"/></svg></span>
+  </div>
+</div>
+
+<div class="canvas s-portrait sky frame" data-still="ig-03">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">3 / 3</span></div>
+  <h2 class="h1" style="margin-top:56px;font-size:108px">What Namzi actually <em>does.</em></h2>
+  <div class="lines" style="margin-top:56px;gap:34px">
+    <div class="li"><span class="bx" style="background:rgba(255,255,255,.14);color:#fff;font-size:26px;font-weight:800">1</span><div>Reads 33 of your tools<small>Calendly, Stripe, Close, Shopify, Sheets and more.</small></div></div>
+    <div class="li"><span class="bx" style="background:rgba(255,255,255,.14);color:#fff;font-size:26px;font-weight:800">2</span><div>Matches the same person across them<small>By email or phone. Dave gets counted once.</small></div></div>
+    <div class="li"><span class="bx" style="background:rgba(255,255,255,.14);color:#fff;font-size:26px;font-weight:800">3</span><div>Builds the number, with the working shown<small>What it read, what it matched, what it left out.</small></div></div>
+  </div>
+  <p class="lead" style="margin-top:40px;font-size:30px">It never edits your data. It just reads, and counts.</p>
+  <div class="foot" style="align-items:flex-end">
+    <div><span class="btn">Start free · namzilabs.co</span><div class="small" style="margin-top:16px">Free to start. No card.</div></div>
+  </div>
+  <div class="namzi flip" data-mood="happy" data-pose="point" data-dark="true" style="position:absolute;right:50px;bottom:40px;width:300px"></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:64px 80px 56px;flex-direction:row;gap:30px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 640px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h-hero" style="margin-top:56px;font-size:150px">Meet <em>Namzi.</em></h1>
+    <p class="lead" style="margin-top:26px;font-size:36px">It lives between your tools, counts everyone once, and carries receipts.</p>
+    <div class="site" style="margin-top:auto">namzilabs.co</div>
+  </div>
+  <div class="stage" style="flex:1">
+    <svg class="rings" width="820" height="560" viewBox="0 0 820 560"><circle cx="290" cy="280" r="255" fill="none" stroke="#c9cedd" stroke-width="3" stroke-dasharray="2 13" stroke-linecap="round"/><circle cx="530" cy="280" r="255" fill="none" stroke="#c9cedd" stroke-width="3" stroke-dasharray="2 13" stroke-linecap="round"/></svg>
+    <span class="chip" style="left:-4px;top:70px"><span class="mark" data-src="calendly"></span>Calendly</span>
+    <span class="chip" style="right:-20px;top:40px"><span class="mark" data-src="stripe"></span>Stripe</span>
+    <span class="chip" style="right:0;bottom:90px"><span class="mark" data-src="close"></span>Close</span>
+    <div class="namzi" data-mood="happy" data-pose="wave" style="position:absolute;left:50%;top:50%;width:440px;transform:translate(-50%,-46%)"></div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+<script>NZ.hydrateMascots(); NZ.still();</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — The EOD report vs the receipts (9:16)</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  .world { position: absolute; inset: 0; }
+  .abs { position: absolute; }
+  .wmask { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.04em 0.14em 0; margin-bottom: -0.14em; }
+  .wi { display: inline-block; will-change: transform; }
+  .head { left: 90px; top: 250px; width: 920px; font-size: 118px; }
+  .eod { left: 90px; top: 470px; width: 900px; padding: 36px 40px 40px; border-radius: 40px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-3); display: flex; gap: 26px; transform-origin: 0 0; }
+  .eod .av { width: 86px; height: 86px; border-radius: 22px; background: #ffd9a8; color: #7a4300; display: grid; place-items: center; font-size: 34px; font-weight: 800; flex: none; }
+  .eod .who { font-size: 32px; font-weight: 750; letter-spacing: -0.015em; }
+  .eod .who span { font-weight: 500; color: var(--faint); margin-left: 10px; font-size: 27px; }
+  .eod .ln { font-size: 48px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.32; white-space: nowrap; }
+  .vs { left: 60px; top: 500px; width: 960px; border-radius: 40px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-3); overflow: hidden; }
+  .vs .hdr, .vs .rw { display: grid; grid-template-columns: 1fr 0.7fr 1.3fr; align-items: center; column-gap: 18px; padding: 0 36px; }
+  .vs .hdr { height: 76px; background: var(--paper-2); font-size: 22px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+  .vs .rw { height: 166px; border-top: 1px solid var(--line); font-size: 38px; font-weight: 650; letter-spacing: -0.02em; }
+  .vs .m { color: var(--ink-2); }
+  .said { position: relative; display: inline-block; color: var(--red); font-variant-numeric: tabular-nums; font-weight: 700; }
+  .said .strike { position: absolute; left: -6px; right: -6px; top: 52%; height: 5px; border-radius: 3px; background: var(--red); transform-origin: 0 50%; }
+  .real { display: flex; align-items: center; gap: 16px; font-variant-numeric: tabular-nums; font-size: 50px; font-weight: 800; }
+  .real .mark { width: 54px; height: 54px; }
+  .real small { display: block; font-size: 23px; font-weight: 550; color: var(--faint); letter-spacing: -0.005em; margin-top: 2px; white-space: nowrap; }
+  .real.dim { color: var(--faint); font-weight: 650; font-size: 34px; }
+  .nobody { left: 90px; top: 1320px; width: 900px; font-size: 38px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink-2); }
+  .end { left: 0; top: 0; width: 1080px; height: 1920px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-bottom: 180px; }
+  .end .big { font-size: 112px; font-weight: 800; letter-spacing: -0.052em; line-height: .95; width: 920px; }
+  .end .big em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .end .lock { margin-top: 80px; display: flex; align-items: center; gap: 18px; font-size: 48px; font-weight: 800; letter-spacing: -0.045em; }
+  .end .lock .logo { width: 76px; height: 76px; }
+  .end .go { margin-top: 34px; }
+  .demo { left: 0; width: 1080px; text-align: center; top: 1440px; font-size: 22px; font-weight: 550; color: var(--faint); }
+</style>
+</head>
+<body>
+<div class="canvas s-story paper">
+  <div class="ruled" id="ruled"></div>
+  <div class="world" id="world">
+    <h1 class="abs h1 head" id="h1">The EOD <em>report.</em></h1>
+    <h1 class="abs h1 head" id="h2">vs the <em>receipts.</em></h1>
+
+    <div class="abs eod" id="eod">
+      <span class="av">JS</span>
+      <div><div class="who">Jordan<span>setter · 6:47 pm</span></div>
+        <div class="ln" data-type="EOD ✅"></div>
+        <div class="ln" data-type="Dials: 120"></div>
+        <div class="ln" data-type="Convos: 34"></div>
+        <div class="ln" data-type="Booked: 11"></div>
+        <div class="ln" data-type="Energy: 🔥🔥🔥"></div>
+      </div>
+    </div>
+
+    <div class="abs vs" id="vs">
+      <div class="hdr"><span></span><span>EOD says</span><span>The tools say</span></div>
+      <div class="rw" id="row1"><span class="m">Dials</span><span><span class="said">120<i class="strike"></i></span></span><span class="real"><span class="mark" data-src="aircall"></span><span><span id="n1">0</span><small>Aircall, calls placed</small></span></span></div>
+      <div class="rw" id="row2"><span class="m">Conversations</span><span><span class="said">34<i class="strike"></i></span></span><span class="real"><span class="mark" data-src="aircall"></span><span><span id="n2">0</span><small>Aircall, over 2 minutes</small></span></span></div>
+      <div class="rw" id="row3"><span class="m">Booked</span><span><span class="said">11<i class="strike"></i></span></span><span class="real"><span class="mark" data-src="calendly"></span><span><span id="n3">0</span> new<small>+2 reschedules, counted once</small></span></span></div>
+      <div class="rw" id="row4"><span class="m">Energy</span><span><span class="said" style="color:inherit">🔥🔥🔥</span></span><span class="real dim" id="n4"></span></div>
+    </div>
+    <div class="abs nobody" id="nobody">Nobody's lying. EOD reports are written from memory.</div>
+    <div class="abs demo" id="demo">Example data</div>
+
+    <div class="abs end" id="end">
+      <div class="big" id="big">Numbers from the tools, not from <em>memory.</em></div>
+      <div class="lock" id="lock"><span class="logo"></span>Namzilabs</div>
+      <div class="go" id="go"><span class="btn">Start free · namzilabs.co</span></div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>
+const { ease: E } = NZ;
+const tl = new NZ.Timeline({ duration: 12.8, tail: 1.6 });
+const $ = (id) => document.getElementById(id);
+
+/* the EOD report, typed out */
+tl.stagger(NZ.splitWords("#h1"), { at: 0.15, dur: 0.75, ease: E.out, from: { y: 150 }, to: { y: 0 } }, 0.07);
+tl.add("#eod", { at: 0.5, dur: 0.9, ease: E.spring, from: { y: 120, opacity: 0 }, to: { y: 0, opacity: 1 } });
+const typer = (el, at, dur) => {
+  const full = [...el.dataset.type]; // by code point, so emoji stay whole
+  tl.call(at, dur, (p) => { el.textContent = full.slice(0, Math.round(p * full.length)).join(""); }, { key: el.dataset.type });
+};
+document.querySelectorAll("#eod .ln").forEach((el, i) => typer(el, 1.0 + i * 0.36, 0.3));
+
+/* …vs the receipts */
+tl.add("#h1", { at: 3.05, dur: 0.4, ease: E.in, to: { opacity: 0, y: -40, blur: 8 } });
+tl.stagger(NZ.splitWords("#h2"), { at: 3.3, dur: 0.75, ease: E.out, from: { y: 150 }, to: { y: 0 } }, 0.07);
+tl.add("#eod", { at: 3.05, dur: 0.45, ease: E.in, to: { opacity: 0, y: -80, blur: 8 } });
+tl.add("#vs", { at: 3.45, dur: 1.0, ease: E.spring, from: { y: 200, opacity: 0 }, to: { y: 0, opacity: 1 } });
+tl.add("#demo", { at: 3.8, dur: 0.6, ease: E.out, from: { opacity: 0 }, to: { opacity: 1 } });
+
+/* row by row: strike what the report said, count what the tools saw */
+const rows = [["#row1", "#n1", 87], ["#row2", "#n2", 21], ["#row3", "#n3", 5]];
+rows.forEach(([row, n, v], i) => {
+  const at = 4.45 + i * 1.05;
+  tl.add(document.querySelector(row + " .strike"), { at, dur: 0.35, ease: E.out, from: { sx: 0 }, to: { sx: 1 } });
+  tl.add(document.querySelector(row + " .real"), { at: at + 0.15, dur: 0.7, ease: E.spring, from: { x: 40, opacity: 0 }, to: { x: 0, opacity: 1 } });
+  tl.call(at + 0.15, 0.7, NZ.counter(n, 0, v), { ease: E.out });
+});
+tl.add("#n4", { at: 7.6, dur: 0.3, ease: E.out, from: { opacity: 0 }, to: { opacity: 1 } });
+tl.call(7.6, 0.7, (p) => { const s = "Not a column. Yet."; $("n4").textContent = s.slice(0, Math.round(p * s.length)); }, { key: "n4" });
+tl.add("#nobody", { at: 8.6, dur: 0.7, ease: E.out, from: { opacity: 0, y: 24 }, to: { opacity: 1, y: 0 } });
+
+/* out */
+for (const id of ["#h2", "#eod", "#vs", "#nobody", "#demo"]) tl.add(id, { at: 10.1, dur: 0.5, ease: E.in, to: { opacity: 0, blur: 10 } });
+tl.stagger(NZ.splitWords("#big"), { at: 10.55, dur: 0.8, ease: E.out, from: { y: 150 }, to: { y: 0 } }, 0.06);
+tl.add("#lock", { at: 11.4, dur: 1.0, ease: E.spring, from: { scale: 0.8, opacity: 0, y: 20 }, to: { scale: 1, opacity: 1, y: 0 } });
+tl.add("#go", { at: 11.8, dur: 0.9, ease: E.spring, from: { scale: 0.85, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+
+tl.every((t) => {
+  $("ruled").style.transform = `translate3d(0, ${-(t * 6) % 88}px, 0)`;
+  $("world").style.transform = `scale(${1 + Math.min(t, 15) * 0.0012})`;
+});
+NZ.mount(tl, { width: 1080, height: 1920 });
+</script>
+</body>
+</html>

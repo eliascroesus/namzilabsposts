@@ -4,6 +4,8 @@ Everything a post or video needs so the brand reads as one brand. The source of 
 
 ![Logo concepts](logos/boards/00-overview.png)
 
+![Logo concepts, round two](logos/boards/00-overview-2.png)
+
 ## Logo
 
 **Recommended: 01 · Between.** Your tools are the circles; the number you need lives in the overlap. The blue lens is literally "the number between your tools". It also reads as matching: the same person, seen by two tools at once. It holds up as a 24px avatar, which is where social logos live.
@@ -15,19 +17,51 @@ Everything a post or video needs so the brand reads as one brand. The source of 
 | 03 Receipt | Every number shows its working | [board](logos/boards/03-receipt.png) |
 | 04 Bridge | An "n" standing on two tools | [board](logos/boards/04-bridge.png) |
 | 05 Merge | Today's two-dot mark, touching | [board](logos/boards/05-merge.png) |
+| **06 Namzi** · social twin | The lens from 01 with a face: the mascot as a mark | [board](logos/boards/06-namzi.png) |
+| 07 Hash | # is the number; the blue square is the space between the lines | [board](logos/boards/07-hash.png) |
+| 08 Wire | A flow wire from a tool to the answer, bent into a Z | [board](logos/boards/08-wire.png) |
+| 09 Pillars | An N: two tools apart, and the blue line that connects them | [board](logos/boards/09-pillars.png) |
+| 10 Tittle | Lowercase wordmark; the i is dotted with the Between mark | [board](logos/boards/10-tittle.png) |
 
 Each concept folder in [`logos/`](logos/) contains:
 - `symbol-color.svg` for light backgrounds
 - `symbol-white.svg` for dark backgrounds
 - `symbol-ink.svg`, one colour
 - `app-icon.svg` (ink tile) and `app-icon-sky.svg` (blue tile)
-- `lockup-light.svg` and `lockup-dark.svg`
+- `lockup-light.svg` and `lockup-dark.svg` (for 10 Tittle, the lockups are the lowercase wordmark itself)
+- `profile.svg` and `profile-1024.png`: a full-bleed square for profile pictures
 
 The wordmark is outlined from Inter 800, so no file needs a font installed. Rebuild with `node tools/build-logos.mjs`.
 
-**Profile pictures:** use `01-between/app-icon.svg` (the ink tile), exported square at 400×400 or larger. X and Instagram crop to a circle, and the mark sits comfortably inside it.
+**Profile pictures:** use `01-between/profile-1024.png`. It's the ink square at 1024×1024, and the mark sits comfortably inside the circle crop X and Instagram apply. For a friendlier account, such as a "Namzi" reply persona, use `06-namzi/profile-1024.png` or one of the mascot avatars in [`mascot/avatars/`](mascot/avatars/).
 
 **Don't:** recolour the lens anything but blue, add effects, put the ink tile on a busy photo, or stretch it.
+
+## Mascot: Namzi
+
+![Namzi](mascot/boards/01-character.png)
+
+**Namzi is the blue lens from the logo, with a face.** It's the overlap where two tools see the same person, the number between them, given eyes, noodle arms and a stack of receipts. It gives the brand a character people remember and send to each other, without changing the logo.
+
+**Personality**
+- Counts everyone once: Dave, dave@ and Dave M. are one Dave.
+- Carries receipts, and shows the working behind every number.
+- Deadpan, never mean. It teases the number, never the person.
+- Allergic to vanity metrics: "booked" isn't "held", and refunds aren't revenue.
+
+**Rules**
+- **Social only.** Never use Namzi in the product UI or on the landing page. The landing page's own design rules keep it mascot-free.
+- **At most 1 post in 4.** Namzi is a recurring guest, not the host. In this batch it appears in posts 13, 14, 16 and 21 and videos 07 and 08.
+- **Namzi reacts; the numbers do the talking.** It never states a claim the brand couldn't, and the claims rules apply to it too.
+- Keep its colours: the blue body gradient, ink limbs on light surfaces, light limbs on dark (`dark: true`).
+
+**In code:** [`lib/mascot.js`](../lib/mascot.js) draws Namzi as one SVG. Posts use `<div class="namzi" data-mood="…" data-pose="…" data-prop="…">`, and videos call `NZ.mascot({…})` every frame. The full range is shown on the [expressions board](mascot/boards/02-expressions.png).
+
+| Moods | Poses | Props | Effects |
+|---|---|---|---|
+| neutral, happy, joy, suspicious, sideeye, shocked, smug, sleepy, sad, stern, nervous | down, wave, up, hip, shrug, point, hold, holdL, think, facepalm, sign, carry | receipt, magnifier, redflag, greenflag, coffee | zzz, sweat, sparkle, exclaim, question, anger, hearts |
+
+**Exports:** [`mascot/stickers/`](mascot/stickers/) has 18 die-cut stickers (1024px PNG + SVG), and [`mascot/avatars/`](mascot/avatars/) has 3 square avatars. Rebuild them with `node tools/export-mascot.mjs`.
 
 ## Colour
 

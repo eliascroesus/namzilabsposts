@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 15 — Launch week bingo</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .bingo { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; padding: 14px; border-radius: 30px; background: var(--ink); box-shadow: var(--shadow-3); }
+  .bingo .L { height: 56px; display: grid; place-items: center; color: #fff; font-size: 40px; font-weight: 800; letter-spacing: -0.04em; }
+  .sq { position: relative; background: #fff; border-radius: 16px; display: grid; place-items: center; text-align: center; padding: 10px 12px; font-size: 21px; line-height: 1.16; font-weight: 650; letter-spacing: -0.02em; color: var(--ink); overflow: hidden; text-wrap: balance; }
+  .sq span { position: relative; z-index: 1; }
+  .sq.free { background: linear-gradient(135deg, #16305e, #2b53ae); color: #fff; }
+  .sq.free small { display: block; font-size: 14px; font-weight: 700; letter-spacing: .14em; color: var(--blue-200); margin-bottom: 6px; }
+  .sq.daub::before { content: ""; position: absolute; left: 50%; top: 50%; width: 128px; height: 128px; transform: translate(-50%, -50%) rotate(var(--r, 0deg)); border-radius: 50%; background: rgba(240, 85, 61, 0.17); box-shadow: inset 0 0 0 5px rgba(240, 85, 61, 0.55); }
+  .sq.free.daub::before { background: rgba(255,255,255,.1); box-shadow: inset 0 0 0 5px rgba(255,255,255,.5); }
+  .score { display: inline-flex; align-items: center; gap: 12px; font-size: 27px; font-weight: 650; letter-spacing: -0.015em; color: var(--ink-2); }
+  .score b { color: var(--red); }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01" style="padding-bottom:62px">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For creators</span></div>
+  <h1 class="h1" style="margin-top:26px;font-size:100px">Launch week <em>bingo.</em></h1>
+  <p class="lead" style="margin-top:14px;font-size:30px">Screenshot it. Circle yours. Comment your score.</p>
+  <div class="bingo" data-grid style="margin-top:28px;grid-template-rows:56px repeat(5, 150px)"></div>
+  <div class="foot"><span class="score"><span class="dot red"></span>This card: <b>BINGO</b> on the diagonal</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 70px 50px;flex-direction:row;gap:50px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 560px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:44px;font-size:104px">Launch week <em>bingo.</em></h1>
+    <p class="lead" style="margin-top:24px;font-size:32px">Screenshot it. Circle yours. Comment your score.</p>
+    <span class="score" style="margin-top:auto"><span class="dot red"></span>This card: <b>BINGO</b> on the diagonal</span>
+  </div>
+  <div class="bingo" data-grid style="flex:1;grid-template-rows:44px repeat(5, 136px);padding:12px;gap:6px"></div>
+</div>
+
+<script>
+  const SQ = [
+    "Stripe: 212 sales. ThriveCart: 188.", "Refund on day one", "“Is the link broken?” ×40", "Upsells counted twice", "3 versions of the launch sheet",
+    "Test purchase in the total", "Same buyer, two emails", "Payment plan counted as paid in full", "1,200 signed up. 180 showed.", "Affiliate claims sales nobody can find",
+    "A tab called FINAL_final_v3", "“Record launch!” (before refunds)", "FREE", "Coupon code leaks to a deals site", "“Last chance” email, 4th time",
+    "Your mum buys the course", "Cart closes. Sales keep coming.", "Debrief: “the vibes were good”", "VA asks which number is right", "A zap fails at 9pm",
+    "Someone buys it twice by accident", "“Can I still get the bonus?” ×25", "Checkout abandoned 3× by one person", "The launch recap is a spreadsheet at midnight", "4 tools, 4 different totals",
+  ];
+  const DAUB = new Set([0, 6, 12, 18, 24, 1, 15]);
+  const ROT = [-8, 12, 0, -14, 6, 9, -5];
+  for (const grid of document.querySelectorAll("[data-grid]")) {
+    grid.innerHTML = "BINGO".split("").map((l) => `<div class="L">${l}</div>`).join("") +
+      SQ.map((t, i) => {
+        const cls = ["sq", t === "FREE" ? "free" : "", DAUB.has(i) ? "daub" : ""].join(" ");
+        const r = ROT[[...DAUB].indexOf(i)] ?? 0;
+        const body = t === "FREE" ? `<span><small>FREE SPACE</small>“We'll reconcile it after launch”</span>` : `<span>${t}</span>`;
+        return `<div class="${cls}" style="--r:${r}deg">${body}</div>`;
+      }).join("");
+  }
+  // the X version is shorter: tighter rows, smaller type
+  const xg = document.querySelector('[data-still="x-01"] [data-grid]');
+  xg.querySelectorAll(".L").forEach((el) => (el.style.height = "44px", el.style.fontSize = "32px"));
+  xg.querySelectorAll(".sq").forEach((el) => (el.style.fontSize = "18px"));
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

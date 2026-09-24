@@ -6,7 +6,9 @@
   "scripts": {
     "stills": "node tools/render-stills.mjs",
     "video": "node tools/render-video.mjs",
-    "logos": "node tools/render-logos.mjs"
+    "logos": "node tools/build-logos.mjs && node tools/render-stills.mjs brand/logos/board.html brand/logos/boards && node tools/render-stills.mjs brand/logos/profiles.html brand/logos --ss 1",
+    "mascot": "node tools/render-stills.mjs brand/mascot/sheet.html brand/mascot/boards && node tools/export-mascot.mjs",
+    "preview": "node tools/build-preview.mjs"
   },
   "devDependencies": {
     "@fontsource-variable/inter": "^5.2.5",

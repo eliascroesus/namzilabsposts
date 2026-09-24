@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 24 — Your reply rate is lying to you</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .flow { display: flex; flex-direction: column; gap: 14px; }
+  .bar { position: relative; height: 190px; border-radius: 30px; display: flex; align-items: center; padding: 0 40px; gap: 26px; color: #fff; overflow: hidden; }
+  .bar .mark { width: 76px; height: 76px; }
+  .bar .t { flex: 1; font-size: 36px; font-weight: 700; letter-spacing: -0.022em; }
+  .bar .t small { display: block; font-size: 24px; font-weight: 550; opacity: .75; margin-top: 4px; }
+  .bar .v { font-size: 124px; font-weight: 800; letter-spacing: -0.058em; font-variant-numeric: tabular-nums; }
+  .bar.rep { background: #fff; color: var(--ink); border: 1px solid var(--line); box-shadow: var(--shadow-2); }
+  .bar.meet { background: linear-gradient(135deg, #16305e, #2b53ae); box-shadow: var(--shadow-blue); }
+  .leak { display: flex; align-items: center; gap: 18px; height: 140px; padding: 0 40px; border-radius: 30px; background: #fff1ee; border: 2px dashed #f6b3a6; color: var(--red); }
+  .leak .t { flex: 1; font-size: 34px; font-weight: 700; letter-spacing: -0.02em; }
+  .leak .v { font-size: 84px; font-weight: 800; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+  .steps { display: flex; flex-direction: column; gap: 14px; }
+  .step { display: flex; align-items: center; gap: 22px; }
+  .step .n { width: 54px; height: 54px; border-radius: 16px; background: var(--blue-50); color: var(--blue); display: grid; place-items: center; font-size: 26px; font-weight: 800; flex: none; }
+  .step .node { flex: 1; padding: 26px 32px 26px 24px; }
+  .step .node .ic { width: 72px; height: 72px; }
+  .step .node .t { font-size: 32px; }
+  .step .node .s { font-size: 23px; }
+  .ans { padding: 36px 42px; display: flex; justify-content: space-between; align-items: center; }
+  .ans .l { font-size: 29px; font-weight: 650; color: rgba(226,234,255,.9); }
+  .ans .l small { display: block; font-size: 22px; font-weight: 500; color: rgba(226,234,255,.65); margin-top: 6px; }
+  .ans .v { font-size: 140px; font-weight: 800; letter-spacing: -0.06em; font-variant-numeric: tabular-nums; line-height: 1; }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">1 / 3 · For agencies</span></div>
+  <h1 class="h1" style="margin-top:40px;font-size:100px">42 replies. 9 meetings. Where did 33 <em>go?</em></h1>
+  <div class="flow" style="margin-top:50px">
+    <div class="bar rep"><span class="mark" data-src="instantly"></span><div class="t">Replies<small>Instantly, this month</small></div><div class="v">42</div></div>
+    <div class="leak"><div class="t">Replied, never booked</div><div class="v">33</div></div>
+    <div class="bar meet"><span class="mark" data-src="calendly" style="background:#fff;border-radius:18px;padding:10px;width:80px;height:80px"></span><div class="t">Booked a meeting<small>Calendly, matched by email</small></div><div class="v">9</div></div>
+  </div>
+  <p class="lead" style="margin-top:40px;font-size:31px">Reply rate says the copy works. It doesn't say anyone booked.</p>
+  <div class="foot"><span class="demo">Example data</span><span class="swipe">The fix <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<div class="canvas s-portrait paper frame" data-still="ig-02">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">2 / 3</span></div>
+  <h2 class="h1" style="margin-top:40px;font-size:96px">Report reply-to-meeting <em>rate.</em></h2>
+  <p class="lead" style="margin-top:22px;font-size:32px">Reply rate says the copy works. Reply-to-meeting rate says whether anyone followed up.</p>
+  <div class="steps" style="margin-top:40px">
+    <div class="step"><span class="n">1</span><div class="node"><span class="ic" style="background:var(--blue-50)"><span class="mark" data-src="instantly" style="width:40px;height:40px"></span></span><div><div class="t">Get data: Instantly + Calendly</div><div class="s">Replies from one, bookings from the other</div></div></div></div>
+    <div class="step"><span class="n">2</span><div class="node"><span class="ic" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></span><div><div class="t">Match by email</div><div class="s">The lead who replied = the person who booked</div></div></div></div>
+    <div class="step"><span class="n">3</span><div class="node"><span class="ic" style="background:var(--blue-50);color:var(--blue);font-size:30px;font-weight:800">÷</span><div><div class="t">Calculate: booked ÷ replied</div><div class="s">Live, per campaign or per client</div></div></div></div>
+  </div>
+  <div class="panel-sky ans" style="margin-top:auto"><div class="l">Reply-to-meeting rate<small>9 booked ÷ 42 replied</small></div><div class="v">21%</div></div>
+  <div class="foot" style="padding-top:22px"><span class="demo">Example data</span><span class="swipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<div class="canvas s-portrait sky frame" data-still="ig-03">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">3 / 3</span></div>
+  <h2 class="h1" style="margin-top:70px;font-size:128px">Your client pays for <em>meetings.</em></h2>
+  <p class="lead" style="margin-top:34px;font-size:38px">Not replies. Show them the number that matches what they pay for, with the working shown.</p>
+  <div class="lines" style="margin-top:60px;gap:34px">
+    <div class="li"><span class="bx" style="background:rgba(255,255,255,.14);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div>Instantly, Smartlead, lemlist + your calendars<small>Read directly. Never edits your data.</small></div></div>
+    <div class="li"><span class="bx" style="background:rgba(255,255,255,.14);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div>Booked vs held, not just booked<small>Add Fathom and count the meetings that happened.</small></div></div>
+    <div class="li"><span class="bx" style="background:rgba(255,255,255,.14);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div>Live, per campaign or per client<small>No Monday screenshots.</small></div></div>
+  </div>
+  <div class="foot" style="align-items:flex-end"><div><span class="btn">Comment METRICS</span><div class="small" style="margin-top:16px">Or start free at namzilabs.co · no card</div></div></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:60px 76px 52px;flex-direction:row;gap:56px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 620px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:40px;font-size:88px">42 replies. 9 meetings. Where did 33 <em>go?</em></h1>
+    <div class="demo" style="margin-top:auto">Example data · namzilabs.co</div>
+  </div>
+  <div class="flow" style="flex:1;justify-content:center">
+    <div class="bar rep" style="height:130px"><span class="mark" data-src="instantly"></span><div class="t">Replies<small>Instantly</small></div><div class="v" style="font-size:80px">42</div></div>
+    <div class="leak" style="height:100px"><div class="t">Replied, never booked</div><div class="v" style="font-size:56px">33</div></div>
+    <div class="bar meet" style="height:130px"><span class="mark" data-src="calendly" style="background:#fff;border-radius:16px;padding:8px;width:60px;height:60px"></span><div class="t">Booked<small>Calendly, matched by email</small></div><div class="v" style="font-size:80px">9</div></div>
+    <div class="small" style="margin-top:8px;text-align:right">Reply-to-meeting rate: <b style="color:var(--blue)">21%</b></div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

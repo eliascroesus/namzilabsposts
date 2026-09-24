@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 16 — Red flags in a dashboard</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .flags { display: flex; flex-direction: column; gap: 22px; }
+  .fl { display: flex; align-items: center; gap: 20px; font-size: 36px; font-weight: 650; letter-spacing: -0.022em; line-height: 1.15; }
+  .fl .ic { width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; flex: none; }
+  .fl .ic svg { width: 30px; height: 30px; }
+  .fl.red .ic { background: #fff1ee; color: var(--red); }
+  .fl.green .ic { background: #e7f7ee; color: var(--green); }
+  .gcard { padding: 30px 34px 34px; border-radius: var(--r-card); background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); }
+  .gcard .hd { font-size: 22px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .gcard .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 26px; }
+  .gcard .fl { font-size: 28.5px; }
+  .gcard .grid2 { column-gap: 18px; }
+  .gcard .fl .ic { width: 50px; height: 50px; border-radius: 14px; }
+  .gcard .fl .ic svg { width: 26px; height: 26px; }
+  .lab { font-size: 22px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+</style>
+</head>
+<body>
+
+<template id="flag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 22V3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M6 4c3-1.6 5.5 1.4 8.5 0.2S18 3 19 3.6v9c-1 .6-2.5-.8-5.5.4S9 14.6 6 13Z"/></svg></template>
+<template id="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Save this</span></div>
+  <h1 class="h1" style="margin-top:40px;font-size:104px">Red flags in a <em>dashboard.</em></h1>
+  <div style="position:relative;margin-top:48px;height:530px">
+    <div class="lab"><span class="dot red"></span>Red flags</div>
+    <div class="flags" data-list="red"></div>
+    <div class="namzi" data-mood="stern" data-pose="hold" data-prop="redflag" style="position:absolute;right:-50px;top:-40px;width:480px"></div>
+  </div>
+  <div class="gcard" style="margin-top:26px">
+    <div class="hd"><span class="dot live"></span>Green flags</div>
+    <div class="grid2" data-list="green"></div>
+  </div>
+  <div class="foot"><span class="site" style="color:var(--muted);font-weight:550">Send this to whoever built yours.</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:60px 76px 52px">
+  <div class="ruled"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Save this</span></div>
+  <h1 class="h1" style="margin-top:26px;font-size:92px">Red flags in a <em>dashboard.</em></h1>
+  <div style="display:flex;gap:40px;margin-top:40px;position:relative;flex:1">
+    <div style="flex:0 0 560px"><div class="lab"><span class="dot red"></span>Red flags</div><div class="flags" data-list="red" data-size="32"></div></div>
+    <div style="flex:0 0 470px"><div class="lab" style="color:var(--green)"><span class="dot live"></span>Green flags</div><div class="flags" data-list="green" data-size="32"></div></div>
+    <div class="namzi" data-mood="stern" data-pose="hold" data-prop="redflag" style="position:absolute;right:-60px;bottom:-40px;width:470px"></div>
+  </div>
+</div>
+
+<script>
+  const RED = ["No source. Just vibes.", "“Updated manually”", "Three versions of revenue", "Only ever goes up", "Counts booked as held", "Refunds still in the total"];
+  const GREEN = ["Shows its working", "Counts each person once", "Says what it left out", "Updates itself"];
+  const icon = (id) => document.getElementById(id).innerHTML;
+  for (const el of document.querySelectorAll("[data-list]")) {
+    const green = el.dataset.list === "green";
+    el.innerHTML = (green ? GREEN : RED).map((t) => `<div class="fl ${green ? "green" : "red"}"${el.dataset.size ? ` style="font-size:${el.dataset.size}px"` : ""}><span class="ic">${icon(green ? "tick" : "flag")}</span>${t}</div>`).join("");
+  }
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+<script>NZ.hydrateMascots(); NZ.still();</script>
+</body>
+</html>
