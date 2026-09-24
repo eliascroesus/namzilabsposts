@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 06 — Every tool takes credit</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .claims { display: flex; flex-direction: column; gap: 14px; }
+  .claim { display: flex; align-items: center; gap: 22px; padding: 0 34px 0 26px; height: 100px; }
+  .claim .mark { width: 56px; height: 56px; }
+  .claim .who { flex: 1; font-size: 29px; font-weight: 700; letter-spacing: -0.02em; }
+  .claim .who small { display: block; font-size: 22px; color: var(--faint); font-weight: 500; margin-top: 4px; }
+  .claim .v { font-size: 58px; font-weight: 800; letter-spacing: -0.045em; font-variant-numeric: tabular-nums; }
+  .q2 { font-size: 40px; font-weight: 750; letter-spacing: -0.03em; line-height: 1.12; }
+  .q2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--blue); }
+  .ans { padding: 36px 42px; }
+  .ans .l { font-size: 27px; font-weight: 600; color: rgba(226,234,255,.86); }
+  .ans .v { font-size: 112px; font-weight: 800; letter-spacing: -0.058em; line-height: .95; margin-top: 10px; font-variant-numeric: tabular-nums; display: flex; align-items: baseline; gap: 22px; }
+  .ans .v small { font-size: 40px; font-weight: 700; letter-spacing: -0.03em; color: rgba(226,234,255,.8); }
+  .rrows { margin-top: 18px; }
+  .rr { display: flex; justify-content: space-between; font-size: 23px; color: rgba(235,241,255,.9); padding: 11px 0; border-top: 1px solid rgba(255,255,255,.14); }
+  .rr b { font-weight: 700; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For e-commerce</span></div>
+  <h1 class="h1" style="margin-top:36px;font-size:104px">Every tool takes <em>credit.</em></h1>
+  <div class="claims" style="margin-top:30px">
+    <div class="card claim"><span class="mark" data-src="klaviyo"></span><div class="who">Klaviyo<small>“Email drove”</small></div><div class="v">$31.9k</div></div>
+    <div class="card claim"><span class="mark" data-src="ganalytics"></span><div class="who">Google Analytics<small>“Email channel”</small></div><div class="v">$22.4k</div></div>
+    <div class="card claim"><span class="mark" data-src="shopify"></span><div class="who">Shopify<small>Total sales</small></div><div class="v">$48.2k</div></div>
+  </div>
+  <div class="q2" style="margin-top:26px;font-size:36px">So how much came from people who are <em>actually</em> on your list?</div>
+  <div class="panel-sky ans" style="margin-top:20px;padding:30px 40px">
+    <div class="l">Revenue from your list · September</div>
+    <div class="v">$29.4k <small>61% of sales</small></div>
+    <div class="rrows">
+      <div class="rr"><span>Orders matched to a Klaviyo profile</span><b>781</b></div>
+      <div class="rr"><span>Refunds left out</span><b>12</b></div>
+    </div>
+  </div>
+  <div class="foot"><span class="demo">Example data · matching, not attribution</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:64px 80px 56px;flex-direction:row;gap:56px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 560px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:40px;font-size:104px">Every tool takes <em>credit.</em></h1>
+    <p class="lead" style="margin-top:22px;font-size:32px">Match Shopify orders to the people on your Klaviyo list, and the argument ends.</p>
+    <div class="demo" style="margin-top:auto">Example data · matching, not attribution</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px">
+    <div class="card claim" style="height:100px"><span class="mark" data-src="klaviyo"></span><div class="who">Klaviyo says</div><div class="v" style="font-size:48px">$31.9k</div></div>
+    <div class="card claim" style="height:100px"><span class="mark" data-src="ganalytics"></span><div class="who">GA says</div><div class="v" style="font-size:48px">$22.4k</div></div>
+    <div class="panel-sky ans" style="padding:26px 34px"><div class="l">From people on your list</div><div class="v" style="font-size:96px">$29.4k <small>61%</small></div></div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

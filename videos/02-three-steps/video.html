@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — Show-up rate, in three steps (9:16)</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  .abs { position: absolute; }
+  .wmask { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.04em 0.14em 0; margin-bottom: -0.14em; }
+  .wi { display: inline-block; }
+  .world { position: absolute; inset: 0; }
+
+  .head { left: 90px; top: 250px; width: 920px; font-size: 112px; }
+
+  .builder {
+    left: 60px; top: 560px; width: 960px; height: 840px; border-radius: 40px; overflow: hidden;
+    background-color: #fbfbfd;
+    background-image: radial-gradient(#d6d9e6 1.5px, transparent 1.5px);
+    background-size: 30px 30px; background-position: 15px 15px;
+  }
+  .bar { position: absolute; left: 0; right: 0; top: 0; height: 104px; display: flex; align-items: center; justify-content: space-between; padding: 0 30px 0 36px; background: rgba(255,255,255,0.92); border-bottom: 1px solid var(--line); }
+  .bar .fname { font-size: 29px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; gap: 14px; }
+  .bar .fname span { color: var(--faint); font-weight: 500; }
+  .pub { height: 62px; padding: 0 26px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 24px; font-weight: 650; letter-spacing: -0.015em; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px -10px rgba(47,95,216,.7); }
+  .pub svg { width: 24px; height: 24px; }
+
+  .step { left: 110px; width: 740px; height: 150px; display: flex; align-items: center; gap: 24px; padding: 0 26px 0 22px; }
+  .step .ic { width: 78px; height: 78px; border-radius: 22px; display: grid; place-items: center; flex: none; }
+  .step .ic svg { width: 40px; height: 40px; }
+  .step .who { flex: 1; min-width: 0; }
+  .step .t { font-size: 32px; font-weight: 700; letter-spacing: -0.025em; }
+  .step .s { font-size: 23px; font-weight: 500; color: var(--faint); margin-top: 6px; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .step .s .mark { width: 28px; height: 28px; }
+  .num { position: absolute; left: -58px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid var(--line-2); display: grid; place-items: center; font-size: 21px; font-weight: 700; color: var(--muted); }
+  .chip2 { position: relative; height: 56px; padding: 0 20px; border-radius: 999px; font-size: 23px; font-weight: 650; letter-spacing: -0.015em; display: inline-grid; place-items: center; flex: none; }
+  .chip2 .a, .chip2 .b { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .chip2 .a { color: var(--blue); }
+  .chip2 .b { color: #0b7a3b; }
+  .chip2.bgA { background: var(--blue-50); }
+  .chip2 .b svg { width: 22px; height: 22px; }
+  .rail { left: 76px; width: 3px; background: var(--line-2); border-radius: 3px; }
+
+  .cursor { left: 0; top: 0; width: 54px; height: 54px; z-index: 30; filter: drop-shadow(0 6px 10px rgba(0,0,0,.25)); }
+  .ripple { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--blue-400); z-index: 29; }
+
+  .dash { left: 60px; top: 560px; width: 960px; height: 840px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 24px; }
+  .tile { padding: 40px 40px; display: flex; flex-direction: column; justify-content: space-between; }
+  .tile .l { font-size: 27px; font-weight: 600; color: var(--muted); letter-spacing: -0.015em; }
+  .tile .v { font-size: 104px; font-weight: 780; letter-spacing: -0.055em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .tile .f { font-size: 22px; color: var(--faint); font-weight: 500; }
+  .tile.panel-sky .l, .tile.panel-sky .f { color: rgba(226,234,255,.85); }
+  .spark { width: 100%; height: 90px; }
+
+  .end { left: 0; top: 0; width: 1080px; height: 1920px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-bottom: 160px; }
+  .end .big { font-size: 128px; font-weight: 800; letter-spacing: -0.052em; line-height: 0.94; }
+  .end .big em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .end .sub { text-wrap: balance; margin-top: 36px; font-size: 38px; line-height: 1.34; color: var(--muted); font-weight: 480; letter-spacing: -0.015em; width: 820px; }
+  .end .lock { margin-top: 84px; display: flex; align-items: center; gap: 18px; font-size: 44px; font-weight: 800; letter-spacing: -0.045em; }
+  .end .lock .logo { width: 72px; height: 72px; }
+  .end .url { margin-top: 22px; font-size: 28px; font-weight: 600; color: var(--muted); }
+  .bloom { width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(86,140,255,.30), rgba(86,140,255,0) 62%); }
+</style>
+</head>
+<body>
+<div class="canvas s-story paper">
+  <div class="ruled" id="ruled"></div>
+  <div class="world" id="world">
+    <h1 class="abs h1 head" id="head">Show-up rate, in three <em>steps.</em></h1>
+
+    <!-- the builder -->
+    <div class="abs builder card lift" id="builder">
+      <div class="bar"><div class="fname">Show-up rate <span>· draft</span></div>
+        <div class="pub" id="pub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg><span id="pubT">Review &amp; publish</span></div></div>
+      <div class="abs rail" id="rail" style="top:200px;height:560px"></div>
+
+      <div class="abs card step" id="st1" style="top:170px">
+        <span class="num">1</span>
+        <div class="ic" style="background:#eef4ff;color:#2f5fd8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div>
+        <div class="who"><div class="t">Get data</div><div class="s"><span class="mark" data-src="calendly"></span>Calendly · Meetings booked</div></div>
+        <div class="chip2 bgA" id="c1"><span class="a" id="c1a">Test</span><span class="b" id="c1b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span id="n1">0</span> loaded</span></div>
+      </div>
+      <div class="abs card step" id="st2" style="top:390px">
+        <span class="num">2</span>
+        <div class="ic" style="background:#e7f7f0;color:#0e9f6e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></div>
+        <div class="who"><div class="t">Match</div><div class="s"><span class="mark" data-src="gsheets"></span>Same person, in Sheets</div></div>
+        <div class="chip2 bgA" id="c2"><span class="a" id="c2a">Test</span><span class="b" id="c2b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span id="n2">0</span> matched</span></div>
+      </div>
+      <div class="abs card step" id="st3" style="top:610px">
+        <span class="num">3</span>
+        <div class="ic" style="background:#fae8ff;color:#c026d3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/><circle cx="12" cy="6" r="1.6" fill="currentColor"/><circle cx="12" cy="18" r="1.6" fill="currentColor"/></svg></div>
+        <div class="who"><div class="t">Calculate</div><div class="s">Matched ÷ booked × 100</div></div>
+        <div class="chip2 bgA" id="c3"><span class="a" id="c3a">Test</span><span class="b" id="c3b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span id="n3">0%</span></span></div>
+      </div>
+    </div>
+
+    <!-- the board it lands on -->
+    <div class="abs dash" id="dash">
+      <div class="card tile" id="d1"><div class="l">Leads</div><div class="v">719</div><div class="f">Last 30 days</div></div>
+      <div class="card tile" id="d2"><div class="l">Booked calls</div><div class="v">370</div><div class="f">Calendly</div></div>
+      <div class="card tile" id="d3"><div class="l">Close rate</div><div class="v">34.4%</div><div class="f">Close CRM + Stripe</div></div>
+      <div class="tile panel-sky" id="d4"><div class="l">Show-up rate</div><div class="v" id="n4">0%</div>
+        <svg class="spark" viewBox="0 0 400 90" preserveAspectRatio="none"><path id="sp" d="M0 70 C40 66 60 50 100 54 S160 30 200 38 S260 22 300 28 S360 10 400 14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" pathLength="1"/></svg>
+        <div class="f">247 of 370 booked</div></div>
+    </div>
+
+    <div class="abs ripple" id="rip"></div>
+    <svg class="abs cursor" id="cursor" viewBox="0 0 32 32"><path d="M6 3l20 12.5-8.6 1.9L22 27l-4.2 1.9-4.6-9.7L6 25z" fill="#14141c" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>
+
+    <!-- end -->
+    <div class="abs bloom" id="bloom" style="left:40px;top:260px"></div>
+    <div class="end" id="end">
+      <div class="big" id="endBig">Build it once.<br>It stays <em>live.</em></div>
+      <div class="sub" id="endSub">Updates on its own, and shows its working every time.</div>
+      <div class="lock" id="endLock"><span class="logo"></span>Namzilabs</div>
+      <div class="url" id="endUrl">Start free · namzilabs.co</div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>
+const { ease: E } = NZ;
+const tl = new NZ.Timeline({ duration: 17.4, tail: 1.6 });
+
+/* hook */
+tl.stagger(NZ.splitWords("#head"), { at: 0.15, dur: 0.75, ease: E.out, from: { y: 150 }, to: { y: 0 } }, 0.07);
+
+/* the builder rises into place, then the steps are laid one by one */
+tl.add("#builder", { at: 0.7, dur: 1.1, ease: E.spring, from: { y: 220, scale: 0.94, opacity: 0 }, to: { y: 0, scale: 1, opacity: 1 } });
+tl.add("#rail", { at: 1.4, dur: 1.6, ease: E.inOut, from: { sy: 0 }, to: { sy: 1 } });
+document.getElementById("rail").style.transformOrigin = "top";
+[["#st1", 1.25], ["#st2", 1.55], ["#st3", 1.85]].forEach(([id, at]) =>
+  tl.add(id, { at, dur: 1.0, ease: E.spring, from: { y: 60, opacity: 0, scale: 0.96 }, to: { y: 0, opacity: 1, scale: 1 } }));
+
+/* cursor: absolute page coordinates of each chip (builder at 60,560; chips right-aligned inside 740px step at left 110) */
+const B = { x: 60, y: 560 };
+const chipAt = (top) => ({ x: B.x + 110 + 740 - 90, y: B.y + top + 75 });
+const P = [chipAt(170), chipAt(390), chipAt(610), { x: B.x + 960 - 150, y: B.y + 52 }];
+tl.add("#cursor", { at: 0, dur: 0, from: { x: 940, y: 1700, opacity: 0 }, to: { x: 940, y: 1700, opacity: 0 } });
+tl.add("#cursor", { at: 2.35, dur: 0.4, ease: E.out, to: { opacity: 1 } });
+const move = (at, dur, p) => tl.add("#cursor", { at, dur, ease: E.inOutSoft, to: { x: p.x - 8, y: p.y - 6 } });
+const click = (at, p) => {
+  tl.add("#cursor", { at, dur: 0.12, ease: E.out, to: { scale: 0.82 } });
+  tl.add("#cursor", { at: at + 0.12, dur: 0.3, ease: E.back, to: { scale: 1 } });
+  tl.add("#rip", { at, dur: 0.6, ease: E.out, from: { x: p.x - 45, y: p.y - 45, scale: 0.3, opacity: 0.9 }, to: { x: p.x - 45, y: p.y - 45, scale: 1.4, opacity: 0 } });
+};
+tl.add("#rip", { at: 0, dur: 0, from: { opacity: 0 }, to: { opacity: 0 } });
+
+// a chip flips from "Test" to its result: the label lifts out, the result rises in, the pill tints green
+function flip(n, at, count) {
+  tl.add(`#c${n}a`, { at, dur: 0.28, ease: E.in, from: { y: 0, opacity: 1 }, to: { y: -26, opacity: 0 } });
+  tl.add(`#c${n}b`, { at: at + 0.16, dur: 0.6, ease: E.spring, from: { y: 30, opacity: 0 }, to: { y: 0, opacity: 1 } });
+  tl.add(`#c${n}`, { at: at + 0.1, dur: 0.5, ease: E.out, from: { bg: "#eef4ff" }, to: { bg: "#e3f6ea" } });
+  tl.add(`#st${n}`, { at: at + 0.05, dur: 0.18, ease: E.out, to: { scale: 1.015 } });
+  tl.add(`#st${n}`, { at: at + 0.23, dur: 0.5, ease: E.spring, to: { scale: 1 } });
+  count && tl.call(at + 0.2, 0.9, count, { ease: E.out });
+}
+move(2.45, 0.8, P[0]); click(3.3, P[0]); flip(1, 3.35, NZ.counter("#n1", 0, 370));
+move(4.1, 0.65, P[1]); click(4.8, P[1]); flip(2, 4.85, NZ.counter("#n2", 0, 247));
+move(5.6, 0.65, P[2]); click(6.3, P[2]); flip(3, 6.35, NZ.counter("#n3", 0, 66.8, { decimals: 1, suffix: "%" }));
+move(7.2, 0.9, P[3]); click(8.15, P[3]);
+tl.add("#pub", { at: 8.2, dur: 0.5, ease: E.out, from: { bg: "#2f5fd8" }, to: { bg: "#16a34a" } });
+tl.call(8.3, 0, (p) => { document.getElementById("pubT").textContent = p >= 1 ? "Published" : "Review & publish"; });
+tl.add("#cursor", { at: 8.7, dur: 0.4, ease: E.in, to: { opacity: 0 } });
+
+/* the builder steps aside; the metric lands on the board */
+tl.add("#head", { at: 8.75, dur: 0.45, ease: E.in, to: { y: -40, opacity: 0, blur: 8 } });
+tl.add("#builder", { at: 8.9, dur: 0.6, ease: E.inOut, to: { scale: 0.9, opacity: 0, blur: 14, y: 40 } });
+tl.stagger(["#d1", "#d2", "#d3"], { at: 9.2, dur: 1.0, ease: E.spring, from: { y: 90, opacity: 0, scale: 0.94 }, to: { y: 0, opacity: 1, scale: 1 } }, 0.08);
+// the new tile flies in from where step 3 was
+tl.add("#d4", { at: 9.55, dur: 1.2, ease: E.spring, from: { x: -300, y: -210, scale: 0.55, opacity: 0, rotate: -4 }, to: { x: 0, y: 0, scale: 1, opacity: 1, rotate: 0 } });
+tl.call(9.9, 1.3, NZ.counter("#n4", 0, 66.8, { decimals: 1, suffix: "%" }), { ease: E.out });
+tl.add("#sp", { at: 10.1, dur: 1.2, ease: E.inOut, from: { draw: 0 }, to: { draw: 1 } });
+tl.add("#d4", { at: 11.35, dur: 0.2, ease: E.out, to: { scale: 1.03 } });
+tl.add("#d4", { at: 11.55, dur: 0.6, ease: E.spring, to: { scale: 1 } });
+// a head for this beat
+const beat = document.createElement("h1");
+beat.className = "abs h1 head"; beat.id = "head2"; beat.innerHTML = "Published. On your <em>board.</em>";
+document.getElementById("world").appendChild(beat);
+tl.stagger(NZ.splitWords(beat), { at: 9.4, dur: 0.75, ease: E.out, from: { y: 150 }, to: { y: 0 } }, 0.07);
+tl.add("#head2", { at: 12.7, dur: 0.45, ease: E.in, to: { y: -40, opacity: 0, blur: 8 } });
+tl.stagger(["#d1", "#d2", "#d3", "#d4"], { at: 12.8, dur: 0.5, ease: E.in, to: { opacity: 0, y: -60, blur: 10 } }, 0.05);
+
+/* end */
+tl.add("#bloom", { at: 13.2, dur: 2.0, ease: E.out, from: { scale: 0.4, opacity: 0 }, to: { scale: 1.1, opacity: 1 } });
+tl.stagger(NZ.splitWords("#endBig"), { at: 13.35, dur: 0.8, ease: E.out, from: { y: 160 }, to: { y: 0 } }, 0.07);
+tl.add("#endSub", { at: 14.2, dur: 0.8, ease: E.out, from: { y: 30, opacity: 0 }, to: { y: 0, opacity: 1 } });
+tl.add("#endLock", { at: 14.7, dur: 1.0, ease: E.spring, from: { scale: 0.8, opacity: 0, y: 20 }, to: { scale: 1, opacity: 1, y: 0 } });
+tl.add("#endUrl", { at: 15.0, dur: 0.7, ease: E.out, from: { y: 16, opacity: 0 }, to: { y: 0, opacity: 1 } });
+
+tl.every((t) => {
+  document.getElementById("ruled").style.transform = `translate3d(0, ${-(t * 6) % 88}px, 0)`;
+  if (t > 15.2) document.getElementById("bloom").style.opacity = String(0.85 + Math.sin((t - 15.2) * 1.8) * 0.15);
+  document.getElementById("world").style.transform = `scale(${1 + Math.min(t, 19) * 0.0011})`;
+});
+
+NZ.mount(tl, { width: 1080, height: 1920 });
+</script>
+</body>
+</html>

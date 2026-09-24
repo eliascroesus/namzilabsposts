@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 04 — Booked is a vanity metric</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .funnel { display: flex; flex-direction: column; gap: 14px; }
+  .bar { height: 92px; border-radius: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 30px 0 24px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-1); }
+  .bar .l { display: flex; align-items: center; gap: 14px; font-size: 28px; font-weight: 650; letter-spacing: -0.02em; }
+  .bar .l .mark { width: 40px; height: 40px; }
+  .bar .v { font-size: 44px; font-weight: 800; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+  .bar.gone { border-style: dashed; background: #fff8f6; }
+  .bar.gone .v { color: var(--red); }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cost { padding: 32px 34px; border-radius: 26px; }
+  .cost .l { font-size: 25px; font-weight: 600; letter-spacing: -0.015em; }
+  .cost .v { font-size: 92px; font-weight: 800; letter-spacing: -0.055em; margin-top: 14px; font-variant-numeric: tabular-nums; line-height: 1; }
+  .cost .s { font-size: 21px; margin-top: 12px; font-weight: 500; }
+  .cost.vain { background: #fff; border: 1px solid var(--line); }
+  .cost.vain .l, .cost.vain .s { color: var(--faint); }
+  .cost.vain .v { color: #b9bcc8; text-decoration: line-through; text-decoration-thickness: 6px; text-decoration-color: rgba(240,85,61,.75); }
+  .cost.real .l, .cost.real .s { color: rgba(226,234,255,.82); }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For outbound agencies</span></div>
+  <h1 class="h1" style="margin-top:56px;font-size:106px">Booked is a vanity <em>metric.</em></h1>
+  <p class="lead" style="margin-top:22px">Your client pays for meetings that happened.</p>
+  <div class="funnel" style="margin-top:48px">
+    <div class="bar"><span class="l"><span class="mark" data-src="instantly"></span>Replies</span><span class="v">112</span></div>
+    <div class="bar" style="margin-left:40px"><span class="l"><span class="mark" data-src="calendly"></span>Booked</span><span class="v">41</span></div>
+    <div class="bar" style="margin-left:80px"><span class="l"><span class="mark" data-src="fathom"></span>Held</span><span class="v">33</span></div>
+    <div class="bar gone" style="margin-left:120px"><span class="l"><span class="dot red"></span>No-shows your report doesn't show</span><span class="v">8</span></div>
+  </div>
+  <div class="pair" style="margin-top:34px">
+    <div class="cost vain"><div class="l">Cost per booked meeting</div><div class="v">$69.54</div><div class="s">$2,851 ÷ 41</div></div>
+    <div class="cost real panel-sky"><div class="l">Cost per held meeting</div><div class="v">$86.40</div><div class="s">$2,851 ÷ 33</div></div>
+  </div>
+  <div class="foot"><span class="demo">Example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:66px 80px 58px;flex-direction:row;gap:60px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 610px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:44px;font-size:96px">Booked is a vanity <em>metric.</em></h1>
+    <p class="lead" style="margin-top:22px;font-size:32px">Your client pays for meetings that happened. Held comes from a different tool than booked — so most reports never show it.</p>
+    <div class="demo" style="margin-top:auto">Example data · namzilabs.co</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px">
+    <div class="funnel">
+      <div class="bar"><span class="l"><span class="mark" data-src="calendly"></span>Booked</span><span class="v">41</span></div>
+      <div class="bar"><span class="l"><span class="mark" data-src="fathom"></span>Held</span><span class="v">33</span></div>
+    </div>
+    <div class="pair">
+      <div class="cost vain"><div class="l">Per booked</div><div class="v">$69.54</div></div>
+      <div class="cost real panel-sky"><div class="l">Per held</div><div class="v">$86.40</div></div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

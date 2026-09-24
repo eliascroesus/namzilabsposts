@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 05 — Three dashboards. No total.</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .plats { display: flex; flex-direction: column; gap: 16px; }
+  .plat { display: flex; align-items: center; gap: 22px; padding: 0 34px 0 26px; height: 124px; }
+  .plat .mark { width: 58px; height: 58px; }
+  .plat .who { flex: 1; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+  .plat .who small { display: block; font-size: 22px; color: var(--faint); font-weight: 500; margin-top: 4px; }
+  .plat .v { font-size: 60px; font-weight: 800; letter-spacing: -0.045em; font-variant-numeric: tabular-nums; }
+  .sum { padding: 38px 42px; }
+  .sum .l { font-size: 27px; font-weight: 600; color: rgba(226,234,255,.86); display: flex; justify-content: space-between; }
+  .sum .v { font-size: 150px; font-weight: 800; letter-spacing: -0.06em; line-height: .95; margin-top: 12px; font-variant-numeric: tabular-nums; }
+  .sum .r { display: flex; justify-content: space-between; font-size: 24px; color: rgba(235,241,255,.9); padding-top: 16px; margin-top: 16px; border-top: 1px solid rgba(255,255,255,.16); }
+  .sum .r b { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .per { display: flex; justify-content: space-between; align-items: center; padding: 30px 38px; }
+  .per .l { font-size: 29px; font-weight: 650; letter-spacing: -0.02em; }
+  .per .l small { display: flex; align-items: center; gap: 10px; font-size: 22px; color: var(--faint); font-weight: 500; margin-top: 8px; }
+  .per .l small .mark { width: 28px; height: 28px; }
+  .per .v { font-size: 80px; font-weight: 800; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For creators</span></div>
+  <h1 class="h1" style="margin-top:50px;font-size:108px">Three dashboards. No <em>total.</em></h1>
+  <div class="plats" style="margin-top:40px">
+    <div class="card plat"><span class="mark" data-src="whop"></span><div class="who">Whop<small>Memberships</small></div><div class="v">$21,940</div></div>
+    <div class="card plat"><span class="mark" data-src="stripe"></span><div class="who">Stripe<small>Coaching calls</small></div><div class="v">$12,380</div></div>
+    <div class="card plat"><span class="mark" data-src="thrivecart"></span><div class="who">ThriveCart<small>Course checkout</small></div><div class="v">$9,020</div></div>
+  </div>
+  <div class="panel-sky sum" style="margin-top:22px">
+    <div class="l"><span>Launch revenue · 7 days</span><span>one number</span></div>
+    <div class="v">$43,000</div>
+    <div class="r"><span>3 payments seen twice, counted once</span><b>−$340</b></div>
+  </div>
+  <div class="foot"><span class="demo">Example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-portrait paper frame" data-still="ig-02">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">2 / 2</span></div>
+  <h2 class="h1" style="margin-top:50px;font-size:100px">Then the number your list is <em>worth.</em></h2>
+  <div class="card per" style="margin-top:50px"><div class="l">Revenue per subscriber<small><span class="mark" data-src="whop"></span><span class="mark" data-src="stripe"></span><span class="mark" data-src="thrivecart"></span>÷<span class="mark" data-src="mailchimp"></span>10,437 on the list</small></div><div class="v">$4.12</div></div>
+  <div class="lines" style="margin-top:44px">
+    <div class="li"><span class="bx yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div>Compare launches, not guesses<small>Same number, same rules, every launch.</small></div></div>
+    <div class="li"><span class="bx yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div>Refunds out, test payments out<small>And it tells you how many it left out.</small></div></div>
+    <div class="li"><span class="bx yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div>Live while the cart is open<small>No end-of-launch spreadsheet.</small></div></div>
+  </div>
+  <div class="foot"><span class="btn" style="height:84px;font-size:29px">Start free · namzilabs.co</span><span class="demo">Example data</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:64px 80px 56px;flex-direction:row;gap:56px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 560px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:40px;font-size:100px">Three dashboards. No <em>total.</em></h1>
+    <p class="lead" style="margin-top:22px;font-size:32px">Whop, Stripe and ThriveCart — one launch number, duplicates counted once.</p>
+    <div class="demo" style="margin-top:auto">Example data · namzilabs.co</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px">
+    <div class="card plat" style="height:104px"><span class="mark" data-src="whop"></span><div class="who">Whop</div><div class="v" style="font-size:50px">$21,940</div></div>
+    <div class="card plat" style="height:104px"><span class="mark" data-src="stripe"></span><div class="who">Stripe</div><div class="v" style="font-size:50px">$12,380</div></div>
+    <div class="card plat" style="height:104px"><span class="mark" data-src="thrivecart"></span><div class="who">ThriveCart</div><div class="v" style="font-size:50px">$9,020</div></div>
+    <div class="panel-sky sum" style="padding:26px 34px"><div class="l"><span>Launch revenue</span><span>−$340 duplicates</span></div><div class="v" style="font-size:100px">$43,000</div></div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 09 — Four ways to get your show rate</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .tbl { display: grid; grid-template-columns: 1.25fr repeat(4, 1fr); border-radius: 28px; overflow: hidden; border: 1px solid var(--line); background: #fff; box-shadow: var(--shadow-2); }
+  .tbl > div { padding: 22px 16px; font-size: 22px; line-height: 1.25; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: center; text-align: center; font-weight: 550; color: var(--ink-2); letter-spacing: -0.01em; }
+  .tbl > div.rl { justify-content: flex-start; text-align: left; font-weight: 650; color: var(--ink); padding-left: 26px; }
+  .tbl > div.hd { border-top: 0; font-size: 21px; font-weight: 700; color: var(--muted); padding: 24px 14px; flex-direction: column; gap: 6px; }
+  .tbl > div.nz { background: linear-gradient(180deg, #eef4ff, #e3ecff); color: var(--blue); font-weight: 700; }
+  .tbl > div.nz.hd { background: var(--blue); color: #fff; }
+  .tbl > div.nz.hd .logo { width: 40px; height: 40px; }
+  .tbl > div.nz.hd .logo svg rect { fill: rgba(255,255,255,.18); }
+  .y { color: var(--green); font-weight: 750; }
+  .n { color: var(--red); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<template id="tblT">
+  <div class="tbl">
+    <div class="hd rl" style="justify-content:flex-start"></div>
+    <div class="hd">Spreadsheet<br>+ a VA</div>
+    <div class="hd">BI tool<br>+ warehouse</div>
+    <div class="hd">Hire an<br>analyst</div>
+    <div class="hd nz"><span class="logo"></span>Namzilabs</div>
+
+    <div class="rl">First number</div><div>hours, every week</div><div>weeks of setup</div><div>weeks to hire</div><div class="nz">same day</div>
+    <div class="rl">Stays up to date</div><div class="n">no</div><div class="y">yes</div><div>if they keep it</div><div class="nz">on its own</div>
+    <div class="rl">Same person across tools</div><div>by hand</div><div>if someone builds it</div><div class="y">yes</div><div class="nz">built in</div>
+    <div class="rl">Shows its working</div><div class="n">no</div><div>rarely</div><div>if you ask</div><div class="nz">every number</div>
+    <div class="rl">Needs SQL</div><div>—</div><div class="n">yes</div><div class="n">yes</div><div class="nz">no</div>
+    <div class="rl">To start</div><div>VA hours</div><div>licences</div><div>a salary</div><div class="nz">free, no card</div>
+  </div>
+</template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Save this</span></div>
+  <h1 class="h1" style="margin-top:44px;font-size:100px">Four ways to get your show <em>rate.</em></h1>
+  <div data-slot style="margin-top:44px"></div>
+  <div class="foot"><span class="site">namzilabs.co</span><span class="demo">One honest table</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 72px 48px">
+  <div class="ruled"></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end">
+    <h1 class="h1" style="font-size:84px">Four ways to get your show <em>rate.</em></h1>
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+  </div>
+  <div data-slot style="margin-top:30px"></div>
+</div>
+
+<script>
+for (const slot of document.querySelectorAll("[data-slot]")) slot.appendChild(document.getElementById("tblT").content.firstElementChild.cloneNode(true));
+document.querySelectorAll('[data-still="x-01"] .tbl > div').forEach((c) => { c.style.padding = c.classList.contains("hd") ? "14px 12px" : "12px 12px"; c.style.fontSize = "20px"; });
+document.querySelector('[data-still="x-01"] .tbl').style.gridTemplateColumns = "1.3fr repeat(4, 1fr)";
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

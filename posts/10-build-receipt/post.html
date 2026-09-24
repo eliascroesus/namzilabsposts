@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 10 — The build receipt (founder)</title>
+<!-- FOUNDER TO APPROVE: every figure is from the namzilabsv2 repo as of 23 Sep 2026. -->
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .rcp .ln.total .v { color: var(--blue); }
+</style>
+</head>
+<body>
+
+<template id="rc">
+  <div class="rcp-wrap"><div class="rcp">
+    <div class="hd">Namzilabs · build receipt</div>
+    <div class="hd" style="letter-spacing:.04em;text-transform:none;font-weight:600;margin-top:8px">16 Jul → 23 Sep 2026</div>
+    <div class="dash"></div>
+    <div class="ln"><span class="k">Weeks</span><span class="v">10</span></div>
+    <div class="ln"><span class="k">Commits</span><span class="v">850</span></div>
+    <div class="ln"><span class="k">Tests, all passing</span><span class="v">4,064</span></div>
+    <div class="ln"><span class="k">Tools it reads directly</span><span class="v">33</span></div>
+    <div class="ln"><span class="k">Times I rebuilt the landing page</span><span class="v">8</span></div>
+    <div class="ln sub"><span class="k">Customers</span><span class="v">0 — yet</span></div>
+    <div class="dash"></div>
+    <div class="ln total"><span class="k">Looking for</span><span class="v">my first 10 teams</span></div>
+  </div></div>
+</template>
+
+<div class="canvas s-portrait sky frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Build in public</span></div>
+  <h1 class="h1" style="margin-top:40px;font-size:94px">I built it in ten weeks. Here's the <em>receipt.</em></h1>
+  <div data-slot style="margin-top:40px;padding:0 24px"></div>
+  <div class="foot"><span class="lead" style="font-size:28px">Reply if your numbers disagree with each other.</span></div>
+</div>
+
+<div class="canvas s-x sky frame" data-still="x-01" style="padding:64px 80px 0;flex-direction:row;gap:64px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 600px;display:flex;flex-direction:column;padding-bottom:56px">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:44px;font-size:92px">I built it in ten weeks. Here's the <em>receipt.</em></h1>
+    <div class="small" style="margin-top:auto">namzilabs.co</div>
+  </div>
+  <div data-slot style="flex:1;margin-top:-10px"></div>
+</div>
+
+<script>
+for (const slot of document.querySelectorAll("[data-slot]")) slot.appendChild(document.getElementById("rc").content.firstElementChild.cloneNode(true));
+const x = document.querySelector('[data-still="x-01"]');
+x.querySelector(".rcp").style.cssText = "padding:38px 44px 60px";
+x.querySelectorAll(".rcp .ln").forEach((l) => (l.style.fontSize = l.classList.contains("total") ? "34px" : l.classList.contains("sub") ? "24px" : "26px", l.style.padding = "6px 0"));
+x.querySelectorAll(".rcp .dash").forEach((d) => (d.style.margin = "14px 0"));
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

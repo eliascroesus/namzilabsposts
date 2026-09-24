@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 08 — Every number should come with a receipt</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }</style>
+</head>
+<body>
+
+<template id="rc">
+  <div class="rcp-wrap"><div class="rcp">
+    <div class="hd">Receipt · Revenue, September</div>
+    <div class="dash"></div>
+    <div class="ln"><span class="k">Sources read</span><span class="v"><span class="mark" data-src="stripe"></span><span class="mark" data-src="whop"></span>Stripe · Whop</span></div>
+    <div class="ln"><span class="k">Payments in</span><span class="v">1,284</span></div>
+    <div class="ln"><span class="k">Same payment, seen twice</span><span class="v">87 → once</span></div>
+    <div class="ln"><span class="k">Excluded</span><span class="v">6</span></div>
+    <div class="ln sub"><span class="k">Refunds</span><span class="v">4</span></div>
+    <div class="ln sub"><span class="k">Test payments</span><span class="v">2</span></div>
+    <div class="dash"></div>
+    <div class="ln total"><span class="k">Revenue</span><span class="v">$48,200</span></div>
+    <div class="foot2">Recomputed 2 minutes ago</div>
+  </div></div>
+</template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="demo">Example data</span></div>
+  <h1 class="h1" style="margin-top:40px;font-size:100px">Every number should come with a <em>receipt.</em></h1>
+  <div data-slot style="margin-top:44px;padding:0 20px"></div>
+  <div class="foot"><span class="lead" style="font-size:30px;color:var(--ink-2);font-weight:600">If you can't explain it, you can't defend it.</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:64px 80px 0;flex-direction:row;gap:64px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 600px;display:flex;flex-direction:column;padding-bottom:56px">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:44px;font-size:100px">Every number should come with a <em>receipt.</em></h1>
+    <p class="lead" style="margin-top:24px;font-size:32px">Which sources it read, what it matched, and what it left out — and why.</p>
+    <div class="demo" style="margin-top:auto">Example data · namzilabs.co</div>
+  </div>
+  <div data-slot style="flex:1;margin-top:-12px"></div>
+</div>
+
+<script>
+for (const slot of document.querySelectorAll("[data-slot]")) slot.appendChild(document.getElementById("rc").content.firstElementChild.cloneNode(true));
+document.querySelector('[data-still="x-01"] .rcp').style.cssText = "padding:40px 44px 62px";
+document.querySelectorAll('[data-still="x-01"] .rcp .ln').forEach((l) => (l.style.fontSize = l.classList.contains("total") ? "38px" : l.classList.contains("sub") ? "23px" : "26px", l.style.padding = l.classList.contains("sub") ? "2px 0 2px 24px" : "6px 0"));
+document.querySelectorAll('[data-still="x-01"] .rcp .dash').forEach((d) => (d.style.margin = "14px 0"));
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — Monday, 9:07 am (9:16)</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  .abs { position: absolute; }
+  .world { position: absolute; inset: 0; }
+  .wmask { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.04em 0.14em 0; margin-bottom: -0.14em; }
+  .wi { display: inline-block; }
+
+  .clock { left: 90px; top: 238px; font-size: 118px; font-weight: 800; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; line-height: 1; }
+  .clock .day { color: var(--faint); font-weight: 700; }
+  .ask { left: 90px; top: 400px; width: 900px; font-size: 38px; line-height: 1.3; font-weight: 550; letter-spacing: -0.02em; color: var(--ink-2); }
+  .ask em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.15em; color: var(--ink); }
+
+  .win { left: 60px; top: 560px; width: 960px; height: 880px; border-radius: 30px; overflow: hidden; background: #fff; border: 1px solid var(--line-2); box-shadow: var(--shadow-3); }
+  .chrome { height: 132px; background: #eceef4; border-bottom: 1px solid var(--line-2); position: relative; }
+  .lights { position: absolute; left: 26px; top: 22px; display: flex; gap: 12px; }
+  .lights i { width: 18px; height: 18px; border-radius: 50%; display: block; }
+  .strip { position: absolute; left: 18px; right: 18px; top: 62px; height: 70px; }
+  .tabx { position: absolute; top: 0; height: 70px; border-radius: 16px 16px 0 0; display: flex; align-items: center; gap: 10px; padding: 0 14px; overflow: hidden; white-space: nowrap; font-size: 21px; font-weight: 600; color: var(--muted); letter-spacing: -0.01em; }
+  .tabx .mark { width: 28px; height: 28px; flex: none; }
+  .tabx.on { background: #fff; color: var(--ink); box-shadow: 0 -1px 0 var(--line-2); }
+  .tabx::after { content: ""; position: absolute; right: 0; top: 20px; bottom: 20px; width: 1px; background: #cfd3de; }
+  .url { position: absolute; left: 150px; right: 30px; top: 16px; height: 34px; border-radius: 17px; background: #fff; font-size: 19px; color: var(--faint); display: flex; align-items: center; padding: 0 18px; }
+  .page { position: absolute; left: 0; right: 0; top: 132px; bottom: 0; background: #f6f7fb; }
+  .pcard { position: absolute; left: 60px; right: 60px; top: 70px; height: 380px; border-radius: 26px; background: #fff; border: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; padding: 0 56px; gap: 18px; }
+  .pcard .top { display: flex; align-items: center; gap: 18px; font-size: 34px; font-weight: 700; letter-spacing: -0.025em; }
+  .pcard .top .mark { width: 60px; height: 60px; }
+  .pcard .val { font-size: 128px; font-weight: 800; letter-spacing: -0.055em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .pcard .cap { font-size: 26px; color: var(--faint); font-weight: 500; }
+  .skel { position: absolute; left: 60px; right: 60px; height: 26px; border-radius: 13px; background: #e7e9f1; }
+
+  .note { left: 610px; top: 1190px; width: 360px; height: 300px; background: #ffe57a; border-radius: 8px; padding: 34px 32px; box-shadow: 0 30px 50px -20px rgba(80, 60, 0, .45); font-family: var(--serif); font-style: italic; font-size: 52px; line-height: 1.02; color: #3b2f00; transform-origin: 50% 0; }
+  .note small { display: block; font-family: var(--sans); font-style: normal; font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8a6d00; margin-bottom: 14px; }
+
+  .kin { left: 90px; top: 1470px; font-size: 76px; font-weight: 800; letter-spacing: -0.045em; line-height: 1; display: flex; gap: 22px; }
+  .kin span { display: inline-block; }
+
+  .dim { left: 0; top: 0; width: 1080px; height: 1920px; background: rgba(246, 247, 251, .95); backdrop-filter: blur(22px); }
+  .late { left: 90px; top: 700px; width: 900px; }
+  .late .a { font-size: 150px; font-weight: 800; letter-spacing: -0.055em; line-height: .95; font-variant-numeric: tabular-nums; }
+  .late .b { font-size: 70px; font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; margin-top: 30px; }
+  .late .b em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: var(--red); }
+
+  .one { left: 60px; top: 560px; width: 960px; height: 880px; border-radius: 30px; overflow: hidden; background: #f6f7fb; border: 1px solid var(--line-2); box-shadow: var(--shadow-3); }
+  .one .chrome { height: 132px; }
+  .one .only { position: absolute; left: 18px; top: 62px; width: 340px; height: 70px; border-radius: 16px 16px 0 0; background: #fff; display: flex; align-items: center; gap: 12px; padding: 0 18px; font-size: 22px; font-weight: 650; }
+  .one .only .logo { width: 30px; height: 30px; }
+  .one .res { position: absolute; left: 60px; right: 60px; top: 200px; height: 560px; padding: 52px 56px; }
+  .one .res .lab { font-size: 32px; font-weight: 600; color: rgba(226,234,255,.86); display: flex; justify-content: space-between; align-items: center; }
+  .one .res .big { font-size: 210px; font-weight: 800; letter-spacing: -0.06em; line-height: .9; margin-top: 30px; font-variant-numeric: tabular-nums; }
+  .one .res .src { position: absolute; left: 56px; right: 56px; bottom: 48px; display: flex; gap: 14px; }
+  .pill { display: inline-flex; align-items: center; gap: 12px; height: 52px; padding: 0 20px; border-radius: 999px; background: rgba(255,255,255,.14); font-size: 22px; font-weight: 600; color: #fff; border: 1px solid rgba(255,255,255,.2); }
+  .pill .mark { width: 28px; height: 28px; }
+  .or { left: 90px; top: 250px; width: 920px; font-size: 104px; }
+
+  .end { left: 0; top: 0; width: 1080px; height: 1920px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-bottom: 160px; }
+  .end .lock { display: flex; align-items: center; gap: 22px; font-size: 64px; font-weight: 800; letter-spacing: -0.05em; }
+  .end .lock .logo { width: 104px; height: 104px; }
+  .end .line { margin-top: 56px; font-size: 64px; font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; width: 860px; }
+  .end .line em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .end .ctawrap { margin-top: 44px; }
+  .bloom { width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(86,140,255,.30), rgba(86,140,255,0) 62%); }
+</style>
+</head>
+<body>
+<div class="canvas s-story paper">
+  <div class="ruled" id="ruled"></div>
+  <div class="world" id="world">
+    <div class="abs clock" id="clock"><span class="day">Mon </span><span id="time">9:07</span> am</div>
+    <div class="abs ask" id="ask">Someone asks: <em>“what was our show-up rate last week?”</em></div>
+
+    <div class="abs win" id="win">
+      <div class="chrome"><div class="lights"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><div class="url" id="url">calendly.com/app/scheduled_events</div><div class="strip" id="strip"></div></div>
+      <div class="page">
+        <div class="pcard" id="pcard"><div class="top"><span class="mark" id="pmark"></span><span id="pname"></span></div><div class="val" id="pval"></div><div class="cap" id="pcap"></div></div>
+        <div class="skel" style="top:500px;width:520px"></div>
+        <div class="skel" style="top:550px;width:700px"></div>
+        <div class="skel" style="top:600px;width:420px"></div>
+      </div>
+    </div>
+    <div class="abs note" id="note"><small>Monday</small>what's our show-up rate??</div>
+    <div class="abs kin" id="kin"><span id="k1">Copy.</span><span id="k2">Paste.</span><span id="k3" style="color:var(--blue)">Recount.</span></div>
+
+    <div class="abs dim" id="dim"></div>
+    <div class="abs late" id="late"><div class="a"><span id="late1">11:48</span> am.</div><div class="b" id="late2">And the number is already <em>out of date.</em></div></div>
+
+    <h1 class="abs h1 or" id="or">Or: one tab. One number. <em>Already right.</em></h1>
+    <div class="abs one" id="one">
+      <div class="chrome" style="background:#eceef4"><div class="lights"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><div class="url">namzilabs.co/dashboard</div><div class="only"><span class="logo"></span>Namzilabs</div></div>
+      <div class="panel-sky res" id="res"><div class="lab"><span>Show-up rate · last week</span><span class="pill"><span class="dot live"></span>Updated 2 min ago</span></div>
+        <div class="big" id="big">0%</div>
+        <div class="src"><span class="pill"><span class="mark" data-src="calendly"></span>Calendly</span><span class="pill"><span class="mark" data-src="close"></span>Close</span><span class="pill"><span class="mark" data-src="gsheets"></span>Sheets</span></div></div>
+    </div>
+
+    <div class="abs bloom" id="bloom" style="left:40px;top:300px"></div>
+    <div class="end" id="end">
+      <div class="lock" id="lock"><span class="logo"></span>Namzilabs</div>
+      <div class="line" id="line">Get your Mondays <em>back.</em></div>
+      <div class="ctawrap" id="cta"><span class="btn">Start free · namzilabs.co</span></div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>
+const { ease: E } = NZ;
+const tl = new NZ.Timeline({ duration: 14.6, tail: 1.6 });
+const $ = (id) => document.getElementById(id);
+
+/* ── the tabs: 14 tools, arriving faster and faster ── */
+const TABS = [
+  ["calendly", "Calendly", "41", "meetings booked", "calendly.com/app/scheduled_events"],
+  ["close", "Close", "38", "meetings logged", "app.close.com/reports"],
+  ["gsheets", "Show-up tracker", "44", "rows, kept by hand", "docs.google.com/spreadsheets"],
+  ["stripe", "Stripe", "$48.2k", "gross volume", "dashboard.stripe.com"],
+  ["instantly", "Instantly", "112", "replies", "app.instantly.ai/campaigns"],
+  ["aircall", "Aircall", "306", "calls connected", "dashboard.aircall.io"],
+  ["gcal", "Calendar", "52", "events", "calendar.google.com"],
+  ["typeform", "Typeform", "719", "responses", "admin.typeform.com"],
+  ["whop", "Whop", "$21.9k", "payments", "whop.com/dashboard"],
+  ["ganalytics", "Analytics", "18.4k", "sessions", "analytics.google.com"],
+  ["notion", "Sales notes", "—", "last edited Friday", "notion.so"],
+  ["klaviyo", "Klaviyo", "3,210", "profiles", "klaviyo.com/dashboard"],
+  ["shopify", "Shopify", "$12.7k", "sales", "admin.shopify.com"],
+  ["mailchimp", "Mailchimp", "4,982", "subscribers", "admin.mailchimp.com"],
+];
+const strip = $("strip");
+const tabs = TABS.map(([src, name]) => {
+  const el = document.createElement("div");
+  el.className = "tabx";
+  el.innerHTML = `<span class="mark" data-src="${src}"></span><span>${name}</span>`;
+  strip.appendChild(el);
+  return el;
+});
+const T0 = 1.35, SPAN = 4.3;
+const at = TABS.map((_, i) => T0 + SPAN * Math.sqrt(i / (TABS.length - 1)));
+const STRIP_W = 924;
+function layoutTabs(t) {
+  let active = -1, x = 0;
+  const visible = at.filter((a) => t >= a).length;
+  const target = Math.min(236, STRIP_W / Math.max(1, visible));
+  tabs.forEach((el, i) => {
+    const p = E.out(Math.max(0, Math.min(1, (t - at[i]) / 0.32)));
+    if (p <= 0) { el.style.opacity = "0"; el.style.width = "0px"; return; }
+    active = i;
+    const w = target * p;
+    el.style.left = `${x}px`;
+    el.style.width = `${w}px`;
+    el.style.opacity = String(p);
+    x += w;
+  });
+  tabs.forEach((el, i) => el.classList.toggle("on", i === active));
+  return active;
+}
+let shown = -2;
+function page(i, t) {
+  if (i < 0) i = 0;
+  if (i !== shown) {
+    const [src, name, val, cap, url] = TABS[i];
+    $("pmark").dataset.src = src; NZ.hydrateMarks($("pcard"));
+    $("pname").textContent = name; $("pval").textContent = val; $("pcap").textContent = cap; $("url").textContent = url;
+    shown = i;
+  }
+  const since = t - (at[i] ?? 0);
+  const flash = Math.min(1, since / 0.18);
+  $("pcard").style.opacity = String(0.35 + 0.65 * flash);
+  $("pcard").style.transform = `translateY(${(1 - E.out(flash)) * 14}px)`;
+}
+tl.call(0, 0, () => {});
+tl.every((t) => { const a = layoutTabs(t); page(a, t); });
+
+/* ── open: the question, the clock ── */
+tl.add("#clock", { at: 0.1, dur: 0.8, ease: E.out, from: { y: 60, opacity: 0 }, to: { y: 0, opacity: 1 } });
+tl.add("#ask", { at: 0.45, dur: 0.8, ease: E.out, from: { y: 30, opacity: 0 }, to: { y: 0, opacity: 1 } });
+tl.add("#win", { at: 0.8, dur: 1.1, ease: E.spring, from: { y: 200, opacity: 0, scale: 0.95 }, to: { y: 0, opacity: 1, scale: 1 } });
+// the clock races while the tabs pile up: 9:07 → 11:48
+tl.call(1.4, 5.2, (p) => {
+  const m = Math.round(547 + (708 - 547) * p);
+  $("time").textContent = `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`;
+}, { ease: E.inOutSoft });
+// kinetic words
+[["#k1", 2.35], ["#k2", 3.05], ["#k3", 3.75]].forEach(([id, a]) => {
+  tl.add(id, { at: a, dur: 0.55, ease: E.back, from: { y: 60, opacity: 0, scale: 0.8 }, to: { y: 0, opacity: 1, scale: 1 } });
+});
+// the sticky note slaps on
+tl.add("#note", { at: 4.35, dur: 0.75, ease: E.springBouncy, from: { y: -140, rotate: -18, opacity: 0, scale: 1.25 }, to: { y: 0, rotate: -5, opacity: 1, scale: 1 } });
+// the window gets jittery as the tabs crowd in
+tl.call(4.6, 1.8, (p, t) => { $("win").style.translate = `${Math.sin(t * 38) * 2.2 * p}px 0`; });
+tl.call(6.4, 0, () => { $("win").style.translate = "0 0"; });
+
+/* ── 11:48, and it's already stale ── */
+tl.add("#dim", { at: 6.55, dur: 0.5, ease: E.out, from: { opacity: 0 }, to: { opacity: 1 } });
+tl.add("#late", { at: 6.7, dur: 0.8, ease: E.spring, from: { y: 60, opacity: 0, scale: 0.96 }, to: { y: 0, opacity: 1, scale: 1 } });
+tl.add("#late2", { at: 7.35, dur: 0.7, ease: E.out, from: { y: 30, opacity: 0 }, to: { y: 0, opacity: 1 } });
+tl.add("#late", { at: 8.75, dur: 0.4, ease: E.in, to: { opacity: 0, y: -40, blur: 8 } });
+for (const id of ["#win", "#note", "#kin", "#clock", "#ask"]) tl.add(id, { at: 8.75, dur: 0.45, ease: E.in, to: { opacity: 0, blur: 10 } });
+tl.add("#dim", { at: 8.8, dur: 0.5, ease: E.in, to: { opacity: 0 } });
+
+/* ── or: one tab ── */
+tl.stagger(NZ.splitWords("#or"), { at: 9.05, dur: 0.75, ease: E.out, from: { y: 150 }, to: { y: 0 } }, 0.06);
+tl.add("#one", { at: 9.25, dur: 1.1, ease: E.spring, from: { y: 200, opacity: 0, scale: 0.95 }, to: { y: 0, opacity: 1, scale: 1 } });
+tl.add("#res", { at: 9.6, dur: 1.0, ease: E.spring, from: { y: 60, opacity: 0, scale: 0.94 }, to: { y: 0, opacity: 1, scale: 1 } });
+tl.call(9.8, 1.3, NZ.counter("#big", 0, 66.8, { decimals: 1, suffix: "%" }), { ease: E.out });
+tl.add("#or", { at: 12.0, dur: 0.4, ease: E.in, from: { opacity: 1 }, to: { opacity: 0, y: -40, blur: 8 } });
+tl.add("#one", { at: 12.05, dur: 0.45, ease: E.in, to: { opacity: 0, y: -60, blur: 10 } });
+
+/* ── end ── */
+tl.add("#bloom", { at: 12.4, dur: 2.0, ease: E.out, from: { scale: 0.4, opacity: 0 }, to: { scale: 1.1, opacity: 1 } });
+tl.add("#lock", { at: 12.5, dur: 1.0, ease: E.spring, from: { scale: 0.75, opacity: 0, y: 30 }, to: { scale: 1, opacity: 1, y: 0 } });
+tl.stagger(NZ.splitWords("#line"), { at: 12.8, dur: 0.75, ease: E.out, from: { y: 110 }, to: { y: 0 } }, 0.07);
+tl.add("#cta", { at: 13.4, dur: 0.9, ease: E.spring, from: { scale: 0.85, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+
+tl.every((t) => {
+  $("ruled").style.transform = `translate3d(0, ${-(t * 6) % 88}px, 0)`;
+  if (t > 14.3) $("bloom").style.opacity = String(0.85 + Math.sin((t - 14.3) * 1.8) * 0.15);
+});
+
+NZ.mount(tl, { width: 1080, height: 1920 });
+</script>
+</body>
+</html>

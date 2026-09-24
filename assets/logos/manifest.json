@@ -1,0 +1,218 @@
+{
+  "calendly": {
+    "file": "calendly.svg",
+    "name": "Calendly",
+    "color": "#006BFF",
+    "short": "Ca"
+  },
+  "gsheets": {
+    "file": "gsheets.svg",
+    "name": "Google Sheets",
+    "color": "#0F9D58",
+    "short": "Sh"
+  },
+  "gcal": {
+    "file": "gcal.svg",
+    "name": "Google Calendar",
+    "color": "#4285F4",
+    "short": "GC"
+  },
+  "ganalytics": {
+    "file": "ganalytics.svg",
+    "name": "Google Analytics",
+    "color": "#E37400",
+    "short": "GA"
+  },
+  "stripe": {
+    "file": "stripe.svg",
+    "name": "Stripe",
+    "color": "#635BFF",
+    "short": "St"
+  },
+  "aircall": {
+    "file": "aircall.svg",
+    "name": "Aircall",
+    "color": "#00B388",
+    "short": "Ai"
+  },
+  "helpscout": {
+    "file": "helpscout.svg",
+    "name": "Help Scout",
+    "color": "#1292EE",
+    "short": "Hs"
+  },
+  "paddle": {
+    "file": "paddle.svg",
+    "name": "Paddle",
+    "color": "#FDDD35",
+    "short": "Pa"
+  },
+  "airtable": {
+    "file": "airtable.svg",
+    "name": "Airtable",
+    "color": "#FCB400",
+    "short": "At"
+  },
+  "notion": {
+    "file": "notion.svg",
+    "name": "Notion",
+    "color": "#000000",
+    "short": "No"
+  },
+  "mailchimp": {
+    "file": "mailchimp.svg",
+    "name": "Mailchimp",
+    "color": "#FFE01B",
+    "short": "Mc"
+  },
+  "shopify": {
+    "file": "shopify.svg",
+    "name": "Shopify",
+    "color": "#5E8E3E",
+    "short": "Sh"
+  },
+  "whop": {
+    "file": "whop.svg",
+    "name": "Whop",
+    "color": "#FF6243",
+    "short": "Wh"
+  },
+  "close": {
+    "file": "close.svg",
+    "name": "Close CRM",
+    "color": "#1E88E5",
+    "short": "Cl"
+  },
+  "pipedrive": {
+    "file": "pipedrive.svg",
+    "name": "Pipedrive",
+    "color": "#017737",
+    "short": "Pd"
+  },
+  "attio": {
+    "file": "attio.svg",
+    "name": "Attio",
+    "color": "#266DF0",
+    "short": "Ao"
+  },
+  "justcall": {
+    "file": "justcall.svg",
+    "name": "JustCall",
+    "color": "#004CE6",
+    "short": "Jc"
+  },
+  "customerio": {
+    "file": "customerio.svg",
+    "name": "Customer.io",
+    "color": "#0B373C",
+    "short": "Ci"
+  },
+  "instantly": {
+    "file": null,
+    "name": "Instantly",
+    "color": "#7C3AED",
+    "short": "In"
+  },
+  "webhook": {
+    "file": null,
+    "name": "Custom Webhook",
+    "color": "#64748B",
+    "short": "Wh"
+  },
+  "meta-ads": {
+    "file": null,
+    "name": "Meta Ads",
+    "color": "#0064E0",
+    "short": "Me"
+  },
+  "tiktok-ads": {
+    "file": null,
+    "name": "TikTok Ads",
+    "color": "#FE2C55",
+    "short": "Tt"
+  },
+  "gads": {
+    "file": null,
+    "name": "Google Ads",
+    "color": "#3C8BD9",
+    "short": "Ad"
+  },
+  "calcom": {
+    "file": null,
+    "name": "Cal.com",
+    "color": "#292929",
+    "short": "Cal"
+  },
+  "typeform": {
+    "file": null,
+    "name": "Typeform",
+    "color": "#262627",
+    "short": "Tf"
+  },
+  "tally": {
+    "file": null,
+    "name": "Tally",
+    "color": "#0D0D0D",
+    "short": "Ta"
+  },
+  "smartlead": {
+    "file": null,
+    "name": "Smartlead",
+    "color": "#5B5FEF",
+    "short": "Sl"
+  },
+  "lemlist": {
+    "file": null,
+    "name": "lemlist",
+    "color": "#316BFF",
+    "short": "Le"
+  },
+  "oncehub": {
+    "file": null,
+    "name": "OnceHub",
+    "color": "#009BDE",
+    "short": "Oh"
+  },
+  "savvycal": {
+    "file": null,
+    "name": "SavvyCal",
+    "color": "#00551F",
+    "short": "Sv"
+  },
+  "thinkific": {
+    "file": null,
+    "name": "Thinkific",
+    "color": "#271526",
+    "short": "Th"
+  },
+  "thrivecart": {
+    "file": null,
+    "name": "ThriveCart",
+    "color": "#F5A623",
+    "short": "Tc"
+  },
+  "retell": {
+    "file": null,
+    "name": "Retell AI",
+    "color": "#00122E",
+    "short": "Re"
+  },
+  "woocommerce": {
+    "file": null,
+    "name": "WooCommerce",
+    "color": "#7F54B3",
+    "short": "Wc"
+  },
+  "klaviyo": {
+    "file": null,
+    "name": "Klaviyo",
+    "color": "#232426",
+    "short": "Kl"
+  },
+  "fathom": {
+    "file": null,
+    "name": "Fathom",
+    "color": "#1B7FFF",
+    "short": "Fa"
+  }
+}

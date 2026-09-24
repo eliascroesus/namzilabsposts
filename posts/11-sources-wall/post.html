@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 11 — 33 tools, read directly (pinned)</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .wall { display: grid; gap: 12px; }
+  .cell { display: flex; align-items: center; gap: 12px; height: 70px; padding: 0 16px 0 12px; border-radius: 18px; background: #fff; border: 1px solid var(--line); font-size: 21px; font-weight: 650; letter-spacing: -0.015em; white-space: nowrap; overflow: hidden; }
+  .cell .mark { width: 38px; height: 38px; }
+  .cell.more { background: var(--blue-50); border-color: var(--blue-100); color: var(--blue); }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Pinned</span></div>
+  <h1 class="h1" style="margin-top:40px;font-size:100px">33 tools, read <em>directly.</em></h1>
+  <p class="lead" style="margin-top:18px">Each with its own connector, reading that tool's own API.</p>
+  <div class="wall" data-wall style="margin-top:36px;grid-template-columns:repeat(3,1fr)"></div>
+  <div class="foot"><span class="demo">Meta, TikTok and Google Ads: coming soon</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 72px 48px">
+  <div class="ruled"></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end">
+    <h1 class="h1" style="font-size:84px">33 tools, read <em>directly.</em></h1>
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+  </div>
+  <div class="wall" data-wall style="margin-top:34px;grid-template-columns:repeat(6,1fr)"></div>
+</div>
+
+<script>
+const LIVE = ["calendly","calcom","oncehub","savvycal","gcal","close","pipedrive","attio","helpscout","instantly","smartlead","lemlist","customerio","mailchimp","klaviyo","stripe","paddle","whop","thinkific","thrivecart","woocommerce","shopify","typeform","tally","aircall","justcall","retell","fathom","gsheets","ganalytics","airtable","notion","webhook"];
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script>
+for (const wall of document.querySelectorAll("[data-wall]")) {
+  for (const k of LIVE) {
+    const m = window.NZ_MARKS[k];
+    const c = document.createElement("div"); c.className = "cell";
+    c.innerHTML = `<span class="mark" data-src="${k}"></span>${k === "webhook" ? "Any webhook" : m.name}`;
+    wall.appendChild(c);
+  }
+}
+document.querySelectorAll('[data-still="x-01"] .cell').forEach((c) => (c.style.height = "64px", c.style.fontSize = "20px"));
+</script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

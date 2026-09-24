@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — Every number, with its receipt (9:16)</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  .abs { position: absolute; }
+  .world { position: absolute; inset: 0; }
+  .wmask { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.04em 0.14em 0; margin-bottom: -0.14em; }
+  .wi { display: inline-block; }
+  .head { left: 90px; top: 250px; width: 920px; font-size: 108px; }
+
+  .tile { left: 110px; top: 560px; width: 860px; height: 300px; padding: 44px 50px; z-index: 5; }
+  .tile .lab { display: flex; justify-content: space-between; align-items: center; font-size: 30px; font-weight: 600; color: rgba(226,234,255,.86); letter-spacing: -0.015em; }
+  .tile .val { font-size: 150px; font-weight: 800; letter-spacing: -0.058em; line-height: 1; margin-top: 26px; font-variant-numeric: tabular-nums; }
+  .vanity { display: inline-flex; align-items: center; gap: 8px; height: 50px; padding: 0 18px; border-radius: 999px; background: rgba(52,199,89,.2); color: #b7f5c8; font-size: 24px; font-weight: 700; }
+  .slot { left: 150px; top: 846px; width: 780px; height: 22px; border-radius: 11px; background: #0d1a3d; z-index: 6; box-shadow: inset 0 3px 6px rgba(0,0,0,.5); }
+
+  .rollclip { left: 170px; top: 857px; width: 740px; height: 0; overflow: hidden; z-index: 4; }
+  .rcpaper { position: absolute; left: 0; top: 0; width: 740px; padding: 56px 50px 70px; background: #fff; color: var(--ink);
+    -webkit-mask: linear-gradient(#000 0 0) top / 100% calc(100% - 22px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 30px 22px repeat-x;
+    mask: linear-gradient(#000 0 0) top / 100% calc(100% - 22px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 30px 22px repeat-x;
+    filter: drop-shadow(0 20px 30px rgba(20,30,80,.18)); }
+  .rcpaper .hd { font-size: 22px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); text-align: center; }
+  .rcpaper .dash { border-top: 2px dashed #d5d8e3; margin: 22px 0; }
+  .ln { display: flex; justify-content: space-between; align-items: baseline; font-size: 29px; padding: 9px 0; letter-spacing: -0.012em; }
+  .ln .k { color: var(--muted); font-weight: 500; }
+  .ln .v { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .ln.sub { font-size: 25px; padding: 4px 0 4px 26px; }
+  .ln.sub .k, .ln.sub .v { color: var(--red); font-weight: 600; }
+  .ln.total { font-size: 40px; padding-top: 14px; }
+  .ln.total .k { color: var(--ink); font-weight: 750; }
+  .ln.total .v { font-weight: 800; }
+  .ln .mk { display: inline-flex; gap: 8px; align-items: center; }
+  .ln .mk .mark { width: 30px; height: 30px; }
+
+  .out { z-index: 8; display: inline-flex; align-items: center; gap: 12px; height: 60px; padding: 0 22px 0 16px; border-radius: 999px; background: #fff; border: 1px solid #f6c7bd; box-shadow: var(--shadow-2); font-size: 23px; font-weight: 650; color: var(--ink); white-space: nowrap; }
+  .out b { color: var(--red); font-weight: 700; }
+
+  .cap { left: 90px; top: 250px; width: 900px; font-size: 76px; font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; }
+  .cap em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+
+  .end { left: 0; top: 0; width: 1080px; height: 1920px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-bottom: 160px; }
+  .end .big { font-size: 124px; font-weight: 800; letter-spacing: -0.052em; line-height: .95; width: 900px; }
+  .end .big em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .end .lock { margin-top: 80px; display: flex; align-items: center; gap: 18px; font-size: 44px; font-weight: 800; letter-spacing: -0.045em; }
+  .end .lock .logo { width: 72px; height: 72px; }
+  .end .go { margin-top: 30px; }
+  .bloom { width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(86,140,255,.30), rgba(86,140,255,0) 62%); }
+</style>
+</head>
+<body>
+<div class="canvas s-story paper">
+  <div class="ruled" id="ruled"></div>
+  <div class="world" id="world">
+    <h1 class="abs h1 head" id="head">Nice number.<br>Where's it <em>from?</em></h1>
+
+    <div class="abs panel-sky tile" id="tile">
+      <div class="lab"><span>Revenue · September</span><span class="vanity" id="van">▲ 23%</span></div>
+      <div class="val" id="val">$0</div>
+    </div>
+    <div class="abs slot" id="slot"></div>
+    <div class="abs rollclip">
+      <div class="rcpaper" id="paper">
+        <div class="hd">Receipt · how this number was made</div>
+        <div class="dash"></div>
+        <div class="ln" id="l1"><span class="k">Sources read</span><span class="v mk"><span class="mark" data-src="stripe"></span><span class="mark" data-src="whop"></span>Stripe · Whop</span></div>
+        <div class="ln" id="l2"><span class="k">Payments in</span><span class="v">1,284</span></div>
+        <div class="ln" id="l3"><span class="k">Same payment, seen twice</span><span class="v">87 → once</span></div>
+        <div class="ln" id="l4"><span class="k">Excluded</span><span class="v">6</span></div>
+        <div class="ln sub" id="l5"><span class="k">Refunds</span><span class="v">4</span></div>
+        <div class="ln sub" id="l6"><span class="k">Test payments</span><span class="v">2</span></div>
+        <div class="dash"></div>
+        <div class="ln total" id="l7"><span class="k">Revenue</span><span class="v">$48,200</span></div>
+      </div>
+    </div>
+    <div class="abs out" id="o1"><span class="dot red"></span>Refund <b>−$1,200</b></div>
+    <div class="abs out" id="o2"><span class="dot red"></span>Refund <b>−$450</b></div>
+    <div class="abs out" id="o3"><span class="dot red"></span>Test payment <b>−$1</b></div>
+
+    <div class="abs cap" id="cap">Counting them would have made it look <em>better</em> than it is.</div>
+
+    <div class="abs bloom" id="bloom" style="left:40px;top:300px"></div>
+    <div class="end" id="end">
+      <div class="big" id="endBig">Every number shows its <em>working.</em></div>
+      <div class="lock" id="lock"><span class="logo"></span>Namzilabs</div>
+      <div class="go" id="go"><span class="btn">Start free · namzilabs.co</span></div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>
+const { ease: E } = NZ;
+const tl = new NZ.Timeline({ duration: 14.2, tail: 1.6 });
+const $ = (id) => document.getElementById(id);
+
+// a till prints in ticks, not a glide: advance, pause, advance
+const ticks = (n) => (x) => {
+  const k = Math.min(n - 1, Math.floor(x * n));
+  const f = x * n - k;
+  return (k + E.out(Math.min(1, f * 1.8))) / n;
+};
+
+/* the proud number */
+tl.stagger(NZ.splitWords("#head"), { at: 0.15, dur: 0.75, ease: E.out, from: { y: 150 }, to: { y: 0 } }, 0.07);
+tl.add("#tile", { at: 0.55, dur: 1.1, ease: E.spring, from: { y: 120, scale: 0.94, opacity: 0 }, to: { y: 0, scale: 1, opacity: 1 } });
+tl.call(0.8, 1.4, NZ.counter("#val", 0, 48200, { prefix: "$" }), { ease: E.out });
+tl.add("#van", { at: 1.9, dur: 0.6, ease: E.back, from: { scale: 0.4, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+tl.add("#slot", { at: 2.4, dur: 0.5, ease: E.out, from: { sx: 0.2, opacity: 0 }, to: { sx: 1, opacity: 1 } });
+
+/* the receipt prints */
+tl.add(".rollclip", { at: 2.8, dur: 2.9, ease: ticks(9), from: { h: 0 }, to: { h: 640 } });
+// a small shudder while it prints
+tl.call(2.8, 2.9, (p, t) => { $("tile").style.translate = `0 ${p < 1 ? Math.sin(t * 60) * 0.8 : 0}px`; });
+
+/* the six that don't count leave, with their reasons */
+// rows sit at: Refunds ≈ y1180, Test payments ≈ y1216 (page coords)
+const outs = [["#o1", 560, 1150, -9], ["#o2", 600, 1222, 6], ["#o3", 580, 1294, -5]];
+outs.forEach(([id, x, y, r], i) => {
+  const at = 5.85 + i * 0.14;
+  tl.add(id, { at, dur: 0.8, ease: E.spring, from: { x: 300, y: 1190, scale: 0.5, opacity: 0, rotate: 0 }, to: { x, y, scale: 1, opacity: 1, rotate: r } });
+  tl.add(id, { at: 6.95 + i * 0.1, dur: 0.75, ease: E.in, to: { x: 1200, y: y - 80, opacity: 0, rotate: r * 3 } });
+});
+tl.add("#van", { at: 5.2, dur: 0.5, ease: E.in, to: { opacity: 0, scale: 0.6 } });
+
+/* the honest line */
+tl.add("#head", { at: 6.9, dur: 0.4, ease: E.in, to: { opacity: 0, y: -40, blur: 8 } });
+tl.stagger(NZ.splitWords("#cap"), { at: 7.3, dur: 0.75, ease: E.out, from: { y: 110 }, to: { y: 0 } }, 0.05);
+tl.add("#l7", { at: 8.0, dur: 0.18, ease: E.out, to: { scale: 1.04 } });
+tl.add("#l7", { at: 8.18, dur: 0.6, ease: E.spring, to: { scale: 1 } });
+
+/* out */
+for (const id of ["#cap", "#tile", "#slot", ".rollclip"]) tl.add(id, { at: 10.1, dur: 0.5, ease: E.in, to: { opacity: 0, blur: 10 } });
+tl.add("#bloom", { at: 10.5, dur: 2.0, ease: E.out, from: { scale: 0.4, opacity: 0 }, to: { scale: 1.1, opacity: 1 } });
+tl.stagger(NZ.splitWords("#endBig"), { at: 10.6, dur: 0.8, ease: E.out, from: { y: 150 }, to: { y: 0 } }, 0.07);
+tl.add("#lock", { at: 11.5, dur: 1.0, ease: E.spring, from: { scale: 0.8, opacity: 0, y: 20 }, to: { scale: 1, opacity: 1, y: 0 } });
+tl.add("#go", { at: 11.9, dur: 0.9, ease: E.spring, from: { scale: 0.85, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+
+tl.every((t) => {
+  $("ruled").style.transform = `translate3d(0, ${-(t * 6) % 88}px, 0)`;
+  if (t > 12.5) $("bloom").style.opacity = String(0.85 + Math.sin((t - 12.5) * 1.8) * 0.15);
+  $("world").style.transform = `scale(${1 + Math.min(t, 16) * 0.0012})`;
+});
+
+NZ.mount(tl, { width: 1080, height: 1920 });
+</script>
+</body>
+</html>

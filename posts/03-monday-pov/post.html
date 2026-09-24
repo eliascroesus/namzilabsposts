@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 03 — POV: Monday, 9:07 am</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .pov { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; color: var(--blue); }
+  .hook { font-size: 78px; font-weight: 800; letter-spacing: -0.045em; line-height: 1.0; margin-top: 16px; }
+  .hook em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .win { position: relative; border-radius: 26px; overflow: hidden; background: #fff; border: 1px solid var(--line-2); box-shadow: var(--shadow-3); }
+  .chrome { height: 116px; background: #eceef4; border-bottom: 1px solid var(--line-2); position: relative; }
+  .lights { position: absolute; left: 24px; top: 20px; display: flex; gap: 11px; }
+  .lights i { width: 16px; height: 16px; border-radius: 50%; display: block; }
+  .strip { position: absolute; left: 14px; right: 14px; top: 54px; height: 62px; display: flex; }
+  .tabx { flex: 1; min-width: 0; height: 62px; display: flex; align-items: center; justify-content: center; gap: 6px; position: relative; overflow: hidden; }
+  .tabx .mark { width: 24px; height: 24px; flex: none; }
+  .tabx::after { content: ""; position: absolute; right: 0; top: 18px; bottom: 18px; width: 1px; background: #cfd3de; }
+  .tabx.on { background: #fff; border-radius: 12px 12px 0 0; }
+  .addr { position: absolute; left: 130px; right: 24px; top: 13px; height: 30px; border-radius: 15px; background: #fff; font-size: 17px; color: var(--faint); display: flex; align-items: center; padding: 0 16px; }
+  .page { background: #f6f7fb; position: relative; }
+  .pcard { position: absolute; left: 44px; right: 44px; top: 44px; height: 250px; border-radius: 22px; background: #fff; border: 1px solid var(--line); padding: 36px 44px; }
+  .pcard .t { display: flex; align-items: center; gap: 14px; font-size: 28px; font-weight: 700; }
+  .pcard .t .mark { width: 48px; height: 48px; }
+  .pcard .v { font-size: 100px; font-weight: 800; letter-spacing: -0.055em; margin-top: 14px; }
+  .skel { position: absolute; left: 44px; height: 22px; border-radius: 11px; background: #e7e9f1; }
+  .note { position: absolute; width: 330px; padding: 30px 30px; background: #ffe57a; border-radius: 8px; transform: rotate(-5deg); box-shadow: 0 30px 50px -20px rgba(80,60,0,.45); font-family: var(--serif); font-style: italic; font-size: 48px; line-height: 1.02; color: #3b2f00; }
+  .note small { display: block; font-family: var(--sans); font-style: normal; font-size: 18px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8a6d00; margin-bottom: 12px; }
+  .clock { font-size: 26px; font-weight: 700; color: var(--red); display: inline-flex; align-items: center; gap: 10px; }
+  .kin { font-size: 64px; font-weight: 800; letter-spacing: -0.045em; line-height: 1; }
+</style>
+</head>
+<body>
+
+<template id="winT">
+  <div class="win">
+    <div class="chrome"><div class="lights"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><div class="addr">docs.google.com/spreadsheets/d/show-up-tracker-FINAL-v3</div><div class="strip" data-f="strip"></div></div>
+    <div class="page" data-f="page">
+      <div class="pcard"><div class="t"><span class="mark" data-src="gsheets"></span>show-up tracker FINAL v3</div><div class="v">#REF!</div></div>
+      <div class="skel" style="top:330px;width:60%"></div><div class="skel" style="top:374px;width:78%"></div><div class="skel" style="top:418px;width:44%"></div>
+    </div>
+  </div>
+</template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01" id="ig">
+  <div class="ruled"></div>
+  <div class="top"><span class="pov">POV</span><span class="clock"><span class="dot red"></span>Monday · 11:48 am</span></div>
+  <div class="hook">Someone asks for last week's show-up rate at <em>9:07.</em></div>
+  <div data-slot style="margin-top:44px;position:relative"></div>
+  <div class="foot" style="align-items:flex-end"><div class="kin">Copy. Paste. <span style="color:var(--blue)">Recount.</span></div><span class="brandmini"><span class="logo"></span></span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" id="xx" style="padding:64px 76px 56px;flex-direction:row;gap:56px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 520px;display:flex;flex-direction:column">
+    <span class="pov">POV</span>
+    <div class="hook" style="font-size:74px">Someone asks for last week's show-up rate at <em>9:07.</em></div>
+    <div class="clock" style="margin-top:28px"><span class="dot red"></span>It's now 11:48.</div>
+    <div class="kin" style="margin-top:auto;font-size:58px">Copy. Paste.<br><span style="color:var(--blue)">Recount.</span></div>
+  </div>
+  <div data-slot style="flex:1;position:relative"></div>
+</div>
+
+<script>
+const TABS = ["calendly","close","gsheets","stripe","instantly","aircall","gcal","typeform","whop","ganalytics","notion","klaviyo","shopify","mailchimp","pipedrive","gsheets"];
+function build(host, height, notePos) {
+  const w = document.getElementById("winT").content.firstElementChild.cloneNode(true);
+  const strip = w.querySelector('[data-f="strip"]');
+  TABS.forEach((s, i) => { const t = document.createElement("div"); t.className = "tabx" + (i === 2 ? " on" : ""); t.innerHTML = `<span class="mark" data-src="${s}"></span>`; strip.appendChild(t); });
+  w.querySelector('[data-f="page"]').style.height = `${height}px`;
+  host.appendChild(w);
+  const n = document.createElement("div"); n.className = "note"; n.innerHTML = "<small>Monday</small>what's our show-up rate??";
+  Object.assign(n.style, notePos); host.appendChild(n);
+}
+build(document.querySelector("#ig [data-slot]"), 470, { right: "-8px", bottom: "-70px" });
+build(document.querySelector("#xx [data-slot]"), 560, { right: "-10px", bottom: "-24px" });
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

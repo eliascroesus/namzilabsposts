@@ -1,0 +1,68 @@
+/* Static posts: the frame every slide shares, and the pieces posts reuse.
+   Load after brand.css. */
+
+.frame { padding: 84px 88px 76px; display: flex; flex-direction: column; }
+.frame > .top { display: flex; justify-content: space-between; align-items: center; min-height: 48px; }
+.frame > .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 28px; }
+
+.brandmini { display: inline-flex; align-items: center; gap: 14px; font-size: 30px; font-weight: 780; letter-spacing: -0.035em; }
+.brandmini .logo { width: 44px; height: 44px; }
+.sky .brandmini .logo svg rect, .ink .brandmini .logo svg rect { fill: rgba(255, 255, 255, 0.14); }
+.count { font-size: 24px; font-weight: 600; color: var(--faint); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.sky .count, .ink .count { color: rgba(214, 226, 255, 0.6); }
+.swipe { display: inline-flex; align-items: center; gap: 12px; font-size: 26px; font-weight: 650; color: var(--blue); letter-spacing: -0.015em; }
+.swipe svg { width: 30px; height: 30px; }
+.sky .swipe, .ink .swipe { color: #fff; }
+.site { font-size: 26px; font-weight: 650; letter-spacing: -0.015em; color: var(--ink-2); }
+.sky .site, .ink .site { color: #fff; }
+.demo { font-size: 20px; font-weight: 550; color: var(--faint); letter-spacing: 0.01em; }
+.sky .demo, .ink .demo { color: rgba(214, 226, 255, 0.55); }
+
+/* source card: a tool and the one number it can see */
+.srcrow { display: flex; align-items: center; gap: 26px; padding: 0 40px 0 30px; height: 158px; position: relative; }
+.srcrow .mark { width: 68px; height: 68px; }
+.srcrow .who { flex: 1; }
+.srcrow .n1 { font-size: 33px; font-weight: 700; letter-spacing: -0.025em; }
+.srcrow .n2 { font-size: 24px; font-weight: 500; color: var(--faint); margin-top: 4px; letter-spacing: -0.01em; }
+.srcrow .val { font-size: 92px; font-weight: 800; letter-spacing: -0.055em; font-variant-numeric: tabular-nums; }
+.srcrow .dot { position: absolute; right: 22px; top: 22px; }
+
+/* formula: A ÷ B, drawn with the tools that hold each side */
+.formula { display: flex; align-items: center; gap: 18px; font-size: 30px; font-weight: 650; letter-spacing: -0.02em; flex-wrap: wrap; }
+.formula .op { font-size: 44px; font-weight: 500; color: var(--faint); }
+.term { display: inline-flex; align-items: center; gap: 12px; height: 68px; padding: 0 24px 0 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-1); white-space: nowrap; }
+.term .mark { width: 38px; height: 38px; }
+
+/* big stat */
+.stat { font-size: 200px; font-weight: 800; letter-spacing: -0.06em; line-height: 0.88; font-variant-numeric: tabular-nums; }
+
+/* checklist lines */
+.lines { display: flex; flex-direction: column; gap: 26px; }
+.li { display: flex; gap: 24px; align-items: flex-start; font-size: 38px; line-height: 1.3; font-weight: 550; letter-spacing: -0.02em; }
+.li .bx { width: 52px; height: 52px; border-radius: 14px; flex: none; display: grid; place-items: center; margin-top: 2px; }
+.li .bx svg { width: 26px; height: 26px; }
+.li .bx.no { background: #fff1ee; color: var(--red); }
+.li .bx.yes { background: #e7f7ee; color: var(--green); }
+.li .bx.blue { background: var(--blue-50); color: var(--blue); }
+.li small { display: block; font-size: 29px; color: var(--muted); font-weight: 450; margin-top: 6px; letter-spacing: -0.012em; }
+.sky .li small, .ink .li small { color: rgba(226, 234, 255, 0.7); }
+
+/* receipt paper — the brand's signature object */
+.rcp {
+  position: relative; background: #fff; color: var(--ink); padding: 52px 54px 76px;
+  -webkit-mask: linear-gradient(#000 0 0) top / 100% calc(100% - 24px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 32px 24px repeat-x;
+  mask: linear-gradient(#000 0 0) top / 100% calc(100% - 24px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 32px 24px repeat-x;
+}
+.rcp-wrap { filter: drop-shadow(0 26px 40px rgba(20, 30, 80, 0.18)); }
+.rcp .hd { font-size: 22px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); text-align: center; }
+.rcp .dash { border-top: 2px dashed #d5d8e3; margin: 24px 0; }
+.rcp .ln { display: flex; justify-content: space-between; align-items: baseline; font-size: 31px; padding: 10px 0; letter-spacing: -0.012em; gap: 20px; }
+.rcp .ln .k { color: var(--muted); font-weight: 500; }
+.rcp .ln .v { font-weight: 700; font-variant-numeric: tabular-nums; display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+.rcp .ln .v .mark { width: 32px; height: 32px; }
+.rcp .ln.sub { font-size: 27px; padding: 4px 0 4px 28px; }
+.rcp .ln.sub .k, .rcp .ln.sub .v { color: var(--red); font-weight: 600; }
+.rcp .ln.total { font-size: 44px; padding-top: 12px; }
+.rcp .ln.total .k { color: var(--ink); font-weight: 750; }
+.rcp .ln.total .v { font-weight: 800; }
+.rcp .foot2 { margin-top: 18px; text-align: center; font-size: 21px; color: var(--faint); font-weight: 550; }

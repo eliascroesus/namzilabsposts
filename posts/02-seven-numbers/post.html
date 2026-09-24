@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 02 — 7 numbers none of your tools can show you</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .cover-n { font-size: 400px; font-weight: 800; letter-spacing: -0.07em; line-height: .78; color: var(--blue); margin-top: 40px; }
+  .mname { font-size: 104px; font-weight: 800; letter-spacing: -0.05em; line-height: .95; margin-top: 18px; }
+  .mname em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .fcard .term { height: 80px; font-size: 32px; padding: 0 28px 0 16px; }
+  .fcard .term .mark { width: 46px; height: 46px; }
+  .fcard { margin-top: 44px; padding: 36px 38px; display: flex; flex-direction: column; gap: 22px; }
+  .fcard .cap { font-size: 22px; font-weight: 650; color: var(--faint); letter-spacing: .04em; text-transform: uppercase; }
+  .why { font-size: 33px; line-height: 1.36; color: var(--muted); letter-spacing: -0.015em; margin-top: 36px; text-wrap: pretty; }
+  .why b { color: var(--ink); font-weight: 650; }
+  .val { margin-top: auto; padding: 44px 46px; display: flex; justify-content: space-between; align-items: center; }
+  .val .l { font-size: 27px; font-weight: 600; color: rgba(226,234,255,.86); }
+  .val .l small { display: block; font-size: 21px; color: rgba(226,234,255,.62); font-weight: 500; margin-top: 6px; }
+  .val .v { font-size: 132px; font-weight: 800; letter-spacing: -0.055em; font-variant-numeric: tabular-nums; }
+  .for { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 18px; border-radius: 999px; background: var(--blue-50); color: var(--blue); font-size: 21px; font-weight: 650; }
+  .toc { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
+  .toc div { font-size: 30px; font-weight: 650; letter-spacing: -0.02em; display: flex; gap: 14px; align-items: baseline; }
+  .toc span { font-size: 22px; color: var(--blue); font-weight: 700; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Save this</span></div>
+  <div class="cover-n">7</div>
+  <h1 class="h1" style="font-size:98px;margin-top:10px">numbers none of your tools can <em>show</em> you.</h1>
+  <p class="lead" style="margin-top:28px">Each one needs two tools that have never met.</p>
+  <div class="toc">
+    <div><span>01</span>Show rate</div><div><span>05</span>Revenue per lead</div>
+    <div><span>02</span>Speed to lead</div><div><span>06</span>Revenue per subscriber</div>
+    <div><span>03</span>Cost per held meeting</div><div><span>07</span>Revenue from your list</div>
+    <div><span>04</span>Reply-to-meeting rate</div>
+  </div>
+  <div class="foot"><span class="site">namzilabs.co</span><span class="swipe">Swipe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<template id="m">
+  <div class="canvas s-portrait paper frame">
+    <div class="ruled"></div>
+    <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count" data-f="count"></span></div>
+    <div style="margin-top:48px"><span class="for" data-f="for"></span></div>
+    <div class="mname" data-f="name"></div>
+    <div class="card fcard"><div class="cap">The formula</div><div class="formula" data-f="formula"></div></div>
+    <div class="why" data-f="why"></div>
+    <div class="panel-sky val"><div class="l">Example<small data-f="ex"></small></div><div class="v" data-f="v"></div></div>
+    <div class="foot"><span class="demo">Example data</span><span class="swipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+</template>
+
+<div class="canvas s-portrait sky frame" data-still="ig-09" id="last">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">9 / 9</span></div>
+  <h2 class="h1" style="margin-top:110px;font-size:108px">Build any of these in three <em>steps.</em></h2>
+  <div class="lines" style="margin-top:56px">
+    <div class="li"><span class="bx blue"><b>1</b></span><div>Connect the two tools<small>API key or Google sign-in. History imports behind you.</small></div></div>
+    <div class="li"><span class="bx blue"><b>2</b></span><div>Match, filter, calculate<small>Drag steps. Test on your real rows. No SQL.</small></div></div>
+    <div class="li"><span class="bx blue"><b>3</b></span><div>Publish<small>It stays live — and shows its working.</small></div></div>
+  </div>
+  <div class="foot"><span class="btn ghost" style="height:84px;font-size:29px">Start free · namzilabs.co</span><span class="lead" style="font-size:26px;text-align:right">Comment <b style="color:#fff">METRICS</b><br>for all 7 recipes</span></div>
+</div>
+
+<script>
+const T = (src, label) => `<span class="term"><span class="mark" data-src="${src}"></span>${label}</span>`;
+const OP = (o) => `<span class="op">${o}</span>`;
+const METRICS = [
+  ["For teams that book calls", "Show <em>rate</em>", T("close", "Calls held") + OP("÷") + T("calendly", "Calls booked"),
+   "Your calendar knows who <b>booked</b>. Only your CRM knows who <b>showed</b>. Match them per person, or you're dividing two different lists.", "247 held of 370 booked", "66.8%"],
+  ["For teams that book calls", "Speed to <em>lead</em>", T("aircall", "First call") + OP("−") + T("typeform", "Form sent"),
+   "Paired <b>per lead</b>, earliest form to first call. Report the median — one lead left for three days shouldn't hide ninety fast ones.", "Median, last 30 days", "8m 39s"],
+  ["For outbound agencies", "Cost per held <em>meeting</em>", T("gsheets", "Spend") + OP("÷") + T("fathom", "Meetings held"),
+   "Clients pay for meetings that <b>happened</b>. Booked is the number that makes the report look good.", "$2,851 over 33 held", "$86.40"],
+  ["For outbound teams", "Reply-to-meeting <em>rate</em>", T("calendly", "Booked") + OP("÷") + T("instantly", "Replies"),
+   "Your sequencer counts <b>replies</b>. Your calendar counts <b>meetings</b>. The rate between them is the one that tells you if your copy works.", "41 booked from 112 replies", "36.6%"],
+  ["For info & coaching", "Revenue per <em>lead</em>", T("stripe", "Cash collected") + OP("÷") + T("close", "Leads"),
+   "Tells you what a lead is actually worth — so you know what you can pay to get one.", "$259.7k over 719 leads", "$361"],
+  ["For creators", "Revenue per <em>subscriber</em>", T("whop", "Revenue") + OP("÷") + T("mailchimp", "Subscribers"),
+   "Three platforms, one list. What is each person on it worth <b>this launch</b>?", "$43.0k over 10,437", "$4.12"],
+  ["For e-commerce", "Revenue from your <em>list</em>", T("shopify", "Orders") + OP("∩") + T("klaviyo", "Subscribers"),
+   "Not attribution — <b>matching</b>. Orders from people who are on your list, refunds left out, with the working shown.", "$29.4k of $48.2k", "61%"],
+];
+const tpl = document.getElementById("m"), last = document.getElementById("last");
+METRICS.forEach(([forWho, name, formula, why, ex, v], i) => {
+  const n = tpl.content.firstElementChild.cloneNode(true);
+  n.dataset.still = `ig-0${i + 2}`;
+  const f = (k) => n.querySelector(`[data-f="${k}"]`);
+  f("count").textContent = `${i + 2} / 9`; f("for").textContent = forWho; f("name").innerHTML = name;
+  f("formula").innerHTML = formula; f("why").innerHTML = why; f("ex").textContent = ex; f("v").textContent = v;
+  document.body.insertBefore(n, last);
+});
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

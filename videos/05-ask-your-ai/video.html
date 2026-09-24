@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — Ask your AI (9:16)</title>
+<!-- HOLD: publish only once the AI-assistant connection (MCP) is switched on in production. -->
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  .abs { position: absolute; }
+  .world { position: absolute; inset: 0; }
+  .wmask { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.04em 0.14em 0; margin-bottom: -0.14em; }
+  .wi { display: inline-block; }
+  .head { left: 90px; top: 240px; width: 920px; font-size: 104px; color: #fff; }
+
+  .chat { left: 70px; top: 520px; width: 940px; height: 900px; border-radius: 40px; background: #fff; color: var(--ink); overflow: hidden; box-shadow: 0 50px 120px -30px rgba(0,0,0,.6); }
+  .ch { height: 100px; display: flex; align-items: center; justify-content: space-between; padding: 0 34px; border-bottom: 1px solid var(--line); }
+  .ch .who { display: flex; align-items: center; gap: 16px; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+  .ch .av { width: 50px; height: 50px; border-radius: 15px; background: #14141c; display: grid; place-items: center; }
+  .ch .av svg { width: 30px; height: 30px; }
+  .ch .ws { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 600; color: var(--muted); }
+  .msgs { position: absolute; left: 34px; right: 34px; top: 130px; }
+  .q { margin-left: auto; width: fit-content; max-width: 720px; background: #14141c; color: #fff; font-size: 29px; font-weight: 550; line-height: 1.3; padding: 22px 30px; border-radius: 28px 28px 8px 28px; letter-spacing: -0.015em; }
+  .caret { display: inline-block; width: 3px; height: 1em; background: #fff; vertical-align: -0.15em; margin-left: 3px; }
+  .reading { margin-top: 30px; display: flex; align-items: center; gap: 14px; font-size: 23px; font-weight: 650; color: var(--muted); }
+  .reading .mark { width: 34px; height: 34px; }
+  .rows { margin-top: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .mr { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-radius: 20px; font-size: 27px; font-weight: 600; letter-spacing: -0.015em; }
+  .mr.bad { background: #fff1ee; }
+  .mr.ok { background: #f6f7fb; }
+  .mr .l { display: flex; align-items: center; gap: 14px; }
+  .mr .r { display: flex; align-items: baseline; gap: 14px; }
+  .mr .was { font-size: 22px; color: var(--faint); font-weight: 500; }
+  .mr .now { font-size: 36px; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .ans { margin-top: 26px; font-size: 29px; line-height: 1.42; letter-spacing: -0.012em; color: var(--ink-2); }
+  .ans b { color: var(--ink); font-weight: 750; }
+  .foot { margin-top: 22px; display: inline-flex; align-items: center; gap: 12px; height: 54px; padding: 0 20px; border-radius: 999px; background: #eefbf2; color: #0b7a3b; font-size: 22px; font-weight: 650; }
+  .foot svg { width: 22px; height: 22px; }
+
+  .end { left: 0; top: 0; width: 1080px; height: 1920px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-bottom: 160px; color: #fff; }
+  .end .big { font-size: 128px; font-weight: 800; letter-spacing: -0.052em; line-height: .95; width: 900px; }
+  .end .big em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .end .fine { margin-top: 34px; font-size: 30px; font-weight: 500; color: rgba(226,234,255,.72); }
+  .end .lock { margin-top: 70px; display: flex; align-items: center; gap: 18px; font-size: 46px; font-weight: 800; letter-spacing: -0.045em; }
+  .end .lock .logo { width: 76px; height: 76px; }
+  .end .go { margin-top: 30px; }
+  .bloom { width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(120,160,255,.45), rgba(86,140,255,0) 62%); }
+</style>
+</head>
+<body>
+<div class="canvas s-story sky">
+  <div class="ruled" id="ruled"></div>
+  <div class="world" id="world">
+    <h1 class="abs h1 head" id="head">Your AI can only see what you <em>paste.</em></h1>
+
+    <div class="abs chat" id="chat">
+      <div class="ch"><div class="who"><span class="av"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg></span>Your AI assistant</div><div class="ws"><span class="dot live"></span>Namzilabs workspace</div></div>
+      <div class="msgs">
+        <div class="q" id="q"><span id="qt"></span><span class="caret" id="caret"></span></div>
+        <div class="reading" id="reading"><span class="dot live"></span>Reading 3 metrics<span class="mark" data-src="close"></span><span class="mark" data-src="calendly"></span><span class="mark" data-src="instantly"></span></div>
+        <div class="rows">
+          <div class="mr bad" id="m1"><span class="l"><span class="dot red"></span>Close rate</span><span class="r"><span class="was">was 27.4%</span><span class="now">20.0%</span></span></div>
+          <div class="mr ok" id="m2"><span class="l">Show-up rate</span><span class="r"><span class="was">unchanged</span><span class="now">69%</span></span></div>
+          <div class="mr bad" id="m3"><span class="l"><span class="dot red"></span>Speed to lead</span><span class="r"><span class="was">was 8m 39s</span><span class="now">31m 12s</span></span></div>
+        </div>
+        <div class="ans" id="ans">Show-up rate held, so it isn't the calls. Speed to lead went from <b>8m 39s</b> to <b>31m 12s</b> on Tuesday — the day two reps were out. Close rate tracks that, not lead quality.</div>
+        <div class="foot" id="foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Read-only. Every figure is a metric you published.</div>
+      </div>
+    </div>
+
+    <div class="abs bloom" id="bloom" style="left:-10px;top:260px"></div>
+    <div class="end" id="end">
+      <div class="big" id="endBig">Give it the <em>whole</em> business.</div>
+      <div class="fine" id="fine">Works with Claude, ChatGPT and any MCP client.</div>
+      <div class="lock" id="lock"><span class="logo" data-keep></span>Namzilabs</div>
+      <div class="go" id="go"><span class="btn ghost">Start free · namzilabs.co</span></div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>
+const { ease: E } = NZ;
+const tl = new NZ.Timeline({ duration: 15.2, tail: 1.6 });
+const $ = (id) => document.getElementById(id);
+// white-ring version of the mark on the blue canvas
+$("lock").querySelector(".logo").innerHTML = NZ.LOGO.replace('fill="#14141c"', 'fill="#ffffff" fill-opacity=".14"');
+
+tl.stagger(NZ.splitWords("#head"), { at: 0.15, dur: 0.75, ease: E.out, from: { y: 150 }, to: { y: 0 } }, 0.07);
+tl.add("#chat", { at: 0.7, dur: 1.1, ease: E.spring, from: { y: 240, opacity: 0, scale: 0.95 }, to: { y: 0, opacity: 1, scale: 1 } });
+
+// the question types itself
+const Q = "Why did our close rate drop last week?";
+tl.add("#q", { at: 1.5, dur: 0.5, ease: E.out, from: { opacity: 0, y: 20 }, to: { opacity: 1, y: 0 } });
+tl.call(1.7, 1.5, (p) => { $("qt").textContent = Q.slice(0, Math.round(Q.length * p)); });
+tl.call(1.7, 2.2, (p, t) => { $("caret").style.opacity = p >= 1 ? "0" : String(Math.round((t * 2.2) % 1)); });
+
+// it reads your published metrics
+tl.add("#reading", { at: 3.55, dur: 0.6, ease: E.out, from: { opacity: 0, y: 16 }, to: { opacity: 1, y: 0 } });
+tl.stagger("#reading .mark", { at: 3.7, dur: 0.6, ease: E.back, from: { scale: 0.3, opacity: 0 }, to: { scale: 1, opacity: 1 } }, 0.1);
+tl.stagger(["#m1", "#m2", "#m3"], { at: 4.3, dur: 0.9, ease: E.spring, from: { y: 40, opacity: 0, scale: 0.97 }, to: { y: 0, opacity: 1, scale: 1 } }, 0.22);
+
+// and answers, word by word
+const ans = $("ans");
+const words = NZ.splitWords(ans);
+tl.stagger(words, { at: 5.6, dur: 0.45, ease: E.out, from: { y: 36, opacity: 0 }, to: { y: 0, opacity: 1 } }, 0.075);
+tl.add("#foot", { at: 8.4, dur: 0.8, ease: E.spring, from: { y: 24, opacity: 0, scale: 0.94 }, to: { y: 0, opacity: 1, scale: 1 } });
+
+// out
+tl.add("#head", { at: 10.4, dur: 0.45, ease: E.in, to: { y: -40, opacity: 0, blur: 8 } });
+tl.add("#chat", { at: 10.45, dur: 0.55, ease: E.in, to: { y: -80, opacity: 0, blur: 12, scale: 0.97 } });
+tl.add("#bloom", { at: 10.8, dur: 2.2, ease: E.out, from: { scale: 0.4, opacity: 0 }, to: { scale: 1.1, opacity: 1 } });
+tl.stagger(NZ.splitWords("#endBig"), { at: 10.95, dur: 0.8, ease: E.out, from: { y: 150 }, to: { y: 0 } }, 0.07);
+tl.add("#fine", { at: 11.8, dur: 0.7, ease: E.out, from: { y: 20, opacity: 0 }, to: { y: 0, opacity: 1 } });
+tl.add("#lock", { at: 12.2, dur: 1.0, ease: E.spring, from: { scale: 0.8, opacity: 0, y: 20 }, to: { scale: 1, opacity: 1, y: 0 } });
+tl.add("#go", { at: 12.6, dur: 0.9, ease: E.spring, from: { scale: 0.85, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+
+tl.every((t) => {
+  $("ruled").style.transform = `translate3d(0, ${-(t * 6) % 88}px, 0)`;
+  if (t > 13.0) $("bloom").style.opacity = String(0.85 + Math.sin((t - 13.0) * 1.8) * 0.15);
+  $("world").style.transform = `scale(${1 + Math.min(t, 17) * 0.0011})`;
+});
+
+NZ.mount(tl, { width: 1080, height: 1920 });
+</script>
+</body>
+</html>
