@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 27 — Things Namzi will never say</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .qs { display: flex; flex-direction: column; gap: 20px; }
+  .qs .q { justify-self: start; }
+  .q { position: relative; align-self: flex-start; font-size: 42px; font-weight: 650; letter-spacing: -0.024em; padding: 16px 26px 18px; border-radius: 28px 28px 28px 8px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-1); }
+  .q::after { content: ""; position: absolute; left: 14px; right: 14px; top: 52%; height: 5px; border-radius: 3px; background: var(--red); transform: rotate(-2deg); }
+  .q:nth-child(2n)::after { transform: rotate(1.5deg); }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Namzi says no</span></div>
+  <h1 class="h1" style="margin-top:36px;font-size:100px">Things Namzi will never <em>say.</em></h1>
+  <div style="position:relative;flex:1;margin-top:40px">
+    <div class="qs" data-q></div>
+    <div class="namzi" data-mood="stern" data-pose="hip" style="position:absolute;right:-70px;bottom:-30px;width:450px"></div>
+  </div>
+  <div class="foot"><span class="site" style="color:var(--muted);font-weight:550">It just shows the working.</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 76px 50px">
+  <div class="ruled"></div>
+  <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+  <h1 class="h1" style="margin-top:22px;font-size:84px">Things Namzi will never <em>say.</em></h1>
+  <div style="position:relative;flex:1;margin-top:30px">
+    <div class="qs" data-q="6" data-size="38" style="display:grid;grid-template-columns:auto auto;justify-content:start;gap:20px 20px"></div>
+    <div class="namzi" data-mood="stern" data-pose="hip" style="position:absolute;right:-30px;bottom:-40px;width:400px"></div>
+  </div>
+</div>
+
+<script>
+  const Q = ["“Roughly.”", "“Trust me.”", "“It's in a spreadsheet somewhere.”", "“A test payment is still a sale.”", "“Booked, held… close enough.”", "“I tidied up your CRM for you.”"];
+  for (const el of document.querySelectorAll("[data-q]")) {
+    const n = Number(el.dataset.q) || Q.length;
+    el.innerHTML = Q.slice(0, n).map((q) => `<div class="q"${el.dataset.size ? ` style="font-size:${el.dataset.size}px"` : ""}>${q}</div>`).join("");
+  }
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+<script>NZ.hydrateMascots(); NZ.still();</script>
+</body>
+</html>

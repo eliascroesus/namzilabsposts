@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 25 — Two-sentence horror stories for founders</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .dread { color: #fff; background: radial-gradient(60% 45% at 50% 30%, rgba(240,85,61,.22), transparent 70%), radial-gradient(50% 40% at 90% 100%, rgba(47,95,216,.18), transparent 70%), #07090f; }
+  .dread::after { content: ""; position: absolute; inset: 0; z-index: 50; pointer-events: none; opacity: 0.07; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>"); }
+  .dread .count { color: rgba(255,200,190,.55); }
+  .tag2 { display: inline-flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #ff8a73; }
+  .cover-t { font-family: var(--serif); font-weight: 400; font-size: 150px; line-height: .9; letter-spacing: -0.03em; }
+  .cover-t i { font-style: italic; color: #ff8a73; }
+  .s1 { font-size: 78px; font-weight: 750; letter-spacing: -0.042em; line-height: 1.04; }
+  .s2 { font-family: var(--serif); font-style: italic; font-size: 98px; line-height: 1; letter-spacing: -0.02em; color: #ffb4a6; margin-top: 52px; }
+  .no { font-size: 200px; font-weight: 800; letter-spacing: -0.06em; line-height: .8; color: rgba(255,255,255,.08); position: absolute; right: 70px; top: 150px; }
+  .drip { position: absolute; left: 0; right: 0; top: 0; height: 40px; }
+  .fix { display: flex; align-items: center; gap: 22px; padding: 30px 34px; border-radius: 26px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); }
+  .fix .t { font-size: 30px; font-weight: 600; line-height: 1.3; letter-spacing: -0.018em; color: rgba(235,241,255,.92); }
+  .fix svg { width: 64px; height: 64px; flex: none; }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait dread frame" data-still="ig-01">
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">1 / 6</span></div>
+  <div style="margin-top:120px"><span class="tag2"><span class="dot red"></span>Read with the lights on</span></div>
+  <div class="cover-t" style="margin-top:34px;font-size:170px">Two-sentence horror stories for <i>founders.</i></div>
+  <p class="lead" style="margin-top:44px;font-size:36px;color:rgba(255,220,214,.7)">Based on true dashboards.</p>
+  <div class="foot"><span class="site" style="color:rgba(255,255,255,.7)">namzilabs.co</span><span class="swipe" style="color:#ff8a73">Swipe, if you dare <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<template id="story">
+  <div class="canvas s-portrait dread frame">
+    <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count" data-f="count"></span></div>
+    <div class="no" data-f="no"></div>
+    <div style="margin-top:auto;margin-bottom:auto">
+      <div class="s1" data-f="a"></div>
+      <div class="s2" data-f="b"></div>
+    </div>
+    <div class="foot" style="margin-top:0"><span class="tag2" style="font-size:20px"><span class="dot red"></span>True story, probably</span><span class="swipe" style="color:#ff8a73"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+</template>
+
+<div class="canvas s-portrait sky frame" data-still="ig-06">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">6 / 6</span></div>
+  <h2 class="h1" style="margin-top:90px;font-size:128px">Sleep better. Show the <em>working.</em></h2>
+  <div class="lines" style="margin-top:70px;gap:40px">
+    <div class="li"><span class="bx" style="background:rgba(255,255,255,.14);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div>Every number says what it read<small>Which tools, which records, when.</small></div></div>
+    <div class="li"><span class="bx" style="background:rgba(255,255,255,.14);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div>And what it left out, and why<small>Refunds, test payments, reschedules.</small></div></div>
+    <div class="li"><span class="bx" style="background:rgba(255,255,255,.14);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div>It updates itself<small>Nobody's formulas live in their head.</small></div></div>
+  </div>
+  <div class="foot" style="align-items:flex-end"><div><span class="btn">Start free · namzilabs.co</span><div class="small" style="margin-top:16px">Free to start. No card.</div></div></div>
+</div>
+
+<div class="canvas s-x dread frame" data-still="x-01" style="padding:70px 90px 60px">
+  <div class="top" style="display:flex;justify-content:space-between"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="tag2" style="font-size:20px"><span class="dot red"></span>Two-sentence horror</span></div>
+  <div style="margin-top:auto;margin-bottom:auto">
+    <div class="s1" style="font-size:72px;max-width:1300px">The dashboard said we were up 23%.</div>
+    <div class="s2" style="font-size:84px;margin-top:30px">Then someone checked whether it counted refunds.</div>
+  </div>
+</div>
+
+<script>
+  const ST = [
+    ["The dashboard said we were up 23%.", "Then someone checked whether it counted refunds."],
+    ["Our show rate hit 92%.", "It was counting reschedules as shows."],
+    ["We finally had one number everyone agreed on.", "Nobody knew where it came from."],
+    ["The VA quit on a Friday.", "The formulas were in her head."],
+  ];
+  const tpl = document.getElementById("story");
+  const last = document.querySelector('[data-still="ig-06"]');
+  ST.forEach(([a, b], i) => {
+    const n = tpl.content.firstElementChild.cloneNode(true);
+    n.dataset.still = `ig-0${i + 2}`;
+    n.querySelector('[data-f="count"]').textContent = `${i + 2} / 6`;
+    n.querySelector('[data-f="no"]').textContent = `0${i + 1}`;
+    n.querySelector('[data-f="a"]').textContent = a;
+    n.querySelector('[data-f="b"]').textContent = b;
+    document.body.insertBefore(n, last);
+  });
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

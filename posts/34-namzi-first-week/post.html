@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 34 — Namzi's first week on the job</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .week { display: grid; gap: 14px; }
+  .day { position: relative; border-radius: 26px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-1); overflow: hidden; display: flex; flex-direction: column; }
+  .day .d { padding: 16px 20px 0; font-size: 19px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+  .day .pic { flex: 1; display: grid; place-items: center; min-height: 0; background: radial-gradient(60% 55% at 50% 55%, var(--blue-50), transparent 70%); }
+  .day .pic .namzi { width: 96%; margin-bottom: -6%; }
+  .day .cap { padding: 0 20px 18px; font-size: 22px; font-weight: 650; letter-spacing: -0.015em; line-height: 1.22; }
+  .day .cap small { display: block; font-size: 18px; font-weight: 550; color: var(--faint); margin-top: 3px; }
+  .day.wk { background: linear-gradient(135deg, #16305e, #2b53ae); border: 0; color: #fff; }
+  .day.wk .d { color: var(--blue-200); }
+  .day.wk .cap small { color: rgba(226,234,255,.7); }
+  .day.wk .pic { background: none; }
+</style>
+</head>
+<body>
+
+<template id="week">
+  <div class="week">
+    <div class="day"><div class="d">Mon</div><div class="pic"><div class="namzi" data-mood="happy" data-pose="wave" data-shadow="false"></div></div><div class="cap">Connected 4 tools.<small>Calendly, Close, Stripe, Sheets</small></div></div>
+    <div class="day"><div class="d">Tue</div><div class="pic"><div class="namzi" data-mood="suspicious" data-pose="hold" data-prop="magnifier" data-shadow="false"></div></div><div class="cap">Found Dave. And Dave M. And dave@.<small>Counted him once.</small></div></div>
+    <div class="day"><div class="d">Wed</div><div class="pic"><div class="namzi" data-mood="stern" data-pose="hold" data-prop="redflag" data-shadow="false"></div></div><div class="cap">Threw out 18 test payments.<small>They were never sales.</small></div></div>
+    <div class="day"><div class="d">Thu</div><div class="pic"><div class="namzi" data-mood="smug" data-pose="carry" data-prop="receipt" data-shadow="false"></div></div><div class="cap">Printed the working.<small>For every single number.</small></div></div>
+    <div class="day"><div class="d">Fri</div><div class="pic"><div class="namzi" data-mood="joy" data-pose="up" data-shadow="false"></div></div><div class="cap">Show rate: 71%.<small>Booked and held, not guessed.</small></div></div>
+    <div class="day wk"><div class="d">Weekend</div><div class="pic"><div class="namzi" data-mood="sleepy" data-pose="hold" data-prop="coffee" data-dark="true" data-shadow="false"></div></div><div class="cap">Edited nothing in your tools.<small>Never does. Kept counting.</small></div></div>
+  </div>
+</template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01" style="padding-bottom:60px">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Namzi's diary</span></div>
+  <h1 class="h1" style="margin-top:28px;font-size:88px">Namzi's first week on the <em>job.</em></h1>
+  <div data-slot data-cols="3" style="margin-top:28px;flex:1;display:flex"></div>
+  <div class="foot" style="padding-top:20px"><span class="demo">Example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:50px 64px 44px">
+  <div class="ruled"></div>
+  <div style="display:flex;justify-content:space-between;align-items:baseline"><h1 class="h1" style="font-size:66px">Namzi's first week on the <em>job.</em></h1><span class="brandmini"><span class="logo"></span>Namzilabs</span></div>
+  <div data-slot data-cols="3" data-wide style="margin-top:22px;flex:1;display:flex"></div>
+</div>
+
+<script>
+  const t = document.getElementById("week");
+  for (const s of document.querySelectorAll("[data-slot]")) {
+    const n = t.content.firstElementChild.cloneNode(true);
+    const cols = Number(s.dataset.cols);
+    n.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    n.style.gridTemplateRows = cols === 3 ? "1fr 1fr" : "1fr";
+    n.style.flex = "1";
+    if (s.hasAttribute("data-wide")) {
+      // on X: panels are wide and short, so Namzi sits beside the caption
+      n.querySelectorAll(".day").forEach((d) => { d.style.flexDirection = "row"; d.style.alignItems = "center"; d.style.position = "relative"; });
+      n.querySelectorAll(".d").forEach((d) => { d.style.position = "absolute"; d.style.left = "0"; d.style.top = "0"; });
+      n.querySelectorAll(".pic").forEach((p) => { p.style.flex = "0 0 44%"; p.style.alignSelf = "stretch"; });
+      n.querySelectorAll(".cap").forEach((c) => { c.style.padding = "0 22px 0 0"; c.style.fontSize = "25px"; });
+      n.querySelectorAll(".cap small").forEach((c) => (c.style.fontSize = "20px"));
+    }
+    s.appendChild(n);
+  }
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+<script>NZ.hydrateMascots(); NZ.still();</script>
+</body>
+</html>

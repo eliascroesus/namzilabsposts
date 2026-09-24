@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 35 — How Namzilabs works (the pinned carousel)</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .electric { color: #fff; background: radial-gradient(70% 60% at 12% 0%, rgba(140,175,255,.45), transparent 60%), radial-gradient(60% 50% at 100% 100%, rgba(20,40,160,.45), transparent 60%), linear-gradient(135deg, #2451c4 0%, #2f5fd8 50%, #3d6df2 100%); }
+  .electric .count, .electric .brandmini { color: #fff; }
+  .electric .brandmini .logo svg rect { fill: rgba(255,255,255,.16); }
+  .step { display: inline-flex; align-items: center; gap: 14px; font-size: 26px; font-weight: 750; letter-spacing: -0.01em; color: var(--blue); }
+  .step b { width: 54px; height: 54px; border-radius: 16px; background: var(--blue); color: #fff; display: grid; place-items: center; font-size: 28px; font-weight: 800; }
+  .sky .step, .ink .step { color: var(--blue-200); }
+  .grid12 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .gt { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 30px 10px 24px; border-radius: 24px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-1); font-size: 20px; font-weight: 650; color: var(--ink-2); position: relative; }
+  .gt .mark { width: 76px; height: 76px; }
+  .gt .dot { position: absolute; right: 12px; top: 12px; width: 11px; height: 11px; }
+  .gt.more { background: var(--blue); color: #fff; border-color: var(--blue); justify-content: center; font-size: 34px; font-weight: 800; letter-spacing: -0.03em; }
+  .gt.more small { font-size: 18px; font-weight: 650; opacity: .85; }
+  .rec { display: inline-flex; align-items: center; gap: 16px; height: 92px; padding: 0 32px 0 16px; border-radius: 999px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-1); font-size: 34px; font-weight: 650; letter-spacing: -0.02em; }
+  .rec .mark { width: 52px; height: 52px; }
+  .onep { display: inline-flex; align-items: center; gap: 14px; height: 90px; padding: 0 34px 0 16px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 34px; font-weight: 750; box-shadow: var(--shadow-blue); }
+  .onep .av { width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,.2); display: grid; place-items: center; font-size: 26px; font-weight: 800; }
+  .bs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .bs .c { padding: 26px 28px; border-radius: 26px; }
+  .bs .c .l { font-size: 22px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+  .bs .c { padding: 32px 32px 36px; }
+  .bs .c .v { font-size: 84px; font-weight: 800; letter-spacing: -0.055em; margin-top: 12px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .bs .c.blur { background: #fff; border: 1px solid var(--line); color: var(--ink); }
+  .bs .c.blur .v { filter: blur(7px); }
+  .bs .c.sharp { color: #fff; background: linear-gradient(135deg, #16305e, #2b53ae); box-shadow: var(--shadow-blue); }
+  .fxr { display: flex; align-items: center; gap: 14px; padding: 32px 30px; border-radius: 28px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); }
+  .term { height: 74px; font-size: 27px; }
+  .ans { margin-left: auto; text-align: right; }
+  .ans b { display: block; font-size: 52px; font-weight: 800; letter-spacing: -0.05em; color: var(--blue); line-height: 1; }
+  .ans span { font-size: 19px; font-weight: 650; color: var(--muted); }
+  .mt4 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .mt4 div { padding: 30px 30px 32px; border-radius: 26px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-1); font-size: 23px; font-weight: 650; color: var(--muted); }
+  .mt4 div b { display: block; font-size: 66px; font-weight: 800; letter-spacing: -0.05em; color: var(--ink); margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .fn { display: flex; align-items: center; gap: 16px; height: 100px; padding: 0 28px 0 16px; border-radius: 24px; background: #fff; color: var(--ink); margin: 0 auto; box-shadow: 0 14px 30px -14px rgba(0,0,0,.5); }
+  .fn .mark { width: 50px; height: 50px; }
+  .fn .l { flex: 1; font-size: 30px; font-weight: 750; letter-spacing: -0.02em; }
+  .fn .v { font-size: 44px; font-weight: 800; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+  .fn.bad { box-shadow: 0 0 0 4px #f0553d, 0 14px 30px -14px rgba(0,0,0,.5); }
+  .cvb { align-self: center; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 999px; font-size: 20px; font-weight: 750; background: rgba(255,255,255,.14); color: #fff; }
+  .cvb.bad { background: #f0553d; }
+  .chat { border-radius: 32px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-3); overflow: hidden; }
+  .chat .ch { height: 96px; display: flex; align-items: center; gap: 14px; padding: 0 28px; border-bottom: 1px solid var(--line); background: #fbfbfd; font-size: 28px; font-weight: 750; }
+  .chat .ch .ic { width: 46px; height: 46px; border-radius: 14px; background: var(--ink); display: grid; place-items: center; color: #fff; }
+  .chat .ch .ic svg { width: 26px; height: 26px; }
+  .soon { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 999px; background: #fff4e0; color: #9a5b00; font-size: 19px; font-weight: 700; }
+  .u { display: flex; justify-content: flex-end; padding: 24px 24px 0; }
+  .u div { background: var(--blue); color: #fff; border-radius: 30px 30px 10px 30px; padding: 22px 30px; font-size: 34px; font-weight: 600; }
+  .a { padding: 18px 24px 26px; }
+  .a div { background: var(--paper); border: 1px solid var(--line); border-radius: 30px 30px 30px 10px; padding: 26px 30px; font-size: 32px; line-height: 1.36; }
+  .a strong { font-weight: 750; } .a .red { color: var(--red); font-weight: 750; }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait electric frame" data-still="ig-01">
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">1 / 7</span></div>
+  <h1 class="h-hero" style="margin-top:110px;font-size:150px">All your data. One <em>place.</em></h1>
+  <p class="lead" style="margin-top:34px;font-size:38px;color:rgba(235,241,255,.88)">Any metric, across every tool you use. The whole funnel. The true numbers.</p>
+  <div style="position:absolute;right:-230px;bottom:120px;width:640px;height:640px;opacity:.95" id="bigmark"></div>
+  <div class="foot"><span class="site" style="color:#fff">namzilabs.co</span><span class="swipe">How it works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<div class="canvas s-portrait paper frame" data-still="ig-02">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">2 / 7</span></div>
+  <div style="margin-top:56px"><span class="step"><b>1</b>Connect</span></div>
+  <h2 class="h1" style="margin-top:22px;font-size:96px">Every tool, in one <em>place.</em></h2>
+  <div class="grid12" style="margin-top:50px" id="g12"></div>
+  <p class="lead" style="margin-top:36px;font-size:30px">Read-only: it never edits your data. No code, no SQL, no spreadsheet.</p>
+  <div class="foot"><span class="demo">33 tools live today</span><span class="swipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<div class="canvas s-portrait paper frame" data-still="ig-03">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">3 / 7</span></div>
+  <div style="margin-top:56px"><span class="step"><b>2</b>Cross-reference</span></div>
+  <h2 class="h1" style="margin-top:22px;font-size:92px">True numbers, not <em>blurry</em> ones.</h2>
+  <div style="display:flex;flex-direction:column;gap:18px;margin-top:50px">
+    <span class="rec"><span class="mark" data-src="calendly"></span>dave@example.com</span>
+    <span class="rec" style="margin-left:120px"><span class="mark" data-src="close"></span>Dave M.</span>
+    <span class="rec" style="margin-left:40px"><span class="mark" data-src="aircall"></span>+44 7700 900123</span>
+    <span class="onep" style="margin:10px 0 0 180px"><span class="av">D</span>Dave · one person</span>
+  </div>
+  <div class="bs" style="margin-top:50px">
+    <div class="c blur"><div class="l">Each tool alone</div><div class="v">$51,9??</div></div>
+    <div class="c sharp"><div class="l">Cross-referenced</div><div class="v">$46,180</div></div>
+  </div>
+  <div class="foot"><span class="demo">Example data</span><span class="swipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<div class="canvas s-portrait paper frame" data-still="ig-04">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">4 / 7</span></div>
+  <div style="margin-top:56px"><span class="step"><b>3</b>Calculate</span></div>
+  <h2 class="h1" style="margin-top:22px;font-size:96px">Build any metric, across any <em>tools.</em></h2>
+  <div class="fxr" style="margin-top:46px"><span class="term"><span class="mark" data-src="stripe"></span>Revenue</span><span class="op">÷</span><span class="term"><span class="mark" data-src="typeform"></span>Leads</span><div class="ans"><b>$49.60</b><span>Revenue per lead</span></div></div>
+  <div class="mt4" style="margin-top:18px">
+    <div>Show rate<b>64%</b></div><div>Speed to lead<b>6 min</b></div>
+    <div>Revenue from your list<b>$29.4k</b></div><div>Cost per held meeting<b>$103</b></div>
+  </div>
+  <div class="foot"><span class="demo">Example data</span><span class="swipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<div class="canvas s-portrait sky frame" data-still="ig-05">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">5 / 7</span></div>
+  <div style="margin-top:56px"><span class="step"><b style="background:#fff;color:var(--blue)">4</b>Find the leak</span></div>
+  <h2 class="h1" style="margin-top:22px;font-size:94px">See exactly where your funnel <em>breaks.</em></h2>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:40px">
+    <div class="fn" style="width:100%"><span class="mark" data-src="typeform"></span><span class="l">Leads</span><span class="v">1,240</span></div>
+    <span class="cvb">↓ 33% book</span>
+    <div class="fn" style="width:88%"><span class="mark" data-src="calendly"></span><span class="l">Booked</span><span class="v">412</span></div>
+    <span class="cvb bad">▼ 36% no-show · fix this first</span>
+    <div class="fn bad" style="width:76%"><span class="mark" data-src="fathom"></span><span class="l">Held</span><span class="v">263</span></div>
+    <span class="cvb">↓ 27% close</span>
+    <div class="fn" style="width:64%"><span class="mark" data-src="stripe"></span><span class="l">Paid</span><span class="v">64</span></div>
+  </div>
+  <div class="foot"><span class="demo">Example data · across Typeform, Calendly, Fathom and Stripe</span><span class="swipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<div class="canvas s-portrait paper frame" data-still="ig-06">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">6 / 7</span></div>
+  <div style="margin-top:56px"><span class="step"><b>5</b>Ask</span></div>
+  <h2 class="h1" style="margin-top:22px;font-size:94px">Give your AI the whole <em>picture.</em></h2>
+  <div class="chat" style="margin-top:44px">
+    <div class="ch"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9Z"/></svg></span>Your AI assistant<span class="soon"><span class="dot" style="background:#f5a524;box-shadow:none;width:10px;height:10px"></span>Coming soon</span></div>
+    <div class="u"><div>Where's our funnel breaking?</div></div>
+    <div class="a"><div>Between <strong>booked and held</strong>: <span class="red">149 of 412</span> calls didn't happen this month, mostly ones booked 8+ days out.</div></div>
+  </div>
+  <p style="margin-top:40px;font-size:60px;font-weight:800;letter-spacing:-0.04em;color:var(--blue)">Stop building blind.</p>
+  <div class="foot"><span class="demo">Example data · AI connection coming soon</span><span class="swipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<div class="canvas s-portrait electric frame" data-still="ig-07">
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">7 / 7</span></div>
+  <h2 class="h-hero" style="margin-top:140px;font-size:146px">See your whole business, <em>clearly.</em></h2>
+  <div class="lines" style="margin-top:70px;gap:32px">
+    <div class="li" style="font-size:44px"><span class="bx" style="background:rgba(255,255,255,.16);color:#fff">1</span><div>Connect your tools</div></div>
+    <div class="li" style="font-size:44px"><span class="bx" style="background:rgba(255,255,255,.16);color:#fff">2</span><div>Build the metrics you need</div></div>
+    <div class="li" style="font-size:44px"><span class="bx" style="background:rgba(255,255,255,.16);color:#fff">3</span><div>Fix the leak</div></div>
+  </div>
+  <div class="foot" style="align-items:flex-end"><div><span class="btn" style="background:#fff;color:var(--blue)">Start free · namzilabs.co</span><div style="margin-top:16px;font-size:24px;color:rgba(235,241,255,.8)">Free to start. No card.</div></div></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:60px 76px 52px;flex-direction:row;gap:56px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 600px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h-hero" style="margin-top:50px;font-size:118px">All your data. One <em>place.</em></h1>
+    <p class="lead" style="margin-top:24px;font-size:30px">Any metric, across every tool. The whole funnel. The true numbers.</p>
+    <div class="site" style="margin-top:auto">namzilabs.co · free to start</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px" id="xsteps"></div>
+</div>
+
+<script>
+  const MARK = `<svg viewBox="0 0 64 64"><path d="M32 18.73A15 15 0 0 1 32 45.27A15 15 0 0 1 32 18.73Z" fill="#fff"/><circle cx="25" cy="32" r="15" fill="none" stroke="#fff" stroke-width="4.6"/><circle cx="39" cy="32" r="15" fill="none" stroke="#fff" stroke-width="4.6"/></svg>`;
+  document.getElementById("bigmark").innerHTML = MARK;
+  const T = [["calendly", "Calendly"], ["stripe", "Stripe"], ["shopify", "Shopify"], ["close", "Close"], ["klaviyo", "Klaviyo"], ["ganalytics", "Analytics"], ["typeform", "Typeform"], ["aircall", "Aircall"], ["whop", "Whop"], ["gsheets", "Sheets"], ["fathom", "Fathom"]];
+  document.getElementById("g12").innerHTML = T.map(([k, n]) => `<div class="gt"><span class="dot live"></span><span class="mark" data-src="${k}"></span>${n}</div>`).join("") + `<div class="gt more">+22<small>more</small></div>`;
+  const S = [["1", "Connect every tool", "33 tools, read-only, no code"], ["2", "Cross-reference", "The same person, matched across tools"], ["3", "Build any metric", "Show rate, revenue per lead, cost per held meeting…"], ["4", "Find where the funnel breaks", "Booked → held: 36% never happen"]];
+  document.getElementById("xsteps").innerHTML = S.map(([n, t, s], i) => `<div style="display:flex;gap:20px;align-items:center;padding:22px 26px;border-radius:26px;background:${i === 3 ? "linear-gradient(135deg,#16305e,#2b53ae)" : "#fff"};color:${i === 3 ? "#fff" : "var(--ink)"};border:1px solid var(--line);box-shadow:var(--shadow-2)"><span style="width:58px;height:58px;border-radius:17px;background:${i === 3 ? "#fff" : "var(--blue)"};color:${i === 3 ? "var(--blue)" : "#fff"};display:grid;place-items:center;font-size:28px;font-weight:800;flex:none">${n}</span><div><div style="font-size:32px;font-weight:750;letter-spacing:-0.02em">${t}</div><div style="font-size:22px;font-weight:550;opacity:.7;margin-top:4px">${s}</div></div></div>`).join("");
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

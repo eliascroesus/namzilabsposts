@@ -6,14 +6,20 @@ The operating plan for Namzilabs social content. It's built from four research r
 
 ## 1. Positioning, in one line
 
-> **Namzilabs: the numbers between your tools, with the working shown.**
+> **Namzilabs: all your data in one place. Build any metric across every tool, see exactly where your funnel breaks, and get the true numbers, cross-referenced, not blurry.**
 
-- **Category:** *cross-tool metrics.* Not "a dashboard", which is a crowded word, and not "BI", which scares the buyer. ([research/04 §8](research/04-icp-and-competitor-positioning.md))
-- **Promise:** the one number your tools each only see a slice of, built by matching the same person across them.
-- **Proof, and the thing nobody else leads with:** every number shows its working — sources read, records matched, what was left out, and why. Trust is this category's core problem, so this is the wedge. ([04](research/04-icp-and-competitor-positioning.md), [02](research/02-attio-mochi-premium-saas.md))
-- **Supporting, never leading:** no SQL, no warehouse, AI can read it. Competitors already ship "AI analytics", so it doesn't differentiate. ([04](research/04-icp-and-competitor-positioning.md))
+- **Category:** *your data, in one place.* Cross-tool metrics, not "a dashboard" (a crowded word) and not "BI" (which scares the buyer). ([research/04 §8](research/04-icp-and-competitor-positioning.md))
+- **Promise (lead with this):** connect every tool you use, build any metric across them, and see exactly where the funnel breaks, *across platforms*: the drop-off between the form, the calendar, the call and the payment that no single tool can show.
+- **Why it's true:** everything is cross-referenced. The same person is matched across every tool by email or phone, so numbers stop being blurry guesses from one tool's slice.
+- **Supporting, never leading:**
+  - every number can show its working (the receipts are the *proof*, not the headline)
+  - no code, no SQL, read-only
+  - soon: your AI sees all of it
+- **The short hook:** "Zapier connects your apps. Namzilabs connects your numbers."
 
-The tone is plain, specific and a little dry. The brand sells **relief backed by proof** ("get your Mondays back"), never hype. ([02 §6](research/02-attio-mochi-premium-saas.md))
+The tone is plain, specific and a little dry. The brand sells **clarity backed by proof** ("see your whole business, clearly"), never hype. ([02 §6](research/02-attio-mochi-premium-saas.md))
+
+> **Updated, round 3:** the founder's steer is that the headline is *all your data in one place → any metric → where the funnel breaks → true numbers*. Receipts stay as a content pillar and a proof point, but they're no longer the headline. The pinned video (11), the pinned carousel (35), every banner and every bio now lead with it.
 
 ---
 
@@ -34,10 +40,17 @@ Why this order: group 1 feels the cross-tool pain hardest and has no good tool f
 
 ## 3. What we say (message hierarchy)
 
-1. **Category:** cross-tool metrics.
-2. **Promise:** the real number when your tools disagree.
-3. **Proof:** every number shows its working.
-4. **Reasons to believe:** 33 tools read directly · matches the same person by email or phone · no SQL · stays live · read-only on your data · free to start, no card.
+1. **Headline:** all your data in one place.
+2. **What you can do:** build any metric across any tools, and see exactly where your funnel breaks, across platforms.
+3. **Why you can trust it:** cross-referenced (the same person matched across every tool), so the numbers are true, not blurry. Every number can show its working.
+4. **Reasons to believe:**
+   - 33 tools read directly
+   - matches the same person by email or phone
+   - no code, no SQL
+   - stays live
+   - never edits your data
+   - free to start, no card
+5. **Next (when live):** give your AI the whole picture, so you stop building blind.
 
 ### Objections, answered honestly (full table in [04 §7](research/04-icp-and-competitor-positioning.md))
 
@@ -55,9 +68,10 @@ Why this order: group 1 feels the cross-tool pain hardest and has no good tool f
 
 | Pillar | What it is | Share of posts | Examples in this repo |
 |---|---|---|---|
-| **Receipts** | A number that unfolds into its working. The brand's signature visual. | 25% | Post 08, 20, 23, video 04, 09, 10 |
-| **Recipes: "Tool A + Tool B = metric"** | One cross-tool metric: formula, why it matters, example. A series with a post for every useful source pair. | 30% | Post 02, 04, 05, 06, 07, 24 |
-| **Relatable pain** | POV, memes, bingo cards, group chats, Monday-morning chaos. Made to be sent. Namzi, the mascot, lives here. | 20% | Post 03, 13–19, 21, 22, video 03, 07, 08 |
+| **One place / the funnel** | The core message: all your data in one place, any metric, and where the funnel breaks across tools. Pinned everywhere. | 20% | Post 35 (pinned), 30, 29, 31, video 11 (pinned) |
+| **Receipts (proof)** | A number that unfolds into its working. The proof behind "true numbers", not the headline. | 10% | Post 08, 20, 23, video 04, 09, 10 |
+| **Recipes: "Tool A + Tool B = metric"** | One cross-tool metric: formula, why it matters, example. A series with a post for every useful source pair. | 25% | Post 02, 04, 05, 06, 07, 24, 26, 32 |
+| **Relatable pain** | POV, memes, bingo cards, group chats, tier lists, horror stories, Monday-morning chaos. Made to be sent. Namzi, the mascot, lives here. | 20% | Post 03, 13–19, 21, 22, 25, 27, 28, 33, 34, video 03, 07, 08 |
 | **Watch me build** | 15–30s product demos: Get data → Match → Calculate → Publish. | 15% | Video 02, video 01 |
 | **Build in public** | Founder receipts: numbers first, one honest admission, then what's next. | 10% | Post 10 |
 
@@ -152,6 +166,20 @@ One 60–90-minute recording session a week feeds all of it: 5–7 clips, 2 caro
 | 28 | "Month in receipts" | "Month in receipts" | — |
 | When live | **Post 12 + video 05** (AI connection launch) | Same | Same |
 
+### Pin these first (all platforms)
+
+| Platform | Pin | Banner (brand/banners/) | Profile picture |
+|---|---|---|---|
+| X | Video 11 (16:9), or post 35's `x-01.png` | `electric/x.png` | `brand/logos/01-between-mono/profile-blue-1024.png` |
+| Instagram | Reel: video 11 (9:16). Carousel: post 35 | Highlight covers: `highlights/blue/*` | same |
+| Facebook page | Video 11 (9:16 Reel or 16:9 post) | `electric/facebook.png` | same |
+| Facebook group | Post 35 as an album | `electric/facebook-group.png` | same |
+| LinkedIn company page | Post 35 as a PDF (`linkedin-carousel.pdf`) + video 11 (16:9) | `electric/linkedin.png` | same |
+| LinkedIn (founder) | Video 11 (16:9) in Featured | `funnel/linkedin-profile.png` | your own photo |
+| YouTube | Video 11 (16:9) as the channel trailer | `electric/youtube.png` | same |
+| Website / link previews | — | `electric/og.png` as the share image | — |
+| Email signature | — | `electric/email.png` | — |
+
 ### Days 31–60: the second batch
 
 This batch leans funnier (bingo, group chats, dictionary entries, a red-string board) and introduces **Namzi**, the mascot, for recall. Each ICP gets at least two posts. Keep Namzi to at most one post in four.
@@ -172,6 +200,27 @@ This batch leans funnier (bingo, group chats, dictionary entries, a red-string b
 | 53 | Post 16 (red flags) | Post 16 | — |
 | 56 | "Month 2 in receipts" | "Month 2 in receipts" | Best performer, recut with a new hook |
 | 58 | Namzi sticker drop: stickers in Stories, reply with them all week | Stories | — |
+
+### Days 61–90: the third batch
+
+Lead with the new headline: all your data in one place, any metric, where the funnel breaks. Posts 25–35 plus the pinned video.
+
+| Day | X | Instagram | Video |
+|---|---|---|---|
+| 61 | **Pin video 11 (16:9)** | **Pin video 11 (9:16) + post 35** | Video 11 |
+| 62 | Post 35 (how it works) | — | — |
+| 63 | Post 30 (1,269 customers you can't email) | Post 30 | — |
+| 65 | Post 28 (tier list): argue in the replies | Post 28 | — |
+| 67 | Post 26 (Monday scorecard) | Post 26 | — |
+| 69 | Post 29 (how many members) | Post 29 | — |
+| 71 | Post 25 thread (horror stories) | Post 25 carousel | — |
+| 73 | Post 31 (cost per held meeting) | Post 31 | — |
+| 75 | Post 27 (Namzi never says) | Post 27 | — |
+| 77 | Post 32 (book sooner) | Post 32 | — |
+| 79 | Post 33 (three hours later) | Post 33 | — |
+| 81 | Post 34 (Namzi's first week) | Post 34 | — |
+| 85 | "Month 3 in receipts" | Same | Best performer, recut |
+| When the AI connection is live | Swap in video 11's `-ai-live` cuts and remove the badge from post 35, slide 6 | Same | Same |
 
 The stickers in [`brand/mascot/stickers/`](brand/mascot/stickers/) are ready for Stories and replies today. Next step: animate a few of them into GIFs and upload them to a GIPHY brand channel, which is how stickers become searchable inside Instagram Stories. Every use is a small ad.
 

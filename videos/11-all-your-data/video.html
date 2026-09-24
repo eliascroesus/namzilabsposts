@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — All your data. One place. (the pinned explainer)</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  /* One file, two formats:  ?fmt=tall (1080×1920, default)  ·  ?fmt=wide (1920×1080)
+     and two cuts of the AI scene:  ?ai=soon (default, "coming soon")  ·  ?ai=live */
+  .world { position: absolute; inset: 0; }
+  .abs { position: absolute; }
+  .wmask { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.04em 0.14em 0; margin-bottom: -0.14em; }
+  .wi { display: inline-block; will-change: transform; }
+  .head { font-weight: 800; letter-spacing: -0.048em; line-height: .98; text-wrap: balance; }
+  .head em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .kicker { font-size: 34px; font-weight: 600; color: var(--muted); letter-spacing: -0.015em; margin-top: 22px; }
+  #stage { position: absolute; width: 900px; height: 900px; transform-origin: 0 0; }
+
+  /* 1 · tools */
+  .tc { position: absolute; display: flex; align-items: center; gap: 14px; height: 84px; padding: 0 24px 0 14px; border-radius: 24px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); white-space: nowrap; }
+  .tc .mark { width: 50px; height: 50px; }
+  .tc .n { font-size: 20px; font-weight: 600; color: var(--faint); letter-spacing: -0.01em; }
+  .tc .v { font-size: 31px; font-weight: 800; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; }
+  .tc .dot.live { position: absolute; right: 12px; top: 12px; width: 12px; height: 12px; }
+  .guess { left: 450px; top: 450px; font-size: 180px; font-weight: 800; letter-spacing: -0.06em; color: var(--ink); white-space: nowrap; }
+
+  /* 3 · one place */
+  .ws { left: 0; top: 0; width: 900px; height: 900px; border-radius: 40px; background: rgba(255,255,255,.7); border: 1px solid var(--line); box-shadow: var(--shadow-3); }
+  .ws .hd { position: absolute; left: 34px; right: 34px; top: 26px; display: flex; align-items: center; justify-content: space-between; font-size: 26px; font-weight: 750; letter-spacing: -0.02em; }
+  .ws .hd .logo { width: 44px; height: 44px; margin-right: 12px; }
+  .ws .hd span { display: flex; align-items: center; }
+  .ws .hd b { font-size: 22px; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 10px; }
+  .ro { left: 0; right: 0; top: 836px; text-align: center; font-size: 23px; font-weight: 650; color: var(--muted); }
+
+  /* 4 · cross-referenced */
+  .rec { display: inline-flex; align-items: center; gap: 16px; height: 88px; padding: 0 30px 0 16px; border-radius: 999px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); font-size: 33px; font-weight: 650; letter-spacing: -0.02em; white-space: nowrap; }
+  .rec .mark { width: 50px; height: 50px; }
+  .one { display: inline-flex; align-items: center; gap: 16px; height: 96px; padding: 0 36px 0 18px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 36px; font-weight: 750; letter-spacing: -0.025em; box-shadow: var(--shadow-blue); white-space: nowrap; }
+  .one .av { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,.2); display: grid; place-items: center; font-size: 28px; font-weight: 800; }
+  .truth { left: 60px; top: 430px; width: 780px; padding: 40px 46px 38px; }
+  .truth .l { display: flex; justify-content: space-between; align-items: center; font-size: 29px; font-weight: 600; color: rgba(226,234,255,.88); }
+  .truth .v { font-size: 150px; font-weight: 800; letter-spacing: -0.06em; line-height: 1; margin-top: 18px; font-variant-numeric: tabular-nums; }
+  .truth .s { font-size: 24px; color: rgba(226,234,255,.78); margin-top: 16px; }
+  .badge { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 18px; border-radius: 999px; font-size: 21px; font-weight: 700; }
+  .badge.blurry { background: rgba(255,255,255,.12); color: #fff; }
+  .badge.sharp { background: rgba(52,199,89,.22); color: #b7f5c8; }
+
+  /* 5 · any metric */
+  .calc { left: 0; top: 40px; width: 900px; padding: 30px 34px; border-radius: 32px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-3); }
+  .calc .cap { font-size: 21px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
+  .calc .row { position: relative; height: 96px; margin-top: 16px; }
+  .fx { position: absolute; left: 0; top: 0; right: 0; display: flex; align-items: center; gap: 14px; }
+  .term { display: inline-flex; align-items: center; gap: 12px; height: 84px; padding: 0 26px 0 14px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); font-size: 29px; font-weight: 650; letter-spacing: -0.02em; white-space: nowrap; }
+  .term .mark { width: 44px; height: 44px; }
+  .op { font-size: 44px; font-weight: 500; color: var(--faint); }
+  .ans { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; }
+  .ans b { font-size: 56px; font-weight: 800; letter-spacing: -0.05em; color: var(--blue); font-variant-numeric: tabular-nums; line-height: 1; }
+  .ans span { font-size: 20px; font-weight: 650; color: var(--muted); margin-top: 4px; white-space: nowrap; }
+  .mt { position: absolute; width: 435px; height: 150px; padding: 24px 28px; border-radius: 28px; }
+  .mt .l { font-size: 23px; font-weight: 650; display: flex; align-items: center; gap: 10px; }
+  .mt .l .mark { width: 30px; height: 30px; }
+  .mt .v { font-size: 64px; font-weight: 800; letter-spacing: -0.055em; margin-top: 12px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .mt.w { background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); }
+  .mt.s { color: #fff; background: linear-gradient(135deg, #16305e, #2b53ae); box-shadow: var(--shadow-blue); }
+  .mt.s .l { color: rgba(226,234,255,.86); }
+
+  /* 6 · the funnel */
+  .fn { position: absolute; left: 0; height: 118px; display: flex; align-items: center; gap: 18px; padding: 0 30px 0 18px; border-radius: 26px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); overflow: hidden; }
+  .fn .fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--blue-50); z-index: -1; }
+  .fn .mark { width: 54px; height: 54px; flex: none; }
+  .fn .l { flex: 1; font-size: 33px; font-weight: 750; letter-spacing: -0.025em; white-space: nowrap; }
+  .fn .l small { display: block; font-size: 20px; font-weight: 600; color: var(--faint); letter-spacing: -0.005em; margin-top: 2px; }
+  .fn .v { font-size: 48px; font-weight: 800; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+  .cv { position: absolute; right: 0; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 999px; background: #eef1f8; font-size: 22px; font-weight: 750; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .cv.bad { background: var(--red); color: #fff; }
+  .leak { position: absolute; left: 0; right: 0; display: flex; align-items: center; gap: 14px; padding: 22px 26px; border-radius: 26px; background: #fff1ee; border: 2px solid #f6b3a6; color: #b3321f; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+  .leak b { font-size: 44px; font-weight: 800; color: var(--red); letter-spacing: -0.045em; }
+
+  /* 7 · AI */
+  .chat { left: 0; top: 120px; width: 900px; height: 600px; border-radius: 40px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-3); overflow: hidden; }
+  .chat .ch { height: 96px; display: flex; align-items: center; gap: 16px; padding: 0 30px; border-bottom: 1px solid var(--line); background: #fbfbfd; font-size: 27px; font-weight: 750; letter-spacing: -0.02em; }
+  .chat .ch .aiic { width: 52px; height: 52px; border-radius: 16px; background: var(--ink); display: grid; place-items: center; color: #fff; }
+  .chat .ch .aiic svg { width: 30px; height: 30px; }
+  .chat .ch .st { margin-left: auto; display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 18px; border-radius: 999px; font-size: 21px; font-weight: 700; }
+  .st.soon { background: #fff4e0; color: #9a5b00; }
+  .st.live { background: #e7f7ee; color: #15803d; }
+  .msg { position: absolute; left: 30px; right: 30px; }
+  .u { display: flex; justify-content: flex-end; }
+  .u .b { max-width: 76%; background: var(--blue); color: #fff; border-radius: 34px 34px 10px 34px; padding: 20px 28px 22px; font-size: 33px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; min-height: 82px; }
+  .a .b { background: var(--paper); border: 1px solid var(--line); border-radius: 34px 34px 34px 10px; padding: 24px 30px 26px; font-size: 31px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.34; color: var(--ink); }
+  .a .b strong { font-weight: 750; }
+  .a .b .red { color: var(--red); font-weight: 750; }
+  .srcs { display: flex; align-items: center; gap: 10px; margin-top: 18px; font-size: 20px; font-weight: 650; color: var(--faint); flex-wrap: wrap; }
+  .srcs .mark { width: 34px; height: 34px; }
+  .srcs .via { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); color: var(--ink-2); }
+  .srcs .via .logo { width: 24px; height: 24px; }
+  .dots { display: inline-flex; gap: 9px; padding: 24px 28px; border-radius: 34px 34px 34px 10px; background: var(--paper); border: 1px solid var(--line); }
+  .dots i { width: 14px; height: 14px; border-radius: 50%; background: #9a9cac; display: block; }
+  .blind { font-size: 44px; font-weight: 800; letter-spacing: -0.04em; color: var(--blue); margin-top: 26px; }
+
+  /* 8 · end */
+  .end { left: 0; top: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .end .big { font-size: 130px; font-weight: 800; letter-spacing: -0.055em; line-height: .94; }
+  .end .big em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .end .sub { font-size: 38px; font-weight: 600; color: var(--muted); margin-top: 30px; letter-spacing: -0.02em; }
+  .end .lock { margin-top: 70px; display: flex; align-items: center; gap: 18px; font-size: 52px; font-weight: 800; letter-spacing: -0.045em; }
+  .end .lock .logo { width: 82px; height: 82px; }
+  .end .go { margin-top: 34px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .end .go small { font-size: 24px; font-weight: 600; color: var(--faint); }
+  .bloom { width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(86,140,255,.30), rgba(86,140,255,0) 62%); }
+  .demo { font-size: 21px; font-weight: 550; color: var(--faint); }
+</style>
+</head>
+<body>
+<div class="canvas paper" id="cv">
+  <div class="ruled" id="ruled"></div>
+  <div class="world" id="world">
+    <div class="abs bloom" id="bloom"></div>
+
+    <div class="abs" id="hbox">
+      <h1 class="abs head" id="t1a">Your business runs on 12 <em>tools.</em></h1>
+      <h1 class="abs head" id="t1b">Each one sees a <em>slice.</em></h1>
+      <h1 class="abs head" id="t2">So every number is a <em>guess.</em></h1>
+      <h1 class="abs head" id="t3">Namzilabs puts all your data in one <em>place.</em></h1>
+      <h1 class="abs head" id="t4">Cross-referenced, so the numbers are <em>true.</em></h1>
+      <h1 class="abs head" id="t5">Build any metric, across any <em>tools.</em></h1>
+      <h1 class="abs head" id="t6">See exactly where your funnel <em>breaks.</em></h1>
+      <div class="abs" id="t7w"><h1 class="head" id="t7">Give your AI the whole <em>picture.</em></h1><div class="blind" id="blind">Stop building blind.</div></div>
+    </div>
+
+    <div id="stage">
+      <!-- 1–3: the tools, then one place -->
+      <div class="abs ws" id="ws"><div class="hd"><span><span class="logo"></span>Your workspace</span><b><span class="dot live"></span><span id="nconn">0</span> tools connected</b></div></div>
+      <div id="tools"></div>
+      <div class="abs guess" id="guess" data-base="translate(-50%, -50%)">$??,???</div>
+      <div class="abs ro" id="ro">Read-only. Never edits your data. No code, no SQL.</div>
+
+      <!-- 4: cross-referenced -->
+      <span class="abs rec" id="r1" style="left:30px;top:40px"><span class="mark" data-src="calendly"></span>dave@example.com</span>
+      <span class="abs rec" id="r2" style="left:420px;top:150px"><span class="mark" data-src="close"></span>Dave M.</span>
+      <span class="abs rec" id="r3" style="left:90px;top:260px"><span class="mark" data-src="aircall"></span>+44 7700 900123</span>
+      <span class="abs one" id="one" style="left:190px;top:150px"><span class="av">D</span>Dave · one person</span>
+      <div class="abs panel-sky truth" id="truth">
+        <div class="l"><span>Revenue · this month</span><span class="badge blurry" id="bdg">3 tools, 3 answers</span></div>
+        <div class="v" id="tv">$51,900</div>
+        <div class="s" id="ts">1,284 payments · 87 seen twice, counted once</div>
+      </div>
+
+      <!-- 5: any metric -->
+      <div class="abs calc" id="calc">
+        <div class="cap">Calculate</div>
+        <div class="row">
+          <div class="fx" id="f1"><span class="term"><span class="mark" data-src="fathom"></span>Held</span><span class="op">÷</span><span class="term"><span class="mark" data-src="calendly"></span>Booked</span><span class="ans"><b>64%</b><span>Show rate</span></span></div>
+          <div class="fx" id="f2"><span class="term"><span class="mark" data-src="stripe"></span>Revenue</span><span class="op">÷</span><span class="term"><span class="mark" data-src="typeform"></span>Leads</span><span class="ans"><b>$49.60</b><span>Revenue per lead</span></span></div>
+          <div class="fx" id="f3"><span class="term"><span class="mark" data-src="shopify"></span>Orders</span><span class="op">×</span><span class="term"><span class="mark" data-src="klaviyo"></span>On your list</span><span class="ans"><b>$29.4k</b><span>Revenue from your list</span></span></div>
+        </div>
+      </div>
+      <div class="abs mt s" id="m1" style="left:0;top:330px"><div class="l">Show rate</div><div class="v">64%</div></div>
+      <div class="abs mt w" id="m2" style="left:465px;top:330px"><div class="l"><span class="mark" data-src="stripe"></span>Revenue per lead</div><div class="v">$49.60</div></div>
+      <div class="abs mt w" id="m3" style="left:0;top:510px"><div class="l"><span class="mark" data-src="aircall"></span>Speed to lead</div><div class="v">6 min</div></div>
+      <div class="abs mt w" id="m4" style="left:465px;top:510px"><div class="l"><span class="mark" data-src="klaviyo"></span>Revenue from list</div><div class="v">$29.4k</div></div>
+      <div class="abs mt w" id="m5" style="left:0;top:690px"><div class="l"><span class="mark" data-src="whop"></span>Paying members</div><div class="v">391</div></div>
+      <div class="abs mt w" id="m6" style="left:465px;top:690px"><div class="l"><span class="mark" data-src="fathom"></span>Cost per held call</div><div class="v">$103</div></div>
+
+      <!-- 6: the funnel, across tools -->
+      <div id="funnel"></div>
+      <div class="abs leak" id="leak" style="top:790px"><span class="dot red"></span><span style="flex:1">Booked → held: <b>149</b> calls never happened</span><span>Fix this first</span></div>
+
+      <!-- 7: AI -->
+      <div class="abs chat" id="chat">
+        <div class="ch"><span class="aiic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9Z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8Z"/></svg></span>Your AI assistant<span class="st soon" id="aist"><span class="dot" style="background:#f5a524;box-shadow:none"></span>AI connection · coming soon</span></div>
+        <div class="msg u" id="q" style="top:130px"><div class="b" id="qt"></div></div>
+        <div class="msg" id="think" style="top:290px"><div class="dots"><i></i><i></i><i></i></div></div>
+        <div class="msg a" id="ans" style="top:290px"><div class="b" id="at">Between <strong>booked and held</strong>. <span class="red">149 of 412</span> booked calls didn't happen this month (36%), mostly calls booked 8+ days out. Everything after that converts on par with last month.
+          <div class="srcs" id="srcs">Sources: <span class="mark" data-src="calendly"></span><span class="mark" data-src="fathom"></span><span class="mark" data-src="close"></span><span class="mark" data-src="stripe"></span><span class="via"><span class="logo"></span>via Namzilabs</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="abs demo" id="demo">Example data</div>
+
+    <div class="abs end" id="end">
+      <div class="big" id="endBig">All your data. One <em>place.</em></div>
+      <div class="sub" id="endSub">Any metric. The whole funnel. The true numbers.</div>
+      <div class="lock" id="lock"><span class="logo"></span>Namzilabs</div>
+      <div class="go" id="go"><span class="btn">Start free · namzilabs.co</span><small>Free to start. No card.</small></div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>
+const Q = new URLSearchParams(location.search);
+const WIDE = Q.get("fmt") === "wide";
+const AI_LIVE = Q.get("ai") === "live";
+const W = WIDE ? 1920 : 1080, H = WIDE ? 1080 : 1920;
+const $ = (id) => document.getElementById(id);
+const cv = $("cv");
+cv.style.width = W + "px"; cv.style.height = H + "px";
+
+/* ── layout per format ─────────────────────────────────────────────────── */
+const heads = ["t1a", "t1b", "t2", "t3", "t4", "t5", "t6", "t7w"];
+if (WIDE) {
+  heads.forEach((id) => Object.assign($(id).style, { left: "0px", top: "0px", width: "760px" }));
+  Object.assign($("hbox").style, { left: "110px", top: "330px" });
+  document.querySelectorAll(".head").forEach((h) => (h.style.fontSize = "92px"));
+  const k = 0.84;
+  Object.assign($("stage").style, { left: `${W - 900 * k - 110}px`, top: `${(H - 900 * k) / 2}px`, transform: `scale(${k})` });
+  Object.assign($("demo").style, { left: "110px", bottom: "56px" });
+  Object.assign($("bloom").style, { left: "460px", top: "40px" });
+  $("endBig").style.fontSize = "124px";
+} else {
+  heads.forEach((id) => Object.assign($(id).style, { left: "0px", top: "0px", width: "900px" }));
+  Object.assign($("hbox").style, { left: "90px", top: "250px" });
+  document.querySelectorAll(".head").forEach((h) => (h.style.fontSize = "96px"));
+  Object.assign($("stage").style, { left: "90px", top: "560px" });
+  Object.assign($("demo").style, { left: "0px", width: "1080px", textAlign: "center", top: "1486px" });
+  Object.assign($("bloom").style, { left: "40px", top: "400px" });
+}
+if (AI_LIVE) {
+  $("aist").className = "st live";
+  $("aist").innerHTML = `<span class="dot live" style="width:10px;height:10px"></span>Connected to Namzilabs`;
+}
+
+/* ── the tools (scene 1), and where they land in the workspace (scene 3) ── */
+const TOOLS = [
+  ["calendly", "Calendly", "412 booked"], ["stripe", "Stripe", "$48.2k"], ["shopify", "Shopify", "$51.9k"],
+  ["close", "Close", "38 won"], ["klaviyo", "Klaviyo", "$31.9k"], ["ganalytics", "Analytics", "22.4k visits"],
+  ["typeform", "Typeform", "1,240 leads"], ["aircall", "Aircall", "87 calls"], ["whop", "Whop", "412 members"],
+  ["gsheets", "Sheets", "#REF!"], ["fathom", "Fathom", "263 held"], ["instantly", "Instantly", "42 replies"],
+];
+const SCAT = [[30, 40], [470, 10], [250, 170], [560, 250], [10, 300], [320, 400], [610, 480], [40, 560], [360, 650], [650, 720], [60, 790], [420, 830]];
+const GRID = TOOLS.map((_, i) => [30 + (i % 3) * 285, 120 + Math.floor(i / 3) * 170]);
+$("tools").innerHTML = TOOLS.map(([k, n, v], i) => `<div class="tc" id="tc${i}"><span class="mark" data-src="${k}"></span><div><div class="n">${n}</div><div class="v">${v}</div></div><span class="dot live" id="lv${i}"></span></div>`).join("");
+
+/* ── the funnel (scene 6) ─────────────────────────────────────────────── */
+const FUN = [["typeform", "Leads", "Typeform", 1240, null], ["calendly", "Booked a call", "Calendly", 412, "33% book"], ["fathom", "Held the call", "Fathom", 263, "36% no-show"], ["close", "Won", "Close", 71, "27% close"], ["stripe", "Paid", "Stripe", 64, "90% pay"]];
+$("funnel").innerHTML = FUN.map(([k, l, t, v, c], i) => {
+  const w = [900, 820, 740, 660, 600][i];
+  return `<div class="fn" id="fn${i}" style="top:${i * 152}px;width:${w}px;left:${(900 - w) / 2}px"><span class="mark" data-src="${k}"></span><span class="l">${l}<small>${t}</small></span><span class="v" id="fv${i}">0</span></div>` +
+    (c ? `<span class="cv${i === 2 ? " bad" : ""}" id="cv${i}" style="top:${i * 152 - 40}px;right:${i === 2 ? 0 : 10}px">${i === 2 ? "▼ " : "↓ "}${c}</span>` : "");
+}).join("");
+
+/* ── timeline ─────────────────────────────────────────────────────────── */
+const { ease: E } = NZ;
+const tl = new NZ.Timeline({ duration: 44.2, tail: 1.6 });
+const words = (id, at, gap = 0.06) => tl.stagger(NZ.splitWords("#" + id), { at, dur: 0.75, ease: E.out, from: { y: 150 }, to: { y: 0 } }, gap);
+const out = (id, at) => tl.add("#" + id, { at, dur: 0.4, ease: E.in, to: { opacity: 0, y: -40, blur: 8 } });
+const hide = (sel, at, dur = 0.45) => tl.add(sel, { at, dur, ease: E.in, to: { opacity: 0, scale: 0.96, blur: 10 } });
+
+// 1 · 12 tools, 12 slices
+words("t1a", 0.15);
+TOOLS.forEach((_, i) => {
+  const [x, y] = SCAT[i];
+  tl.set("#tc" + i, 0, { x, y });
+  tl.add("#tc" + i, { at: 0.5 + i * 0.13, dur: 0.9, ease: E.spring, from: { x, y: y + 40, scale: 0.4, opacity: 0 }, to: { x, y, scale: 1, opacity: 1 } });
+  tl.set("#lv" + i, 0, { opacity: 0 });
+});
+out("t1a", 2.75);
+words("t1b", 3.0);
+out("t1b", 4.75);
+
+// 2 · every number is a guess: everything goes soft
+words("t2", 5.0);
+TOOLS.forEach((_, i) => tl.add("#tc" + i, { at: 5.0 + i * 0.03, dur: 0.8, ease: E.inOut, to: { blur: 7, opacity: 0.55 } }));
+tl.add("#guess", { at: 5.5, dur: 0.9, ease: E.spring, from: { scale: 0.6, opacity: 0, blur: 14 }, to: { scale: 1, opacity: 1, blur: 9 } });
+out("t2", 8.35);
+tl.add("#guess", { at: 8.35, dur: 0.45, ease: E.in, to: { opacity: 0, scale: 1.2 } });
+
+// 3 · one place: the tools come into focus and line up in the workspace
+words("t3", 8.7, 0.05);
+tl.add("#ws", { at: 8.75, dur: 0.9, ease: E.spring, from: { scale: 0.92, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+TOOLS.forEach((_, i) => {
+  const [x, y] = GRID[i];
+  tl.add("#tc" + i, { at: 8.9 + i * 0.05, dur: 1.0, ease: E.springSoft, to: { x, y, blur: 0, opacity: 1 } });
+  tl.add("#lv" + i, { at: 10.1 + i * 0.07, dur: 0.4, ease: E.back, from: { scale: 0, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+});
+tl.call(10.1, 1.6, NZ.counter("#nconn", 0, 33), { ease: E.out });
+tl.add("#ro", { at: 11.4, dur: 0.6, ease: E.out, from: { opacity: 0, y: 16 }, to: { opacity: 1, y: 0 } });
+out("t3", 13.7);
+hide("#ws, #tools, #ro", 13.7);
+
+// 4 · cross-referenced: three records, one person, and the number comes into focus
+words("t4", 14.05, 0.05);
+[["#r1", -500], ["#r2", 500], ["#r3", -500]].forEach(([r, dx], i) => tl.add(r, { at: 14.3 + i * 0.14, dur: 0.8, ease: E.spring, from: { x: dx, opacity: 0 }, to: { x: 0, opacity: 1 } }));
+tl.add("#r1", { at: 15.5, dur: 0.55, ease: E.inOut, to: { x: 220, y: 110, scale: 0.6, opacity: 0 } });
+tl.add("#r2", { at: 15.55, dur: 0.55, ease: E.inOut, to: { x: -180, y: 0, scale: 0.6, opacity: 0 } });
+tl.add("#r3", { at: 15.6, dur: 0.55, ease: E.inOut, to: { x: 160, y: -110, scale: 0.6, opacity: 0 } });
+tl.add("#one", { at: 15.85, dur: 0.9, ease: E.springBouncy, from: { scale: 0.3, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+tl.add("#truth", { at: 16.2, dur: 1.0, ease: E.spring, from: { y: 120, opacity: 0 }, to: { y: 0, opacity: 1 } });
+tl.add("#tv", { at: 16.2, dur: 0.01, to: { blur: 10 } });
+tl.add("#tv", { at: 17.3, dur: 1.2, ease: E.out, from: { blur: 10 }, to: { blur: 0 } });
+tl.call(17.3, 1.2, (p) => { $("tv").textContent = NZ.fmt(51900 - (51900 - 46180) * p, { prefix: "$" }); }, { ease: E.out });
+tl.call(18.2, 0.01, (p) => { const b = $("bdg"); if (p >= 1) { b.className = "badge sharp"; b.innerHTML = '<span class="dot live" style="width:10px;height:10px"></span>matched · true'; } else { b.className = "badge blurry"; b.textContent = "3 tools, 3 answers"; } });
+tl.add("#ts", { at: 18.3, dur: 0.6, ease: E.out, from: { opacity: 0, y: 10 }, to: { opacity: 1, y: 0 } });
+out("t4", 19.55);
+hide("#one, #truth", 19.55);
+
+// 5 · any metric: three formulas, then the board fills up
+words("t5", 19.9, 0.05);
+tl.add("#calc", { at: 20.1, dur: 0.9, ease: E.spring, from: { y: 80, opacity: 0 }, to: { y: 0, opacity: 1 } });
+const swap = (id, a, b) => {
+  tl.add(id, { at: a, dur: 0.5, ease: E.out, from: { y: 40, opacity: 0 }, to: { y: 0, opacity: 1 } });
+  if (b) tl.add(id, { at: b, dur: 0.35, ease: E.in, to: { y: -40, opacity: 0 } });
+};
+swap("#f1", 20.4, 21.9); swap("#f2", 22.1, 23.5); swap("#f3", 23.7, null);
+["#m1", "#m2", "#m3", "#m4", "#m5", "#m6"].forEach((m, i) => tl.add(m, { at: 21.8 + i * 0.4, dur: 0.8, ease: E.spring, from: { y: 60, scale: 0.9, opacity: 0 }, to: { y: 0, scale: 1, opacity: 1 } }));
+out("t5", 25.9);
+hide("#calc, #m1, #m2, #m3, #m4, #m5, #m6", 25.9);
+
+// 6 · the funnel, across five tools, and the leak
+words("t6", 26.25, 0.05);
+FUN.forEach((f, i) => {
+  tl.add("#fn" + i, { at: 26.5 + i * 0.22, dur: 0.8, ease: E.spring, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1 } });
+  tl.call(26.6 + i * 0.22, 1.0, NZ.counter("#fv" + i, 0, f[3]), { ease: E.out });
+  if (f[4]) tl.add("#cv" + i, { at: 27.8 + i * 0.18, dur: 0.6, ease: E.back, from: { scale: 0.4, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+});
+tl.add("#fn2", { at: 29.3, dur: 0.25, ease: E.out, to: { x: 0, bg: "#fff1ee" } });
+["#fn0", "#fn1", "#fn3", "#fn4"].forEach((f) => tl.add(f, { at: 29.3, dur: 0.5, ease: E.out, to: { opacity: 0.45 } }));
+tl.add("#cv2", { at: 29.3, dur: 0.18, ease: E.out, to: { scale: 1.2 } });
+tl.add("#cv2", { at: 29.48, dur: 0.6, ease: E.spring, to: { scale: 1 } });
+tl.add("#leak", { at: 29.9, dur: 0.9, ease: E.spring, from: { y: 60, opacity: 0 }, to: { y: 0, opacity: 1 } });
+out("t6", 33.0);
+hide("#funnel, #leak", 33.0);
+
+// 7 · AI with the whole picture
+words("t7", 33.35, 0.05);
+tl.add("#chat", { at: 33.5, dur: 0.9, ease: E.spring, from: { y: 80, opacity: 0, scale: 0.97 }, to: { y: 0, opacity: 1, scale: 1 } });
+const QTEXT = "Where's our funnel breaking this month?";
+tl.add("#q", { at: 33.9, dur: 0.5, ease: E.springBouncy, from: { scale: 0.7, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+tl.call(34.0, 1.1, (p) => { $("qt").textContent = QTEXT.slice(0, Math.round(p * QTEXT.length)); }, { key: "q" });
+tl.add("#think", { at: 35.2, dur: 0.35, ease: E.back, from: { scale: 0.4, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+tl.add("#think", { at: 35.9, dur: 0.15, ease: E.linear, to: { opacity: 0 } });
+tl.add("#ans", { at: 35.95, dur: 0.6, ease: E.out, from: { y: 24, opacity: 0 }, to: { y: 0, opacity: 1 } });
+tl.add("#at", { at: 35.95, dur: 1.4, ease: E.linear, from: { clip: [0, 0, 100, 0] }, to: { clip: [0, 0, 0, 0] } });
+tl.add("#srcs", { at: 37.4, dur: 0.6, ease: E.out, from: { opacity: 0, y: 10 }, to: { opacity: 1, y: 0 } });
+tl.add("#blind", { at: 37.9, dur: 0.7, ease: E.out, from: { opacity: 0, y: 24 }, to: { opacity: 1, y: 0 } });
+out("t7w", 39.5);
+hide("#chat", 39.5);
+tl.add("#demo", { at: 39.4, dur: 0.4, ease: E.in, to: { opacity: 0 } });
+
+// 8 · end card
+tl.add("#bloom", { at: 39.7, dur: 2.0, ease: E.out, from: { scale: 0.4, opacity: 0 }, to: { scale: 1.1, opacity: 1 } });
+tl.stagger(NZ.splitWords("#endBig"), { at: 39.8, dur: 0.8, ease: E.out, from: { y: 160 }, to: { y: 0 } }, 0.07);
+tl.add("#endSub", { at: 40.6, dur: 0.8, ease: E.out, from: { opacity: 0, y: 24 }, to: { opacity: 1, y: 0 } });
+tl.add("#lock", { at: 41.2, dur: 1.0, ease: E.spring, from: { scale: 0.8, opacity: 0, y: 20 }, to: { scale: 1, opacity: 1, y: 0 } });
+tl.add("#go", { at: 41.6, dur: 0.9, ease: E.spring, from: { scale: 0.85, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+
+// initial states for things that enter later
+for (const id of ["#ws", "#guess", "#ro", "#r1", "#r2", "#r3", "#one", "#truth", "#ts", "#calc", "#f1", "#f2", "#f3", "#m1", "#m2", "#m3", "#m4", "#m5", "#m6", "#leak", "#chat", "#q", "#think", "#ans", "#srcs", "#blind", "#endSub", "#lock", "#go"]) tl.set(id, 0, { opacity: 0 });
+FUN.forEach((_, i) => { tl.set("#fn" + i, 0, { opacity: 0 }); if (FUN[i][4]) tl.set("#cv" + i, 0, { opacity: 0 }); });
+tl.set("#demo", 0, { opacity: 1 });
+
+tl.every((t) => {
+  // the guess wobbles between the tools' answers
+  if (t > 5.4 && t < 8.9) {
+    const vals = ["$48,2??", "$51,9??", "$31,9??", "$4?,???"];
+    $("guess").textContent = vals[Math.floor(t * 2.2) % vals.length];
+    $("guess").style.translate = `${Math.sin(t * 9) * 6}px 0`;
+  }
+  // AI thinking dots
+  $("think").querySelectorAll("i").forEach((d, k) => (d.style.transform = `translateY(${Math.min(0, Math.sin(t * 12 - k * 0.9)) * 8}px)`));
+  if (t > 41.5) $("bloom").style.opacity = String(0.85 + Math.sin((t - 41.5) * 1.8) * 0.15);
+  $("ruled").style.transform = `translate3d(0, ${-(t * 6) % 88}px, 0)`;
+  $("world").style.transform = `scale(${1 + Math.min(t, 46) * 0.0006})`;
+});
+
+NZ.mount(tl, { width: W, height: H });
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — profile kits (X mock-ups)</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  /* An X profile header in dark mode, to see a banner and its avatar together. */
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .mock { width: 1200px; height: 980px; background: #000; color: #e7e9ea; font-family: var(--sans); position: relative; }
+  .mock .top { height: 96px; display: flex; align-items: center; gap: 40px; padding: 0 30px; }
+  .mock .top b { display: block; font-size: 32px; font-weight: 800; letter-spacing: -0.02em; }
+  .mock .top span { font-size: 22px; color: #71767b; }
+  .mock .arrow { font-size: 36px; }
+  .mock .banner { width: 1200px; height: 400px; display: block; }
+  .mock .avatar { position: absolute; left: 34px; top: 362px; width: 268px; height: 268px; border-radius: 50%; border: 7px solid #000; overflow: hidden; background: #000; }
+  .mock .avatar img { width: 100%; height: 100%; display: block; }
+  .mock .btn2 { position: absolute; right: 30px; top: 520px; height: 64px; padding: 0 30px; border-radius: 999px; border: 1.5px solid #536471; display: grid; place-items: center; font-size: 25px; font-weight: 700; color: #e7e9ea; }
+  .mock .info { position: absolute; left: 34px; top: 650px; right: 30px; }
+  .mock .name { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; }
+  .mock .handle { font-size: 26px; color: #71767b; margin-top: 2px; }
+  .mock .bio { font-size: 27px; line-height: 1.38; margin-top: 18px; max-width: 1080px; }
+  .mock .meta { display: flex; gap: 26px; margin-top: 16px; font-size: 25px; color: #71767b; align-items: center; }
+  .mock .meta a { color: #1d9bf0; text-decoration: none; }
+  .mock .meta svg { width: 26px; height: 26px; vertical-align: -5px; margin-right: 8px; }
+  .kitlab { position: absolute; right: 30px; top: 24px; font-size: 20px; font-weight: 650; color: #71767b; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+<script>
+  const BIO = "All your data in one place. Connect 33 tools, build any metric, and see exactly where your funnel breaks. True numbers, cross-referenced. Free to start.";
+  const KITS = [
+    ["electric", "../logos/01-between-mono/profile-blue-1024.png", "Electric · blue avatar"],
+    ["funnel", "../logos/01-between-mono/profile-ink-1024.png", "Funnel · ink avatar"],
+    ["sources", "../logos/01-between-mono/profile-ink-1024.png", "Sources · ink avatar"],
+    ["namzi", "../mascot/avatars/namzi-avatar-sky.png", "Namzi · mascot avatar"],
+    ["minimal", "../logos/01-between-mono/eclipse-profile-blue-1024.png", "Minimal · eclipse avatar"],
+  ];
+  for (const [id, av, lab] of KITS) {
+    document.write(`<div class="canvas mock" data-still="mockups/x-${id}">
+      <div class="top"><span class="arrow">←</span><div><b>Namzilabs</b><span>Posts</span></div><span class="kitlab">${lab}</span></div>
+      <img class="banner" src="${id}/x.png" alt="">
+      <div class="avatar"><img src="${av}" alt=""></div>
+      <div class="btn2">Edit profile</div>
+      <div class="info"><div class="name">Namzilabs</div><div class="handle">@namzilabs</div>
+        <div class="bio">${BIO}</div>
+        <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="#71767b" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Between your tools</span><span><svg viewBox="0 0 24 24" fill="none" stroke="#71767b" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg><a>namzilabs.co</a></span></div>
+      </div></div>`);
+  }
+</script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

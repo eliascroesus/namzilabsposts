@@ -16,6 +16,11 @@
   for (const id of ["01-between", "02-converge", "03-receipt", "04-bridge", "05-merge", "06-namzi", "07-hash", "08-wire", "09-pillars", "10-tittle"]) {
     document.write(`<div class="canvas" data-still="${id}/profile-1024"><img src="${id}/profile.svg"></div>`);
   }
+  // the primary mark, in every colourway, plus the eclipse alternate
+  for (const g of ["blue", "ink", "sky", "paper"]) {
+    document.write(`<div class="canvas" data-still="01-between-mono/profile-${g}-1024"><img src="01-between-mono/profile-${g}.svg"></div>`);
+    document.write(`<div class="canvas" data-still="01-between-mono/eclipse-profile-${g}-1024"><img src="01-between-mono/eclipse-profile-${g}.svg"></div>`);
+  }
 </script>
 <script src="../../lib/motion.js"></script>
 <script>NZ.still();</script>

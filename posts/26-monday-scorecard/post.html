@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 26 — The Monday scorecard</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .sc { border-radius: 34px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-3); overflow: hidden; }
+  .sc .hd { display: flex; justify-content: space-between; align-items: center; padding: 22px 32px; background: var(--paper-2); font-size: 21px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+  .sc .hd b { color: var(--ink); letter-spacing: -0.01em; text-transform: none; font-size: 24px; }
+  .row { display: grid; grid-template-columns: 1fr 150px 150px; align-items: center; gap: 18px; padding: 22px 32px; border-top: 1px solid var(--line); }
+  .row .m { font-size: 31px; font-weight: 700; letter-spacing: -0.022em; }
+  .row .m small { display: flex; align-items: center; gap: 8px; font-size: 20px; font-weight: 550; color: var(--faint); margin-top: 6px; letter-spacing: -0.005em; }
+  .row .m small .mark { width: 26px; height: 26px; }
+  .row .m small .f { font-variant-numeric: tabular-nums; }
+  .row svg.sp { width: 150px; height: 48px; display: block; }
+  .row .v { text-align: right; font-size: 44px; font-weight: 800; letter-spacing: -0.045em; font-variant-numeric: tabular-nums; line-height: 1; }
+  .row .v small { display: block; font-size: 19px; font-weight: 700; letter-spacing: 0; margin-top: 6px; }
+  .up { color: var(--green); } .down { color: var(--red); }
+  .sc.big .row { padding: 31px 34px; grid-template-columns: 1fr 170px 170px; }
+  .sc.big .row .m { font-size: 35px; }
+  .sc.big .row .m small { font-size: 22px; }
+  .sc.big .row .m small .mark { width: 30px; height: 30px; }
+  .sc.big .row svg.sp { width: 170px; height: 56px; }
+  .sc.big .row .v { font-size: 54px; }
+  .sc.big .row .v small { font-size: 21px; }
+</style>
+</head>
+<body>
+
+<template id="card">
+  <div class="sc">
+    <div class="hd"><span>The Monday scorecard</span><b>Week 38</b></div>
+    <div data-rows></div>
+  </div>
+</template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Save this</span></div>
+  <h1 class="h1" style="margin-top:34px;font-size:88px">5 numbers to check every <em>Monday.</em></h1>
+  <p class="lead" style="margin-top:16px;font-size:29px">For coaching and high-ticket sales teams. Each one needs two tools.</p>
+  <div data-slot data-big style="margin-top:34px"></div>
+  <div class="foot" style="padding-top:24px"><span class="demo">Example data</span><span class="site">Comment METRICS for the template</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 70px 50px;flex-direction:row;gap:50px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 520px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:44px;font-size:92px">5 numbers to check every <em>Monday.</em></h1>
+    <p class="lead" style="margin-top:22px;font-size:29px">For coaching and high-ticket sales teams.</p>
+    <div class="demo" style="margin-top:auto">Example data · namzilabs.co</div>
+  </div>
+  <div data-slot data-compact style="flex:1;align-self:center"></div>
+</div>
+
+<script>
+  const R = [
+    ["Show rate", "Held ÷ booked", ["calendly", "close"], "71%", "+4 pts", "up", [52, 58, 55, 63, 66, 67, 71]],
+    ["Close rate, on held calls", "Won ÷ held", ["close", "fathom"], "24%", "−2 pts", "down", [22, 27, 25, 29, 26, 26, 24]],
+    ["Cash collected", "Paid, minus refunds", ["stripe", "whop"], "$61.4k", "+9%", "up", [40, 44, 47, 45, 52, 56, 61]],
+    ["Speed to lead", "Median, form to first call", ["typeform", "aircall"], "6m", "−3m", "up", [20, 18, 15, 12, 11, 9, 6], true],
+    ["Refund rate, 30 days", "Refunded ÷ paid", ["stripe", "close"], "3.1%", "+0.4", "down", [2.2, 2.4, 2.1, 2.6, 2.5, 2.7, 3.1]],
+  ];
+  const spark = (arr, good) => {
+    const mn = Math.min(...arr), mx = Math.max(...arr);
+    const pts = arr.map((v, i) => `${(i / (arr.length - 1)) * 146 + 2},${44 - ((v - mn) / (mx - mn || 1)) * 38}`).join(" ");
+    const last = pts.split(" ").pop().split(",");
+    return `<svg class="sp" viewBox="0 0 150 48"><polyline points="${pts}" fill="none" stroke="${good ? "#16a34a" : "#f0553d"}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${last[0]}" cy="${last[1]}" r="5" fill="${good ? "#16a34a" : "#f0553d"}"/></svg>`;
+  };
+  const t = document.getElementById("card");
+  for (const slot of document.querySelectorAll("[data-slot]")) {
+    const n = t.content.firstElementChild.cloneNode(true);
+    n.querySelector("[data-rows]").innerHTML = R.map(([m, f, tools, v, d, dir, arr]) =>
+      `<div class="row"><div class="m">${m}<small>${tools.map((x) => `<span class="mark" data-src="${x}"></span>`).join("")}<span class="f">${f}</span></small></div>${spark(arr, dir === "up")}<div class="v">${v}<small class="${dir}">${d}</small></div></div>`).join("");
+    if (slot.hasAttribute("data-compact")) n.querySelectorAll(".row").forEach((r) => (r.style.padding = "17px 30px"));
+    if (slot.hasAttribute("data-big")) n.classList.add("big");
+    slot.appendChild(n);
+  }
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

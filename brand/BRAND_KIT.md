@@ -8,7 +8,9 @@ Everything a post or video needs so the brand reads as one brand. The source of 
 
 ## Logo
 
-**Recommended: 01 · Between.** Your tools are the circles; the number you need lives in the overlap. The blue lens is literally "the number between your tools". It also reads as matching: the same person, seen by two tools at once. It holds up as a 24px avatar, which is where social logos live.
+**Primary: 01 · Between, mono** ([board](logos/boards/01-between-mono.png)). It's the same mark with no blue lens: the two tools and their overlap in one colour, so it works on blue, ink, sky or paper and stays clear at 24px. Use `01-between-mono/profile-blue-1024.png` as the profile picture everywhere. The eclipse alternate (`eclipse-*`), with the overlap knocked out, is the boldest at tiny sizes.
+
+**The original concept: 01 · Between.** Your tools are the circles; the number you need lives in the overlap. The blue lens is literally "the number between your tools". It also reads as matching: the same person, seen by two tools at once. It holds up as a 24px avatar, which is where social logos live.
 
 | Concept | Idea | Board |
 |---|---|---|
@@ -35,7 +37,9 @@ The wordmark is outlined from Inter 800, so no file needs a font installed. Rebu
 
 **Profile pictures:** use `01-between/profile-1024.png`. It's the ink square at 1024×1024, and the mark sits comfortably inside the circle crop X and Instagram apply. For a friendlier account, such as a "Namzi" reply persona, use `06-namzi/profile-1024.png` or one of the mascot avatars in [`mascot/avatars/`](mascot/avatars/).
 
-**Don't:** recolour the lens anything but blue, add effects, put the ink tile on a busy photo, or stretch it.
+**Don't:** add a coloured lens back, add effects, put the ink tile on a busy photo, or stretch it. The mark is one colour: white on dark and blue, ink on light.
+
+**Banners:** five designs (Electric, Funnel, Sources, Namzi, Minimal), each at every platform size: X, LinkedIn company and personal, Facebook page and group, YouTube, a link-preview card and an email signature. There are also Instagram highlight covers. See [`banners/README.md`](banners/README.md).
 
 ## Mascot: Namzi
 
@@ -109,6 +113,10 @@ These come from [research/01 §4](../research/01-framer-and-base44.md) and are i
 - **Numbers count up;** they never just appear.
 - **Camera:** a slow push of about 1–2% over the whole video; the grid drifts; the end card's glow breathes.
 - **One idea per scene, 2–4s each.** Hook in the first 1.5s. End on the logo plus "Start free · namzilabs.co".
+
+## Message
+
+Lead with **all your data in one place**, then **any metric**, then **where the funnel breaks across tools**, then **true numbers, cross-referenced, not blurry**. Receipts ("every number shows its working") are the proof, not the headline. The AI line ("give your AI the whole picture") waits for the AI connection to be live, or carries "coming soon".
 
 ## Voice
 

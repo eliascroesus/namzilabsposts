@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — Instagram highlight covers</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  /* Instagram has no banner; highlight covers are its row of "banners".
+     1080×1920, with the icon inside the centre circle the app shows. */
+  body { display: flex; flex-wrap: wrap; gap: 30px; padding: 30px; }
+  .hl { width: 1080px; height: 1920px; display: grid; place-items: center; }
+  .hl .ic { width: 520px; height: 520px; display: grid; place-items: center; }
+  .hl .ic svg { width: 100%; height: 100%; overflow: visible; }
+  .hl .word { position: absolute; left: 0; right: 0; top: 1330px; text-align: center; font-size: 64px; font-weight: 800; letter-spacing: -0.04em; color: rgba(255,255,255,.9); }
+</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+<script>
+  const W = "#fff";
+  const ICONS = {
+    "start-here": `<svg viewBox="0 0 64 64"><path d="M32 18.73A15 15 0 0 1 32 45.27A15 15 0 0 1 32 18.73Z" fill="${W}"/><circle cx="25" cy="32" r="15" fill="none" stroke="${W}" stroke-width="4.2"/><circle cx="39" cy="32" r="15" fill="none" stroke="${W}" stroke-width="4.2"/></svg>`,
+    metrics: `<svg viewBox="0 0 64 64" fill="${W}"><rect x="10" y="34" width="10" height="20" rx="3"/><rect x="27" y="22" width="10" height="32" rx="3"/><rect x="44" y="10" width="10" height="44" rx="3"/></svg>`,
+    funnels: `<svg viewBox="0 0 64 64" fill="${W}"><rect x="6" y="10" width="52" height="10" rx="4"/><rect x="13" y="24" width="38" height="10" rx="4"/><rect x="20" y="38" width="24" height="10" rx="4" fill="#ff8a73"/><rect x="26" y="52" width="12" height="6" rx="3"/></svg>`,
+    tools: `<svg viewBox="0 0 64 64" fill="${W}"><rect x="8" y="8" width="20" height="20" rx="6"/><rect x="36" y="8" width="20" height="20" rx="6" opacity=".55"/><rect x="8" y="36" width="20" height="20" rx="6" opacity=".55"/><rect x="36" y="36" width="20" height="20" rx="6"/></svg>`,
+    namzi: null,
+    faq: `<svg viewBox="0 0 64 64" fill="none" stroke="${W}" stroke-width="5" stroke-linecap="round"><path d="M22 23a10 10 0 1 1 14 9c-3 1.4-4 3.4-4 6.5V41"/><circle cx="32" cy="51" r="1.2" fill="${W}"/></svg>`,
+  };
+  const LABEL = { "start-here": "Start here", metrics: "Metrics", funnels: "Funnels", tools: "33 tools", namzi: "Namzi", faq: "FAQ" };
+  const BG = { blue: "linear-gradient(135deg,#2451c4 0%,#2f5fd8 50%,#3d6df2 100%)", ink: "radial-gradient(60% 40% at 50% 45%, rgba(47,95,216,.4), transparent 70%), #07090f" };
+  for (const bg of ["blue", "ink"]) {
+    for (const k of Object.keys(ICONS)) {
+      const icon = k === "namzi" ? NZ.mascot({ mood: "happy", crop: "face" }) : ICONS[k];
+      document.write(`<div class="canvas hl" data-still="highlights/${bg}/${k}" style="background:${BG[bg]}"><div class="ic"${k === "namzi" ? ' style="width:640px;height:640px;border-radius:50%;overflow:hidden"' : ""}>${icon}</div><div class="word">${LABEL[k]}</div></div>`);
+    }
+  }
+  NZ.still();
+</script>
+</body>
+</html>

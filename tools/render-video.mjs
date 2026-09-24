@@ -7,6 +7,7 @@
 //     --ss 2       supersample: render at 2x and downscale with lanczos (default 2)
 //     --crf 16     x264 quality, lower is better (default 16)
 //     --tail 1.5   seconds of the ambient hold after the main sequence (default: the file's own)
+//     --query q    extra URL parameters for the page, e.g. "fmt=wide&ai=live"
 import { spawn } from "node:child_process";
 import { once } from "node:events";
 import path from "node:path";
@@ -16,16 +17,18 @@ import { ffmpegPath, launch, flag } from "./lib.mjs";
 const argv = process.argv.slice(2);
 const [input, output] = argv.filter((a, i) => !a.startsWith("--") && !argv[i - 1]?.startsWith("--"));
 if (!input || !output) {
-  console.error("usage: render-video.mjs <in.html> <out.mp4> [--fps 60] [--ss 2] [--crf 16] [--tail s]");
+  console.error("usage: render-video.mjs <in.html> <out.mp4> [--fps 60] [--ss 2] [--crf 16] [--tail s] [--query k=v&…]");
   process.exit(1);
 }
 const fps = Number(flag(argv, "fps", 60));
 const ss = Number(flag(argv, "ss", 2));
 const crf = String(flag(argv, "crf", 16));
+const query = flag(argv, "query", "");         // extra URL params, e.g. --query "fmt=wide&ai=live"
+const url = pathToFileURL(path.resolve(input)).href + "?capture=1" + (query ? "&" + query : "");
 
 const browser = await launch();
 const probe = await browser.newPage();
-await probe.goto(pathToFileURL(path.resolve(input)).href + "?capture=1");
+await probe.goto(url);
 await probe.evaluate(() => window.__ready);
 const meta = await probe.evaluate(() => window.__meta);
 await probe.close();
@@ -35,7 +38,7 @@ const tail = Number(flag(argv, "tail", meta.tail ?? 1.5));
 const total = Math.round((meta.duration + tail) * fps);
 
 const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: ss });
-await page.goto(pathToFileURL(path.resolve(input)).href + "?capture=1");
+await page.goto(url);
 await page.evaluate(() => window.__ready);
 
 const vf = [ss !== 1 ? `scale=${W}:${H}:flags=lanczos` : null, "format=yuv420p"].filter(Boolean).join(",");

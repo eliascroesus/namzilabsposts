@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 29 — How many members do you actually have?</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .venn { position: relative; }
+  .venn svg { display: block; overflow: visible; }
+  .vl { position: absolute; display: flex; align-items: center; gap: 12px; font-size: 25px; font-weight: 700; letter-spacing: -0.015em; white-space: nowrap; }
+  .vl .mark { width: 40px; height: 40px; }
+  .vl b { display: block; font-size: 46px; font-weight: 800; letter-spacing: -0.045em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .vl small { display: block; font-size: 19px; font-weight: 550; color: var(--faint); margin-top: 3px; }
+  .core { position: absolute; transform: translate(-50%, -50%); text-align: center; color: #fff; }
+  .core b { display: block; font-size: 76px; font-weight: 800; letter-spacing: -0.055em; line-height: .95; font-variant-numeric: tabular-nums; }
+  .core span { font-size: 18px; font-weight: 700; opacity: .95; display: block; margin-top: 2px; }
+  .gaps { display: flex; flex-direction: column; gap: 12px; }
+  .gap { display: flex; align-items: center; gap: 16px; padding: 16px 22px; border-radius: 20px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-1); font-size: 26px; font-weight: 600; letter-spacing: -0.015em; }
+  .gap b { font-size: 36px; font-weight: 800; color: var(--red); min-width: 70px; font-variant-numeric: tabular-nums; letter-spacing: -0.04em; }
+  .gap .mark { width: 34px; height: 34px; margin-left: auto; }
+</style>
+</head>
+<body>
+
+<template id="venn">
+  <div class="venn" style="width:720px;height:640px">
+    <svg width="720" height="640" viewBox="0 0 720 640">
+      <defs><clipPath id="cA"><circle cx="295" cy="270" r="165"/></clipPath><clipPath id="cB"><circle cx="425" cy="270" r="165"/></clipPath></defs>
+      <circle cx="295" cy="270" r="165" fill="#ff6243" fill-opacity=".10" stroke="#ff6243" stroke-width="3"/>
+      <circle cx="425" cy="270" r="165" fill="#635bff" fill-opacity=".10" stroke="#635bff" stroke-width="3"/>
+      <circle cx="360" cy="382" r="165" fill="#e8b800" fill-opacity=".12" stroke="#d4a600" stroke-width="3"/>
+      <g clip-path="url(#cA)"><g clip-path="url(#cB)"><circle cx="360" cy="382" r="165" fill="#2f5fd8"/></g></g>
+    </svg>
+    <div class="core" style="left:360px;top:318px"><b>391</b><span>paying members</span></div>
+    <div class="vl" style="left:0;top:0"><span class="mark" data-src="whop"></span><div><b>412</b>Whop members</div></div>
+    <div class="vl" style="right:0;top:0;text-align:right;flex-direction:row-reverse"><span class="mark" data-src="stripe"></span><div><b>398</b>Stripe subscriptions</div></div>
+    <div class="vl" style="left:50%;bottom:-20px;transform:translateX(-50%)"><span class="mark" data-src="mailchimp"></span><div><b>440</b>Tagged “member” in Mailchimp</div></div>
+  </div>
+</template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For creators</span></div>
+  <h1 class="h1" style="margin-top:28px;font-size:86px">How many members do you <em>actually</em> have?</h1>
+  <div data-slot style="margin-top:22px;display:flex;justify-content:center;height:600px"><div style="transform:scale(.92);transform-origin:50% 0"></div></div>
+  <div class="gaps" style="margin-top:30px">
+    <div class="gap"><b>21</b>in Whop with a failed payment<span class="mark" data-src="whop"></span></div>
+    <div class="gap"><b>7</b>people paying for two subscriptions<span class="mark" data-src="stripe"></span></div>
+    <div class="gap"><b>49</b>still tagged after they cancelled<span class="mark" data-src="mailchimp"></span></div>
+  </div>
+  <div class="foot" style="padding-top:22px"><span class="demo">Example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 70px 50px;flex-direction:row;gap:40px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 560px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:36px;font-size:80px">How many members do you <em>actually</em> have?</h1>
+    <div class="gaps" style="margin-top:30px">
+      <div class="gap" style="font-size:22px;padding:12px 18px"><b style="font-size:30px">21</b>failed payments in Whop</div>
+      <div class="gap" style="font-size:22px;padding:12px 18px"><b style="font-size:30px">7</b>paying for two subscriptions</div>
+      <div class="gap" style="font-size:22px;padding:12px 18px"><b style="font-size:30px">49</b>tagged after cancelling</div>
+    </div>
+    <div class="demo" style="margin-top:auto">Example data · namzilabs.co</div>
+  </div>
+  <div data-slot style="flex:1;display:flex;justify-content:center;align-items:center"><div style="transform:scale(.95)"></div></div>
+</div>
+
+<script>
+  const t = document.getElementById("venn");
+  document.querySelectorAll("[data-slot]").forEach((s, i) => {
+    const n = t.content.firstElementChild.cloneNode(true);
+    // unique clip ids per copy
+    n.innerHTML = n.innerHTML.replaceAll('id="cA"', `id="cA${i}"`).replaceAll('id="cB"', `id="cB${i}"`).replaceAll("url(#cA)", `url(#cA${i})`).replaceAll("url(#cB)", `url(#cB${i})`);
+    (s.firstElementChild || s).appendChild(n);
+  });
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 31 — It's not $71 a meeting</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .eq { display: flex; align-items: center; gap: 18px; padding: 30px 34px; border-radius: 30px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); }
+  .eq .t { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 150px; }
+  .eq .t b { font-size: 54px; font-weight: 800; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; line-height: 1; }
+  .eq .t span { display: flex; align-items: center; gap: 8px; font-size: 20px; font-weight: 650; color: var(--faint); }
+  .eq .t span .mark { width: 26px; height: 26px; }
+  .eq .op { font-size: 50px; font-weight: 500; color: var(--faint); }
+  .eq .res { margin-left: auto; font-size: 88px; font-weight: 800; letter-spacing: -0.06em; font-variant-numeric: tabular-nums; }
+  .eq.bad { opacity: .92; }
+  .eq.bad .res { color: var(--red); text-decoration: line-through; text-decoration-thickness: 6px; }
+  .eq.good { background: linear-gradient(135deg, #16305e 0%, #22438f 55%, #2b53ae 100%); border: 0; color: #fff; box-shadow: var(--shadow-blue); }
+  .eq.good .t span { color: rgba(226,234,255,.75); }
+  .eq.good .op { color: rgba(226,234,255,.6); }
+  .tagl { font-size: 22px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 12px 6px; }
+</style>
+</head>
+<body>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For agencies</span></div>
+  <h1 class="h1" style="margin-top:36px;font-size:96px">Your client isn't paying $71 a meeting. It's <em>$103.</em></h1>
+  <div style="margin-top:50px">
+    <div class="tagl" style="color:var(--red)">What the report says</div>
+    <div class="eq bad"><div class="t"><b>$3,000</b><span>retainer</span></div><span class="op">÷</span><div class="t"><b>42</b><span><span class="mark" data-src="calendly"></span>booked</span></div><span class="op">=</span><span class="res">$71</span></div>
+  </div>
+  <div style="margin-top:30px">
+    <div class="tagl" style="color:var(--blue)">What the client feels</div>
+    <div class="eq good"><div class="t"><b>$3,000</b><span>retainer</span></div><span class="op">÷</span><div class="t"><b>29</b><span><span class="mark" data-src="fathom"></span>held</span></div><span class="op">=</span><span class="res">$103</span></div>
+  </div>
+  <p class="lead" style="margin-top:40px;font-size:31px;color:var(--ink-2)">13 meetings never happened. Report the number your client will work out anyway, before they do.</p>
+  <div class="foot"><span class="demo">Example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 70px 50px;flex-direction:row;gap:50px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 560px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:40px;font-size:78px">Your client isn't paying $71 a meeting. It's <em>$103.</em></h1>
+    <div class="demo" style="margin-top:auto">Example data · namzilabs.co</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px">
+    <div><div class="tagl" style="color:var(--red)">What the report says</div><div class="eq bad"><div class="t"><b>$3,000</b><span>retainer</span></div><span class="op">÷</span><div class="t"><b>42</b><span><span class="mark" data-src="calendly"></span>booked</span></div><span class="op">=</span><span class="res">$71</span></div></div>
+    <div><div class="tagl" style="color:var(--blue)">What the client feels</div><div class="eq good"><div class="t"><b>$3,000</b><span>retainer</span></div><span class="op">÷</span><div class="t"><b>29</b><span><span class="mark" data-src="fathom"></span>held</span></div><span class="op">=</span><span class="res">$103</span></div></div>
+  </div>
+</div>
+
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

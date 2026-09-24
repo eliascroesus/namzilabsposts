@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 28 — Sources of truth, ranked</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .tiers { border-radius: 26px; overflow: hidden; background: #1a1b22; border: 1px solid #2a2c36; box-shadow: var(--shadow-3); }
+  .tier { display: flex; min-height: 126px; border-top: 3px solid #1a1b22; }
+  .tier:first-child { border-top: 0; }
+  .tier .lab { width: 118px; flex: none; display: grid; place-items: center; font-size: 54px; font-weight: 800; color: #14141c; letter-spacing: -0.04em; }
+  .tier .items { flex: 1; display: flex; flex-wrap: wrap; align-content: center; gap: 12px; padding: 14px 16px; background: #22242d; }
+  .it { display: inline-flex; align-items: center; gap: 12px; padding: 12px 18px 12px 12px; border-radius: 16px; background: #fff; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); box-shadow: 0 6px 14px -6px rgba(0,0,0,.5); }
+  .it .mark, .it .ico { width: 42px; height: 42px; flex: none; }
+  .it .ico { border-radius: 12px; display: grid; place-items: center; background: var(--paper-2); font-size: 24px; }
+  .it.win { background: var(--blue); color: #fff; font-size: 30px; padding: 16px 24px 16px 14px; }
+  .it.win .ico { background: rgba(255,255,255,.18); }
+</style>
+</head>
+<body>
+
+<template id="tl">
+  <div class="tiers">
+    <div class="tier"><div class="lab" style="background:#ff7f7f">S</div><div class="items">
+      <span class="it win"><span class="ico"><svg viewBox="0 0 64 64" width="30" height="30"><path d="M17 9h30a4 4 0 0 1 4 4v42l-4.75-4-4.75 4-4.75-4-4.75 4-4.75-4-4.75 4-4.75-4-4.75 4V13a4 4 0 0 1 4-4Z" fill="#fff"/><rect x="21" y="17" width="17" height="3.8" rx="1.9" fill="#2f5fd8"/><rect x="21" y="25" width="11" height="3.8" rx="1.9" fill="#2f5fd8"/><rect x="21" y="37" width="22" height="7" rx="3.5" fill="#2f5fd8"/></svg></span>A number with its receipt</span></div></div>
+    <div class="tier"><div class="lab" style="background:#ffbf7f">A</div><div class="items">
+      <span class="it"><span class="mark" data-src="stripe"></span>Your payment processor</span><span class="it"><span class="ico">🏦</span>The bank statement</span></div></div>
+    <div class="tier"><div class="lab" style="background:#ffdf7f">B</div><div class="items">
+      <span class="it"><span class="mark" data-src="close"></span>Your CRM (if everyone logs everything)</span></div></div>
+    <div class="tier"><div class="lab" style="background:#ffff7f">C</div><div class="items">
+      <span class="it"><span class="ico">📊</span>The dashboard someone built in 2023</span></div></div>
+    <div class="tier"><div class="lab" style="background:#bfff7f">D</div><div class="items">
+      <span class="it"><span class="mark" data-src="gsheets"></span>The sheet called FINAL_v7</span><span class="it"><span class="ico">📸</span>Screenshots in Slack</span></div></div>
+    <div class="tier"><div class="lab" style="background:#7fbfff">F</div><div class="items">
+      <span class="it"><span class="ico">🤝</span>“Trust me”</span><span class="it"><span class="ico">🤷</span>“Roughly”</span><span class="it"><span class="ico">🚀</span>The number in the pitch deck</span></div></div>
+  </div>
+</template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Fight us in the comments</span></div>
+  <h1 class="h1" style="margin-top:30px;font-size:98px">Sources of truth, <em>ranked.</em></h1>
+  <div data-slot style="margin-top:34px"></div>
+  <div class="foot"><span class="site" style="color:var(--muted);font-weight:550">What would you move?</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 70px 50px;flex-direction:row;gap:50px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 420px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:44px;font-size:94px">Sources of truth, <em>ranked.</em></h1>
+    <p class="lead" style="margin-top:22px;font-size:29px">Fight us in the replies.</p>
+    <div class="site" style="margin-top:auto">namzilabs.co</div>
+  </div>
+  <div data-slot data-compact style="flex:1;align-self:center"></div>
+</div>
+
+<script>
+  const t = document.getElementById("tl");
+  for (const s of document.querySelectorAll("[data-slot]")) {
+    const n = t.content.firstElementChild.cloneNode(true);
+    if (s.hasAttribute("data-compact")) {
+      n.querySelectorAll(".tier").forEach((r) => (r.style.minHeight = "118px"));
+      n.querySelectorAll(".it").forEach((i) => (i.style.fontSize = i.classList.contains("win") ? "27px" : "23px"));
+    }
+    s.appendChild(n);
+  }
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

@@ -140,6 +140,17 @@
   .doc .t b { display: block; font-size: 15px; letter-spacing: -0.01em; }
   .doc .t span { font-size: 13px; color: var(--muted); }
 
+  .xlink { display: flex; align-items: center; gap: 14px; margin-top: 18px; padding: 14px 18px; border-radius: 16px; background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--text); text-decoration: none; font-weight: 650; font-size: 15px; max-width: 640px; }
+  .xlink b { color: var(--accent); }
+  .xlink span { margin-left: auto; color: var(--accent); }
+  .badge.pin { background: #fff4e0; color: #9a5b00; }
+  .bgrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); }
+  .bcard { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+  .bcard button.prev { display: block; width: 100%; border: 0; padding: 0; cursor: zoom-in; background: var(--surface-2); }
+  .bcard button.prev img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; }
+  .bcard .cbody { gap: 10px; }
+  .subh { font-size: 20px; letter-spacing: -0.02em; margin: 28px 0 12px; }
+  .vcuts { display: flex; flex-wrap: wrap; gap: 6px; }
   .note { border: 1px solid var(--line); background: var(--surface); border-radius: 16px; padding: 14px 16px; font-size: 14px; color: var(--muted); }
   .note b { color: var(--text); }
   footer { padding-top: 40px; padding-bottom: 60px; color: var(--faint); font-size: 13px; }
@@ -183,8 +194,8 @@
 </style>
 
 <header class="wrap hero">
-  <div class="brandrow"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#14141c"/><circle cx="26" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.6"/><circle cx="38" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.6"/><path d="M32 20.4a13 13 0 0 1 0 23.2a13 13 0 0 1 0-23.2Z" fill="#568cff"/></svg>Namzilabs <span class="kit">Content kit</span></div>
-  <h1>Everything, ready to <em>post.</em></h1>
+  <div class="brandrow"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#14141c"/><path d="M32 20.4a13 13 0 0 1 0 23.2a13 13 0 0 1 0-23.2Z" fill="#fff"/><circle cx="26" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.6"/><circle cx="38" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.6"/></svg>Namzilabs <span class="kit">Content kit</span></div>
+  <h1 id="h1">Everything, ready to <em>post.</em></h1>
   <p class="sub" id="sub"></p>
   <div class="cta">
     <button class="btn primary" data-zip="all"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Download everything</button>
@@ -193,10 +204,11 @@
   </div>
   <div class="stats" id="stats"></div>
   <p class="faint" id="dlnote" style="margin:14px 0 0">Every download asks you to confirm the save.</p>
+  <a class="xlink hidden" id="xlink" target="_blank" rel="noopener"></a>
 </header>
 
 <nav class="tabs"><div class="wrap" id="tabs">
-  <a href="#posts">Posts</a><a href="#videos">Videos</a><a href="#logos">Logos</a><a href="#mascot">Namzi</a><a href="#docs">Docs</a>
+  <a href="#posts">Posts</a><a href="#videos">Videos</a><a href="#logos">Logos</a><a href="#banners">Banners</a><a href="#mascot">Namzi</a><a href="#docs">Docs</a>
 </div></nav>
 
 <main class="wrap">
@@ -215,10 +227,18 @@
   </section>
 
   <section id="logos">
-    <div class="shead"><div><h2>Logos</h2><p>Ten concepts. <b>01 Between</b> is the recommended mark; <b>06 Namzi</b> is its social twin. Each comes as SVG (colour, white, ink, app icons, lockups) plus a 1024px profile picture.</p></div>
+    <div class="shead"><div><h2>Logos</h2><p><b>01 Between, mono</b> is the primary mark: the two tools and their overlap in one colour, with no blue lens. Profile pictures come in four colourways plus the eclipse alternate. The other ten concepts are below, each as SVGs and a 1024px profile picture.</p></div>
       <button class="btn" data-zip="logos">Download all logos</button></div>
     <div class="boards" id="lboards"></div>
     <div class="lgrid" id="lgrid"></div>
+  </section>
+
+  <section id="banners">
+    <div class="shead"><div><h2>Banners</h2><p>Five designs, each at every size: X, LinkedIn (company and profile), Facebook (page and group), YouTube, the link-preview card and an email signature. Plus Instagram highlight covers.</p></div>
+      <button class="btn" data-zip="banners">Download all banners</button></div>
+    <div class="bgrid" id="bgrid"></div>
+    <h3 class="subh">Instagram highlight covers</h3>
+    <div class="sgrid" id="hgrid"></div>
   </section>
 
   <section id="mascot">
@@ -357,17 +377,19 @@
   }
 
   /* ── file sets for ZIPs ─────────────────────────────────────────────── */
-  const postFiles = (p, prefix = `${p.dir}/`) => [...p.images.map((im) => ({ ...im, zipPath: prefix + im.name })), { text: p.md, type: "text/markdown", zipPath: prefix + "captions.md" }];
-  const logoFiles = (l, prefix = `${l.id}/`) => [...l.svgs.map((s) => ({ text: s.text, type: "image/svg+xml", zipPath: prefix + s.name })), ...(l.profile ? [{ ...l.profile, zipPath: prefix + "profile-1024.png" }] : []), ...(l.board ? [{ ...l.board, zipPath: prefix + "board.png" }] : [])];
+  const postFiles = (p, prefix = `${p.dir}/`) => [...p.images.map((im) => ({ ...im, zipPath: prefix + im.name })), ...(p.pdf ? [{ ...p.pdf, zipPath: prefix + p.pdf.name }] : []), { text: p.md, type: "text/markdown", zipPath: prefix + "captions.md" }];
+  const logoFiles = (l, prefix = `${l.id}/`) => [...l.svgs.map((s) => ({ text: s.text, type: "image/svg+xml", zipPath: prefix + s.name })), ...l.pngs.map((p) => ({ ...p, zipPath: prefix + p.name })), ...(l.board ? [{ ...l.board, zipPath: prefix + "board.png" }] : [])];
   const sets = {
     posts: () => M.posts.flatMap((p) => postFiles(p, `posts/${p.dir}/`)),
-    videos: () => [...M.videos.flatMap((v) => [{ ...v.file, zipPath: `videos/${v.dir}/${v.file.name}` }, { ...v.poster, zipPath: `videos/${v.dir}/poster.jpg` }]), { text: M.videoReadme, type: "text/markdown", zipPath: "videos/README.md" }],
+    videos: () => M.videos.length ? [...M.videos.flatMap((v) => [...v.files.map((f) => ({ ...f, zipPath: `videos/${v.dir}/${f.name}` })), { ...v.poster, zipPath: `videos/${v.dir}/poster.jpg` }]), { text: M.videoReadme, type: "text/markdown", zipPath: "videos/README.md" }] : [],
     logos: () => [...M.logos.concepts.flatMap((l) => logoFiles(l, `logos/${l.id}/`)), ...M.logos.overviews.map((b) => ({ ...b, zipPath: `logos/${b.name}` })), ...M.logos.wordmarks.map((w) => ({ text: w.text, type: "image/svg+xml", zipPath: `logos/${w.name}` }))],
+    banners: () => M.banners ? [...M.banners.concepts.flatMap((c) => [...c.files.map((f) => ({ ...f, zipPath: `banners/${c.id}/${f.name}` })), ...(c.mockup ? [{ ...c.mockup, zipPath: `banners/mockups/${c.mockup.name}` }] : [])]), ...M.banners.highlights.map((h) => ({ ...h, zipPath: `banners/instagram-highlights/${h.name}` })), { text: M.banners.readme, type: "text/markdown", zipPath: "banners/README.md" }] : [],
     mascot: () => [...M.mascot.stickers.flatMap((s) => [{ ...s.png, zipPath: `namzi/stickers/${s.png.name}` }, { text: s.svg, type: "image/svg+xml", zipPath: `namzi/stickers/${s.png.name.replace(".png", ".svg")}` }]), ...M.mascot.avatars.map((a) => ({ ...a, zipPath: `namzi/avatars/${a.name}` })), ...M.mascot.boards.map((b) => ({ ...b, zipPath: `namzi/${b.name}` }))],
     docs: () => M.docs.map((d) => ({ ...d, zipPath: `docs/${d.name}` })),
   };
-  sets.all = () => ["posts", "videos", "logos", "mascot", "docs"].flatMap((k) => sets[k]().map((f) => ({ ...f, zipPath: `namzilabs-content/${f.zipPath}` })));
-  const zipNames = { all: "namzilabs-content.zip", posts: "namzilabs-posts.zip", videos: "namzilabs-videos.zip", logos: "namzilabs-logos.zip", mascot: "namzi-mascot.zip", docs: "namzilabs-docs.zip" };
+  const root = M.kit === "brand" ? "namzilabs-brand" : "namzilabs-content";
+  sets.all = () => ["posts", "videos", "logos", "banners", "mascot", "docs"].flatMap((k) => sets[k]().map((f) => ({ ...f, zipPath: `${root}/${f.zipPath}` })));
+  const zipNames = { all: `${root}.zip`, posts: "namzilabs-posts.zip", videos: "namzilabs-videos.zip", logos: "namzilabs-logos.zip", banners: "namzilabs-banners.zip", mascot: "namzi-mascot.zip", docs: "namzilabs-docs.zip" };
   const bytes = (fs) => fs.reduce((n, f) => n + (f.size || (f.text ? f.text.length : 0)), 0);
   document.querySelectorAll("[data-zip]").forEach((b) => {
     const k = b.dataset.zip;
@@ -375,12 +397,32 @@
     if (k !== "all") b.insertAdjacentHTML("beforeend", ` <span class="faint">${mb(bytes(sets[k]()))}</span>`);
   });
 
+  /* ── which kit is this? hide what it doesn't carry ──────────────────── */
+  const has = { posts: M.posts.length > 0, videos: M.videos.length > 0, logos: M.logos.concepts.length > 0, banners: !!(M.banners && M.banners.concepts.length), mascot: M.mascot.stickers.length > 0, docs: M.docs.length > 0 };
+  for (const [k, v] of Object.entries(has)) if (!v) { document.getElementById(k).classList.add("hidden"); const a = document.querySelector(`#tabs a[href="#${k}"]`); if (a) a.classList.add("hidden"); }
+  if (M.kit === "brand") {
+    $("#h1").innerHTML = "The brand, ready to <em>use.</em>";
+    document.title = "Namzilabs Brand Kit";
+    document.querySelector(".kit").textContent = "Brand kit";
+  } else if (M.kit === "content") {
+    document.querySelector(".kit").textContent = "Content kit";
+  }
+  const other = M.kit === "content" ? M.kits.brand : M.kit === "brand" ? M.kits.content : null;
+  if (other && other.url) {
+    const x = $("#xlink");
+    x.href = other.url; x.classList.remove("hidden");
+    x.innerHTML = M.kit === "content" ? `Logos, banners and Namzi are in the <b>Brand Kit</b><span>Open ↗</span>` : `Posts and videos are in the <b>Content Kit</b><span>Open ↗</span>`;
+  }
+
   /* ── header ─────────────────────────────────────────────────────────── */
   const nSlides = M.posts.reduce((n, p) => n + p.images.length, 0);
-  $("#sub").textContent = `${M.posts.length} posts (${nSlides} images), ${M.videos.length} videos, ${M.logos.concepts.length} logo concepts and Namzi the mascot. Preview anything, copy the captions, and download single files or whole sets.`;
+  $("#sub").textContent = M.kit === "brand"
+    ? `The fixed primary logo, ${M.logos.concepts.length - 1} more logo concepts, ${M.banners ? M.banners.concepts.length : 0} banner designs at every platform size, and Namzi the mascot. Preview anything and download single files or whole sets.`
+    : `${M.posts.length} posts (${nSlides} images) and ${M.videos.length} videos, including the pinned explainer. Preview anything, copy the captions, and download single files or whole sets.${M.kit === "content" ? " Images are visually lossless JPGs; PNG masters are in the repo." : ""}`;
   $("#allsize").textContent = `ZIP · ${mb(bytes(sets.all()))}`;
   $("#repo").href = M.repo.url;
-  $("#stats").innerHTML = [["Posts", M.posts.length], ["Images", nSlides], ["Videos", M.videos.length], ["Logo concepts", M.logos.concepts.length], ["Stickers", M.mascot.stickers.length]].map(([k, v]) => `<span class="stat"><b>${v}</b> ${k}</span>`).join("");
+  const nBanners = M.banners ? M.banners.concepts.reduce((n, c) => n + c.files.length, 0) : 0;
+  $("#stats").innerHTML = [["Posts", M.posts.length], ["Images", nSlides], ["Videos", M.videos.length], ["Logo concepts", M.logos.concepts.length], ["Banners", nBanners], ["Stickers", M.mascot.stickers.length]].filter(([, v]) => v).map(([k, v]) => `<span class="stat"><b>${v}</b> ${k}</span>`).join("");
   $("#gen").textContent = `Built ${M.built}.`;
 
   /* ── posts ──────────────────────────────────────────────────────────── */
@@ -395,7 +437,7 @@
     const list = M.posts.filter((p) => pf === "all" || (pf === "namzi" ? p.mascot : p.audiences.includes(pf)));
     $("#pgrid").innerHTML = list.map((p) => {
       const cover = p.images[0];
-      const badges = [...p.audiences.map((a) => `<span class="badge aud">${esc(AUD[a])}</span>`), p.mascot ? '<span class="badge nz">Namzi</span>' : "", p.hold ? '<span class="badge hold">Hold until live</span>' : "", `<span class="badge">${esc(p.formatShort)}</span>`].join("");
+      const badges = [p.dir === "35-how-it-works" ? '<span class="badge pin">📌 Pin this</span>' : "", ...p.audiences.map((a) => `<span class="badge aud">${esc(AUD[a])}</span>`), p.mascot ? '<span class="badge nz">Namzi</span>' : "", p.hold ? '<span class="badge hold">Hold until live</span>' : "", `<span class="badge">${esc(p.formatShort)}</span>`].join("");
       return `<article class="card"><button class="thumb" data-open="${p.dir}" aria-label="Open ${esc(p.title)}"><img loading="lazy" src="${esc(cover.path)}" alt="${esc(p.title)}">${p.images.length > 1 ? `<span class="count">${p.images.length} images</span>` : ""}</button>
         <div class="cbody"><div class="ctitle"><span class="no">${p.num}</span>${esc(p.title)}</div><div class="badges">${badges}</div>
         <div class="cact"><button class="btn small" data-open="${p.dir}">Open</button><button class="btn small" data-pzip="${p.dir}" title="Images + captions">${ICON_DL}ZIP<span class="sz">&nbsp;· ${mb(bytes(postFiles(p)))}</span></button></div></div></article>`;
@@ -438,7 +480,7 @@
       return `<div class="capblock"><div class="caphead"><b>${esc(s.title)}</b></div><div class="md">${mdLite(s.text)}</div></div>`;
     }).join("");
     $("#mbody").innerHTML = `<div class="viewer"><div class="stage"><img id="mimg" alt=""></div><div class="strip" id="mstrip">${p.images.map((im, i) => `<button data-i="${i}" aria-label="${esc(im.name)}"><img loading="lazy" src="${esc(im.path)}" alt=""></button>`).join("")}</div>
-      <div class="vactions"><button class="btn small" id="mone">${ICON_DL}<span id="monelab"></span></button><button class="btn small" data-copyall>${ICON_COPY}Copy all captions</button></div></div>
+      <div class="vactions"><button class="btn small" id="mone">${ICON_DL}<span id="monelab"></span></button><button class="btn small" data-copyall>${ICON_COPY}Copy all captions</button>${p.pdf ? `<button class="btn small" data-pdf>${ICON_DL}LinkedIn PDF · ${mb(p.pdf.size)}</button>` : ""}</div></div>
       <div><dl class="meta"><dt>For</dt><dd>${esc(p.for)}</dd><dt>Job</dt><dd>${esc(p.job)}</dd><dt>Format</dt><dd>${esc(p.format)}</dd></dl>${caps}</div>`;
     showImg(0);
     $("#modal").classList.add("open");
@@ -465,6 +507,7 @@
     if (e.target.closest("#mone")) { const im = cur.images[curIdx]; return saveOne(im, `${cur.dir}-${im.name}`); }
     const c = e.target.closest("[data-copy]"); if (c) return copy(c.closest(".capblock").querySelector(".captext").textContent);
     if (e.target.closest("[data-copyall]")) return copy(cur.md);
+    if (e.target.closest("[data-pdf]")) return saveOne(cur.pdf, `namzilabs-${cur.dir}-linkedin.pdf`);
     const b = e.target.closest("[data-board]"); if (b) return;
   });
 
@@ -479,8 +522,8 @@
   function renderVideos() {
     const list = M.videos.filter((v) => vf === "all" || (vf === "namzi" ? v.mascot : v.audiences.includes(vf)));
     $("#vgrid").innerHTML = list.map((v) => `<article class="card"><button class="vthumb${v.square ? " sq" : ""}" data-play="${v.dir}" aria-label="Play ${esc(v.title)}"><img loading="lazy" src="${esc(v.poster.path)}" alt="${esc(v.title)}"><span class="play"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5Z"/></svg></span></span><span class="dur">${esc(v.duration)}</span></button>
-      <div class="cbody"><div class="ctitle"><span class="no">${v.num}</span>${esc(v.title)}</div><div class="badges">${v.audiences.map((a) => `<span class="badge aud">${esc(AUD[a])}</span>`).join("")}${v.mascot ? '<span class="badge nz">Namzi</span>' : ""}${v.hold ? '<span class="badge hold">Hold until live</span>' : ""}</div>
-      <div class="cact"><button class="btn small" data-vdl="${v.dir}">${ICON_DL}MP4<span class="sz">&nbsp;· ${mb(v.file.size)}</span></button>${v.caption ? `<button class="btn small" data-vcap="${v.dir}">Captions</button>` : ""}</div></div></article>`).join("");
+      <div class="cbody"><div class="ctitle"><span class="no">${v.num}</span>${esc(v.title)}</div><div class="badges">${v.pinned ? '<span class="badge pin">📌 Pin this</span>' : ""}${v.audiences.map((a) => `<span class="badge aud">${esc(AUD[a])}</span>`).join("")}${v.mascot ? '<span class="badge nz">Namzi</span>' : ""}${v.hold ? '<span class="badge hold">Hold until live</span>' : ""}${v.files.length > 1 ? `<span class="badge">${v.files.length} cuts</span>` : ""}</div>
+      <div class="cact"><button class="btn small" data-vdl="${v.dir}">${ICON_DL}MP4<span class="sz">&nbsp;· ${mb(v.file.size)}</span></button>${v.caption ? `<button class="btn small" data-vcap="${v.dir}">${v.files.length > 1 ? "Cuts & captions" : "Captions"}</button>` : ""}</div></div></article>`).join("");
   }
   $("#vgrid").addEventListener("click", (e) => {
     const p = e.target.closest("[data-play]");
@@ -500,20 +543,22 @@
     $("#mzip").innerHTML = `${ICON_DL}MP4`;
     $("#mzip").onclick = () => saveOne(v.file, v.file.name);
     $("#mbody").innerHTML = `<div class="viewer"><div class="stage"><video src="${esc(v.file.path)}" poster="${esc(v.poster.path)}" controls playsinline style="max-height:70vh;width:auto"></video></div>
-      <div class="vactions"><button class="btn small" data-poster>${ICON_DL}Poster JPG</button></div></div>
+      <div class="vactions">${v.files.map((f, i) => `<button class="btn small" data-cut="${i}">${ICON_DL}${esc(f.label)} · ${mb(f.size)}</button>`).join("")}<button class="btn small" data-poster>${ICON_DL}Poster JPG</button></div></div>
       <div>${v.caption.map((c) => capBlock(c.label, c.text)).join("")}</div>`;
     $("#mbody").querySelector("[data-poster]").onclick = () => saveOne(v.poster, `${v.dir}-poster.jpg`);
+    $("#mbody").querySelectorAll("[data-cut]").forEach((b) => (b.onclick = () => { const f = v.files[Number(b.dataset.cut)]; saveOne(f, f.name); }));
     $("#modal").classList.add("open"); $("#sheet").scrollTop = 0; document.body.style.overflow = "hidden";
   }
 
   /* ── logos ──────────────────────────────────────────────────────────── */
   $("#lboards").innerHTML = M.logos.overviews.map((b) => `<button data-img="${esc(b.path)}" aria-label="Open ${esc(b.name)}"><img loading="lazy" src="${esc(b.path)}" alt="${esc(b.name)}"></button>`).join("");
   $("#lgrid").innerHTML = M.logos.concepts.map((l) => {
-    const icon = l.svgs.find((s) => s.name === "app-icon.svg");
-    const lock = l.svgs.find((s) => s.name === "lockup-light.svg");
-    const tag = l.id.startsWith("01") ? '<span class="badge aud">Recommended</span>' : l.id.startsWith("06") ? '<span class="badge nz">Social twin</span>' : "";
-    return `<article class="card"><div class="licon">${icon.text}</div><div class="cbody"><div class="ctitle"><span class="no">${l.id.slice(0, 2)}</span>${esc(l.name)} ${tag}</div><div class="faint">${esc(l.idea)}</div>
-      <div class="files">${l.profile ? `<button class="btn small" data-lf="${l.id}|profile">${ICON_DL}Profile PNG</button>` : ""}${l.board ? `<button class="btn small" data-lf="${l.id}|board">${ICON_DL}Board</button>` : ""}<button class="btn small" data-lz="${l.id}">${ICON_DL}All files</button></div>
+    const icon = l.svgs.find((s) => s.name === "app-icon.svg") || l.svgs.find((s) => s.name === "app-icon-blue.svg") || l.svgs[0];
+    const tag = l.primary ? '<span class="badge pin">Primary</span>' : l.id.startsWith("06") ? '<span class="badge nz">Social twin</span>' : "";
+    const pngBtns = l.pngs.map((p) => `<button class="btn small" data-lp="${l.id}|${p.name}">${ICON_DL}${esc(p.name.replace("-1024.png", "").replace("profile", "profile").replace(/-/g, " "))}</button>`).join("");
+    return `<article class="card"${l.primary ? ' style="outline:3px solid var(--accent);outline-offset:-3px"' : ""}><div class="licon">${icon.text}</div><div class="cbody"><div class="ctitle"><span class="no">${l.id.slice(0, 2)}</span>${esc(l.name)} ${tag}</div><div class="faint">${esc(l.idea)}</div>
+      <div class="files">${l.pngs.length === 1 ? `<button class="btn small" data-lp="${l.id}|${l.pngs[0].name}">${ICON_DL}Profile PNG</button>` : ""}${l.board ? `<button class="btn small" data-lf="${l.id}|board">${ICON_DL}Board</button>` : ""}<button class="btn small" data-lz="${l.id}">${ICON_DL}All files</button></div>
+      ${l.pngs.length > 1 ? `<details open><summary class="faint" style="cursor:pointer">Profile pictures (1024px PNG)</summary><div class="files" style="margin-top:8px">${pngBtns}</div></details>` : ""}
       <details><summary class="faint" style="cursor:pointer">SVG files</summary><div class="files" style="margin-top:8px">${l.svgs.map((s) => `<button class="btn small" data-lf="${l.id}|${s.name}">${esc(s.name.replace(".svg", ""))}</button>`).join("")}</div></details></div></article>`;
   }).join("");
   $("#lgrid").addEventListener("click", (e) => {
@@ -521,13 +566,34 @@
     if (f) {
       const [id, which] = f.dataset.lf.split("|");
       const l = M.logos.concepts.find((x) => x.id === id);
-      if (which === "profile") return saveOne(l.profile, `namzilabs-${id}-profile-1024.png`);
+      if (which === "profile") return saveOne(l.profile, `namzilabs-${id}-${l.profile.name}`);
       if (which === "board") return saveOne(l.board, `namzilabs-${id}-board.png`);
       const s = l.svgs.find((x) => x.name === which);
       return saveOne({ text: s.text, type: "image/svg+xml" }, `namzilabs-${id}-${s.name}`);
     }
+    const lp = e.target.closest("[data-lp]");
+    if (lp) { const [id, name] = lp.dataset.lp.split("|"); const l = M.logos.concepts.find((x) => x.id === id); const f = l.pngs.find((p) => p.name === name); return saveOne(f, `namzilabs-${id}-${f.name}`); }
     const z = e.target.closest("[data-lz]"); if (z) { const l = M.logos.concepts.find((x) => x.id === z.dataset.lz); saveZip(`namzilabs-logo-${l.id}.zip`, logoFiles(l)); }
   });
+
+  /* ── banners ────────────────────────────────────────────────────────── */
+  if (M.banners) {
+    $("#bgrid").innerHTML = M.banners.concepts.map((c) => {
+      const x = c.files.find((f) => f.name === "x.png") || c.files[0];
+      return `<article class="bcard"><button class="prev" data-img="${esc(c.mockup ? c.mockup.path : x.path)}" aria-label="Preview ${esc(c.name)}"><img loading="lazy" src="${esc(x.path)}" alt="${esc(c.name)} banner"></button>
+        <div class="cbody"><div class="ctitle">${esc(c.name)}${c.id === "electric" ? ' <span class="badge pin">Start here</span>' : ""}</div><div class="faint">${esc(c.head)}</div>
+        <div class="files">${c.files.map((f) => `<button class="btn small" data-bf="${c.id}|${f.name}" title="${esc(f.dims)}">${ICON_DL}${esc(f.label)}</button>`).join("")}</div>
+        <div class="cact"><button class="btn small" data-bz="${c.id}">${ICON_DL}Every size (ZIP) · ${mb(c.files.reduce((n, f) => n + f.size, 0))}</button></div></div></article>`;
+    }).join("");
+    $("#bgrid").addEventListener("click", (e) => {
+      const f = e.target.closest("[data-bf]");
+      if (f) { const [id, name] = f.dataset.bf.split("|"); const c = M.banners.concepts.find((x) => x.id === id); const file = c.files.find((x) => x.name === name); return saveOne(file, `namzilabs-banner-${id}-${file.name}`); }
+      const z = e.target.closest("[data-bz]");
+      if (z) { const c = M.banners.concepts.find((x) => x.id === z.dataset.bz); saveZip(`namzilabs-banner-${c.id}.zip`, [...c.files.map((f) => ({ ...f, zipPath: `${c.id}/${f.name}` })), ...(c.mockup ? [{ ...c.mockup, zipPath: `${c.id}/x-profile-mockup.png` }] : [])]); }
+    });
+    $("#hgrid").innerHTML = M.banners.highlights.map((h, i) => `<div class="sticker"><div class="checker" style="aspect-ratio:9/16;padding:0"><img loading="lazy" src="${esc(h.path)}" alt="Highlight cover: ${esc(h.label)}" style="object-fit:cover"></div><div class="row"><span class="lab">${esc(h.label)} · ${esc(h.bg)}</span><span class="sbtns"><button class="btn small" data-hl="${i}">${ICON_DL}PNG</button></span></div></div>`).join("");
+    $("#hgrid").addEventListener("click", (e) => { const b = e.target.closest("[data-hl]"); if (b) { const h = M.banners.highlights[Number(b.dataset.hl)]; saveOne(h, `namzilabs-highlight-${h.name}`); } });
+  }
 
   /* ── mascot ─────────────────────────────────────────────────────────── */
   $("#mboards").innerHTML = M.mascot.boards.map((b) => `<button data-img="${esc(b.path)}" aria-label="Open ${esc(b.name)}"><img loading="lazy" src="${esc(b.path)}" alt="${esc(b.name)}"></button>`).join("");
@@ -543,7 +609,7 @@
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-img]"); if (!b) return;
     const path = b.dataset.img;
-    const all = [...M.logos.overviews, ...M.mascot.boards, ...M.logos.concepts.map((l) => l.board).filter(Boolean)];
+    const all = [...M.logos.overviews, ...M.mascot.boards, ...M.logos.concepts.map((l) => l.board).filter(Boolean), ...(M.banners ? M.banners.concepts.flatMap((c) => [...c.files, ...(c.mockup ? [c.mockup] : [])]) : [])];
     const f = all.find((x) => x.path === path);
     cur = null;
     $("#mttl").textContent = f.name;

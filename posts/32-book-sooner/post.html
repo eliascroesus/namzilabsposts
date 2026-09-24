@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 32 — Stop booking calls two weeks out</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .chart { position: relative; padding: 30px 34px 26px; border-radius: 30px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); }
+  .chart .ttl { display: flex; justify-content: space-between; align-items: baseline; font-size: 24px; font-weight: 700; letter-spacing: -0.015em; }
+  .chart .ttl span { font-size: 19px; font-weight: 600; color: var(--faint); display: inline-flex; align-items: center; gap: 8px; }
+  .chart .ttl .mark { width: 26px; height: 26px; }
+  .plot { position: relative; margin-top: 22px; }
+  .gridl { position: absolute; left: 0; right: 0; border-top: 1px solid var(--line); }
+  .gridl span { position: absolute; left: 0; top: -12px; font-size: 16px; font-weight: 600; color: var(--faint); background: #fff; padding-right: 6px; font-variant-numeric: tabular-nums; }
+  .bars { position: absolute; left: 56px; right: 0; bottom: 0; top: 0; display: flex; align-items: flex-end; gap: 22px; }
+  .bar { flex: 1; position: relative; border-radius: 6px 6px 0 0; background: #8fb2ff; }
+  .bar.best { background: #2f5fd8; }
+  .bar .v { position: absolute; left: 0; right: 0; top: -44px; text-align: center; font-size: 32px; font-weight: 800; letter-spacing: -0.035em; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .xl { display: flex; gap: 22px; margin-left: 56px; margin-top: 12px; }
+  .xl span { flex: 1; text-align: center; font-size: 19px; font-weight: 650; color: var(--muted); letter-spacing: -0.01em; }
+  .note { position: absolute; font-size: 20px; font-weight: 650; color: var(--ink-2); display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .tips .li { font-size: 32px; }
+  .tips .li small { font-size: 25px; }
+</style>
+</head>
+<body>
+
+<template id="chart">
+  <div class="chart">
+    <div class="ttl">Show rate, by how far ahead the call was booked <span><span class="mark" data-src="calendly"></span><span class="mark" data-src="close"></span>90 days</span></div>
+    <div class="plot" data-plot></div>
+    <div class="xl"><span>Same day</span><span>1–2 days</span><span>3–7 days</span><span>8–14 days</span><span>15+ days</span></div>
+  </div>
+</template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For sales teams</span></div>
+  <h1 class="h1" style="margin-top:32px;font-size:86px">The easiest show-rate fix: stop booking calls two weeks <em>out.</em></h1>
+  <div data-slot data-h="400" style="margin-top:34px"></div>
+  <div class="lines tips" style="margin-top:30px;gap:18px">
+    <div class="li"><span class="bx blue" style="font-size:24px;font-weight:800">1</span><div>Offer the next 48 hours first</div></div>
+    <div class="li"><span class="bx blue" style="font-size:24px;font-weight:800">2</span><div>Re-qualify anyone booking 2+ weeks out</div></div>
+  </div>
+  <div class="foot" style="padding-top:22px"><span class="demo">Example data · check yours</span><span class="site">Comment SHOWUP</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 70px 50px;flex-direction:row;gap:50px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 520px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:38px;font-size:74px">The easiest show-rate fix: stop booking calls two weeks <em>out.</em></h1>
+    <div class="demo" style="margin-top:auto">Example data · namzilabs.co</div>
+  </div>
+  <div data-slot data-h="470" style="flex:1;align-self:center"></div>
+</div>
+
+<script>
+  const D = [81, 74, 63, 51, 38];
+  const t = document.getElementById("chart");
+  for (const s of document.querySelectorAll("[data-slot]")) {
+    const n = t.content.firstElementChild.cloneNode(true);
+    const H = Number(s.dataset.h);
+    const plot = n.querySelector("[data-plot]");
+    plot.style.height = `${H}px`;
+    const top = 100, px = (v) => (v / top) * (H - 50);
+    let g = "";
+    for (const v of [0, 25, 50, 75, 100]) g += `<div class="gridl" style="bottom:${px(v)}px"><span>${v}%</span></div>`;
+    g += `<div class="bars">${D.map((v, i) => `<div class="bar${i === 0 ? " best" : ""}" style="height:${px(v)}px"><div class="v">${v}%</div></div>`).join("")}</div>`;
+    plot.innerHTML = g;
+    s.appendChild(n);
+  }
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

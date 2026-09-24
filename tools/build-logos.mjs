@@ -209,8 +209,46 @@ for (const c of CONCEPTS) {
   writeFileSync(path.join(dir, "lockup-light.svg"), svg(`0 0 ${width} 64`, lock(onLight, INK)));
   writeFileSync(path.join(dir, "lockup-dark.svg"), svg(`0 0 ${width} 64`, lock(onDark, WHITE)));
 }
+/* ── 01 Between, mono: the primary mark, with no blue in the middle ─────
+   The same two tools and overlap as 01, drawn in one colour, so it sits on
+   any background: blue, ink, sky or paper. Plus the "eclipse" alternate
+   (the overlap knocked out), which is the boldest at avatar size. */
+const MONO = {
+  lens: (c) => `<path d="M32 18.73A15 15 0 0 1 32 45.27A15 15 0 0 1 32 18.73Z" fill="${c}"/><circle cx="25" cy="32" r="15" fill="none" stroke="${c}" stroke-width="4.6"/><circle cx="39" cy="32" r="15" fill="none" stroke="${c}" stroke-width="4.6"/>`,
+  eclipse: (c) => `<path fill-rule="evenodd" fill="${c}" d="M25 14.7a17.3 17.3 0 1 0 0.001 0ZM39 14.7a17.3 17.3 0 1 0 0.001 0Z"/>`,
+};
+const GROUNDS = {
+  blue: { fill: "url(#gb)", mark: WHITE, defs: `<defs><linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3D6DF2"/><stop offset=".6" stop-color="#2F5FD8"/><stop offset="1" stop-color="#2451C4"/></linearGradient><radialGradient id="hb" cx="0" cy="0" r="1" gradientTransform="translate(14 8) scale(52)"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>`, glow: "url(#hb)" },
+  ink: { fill: INK, mark: WHITE, defs: `<defs><radialGradient id="hi" cx="0" cy="0" r="1" gradientTransform="translate(32 30) scale(34)"><stop offset="0" stop-color="#2F5FD8" stop-opacity=".32"/><stop offset="1" stop-color="#2F5FD8" stop-opacity="0"/></radialGradient></defs>`, glow: "url(#hi)" },
+  sky: { fill: "url(#gs)", mark: WHITE, defs: `<defs><linearGradient id="gs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16305E"/><stop offset=".55" stop-color="#22438F"/><stop offset="1" stop-color="#2B53AE"/></linearGradient><radialGradient id="hs" cx="0" cy="0" r="1" gradientTransform="translate(12 6) scale(50)"><stop offset="0" stop-color="#78A0FF" stop-opacity=".35"/><stop offset="1" stop-color="#78A0FF" stop-opacity="0"/></radialGradient></defs>`, glow: "url(#hs)" },
+  paper: { fill: "#F6F7FB", mark: INK, defs: `<defs><radialGradient id="hp" cx="0" cy="0" r="1" gradientTransform="translate(10 6) scale(56)"><stop offset="0" stop-color="#568CFF" stop-opacity=".18"/><stop offset="1" stop-color="#568CFF" stop-opacity="0"/></radialGradient></defs>`, glow: "url(#hp)" },
+};
+{
+  const dir = path.join(OUT, "01-between-mono");
+  mkdirSync(dir, { recursive: true });
+  const scaled = (inner, k) => `<g transform="translate(32 32) scale(${k}) translate(-32 -32)">${inner}</g>`;
+  for (const [style, draw] of Object.entries(MONO)) {
+    const pre = style === "lens" ? "" : "eclipse-";
+    writeFileSync(path.join(dir, `${pre}symbol-ink.svg`), svg("0 0 64 64", draw(INK)));
+    writeFileSync(path.join(dir, `${pre}symbol-white.svg`), svg("0 0 64 64", draw(WHITE)));
+    for (const [name, g] of Object.entries(GROUNDS)) {
+      // rounded app icon, and a full-bleed square for profile pictures (platforms crop to a circle)
+      writeFileSync(path.join(dir, `${pre}app-icon-${name}.svg`), svg("0 0 64 64", `${g.defs}<rect width="64" height="64" rx="14.5" fill="${g.fill}"/><rect width="64" height="64" rx="14.5" fill="${g.glow}"/>${scaled(draw(g.mark), 0.82)}`));
+      writeFileSync(path.join(dir, `${pre}profile-${name}.svg`), svg("0 0 64 64", `${g.defs}<rect width="64" height="64" fill="${g.fill}"/><rect width="64" height="64" fill="${g.glow}"/>${scaled(draw(g.mark), 0.64)}`));
+    }
+  }
+  const baseline = 32 + WM.capHeight / 2;
+  const width = Math.ceil(64 + 12 + WM.width + 4);
+  const lock = (c) => `${MONO.lens(c)}<path transform="translate(${64 + 12} ${baseline})" d="${WM.d}" fill="${c}"/>`;
+  writeFileSync(path.join(dir, "lockup-ink.svg"), svg(`0 0 ${width} 64`, lock(INK)));
+  writeFileSync(path.join(dir, "lockup-white.svg"), svg(`0 0 ${width} 64`, lock(WHITE)));
+}
+
 writeFileSync(
   path.join(OUT, "concepts.json"),
-  JSON.stringify(CONCEPTS.map(({ id, name, idea }) => ({ id, name, idea })), null, 2) + "\n",
+  JSON.stringify([
+    { id: "01-between-mono", name: "Between · mono", idea: "The primary mark: 01's two tools and their overlap, drawn in one colour, so it sits on blue, ink, sky or paper with no blue lens. The eclipse alternate knocks the overlap out for the boldest avatar." },
+    ...CONCEPTS.map(({ id, name, idea }) => ({ id, name, idea })),
+  ], null, 2) + "\n",
 );
 console.log(`built ${CONCEPTS.length} concepts + wordmark → ${path.relative(ROOT, OUT)}`);

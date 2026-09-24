@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 30 — 1,269 customers you can't email</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .v2 { position: relative; }
+  .v2 svg { display: block; overflow: visible; }
+  .zone { position: absolute; transform: translate(-50%, -50%); text-align: center; }
+  .zone b { display: block; font-size: 62px; font-weight: 800; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .zone span { display: block; font-size: 20px; font-weight: 650; margin-top: 6px; line-height: 1.2; }
+  .zone.hot b { color: var(--red); }
+  .zone.mid { color: #fff; }
+  .zone.mid b { font-size: 54px; }
+  .src { position: absolute; display: flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 700; white-space: nowrap; letter-spacing: -0.015em; }
+  .src .mark { width: 40px; height: 40px; }
+  .src small { font-weight: 550; color: var(--faint); font-size: 20px; }
+</style>
+</head>
+<body>
+
+<template id="v2">
+  <div class="v2" style="width:900px;height:560px">
+    <svg width="900" height="560" viewBox="0 0 900 560">
+      <defs><clipPath id="kl"><circle cx="330" cy="290" r="250"/></clipPath></defs>
+      <circle cx="330" cy="290" r="250" fill="#14141c" fill-opacity=".04" stroke="#14141c" stroke-width="10"/>
+      <circle cx="570" cy="290" r="250" fill="#f0553d" fill-opacity=".07" stroke="#14141c" stroke-width="10"/>
+      <g clip-path="url(#kl)"><circle cx="570" cy="290" r="245" fill="#2f5fd8"/></g>
+      <circle cx="330" cy="290" r="250" fill="none" stroke="#14141c" stroke-width="10"/>
+      <circle cx="570" cy="290" r="250" fill="none" stroke="#14141c" stroke-width="10"/>
+    </svg>
+    <div class="zone" style="left:205px;top:290px"><b>3,941</b><span>on your list,<br>never bought</span></div>
+    <div class="zone mid" style="left:450px;top:290px"><b>2,941</b><span>both</span></div>
+    <div class="zone hot" style="left:700px;top:290px"><b>1,269</b><span>bought,<br>can't email</span></div>
+    <div class="src" style="left:60px;top:-10px"><span class="mark" data-src="klaviyo"></span>Klaviyo <small>6,882 profiles</small></div>
+    <div class="src" style="right:40px;top:-10px"><span class="mark" data-src="shopify"></span>Shopify <small>4,210 customers</small></div>
+  </div>
+</template>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">For e-commerce</span></div>
+  <h1 class="h1" style="margin-top:32px;font-size:100px">1,269 customers you can't <em>email.</em></h1>
+  <p class="lead" style="margin-top:18px;font-size:30px">They bought from you. They're not on your list. Nobody noticed, because Shopify and Klaviyo count separately.</p>
+  <div data-slot style="margin-top:44px;display:flex;justify-content:center;transform:scale(.98)"></div>
+  <div class="foot"><span class="demo">Example data · matched by email</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper frame" data-still="x-01" style="padding:56px 70px 50px;flex-direction:row;gap:30px">
+  <div class="ruled"></div>
+  <div style="flex:0 0 520px;display:flex;flex-direction:column">
+    <span class="brandmini"><span class="logo"></span>Namzilabs</span>
+    <h1 class="h1" style="margin-top:40px;font-size:88px">1,269 customers you can't <em>email.</em></h1>
+    <p class="lead" style="margin-top:20px;font-size:28px">They bought. They're not on your list.</p>
+    <div class="demo" style="margin-top:auto">Example data · namzilabs.co</div>
+  </div>
+  <div data-slot style="flex:1;display:flex;justify-content:center;align-items:center;transform:scale(.94);transform-origin:50% 50%"></div>
+</div>
+
+<script>
+  const t = document.getElementById("v2");
+  document.querySelectorAll("[data-slot]").forEach((s, i) => {
+    const n = t.content.firstElementChild.cloneNode(true);
+    n.innerHTML = n.innerHTML.replaceAll('id="kl"', `id="kl${i}"`).replaceAll("url(#kl)", `url(#kl${i})`);
+    s.appendChild(n);
+  });
+</script>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>
