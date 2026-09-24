@@ -120,7 +120,7 @@ function parsePost(dir) {
   return {
     dir, num: num.trim(), title: t.join(" · ").trim(), for: meta.for || "", job: meta.job || "", format: meta.format || "",
     formatShort: ig > 1 ? `Carousel · ${ig} slides` : "Single image",
-    audiences: POST_AUD[dir] || ["everyone"], mascot: POST_NAMZI.has(dir), hold: /HOLD/.test(dir),
+    audiences: POST_AUD[dir] || ["everyone"], mascot: POST_NAMZI.has(dir), hold: /HOLD/.test(dir), pinned: PINNED.has(dir),
     images, md, sections,
     pdf: existsSync(path.join(ROOT, "posts", dir, "linkedin-carousel.pdf")) ? { name: "linkedin-carousel.pdf", path: `posts/${dir}/linkedin-carousel.pdf`, size: size(`posts/${dir}/linkedin-carousel.pdf`) } : null,
   };
@@ -131,7 +131,7 @@ function videoMeta() {
   const md = read("videos/README.md");
   const rows = {};
   for (const l of md.split("\n")) {
-    const m = l.match(/^\|\s*(\d\d)\s*\|\s*\*\*(.+?)\*\*/);
+    const m = l.match(/^\|\s*(\d\d)[^|]*\|\s*\*\*(.+?)\*\*/);
     if (m) rows[m[1]] = m[2].replace(/\.$/, "");
   }
   const caps = {};

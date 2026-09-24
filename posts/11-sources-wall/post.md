@@ -1,4 +1,4 @@
-# 11 · 33 tools, read directly (pinned)
+# 11 · 33 tools, read directly
 
 | | |
 |---|---|

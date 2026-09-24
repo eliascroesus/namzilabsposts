@@ -147,24 +147,26 @@ One 60–90-minute recording session a week feeds all of it: 5–7 clips, 2 caro
 
 ## 9. The first 30 days
 
+Lead with the headline: all your data in one place, any metric, where the funnel breaks, the true numbers. Day 1 is the profile, set up the same way everywhere: banner, profile picture, bio and the pinned explainer (table below). Then posts 25–35 and the two short cuts of the explainer. The receipt posts come after, as proof.
+
 | Day | X | Instagram | Video |
 |---|---|---|---|
-| 1 | Post 08 (receipt), pinned | Post 11 (33 tools), pinned | Logo sting as the profile intro |
-| 2 | Post 10 (founder receipt), from the founder account | Post 01 carousel | — |
-| 3 | Post 01 + thread | — | Video 01 (three answers) |
-| 5 | Post 04 (booked is vanity) | Post 03 (POV) | — |
-| 7 | Post 07 thread (speed to lead) | — | Video 03 (Monday 9:07) |
-| 9 | Post 03 (POV) | Post 02 carousel (7 numbers) | — |
-| 11 | Post 02 thread | — | Video 02 (three steps) |
-| 13 | Post 09 (four ways) | Post 07 carousel | — |
-| 15 | Build in public: week 2 receipt | Post 09 | Video 04 (receipts) |
-| 17 | Post 05 (creators) | Post 05 carousel | — |
-| 19 | Post 06 (e-commerce) | Post 06 | — |
-| 21 | Recipe #8 (new) | Post 04 | Recut: video 01, new hook |
-| 23 | Build in public: first design partners | Post 08 | — |
-| 25 | Recipe #9 (new) | Carousel: "5 ways show rate gets miscounted" (new) | Recut: video 02 |
-| 28 | "Month in receipts" | "Month in receipts" | — |
-| When live | **Post 12 + video 05** (AI connection launch) | Same | Same |
+| 1 | **Set up the profile. Pin video 11 (16:9)** | **Set up the profile. Pin video 11 (Reel) and post 35** | Video 11 on TikTok, YouTube (channel trailer), Facebook and LinkedIn |
+| 2 | Post 35 (how it works) | — | — |
+| 3 | Post 30 (1,269 customers you can't email) | Post 30 | — |
+| 4 | Video 12 (where the funnel breaks) | Reel: video 12 | Video 12 (TikTok, Shorts) |
+| 5 | Post 28 (tier list): argue in the replies | Post 28 | — |
+| 7 | Post 26 (Monday scorecard) | Post 26 | — |
+| 9 | Post 29 (how many members) | Post 29 | — |
+| 11 | Post 25 thread (horror stories) | Post 25 carousel | — |
+| 12 | Video 13 (true numbers) | Reel: video 13 | Video 13 (TikTok, Shorts) |
+| 13 | Post 31 (cost per held meeting) | Post 31 | — |
+| 15 | Post 32 (book sooner) | Post 32 | — |
+| 17 | Post 33 (three hours later) | Post 33 | — |
+| 19 | Post 11 (33 tools) | Post 11 | — |
+| 21 | Build in public: first design partners | — | Recut: video 12, new hook |
+| 25 | Recipe #8 (new): a metric built across two tools | Carousel: "5 ways show rate gets miscounted" (new) | — |
+| 28 | "Month 1 in numbers" | Same | Best performer, recut |
 
 ### Pin these first (all platforms)
 
@@ -180,49 +182,51 @@ One 60–90-minute recording session a week feeds all of it: 5–7 clips, 2 caro
 | Website / link previews | — | `electric/og.png` as the share image | — |
 | Email signature | — | `electric/email.png` | — |
 
-### Days 31–60: the second batch
+### Days 31–60: the proof batch
+
+The receipt posts: numbers that show their working. They back up the headline; they aren't the headline.
+
+| Day | X | Instagram | Video |
+|---|---|---|---|
+| 31 | Post 08 (receipt) | Post 01 carousel | — |
+| 32 | Post 10 (founder receipt), from the founder account | — | — |
+| 33 | Post 01 + thread | — | Video 01 (three answers) |
+| 35 | Post 04 (booked is vanity) | Post 03 (POV) | — |
+| 37 | Post 07 thread (speed to lead) | — | Video 03 (Monday 9:07) |
+| 39 | Post 03 (POV) | Post 02 carousel (7 numbers) | — |
+| 41 | Post 02 thread | — | Video 02 (three steps) |
+| 43 | Post 09 (four ways) | Post 07 carousel | — |
+| 45 | Build in public: week 7 numbers | Post 09 | Video 04 (receipts) |
+| 47 | Post 05 (creators) | Post 05 carousel | — |
+| 49 | Post 06 (e-commerce) | Post 06 | — |
+| 51 | Recipe #9 (new) | Post 04 | Recut: video 01, new hook |
+| 53 | Recipe #10 (new) | Post 08 | Recut: video 02 |
+| 58 | "Month 2 in numbers" | Same | — |
+
+### Days 61–90: the funny batch
 
 This batch leans funnier (bingo, group chats, dictionary entries, a red-string board) and introduces **Namzi**, the mascot, for recall. Each ICP gets at least two posts. Keep Namzi to at most one post in four.
 
 | Day | X | Instagram | Video |
 |---|---|---|---|
-| 31 | Post 13 (meet Namzi) | Post 13 carousel | Video 07 (meet Namzi) |
-| 33 | Post 18 (things your CRM believes) | Post 18 | — |
-| 35 | Post 15 (launch bingo): ask for scores in replies | Post 15 | — |
-| 37 | Post 24 thread (reply-to-meeting rate) | Post 24 carousel | — |
-| 39 | Post 21 (how many showed?) | Post 21 | Video 09 (EOD report) |
-| 41 | Post 14 (group chat) | Post 14 | Video 08 (group chat) |
-| 43 | Post 17 (where Monday goes) | Post 17 | — |
-| 45 | Post 22 thread (the dictionary, one entry per reply) | Post 22 carousel | — |
-| 47 | Post 20 (screenshot vs receipt) | Post 20 carousel | Video 10 (launch receipt) |
-| 49 | Post 19 (red-string board) | Post 19 | — |
-| 51 | Post 23 (EOD report) | Post 23 | — |
-| 53 | Post 16 (red flags) | Post 16 | — |
-| 56 | "Month 2 in receipts" | "Month 2 in receipts" | Best performer, recut with a new hook |
-| 58 | Namzi sticker drop: stickers in Stories, reply with them all week | Stories | — |
+| 61 | Post 13 (meet Namzi) | Post 13 carousel | Video 07 (meet Namzi) |
+| 63 | Post 18 (things your CRM believes) | Post 18 | — |
+| 65 | Post 15 (launch bingo): ask for scores in replies | Post 15 | — |
+| 67 | Post 24 thread (reply-to-meeting rate) | Post 24 carousel | — |
+| 69 | Post 21 (how many showed?) | Post 21 | Video 09 (EOD report) |
+| 71 | Post 14 (group chat) | Post 14 | Video 08 (group chat) |
+| 73 | Post 17 (where Monday goes) | Post 17 | — |
+| 75 | Post 22 thread (the dictionary, one entry per reply) | Post 22 carousel | — |
+| 77 | Post 34 (Namzi's first week) | Post 34 | — |
+| 79 | Post 20 (screenshot vs receipt) | Post 20 carousel | Video 10 (launch receipt) |
+| 81 | Post 19 (red-string board) | Post 19 | — |
+| 83 | Post 23 (EOD report) | Post 23 | — |
+| 85 | Post 16 (red flags) | Post 16 | — |
+| 86 | Post 27 (Namzi never says) | Post 27 | — |
+| 88 | "Month 3 in numbers" | Same | Best performer, recut with a new hook |
+| 89 | Namzi sticker drop: stickers in Stories, reply with them all week | Stories | — |
 
-### Days 61–90: the third batch
-
-Lead with the new headline: all your data in one place, any metric, where the funnel breaks. Posts 25–35, the pinned video and its two short cuts (videos 12 and 13).
-
-| Day | X | Instagram | Video |
-|---|---|---|---|
-| 61 | **Pin video 11 (16:9)** | **Pin video 11 (9:16) + post 35** | Video 11 |
-| 62 | Post 35 (how it works) | — | — |
-| 63 | Post 30 (1,269 customers you can't email) | Post 30 | — |
-| 64 | Video 12 (where the funnel breaks) | Reel: video 12 | Video 12 (TikTok, Shorts) |
-| 65 | Post 28 (tier list): argue in the replies | Post 28 | — |
-| 67 | Post 26 (Monday scorecard) | Post 26 | — |
-| 69 | Post 29 (how many members) | Post 29 | — |
-| 71 | Post 25 thread (horror stories) | Post 25 carousel | — |
-| 72 | Video 13 (true numbers) | Reel: video 13 | Video 13 (TikTok, Shorts) |
-| 73 | Post 31 (cost per held meeting) | Post 31 | — |
-| 75 | Post 27 (Namzi never says) | Post 27 | — |
-| 77 | Post 32 (book sooner) | Post 32 | — |
-| 79 | Post 33 (three hours later) | Post 33 | — |
-| 81 | Post 34 (Namzi's first week) | Post 34 | — |
-| 85 | "Month 3 in receipts" | Same | Best performer, recut |
-| When the AI connection is live | Swap in video 11's `-ai-live` cuts and remove the badge from post 35, slide 6 | Same | Same |
+**When the AI connection is live:** post 12 and video 05 (the launch), swap in video 11's `-ai-live` cuts wherever it's pinned, and remove the "coming soon" badge from post 35, slide 6.
 
 The stickers in [`brand/mascot/stickers/`](brand/mascot/stickers/) are ready for Stories and replies today. Next step: animate a few of them into GIFs and upload them to a GIPHY brand channel, which is how stickers become searchable inside Instagram Stories. Every use is a small ad.
 

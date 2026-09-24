@@ -142,7 +142,7 @@
 
   .xlink { display: flex; align-items: center; gap: 14px; margin-top: 18px; padding: 14px 18px; border-radius: 16px; background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--text); text-decoration: none; font-weight: 650; font-size: 15px; max-width: 640px; }
   .xlink b { color: var(--accent); }
-  .xlink span { margin-left: auto; color: var(--accent); }
+  .xlink .go { margin-left: auto; color: var(--accent); white-space: nowrap; }
   .badge.pin { background: #fff4e0; color: #9a5b00; }
   .bgrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); }
   .bcard { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
@@ -411,7 +411,7 @@
   if (other && other.url) {
     const x = $("#xlink");
     x.href = other.url; x.classList.remove("hidden");
-    x.innerHTML = M.kit === "content" ? `Logos, banners and Namzi are in the <b>Brand Kit</b><span>Open ↗</span>` : `Posts and videos are in the <b>Content Kit</b><span>Open ↗</span>`;
+    x.innerHTML = M.kit === "content" ? `<span>Logos, banners and Namzi are in the <b>Brand Kit</b></span><span class="go">Open ↗</span>` : `<span>Posts and videos are in the <b>Content Kit</b></span><span class="go">Open ↗</span>`;
   }
 
   /* ── header ─────────────────────────────────────────────────────────── */
@@ -434,10 +434,10 @@
   }
   $("#pfilters").addEventListener("click", (e) => { const b = e.target.closest("[data-f]"); if (!b) return; pf = b.dataset.f; renderPostFilters(); renderPosts(); });
   function renderPosts() {
-    const list = M.posts.filter((p) => pf === "all" || (pf === "namzi" ? p.mascot : p.audiences.includes(pf)));
+    const list = M.posts.filter((p) => pf === "all" || (pf === "namzi" ? p.mascot : p.audiences.includes(pf))).sort((a, b) => b.pinned - a.pinned);
     $("#pgrid").innerHTML = list.map((p) => {
       const cover = p.images[0];
-      const badges = [p.dir === "35-how-it-works" ? '<span class="badge pin">📌 Pin this</span>' : "", ...p.audiences.map((a) => `<span class="badge aud">${esc(AUD[a])}</span>`), p.mascot ? '<span class="badge nz">Namzi</span>' : "", p.hold ? '<span class="badge hold">Hold until live</span>' : "", `<span class="badge">${esc(p.formatShort)}</span>`].join("");
+      const badges = [p.pinned ? '<span class="badge pin">📌 Pin this</span>' : "", ...p.audiences.map((a) => `<span class="badge aud">${esc(AUD[a])}</span>`), p.mascot ? '<span class="badge nz">Namzi</span>' : "", p.hold ? '<span class="badge hold">Hold until live</span>' : "", `<span class="badge">${esc(p.formatShort)}</span>`].join("");
       return `<article class="card"><button class="thumb" data-open="${p.dir}" aria-label="Open ${esc(p.title)}"><img loading="lazy" src="${esc(cover.path)}" alt="${esc(p.title)}">${p.images.length > 1 ? `<span class="count">${p.images.length} images</span>` : ""}</button>
         <div class="cbody"><div class="ctitle"><span class="no">${p.num}</span>${esc(p.title)}</div><div class="badges">${badges}</div>
         <div class="cact"><button class="btn small" data-open="${p.dir}">Open</button><button class="btn small" data-pzip="${p.dir}" title="Images + captions">${ICON_DL}ZIP<span class="sz">&nbsp;· ${mb(bytes(postFiles(p)))}</span></button></div></div></article>`;
@@ -520,7 +520,7 @@
   }
   $("#vfilters").addEventListener("click", (e) => { const b = e.target.closest("[data-f]"); if (!b) return; vf = b.dataset.f; renderVideoFilters(); renderVideos(); });
   function renderVideos() {
-    const list = M.videos.filter((v) => vf === "all" || (vf === "namzi" ? v.mascot : v.audiences.includes(vf)));
+    const list = M.videos.filter((v) => vf === "all" || (vf === "namzi" ? v.mascot : v.audiences.includes(vf))).sort((a, b) => b.pinned - a.pinned);
     $("#vgrid").innerHTML = list.map((v) => `<article class="card"><button class="vthumb${v.square ? " sq" : ""}" data-play="${v.dir}" aria-label="Play ${esc(v.title)}"><img loading="lazy" src="${esc(v.poster.path)}" alt="${esc(v.title)}"><span class="play"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5Z"/></svg></span></span><span class="dur">${esc(v.duration)}</span></button>
       <div class="cbody"><div class="ctitle"><span class="no">${v.num}</span>${esc(v.title)}</div><div class="badges">${v.pinned ? '<span class="badge pin">📌 Pin this</span>' : ""}${v.audiences.map((a) => `<span class="badge aud">${esc(AUD[a])}</span>`).join("")}${v.mascot ? '<span class="badge nz">Namzi</span>' : ""}${v.hold ? '<span class="badge hold">Hold until live</span>' : ""}${v.files.length > 1 ? `<span class="badge">${v.files.length} cuts</span>` : ""}</div>
       <div class="cact"><button class="btn small" data-vdl="${v.dir}">${ICON_DL}MP4<span class="sz">&nbsp;· ${mb(v.file.size)}</span></button>${v.caption ? `<button class="btn small" data-vcap="${v.dir}">${v.files.length > 1 ? "Cuts & captions" : "Captions"}</button>` : ""}</div></div></article>`).join("");
