@@ -15,8 +15,17 @@ Smooth product-style motion videos, built in HTML and rendered **frame by frame 
 | 09 | **The EOD report vs the receipts.** A setter's end-of-day report, checked line by line against Aircall and Calendly. | 14s | Sales teams | [`09-eod-report/eod-report-9x16.mp4`](09-eod-report/eod-report-9x16.mp4) |
 | 10 | **The launch screenshot vs the receipt.** $20,140 with a rocket, then the receipt prints and the total steps down to $17,780. | 16s | Creators | [`10-launch-receipt/launch-receipt-9x16.mp4`](10-launch-receipt/launch-receipt-9x16.mp4) |
 | 11 ⭐ | **All your data. One place.** The pinned explainer: 12 tools, 12 slices, blurry numbers; then one place, cross-referenced and sharp, any metric, the funnel leak across tools, and your AI with the whole picture. Four cuts: 9:16 and 16:9, each with the AI scene marked "coming soon" (post now) or live (swap in at launch). | 46s | Everyone · **pin it** | [`11-all-your-data/all-your-data-9x16.mp4`](11-all-your-data/all-your-data-9x16.mp4) · [`16x9`](11-all-your-data/all-your-data-16x9.mp4) · [`9x16 AI live`](11-all-your-data/all-your-data-9x16-ai-live.mp4) · [`16x9 AI live`](11-all-your-data/all-your-data-16x9-ai-live.mp4) |
+| 12 | **See where your funnel breaks.** A 13-second cut of 11: five funnel steps across five tools, the leak (booked → held) lights up red, then the end card. | 13s | Sales teams, everyone | [`12-funnel-breaks/funnel-breaks-9x16.mp4`](12-funnel-breaks/funnel-breaks-9x16.mp4) |
+| 13 | **True numbers, not blurry ones.** A 26-second cut of 11: 12 tools, 12 slices, a blurry guess; then one place, the same person matched across tools, and the number comes into focus. | 26s | Everyone | [`13-true-numbers/true-numbers-9x16.mp4`](13-true-numbers/true-numbers-9x16.mp4) |
 
 Each folder has `poster.jpg` (a still for thumbnails) and `video.html`. Open the HTML in a browser to watch it live: **R** replays, **F** goes fullscreen, **Space** pauses.
+
+12 and 13 are short cuts of 11 for Reels, TikTok and Shorts. They use 11's `video.html`, re-timed with `?cut=funnel` and `?cut=short`:
+
+```bash
+node tools/render-video.mjs videos/11-all-your-data/video.html videos/12-funnel-breaks/funnel-breaks-9x16.mp4 --ss 1 --query cut=funnel
+node tools/render-video.mjs videos/11-all-your-data/video.html videos/13-true-numbers/true-numbers-9x16.mp4 --ss 1 --query cut=short
+```
 
 ## Captions
 
@@ -88,6 +97,40 @@ Pin it everywhere: 9:16 on Instagram, TikTok, Facebook Reels and YouTube Shorts;
   > Namzilabs puts all of it in one place: connect your tools, match the same person across them, build any metric, and see exactly where the funnel breaks. 46 seconds on how it works 👇
 - **YouTube (channel trailer, 16:9):** title *Namzilabs in 46 seconds: all your data, one place*; description = the LinkedIn text + namzilabs.co.
 - **Alternate hook** for X and LinkedIn: "Zapier connects your apps. Namzilabs connects your numbers." Using Zapier's name for comparison is fine; never use their logo.
+
+**12 · See where your funnel breaks (a 13-second cut of 11)**
+- **Reels / TikTok / Shorts:**
+  > Your funnel doesn't break in one tool. It breaks between them. 🔍
+  >
+  > Leads in Typeform, calls in Calendly, the call itself in Fathom, the deal in Close, the money in Stripe. Namzilabs lines up every step across your tools, so you see exactly where people drop off. (In this example, 36% of booked calls never happen.)
+  >
+  > Free to start → link in bio.
+  >
+  > #funnel #highticketsales #salesteam #founders
+- **X:**
+  > your funnel doesn't break in one tool. it breaks between them.
+  >
+  > (first reply: namzilabs.co · free to start)
+- **YouTube Shorts title:**
+  > Where does your funnel actually break?
+
+**13 · True numbers, not blurry ones (a 26-second cut of 11)**
+- **Reels / TikTok / Shorts:**
+  > 12 tools. 12 different numbers. Which one's true? 🤔
+  >
+  > Namzilabs puts all your data in one place (33 tools, read-only, no code) and matches the same person across every tool, so everyone is counted once and the number comes into focus.
+  >
+  > True numbers, not blurry ones. Free to start → link in bio.
+  >
+  > #saas #founders #businessmetrics #datadriven
+- **X:**
+  > 12 tools, 12 slices, 12 different numbers.
+  >
+  > one place, cross-referenced: one true number.
+  >
+  > (first reply: namzilabs.co · free to start)
+- **YouTube Shorts title:**
+  > Why your numbers never match
 
 **07 · Meet Namzi**
 - **Reels / TikTok:**

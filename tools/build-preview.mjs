@@ -51,6 +51,7 @@ const VIDEO_AUD = {
   "01-three-answers": ["sales"], "02-three-steps": ["everyone"], "03-monday-907": ["everyone"], "04-receipts": ["everyone"],
   "05-ask-your-ai": ["everyone"], "06-logo-sting": ["everyone"], "07-meet-namzi": ["everyone"], "08-group-chat": ["ecommerce"],
   "09-eod-report": ["sales"], "10-launch-receipt": ["creators"], "11-all-your-data": ["everyone"],
+  "12-funnel-breaks": ["sales", "everyone"], "13-true-numbers": ["everyone"],
 };
 const VIDEO_NAMZI = new Set(["07-meet-namzi", "08-group-chat"]);
 

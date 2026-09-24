@@ -12,7 +12,7 @@ Everything here is made from code: HTML designs rendered to exact-size PNGs and 
 | [**research/**](research/) | Four deep-research reports (about 45,000 words, 400+ sources): Framer & Base44, Attio & Mochi & premium SaaS, growth playbooks, and customers & competitors |
 | [**brand/**](brand/) | The primary mark (01 Between, mono), ten more logo concepts, [banners for every platform](brand/banners/), [Namzi the mascot](brand/mascot/) and the [brand kit](brand/BRAND_KIT.md) |
 | [**posts/**](posts/) | 35 ready-to-post pieces for Instagram, X and LinkedIn. Each has its images, captions, X copy, alt text and a claims check |
-| [**videos/**](videos/) | 11 smooth motion videos at 60fps (the explainer in four cuts), with captions ([videos/README](videos/README.md)) |
+| [**videos/**](videos/) | 13 smooth motion videos at 60fps (the explainer in four cuts, plus two short cuts of it), with captions ([videos/README](videos/README.md)) |
 
 ---
 
@@ -89,9 +89,10 @@ Each post folder contains:
 | <a href="videos/01-three-answers/three-answers-9x16.mp4"><img src="videos/01-three-answers/poster.jpg" width="200"></a><br>**01** Three tools. Three answers. · 17s | <a href="videos/02-three-steps/three-steps-9x16.mp4"><img src="videos/02-three-steps/poster.jpg" width="200"></a><br>**02** Show-up rate, in three steps · 19s | <a href="videos/03-monday-907/monday-907-9x16.mp4"><img src="videos/03-monday-907/poster.jpg" width="200"></a><br>**03** Monday, 9:07 am · 16s |
 | <a href="videos/04-receipts/receipts-9x16.mp4"><img src="videos/04-receipts/poster.jpg" width="200"></a><br>**04** Every number shows its working · 16s | <a href="videos/05-ask-your-ai/ask-your-ai-9x16.mp4"><img src="videos/05-ask-your-ai/poster.jpg" width="200"></a><br>**05** Ask your AI · 17s · ⚠️ hold | <a href="videos/06-logo-sting/logo-sting-1x1.mp4"><img src="videos/06-logo-sting/poster.jpg" width="200"></a><br>**06** Logo sting · 6s |
 | <a href="videos/07-meet-namzi/meet-namzi-9x16.mp4"><img src="videos/07-meet-namzi/poster.jpg" width="200"></a><br>**07** Meet Namzi · 14s | <a href="videos/08-group-chat/group-chat-9x16.mp4"><img src="videos/08-group-chat/poster.jpg" width="200"></a><br>**08** If your tools had a group chat · 16s | <a href="videos/09-eod-report/eod-report-9x16.mp4"><img src="videos/09-eod-report/poster.jpg" width="200"></a><br>**09** The EOD report vs the receipts · 14s |
-| <a href="videos/10-launch-receipt/launch-receipt-9x16.mp4"><img src="videos/10-launch-receipt/poster.jpg" width="200"></a><br>**10** The launch screenshot vs the receipt · 16s | <a href="videos/11-all-your-data/all-your-data-9x16.mp4"><img src="videos/11-all-your-data/poster.jpg" width="200"></a><br>**11** 📌 All your data. One place. · 46s<br><sub>The pinned explainer: 9:16 and 16:9, with the AI scene as "coming soon" or live</sub> | |
+| <a href="videos/10-launch-receipt/launch-receipt-9x16.mp4"><img src="videos/10-launch-receipt/poster.jpg" width="200"></a><br>**10** The launch screenshot vs the receipt · 16s | <a href="videos/11-all-your-data/all-your-data-9x16.mp4"><img src="videos/11-all-your-data/poster.jpg" width="200"></a><br>**11** 📌 All your data. One place. · 46s<br><sub>The pinned explainer: 9:16 and 16:9, with the AI scene as "coming soon" or live</sub> | <a href="videos/12-funnel-breaks/funnel-breaks-9x16.mp4"><img src="videos/12-funnel-breaks/poster.jpg" width="200"></a><br>**12** See where your funnel breaks · 13s<br><sub>A short cut of 11</sub> |
+| <a href="videos/13-true-numbers/true-numbers-9x16.mp4"><img src="videos/13-true-numbers/poster.jpg" width="200"></a><br>**13** True numbers, not blurry ones · 26s<br><sub>A short cut of 11</sub> | | |
 
-All eleven are rendered frame by frame at 60fps (1080×1920; the sting is 1080×1080) and are silent by design. Add a trending instrumental in-app. Captions are in [videos/README](videos/README.md).
+All thirteen are rendered frame by frame at 60fps (1080×1920; the sting is 1080×1080, and 11 also comes in 1920×1080) and are silent by design. Add a trending instrumental in-app. Captions are in [videos/README](videos/README.md).
 
 ---
 
@@ -144,6 +145,7 @@ node tools/render-stills.mjs brand/mascot/sheet.html brand/mascot/boards        
 node tools/export-mascot.mjs                                                   # stickers + avatars
 node tools/render-stills.mjs brand/banners/banners.html brand/banners --ss 1    # banners, every platform size
 node tools/render-video.mjs videos/11-all-your-data/video.html videos/11-all-your-data/all-your-data-16x9.mp4 --ss 1 --query "fmt=wide"
+node tools/render-video.mjs videos/11-all-your-data/video.html videos/12-funnel-breaks/funnel-breaks-9x16.mp4 --ss 1 --query "cut=funnel"   # a short cut of 11
 node tools/render-pdf.mjs posts/35-how-it-works posts/35-how-it-works/linkedin-carousel.pdf   # LinkedIn PDF carousel
 node tools/build-preview.mjs                                                   # preview.html
 ```

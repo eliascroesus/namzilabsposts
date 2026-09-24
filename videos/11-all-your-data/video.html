@@ -366,6 +366,25 @@ tl.every((t) => {
   $("world").style.transform = `scale(${1 + Math.min(t, 46) * 0.0006})`;
 });
 
+/* ── cutdowns: the same scenes, re-timed. ?cut=funnel → video 12, ?cut=short → video 13 ── */
+// windows of the full timeline played back to back: [from, to, ids kept hidden]. Each one starts
+// after the scene before it has faded out, and hides the next scene's headline, which starts early
+const CUTS = {
+  funnel: [[26.36, 33.46, ["t7w"]], [39.6, 44.2, ["t7w", "chat"]]],
+  short: [[0, 20.0, ["t5"]], [39.6, 44.2, ["t7w", "chat"]]],
+};
+const CUT = CUTS[Q.get("cut")];
+if (CUT) {
+  const full = tl.render.bind(tl);
+  tl.duration = CUT.reduce((n, [a, b]) => n + b - a, 0);
+  tl.render = (t) => {
+    let i = 0;
+    while (i < CUT.length - 1 && t >= CUT[i][1] - CUT[i][0]) { t -= CUT[i][1] - CUT[i][0]; i++; }
+    full(CUT[i][0] + t);
+    for (const id of CUT[i][2]) $(id).style.opacity = "0";
+  };
+}
+
 NZ.mount(tl, { width: W, height: H });
 </script>
 </body>

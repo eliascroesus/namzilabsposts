@@ -203,17 +203,19 @@ This batch leans funnier (bingo, group chats, dictionary entries, a red-string b
 
 ### Days 61–90: the third batch
 
-Lead with the new headline: all your data in one place, any metric, where the funnel breaks. Posts 25–35 plus the pinned video.
+Lead with the new headline: all your data in one place, any metric, where the funnel breaks. Posts 25–35, the pinned video and its two short cuts (videos 12 and 13).
 
 | Day | X | Instagram | Video |
 |---|---|---|---|
 | 61 | **Pin video 11 (16:9)** | **Pin video 11 (9:16) + post 35** | Video 11 |
 | 62 | Post 35 (how it works) | — | — |
 | 63 | Post 30 (1,269 customers you can't email) | Post 30 | — |
+| 64 | Video 12 (where the funnel breaks) | Reel: video 12 | Video 12 (TikTok, Shorts) |
 | 65 | Post 28 (tier list): argue in the replies | Post 28 | — |
 | 67 | Post 26 (Monday scorecard) | Post 26 | — |
 | 69 | Post 29 (how many members) | Post 29 | — |
 | 71 | Post 25 thread (horror stories) | Post 25 carousel | — |
+| 72 | Video 13 (true numbers) | Reel: video 13 | Video 13 (TikTok, Shorts) |
 | 73 | Post 31 (cost per held meeting) | Post 31 | — |
 | 75 | Post 27 (Namzi never says) | Post 27 | — |
 | 77 | Post 32 (book sooner) | Post 32 | — |
