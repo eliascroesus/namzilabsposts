@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Post 02 — 7 numbers none of your tools can show you</title>
+<title>Post 02 · 7 numbers none of your tools can show you</title>
 <link rel="stylesheet" href="../../lib/brand.css">
 <link rel="stylesheet" href="../../lib/post.css">
 <style>
@@ -63,7 +63,7 @@
   <div class="lines" style="margin-top:56px">
     <div class="li"><span class="bx blue"><b>1</b></span><div>Connect the two tools<small>API key or Google sign-in. History imports behind you.</small></div></div>
     <div class="li"><span class="bx blue"><b>2</b></span><div>Match, filter, calculate<small>Drag steps. Test on your real rows. No SQL.</small></div></div>
-    <div class="li"><span class="bx blue"><b>3</b></span><div>Publish<small>It stays live — and shows its working.</small></div></div>
+    <div class="li"><span class="bx blue"><b>3</b></span><div>Publish<small>It stays live and shows its working.</small></div></div>
   </div>
   <div class="foot"><span class="btn ghost" style="height:84px;font-size:29px">Start free · namzilabs.co</span><span class="lead" style="font-size:26px;text-align:right">Comment <b style="color:#fff">METRICS</b><br>for all 7 recipes</span></div>
 </div>
@@ -75,17 +75,17 @@ const METRICS = [
   ["For teams that book calls", "Show <em>rate</em>", T("close", "Calls held") + OP("÷") + T("calendly", "Calls booked"),
    "Your calendar knows who <b>booked</b>. Only your CRM knows who <b>showed</b>. Match them per person, or you're dividing two different lists.", "247 held of 370 booked", "66.8%"],
   ["For teams that book calls", "Speed to <em>lead</em>", T("aircall", "First call") + OP("−") + T("typeform", "Form sent"),
-   "Paired <b>per lead</b>, earliest form to first call. Report the median — one lead left for three days shouldn't hide ninety fast ones.", "Median, last 30 days", "8m 39s"],
+   "Paired <b>per lead</b>, earliest form to first call. Report the median. One lead left for three days shouldn't hide ninety fast ones.", "Median, last 30 days", "8m 39s"],
   ["For outbound agencies", "Cost per held <em>meeting</em>", T("gsheets", "Spend") + OP("÷") + T("fathom", "Meetings held"),
    "Clients pay for meetings that <b>happened</b>. Booked is the number that makes the report look good.", "$2,851 over 33 held", "$86.40"],
   ["For outbound teams", "Reply-to-meeting <em>rate</em>", T("calendly", "Booked") + OP("÷") + T("instantly", "Replies"),
    "Your sequencer counts <b>replies</b>. Your calendar counts <b>meetings</b>. The rate between them is the one that tells you if your copy works.", "41 booked from 112 replies", "36.6%"],
   ["For info & coaching", "Revenue per <em>lead</em>", T("stripe", "Cash collected") + OP("÷") + T("close", "Leads"),
-   "Tells you what a lead is actually worth — so you know what you can pay to get one.", "$259.7k over 719 leads", "$361"],
+   "Tells you what a lead is actually worth, so you know what you can pay to get one.", "$259.7k over 719 leads", "$361"],
   ["For creators", "Revenue per <em>subscriber</em>", T("whop", "Revenue") + OP("÷") + T("mailchimp", "Subscribers"),
    "Three platforms, one list. What is each person on it worth <b>this launch</b>?", "$43.0k over 10,437", "$4.12"],
   ["For e-commerce", "Revenue from your <em>list</em>", T("shopify", "Orders") + OP("∩") + T("klaviyo", "Subscribers"),
-   "Not attribution — <b>matching</b>. Orders from people who are on your list, refunds left out, with the working shown.", "$29.4k of $48.2k", "61%"],
+   "Not attribution. <b>Matching</b>. Orders from people who are on your list, refunds left out, with the working shown.", "$29.4k of $48.2k", "61%"],
 ];
 const tpl = document.getElementById("m"), last = document.getElementById("last");
 METRICS.forEach(([forWho, name, formula, why, ex, v], i) => {

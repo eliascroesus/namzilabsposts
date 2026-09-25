@@ -8,10 +8,11 @@ Everything here is made from code: HTML designs rendered to exact-size PNGs and 
 |---|---|
 | [**preview.html**](preview.html) | The preview and download page: every post, video, logo, banner and sticker, with copy-caption buttons and ZIP downloads (see [below](#the-preview-page)) |
 | **Pin these** 📌 | [Video 11, the explainer](videos/11-all-your-data/) (9:16 and 16:9) and [post 35, the how-it-works carousel](posts/35-how-it-works/post.md) (with a LinkedIn PDF). Banners for every platform are in [brand/banners/](brand/banners/) |
+| [**brand/COPY.md**](brand/COPY.md) ✍️ | Every bio (Instagram, X, TikTok, LinkedIn, Facebook, YouTube), tagline, company description, website and Product Hunt line, and the DM reply for each comment keyword. Checked against each platform's character limit; copy buttons in the Content Kit |
 | [**STRATEGY.md**](STRATEGY.md) | The plan: positioning, who we talk to (in order), pillars, cadence, hooks, CTAs, the first 90 days, what to pin, and the claims rules |
 | [**research/**](research/) | Four deep-research reports (about 45,000 words, 400+ sources): Framer & Base44, Attio & Mochi & premium SaaS, growth playbooks, and customers & competitors |
 | [**brand/**](brand/) | The primary mark (01 Between, mono), [transparent logo files](brand/logos/transparent/) and [website icons](brand/logos/web/), [banners for every platform](brand/banners/) (with LinkedIn-safe versions), [Namzi the mascot](brand/mascot/) and the [brand kit](brand/BRAND_KIT.md) |
-| [**posts/**](posts/) | 44 ready-to-post pieces for Instagram, X and LinkedIn, including 9 meme parodies starring Namzi. Each has its images, captions, X copy, alt text and a claims check |
+| [**posts/**](posts/) | 44 ready-to-post pieces for Instagram, X and LinkedIn, including 9 meme parodies starring Namzi. Each has its images, an Instagram caption, X posts, a LinkedIn post, alt text and a claims check |
 | [**videos/**](videos/) | 13 smooth motion videos at 60fps (the explainer in four cuts, plus two short cuts of it), with captions ([videos/README](videos/README.md)) |
 
 ---
@@ -83,7 +84,7 @@ Namzi lives in the space between the logo's two rings: the overlap where two too
 | <a href="posts/37-mmm-one-place/post.md"><img src="posts/37-mmm-one-place/ig-01.png" width="200"></a><br>**37** Mmm… one place<br><sub>Meme · donut-dad parody · Namzi</sub> | <a href="posts/38-same-person/post.md"><img src="posts/38-same-person/ig-01.png" width="200"></a><br>**38** They're the same person<br><sub>Meme · sales teams · Namzi</sub> | <a href="posts/39-source-of-truth/post.md"><img src="posts/39-source-of-truth/ig-01.png" width="200"></a><br>**39** Is this a single source of truth?<br><sub>Meme · founders · Namzi</sub> | <a href="posts/40-everyone-pointing/post.md"><img src="posts/40-everyone-pointing/ig-01.png" width="200"></a><br>**40** Everyone's pointing<br><sub>Meme · founders · Namzi</sub> |
 | <a href="posts/41-nah-yeah/post.md"><img src="posts/41-nah-yeah/ig-01.png" width="200"></a><br>**41** Nah / yeah<br><sub>Meme · agencies · Namzi</sub> | <a href="posts/42-this-is-fine/post.md"><img src="posts/42-this-is-fine/ig-01.png" width="200"></a><br>**42** This is fine<br><sub>Meme · founders · Namzi</sub> | <a href="posts/43-pivot/post.md"><img src="posts/43-pivot/ig-01.png" width="200"></a><br>**43** PIVOT!<br><sub>Meme · agencies · Namzi</sub> | <a href="posts/44-funnels-onions/post.md"><img src="posts/44-funnels-onions/ig-01.png" width="200"></a><br>**44** Funnels are like onions<br><sub>Meme · sales teams · Namzi</sub> |
 
-**The memes (36–44)** are parodies of famous scenes and meme formats, with Namzi playing every part. They borrow the joke's shape and catchphrase, never the characters, stills, logos or fonts, and each `post.md` ends with a claims and IP check. Post them as a playful week, one or two at a time between the explainers.
+**The memes (36 to 44)** are parodies of famous scenes and meme formats, with Namzi playing every part. They borrow the joke's shape and catchphrase, never the characters, stills, logos or fonts, and each `post.md` ends with a claims and IP check. Post them as a playful week, one or two at a time between the explainers.
 
 Each post folder contains:
 - `ig-XX.png` at 1080×1350
@@ -136,7 +137,7 @@ You can download single files, a whole post, a whole section, or everything as o
    - nothing about the AI connection or ad platforms until they're live
 2. Set up the **comment-keyword DMs** (SHOWUP, METRICS, SPEED, LAUNCH, FIRST10), with ManyChat or by hand.
 3. Set up every profile the same way: the **profile picture** (`brand/logos/01-between-mono/profile-blue-1024.png`), the matching **banner** from [`brand/banners/`](brand/banners/), and the **bio** from [its README](brand/banners/README.md). Pin **video 11** everywhere and **post 35** on Instagram and LinkedIn (the full list is in [STRATEGY.md, "Pin these first"](STRATEGY.md#pin-these-first-all-platforms)).
-4. Follow the **calendar** in [STRATEGY.md §9](STRATEGY.md#9-the-first-30-days), plus 30–50 replies a day in the niche.
+4. Follow the **calendar** in [STRATEGY.md §9](STRATEGY.md#9-the-first-30-days), plus 30 to 50 replies a day in the niche.
 
 ---
 

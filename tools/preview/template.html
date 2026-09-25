@@ -243,6 +243,21 @@
   .caphead { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
   .caphead b { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
   .captext { white-space: pre-wrap; font-size: 14.5px; line-height: 1.55; margin: 0; font-family: var(--sans); word-break: break-word; }
+  /* bios & copy: one card per line of copy, with its length against the platform's limit */
+  .cgrid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); align-items: start; }
+  .cgrid > .intro { grid-column: 1 / -1; margin: 0 0 2px; }
+  .ccard { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow); }
+  .ccard .chead { display: flex; align-items: center; gap: 10px; }
+  .ccard .chead b { font-size: 14px; letter-spacing: -0.01em; }
+  .ccard .cnt { margin-left: auto; font-size: 12px; font-weight: 650; color: var(--faint); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .ccard .cnt.ok::before { content: "✓ "; color: var(--green); }
+  .ccard .chead .btn { flex: none; }
+  .ccard .chead .cnt + .btn { margin-left: 0; }
+  .ccard .chead b + .btn { margin-left: auto; }
+  .ccard .faint { margin: 0; }
+  .voice { margin-top: 18px; }
+  .voice summary { cursor: pointer; font-weight: 650; color: var(--text); }
+  .voice ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 6px; }
   .claims { background: var(--amber-soft); border-color: transparent; }
   .claims ul, .md ul { margin: 0; padding-left: 18px; }
   .claims li, .md li { margin: 4px 0; font-size: 14px; }
@@ -278,10 +293,18 @@
 </header>
 
 <nav class="tabs"><div class="wrap" id="tabs">
-  <a href="#posts">Posts</a><a href="#videos">Videos</a><a href="#logos">Logos</a><a href="#platforms">By platform</a><a href="#banners">Banners</a><a href="#mascot">Namzi</a><a href="#docs">Docs</a>
+  <a href="#copy">Bios &amp; copy</a><a href="#posts">Posts</a><a href="#videos">Videos</a><a href="#logos">Logos</a><a href="#platforms">By platform</a><a href="#banners">Banners</a><a href="#mascot">Namzi</a><a href="#docs">Docs</a>
 </div></nav>
 
 <main class="wrap">
+  <section id="copy">
+    <div class="shead"><div><h2>Bios &amp; <em>copy.</em></h2><p>Every bio, tagline and company description, written to say what Namzilabs does, why it matters and the offer. Each one fits its platform's limit: tap Copy and paste.</p></div>
+      <button class="btn" id="copydoc">Download all as a doc</button></div>
+    <div class="filters" id="cfilters"></div>
+    <div class="cgrid" id="cgrid"></div>
+    <details class="note voice" id="voice"><summary>How we write: the rules every line follows</summary><ul id="voicelist"></ul></details>
+  </section>
+
   <section id="posts">
     <div class="shead"><div><h2>Posts</h2><p>Instagram carousels and X images, each with its captions, alt text and a claims check. Tap one to see every slide and copy the copy.</p></div>
       <button class="btn" data-zip="posts">Download all posts</button></div>
@@ -497,7 +520,7 @@
   });
 
   /* ── which kit is this? hide what it doesn't carry ──────────────────── */
-  const has = { posts: M.posts.length > 0, videos: M.videos.length > 0, logos: M.logos.concepts.length > 0, platforms: !!(M.banners && M.banners.concepts.length), banners: !!(M.banners && (M.kit === "brand" ? M.banners.highlights.length : M.kit !== "banners" && M.banners.concepts.length)), mascot: M.mascot.stickers.length > 0, docs: M.docs.length > 0 };
+  const has = { copy: !!(M.copy && M.copy.groups.length), posts: M.posts.length > 0, videos: M.videos.length > 0, logos: M.logos.concepts.length > 0, platforms: !!(M.banners && M.banners.concepts.length), banners: !!(M.banners && (M.kit === "brand" ? M.banners.highlights.length : M.kit !== "banners" && M.banners.concepts.length)), mascot: M.mascot.stickers.length > 0, docs: M.docs.length > 0 };
   for (const [k, v] of Object.entries(has)) if (!v) { document.getElementById(k).classList.add("hidden"); const a = document.querySelector(`#tabs a[href="#${k}"]`); if (a) a.classList.add("hidden"); }
   if (M.kit === "brand") {
     $("#h1").innerHTML = "The brand, ready to <em>use.</em>";
@@ -521,11 +544,12 @@
     ? `The logo and ${(M.logos.variants || []).length} variants of it (including the game-style ones), transparent files, website icons, Namzi the mascot and Instagram highlight covers. Preview anything and download single files or whole sets. The banners have their own kit.`
     : M.kit === "banners"
     ? `${nDesigns} banner designs, each at every size it's made for: LinkedIn company and profile, Facebook page and group, X and YouTube, plus a link preview and an email signature for the brand designs. Pick a platform to see every design at its real shape, with the profile picture made for it.${M.banners && M.banners.jpg ? " Banners are visually lossless JPGs; PNG masters are in the repo." : ""}`
-    : `${M.posts.length} posts (${nSlides} images) and ${M.videos.length} videos, including the pinned explainer. Preview anything, copy the captions, and download single files or whole sets.${M.kit === "content" ? " Images are visually lossless JPGs; PNG masters are in the repo." : ""}`;
+    : `Every bio and tagline, ${M.posts.length} posts (${nSlides} images) and ${M.videos.length} videos, including the pinned explainer. Copy the bios and captions, preview anything, and download single files or whole sets.${M.kit === "content" ? " Images are visually lossless JPGs; PNG masters are in the repo." : ""}`;
   $("#allsize").textContent = `ZIP · ${mb(bytes(sets.all()))}`;
   $("#repo").href = M.repo.url;
   const nBanners = M.banners ? M.banners.concepts.reduce((n, c) => n + c.files.length, 0) : 0;
-  $("#stats").innerHTML = [["Posts", M.posts.length], ["Images", nSlides], ["Videos", M.videos.length], ["Logo variants", (M.logos.variants || []).length], ["Banner designs", nDesigns], ["Banners", nBanners], ["Platforms", M.kit === "banners" ? 8 : 0], ["Stickers", M.mascot.stickers.length]].filter(([, v]) => v).map(([k, v]) => `<span class="stat"><b>${v}</b> ${k}</span>`).join("");
+  const nCopy = M.copy ? M.copy.groups.reduce((n, g) => n + g.items.length, 0) : 0;
+  $("#stats").innerHTML = [["Bios & lines", M.kit === "content" || M.kit === "all" ? nCopy : 0], ["Posts", M.posts.length], ["Images", nSlides], ["Videos", M.videos.length], ["Logo variants", (M.logos.variants || []).length], ["Banner designs", nDesigns], ["Banners", nBanners], ["Platforms", M.kit === "banners" ? 8 : 0], ["Stickers", M.mascot.stickers.length]].filter(([, v]) => v).map(([k, v]) => `<span class="stat"><b>${v}</b> ${k}</span>`).join("");
   $("#gen").textContent = `Built ${M.built}.`;
 
   /* ── posts ──────────────────────────────────────────────────────────── */
@@ -576,7 +600,7 @@
     $("#mzip").innerHTML = `${ICON_DL}Post ZIP`;
     $("#mzip").onclick = () => saveZip(`namzilabs-${p.dir}.zip`, postFiles(p));
     const caps = p.sections.map((s) => {
-      if (s.kind === "caption") return capBlock(s.title, s.text);
+      if (s.kind === "caption") return (s.note ? `<p class="faint" style="margin:14px 0 -6px">${esc(s.note)}</p>` : "") + capBlock(s.title, s.text);
       if (s.kind === "x") return s.blocks.map((b, i) => capBlock(`${s.title} · ${b.label}`, b.text)).join("");
       if (s.kind === "claims") return `<div class="capblock claims"><div class="caphead"><b>${esc(s.title)}</b></div><div class="md">${mdLite(s.text)}</div></div>`;
       if (s.kind === "alt") return capBlock(s.title, s.text);
@@ -817,6 +841,24 @@
     });
     $("#hgrid").innerHTML = M.banners.highlights.map((h, i) => `<div class="sticker"><div class="checker" style="aspect-ratio:9/16;padding:0"><img loading="lazy" src="${esc(h.path)}" alt="Highlight cover: ${esc(h.label)}" style="object-fit:cover"></div><div class="row"><span class="lab">${esc(h.label)} · ${esc(h.bg)}</span><span class="sbtns"><button class="btn small" data-hl="${i}">${ICON_DL}${h.name.endsWith(".jpg") ? "JPG" : "PNG"}</button></span></div></div>`).join("");
     $("#hgrid").addEventListener("click", (e) => { const b = e.target.closest("[data-hl]"); if (b) { const h = M.banners.highlights[Number(b.dataset.hl)]; saveOne(h, `namzilabs-highlight-${h.name}`); } });
+  }
+
+  /* ── bios & copy ────────────────────────────────────────────────────── */
+  if (M.copy && M.copy.groups.length) {
+    const G = M.copy.groups;
+    let cg = G.some((g) => g.id === "bios") ? "bios" : G[0].id;
+    const ccard = (it, gi, ii) => `<div class="ccard"><div class="chead"><b>${esc(it.label)}</b>${it.limit ? `<span class="cnt ok" title="characters used of the platform's limit">${it.text.length}/${it.limit}</span>` : ""}<button class="btn small" data-cc="${gi}|${ii}">${ICON_COPY}Copy</button></div><pre class="captext">${esc(it.text)}</pre>${it.note ? `<p class="faint">${esc(it.note)}</p>` : ""}</div>`;
+    const renderCopy = () => {
+      $("#cfilters").innerHTML = G.map((g) => `<button class="chip${cg === g.id ? " on" : ""}" data-cg="${esc(g.id)}">${esc(g.title)}<span class="n">${g.items.length}</span></button>`).join("");
+      const gi = G.findIndex((g) => g.id === cg), g = G[gi];
+      $("#cgrid").innerHTML = `<p class="faint intro">${esc(g.intro)}</p>` + g.items.map((it, ii) => ccard(it, gi, ii)).join("");
+    };
+    renderCopy();
+    $("#cfilters").addEventListener("click", (e) => { const b = e.target.closest("[data-cg]"); if (!b) return; cg = b.dataset.cg; renderCopy(); });
+    $("#cgrid").addEventListener("click", (e) => { const b = e.target.closest("[data-cc]"); if (!b) return; const [gi, ii] = b.dataset.cc.split("|").map(Number); copy(G[gi].items[ii].text); });
+    $("#voicelist").innerHTML = M.copy.voice.map(([t, d]) => `<li><b>${esc(t)}.</b> ${esc(d)}</li>`).join("");
+    const doc = M.docs.find((d) => d.path === "brand/COPY.md");
+    if (doc) $("#copydoc").addEventListener("click", () => saveOne(doc, "namzilabs-copy.md")); else $("#copydoc").classList.add("hidden");
   }
 
   /* ── mascot ─────────────────────────────────────────────────────────── */

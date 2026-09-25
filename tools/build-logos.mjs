@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Build every logo concept as clean, self-contained SVG:
 //   symbol-ink / symbol-white / symbol-color, app-icon (ink) / app-icon-sky,
-//   lockup-light / lockup-dark — with the wordmark outlined from Inter 800,
+//   lockup-light / lockup-dark, with the wordmark outlined from Inter 800,
 //   so no file depends on a font being installed.
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -21,7 +21,7 @@ export const CONCEPTS = [
     id: "01-between",
     skyAc: "#FFFFFF",
     name: "Between",
-    idea: "Your tools are the circles. The number you need lives in the overlap — the same person, seen by two tools at once. The blue lens is literally “the number between your tools”.",
+    idea: "Your tools are the circles. The number you need lives in the overlap: the same person, seen by two tools at once. The blue lens is literally “the number between your tools”.",
     draw: ({ fg, ac }) => `
       <path d="M32 18.73A15 15 0 0 1 32 45.27A15 15 0 0 1 32 18.73Z" fill="${ac}"/>
       <circle cx="25" cy="32" r="15" fill="none" stroke="${fg}" stroke-width="4.6"/>
@@ -31,7 +31,7 @@ export const CONCEPTS = [
     id: "02-converge",
     skyAc: "#FFFFFF",
     name: "Converge",
-    idea: "Three sources run in from the left and leave as one. Many tools in, one defensible number out — the whole product in one gesture.",
+    idea: "Three sources run in from the left and leave as one. Many tools in, one defensible number out. The whole product in one gesture.",
     draw: ({ fg, ac }) => `
       <path d="M10 18C23 18 25.5 32 38 32M10 46C23 46 25.5 32 38 32M10 32H38" fill="none" stroke="${fg}" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="48" cy="32" r="7.5" fill="${ac}"/>`,
@@ -40,7 +40,7 @@ export const CONCEPTS = [
     id: "03-receipt",
     skyAc: "#2F5FD8",
     name: "Receipt",
-    idea: "Every number shows its working. A receipt: the lines that went in, and the total that came out — in blue. Ownable in a category of pie charts.",
+    idea: "Every number shows its working. A receipt: the lines that went in, and the total that came out, in blue. Ownable in a category of pie charts.",
     draw: ({ fg, ac, bg }) => `
       <path d="M17 9h30a4 4 0 0 1 4 4v42l-4.75-4-4.75 4-4.75-4-4.75 4-4.75-4-4.75 4-4.75-4-4.75 4V13a4 4 0 0 1 4-4Z" fill="${fg}"/>
       <rect x="21" y="17" width="17" height="3.8" rx="1.9" fill="${bg}"/>
@@ -51,7 +51,7 @@ export const CONCEPTS = [
     id: "04-bridge",
     skyAc: "#FFFFFF",
     name: "Bridge",
-    idea: "A lowercase n standing on two tools. The arch is the metric that spans them — and it spells the first letter of the name.",
+    idea: "A lowercase n standing on two tools. The arch is the metric that spans them, and it spells the first letter of the name.",
     draw: ({ fg, ac }) => `
       <path d="M19.5 45V31.5a12.5 12.5 0 0 1 25 0V45" fill="none" stroke="${fg}" stroke-width="7.2" stroke-linecap="round"/>
       <circle cx="19.5" cy="46" r="7.4" fill="${ac}"/>
@@ -70,7 +70,7 @@ export const CONCEPTS = [
     id: "06-namzi",
     skyAc: "#9DBDFF",
     name: "Namzi",
-    idea: "The mascot's face as a mark: the lens from 01, looking back at you. Warmer than 01 — made for avatars, stickers and replies.",
+    idea: "The mascot's face as a mark: the lens from 01, looking back at you. Warmer than 01, made for avatars, stickers and replies.",
     draw: ({ ac }) => `
       <path d="M32 9A24.06 24.06 0 0 1 32 55A24.06 24.06 0 0 1 32 9Z" fill="${ac}" stroke="${ac}" stroke-width="3" stroke-linejoin="round"/>
       <ellipse cx="25.6" cy="29.5" rx="5" ry="6" fill="#FFFFFF"/><ellipse cx="38.4" cy="29.5" rx="5" ry="6" fill="#FFFFFF"/>

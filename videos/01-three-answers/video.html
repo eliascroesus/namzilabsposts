@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Namzilabs — Three tools, three answers (9:16)</title>
+<title>Namzilabs · Three tools, three answers (9:16)</title>
 <link rel="stylesheet" href="../../lib/brand.css">
 <style>
   /* 1080×1920. Safe area for Reels/TikTok UI: keep the story between y=240 and y=1500. */
@@ -110,7 +110,7 @@
         <div class="row" id="q2"><span class="k">Matched as the same person</span><span class="v">82</span></div>
         <div class="row" id="q3"><span class="k"><span class="dot red" style="width:12px;height:12px;box-shadow:none"></span>Excluded</span><span class="v">0</span></div>
       </div>
-      <div class="note" id="note">82 records described the same 41 meetings, so each was counted once — on the earliest time any tool saw it.</div>
+      <div class="note" id="note">82 records described the same 41 meetings, so each was counted once, at the earliest time any tool saw it.</div>
     </div>
 
     <!-- scene D -->
@@ -213,7 +213,7 @@ tl.stagger(wD, { at: 12.35, dur: 0.75, ease: E.out, from: { y: 130 }, to: { y: 0
 tl.add("#cta", { at: 13.1, dur: 0.9, ease: E.spring, from: { scale: 0.8, opacity: 0 }, to: { scale: 1, opacity: 1 } });
 tl.add("#url", { at: 13.35, dur: 0.6, ease: E.out, from: { y: 18, opacity: 0 }, to: { y: 0, opacity: 1 } });
 
-// ambient: the page never quite stops — grid drift and a breathing bloom
+// ambient: the page never quite stops: grid drift and a breathing bloom
 tl.every((t) => {
   document.getElementById("ruled").style.transform = `translate3d(0, ${-(t * 6) % 88}px, 0)`;
   const b = document.getElementById("bloom2");

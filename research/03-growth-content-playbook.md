@@ -1,6 +1,6 @@
 # Growth content playbook: how fast-growing startups used content, and what converts on X and Instagram now
 
-*Research file 03 for the Namzilabs content engine. Compiled September 2026. Scope: 2024–2026.*
+*Research file 03 for the Namzilabs content engine. Compiled September 2026. Scope: 2024 to 2026.*
 
 > **How to read this document**
 > - Every figure, quote and date has a numbered source `[n]`. The list is in section 9.
@@ -42,7 +42,7 @@
    - n8n and Clay grew creator and template ecosystems that compound [41][42][21][23].
    - Triple Whale rode "DTC Twitter" [50][51].
 4. **"Clipping" is now a paid distribution channel you can buy by the view.**
-   - Whop's Content Rewards pays anyone per 1,000 verified views of clips [28][29]. A third-party guide puts typical rates at $0.20–$6 per 1,000 views, averaging about $1 [30].
+   - Whop's Content Rewards pays anyone per 1,000 verified views of clips [28][29]. A third-party guide puts typical rates at $0.20 to $6 per 1,000 views, averaging about $1 [30].
    - Whop's CEO posted that Whop was "spending 90K / month on content rewards" [31].
    - **Inference:** it is cheap to test, but it only works once there is source footage worth clipping and strict brand rules.
 5. **X's ranking code (open-sourced January 2026) weights conversation and sharing far above likes.**
@@ -63,11 +63,11 @@
    - Accounts that repost others' content 10+ times in 30 days lose recommendations [88].
    - Public professional-account posts are indexed by Google [87].
 9. **No public data shows what converts; measure it yourself and publish the receipts.**
-   - This research found no reliable 2025–26 public data on view-to-signup conversion for B2B SaaS on X or Instagram.
+   - This research found no reliable 2025 to 2026 public data on view-to-signup conversion for B2B SaaS on X or Instagram.
    - **Inference:** instrument the funnel yourself (UTMs → GA4 → signups → Stripe). Build the funnel dashboard *in Namzilabs*, and post the weekly numbers as "receipts" content.
 10. **With zero followers, replies are the engine for the first 30 days.** **Inference**, grounded in [53][54][55][88]:
     - Reply daily to operators in e-com, coaching/info and the creator economy, and turn repliers into mutual follows.
-    - Post 1–2 originals a day, spaced hours apart, because of author-diversity decay [53].
+    - Post 1 to 2 originals a day, spaced hours apart, because of author-diversity decay [53].
     - Publish daily vertical video, exported clean and cut natively for each platform.
 
 ---
@@ -81,7 +81,7 @@
 | Lovable | $10M ARR in 60 days [1]; ~$100M ARR in ~8 months [2][5] | Founder and team building in public; community | Build in public, generous free usage, community |
 | Cursor | Past $500M ARR by June 2025 [6] | Developer word of mouth [7][8] | Product-led; no formal content engine found |
 | Bolt | ~$0.7M → $40M ARR in ~5 months [9][11] | One launch tweet plus demo; user build stories | Demo-first launch, community showcases |
-| Replit | ~$10M → $100M ARR in ~6 months (2025) [12] | Little sourced detail found | — |
+| Replit | ~$10M → $100M ARR in ~6 months (2025) [12] | Little sourced detail found |  |
 | Gamma | $100M ARR, ~50M users, ~50 staff [13][14] | Founder as creator, then a creator program | UGC creators, agencies, word of mouth |
 | Granola | ~10%/week user growth (May 2025) [17] | Shared notes; "Crunched" year-in-review | Viral artifact, niche beta, seasonal moment |
 | Clay | $1M → $100M ARR in two years [19] | Category creation, creators and agencies, templates, Clay Clubs | Templates, community events, education |
@@ -90,7 +90,7 @@
 | Supabase | 47% MoM database growth over 18 months [39] | Launch Weeks written by the engineers who built each feature | Launch weeks, re-launching |
 | n8n | ~$40M ARR mid-2025 [43] → reported $100M ARR Apr 2026 [42] | Community creators plus 9,000+ templates [41] | Templates, creator flywheel |
 | OpusClip | 5M users in 7 months [45]; 12M+ creators and brands in 2 years [44] | Outputs are content; SEO explainers on adjacent trends | Trend-jacking, creator-native product |
-| Beehiiv | — | CEO newsletter repurposed to X and LinkedIn; lead magnets | Founder-led, referral |
+| Beehiiv |  | CEO newsletter repurposed to X and LinkedIn; lead magnets | Founder-led, referral |
 | Triple Whale | 1,400% YoY growth, 5,000+ brands (2023) [50] | DTC Twitter community | Founder-led, influencer playbook |
 
 ### 2.1 Lovable
@@ -135,7 +135,7 @@
   - Users posted build stories on social media, blogs and YouTube, for example "I built our startup's MVP in a weekend on Bolt.new".
   - A Reddit community (r/boltnewbuilders) formed, and the team amplified user-made projects [10].
 
-**Borrow (Inference).** A 10–20-second "input → result" demo. For Namzilabs: pick two sources → match → a number appears with its working shown.
+**Borrow (Inference).** A 10 to 20-second "input → result" demo. For Namzilabs: pick two sources → match → a number appears with its working shown.
 
 ### 2.4 Replit
 
@@ -156,8 +156,8 @@
 - **Word of mouth.** More than half of signups come from word of mouth [13][15].
 
 **Borrow (Inference)**
-- Founder posts daily for the first 30–60 days.
-- Later, recruit 5–10 micro-creators in coaching, e-com and the creator economy, and onboard each one personally.
+- Founder posts daily for the first 30 to 60 days.
+- Later, recruit 5 to 10 micro-creators in coaching, e-com and the creator economy, and onboard each one personally.
 - Expect one or two of them to matter.
 
 ### 2.6 Granola
@@ -205,7 +205,7 @@
 - A brand, agency or creator sets a budget and a rate per 1,000 views.
 - Anyone can join without an audience and post clips that meet the brief.
 - Clippers are paid on verified views while the budget lasts.
-- A third-party guide puts typical rates at $0.20–$6 per 1,000 views, averaging about $1 [30].
+- A third-party guide puts typical rates at $0.20 to $6 per 1,000 views, averaging about $1 [30].
 
 **Whop uses it on itself**
 - CEO Steven Schwartz posted: "Whop is spending 90K / month on content rewards. Glad to see that it is working for other people as well." [31]
@@ -241,7 +241,7 @@
 
 The format spread across developer tools; Resend and Linear also run launch weeks [40].
 
-**Borrow (Inference).** A five-day Namzilabs launch week every 6–8 weeks, one concrete capability per day. Re-launch the winners in new formats later.
+**Borrow (Inference).** A five-day Namzilabs launch week every 6 to 8 weeks, one concrete capability per day. Re-launch the winners in new formats later.
 
 ### 2.11 n8n
 
@@ -281,7 +281,7 @@ The format spread across developer tools; Resend and Linear also run launch week
 - **Referral heritage.** He previously built Morning Brew's referral program, credited with over a million subscribers.
 
 **Borrow (Inference)**
-- One weekly long-form piece (a "Receipts" email or an X long post), cut into 5–7 short posts.
+- One weekly long-form piece (a "Receipts" email or an X long post), cut into 5 to 7 short posts.
 - A lead magnet made of real internal artifacts, e.g. the exact metric definitions Namzilabs uses.
 
 ### 2.14 Triple Whale
@@ -300,7 +300,7 @@ The format spread across developer tools; Resend and Linear also run launch week
 ### 2.15 Also relevant: Cluely (what not to copy)
 
 - TechCrunch framed Cluely's marketing as a "ragebait strategy" [37].
-- A third-party teardown reports that, at peak, up to 50 interns and 700 clippers produced about 200 videos a day. Pay was $20–40 per video plus $1,000 bonuses for million-view hits [38].
+- A third-party teardown reports that, at peak, up to 50 interns and 700 clippers produced about 200 videos a day. Pay was $20 to 40 per video plus $1,000 bonuses for million-view hits [38].
 - **Inference:** volume and provocation can buy views. For a product that sells *trustworthy numbers*, provocation carries a cost:
   - it invites "not interested", mutes and reports, which carry large negative weights on X [54];
   - it contradicts a "receipts" brand.
@@ -311,9 +311,9 @@ The format spread across developer tools; Resend and Linear also run launch week
 |---|---|---|
 | Founder-led content | Lovable, Gamma, Beehiiv, Whop, Triple Whale | **High.** The core engine for the next 90 days |
 | Build in public | Lovable, Beehiiv | **High.** Ship notes plus weekly funnel receipts |
-| Launch weeks | Supabase; Cal.com (monthly updates) | **High.** Every 6–8 weeks |
+| Launch weeks | Supabase; Cal.com (monthly updates) | **High.** Every 6 to 8 weeks |
 | Trend-jacking | OpusClip (SEO explainers), Granola (year-end moment) | **High.** Platform changes, BFCM, the clipping boom |
-| Templates / programmatic SEO | n8n, Clay | **Medium–high.** Metric recipes per pair of sources |
+| Templates / programmatic SEO | n8n, Clay | **Medium to high.** Metric recipes per pair of sources |
 | Community showcases | Bolt, Clay Clubs, n8n | **Low for now.** Showcase your own builds on demo data until users opt in |
 | UGC creator programs | Gamma, n8n | **Later.** After the message is proven organically |
 | Clipping (pay per view) | Whop, Cluely | **Later.** Needs a footage library and guardrails |
@@ -321,7 +321,7 @@ The format spread across developer tools; Resend and Linear also run launch week
 | Paid creator whitelisting | Not researched in depth | **Later.** Needs ad budget and a proven creative |
 | Memes | DTC Twitter culture | **Medium.** Kind, situation-based memes only |
 
-**Paid creator whitelisting (unverified here).** This means running ads through a creator's handle (Meta partnership ads, TikTok Spark Ads). No 2025–26 performance data was gathered for this report. Revisit once there is budget and an organic post that has already proven itself.
+**Paid creator whitelisting (unverified here).** This means running ads through a creator's handle (Meta partnership ads, TikTok Spark Ads). No 2025 to 2026 performance data was gathered for this report. Revisit once there is budget and an organic post that has already proven itself.
 
 ---
 
@@ -404,7 +404,7 @@ Buffer analyzed 18.8M posts from 71,000 accounts [66][67].
 
 | Account type | Median impressions per post | Reach vs. free |
 |---|---|---|
-| Free | under 100 | — |
+| Free | under 100 |  |
 | Premium | ~600 | ~10× |
 | Premium+ | over 1,550 | ~15× |
 
@@ -418,8 +418,8 @@ Buffer analyzed 18.8M posts from 71,000 accounts [66][67].
 
 #### Long posts vs threads
 
-**Inference.** No controlled 2025–26 test results were found.
-- Dwell weights are small next to reply, quote and share weights (0.05 and 0.004 vs 5–20). The format matters less than whether the piece earns replies and forwards.
+**Inference.** No controlled 2025 to 2026 test results were found.
+- Dwell weights are small next to reply, quote and share weights (0.05 and 0.004 vs 5 to 20). The format matters less than whether the piece earns replies and forwards.
 - Use a single long post (Premium) for a teardown people will save and forward.
 - Use a short thread when each step needs its own screenshot.
 - Either way, the first two lines must work as a standalone post.
@@ -429,7 +429,7 @@ Buffer analyzed 18.8M posts from 71,000 accounts [66][67].
 **Inference**, using [54][66][69]:
 1. **Text posts built on a specific number or formula.** In Buffer's 2026 data, text leads X engagement with a 3.56% median, and images trail it by only about 5% [69].
 2. **Screenshot "receipts".** A dashboard or calculation with the working visible.
-3. **Native 15–45-second demo clips.** Upload directly, 10 seconds or longer, with burned-in captions.
+3. **Native 15 to 45-second demo clips.** Upload directly, 10 seconds or longer, with burned-in captions.
 4. **Quote-posts of industry news with added analysis.** A quote is weighted 5.
 5. **Replies under larger accounts in your niche.** See section 7.
 
@@ -453,12 +453,12 @@ Buffer analyzed 18.8M posts from 71,000 accounts [66][67].
 
 - Reels can run up to 3 minutes (announced January 2025) [81][82].
 - Before that change, Instagram advised that Reels of 90 seconds or less are the ones recommended to unconnected audiences [81][82].
-- Socialinsider finds 30–60-second Reels get the highest average reach rate, 5.60%. Reels over two minutes fall to 3.50% [74].
+- Socialinsider finds 30 to 60-second Reels get the highest average reach rate, 5.60%. Reels over two minutes fall to 3.50% [74].
 
 #### The first 3 seconds
 
 - In August 2025, Instagram added **skip rate** to Reels insights: the share of viewers who scroll past within the first 3 seconds. A high skip rate means the opening did not hold people [79][80].
-- A third-party rule of thumb: under ~30–40% is healthy, and over ~50% means the hook is not working [98].
+- A third-party rule of thumb: under ~30 to 40% is healthy, and over ~50% means the hook is not working [98].
 - **Inference:** put the claim, number or visual payoff in the first frame. Use on-screen text as the headline, and skip logo intros and greetings.
 
 #### Trial Reels
@@ -486,7 +486,7 @@ Buffer analyzed 18.8M posts from 71,000 accounts [66][67].
 
 - Capped at **five** per post and Reel since December 2025 [85][86].
 - Mosseri: "a few specific tags actually perform better than a long list of generic ones". Hashtags can help search, but don't necessarily increase reach [86].
-- **Inference:** use 3–5 precise tags, or none.
+- **Inference:** use 3 to 5 precise tags, or none.
 
 #### Originality and cross-posting
 
@@ -523,7 +523,7 @@ Different studies use different definitions. Compare rows only within one source
 | Instagram: Reels | Reach rate | 30.81% (1.36× carousels; 2.25× images) | Buffer [70][71] |
 | Instagram: carousels | Median engagement rate | 6.90% | Buffer [70][71] |
 | Instagram: Reels / carousels / images | Engagement by followers, Q2 2026 | 0.48% / 0.50% / 0.33% (overall 0.45%) | Socialinsider [73] |
-| Instagram: Reels 30–60 s vs >2 min | Average reach rate | 5.60% vs 3.50% | Socialinsider [74] |
+| Instagram: Reels 30 to 60 s vs >2 min | Average reach rate | 5.60% vs 3.50% | Socialinsider [74] |
 | Instagram: all industries | Median engagement per post (2025) | 0.36% | Rival IQ [75] |
 | TikTok: all industries | Median engagement per post (2025) | 1.73% | Rival IQ [75] |
 | TikTok: video | Median engagement rate | 3.39%, 77% above carousels/photos | Buffer [70] |
@@ -532,7 +532,7 @@ Different studies use different definitions. Compare rows only within one source
 
 ### 3.5 What the evidence does not tell us
 
-This research found no reliable public 2025–26 data on:
+This research found no reliable public 2025 to 2026 data on:
 - view-to-signup conversion for B2B SaaS on X or Instagram;
 - conversion from comment-keyword DM automation;
 - link-in-bio click-through.
@@ -558,29 +558,29 @@ Vendors make claims about all three, but none was verified here.
 
 | # | Template | Namzilabs example | Real example | Signal |
 |---|---|---|---|---|
-| 1 | `[Big number]. [Smaller]. [Smallest]. Where did the rest go?` | "40 booked. 23 held. 6 paid. Where did the other 34 go? (demo data)" | — | Replies, sends |
+| 1 | `[Big number]. [Smaller]. [Smallest]. Where did the rest go?` | "40 booked. 23 held. 6 paid. Where did the other 34 go? (demo data)" |  | Replies, sends |
 | 2 | `I'm spending [amount] on [channel]. Here's what it's producing.` | "Building Namzilabs in public: every signup traced back to the post that sent it. Week [N] receipts ↓" | "Whop is spending 90K / month on content rewards. Glad to see that it is working for other people as well." [31] | Replies, follows |
-| 3 | `Your [tool A] says [X]. Your [tool B] says [Y]. Both are right.` | "Calendly says 52 meetings. Your CRM says 38 leads. Both are right: they count different people. (demo)" | — | Replies, quotes |
-| 4 | `Here's the exact math behind [metric].` | "Show-up rate isn't just held ÷ booked. Here's the math that survives reschedules and duplicates." | — | Saves, copy-link shares |
-| 5 | `[Metric] is the number nobody on your team owns.` | "Speed to lead is the number nobody on a sales team owns. Here's how to see it in 4 steps." | — | Sends |
+| 3 | `Your [tool A] says [X]. Your [tool B] says [Y]. Both are right.` | "Calendly says 52 meetings. Your CRM says 38 leads. Both are right: they count different people. (demo)" |  | Replies, quotes |
+| 4 | `Here's the exact math behind [metric].` | "Show-up rate isn't just held ÷ booked. Here's the math that survives reschedules and duplicates." |  | Saves, copy-link shares |
+| 5 | `[Metric] is the number nobody on your team owns.` | "Speed to lead is the number nobody on a sales team owns. Here's how to see it in 4 steps." |  | Sends |
 
 ### B. Mechanism: "here's why"
 
 | # | Template | Namzilabs example | Real example | Signal |
 |---|---|---|---|---|
 | 6 | `A common complaint is [problem]. This is because [mechanism].` | "A common complaint: 'our closers close 30% but revenue is flat.' Often it's because show-up rate is sliding underneath them." | "For creators, a common complaint is that posts with links tend to get lower reach. This is because the web browser covers the post…" [63] | Replies |
-| 7 | `[Tool] can't tell you [metric]. Here's why.` | "Stripe can't tell you revenue per lead. It has never seen your leads." | — | Replies, sends |
-| 8 | `The [N]-step recipe for [metric]` | "The 4-step recipe for cost per held meeting: Get data → Match → Calculate → Publish." | — | Saves |
-| 9 | `What actually happens to a [lead] in the first [N] minutes` | "What happens to a Typeform lead in the first 5 minutes: a timeline." | — | Watch time |
+| 7 | `[Tool] can't tell you [metric]. Here's why.` | "Stripe can't tell you revenue per lead. It has never seen your leads." |  | Replies, sends |
+| 8 | `The [N]-step recipe for [metric]` | "The 4-step recipe for cost per held meeting: Get data → Match → Calculate → Publish." |  | Saves |
+| 9 | `What actually happens to a [lead] in the first [N] minutes` | "What happens to a Typeform lead in the first 5 minutes: a timeline." |  | Watch time |
 | 10 | `I read [primary source] so you don't have to.` | "I read X's open-sourced ranking code. The 5 weights that matter for founders:" | "I read the X (Twitter) algorithm source for 4 days…" [96] | Copy-link shares |
 
 ### C. Contrarian
 
 | # | Template | Namzilabs example | Real example | Signal |
 |---|---|---|---|---|
-| 11 | `Stop tracking [vanity metric]. Track [real metric].` | "Stop celebrating booked calls. Track held calls." | — | Replies |
-| 12 | `Unpopular opinion: [claim].` | "Unpopular opinion: your closer isn't the problem. Your show-up rate is." | — | Replies, quotes |
-| 13 | `"[Common advice]" is wrong if [condition].` | "'Book more calls' is bad advice if 4 in 10 don't show. Check yours first." | — | Replies |
+| 11 | `Stop tracking [vanity metric]. Track [real metric].` | "Stop celebrating booked calls. Track held calls." |  | Replies |
+| 12 | `Unpopular opinion: [claim].` | "Unpopular opinion: your closer isn't the problem. Your show-up rate is." |  | Replies, quotes |
+| 13 | `"[Common advice]" is wrong if [condition].` | "'Book more calls' is bad advice if 4 in 10 don't show. Check yours first." |  | Replies |
 | 14 | `An [N]-year overnight success` | "The 'overnight' fix to our funnel numbers took [3] tools, [2] spreadsheets and one matching rule." | "Clay reaches $100M ARR: an eight-year overnight success" [19] | Follows |
 | 15 | `"[Harsh quote]" → [result]` (only with a true quote) | "'[Quote someone said about your idea]' → [what happened]" | "'Dumbest idea I've heard' to $100M ARR" [14] | Curiosity, replies |
 
@@ -588,36 +588,36 @@ Vendors make claims about all three, but none was verified here.
 
 | # | Template | Namzilabs example | Real example | Signal |
 |---|---|---|---|---|
-| 16 | `If you run [business type], you've seen this:` | "If you run a coaching offer with setters and closers, you've seen this: the setter's sheet and the closer's sheet never match." | — | Sends |
-| 17 | `[Audience]: your [dashboard] is missing one column.` | "Shopify founders: your email dashboard is missing one column: revenue per lead, matched to real orders." | — | Replies, sends |
-| 18 | `[Audience]: you have [N] tools and no idea which [X] made money.` | "Creators: Whop, Stripe, Calendly, Mailchimp, and still no single view of which leads became paying clients." | — | Replies |
-| 19 | `[N] numbers every [role] should see every Monday` | "3 numbers every sales manager should see every Monday: show-up rate, speed to lead, cost per held meeting." | — | Saves, sends |
-| 20 | `Send this to your [role].` (as the opener) | "Send this to your setter before tomorrow's calls." | — | Sends |
+| 16 | `If you run [business type], you've seen this:` | "If you run a coaching offer with setters and closers, you've seen this: the setter's sheet and the closer's sheet never match." |  | Sends |
+| 17 | `[Audience]: your [dashboard] is missing one column.` | "Shopify founders: your email dashboard is missing one column: revenue per lead, matched to real orders." |  | Replies, sends |
+| 18 | `[Audience]: you have [N] tools and no idea which [X] made money.` | "Creators: Whop, Stripe, Calendly, Mailchimp, and still no single view of which leads became paying clients." |  | Replies |
+| 19 | `[N] numbers every [role] should see every Monday` | "3 numbers every sales manager should see every Monday: show-up rate, speed to lead, cost per held meeting." |  | Saves, sends |
+| 20 | `Send this to your [role].` (as the opener) | "Send this to your setter before tomorrow's calls." |  | Sends |
 
 ### E. Before and after
 
 | # | Template | Namzilabs example | Real example | Signal |
 |---|---|---|---|---|
-| 21 | `Before: [painful process]. After: [simple result].` | "Before: 6 tabs, 2 exports, 1 VLOOKUP. After: one number, with receipts." | — | Watch time |
-| 22 | `Monday morning: before vs after` | Split screen: spreadsheet scramble vs one live dashboard (demo) | — | Sends |
-| 23 | `What [A] shows vs what [B] shows` | "What your booking tool shows vs what your bank shows." | — | Replies |
+| 21 | `Before: [painful process]. After: [simple result].` | "Before: 6 tabs, 2 exports, 1 VLOOKUP. After: one number, with receipts." |  | Watch time |
+| 22 | `Monday morning: before vs after` | Split screen: spreadsheet scramble vs one live dashboard (demo) |  | Sends |
+| 23 | `What [A] shows vs what [B] shows` | "What your booking tool shows vs what your bank shows." |  | Replies |
 
 ### F. Demo: "watch me"
 
 | # | Template | Namzilabs example | Real example | Signal |
 |---|---|---|---|---|
 | 24 | `Watch me build [metric] from [tool] + [tool] in [N] seconds.` | "Watch me build show-up rate from Calendly + Close in 20 seconds. No code." | Bolt's launch demo: prompt → working site in seconds [10] | Watch time, follows |
-| 25 | `This number shows its working.` | "This number shows its working: 412 records read, 260 matched, 18 excluded, and why. (demo)" | — | Copy-link shares |
-| 26 | `No code. [N] steps. [Outcome].` | "No code. 4 steps. Cost per held meeting." | — | Watch time |
-| 27 | `I asked [AI] [question] about my [data].` | "I asked Claude, 'What was my cost per held meeting last week?' It read the published metric." (**Only once the MCP connection is live.**) | — | Replies |
+| 25 | `This number shows its working.` | "This number shows its working: 412 records read, 260 matched, 18 excluded, and why. (demo)" |  | Copy-link shares |
+| 26 | `No code. [N] steps. [Outcome].` | "No code. 4 steps. Cost per held meeting." |  | Watch time |
+| 27 | `I asked [AI] [question] about my [data].` | "I asked Claude, 'What was my cost per held meeting last week?' It read the published metric." (**Only once the MCP connection is live.**) |  | Replies |
 
 ### G. Curiosity and lists
 
 | # | Template | Namzilabs example | Real example | Signal |
 |---|---|---|---|---|
-| 28 | `[N] ways [metric] gets miscounted (#[k] is the sneaky one)` | "5 ways show-up rate gets miscounted (#3 is reschedules)." | — | Saves |
-| 29 | `The number [a good manager] asks about first` | "The number a good sales manager asks about before close rate." | — | Watch time |
-| 30 | `Save this before [event].` | "Save this before BFCM: the 4 numbers to check every day." | — | Saves |
+| 28 | `[N] ways [metric] gets miscounted (#[k] is the sneaky one)` | "5 ways show-up rate gets miscounted (#3 is reschedules)." |  | Saves |
+| 29 | `The number [a good manager] asks about first` | "The number a good sales manager asks about before close rate." |  | Watch time |
+| 30 | `Save this before [event].` | "Save this before BFCM: the 4 numbers to check every day." |  | Saves |
 | 31 | `How [company] did [result] in [time]` | "How Supabase launches: 5 rules any solo founder can copy." | "How bolt.new hit $40M ARR in 5 months" [9] | Copy-link shares, follows |
 
 ### H. Build in public and founder
@@ -625,7 +625,7 @@ Vendors make claims about all three, but none was verified here.
 | # | Template | Namzilabs example | Real example | Signal |
 |---|---|---|---|---|
 | 32 | `Day [N] of building [product] in public: [receipt]` | "Day [N]: shipped [the custom webhook source]. Here's the matching rule that took [3 days]." | Pattern: Lovable's constant "shipped" posts [3] | Replies, follows |
-| 33 | `I'm a solo founder. This week I shipped [X] and broke [Y].` | Honest weekly recap, including what didn't work | — | Replies |
+| 33 | `I'm a solo founder. This week I shipped [X] and broke [Y].` | Honest weekly recap, including what didn't work |  | Replies |
 | 34 | `[Milestone]. Since [start], [N] [people] have [done thing].` | "33 sources live. Here's the full list and what each one unlocks." | "🎉 @OpusClip just turned 2! … over 12 million creators and brands have used it…" [44] | Reposts, follows |
 | 35 | `Here's the [real artifact] we used to [result].` | "Here are the exact metric definitions Namzilabs uses. Copy them." | beehiiv's seed and Series B decks used as lead magnets [48] | Saves, DMs |
 
@@ -633,17 +633,17 @@ Vendors make claims about all three, but none was verified here.
 
 | # | Template | Namzilabs example | Real example | Signal |
 |---|---|---|---|---|
-| 36 | `[Platform] just changed [X]. Here's what it means for [audience].` | "Instagram now caps hashtags at 5. What it means if your coaching funnel runs on Reels." | "Premium on X isn't just features anymore — it shapes who gets seen on the platform. From our analysis of 18.8M posts…" [67] | Copy-link shares |
-| 37 | `Everyone's doing [trend]. Almost nobody measures [outcome].` | "Everyone's paying clippers per 1,000 views. Almost nobody measures cost per held meeting from those views." | — | Replies, quotes |
-| 38 | `[Big company] built [X]. Here's the one-person version.` | "Clay built a whole job title, GTM engineer. Here's the one-person version for a coaching business." | — | Copy-link shares |
+| 36 | `[Platform] just changed [X]. Here's what it means for [audience].` | "Instagram now caps hashtags at 5. What it means if your coaching funnel runs on Reels." | "Premium on X isn't just features anymore, it shapes who gets seen on the platform. From our analysis of 18.8M posts…" [67] | Copy-link shares |
+| 37 | `Everyone's doing [trend]. Almost nobody measures [outcome].` | "Everyone's paying clippers per 1,000 views. Almost nobody measures cost per held meeting from those views." |  | Replies, quotes |
+| 38 | `[Big company] built [X]. Here's the one-person version.` | "Clay built a whole job title, GTM engineer. Here's the one-person version for a coaching business." |  | Copy-link shares |
 
 ### J. Participation
 
 | # | Template | Namzilabs example | Real example | Signal |
 |---|---|---|---|---|
-| 39 | `Reply with your [number]; I'll [useful thing].` | "Reply with your show-up rate and your #1 no-show reason. I'll compile the answers, anonymized, into a public sheet." (This builds *real* benchmark data with consent.) | — | Replies |
-| 40 | `Guess the number:` | "Guess: in this demo funnel, what % of booked calls actually happened? Answer tomorrow." | — | Replies |
-| 41 | `A or B?` | "Which would you rather know every Monday: show-up rate or speed to lead?" | — | Replies |
+| 39 | `Reply with your [number]; I'll [useful thing].` | "Reply with your show-up rate and your #1 no-show reason. I'll compile the answers, anonymized, into a public sheet." (This builds *real* benchmark data with consent.) |  | Replies |
+| 40 | `Guess the number:` | "Guess: in this demo funnel, what % of booked calls actually happened? Answer tomorrow." |  | Replies |
+| 41 | `A or B?` | "Which would you rather know every Monday: show-up rate or speed to lead?" |  | Replies |
 
 **Hook rules (Inference)**
 - Put a number, a named tool or a named role in the first line.
@@ -658,7 +658,7 @@ Vendors make claims about all three, but none was verified here.
 ### 5.1 Carousels that get saved and sent
 
 **Design rules (Inference)**
-- 7–10 slides at 1080×1350 or 1080×1440 [90][91].
+- 7 to 10 slides at 1080×1350 or 1080×1440 [90][91].
 - One idea per slide, at most about 25 words.
 - Slide 1 is the hook plus the visual payoff. Slide 2 is the stakes.
 - The last slide has a single call to action.
@@ -679,7 +679,7 @@ Vendors make claims about all three, but none was verified here.
 
 **Template B: "Myth vs math"** (replies)
 1. "5 sales-metric myths coaching businesses still believe."
-2–6. One myth per slide. The myth sits on top and the math underneath.
+2 to 6. One myth per slide. The myth sits on top and the math underneath.
 7. "Which one did you believe?" plus the CTA.
 
 **Template C: "The leak map"** (sends)
@@ -694,12 +694,12 @@ Vendors make claims about all three, but none was verified here.
 
 **Template D: "Cheat sheet"** (saves)
 1. "7 fields your booking form needs if you want to measure speed to lead."
-2–8. One field per slide, with why it matters.
+2 to 8. One field per slide, with why it matters.
 9. CTA to the checklist.
 
 **Template E: "Teardown"** (follows from a growth-curious audience)
 1. "How Supabase launches: 5 rules" [39].
-2–6. One rule per slide.
+2 to 6. One rule per slide.
 7. "How I'm applying it to Namzilabs this month."
 8. Follow CTA.
 
@@ -735,29 +735,29 @@ Invite one person and get a month free.
 
 | Time | Visual | On-screen text | Voiceover |
 |---|---|---|---|
-| 0–2 s | Large numbers on a plain background: 40 → 23 → 6 | "40 booked. 6 paid." | "Forty calls booked. Six paid." |
-| 2–6 s | Split screen of a calendar app and a payments app (demo accounts) | "Your tools never met" | "Your calendar and your payments tool have never met." |
-| 6–14 s | Screen recording: Get data → Match → Calculate | "4 steps · no code" | "Pull both in, match the same people, calculate show-up and close rate." |
-| 14–18 s | Result card with its working | "61% held · 18 excluded (duplicates) · demo" | "And every number shows its working." |
-| 18–20 s | Logo and URL | "Free to start · no card" | "Namzilabs. Link in bio." |
+| 0 to 2 s | Large numbers on a plain background: 40 → 23 → 6 | "40 booked. 6 paid." | "Forty calls booked. Six paid." |
+| 2 to 6 s | Split screen of a calendar app and a payments app (demo accounts) | "Your tools never met" | "Your calendar and your payments tool have never met." |
+| 6 to 14 s | Screen recording: Get data → Match → Calculate | "4 steps · no code" | "Pull both in, match the same people, calculate show-up and close rate." |
+| 14 to 18 s | Result card with its working | "61% held · 18 excluded (duplicates) · demo" | "And every number shows its working." |
+| 18 to 20 s | Logo and URL | "Free to start · no card" | "Namzilabs. Link in bio." |
 
 **Script 2: "Speed-to-lead stopwatch" (15 s)**
 
 | Time | Visual | On-screen text | Voiceover |
 |---|---|---|---|
-| 0–2 s | A stopwatch running | "How fast do you call new leads?" | "How fast do you actually call new leads?" |
-| 2–6 s | A form tool and a dialer side by side (demo) | "The form knows. The dialer knows." | "Your form knows when they signed up. Your dialer knows when you called." |
-| 6–12 s | Flow: Typeform + Aircall → Match → Calculate | "Median: 3h 12m (demo)" | "Match them and you get your real speed to lead." |
-| 12–15 s | CTA card | "Comment SPEED for the checklist" | "Comment SPEED and I'll send the checklist." |
+| 0 to 2 s | A stopwatch running | "How fast do you call new leads?" | "How fast do you actually call new leads?" |
+| 2 to 6 s | A form tool and a dialer side by side (demo) | "The form knows. The dialer knows." | "Your form knows when they signed up. Your dialer knows when you called." |
+| 6 to 12 s | Flow: Typeform + Aircall → Match → Calculate | "Median: 3h 12m (demo)" | "Match them and you get your real speed to lead." |
+| 12 to 15 s | CTA card | "Comment SPEED for the checklist" | "Comment SPEED and I'll send the checklist." |
 
 **Script 3: "Founder receipts" (30 s, talking head plus screen)**
 
 | Time | Visual | Script |
 |---|---|---|
-| 0–3 s | Face to camera, dashboard behind | "I'm building a tool where every number shows its working. So here are my own numbers." |
-| 3–20 s | Screen: this week's content funnel (views → profile visits → site sessions → signups), **real numbers only** | "This week: [X] views, [Y] visits, [Z] signups. The post that worked was [A]. The one that flopped was [B]." |
-| 20–27 s | The "excluded" panel | "Here's what I excluded and why: [e.g., my own test signups]." |
-| 27–30 s | Face | "Follow for next week's receipts." |
+| 0 to 3 s | Face to camera, dashboard behind | "I'm building a tool where every number shows its working. So here are my own numbers." |
+| 3 to 20 s | Screen: this week's content funnel (views → profile visits → site sessions → signups), **real numbers only** | "This week: [X] views, [Y] visits, [Z] signups. The post that worked was [A]. The one that flopped was [B]." |
+| 20 to 27 s | The "excluded" panel | "Here's what I excluded and why: [e.g., my own test signups]." |
+| 27 to 30 s | Face | "Follow for next week's receipts." |
 
 **Script 4: "Ask your metrics" (20 s).** Only once the MCP connection is live.
 - Hook: "I asked Claude about last week's sales calls."
@@ -785,8 +785,8 @@ All meme templates are **Inference**.
 
 | Asset | Size | Length | Notes |
 |---|---|---|---|
-| Reel / TikTok / Short | 1080×1920 [90][91] | 15–45 s; 30–60 s for explainers [74] | Payoff in the first 3 s [79]; burned-in captions; clean master with no watermark [88] |
-| Instagram carousel | 1080×1350 or 1080×1440 [90][91] | 7–10 slides | ~25 words per slide; key text survives the 3:4 grid crop [82] |
+| Reel / TikTok / Short | 1080×1920 [90][91] | 15 to 45 s; 30 to 60 s for explainers [74] | Payoff in the first 3 s [79]; burned-in captions; clean master with no watermark [88] |
+| Instagram carousel | 1080×1350 or 1080×1440 [90][91] | 7 to 10 slides | ~25 words per slide; key text survives the 3:4 grid crop [82] |
 | X video | Native upload, vertical or square | 10+ s [54] | Text-first framing in the post; captions |
 | X post | Text, or text plus one screenshot | First two lines stand alone | Link in the first reply [63][67] |
 
@@ -803,7 +803,7 @@ Use one call to action per post, matched to intent:
 | Low | Memes, trend posts | "Follow for weekly funnel receipts", or "Send this to your [role]" |
 | Medium | Recipes, carousels | Comment keyword → DM with the asset |
 | High | Demos | "Free to start, no card. Link in bio / first reply." |
-| After signup | — | "Invite one person, get a month free." |
+| After signup |  | "Invite one person, get a month free." |
 
 ### 6.2 Link in bio and profile (Inference)
 
@@ -913,7 +913,7 @@ This is measurement, build-in-public content (the Lovable and Beehiiv patterns [
 ### 7.3 The reply-guy playbook (Inference)
 
 **Volume**
-- 30–50 replies a day across the three Lists, in 2–3 sessions.
+- 30 to 50 replies a day across the three Lists, in 2 to 3 sessions.
 - Favor fresh posts, where replies are still being read.
 
 **Replies that add value**
@@ -934,28 +934,28 @@ This is measurement, build-in-public content (the Lovable and Beehiiv patterns [
 - Every week, turn your best reply into a standalone post.
 
 **Instagram equivalent**
-- 15–20 thoughtful comments a day on niche creators' posts.
+- 15 to 20 thoughtful comments a day on niche creators' posts.
 - Reply to every comment on your own posts.
 - Peer DMs that are conversations, not pitches.
 
 ### 7.4 Cross-posting pipeline (Inference)
 
-One 60–90-minute recording session each week yields:
-- 5–7 vertical clips;
+One 60 to 90-minute recording session each week yields:
+- 5 to 7 vertical clips;
 - 2 carousels;
-- 7–10 X posts;
+- 7 to 10 X posts;
 - 1 long post or newsletter.
 
 | Output | Adaptation |
 |---|---|
 | Master file | 1080×1920, exported clean (no watermark) |
-| Instagram Reel | Native caption with the keyword in the first line; 3–5 precise hashtags [85][86][87] |
+| Instagram Reel | Native caption with the keyword in the first line; 3 to 5 precise hashtags [85][86][87] |
 | TikTok | Keyword spoken in the first seconds and shown on screen [92] |
 | YouTube Short | Keyword in the title; judge on engaged views [94] |
 | X | Native upload with a text-first framing |
 | LinkedIn (optional) | Carousels as PDFs [69] |
 
-**Stagger:** Instagram first, then the others within 24–48 hours.
+**Stagger:** Instagram first, then the others within 24 to 48 hours.
 
 ### 7.5 Content pillars (Inference)
 
@@ -969,7 +969,7 @@ One 60–90-minute recording session each week yields:
 
 ### 7.6 The 30 days (Inference)
 
-**Days 1–3: setup and warm-up**
+**Days 1 to 3: setup and warm-up**
 - **X**
   - Subscribe to Premium [66].
   - Write the bio (formula in 6.2), add a banner, and pin a demo post.
@@ -979,35 +979,35 @@ One 60–90-minute recording session each week yields:
   - Set up a professional account with a keyword-rich name field and bio, plus a UTM'd link.
   - Before promoting anything, publish 6 foundation posts:
     - 3 carousels: Template A for show-up rate, speed to lead and cost per held meeting;
-    - 3 Reels: Scripts 1–3.
+    - 3 Reels: Scripts 1 to 3.
 - **Systems**
   - Lead magnets: the SHOWUP sheet and the metric definitions.
   - DM automation for two keywords.
   - UTMs.
   - Your own content-funnel dashboard in Namzilabs.
 
-**Days 4–10: find the voice**
-- **X:** 2 originals a day, spaced 3+ hours apart (one numbers or receipts post, one recipe or mechanism post). 30–50 replies a day.
+**Days 4 to 10: find the voice**
+- **X:** 2 originals a day, spaced 3+ hours apart (one numbers or receipts post, one recipe or mechanism post). 30 to 50 replies a day.
 - **Day 7:** a teardown thread, e.g. "How Supabase launches, and how I'm copying it".
-- **Instagram:** 5–7 Reels and 2 carousels. Use Trial Reels to A/B test hooks if your account has them [83][84].
+- **Instagram:** 5 to 7 Reels and 2 carousels. Use Trial Reels to A/B test hooks if your account has them [83][84].
 - **TikTok/Shorts:** cross-post each Reel.
 - **Day 10:** Receipts #1, real numbers only.
 
-**Days 11–17: series and lead magnets**
+**Days 11 to 17: series and lead magnets**
 - **"33 sources" series:** one source pair a day. Examples: Calendly × Stripe, Typeform × Aircall, Klaviyo × Shopify, Whop × Stripe. Each pair gets an X post, a Reel and, later, a search page.
 - Push the SHOWUP and SPEED keyword calls to action.
 - Post a data request (hook 39), the start of a consented, anonymized community benchmark.
 - **Day 17:** Receipts #2.
 
-**Days 18–24: communities and trend-jacks**
+**Days 18 to 24: communities and trend-jacks**
 - One trend explainer per platform per week, e.g. a platform change, BFCM prep for e-com, or clipping ROI for creators.
-- Offer 3–5 free "funnel teardowns" to operators you've met in replies.
+- Offer 3 to 5 free "funnel teardowns" to operators you've met in replies.
   - Their data stays private; publish only with written consent.
   - This is founder-led onboarding, the Gamma pattern [13].
 - Ask 5 micro-creators in coaching and e-com for honest product feedback. Don't pay for promotion yet.
 - **Day 24:** Receipts #3.
 
-**Days 25–30: mini launch week (Supabase format [39])**
+**Days 25 to 30: mini launch week (Supabase format [39])**
 
 | Day | Launch |
 |---|---|
@@ -1024,10 +1024,10 @@ One 60–90-minute recording session each week yields:
 
 | Block | X | Instagram | TikTok/Shorts |
 |---|---|---|---|
-| Morning (45 min) | 15 replies + 1 original | Reply to comments; 5 niche comments | — |
+| Morning (45 min) | 15 replies + 1 original | Reply to comments; 5 niche comments |  |
 | Midday (45 min) | 15 replies | Publish a Reel or carousel | Cross-post |
-| Evening (45 min) | 15 replies + 1 original | 10 niche comments; DMs | — |
-| Weekly (2–3 h) | Record batch; write the long post; Receipts | Design 2 carousels | — |
+| Evening (45 min) | 15 replies + 1 original | 10 niche comments; DMs |  |
+| Weekly (2 to 3 h) | Record batch; write the long post; Receipts | Design 2 carousels |  |
 
 ### 7.7 Scorecard and decision rules (Inference)
 
@@ -1083,14 +1083,14 @@ All lessons below are **Inference**, mapped to the sourced patterns above.
    - Start with the ~20 pairs your three audiences actually use.
 3. **Lead with the five metrics buyers already argue about:** show-up rate, speed to lead, cost per held meeting, revenue per lead, close rate. Each gets a recipe carousel, a demo and a calculator.
 4. **Build in public with Namzilabs' own funnel as the dataset.** Weekly receipts built *in Namzilabs* (GA4 + webhook + Stripe) are honest and on-brand, and teach the product [3][48].
-5. **Founder first, creators later.** Gamma's founder did it himself before scaling creators, and found a 10/90 power law [13][15]. Run 30–60 days of founder content before paying creators or clippers [28][31].
+5. **Founder first, creators later.** Gamma's founder did it himself before scaling creators, and found a 10/90 power law [13][15]. Run 30 to 60 days of founder content before paying creators or clippers [28][31].
 6. **Three niches, one promise, three landing pages.**
    - E-com: Klaviyo/Shopify/Stripe.
    - Coaching sales teams: Calendly/Close/Stripe/Whop.
    - Creators: Whop/Thinkific/Mailchimp.
 7. **Design for sends and copy-link shares.** Use "send this to your setter", copy-paste formulas and reference tables. These are the most heavily weighted positive actions [54][77][78].
 8. **Remove friction in every CTA.** Put "Free to start, no card" everywhere. Put "Invite one person, get a month free" right after signup.
-9. **Run a launch week every 6–8 weeks and re-launch** [39].
+9. **Run a launch week every 6 to 8 weeks and re-launch** [39].
 10. **Trend-jack with measurement.**
     - Topics: platform changes, clipping ROI (Whop is a live source), BFCM for e-com.
     - The AI/MCP angle only once it is live.
@@ -1182,7 +1182,7 @@ All lessons below are **Inference**, mapped to the sourced patterns above.
 68. Quasa, "X tests inline YouTube video playback in the feed." https://quasa.io/media/musk-s-quixotic-quest-against-external-links-draws-to-a-close-x-tests-inline-youtube-video-playback-in-the-feed (secondary)
 69. Buffer, "The state of social media engagement in 2026: 52M+ posts analyzed." https://buffer.com/resources/state-of-social-media-engagement-2026/
 70. Buffer, "Best content format on social platforms in 2026: 45M+ posts analyzed." https://buffer.com/resources/data-best-content-format-social-media/
-71. Buffer, "Data shows Instagram Reels are best for reach — but not engagement." https://buffer.com/resources/instagram-reach-engagement-analysis/
+71. Buffer, "Data shows Instagram Reels are best for reach, but not engagement." https://buffer.com/resources/instagram-reach-engagement-analysis/
 72. Matt Navarra on Threads, summary of Buffer's 2026 engagement report. https://www.threads.com/@mattnavarra/post/DVigTdoCqZo/ (secondary)
 73. Socialinsider, "2026 Instagram organic engagement benchmarks." https://www.socialinsider.io/social-media-benchmarks/instagram
 74. Socialinsider, "Instagram Reels performance statistics for 2026." https://www.socialinsider.io/blog/instagram-reels-statistics/
@@ -1205,7 +1205,7 @@ All lessons below are **Inference**, mapped to the sourced patterns above.
 91. Influencer Marketing Hub, "Instagram image sizes in 2026." https://influencermarketinghub.com/instagram-image-sizes/
 92. Hootsuite, "How the TikTok algorithm works in 2026." https://blog.hootsuite.com/tiktok-algorithm/
 93. Sotrender (Aug 2025), "8 strategies to navigate the TikTok algorithm changes in 2025." https://www.sotrender.com/blog/2025/08/tiktok-algorithm/
-94. Sprout Social, "YouTube Shorts view count update – March 2025." https://support.sproutsocial.com/hc/en-us/articles/35874991211533-YouTube-Shorts-View-Count-Update-March-2025
+94. Sprout Social, "YouTube Shorts view count update, March 2025." https://support.sproutsocial.com/hc/en-us/articles/35874991211533-YouTube-Shorts-View-Count-Update-March-2025
 95. PPC Land, "YouTube changes how Shorts views are counted from March 31." https://ppc.land/youtube-changes-how-shorts-views-are-counted-from-march-31/
 96. DEV Community, "I read the X (Twitter) algorithm source for 4 days and built a Claude Code sub-agent that scores drafts before posting." https://dev.to/septim_labs/i-read-the-x-twitter-algorithm-source-for-4-days-and-built-a-claude-code-sub-agent-that-scores-1ipb
 97. Growth Talent, "Elena Verna's growth machine: how Lovable broke every rule." https://www.growthtalent.org/insights/elena-verna-profile (secondary)

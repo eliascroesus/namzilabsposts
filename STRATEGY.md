@@ -30,7 +30,7 @@ The tone is plain, specific and a little dry. The brand sells **clarity backed b
 | **1** | **Coaching & info-product sales teams** (setters, closers, booked calls) | Calendly / Cal.com + Close / Pipedrive / Attio + Stripe / Whop / ThriveCart + Aircall / Fathom | **Show rate** | booked, held, no-show, show rate, setter, closer, EOD report, cash collected, speed to lead | Instagram (where Mochi sells to them), coaching X, YouTube |
 | **2** | **Outbound & appointment-setting agencies** | Instantly / Smartlead / lemlist + calendars + Fathom | **Cost per held meeting** | booked vs held, client reporting, reply rate, meetings | X, LinkedIn |
 | **3** | **Creators** (courses, communities, newsletters) | Whop / Stripe / Thinkific / ThriveCart + Mailchimp / Klaviyo | **Revenue per subscriber** | launch, cart open, list, "three dashboards and no total" | Instagram, X |
-| **4** | **E-commerce brands** — phase 2 | Shopify / WooCommerce + Klaviyo + GA4 | **Revenue from your list**. MER/ROAS only once the ad connectors go live | "numbers don't match", attribution, Klaviyo vs Shopify | DTC X, Instagram |
+| **4** | **E-commerce brands** (phase 2) | Shopify / WooCommerce + Klaviyo + GA4 | **Revenue from your list**. MER/ROAS only once the ad connectors go live | "numbers don't match", attribution, Klaviyo vs Shopify | DTC X, Instagram |
 
 Why this order: group 1 feels the cross-tool pain hardest and has no good tool for it. Hyros and Cometly trace ad clicks, and GoHighLevel and iClosed only report on themselves. E-commerce is loud but crowded, and its killer metric needs the ad connectors, which are still awaiting approval. ([04 §1, §5](research/04-icp-and-competitor-positioning.md))
 
@@ -56,10 +56,10 @@ Why this order: group 1 feels the cross-tool pain hardest and has no good tool f
 
 | They say | We say | Never say |
 |---|---|---|
-| "I have Triple Whale / Hyros." | Keep it. They trace ad clicks; we measure what happens after — held, closed, paid — across your other tools. | "Replace X" |
+| "I have Triple Whale / Hyros." | Keep it. They trace ad clicks; we measure what happens after (held, closed, paid) across your other tools. | "Replace X" |
 | "My VA does a spreadsheet." | Keep the sheet as a source. Your VA reviews the exceptions instead of retyping. | "Fire your VA" |
 | "GHL has reports." | GHL reports on GHL. Send its events by webhook, and we match them with Stripe, Fathom and your calendar. | "Native GHL integration" |
-| "Your number doesn't match Calendly." | Right — and it shows you exactly why. | "Our number is the truth" |
+| "Your number doesn't match Calendly." | Right, and it shows you exactly why. | "Our number is the truth" |
 | "Is it free?" | Free to start, no card. Invite one person, get a month free. | "Free forever" |
 
 ---
@@ -71,8 +71,8 @@ Why this order: group 1 feels the cross-tool pain hardest and has no good tool f
 | **One place / the funnel** | The core message: all your data in one place, any metric, and where the funnel breaks across tools. Pinned everywhere. | 20% | Post 35 (pinned), 30, 29, 31, video 11 (pinned) |
 | **Receipts (proof)** | A number that unfolds into its working. The proof behind "true numbers", not the headline. | 10% | Post 08, 20, 23, video 04, 09, 10 |
 | **Recipes: "Tool A + Tool B = metric"** | One cross-tool metric: formula, why it matters, example. A series with a post for every useful source pair. | 25% | Post 02, 04, 05, 06, 07, 24, 26, 32 |
-| **Relatable pain** | POV, memes, bingo cards, group chats, tier lists, horror stories, Monday-morning chaos. Made to be sent. Namzi, the mascot, lives here. | 20% | Post 03, 13–19, 21, 22, 25, 27, 28, 33, 34, the meme parodies 36–44, video 03, 07, 08 |
-| **Watch me build** | 15–30s product demos: Get data → Match → Calculate → Publish. | 15% | Video 02, video 01 |
+| **Relatable pain** | POV, memes, bingo cards, group chats, tier lists, horror stories, Monday-morning chaos. Made to be sent. Namzi, the mascot, lives here. | 20% | Post 03, 13 to 19, 21, 22, 25, 27, 28, 33, 34, the meme parodies 36 to 44, video 03, 07, 08 |
+| **Watch me build** | 15 to 30s product demos: Get data → Match → Calculate → Publish. | 15% | Video 02, video 01 |
 | **Build in public** | Founder receipts: numbers first, one honest admission, then what's next. | 10% | Post 10 |
 
 Why these: Framer and Base44 prove the product by using it in the content ([01 §6](research/01-framer-and-base44.md)). Linear and Notion ship a steady rhythm of single-feature clips ([02 §5](research/02-attio-mochi-premium-saas.md)). n8n and Clay turn every integration pair into a template ([03 §2](research/03-growth-content-playbook.md)).
@@ -100,12 +100,12 @@ Why these: Framer and Base44 prove the product by using it in the content ([01 �
 
 | | X (brand + founder) | Instagram | TikTok / Shorts |
 |---|---|---|---|
-| **Every day** | 30–50 useful replies in the niche Lists; 1–2 posts | 15–20 thoughtful comments on niche creators; stories | — |
-| **Each week** | 7–10 posts: 2 recipes, 1 receipt, 1 pain/meme, 1 demo, 1 build-in-public | 3 Reels + 2 carousels | The same 3 Reels |
-| **Monthly** | "Month in receipts": our own signups, traced to the posts that sent them — zeros included | A carousel of the month's receipts | — |
-| **Every 6–8 weeks** | A **launch week**: one feature a day for 5 days, Supabase-style | Same | Same |
+| **Every day** | 30 to 50 useful replies in the niche Lists; 1 to 2 posts | 15 to 20 thoughtful comments on niche creators; stories |  |
+| **Each week** | 7 to 10 posts: 2 recipes, 1 receipt, 1 pain/meme, 1 demo, 1 build-in-public | 3 Reels + 2 carousels | The same 3 Reels |
+| **Monthly** | "Month in receipts": our own signups, traced to the posts that sent them, zeros included | A carousel of the month's receipts |  |
+| **Every 6 to 8 weeks** | A **launch week**: one feature a day for 5 days, Supabase-style | Same | Same |
 
-One 60–90-minute recording session a week feeds all of it: 5–7 clips, 2 carousels and 7–10 X posts. ([03 §7.4](research/03-growth-content-playbook.md))
+One 60 to 90-minute recording session a week feeds all of it: 5 to 7 clips, 2 carousels and 7 to 10 X posts. ([03 §7.4](research/03-growth-content-playbook.md))
 
 ---
 
@@ -118,7 +118,7 @@ One 60–90-minute recording session a week feeds all of it: 5–7 clips, 2 caro
 5. "'Book more calls' is bad advice if 4 in 10 don't show."
 6. "Stripe can't tell you revenue per lead. It has never seen your leads."
 7. "A number without a receipt is an opinion."
-8. "Here's the exact math behind show rate — the version that survives reschedules."
+8. "Here's the exact math behind show rate: the version that survives reschedules."
 9. "5 ways show rate gets miscounted (#3 is reschedules)."
 10. "3 numbers every sales manager should see every Monday."
 11. "Send this to your setter before tomorrow's calls."
@@ -136,8 +136,8 @@ One 60–90-minute recording session a week feeds all of it: 5–7 clips, 2 caro
 
 ## 8. Turning views into signups
 
-- **CTA:** "Start free at namzilabs.co — no card." Always "free, no card"; never "free forever".
-- **Comment keywords → DM:** SHOWUP, METRICS, SPEED, LAUNCH, FIRST10. Set up ManyChat, or answer by hand while volume is low. Each DM delivers the exact 3-step flow for that metric plus the link.
+- **CTA:** "Start free at namzilabs.co (no card)." Always "free, no card"; never "free forever". Every CTA line is in [`brand/COPY.md`](brand/COPY.md).
+- **Comment keywords → DM:** SHOWUP (show rate), HELD (cost per held meeting), SPEED (speed to lead), LEAK (where the funnel breaks), LAUNCH (creators), LIST (e-commerce), METRICS (any metric) and FIRST10 (design partners). Set up ManyChat, or answer by hand while volume is low. Each DM delivers the exact 3-step setup for that metric plus the link; the replies are written out in [`brand/COPY.md`](brand/COPY.md).
 - **Send prompts:** "Send this to your setter / the agency owner who still reports booked calls / the person who does this every Monday."
 - **Links:** first reply on X; link in bio on Instagram. Tag every link with UTMs, e.g. `?utm_source=x&utm_campaign=post-01`.
 - **After signup:** "Invite one person → get a month free" (the product's referral loop).
@@ -147,25 +147,25 @@ One 60–90-minute recording session a week feeds all of it: 5–7 clips, 2 caro
 
 ## 9. The first 30 days
 
-Lead with the headline: all your data in one place, any metric, where the funnel breaks, the true numbers. Day 1 is the profile, set up the same way everywhere: banner, profile picture, bio and the pinned explainer (table below). Then posts 25–35 and the two short cuts of the explainer. The receipt posts come after, as proof.
+Lead with the headline: all your data in one place, any metric, where the funnel breaks, the true numbers. Day 1 is the profile, set up the same way everywhere: banner, profile picture, bio (every platform's is in [`brand/COPY.md`](brand/COPY.md)) and the pinned explainer (table below). Then posts 25 to 35 and the two short cuts of the explainer. The receipt posts come after, as proof.
 
 | Day | X | Instagram | Video |
 |---|---|---|---|
 | 1 | **Set up the profile. Pin video 11 (16:9)** | **Set up the profile. Pin video 11 (Reel) and post 35** | Video 11 on TikTok, YouTube (channel trailer), Facebook and LinkedIn |
-| 2 | Post 35 (how it works) | — | — |
-| 3 | Post 30 (1,269 customers you can't email) | Post 30 | — |
+| 2 | Post 35 (how it works) |  |  |
+| 3 | Post 30 (1,269 customers you can't email) | Post 30 |  |
 | 4 | Video 12 (where the funnel breaks) | Reel: video 12 | Video 12 (TikTok, Shorts) |
-| 5 | Post 28 (tier list): argue in the replies | Post 28 | — |
-| 7 | Post 26 (Monday scorecard) | Post 26 | — |
-| 9 | Post 29 (how many members) | Post 29 | — |
-| 11 | Post 25 thread (horror stories) | Post 25 carousel | — |
+| 5 | Post 28 (tier list): argue in the replies | Post 28 |  |
+| 7 | Post 26 (Monday scorecard) | Post 26 |  |
+| 9 | Post 29 (how many members) | Post 29 |  |
+| 11 | Post 25 thread (horror stories) | Post 25 carousel |  |
 | 12 | Video 13 (true numbers) | Reel: video 13 | Video 13 (TikTok, Shorts) |
-| 13 | Post 31 (cost per held meeting) | Post 31 | — |
-| 15 | Post 32 (book sooner) | Post 32 | — |
-| 17 | Post 33 (three hours later) | Post 33 | — |
-| 19 | Post 11 (33 tools) | Post 11 | — |
-| 21 | Build in public: first design partners | — | Recut: video 12, new hook |
-| 25 | Recipe #8 (new): a metric built across two tools | Carousel: "5 ways show rate gets miscounted" (new) | — |
+| 13 | Post 31 (cost per held meeting) | Post 31 |  |
+| 15 | Post 32 (book sooner) | Post 32 |  |
+| 17 | Post 33 (three hours later) | Post 33 |  |
+| 19 | Post 11 (33 tools) | Post 11 |  |
+| 21 | Build in public: first design partners |  | Recut: video 12, new hook |
+| 25 | Recipe #8 (new): a metric built across two tools | Carousel: "5 ways show rate gets miscounted" (new) |  |
 | 28 | "Month 1 in numbers" | Same | Best performer, recut |
 
 ### Pin these first (all platforms)
@@ -179,54 +179,54 @@ Lead with the headline: all your data in one place, any metric, where the funnel
 | LinkedIn company page | Post 35 as a PDF (`linkedin-carousel.pdf`) + video 11 (16:9) | `electric/linkedin-company.png` (never the X header: LinkedIn crops it under the logo) | same |
 | LinkedIn (founder) | Video 11 (16:9) in Featured | `funnel/linkedin-profile.png` (or `team/linkedin-profile.png` for everyone on the team) | your own photo |
 | YouTube | Video 11 (16:9) as the channel trailer | `electric/youtube.png` | same |
-| Website / link previews | — | `electric/og.png` as the share image | — |
-| Email signature | — | `electric/email.png` | — |
+| Website / link previews |  | `electric/og.png` as the share image |  |
+| Email signature |  | `electric/email.png` |  |
 
-### Days 31–60: the proof batch
+### Days 31 to 60: the proof batch
 
 The receipt posts: numbers that show their working. They back up the headline; they aren't the headline.
 
 | Day | X | Instagram | Video |
 |---|---|---|---|
-| 31 | Post 08 (receipt) | Post 01 carousel | — |
-| 32 | Post 10 (founder receipt), from the founder account | — | — |
-| 33 | Post 01 + thread | — | Video 01 (three answers) |
-| 35 | Post 04 (booked is vanity) | Post 03 (POV) | — |
-| 37 | Post 07 thread (speed to lead) | — | Video 03 (Monday 9:07) |
-| 39 | Post 03 (POV) | Post 02 carousel (7 numbers) | — |
-| 41 | Post 02 thread | — | Video 02 (three steps) |
-| 43 | Post 09 (four ways) | Post 07 carousel | — |
+| 31 | Post 08 (receipt) | Post 01 carousel |  |
+| 32 | Post 10 (founder receipt), from the founder account |  |  |
+| 33 | Post 01 + thread |  | Video 01 (three answers) |
+| 35 | Post 04 (booked is vanity) | Post 03 (POV) |  |
+| 37 | Post 07 thread (speed to lead) |  | Video 03 (Monday 9:07) |
+| 39 | Post 03 (POV) | Post 02 carousel (7 numbers) |  |
+| 41 | Post 02 thread |  | Video 02 (three steps) |
+| 43 | Post 09 (four ways) | Post 07 carousel |  |
 | 45 | Build in public: week 7 numbers | Post 09 | Video 04 (receipts) |
-| 47 | Post 05 (creators) | Post 05 carousel | — |
-| 49 | Post 06 (e-commerce) | Post 06 | — |
+| 47 | Post 05 (creators) | Post 05 carousel |  |
+| 49 | Post 06 (e-commerce) | Post 06 |  |
 | 51 | Recipe #9 (new) | Post 04 | Recut: video 01, new hook |
 | 53 | Recipe #10 (new) | Post 08 | Recut: video 02 |
-| 58 | "Month 2 in numbers" | Same | — |
+| 58 | "Month 2 in numbers" | Same |  |
 
-### Days 61–90: the funny batch
+### Days 61 to 90: the funny batch
 
 This batch leans funnier (bingo, group chats, dictionary entries, a red-string board) and introduces **Namzi**, the mascot, for recall. Each ICP gets at least two posts. Keep Namzi to at most one post in four.
 
 | Day | X | Instagram | Video |
 |---|---|---|---|
 | 61 | Post 13 (meet Namzi) | Post 13 carousel | Video 07 (meet Namzi) |
-| 63 | Post 18 (things your CRM believes) | Post 18 | — |
-| 65 | Post 15 (launch bingo): ask for scores in replies | Post 15 | — |
-| 67 | Post 24 thread (reply-to-meeting rate) | Post 24 carousel | — |
+| 63 | Post 18 (things your CRM believes) | Post 18 |  |
+| 65 | Post 15 (launch bingo): ask for scores in replies | Post 15 |  |
+| 67 | Post 24 thread (reply-to-meeting rate) | Post 24 carousel |  |
 | 69 | Post 21 (how many showed?) | Post 21 | Video 09 (EOD report) |
 | 71 | Post 14 (group chat) | Post 14 | Video 08 (group chat) |
-| 73 | Post 17 (where Monday goes) | Post 17 | — |
-| 75 | Post 22 thread (the dictionary, one entry per reply) | Post 22 carousel | — |
-| 77 | Post 34 (Namzi's first week) | Post 34 | — |
+| 73 | Post 17 (where Monday goes) | Post 17 |  |
+| 75 | Post 22 thread (the dictionary, one entry per reply) | Post 22 carousel |  |
+| 77 | Post 34 (Namzi's first week) | Post 34 |  |
 | 79 | Post 20 (screenshot vs receipt) | Post 20 carousel | Video 10 (launch receipt) |
-| 81 | Post 19 (red-string board) | Post 19 | — |
-| 83 | Post 23 (EOD report) | Post 23 | — |
-| 85 | Post 16 (red flags) | Post 16 | — |
-| 86 | Post 27 (Namzi never says) | Post 27 | — |
+| 81 | Post 19 (red-string board) | Post 19 |  |
+| 83 | Post 23 (EOD report) | Post 23 |  |
+| 85 | Post 16 (red flags) | Post 16 |  |
+| 86 | Post 27 (Namzi never says) | Post 27 |  |
 | 88 | "Month 3 in numbers" | Same | Best performer, recut with a new hook |
-| 89 | Namzi sticker drop: stickers in Stories, reply with them all week | Stories | — |
+| 89 | Namzi sticker drop: stickers in Stories, reply with them all week | Stories |  |
 
-**The meme week (any time after day 30).** Posts 36–44 are parodies of famous scenes and meme formats, with Namzi in every part: the ring-obsessed creature (36), the donut daydream (37), "they're the same person" (38), "is this a pigeon?" (39), everyone pointing (40), "nah / yeah" (41), "this is fine" (42), "PIVOT!" (43) and "funnels are like onions" (44). Each one still teaches one thing: one place (36, 37, 41), matching the same person (38, 40), connecting at the source (39), counted once (42), any metric (43), where the funnel breaks (44). Post one or two a week, not all at once, and pair a meme week with the Precious or Donut daydream banner. Swap post 36 for a different one if the audience is mostly B2B; 38, 40 and 44 do best on LinkedIn.
+**The meme week (any time after day 30).** Posts 36 to 44 are parodies of famous scenes and meme formats, with Namzi in every part: the ring-obsessed creature (36), the donut daydream (37), "they're the same person" (38), "is this a pigeon?" (39), everyone pointing (40), "nah / yeah" (41), "this is fine" (42), "PIVOT!" (43) and "funnels are like onions" (44). Each one still teaches one thing: one place (36, 37, 41), matching the same person (38, 40), connecting at the source (39), counted once (42), any metric (43), where the funnel breaks (44). Post one or two a week, not all at once, and pair a meme week with the Precious or Donut daydream banner. Swap post 36 for a different one if the audience is mostly B2B; 38, 40 and 44 do best on LinkedIn.
 
 **The games & films banners.** Sixteen banners play famous games, films and series (a pixel platformer, a maze chase, a VS screen, an emergency meeting, an opening crawl…), each with its own game-style profile picture. Use them the same way: a playful banner for a launch week or a meme week, then back to an everyday one. They're homages to the format and the joke, never the characters (no plumber, no yellow chomper, no cartoon family): owned characters in an ad are infringement, and the quickest way to get a post or a page taken down. Each still says what Namzilabs does. The Platformer's dialog box carries the full pitch ("Not anymore: Namzilabs puts all your data in one place"), Versus and Emergency meeting are about counting each customer once, Wild no-show and Game over are about where the funnel breaks, and Crafting is about building any metric. On LinkedIn, Achievement, Versus and Revenue puzzle are the safest for a B2B crowd.
 
@@ -234,7 +234,7 @@ This batch leans funnier (bingo, group chats, dictionary entries, a red-string b
 
 The stickers in [`brand/mascot/stickers/`](brand/mascot/stickers/) are ready for Stories and replies today. Next step: animate a few of them into GIFs and upload them to a GIPHY brand channel, which is how stickers become searchable inside Instagram Stories. Every use is a small ad.
 
-Every day, alongside the calendar: 30–50 replies on X and 15–20 comments on Instagram in the niche Lists. That's where the first 1,000 followers come from. ([03 §7](research/03-growth-content-playbook.md))
+Every day, alongside the calendar: 30 to 50 replies on X and 15 to 20 comments on Instagram in the niche Lists. That's where the first 1,000 followers come from. ([03 §7](research/03-growth-content-playbook.md))
 
 ---
 
@@ -275,5 +275,5 @@ Every day, alongside the calendar: 30–50 replies on X and 15–20 comments on 
   - Help Scout × Stripe (support load per customer)
   - Retell AI × Calendly (AI calls to booked meetings)
 - **"The Namzilabs Method":** firm, published definitions of the five core metrics, in the spirit of the Linear Method ([02 §7](research/02-attio-mochi-premium-saas.md)). Every recipe links to it.
-- **Launch week #1** in weeks 6–8: sources, the receipt panel, sharing a metric, the AI connection (if live), and design-partner stories.
+- **Launch week #1** in weeks 6 to 8: sources, the receipt panel, sharing a metric, the AI connection (if live), and design-partner stories.
 - **Creators and clippers,** later: pay per 1,000 views only once the product converts. Give them strict claim rules and source footage. ([03 §2](research/03-growth-content-playbook.md))

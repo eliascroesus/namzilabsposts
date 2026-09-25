@@ -87,11 +87,11 @@ Precious and Donut daydream are parodies. "One place to rule them all" plays on 
 | File | Size | Where | Safe area |
 |---|---|---|---|
 | `*/x.png` | 1500×500 | X header | The profile picture covers the bottom-left, so the words sit top-left. |
-| `*/linkedin-company.png` | 2256×382 (1128×191 at 2x) | LinkedIn company page cover | The page logo covers the bottom-left and phones show the middle ~900 px, so everything sits in x 352–1004 (at 1x). |
-| `*/linkedin-profile.png` | 3168×792 (1584×396 at 2x) | LinkedIn personal profile background | Your photo covers the bottom-left 568×264 and phones show the middle ~1,200 px, so everything sits in x 612–1384 (at 1x). |
+| `*/linkedin-company.png` | 2256×382 (1128×191 at 2x) | LinkedIn company page cover | The page logo covers the bottom-left and phones show the middle ~900 px, so everything sits in x 352 to 1004 (at 1x). |
+| `*/linkedin-profile.png` | 3168×792 (1584×396 at 2x) | LinkedIn personal profile background | Your photo covers the bottom-left 568×264 and phones show the middle ~1,200 px, so everything sits in x 612 to 1384 (at 1x). |
 | `*/facebook.png` | 1640×624 | Facebook page cover | Phones crop the sides, so the words start at x=300 (380 in the newer designs), centred top to bottom. |
 | `*/facebook-group.png` | 1640×856 | Facebook group cover | Same side crop as the page cover; the words are centred top to bottom. |
-| `*/youtube.png` | 2560×1440 | YouTube channel art | Everything important sits in the middle 1546×423, the only part phones show. Desktops show that full-width band (y 508–931), so scenes with ground or a horizon put it inside the band. |
+| `*/youtube.png` | 2560×1440 | YouTube channel art | Everything important sits in the middle 1546×423, the only part phones show. Desktops show that full-width band (y 508 to 931), so scenes with ground or a horizon put it inside the band. |
 | `*/og.png` | 1200×630 | Link preview when someone shares namzilabs.co (X, LinkedIn, Facebook, Slack, iMessage) | Set it as the site's `og:image`. |
 | `*/email.png` | 1200×300 | Email-signature banner | Display it at 600×150. |
 | `highlights/blue/*.png`, `highlights/ink/*.png` | 1080×1920 | Instagram highlight covers: Start here, Metrics, Funnels, 33 tools, Namzi, FAQ | The icon sits inside the centre circle Instagram shows. |
@@ -112,23 +112,36 @@ The 33 variants (neon, glass, gold, wedding rings, donuts, and nine game-style o
 
 ## Bio copy
 
-**X (160 characters)**
-> All your data in one place. Connect 33 tools, build any metric, and see exactly where your funnel breaks. True numbers, cross-referenced. Free to start.
+Every bio, tagline and company description lives in [`../COPY.md`](../COPY.md), checked against each platform's character limit, with copy buttons in the Content Kit. The ones to paste on day 1:
 
-**Instagram (150 characters)**
-> All your data in one place 📍
-> Any metric · the whole funnel
-> True numbers, not blurry ones
-> Free to start ↓
+**Instagram and Threads**
+```text
+Stripe, Calendly & your CRM in one place 📍
+See your real show rate & where your funnel leaks
+Free to start, no card ⬇️
+```
 
-**LinkedIn tagline**
-> All your data in one place. Connect your tools, build any metric, and see exactly where your funnel breaks, with true, cross-referenced numbers.
+**X**
+```text
+All your data in one place 📍 Connect Stripe, Calendly, your CRM + 30 more tools, count every customer once, see where your funnel leaks. Free to start ⬇️
+```
 
-**Facebook "About"**
-> Namzilabs connects the tools your business runs on (33 of them, read-only, no code), matches the same person across all of them, and lets you build any metric, so you can see exactly where your funnel breaks. Free to start at namzilabs.co.
+**LinkedIn company tagline**
+```text
+All your data in one place. Connect your tools, count every customer once, see exactly where your funnel breaks.
+```
 
-**YouTube channel description**
-> All your data in one place. Namzilabs connects your tools, cross-references the same person across them, and lets you build any metric and see exactly where your funnel breaks. Short videos on metrics that actually matter, funnel leaks and building with true numbers. Free to start: namzilabs.co
+**Facebook page intro**
+```text
+All your data in one place. Connect your tools, see where your funnel leaks. Free to start, no card.
+```
+
+**TikTok**
+```text
+All your sales data in one place 📍 Find your funnel leaks. Free ⬇️
+```
+
+The LinkedIn About, the YouTube channel description, the website and Product Hunt copy, and the DM replies for every comment keyword are in [`../COPY.md`](../COPY.md).
 
 ## Re-render
 

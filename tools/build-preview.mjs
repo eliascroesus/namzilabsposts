@@ -16,6 +16,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { ffmpegPath, flag } from "./lib.mjs";
+import COPY from "../brand/copy/copy.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const rel = (p) => path.relative(ROOT, p).split(path.sep).join("/");
@@ -90,6 +91,7 @@ function parsePost(dir) {
   const sections = secs.map((s) => {
     const body = s.body.join("\n").trim();
     if (/^Instagram caption/i.test(s.title)) return { kind: "caption", title: s.title, text: unquote(s.body.filter((l) => l.startsWith(">"))) };
+    if (/^LinkedIn/i.test(s.title)) return { kind: "caption", title: s.title, text: unquote(s.body.filter((l) => l.startsWith(">"))), note: s.body.filter((l) => l.trim() && !l.startsWith(">")).join(" ").replace(/`/g, "").trim() };
     if (/^X\b/.test(s.title)) {
       // **Label** … then one or more blockquotes; each blockquote is one post
       const blocks = [];
@@ -157,7 +159,7 @@ function videoMeta() {
       if (l.trim().startsWith(">")) quote.push(l.trim());
     }
     flush();
-    const note = part.split("\n")[0].replace(/^\*\*[^*]+\*\*\s*—?\s*/, "").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/`/g, "").trim();
+    const note = part.split("\n")[0].replace(/^\*\*[^*]+\*\*\s*:?\s*/, "").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/`/g, "").trim();
     if (!blocks.length && note) blocks.push({ label: "Note", text: note });
     caps[m[1]] = blocks;
   }
@@ -296,7 +298,8 @@ function build({ web }) {
   const DOCS = [
     ["STRATEGY.md", "Content strategy", "Positioning, ICPs, pillars, cadence, hooks, CTAs, the first 30 days, claims rules"],
     ["brand/BRAND_KIT.md", "Brand kit", "Logo, colour, type, layout, message, motion and voice"],
-    ["brand/banners/README.md", "Banners and bios", "Every banner size, which kit to use where, and bio copy for each platform"],
+    ["brand/COPY.md", "Bios and copy", "Every bio, tagline, company description and DM reply, checked against each platform's limit"],
+    ["brand/banners/README.md", "Banners", "Every banner size, which design to use where, and the bios to paste on day 1"],
     ["research/01-framer-and-base44.md", "Research 01 · Framer & Base44", "How the fastest-growing product companies make content"],
     ["research/02-attio-mochi-premium-saas.md", "Research 02 · Attio, Mochi & premium SaaS", "Brand, tone and motion of premium SaaS"],
     ["research/03-growth-content-playbook.md", "Research 03 · Growth playbook", "What converts on X, Instagram and TikTok"],
@@ -306,14 +309,14 @@ function build({ web }) {
   const docs = DOCS.filter(([p]) => existsSync(path.join(ROOT, p))).map(([p, title, desc]) => ({ name: path.basename(p), path: p, title, desc, size: size(p) }));
 
   const all = {
-    built: new Date().toISOString().slice(0, 10), repo: REPO, kit, kits: KITS, posts, videos,
+    built: new Date().toISOString().slice(0, 10), repo: REPO, kit, kits: KITS, posts, videos, copy: COPY,
     logos: { concepts, overviews, wordmarks, variants, transparent, web: webIcons }, banners, mascot: { stickers, avatars, boards: mboards }, docs, videoReadme: vm.md,
   };
-  if (kit === "content") return { ...all, logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => !d.path.startsWith("brand/")) };
+  if (kit === "content") return { ...all, logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => !d.path.startsWith("brand/") || d.path === "brand/COPY.md") };
   // every banner's name, for the "goes with the … banner" lines in kits that don't carry the banners themselves
   const bannerNames = banners ? Object.fromEntries(banners.concepts.map((c) => [c.id, c.name])) : {};
   if (kit === "brand") return { ...all, bannerNames, posts: [], videos: [], banners: banners && { ...banners, concepts: [] }, docs: docs.filter((d) => d.path.startsWith("brand/") || d.name === "STRATEGY.md") };
-  if (kit === "banners") return { ...all, bannerNames, posts: [], videos: [], logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, mascot: { stickers: [], avatars: [], boards: [] }, banners: banners && { ...banners, highlights: [], concepts: banners.concepts.map((c) => ({ ...c, mockup: null, limock: null })) }, docs: docs.filter((d) => d.path === "brand/banners/README.md") };
+  if (kit === "banners") return { ...all, bannerNames, posts: [], videos: [], logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, mascot: { stickers: [], avatars: [], boards: [] }, banners: banners && { ...banners, highlights: [], concepts: banners.concepts.map((c) => ({ ...c, mockup: null, limock: null })) }, docs: docs.filter((d) => d.path === "brand/banners/README.md" || d.path === "brand/COPY.md") };
   return { ...all, bannerNames };
 }
 

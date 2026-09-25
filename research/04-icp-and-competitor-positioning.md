@@ -44,13 +44,13 @@
     - Closers.io's tracking is bundled with its training and recruitment services [44][45][46].
   - **The closest direct competitor is RevPhlo**, which sells "post-booking sales intelligence for high-ticket teams" [47].
 - **Trust is the real problem in this category, so "every number shows its working" is the sharpest wedge.** Three signals point the same way:
-  - Vendors now tell Shopify owners that a 20–40% gap between Meta and Shopify is normal [6][7].
+  - Vendors now tell Shopify owners that a 20 to 40% gap between Meta and Shopify is normal [6][7].
   - G2 reviewers of Triple Whale say they check its numbers by hand [20].
   - Cole Gordon, founder of Closers.io, calls close rate "an easily manipulated metric" [42].
 
   A number that lists the records it counted, the ones it left out, and why, answers all three.
 - **E-commerce has the loudest pain and the most crowded field, and Namzilabs has a connector gap there.**
-  - **The pain:** "numbers don't match" is the most common merchant complaint found [1]–[5].
+  - **The pain:** "numbers don't match" is the most common merchant complaint found [1], [5].
   - **The field anchors on free tiers,** such as Triple Whale's free Founders Dash [17] and Lifetimely's free plan under 50 orders a month [36].
   - **The gap:** Namzilabs' Meta, TikTok and Google Ads connectors are not live yet. **Do not lead with ROAS or MER until they are.**
   - **The wedge for now** has three parts:
@@ -142,7 +142,7 @@ G2 reviewers of Triple Whale describe unreliable metrics that they have to check
      - Google Ads counts inside its own window (30-day click);
      - GA4 counts only the sessions it managed to follow.
    - Add up the revenue each platform claims and it always exceeds what Shopify collected.
-   - Vendor explainers now tell merchants that a 20–40% gap between Meta and Shopify is normal [6][7].
+   - Vendor explainers now tell merchants that a 20 to 40% gap between Meta and Shopify is normal [6][7].
 2. **True ROAS and CAC per channel can't be known, so owners fall back on blended MER** (total revenue ÷ total marketing spend) [13].
    - MER usually lives in a spreadsheet. Owners buy daily MER calculator templates [10][11].
    - Free blended-ROAS calculators are a common lead magnet [12].
@@ -163,7 +163,7 @@ G2 reviewers of Triple Whale describe unreliable metrics that they have to check
 
 **Where they hang out.**
 - **Found in this pass:**
-  - Shopify Community forums [1]–[5].
+  - Shopify Community forums [1], [5].
   - The Shopify App Store, G2 and Trustpilot, when they vet tools [20][23][24].
 - **Unverified:**
   - r/shopify, r/ecommerce, r/FacebookAds, r/PPC.
@@ -209,7 +209,7 @@ G2 reviewers of Triple Whale describe unreliable metrics that they have to check
 ### 2.2 (b) Info-product owners and coaches with high-ticket sales teams
 
 **Who.**
-- Coaching, consulting and info-product businesses that sell offers of roughly $5K–$25K by phone.
+- Coaching, consulting and info-product businesses that sell offers of roughly $5K to $25K by phone.
 - "Most high ticket sales operations run on a two-role system called the setter-closer model" [62]. Setters qualify leads and book calls; closers sell.
 - **A typical stack:**
   - ads;
@@ -218,7 +218,7 @@ G2 reviewers of Triple Whale describe unreliable metrics that they have to check
   - Zoom calls, often recorded;
   - Close or GHL as the CRM;
   - Stripe, Whop or ThriveCart for payment.
-- GHL is often the all-in-one, commonly reported at about $97–$497 a month [63][64].
+- GHL is often the all-in-one, commonly reported at about $97 to $497 a month [63][64].
 
 **Namzilabs today.**
 - **Live:**
@@ -256,15 +256,15 @@ Tools sold to this ICP describe the status quo the same way:
      - time zones can put a Monday lead in Tuesday's totals;
      - its custom reports can't combine different metrics in one chart.
 3. **No-shows quietly drain the pipeline.**
-   - One sales-ops analysis calls the no-show rate the most under-measured number in sales. It estimates that 20–30% of pipeline disappears between booking and showing [60].
+   - One sales-ops analysis calls the no-show rate the most under-measured number in sales. It estimates that 20 to 30% of pipeline disappears between booking and showing [60].
    - Teams add automations just to log no-shows [54].
 4. **Speed to lead is invisible.**
    - The widely cited MIT/InsideSales finding: leads contacted within 5 minutes are 21× more likely to qualify than leads contacted at 30 minutes [61].
    - The two timestamps usually sit in different tools: the form, and the dialer or CRM (**Inference**).
 5. **Seeing cost per call, and the cash behind it, is expensive and complex.**
    - Owners manage to cost per booked call:
-     - about $150–$350 in one agency's coaching benchmarks [58];
-     - $400–$700 ceilings for $10–12K offers in another's [59].
+     - about $150 to $350 in one agency's coaching benchmarks [58];
+     - $400 to $700 ceilings for $10 to 12K offers in another's [59].
    - The tools that link ad, call and cash sit behind a demo and price on tracked revenue [66][67].
    - Price is "the most consistent Hyros complaint on Reddit", and setup is demanding [65].
 
@@ -429,7 +429,7 @@ Tools sold to this ICP describe the status quo the same way:
    - A whole category of tools exists for this (section 3.3), and data vendors publish how-to guides just for automating GHL reports [56].
 2. **Platforms report vanity metrics; clients pay for outcomes.**
    - Platforms report clicks, leads and booked meetings. Clients pay for meetings that happen, and for revenue.
-   - The gap between booking and showing can be 20–30% of pipeline [60].
+   - The gap between booking and showing can be 20 to 30% of pipeline [60].
 3. **Disputes over whose number is right.**
    - Platforms count differently by design [6][7].
    - In lead generation, clients can dispute whether a meeting happened at all.
@@ -516,9 +516,9 @@ Scores run from 1 (weak) to 5 (strong). "Openness" means how little competition 
 | **Wicked Reports** | Attribution plus cohort and LTV reporting. Described as a fit for info-product businesses and coaches [79] | Measure $499, Scale $699, Maximize $999 (adds AI tools), Enterprise $4,999+ a month [78][79]. Older reports: from $597 a month, no free trial [81] | Funnel views and cohort and LTV reports [78] | Learning curve [80]; premium price compared with newer tools [79] |
 | **iClosed** | "AI scheduler powering high-ticket sales teams" [49]. Analytics on show rate, close rate, call outcomes, revenue by channel and each rep's performance [50] | Startup $24 a month ($19 billed yearly). Business $120 per seat a month (about $96 billed yearly), with advanced sales tracking and scheduling analytics [48] | Built for high-ticket teams; low entry price; 4.2/5 on Trustpilot [51]; a video-sales-letter funnel that speaks this ICP's language [52] | You only get the analytics by switching to iClosed as your scheduler (**Inference**) |
 | **RevPhlo** | "Post-Booking Sales Intelligence for High-Ticket Teams." Replaces manual EODs and spreadsheets without changing tools. Portals for each rep [47] | Not found | Integrates with GoHighLevel, Zoom, Stripe, Fathom, Zapier, Slack and Whop. Its homepage leads with metrics: cash collected, close rate, show rate, cash per show [47] | Unknown. **The closest direct competitor to Namzilabs for ICP (b)** (**Inference**) |
-| **Closers.io (CRM and services)** | Sales training and recruitment for coaches, consultants, course creators and agencies, including EOD reporting and call-review routines [44][46]. Says it has a pipeline of 13,000+ remote salespeople [44]. Its CRM promises tracking and analytics across funnels and ad data [45] | Not published. Reported packages: about $8,400 (individual training) and $15–18K (business) [46] | Reach and authority with this ICP [42][43] | The tracking comes bundled with a services relationship (**Inference**) |
-| **GoHighLevel's own reporting** | Built into the all-in-one tool many coaches use [63][64]. Has a native appointment report [57] | GHL itself costs about $97–$497 a month [63][64] | Already installed | Custom reports are limited to its widgets; time-zone quirks [56] |
-| **"SalesDash"** | Searches for this name return a CRM for freight and logistics sales teams [82]. No coaching product by this name turned up | — | — | — |
+| **Closers.io (CRM and services)** | Sales training and recruitment for coaches, consultants, course creators and agencies, including EOD reporting and call-review routines [44][46]. Says it has a pipeline of 13,000+ remote salespeople [44]. Its CRM promises tracking and analytics across funnels and ad data [45] | Not published. Reported packages: about $8,400 (individual training) and $15 to 18K (business) [46] | Reach and authority with this ICP [42][43] | The tracking comes bundled with a services relationship (**Inference**) |
+| **GoHighLevel's own reporting** | Built into the all-in-one tool many coaches use [63][64]. Has a native appointment report [57] | GHL itself costs about $97 to $497 a month [63][64] | Already installed | Custom reports are limited to its widgets; time-zone quirks [56] |
+| **"SalesDash"** | Searches for this name return a CRM for freight and logistics sales teams [82]. No coaching product by this name turned up |  |  |  |
 
 **Notes.**
 - **Two groups serve this ICP, and neither owns the whole chain.**
@@ -641,7 +641,7 @@ quadrantChart
 | Cometly | Ads, store, CRM | Attribution per person | Demo; tiers by ad spend [73][74] |
 | Wicked Reports | Ads, CRM, store | Attribution plus cohorts | From $499 a month [78] |
 | iClosed | Its own scheduler | Its own records | $24 a month, or $120 per seat [48] |
-| GoHighLevel | Its own CRM | Its own records, in widget reports [56] | $97–$497 a month [63] |
+| GoHighLevel | Its own CRM | Its own records, in widget reports [56] | $97 to $497 a month [63] |
 | RevPhlo | GHL, Zoom, Stripe, Fathom, Whop and others | Probably matched per lead (Unverified) | Not found [47] |
 | Dashboards (Databox, Geckoboard, Klipfolio, Looker Studio, AgencyAnalytics, Whatagraph) | Broad | Side by side, with some blending (Unverified) | Not verified |
 | Plumbing (Supermetrics, Coupler.io, Zapier or Make + Sheets) | Broad | You build the logic | Not verified |
@@ -827,7 +827,7 @@ Unmatched      6 recordings with no booking → listed for review
    - Run Namzilabs on Namzilabs. If the founder books demos through a calendar and records them, publish the founder's own show rate and speed to lead every week, with the working.
    - It's real, it's small, and it's the product proving itself.
 2. **Public demo dashboards on labelled sample data.**
-   - For example: "Demo Coaching Co. — sample data".
+   - For example: "Demo Coaching Co. (sample data)".
    - One per ICP hero metric.
    - Never let sample data read as customer data.
 3. **Live builds.**
@@ -916,7 +916,7 @@ Unmatched      6 recordings with no booking → listed for review
   - Capture verbatim quotes with links.
 - **Agency pains (ICP d).**
   - No agency-specific quotes were captured.
-  - Validate with 5–10 short interviews with outbound and appointment-setting agencies.
+  - Validate with 5 to 10 short interviews with outbound and appointment-setting agencies.
 - **Dashboard and plumbing pricing.**
   - Not verified: Databox, Geckoboard, Klipfolio, Looker Studio Pro, AgencyAnalytics, Whatagraph, Supermetrics, Coupler.io, Zapier, Make, Rows, Equals and Causal.
   - Check each vendor's pricing page before quoting any figure.
@@ -954,7 +954,7 @@ Unmatched      6 recordings with no booking → listed for review
 15. Triple Whale, "Pricing": https://www.triplewhale.com/pricing
 16. Triple Whale Help Center, "Understanding Triple Whale plans: Foundation, Automate, and Enterprise": https://kb.triplewhale.com/en/articles/16046642-understanding-triple-whale-plans-foundation-automate-and-enterprise
 17. Triple Whale blog, "Triple Whale Free: The Best Free Comprehensive Data Platform With a Mobile App, Post-Purchase Survey, and More": https://www.triplewhale.com/blog/founders-dash
-18. SignalBridge, "Triple Whale Pricing in 2026: Complete Cost Breakdown ($149–$1,290/mo)" *(vendor)*: https://www.signalbridgedata.com/blog/triple-whale-pricing-2026
+18. SignalBridge, "Triple Whale Pricing in 2026: Complete Cost Breakdown ($149 to $1,290/mo)" *(vendor)*: https://www.signalbridgedata.com/blog/triple-whale-pricing-2026
 19. wetracked.io, "2026 Triple Whale Pricing Explained" *(vendor)*: https://www.wetracked.io/post/triple-whale-pricing
 20. G2, "Triple Whale Pros and Cons": https://www.g2.com/products/triple-whale/reviews?qs=pros-and-cons
 21. Eightx, "Triple Whale review: an operator's verdict for ecommerce" *(agency)*: https://eightx.co/blog/compare/reviews/triple-whale-for-ecommerce-review

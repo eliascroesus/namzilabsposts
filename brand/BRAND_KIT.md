@@ -1,4 +1,4 @@
-# Namzilabs brand kit — for content
+# Namzilabs brand kit for content
 
 Everything a post or video needs so the brand reads as one brand. The source of truth in code is [`lib/brand.css`](../lib/brand.css).
 
@@ -34,7 +34,7 @@ The folder [`logos/01-between-mono/`](logos/01-between-mono/) contains:
 
 **Precious** is the one variant that's a render, not a drawing: the two rings as heavy gold bands, side by side and overlapping like the mark, with a glowing inscription in our own words, made in 3D with three.js ([`logos/one-ring/rings.html`](logos/one-ring/rings.html)) and placed in front of a generic volcano ([`lib/volcano.js`](../lib/volcano.js)). It's a parody of a famous fantasy ring, so: no film lettering or inscription, no tower, no eye, and the Cinzel and Great Vibes fonts (both OFL) are for this parody only.
 
-The wordmark is outlined from Inter 800, so no file needs a font installed. The earlier concepts (02–10 and the original blue-lens 01) are still in [`logos/`](logos/) for reference, but they're retired: use only the mono mark and its variants.
+The wordmark is outlined from Inter 800, so no file needs a font installed. The earlier concepts (02 to 10 and the original blue-lens 01) are still in [`logos/`](logos/) for reference, but they're retired: use only the mono mark and its variants.
 
 **Don't:** fill the space between the rings, add a coloured lens back, change the rings' spacing, put the ink tile on a busy photo, or stretch it. The primary mark is one colour: white on dark and blue, ink on light. The variants are for profile pictures and fun posts, not for the lockup on the website.
 
@@ -54,7 +54,7 @@ The wordmark is outlined from Inter 800, so no file needs a font installed. The 
 
 **Rules**
 - **Social only.** Never use Namzi in the product UI or on the landing page. The landing page's own design rules keep it mascot-free.
-- **At most 1 post in 4, except in meme weeks.** Namzi is a recurring guest, not the host. It appears in posts 13, 14, 16, 21, 27 and 34 and videos 07 and 08, and plays every part in the meme parodies (posts 36–44): spread those out, one or two a week.
+- **At most 1 post in 4, except in meme weeks.** Namzi is a recurring guest, not the host. It appears in posts 13, 14, 16, 21, 27 and 34 and videos 07 and 08, and plays every part in the meme parodies (posts 36 to 44): spread those out, one or two a week.
 - **In a parody, Namzi does the voice.** It plays the role (the ring-obsessed creature, the donut-loving dad, the "this is fine" dog); it never becomes that character. No costumes, colours or features copied from the original.
 - **Namzi reacts; the numbers do the talking.** It never states a claim the brand couldn't, and the claims rules apply to it too.
 - Keep its colours: the blue body gradient, ink limbs on light surfaces, light limbs on dark (`dark: true`).
@@ -108,12 +108,12 @@ Every image with example numbers says **"Example data"** in small type.
 These come from [research/01 §4](../research/01-framer-and-base44.md) and are implemented in [`lib/motion.js`](../lib/motion.js).
 
 - **60fps, rendered frame by frame**, never screen-recorded.
-- **Entries:** rise and fade with `cubic-bezier(0.16, 1, 0.3, 1)` over 450–750ms. Headlines rise word by word from behind a mask, 60–70ms apart.
-- **Objects with weight:** a spring (about 10% overshoot) over 0.9–1.2s.
-- **Exits:** faster than entries (250–450ms), accelerating out, with a little blur.
+- **Entries:** rise and fade with `cubic-bezier(0.16, 1, 0.3, 1)` over 450 to 750ms. Headlines rise word by word from behind a mask, 60 to 70ms apart.
+- **Objects with weight:** a spring (about 10% overshoot) over 0.9 to 1.2s.
+- **Exits:** faster than entries (250 to 450ms), accelerating out, with a little blur.
 - **Numbers count up;** they never just appear.
-- **Camera:** a slow push of about 1–2% over the whole video; the grid drifts; the end card's glow breathes.
-- **One idea per scene, 2–4s each.** Hook in the first 1.5s. End on the logo plus "Start free · namzilabs.co".
+- **Camera:** a slow push of about 1 to 2% over the whole video; the grid drifts; the end card's glow breathes.
+- **One idea per scene, 2 to 4s each.** Hook in the first 1.5s. End on the logo plus "Start free · namzilabs.co".
 
 ## Message
 
@@ -126,3 +126,7 @@ Lead with **all your data in one place**, then **any metric**, then **where the 
 - Lead with the number or the argument, never with "Introducing…".
 - Say "booked, held, no-show, setter, closer" to sales teams and "launch, list, cart" to creators, in their words.
 - No hype words ("revolutionary", "game-changing"), no emoji walls, no invented urgency.
+- Hook first, one idea per line, one ask per post (a comment keyword, the link, or "free to start, no card").
+- **Never an em dash.** Use a full stop, a comma, a colon or brackets.
+
+Every bio, tagline, company description and DM reply is written out in [`COPY.md`](COPY.md), with the full house rules at the top.

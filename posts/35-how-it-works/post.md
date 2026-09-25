@@ -11,19 +11,31 @@ Pair it with the pinned video, [`videos/11-all-your-data`](../../videos/11-all-y
 
 ## Instagram caption
 
-> All your data. One place. 📍
+> Your business runs on 12 tools.
+> None of them sees the whole customer. 📍
 >
-> Your business runs on a dozen tools: Calendly, Stripe, Shopify, your CRM, your email platform, a few spreadsheets. Each one sees a slice, so every number is a guess.
+> Leads in Typeform.
+> Calls in Calendly.
+> Deals in your CRM.
+> Money in Stripe.
 >
-> Namzilabs connects all of them (33 tools, read-only, no code) and:
-> 1️⃣ cross-references everything: the same person, matched across every tool, so the numbers are true, not blurry
-> 2️⃣ lets you build any metric across any tools: show rate, revenue per lead, cost per held meeting, revenue from your list…
-> 3️⃣ shows you exactly where your funnel breaks, across platforms
-> 4️⃣ and soon, gives your AI the whole picture, so you stop building blind
+> So every number you look at is a guess.
 >
-> Free to start, no card → link in bio. Comment METRICS and we'll help you set up your first funnel.
+> Namzilabs puts all of it in one place:
 >
-> #saas #startup #founders #businessmetrics #datadriven
+> 1️⃣ Connect your tools. 33 of them, no code, and we never edit your data.
+> 2️⃣ Every customer is matched across every tool, so each person counts once.
+> 3️⃣ Build any metric: show rate, revenue per lead, cost per held meeting.
+> 4️⃣ See exactly where your funnel breaks.
+> 5️⃣ Coming soon: your AI sees all of it too.
+>
+> Swipe through all 7 slides. That's the whole product.
+>
+> Free to start, no card. Link in bio 👆
+>
+> (Example data.)
+>
+> #founders #salesteam #businessmetrics #funnel #saas
 
 ## X
 
@@ -31,25 +43,38 @@ Pair it with the pinned video, [`videos/11-all-your-data`](../../videos/11-all-y
 
 > all your data. one place.
 >
-> connect every tool you use → cross-reference the same person across all of them → build any metric → see exactly where your funnel breaks.
+> connect every tool you use
+> → every customer matched across all of them
+> → build any metric
+> → see exactly where your funnel breaks
 >
 > true numbers, not blurry ones.
 
 **First reply:**
 
-> 33 tools, read-only, no code. Free to start → namzilabs.co
+> 33 tools, no code, and it never edits your data. free to start, no card: namzilabs.co
 
 ## LinkedIn (document post)
 
 Upload `linkedin-carousel.pdf` as a document, titled "How Namzilabs works", with:
 
-> Most businesses don't have a data problem. They have a *scattered* data problem.
+> Most businesses don't have a data problem.
+> They have a scattered data problem.
 >
-> Leads in one tool, calls in another, payments in a third, and a spreadsheet trying to hold it together. Every tool shows you a slice, so every number is a guess.
+> Leads in one tool. Calls in another. Payments in a third. And a spreadsheet trying to hold it all together.
 >
-> We built Namzilabs to put all of it in one place: connect your tools, cross-reference the same person across them, build any metric you need, and see exactly where your funnel breaks.
+> Every tool shows you a slice, so every number is a guess.
 >
-> 7 slides on how it works 👇 Free to start at namzilabs.co
+> We built Namzilabs to put all of it in one place:
+>
+> → Connect your tools (33 of them, no code, and we never edit your data)
+> → Match the same person across every tool, so each customer counts once
+> → Build any metric you need, from show rate to revenue per lead
+> → See exactly where your funnel breaks
+>
+> 7 slides on how it works below 👇
+>
+> Free to start, no card: namzilabs.co
 
 ## Alt text
 

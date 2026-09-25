@@ -6,7 +6,7 @@ Smooth product-style motion videos, built in HTML and rendered **frame by frame 
 |---|---|---|---|---|
 | 01 | **Three tools. Three answers.** Calendly, Close and a sheet disagree; Namzilabs matches them into one number with a receipt. | 17s | Coaching / sales teams | [`01-three-answers/three-answers-9x16.mp4`](01-three-answers/three-answers-9x16.mp4) |
 | 02 | **Show-up rate, in three steps.** A cursor builds Get data → Match → Calculate, tests each step, publishes, and the tile lands on the board. | 19s | Everyone (demo) | [`02-three-steps/three-steps-9x16.mp4`](02-three-steps/three-steps-9x16.mp4) |
-| 03 | **Monday, 9:07 am.** A question, 14 tabs, the clock racing to 11:48 — then one tab with the answer. | 16s | Everyone (relatable) | [`03-monday-907/monday-907-9x16.mp4`](03-monday-907/monday-907-9x16.mp4) |
+| 03 | **Monday, 9:07 am.** A question, 14 tabs, the clock racing to 11:48, then one tab with the answer. | 16s | Everyone (relatable) | [`03-monday-907/monday-907-9x16.mp4`](03-monday-907/monday-907-9x16.mp4) |
 | 04 | **Every number shows its working.** A revenue number prints its own receipt; refunds and test payments get thrown out. | 16s | Everyone (brand) | [`04-receipts/receipts-9x16.mp4`](04-receipts/receipts-9x16.mp4) |
 | 05 | **Ask your AI.** ⚠️ HOLD until the AI connection (MCP) is live in production. | 17s | Everyone | [`05-ask-your-ai/ask-your-ai-9x16.mp4`](05-ask-your-ai/ask-your-ai-9x16.mp4) |
 | 06 | **Logo sting.** Two rings meet, the space between them glows, and the name slides out. | 6s | Intro / outro | [`06-logo-sting/logo-sting-1x1.mp4`](06-logo-sting/logo-sting-1x1.mp4) |
@@ -29,150 +29,231 @@ node tools/render-video.mjs videos/11-all-your-data/video.html videos/13-true-nu
 
 ## Captions
 
+Written to stop the scroll in the first line, say what Namzilabs does in one more, and ask for one thing. The voice and every bio are in [`../brand/COPY.md`](../brand/COPY.md).
+
 **01 · Three answers**
 - **Reels / TikTok:**
-  > Calendly says 41. Close says 38. The sheet says 44. Which one do you pay your setter on? 👀
+  > Calendly says 41. Close says 38. The sheet says 44. 👀
   >
-  > Namzilabs matches the same person across your tools and counts each meeting once, with the working shown. Free to start → link in bio.
+  > Which one are you paying your setter on?
   >
-  > #showrate #highticketsales #salesteam
+  > None of them is wrong. Each tool only sees its own slice. Namzilabs matches the same person across all three and counts every meeting once, with the working shown.
+  >
+  > Comment SHOWUP and I'll send you the setup.
+  >
+  > (Example data.)
+  >
+  > #showrate #highticketsales #salesteam #appointmentsetting
 - **X:**
-  > Three tools. Three answers. One real number.
+  > calendly: 41. close: 38. the sheet: 44.
+  >
+  > same week. same team. three answers.
 
   Put the link in the first reply.
 
 **02 · Three steps**
 - **Reels / TikTok:**
-  > Show-up rate from Calendly + Google Sheets in three steps. No SQL, no spreadsheet. Build it once, it stays live.
+  > Your show rate, built from 2 tools that have never met. 🛠️
   >
-  > Comment SHOWUP for the flow.
+  > Step 1: pull bookings from Calendly and outcomes from your sheet.
+  > Step 2: match every lead by email, so each person counts once.
+  > Step 3: divide. Done. It stays live.
   >
-  > #nocode #salesops #kpis
+  > No SQL. No VLOOKUP.
+  >
+  > Comment SHOWUP and I'll send you the setup.
+  >
+  > #salesops #highticketsales #nocode #showrate
 - **X:**
-  > Watch me build show-up rate from two tools that have never met. Three steps, no code.
+  > watch me build show rate from two tools that have never met.
+  >
+  > 3 steps. no code. it stays live.
 
 **03 · Monday 9:07**
 - **Reels / TikTok:**
-  > POV: someone asks for last week's show-up rate at 9:07. Tag the person who does this every Monday.
+  > POV: it's 9:07 on a Monday and someone asks for last week's show-up rate. 🫠
   >
-  > #mondaymotivation #founderlife #spreadsheets
+  > 14 tabs open. The clock hits 11:48. Still no number.
+  >
+  > Or: one tab, with the answer already in it.
+  >
+  > Tag the person who does this every Monday.
+  >
+  > #founderlife #mondaymood #salesops #spreadsheets
 - **X:**
-  > POV: someone asks for last week's show-up rate at 9:07
+  > pov: someone asks for last week's show-up rate at 9:07
+  >
+  > (you find it at 11:48)
 
 **04 · Receipts**
 - **Reels / TikTok:**
-  > Nice number. Where's it from? Every number in Namzilabs prints its receipt: what it read, what it matched, and what it left out and why.
+  > Nice number. Where's it from? 🧾
   >
-  > #businessmetrics #founders #kpis
-- **X:**
+  > Every number in Namzilabs prints its receipt: what it read, what it matched, and what it left out (refunds and test payments included).
+  >
   > A number without a receipt is an opinion.
+  >
+  > Free to start, no card. Link in bio.
+  >
+  > #founders #businessmetrics #kpis #saas
+- **X:**
+  > a number without a receipt is an opinion.
 
-**05 · Ask your AI** — launch-day caption is in [`../posts/12-ask-your-ai-HOLD/post.md`](../posts/12-ask-your-ai-HOLD/post.md).
+**05 · Ask your AI**: the launch-day caption is in [`../posts/12-ask-your-ai-HOLD/post.md`](../posts/12-ask-your-ai-HOLD/post.md).
 
-**06 · Logo sting** — use it as the first 2 seconds of longer videos, or post it alone on day 1 with "Namzilabs. All your data, one place."
+**06 · Logo sting**: use it as the first 2 seconds of longer videos, or post it alone on day 1 with "Namzilabs. All your data, one place."
 
 **11 · All your data. One place. (the pinned explainer)**
 
 Pin it everywhere: 9:16 on Instagram, TikTok, Facebook Reels and YouTube Shorts; 16:9 on X, LinkedIn, YouTube (as the channel trailer) and the website. Post the "coming soon" cuts now. When the AI connection is live, swap in the `-ai-live` cuts.
 
 - **Instagram / TikTok / Facebook Reels:**
-  > All your data. One place. 📍
+  > Your business runs on 12 tools.
+  > Each one sees a slice. None of them sees the customer. 📍
   >
-  > Your business runs on a dozen tools, and each one sees a slice. Namzilabs connects them all (33 tools, read-only, no code), cross-references the same person across every one, and lets you build any metric, so you can see exactly where your funnel breaks.
+  > Namzilabs puts all of it in one place:
+  > → connects 33 tools, no code, never edits your data
+  > → matches the same person across every tool
+  > → lets you build any metric you want
+  > → shows exactly where your funnel breaks
   >
-  > True numbers, not blurry ones. Free to start → link in bio.
+  > True numbers, not blurry ones.
   >
-  > #saas #founders #businessmetrics #datadriven #funnel
+  > Free to start, no card. Link in bio.
+  >
+  > #founders #salesteam #businessmetrics #funnel #saas
 - **X (pin it):**
   > all your data. one place.
   >
-  > 12 tools, 12 slices, 12 different numbers → one place, cross-referenced, any metric you want, and the exact step where your funnel breaks.
+  > 12 tools, 12 slices, 12 different numbers
+  > → one place, every customer matched once, any metric, and the exact step where your funnel breaks.
   >
-  > (first reply: namzilabs.co · free to start)
+  > (first reply: namzilabs.co, free to start)
 - **LinkedIn (featured, and pinned to the company page):**
   > Your funnel doesn't break in one tool. It breaks between them.
   >
-  > Leads in a form tool, calls in a calendar, outcomes in a CRM, money in Stripe. Every dashboard shows its own slice, so nobody sees where the drop-off really is.
+  > Leads in a form tool. Calls in a calendar. Outcomes in a CRM. Money in Stripe.
   >
-  > Namzilabs puts all of it in one place: connect your tools, match the same person across them, build any metric, and see exactly where the funnel breaks. 46 seconds on how it works 👇
-- **YouTube (channel trailer, 16:9):** title *Namzilabs in 46 seconds: all your data, one place*; description = the LinkedIn text + namzilabs.co.
+  > Every dashboard shows its own slice, so nobody sees where people actually drop off.
+  >
+  > Namzilabs puts all of it in one place. Connect your tools, match the same person across them, build any metric, and see exactly where the funnel breaks.
+  >
+  > 46 seconds on how it works 👇
+  >
+  > Free to start, no card: namzilabs.co
+- **YouTube (channel trailer, 16:9):** title *Namzilabs in 46 seconds: all your data in one place*; description = the LinkedIn text.
 - **Alternate hook** for X and LinkedIn: "Zapier connects your apps. Namzilabs connects your numbers." Using Zapier's name for comparison is fine; never use their logo.
 
 **12 · See where your funnel breaks (a 13-second cut of 11)**
 - **Reels / TikTok / Shorts:**
   > Your funnel doesn't break in one tool. It breaks between them. 🔍
   >
-  > Leads in Typeform, calls in Calendly, the call itself in Fathom, the deal in Close, the money in Stripe. Namzilabs lines up every step across your tools, so you see exactly where people drop off. (In this example, 36% of booked calls never happen.)
+  > Form in Typeform. Call booked in Calendly. Call held in Fathom. Deal in Close. Money in Stripe.
   >
-  > Free to start → link in bio.
+  > Namzilabs lines up every step for every person, so you see exactly where they drop off. In this example, 36% of booked calls never happen.
+  >
+  > Comment LEAK and I'll send you the setup.
+  >
+  > (Example data.)
   >
   > #funnel #highticketsales #salesteam #founders
 - **X:**
-  > your funnel doesn't break in one tool. it breaks between them.
+  > your funnel doesn't break in one tool.
   >
-  > (first reply: namzilabs.co · free to start)
+  > it breaks between them.
+  >
+  > (first reply: namzilabs.co, free to start)
 - **YouTube Shorts title:**
   > Where does your funnel actually break?
 
 **13 · True numbers, not blurry ones (a 26-second cut of 11)**
 - **Reels / TikTok / Shorts:**
-  > 12 tools. 12 different numbers. Which one's true? 🤔
+  > 12 tools. 12 different numbers. Which one is true? 🤔
   >
-  > Namzilabs puts all your data in one place (33 tools, read-only, no code) and matches the same person across every tool, so everyone is counted once and the number comes into focus.
+  > None of them, on its own. Each tool only sees a slice.
   >
-  > True numbers, not blurry ones. Free to start → link in bio.
+  > Namzilabs puts all your data in one place and matches the same person across every tool, so everyone counts once and the real number comes into focus.
   >
-  > #saas #founders #businessmetrics #datadriven
+  > True numbers, not blurry ones. Free to start, no card. Link in bio.
+  >
+  > #founders #businessmetrics #saas #startup
 - **X:**
-  > 12 tools, 12 slices, 12 different numbers.
+  > 12 tools. 12 slices. 12 different numbers.
   >
-  > one place, cross-referenced: one true number.
+  > one place, every customer matched once: one true number.
   >
-  > (first reply: namzilabs.co · free to start)
+  > (first reply: namzilabs.co, free to start)
 - **YouTube Shorts title:**
   > Why your numbers never match
 
 **07 · Meet Namzi**
 - **Reels / TikTok:**
-  > Meet Namzi. 👋 It lives between your tools, counts everyone once, and carries receipts everywhere.
+  > Meet Namzi. 👋
   >
-  > Namzilabs reads 33 of your tools, matches the same person across them, and shows the working behind every number. Free to start → link in bio.
+  > It lives in the space between your tools. It counts everyone once. It never leaves home without a receipt.
+  >
+  > Namzilabs reads 33 of your tools, matches the same person across all of them and shows the working behind every number.
+  >
+  > Free to start, no card. Link in bio.
   >
   > #saas #startup #founders
 - **X:**
-  > meet Namzi. it lives between your tools, counts everyone once, and brings receipts.
+  > meet namzi. 👋
+  >
+  > lives between your tools. counts everyone once. brings receipts.
 
 **08 · Group chat**
 - **Reels / TikTok:**
-  > If your tools had a group chat 📱 Shopify celebrates, Klaviyo takes credit, GA disagrees… and Namzi brings the receipt.
+  > If your tools had a group chat 📱
   >
-  > Namzilabs matches Shopify orders to Klaviyo profiles by email, leaves refunds out, and shows the working. Send this to your email person. 👀
+  > Shopify celebrates. Klaviyo takes the credit. GA disagrees. Then Namzi walks in with the receipt.
   >
-  > #shopify #klaviyo #ecommerce
+  > Namzilabs matches Shopify orders to Klaviyo profiles by email, leaves refunds out and shows the working.
+  >
+  > Send this to your email person. 👀
+  >
+  > #shopify #klaviyo #ecommerce #dtc
 - **X:**
-  > if your tools had a group chat
+  > if your tools had a group chat 📱
 
 **09 · EOD report**
 - **Reels / TikTok:**
-  > The EOD report vs the receipts. 🧾 Nobody's lying: EOD reports are written from memory. Namzilabs reads Aircall and Calendly directly.
+  > The EOD report vs the receipts. 🧾
   >
-  > Comment METRICS for the setup, and tag a sales manager.
+  > "Dials: 120." Aircall: 87.
+  > "Conversations: 34." Aircall: 21 over two minutes.
+  > "Booked: 11." Calendly: 5 new, plus 2 reschedules counted once.
+  > "Energy: 🔥🔥🔥." No receipt for that one.
   >
-  > #salesteam #setter #highticketsales
+  > Nobody's lying. EOD reports are written from memory. Namzilabs reads Aircall and Calendly directly.
+  >
+  > Comment SHOWUP and I'll send you the setup.
+  >
+  > (Example data.)
+  >
+  > #salesteam #setter #highticketsales #appointmentsetting
 - **X:**
-  > the EOD report vs the receipts. energy is not a column. yet.
+  > the EOD report vs the receipts.
+  >
+  > energy is not a column. yet.
 
 **10 · Launch receipt**
 - **Reels / TikTok:**
-  > The launch screenshot vs the launch receipt. 🚀🧾 $20,140 before refunds, $17,780 after. Still a great launch, and now it's a true one.
+  > The launch screenshot: $20,140 🚀
+  > The launch receipt: $17,780 🧾
+  >
+  > Refunds out. The same payment counted in two tools, out. Test purchases, out.
+  >
+  > Still a great launch. Now it's a true one.
   >
   > Comment LAUNCH and I'll send you the setup.
+  >
+  > (Example data.)
   >
   > #courselaunch #creatoreconomy #digitalproducts
 - **X:**
   > the launch screenshot: $20,140 🚀
-  >
-  > the launch receipt: $17,780.
+  > the launch receipt: $17,780 🧾
   >
   > still a great launch. now it's a true one.
 

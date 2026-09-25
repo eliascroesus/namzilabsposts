@@ -90,7 +90,7 @@
 | Companies on Framer | 188,000 in 200 countries. Framer says this grew 14x in 12 months | Jun 2026 | Company [6] |
 | Sites and traffic | 4M+ published sites; about 364M monthly active visitors | Jun 2026 | Company [6] |
 | Social audience | 154.7K followers on X; 100K on Instagram; 11M YouTube viewers; 189.4K hours watched | 2024 | Company [4] |
-| Community events | 83 meetups in 26 countries (2024). 48 events in 18 countries plus 12 student events (2025) | 2024–25 | Company [4][5] |
+| Community events | 83 meetups in 26 countries (2024). 48 events in 18 countries plus 12 student events (2025) | 2024 to 2025 | Company [4][5] |
 
 **Named customers:** Perplexity, Miro, Cal.com, Bilt, Superhuman, Dribbble and Zapier [6].
 
@@ -180,8 +180,8 @@ Five reasons, each with a source.
 - Kinetic type is set against an empty "void" between UI beats [22].
 - The camera moves across one big canvas (pan, zoom, slight tilt) instead of cutting hard.
 - **Length, pacing and music:** no source we reached states durations or music choices for Framer's films. **Inference:**
-  - feature clips run about 10–30 seconds;
-  - launch films run about 1–2 minutes on YouTube;
+  - feature clips run about 10 to 30 seconds;
+  - launch films run about 1 to 2 minutes on YouTube;
   - the music is electronic, with cuts on the beat.
 
 ### 2.4 Community and creator engine
@@ -279,7 +279,7 @@ Five reasons, each with a source.
 | 18 Jun 2025 | Wix acquires Base44 for about $80M cash. Payments can rise if revenue targets are met by 2029. Fewer than 10 employees; Shlomo was the sole shareholder | [42][43][44] |
 | At acquisition | Users: 250K+ per Wix and TechCrunch, 100K+ per Calcalist. ARR described as "a few million"; one third-party estimate is about $3.5M. Partners included eToro and SimilarWeb | [42][44][45][47][66] |
 | Jul 2025 | Lenny's Podcast: $1M ARR three weeks after launch, 400K+ users, no outside funding ever raised | [61][62] |
-| Late 2025 | 2M users, seven times the June figure. ARR expected to reach $40–50M by year-end. Wix CEO Avishai Abrahami: *"a supersonic level of growth in just a matter of weeks"* | [48][49] |
+| Late 2025 | 2M users, seven times the June figure. ARR expected to reach $40 to 50M by year-end. Wix CEO Avishai Abrahami: *"a supersonic level of growth in just a matter of weeks"* | [48][49] |
 | 8 Feb 2026 | Super Bowl LX spot, "It's App to You" | [69][71] |
 | Early Mar 2026 | $100M ARR, disclosed with Wix's Q4 2025 results | [50][51][93] |
 | Q1 2026 | 8th-most-viewed US brand by YouTube views: 679M+ views, per Tubular Labs | [77] |
@@ -426,86 +426,86 @@ This is a working spec a motion designer can follow.
 
 | Name | cubic-bezier | Use | Duration |
 |---|---|---|---|
-| **Enter** (expo-out) | `0.16, 1, 0.3, 1` | Elements appearing, zoom-ins, cards expanding | 450–700 ms |
-| **Move** (quint in-out) | `0.83, 0, 0.17, 1` | Camera pans, cursor travel, one element morphing into another | 600–1000 ms |
-| **Standard** | `0.4, 0, 0.2, 1` | Small state changes such as toggles, hovers and tabs | 150–250 ms |
-| **Exit** (accelerate) | `0.5, 0, 0.75, 0` | Elements leaving | 180–300 ms |
-| **Pop** (spring) | Damping ratio about 0.7–0.8, overshoot 5% or less, settles within 600 ms | Clicks, badges, toasts, numbers landing | about 500–600 ms |
+| **Enter** (expo-out) | `0.16, 1, 0.3, 1` | Elements appearing, zoom-ins, cards expanding | 450 to 700 ms |
+| **Move** (quint in-out) | `0.83, 0, 0.17, 1` | Camera pans, cursor travel, one element morphing into another | 600 to 1000 ms |
+| **Standard** | `0.4, 0, 0.2, 1` | Small state changes such as toggles, hovers and tabs | 150 to 250 ms |
+| **Exit** (accelerate) | `0.5, 0, 0.75, 0` | Elements leaving | 180 to 300 ms |
+| **Pop** (spring) | Damping ratio about 0.7 to 0.8, overshoot 5% or less, settles within 600 ms | Clicks, badges, toasts, numbers landing | about 500 to 600 ms |
 
 - **Spring in Motion or Framer:** `{ type: "spring", duration: 0.6, bounce: 0.2 }` is a good starting point. Go down to `bounce: 0.1` for serious data UI.
 - **Enter in After Effects:**
   - Set the start keyframe to linear going out, so it launches at speed.
-  - Ease the end keyframe in, with 80–95% influence, for a long soft landing.
+  - Ease the end keyframe in, with 80 to 95% influence, for a long soft landing.
   - Or use a curve plugin that accepts cubic-bezier values, such as Flow.
-- **Move in After Effects:** ease both keyframes at about 60–80% influence.
+- **Move in After Effects:** ease both keyframes at about 60 to 80% influence.
 - **Avoid:** applying the default Easy Ease (33% influence) to everything. It's the quickest route to a "template" look.
 
 ### 4.4 Durations and rhythm
 
 | Element | Duration |
 |---|---|
-| Micro-interaction (hover, press, toggle) | 120–200 ms |
-| UI element entering or leaving | 300–500 ms |
-| Panel or card expanding; one element morphing into another | 500–800 ms |
-| Camera move across the UI | 700–1200 ms |
-| Stagger between sibling elements | 30–60 ms |
-| Stagger between groups | 80–120 ms |
-| Overlap | Start the next action when the previous one is 60–80% complete. Only intentional holds should stop dead |
-| Text hold | At least (word count ÷ 3) seconds + 0.5 s, and never under 1.0–1.2 s |
-| Beat length in social cuts | A new visual beat every 1.5–3 s, cut on the music's downbeats |
+| Micro-interaction (hover, press, toggle) | 120 to 200 ms |
+| UI element entering or leaving | 300 to 500 ms |
+| Panel or card expanding; one element morphing into another | 500 to 800 ms |
+| Camera move across the UI | 700 to 1200 ms |
+| Stagger between sibling elements | 30 to 60 ms |
+| Stagger between groups | 80 to 120 ms |
+| Overlap | Start the next action when the previous one is 60 to 80% complete. Only intentional holds should stop dead |
+| Text hold | At least (word count ÷ 3) seconds + 0.5 s, and never under 1.0 to 1.2 s |
+| Beat length in social cuts | A new visual beat every 1.5 to 3 s, cut on the music's downbeats |
 
 ### 4.5 Cursor choreography
 
 - **Path:**
   - Move on bezier arcs, never straight lines over long distances.
-  - Offset the arc by 10–20% of the distance travelled.
-  - Use the **Move** curve, taking 400–700 ms per trip.
-- **Size:** enlarge the cursor to 1.3–1.5x its native size in 1080p exports so it reads on a phone.
+  - Offset the arc by 10 to 20% of the distance travelled.
+  - Use the **Move** curve, taking 400 to 700 ms per trip.
+- **Size:** enlarge the cursor to 1.3 to 1.5x its native size in 1080p exports so it reads on a phone.
 - **Click:**
-  - Cursor scales 1 → 0.85 → 1 over 120–180 ms.
+  - Cursor scales 1 → 0.85 → 1 over 120 to 180 ms.
   - The target button presses to 0.97 scale.
   - An optional soft ripple.
 - **Typing:**
-  - Reveal characters at 25–40 ms each, with slight random variation.
+  - Reveal characters at 25 to 40 ms each, with slight random variation.
   - For long strings, reveal word by word or pre-fill the field.
 - **Idle:** hide the cursor, or let it rest out of the way, when it isn't doing anything. A drifting cursor looks nervous.
 
 ### 4.6 Transitions library
 
-1. **Blur-fade-rise (entrance).** Over 500–700 ms on the Enter curve:
+1. **Blur-fade-rise (entrance).** Over 500 to 700 ms on the Enter curve:
    - opacity 0 → 1;
    - blur 12 px → 0;
    - y +20 px → 0;
    - scale 0.98 → 1.
-2. **Mask wipe (text).** Each line reveals upward from its baseline over 450–600 ms on the Enter curve, with 60 ms between lines.
-3. **Shared-element morph.** An element in scene A becomes an element in scene B, interpolating position, size, corner radius and colour. 600–800 ms on the Move curve. Example: a metric card grows into a dashboard tile.
-4. **Zoom-through.** Push into a UI element until it fills the frame, then cut on the frame with the most blur. 500–700 ms.
-5. **Whip pan.** 250–350 ms with motion blur. Use it at most twice per video.
+2. **Mask wipe (text).** Each line reveals upward from its baseline over 450 to 600 ms on the Enter curve, with 60 ms between lines.
+3. **Shared-element morph.** An element in scene A becomes an element in scene B, interpolating position, size, corner radius and colour. 600 to 800 ms on the Move curve. Example: a metric card grows into a dashboard tile.
+4. **Zoom-through.** Push into a UI element until it fills the frame, then cut on the frame with the most blur. 500 to 700 ms.
+5. **Whip pan.** 250 to 350 ms with motion blur. Use it at most twice per video.
 6. **Void reset.** Fade to a brand gradient panel for a kinetic-type beat, then come back to the UI [22].
-7. **Sheen.** A soft light sweep across a key number over 600–900 ms. Use it sparingly.
+7. **Sheen.** A soft light sweep across a key number over 600 to 900 ms. Use it sparingly.
 
 ### 4.7 Camera moves
 
 - Lay the UI out on a large 2D canvas and move a virtual camera across it: pan, plus a zoom from 1.0 to 1.6x.
-- **Hero shots:** add a slight 3D tilt (rotateX 8–15°), then flatten to 0° before any detail the viewer must read.
+- **Hero shots:** add a slight 3D tilt (rotateX 8 to 15°), then flatten to 0° before any detail the viewer must read.
 - **Depth:**
-  - Layer UI panels with soft shadows: y 20–40 px, blur 60–100 px, opacity 15–25%.
-  - Move foreground layers 1.1–1.2x as fast as background layers for gentle parallax.
+  - Layer UI panels with soft shadows: y 20 to 40 px, blur 60 to 100 px, opacity 15 to 25%.
+  - Move foreground layers 1.1 to 1.2x as fast as background layers for gentle parallax.
 
 ### 4.8 Type treatment, using the Namzilabs brand
 
 - **Typefaces:** Inter or Switzer for display and body. Each headline gets exactly one Instrument Serif italic accent word (brand rule).
-- **Display settings:** tracking −2% to −4% at large sizes; line height 0.95–1.05.
+- **Display settings:** tracking −2% to −4% at large sizes; line height 0.95 to 1.05.
 - **Accent word:**
-  - Bring it in last, 120–200 ms after the rest of the line.
+  - Bring it in last, 120 to 200 ms after the rest of the line.
   - Give it its own move: blur-to-focus, or a shift to #568CFF.
 - **Sizes:**
-  - Vertical 1080×1920: headlines 88–120 px; captions 44–56 px.
-  - 1920×1080: headlines 96–140 px.
-- **Density:** 2–7 words per card, one idea per card.
+  - Vertical 1080×1920: headlines 88 to 120 px; captions 44 to 56 px.
+  - 1920×1080: headlines 96 to 140 px.
+- **Density:** 2 to 7 words per card, one idea per card.
 - **Numbers:**
   - Use tabular figures.
-  - Count up over 600–1000 ms on the Enter curve.
+  - Count up over 600 to 1000 ms on the Enter curve.
   - Only animate numbers that are real, or clearly labelled "Sample data".
 - **Backgrounds:**
   - Kinetic-type beats sit on the deep-blue gradient panels. This is the Namzilabs version of Framer's "abstract void" [22].
@@ -515,8 +515,8 @@ This is a working spec a motion designer can follow.
 
 ### 4.9 Sound
 
-- **Music:** minimal electronic or light house at about 100–125 BPM, with visual beats cut on downbeats.
-- **Mixing:** duck the music about 12–18 dB under voice-over.
+- **Music:** minimal electronic or light house at about 100 to 125 BPM, with visual beats cut on downbeats.
+- **Mixing:** duck the music about 12 to 18 dB under voice-over.
 - **Sound effects:**
   - soft clicks for the cursor;
   - airy whooshes for camera moves;
@@ -526,34 +526,34 @@ This is a working spec a motion designer can follow.
 
 ### 4.10 Structures with timecodes
 
-**Feature loop (8–12 s), for X, LinkedIn and the changelog**
+**Feature loop (8 to 12 s), for X, LinkedIn and the changelog**
 
 | Time | Beat |
 |---|---|
-| 0–1 s | End state first: the finished metric or view |
-| 1–7 s | The action: cursor-driven, 2–3 steps |
-| 7–10 s | Result, plus a label in 3–5 words |
-| 10–12 s | The loop point matches frame 1, so the clip loops seamlessly |
+| 0 to 1 s | End state first: the finished metric or view |
+| 1 to 7 s | The action: cursor-driven, 2 to 3 steps |
+| 7 to 10 s | Result, plus a label in 3 to 5 words |
+| 10 to 12 s | The loop point matches frame 1, so the clip loops seamlessly |
 
-**Social demo (25–30 s), mapped to the Namzilabs flow builder**
-
-| Time | Beat |
-|---|---|
-| 0–2 s | **Hook:** a kinetic-type question or the finished number |
-| 2–5 s | **Problem:** the tools don't agree, and no single tool can calculate this |
-| 5–10 s | **Get data:** source cards connect |
-| 10–15 s | **Filter/Match:** records from different tools merge into one person; excluded records drop out with a reason tag |
-| 15–20 s | **Summarize/Calculate:** the metric resolves |
-| 20–25 s | **Publish:** the dashboard tile appears; the number unfolds to show its working |
-| 25–30 s | **End card:** "Free to start. No card." and namzilabs.co |
-
-**Launch film (45–75 s)**
+**Social demo (25 to 30 s), mapped to the Namzilabs flow builder**
 
 | Time | Beat |
 |---|---|
-| 0–6 s | Cold open on kinetic type |
-| 6–12 s | The UI appears in a hero shot, with a camera move |
-| 12–55 s | 3–5 feature beats of about 8–10 s each, joined by morphs |
+| 0 to 2 s | **Hook:** a kinetic-type question or the finished number |
+| 2 to 5 s | **Problem:** the tools don't agree, and no single tool can calculate this |
+| 5 to 10 s | **Get data:** source cards connect |
+| 10 to 15 s | **Filter/Match:** records from different tools merge into one person; excluded records drop out with a reason tag |
+| 15 to 20 s | **Summarize/Calculate:** the metric resolves |
+| 20 to 25 s | **Publish:** the dashboard tile appears; the number unfolds to show its working |
+| 25 to 30 s | **End card:** "Free to start. No card." and namzilabs.co |
+
+**Launch film (45 to 75 s)**
+
+| Time | Beat |
+|---|---|
+| 0 to 6 s | Cold open on kinetic type |
+| 6 to 12 s | The UI appears in a hero shot, with a camera move |
+| 12 to 55 s | 3 to 5 feature beats of about 8 to 10 s each, joined by morphs |
 | Final 8 s | Montage building to a crescendo |
 | 3 s | End card |
 
@@ -676,7 +676,7 @@ This is a working spec a motion designer can follow.
 - **Claim check:** the exclusion reasons on screen must mirror real reasons the product shows.
 
 **2. Structure every demo around the four flow-builder steps.**
-- Get data → Filter/Match → Summarize/Calculate → Publish maps one-to-one onto the 25–30 s structure in §4.10.
+- Get data → Filter/Match → Summarize/Calculate → Publish maps one-to-one onto the 25 to 30 s structure in §4.10.
 - Use the same four title cards every time so viewers learn the rhythm.
 - Put the one Instrument Serif italic accent word on the step verb.
 
@@ -742,7 +742,7 @@ This is a working spec a motion designer can follow.
 - **What we learned:** Framer combines constant shipping [5], changelog launches [19], seasonal events [14][17] and yearly recap pages [4][5].
 - **What to do (Inference, sized for one person):**
   - **Weekdays:** a founder post.
-  - **Twice a week:** a 10–30 s product clip.
+  - **Twice a week:** a 10 to 30 s product clip.
   - **Weekly:** a "What shipped" clip.
   - **Monthly:** a "Month in receipts" page.
   - **Big moments only:** a polished launch film, for example MCP going live or ad-platform approvals.
@@ -803,17 +803,17 @@ This is a working spec a motion designer can follow.
 7. Framer blog, "Introducing Framer Agents, Branching, and the new Community": https://www.framer.com/blog/framer-3/
 8. Framer on X, Framer 3.0 announcement (Jun 16, 2026): https://x.com/framer/status/2066939366568804508
 9. Framer on YouTube, "Framer 3.0 with Agents, Branching, and a new Community": https://www.youtube.com/watch?v=6aioEoCdBJw
-10. Framer on YouTube, "Framer Event — Introducing Agents, Branching, and a new Community": https://www.youtube.com/watch?v=j4WW4bwWhPk
+10. Framer on YouTube, "Framer Event: Introducing Agents, Branching, and a new Community": https://www.youtube.com/watch?v=j4WW4bwWhPk
 11. Framer on X, "Introducing On-Page Editing for Framer" (Aug 6, 2025): https://x.com/framer/status/1953140612083138910
 12. Framer on X, "Introducing Wireframer" (May 21, 2025): https://x.com/framer/status/1925237382565306414
 13. AlternativeTo, "Framer introduces Wireframer, Vectors 2.0, Workshop, and Advanced Analytics" (May 2025): https://alternativeto.net/news/2025/5/framer-introduces-wireframer-vectors-2-0-workshop-and-advanced-analytics
-14. Framer on YouTube, "Framer Event — Spring 2025": https://www.youtube.com/watch?v=UlmSVg2Q0Ws
+14. Framer on YouTube, "Framer Event: Spring 2025": https://www.youtube.com/watch?v=UlmSVg2Q0Ws
 15. Octet Design, "Framer Spring Event Keynote" recap: https://octet.design/journal/framer-spring-event-keynote/
 16. Design Monks, "Highlights from Framer Spring Event 2025": https://www.designmonks.co/blog/framer-spring-event-2025
 17. Framer, "Fall Event" (2024): https://www.framer.com/events/fall-24/
 18. Framer, "Updates": https://www.framer.com/updates
 19. ProductLift, "Changelog examples from top SaaS companies": https://www.productlift.dev/blog/best-changelog-examples/
-20. Tella, "Framer AI — Winner Promo Video of 2023": https://www.tella.com/best-product-videos/framer-ai
+20. Tella, "Framer AI: Winner Promo Video of 2023": https://www.tella.com/best-product-videos/framer-ai
 21. Framer Careers, "Motion Designer": https://www.framer.com/careers/motion-designer
 22. advids, "SaaS launch teaser video examples" (launch-teaser analysis): https://advids.co/blog/saas-launch-teaser
 23. Framer, "Motion" (dictionary entry): https://www.framer.com/dictionary/motion
