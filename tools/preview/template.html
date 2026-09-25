@@ -354,7 +354,7 @@
     <div id="hlstories"><div class="hlrow" id="hlrow" role="tablist" aria-label="Highlight"></div>
     <div class="hld" id="hld"></div></div>
     <h3 class="subh" id="hlcovhead">Covers</h3>
-    <p class="faint" style="margin:-4px 0 14px">Two sets: pick one and use it for every circle. The 3D covers put Namzi in each highlight's scene; the icon covers are one clean icon per highlight, in four colourways. All 1080×1080, made for the circle crop.</p>
+    <p class="faint" id="hlcovnote" style="margin:-4px 0 14px">Two sets: pick one and use it for every circle. The 3D covers put Namzi in each highlight's scene; the icon covers are one clean icon per highlight, in four colourways. All 1080×1080, made for the circle crop.</p>
     <div class="hlbar"><div class="ptabs" id="hlcovtabs" role="tablist" aria-label="Cover set"></div><button class="btn small" id="hlcovzip"></button></div>
     <div class="hlcov" id="hlcov"></div>
     <h3 class="subh">See it on a profile</h3>
@@ -666,7 +666,7 @@
       showImg(0);
       $("#modal").classList.add("open"); document.body.style.overflow = "hidden";
     }
-    if (hlStories) renderHL(); else { $("#hlstories").classList.add("hidden"); $("#highlights h2").innerHTML = "Highlight <em>covers.</em>"; $("#hlsub").textContent = "One cover per Instagram highlight, in two sets: Namzi in 3D, and clean icons in four colourways. Pick one set and use it for every circle."; $("#hlcovhead").classList.add("hidden"); document.querySelector('#tabs a[href="#highlights"]').textContent = "Highlight covers"; const z = document.querySelector('#highlights [data-zip="highlights"]'); if (z && z.firstChild) z.firstChild.textContent = "Download highlight covers"; }
+    if (hlStories) renderHL(); else { $("#hlstories").classList.add("hidden"); $("#highlights h2").innerHTML = "Highlight <em>covers.</em>"; $("#hlsub").textContent = "One cover per Instagram highlight, in two sets: Namzi in 3D, and clean icons in four colourways. Pick one set and use it for every circle."; $("#hlcovhead").classList.add("hidden"); $("#hlcovnote").textContent = "Every cover is 1080×1080, with everything that matters inside the circle Instagram crops it to."; document.querySelector('#tabs a[href="#highlights"]').textContent = "Highlight covers"; const z = document.querySelector('#highlights [data-zip="highlights"]'); if (z && z.firstChild) z.firstChild.textContent = "Download highlight covers"; }
     renderCovers();
     $("#hlboards").innerHTML = M.highlights.extras.map((f, k) => `<button data-hlx="${k}" aria-label="${esc(f.label)}"><img loading="lazy" src="${esc(f.path)}" alt="${esc(f.label)}"><span>${esc(f.label)}</span></button>`).join("");
     $("#highlights").addEventListener("click", (e) => {
