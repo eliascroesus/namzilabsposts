@@ -87,8 +87,9 @@
     "id": "precious",
     "name": "Precious",
     "group": "Fun",
-    "note": "Two gold rings, glowing in the dark. The meme: one place to rule them all.",
-    "pairs": "precious"
+    "note": "Two heavy gold bands with a glowing inscription, in front of a fiery mountain. One place to rule them all.",
+    "pairs": "precious",
+    "raster": "one-ring/precious-1024.png"
   },
   {
     "id": "wedding",
@@ -108,8 +109,8 @@
     "id": "donuts",
     "name": "Donuts",
     "group": "Fun",
-    "note": "Two donuts, holes intact. For the Friday post.",
-    "pairs": null
+    "note": "Two donuts, holes intact. Mmm… all your data in one place.",
+    "pairs": "donut"
   },
   {
     "id": "lifebuoy",

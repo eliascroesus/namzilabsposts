@@ -31,6 +31,11 @@
   font-style: normal;
   font-display: block;
 }
+/* two display faces for the "precious" parody only (both OFL): Cinzel for the epic line,
+   Great Vibes for the inscription on the gold rings. Never in on-brand posts. */
+@font-face { font-family: "Cinzel"; src: url("../assets/fonts/cinzel-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "Cinzel"; src: url("../assets/fonts/cinzel-900.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: block; }
+@font-face { font-family: "Great Vibes"; src: url("../assets/fonts/great-vibes.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
 
 :root {
   --ink: #14141c;

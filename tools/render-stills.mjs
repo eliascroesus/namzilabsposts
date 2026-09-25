@@ -7,6 +7,9 @@
 //     --ss 2      supersample factor (default 2)
 //     --keep2x    also keep the full-resolution render as name@2x.png
 //     --query     k=v&… passed to the page (banners.html takes only=neon,formula)
+//     --alpha     transparent background (for logos on any colour)
+// A canvas with data-scale="2" is saved at twice its CSS size (LinkedIn banners, for sharp text on
+// retina screens); render those with --ss 2 or more.
 import { execFileSync } from "node:child_process";
 import { mkdirSync, rmSync } from "node:fs";
 import path from "node:path";
@@ -21,6 +24,7 @@ if (!input || !outDir) {
 }
 const ss = Number(flag(argv, "ss", 2));
 const keep2x = argv.includes("--keep2x");
+const alpha = argv.includes("--alpha");
 mkdirSync(outDir, { recursive: true });
 
 const browser = await launch();
@@ -29,16 +33,17 @@ const page = await browser.newPage({ viewport: { width: 1700, height: 1000 }, de
 const query = flag(argv, "query", "");
 await page.goto(pathToFileURL(path.resolve(input)).href + "?capture=1" + (query ? "&" + query : ""));
 await page.evaluate(() => window.__ready);
+if (alpha) await page.addStyleTag({ content: "html, body { background: transparent !important; }" });
 
 const canvases = page.locator(".canvas[data-still]");
 const n = await canvases.count();
 for (let i = 0; i < n; i++) {
   const c = canvases.nth(i);
   const name = await c.getAttribute("data-still");
-  const { width, height } = await c.evaluate((el) => ({ width: el.offsetWidth, height: el.offsetHeight }));
+  const { width, height } = await c.evaluate((el) => ({ width: el.offsetWidth * Number(el.dataset.scale || 1), height: el.offsetHeight * Number(el.dataset.scale || 1) }));
   const big = path.join(outDir, `${name}@2x.png`);
   const out = path.join(outDir, `${name}.png`);
-  await c.screenshot({ path: big, animations: "disabled" });
+  await c.screenshot({ path: big, animations: "disabled", omitBackground: alpha });
   execFileSync(ffmpegPath(), ["-y", "-loglevel", "error", "-i", big, "-vf", `scale=${width}:${height}:flags=lanczos`, out]);
   if (!keep2x) rmSync(big);
   console.log(`${out}  ${width}x${height}`);

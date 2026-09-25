@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — LinkedIn mock-ups</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  /* Each LinkedIn banner as it sits on a company page and on a personal profile, on a laptop and on a
+     phone, with the page logo and the profile photo where LinkedIn puts them. A generic mock of the
+     layout (no LinkedIn branding). Render banners.html first, then:
+       node tools/render-stills.mjs brand/banners/linkedin.html brand/banners --ss 1 */
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; background: #ddd; }
+  .mock { width: 1720px; background: #f4f2ee; color: #191919; font-family: var(--sans); position: relative; padding: 40px 44px 44px; display: flex; flex-direction: column; gap: 34px; }
+  .mock .ttl { display: flex; justify-content: space-between; align-items: baseline; }
+  .mock .ttl b { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+  .mock .ttl span { font-size: 19px; color: #666; font-weight: 550; }
+  .row { display: flex; gap: 40px; align-items: flex-start; }
+  .cap { font-size: 15px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #6b6b6b; margin-bottom: 10px; }
+  .card { background: #fff; border-radius: 10px; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 2px 3px rgba(0,0,0,.05); overflow: hidden; position: relative; }
+  .card .ban { display: block; width: 100%; }
+  .card .body { padding: 0 24px 22px; position: relative; }
+  .pglogo { position: absolute; background: #fff; border-radius: 6px; box-shadow: 0 0 0 4px #fff, 0 2px 6px rgba(0,0,0,.18); overflow: hidden; }
+  .pglogo img, .photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .photo { position: absolute; border-radius: 50%; border: 4px solid #fff; overflow: hidden; background: #cfd6e0; }
+  .ph-person { width: 100%; height: 100%; display: block; }
+  .name { font-weight: 650; letter-spacing: -0.01em; }
+  .line { color: #191919; }
+  .meta { color: #666; }
+  .btns { display: flex; gap: 8px; }
+  .btn1 { background: #0a66c2; color: #fff; font-weight: 650; border-radius: 999px; display: inline-flex; align-items: center; }
+  .btn2 { border: 1.5px solid #0a66c2; color: #0a66c2; font-weight: 650; border-radius: 999px; display: inline-flex; align-items: center; }
+  .phone { width: 390px; background: #fff; border-radius: 34px; box-shadow: 0 0 0 10px #1b1b1f, 0 30px 60px -20px rgba(0,0,0,.4); overflow: hidden; position: relative; }
+  .phone .bar { height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; font-size: 15px; font-weight: 650; }
+  .phone .crop { position: relative; width: 390px; overflow: hidden; }
+  .phone .crop img { position: absolute; top: 0; height: 100%; left: 50%; transform: translateX(-50%); }
+</style>
+</head>
+<body>
+<script>
+  // each banner design, the profile picture made for it, and its name
+  const M = "../logos/01-between-mono/", V = "../logos/variants/";
+  const KITS = [
+    ["electric", "Electric", M + "profile-blue-1024.png"], ["funnel", "Funnel", M + "profile-ink-1024.png"], ["sources", "Sources", M + "profile-ink-1024.png"],
+    ["namzi", "Namzi", "../mascot/avatars/namzi-avatar-sky.png"], ["minimal", "Minimal", V + "midnight-1024.png"], ["formula", "Formula", V + "hairline-1024.png"],
+    ["glass", "Glass", V + "glass-1024.png"], ["neon", "Neon", V + "neon-1024.png"], ["bigtype", "Big type", V + "bold-1024.png"], ["blueprint", "Blueprint", V + "blueprint-1024.png"],
+    ["precious", "Precious", V + "precious-1024.png"], ["wedding", "Wedding", V + "wedding-1024.png"], ["galaxy", "Galaxy brain", V + "cosmic-1024.png"],
+    ["starter", "Starter pack", V + "sticker-1024.png"], ["expectation", "Expectation vs reality", V + "sketch-1024.png"], ["donut", "Donut daydream", V + "donuts-1024.png"],
+    ["leak", "Leaky funnel", M + "profile-ink-1024.png"], ["wall", "Tool wall", M + "profile-paper-1024.png"], ["team", "Team", M + "profile-blue-1024.png"],
+  ];
+  const ONLY = new URLSearchParams(location.search).get("only");
+  const person = `<svg class="ph-person" viewBox="0 0 100 100"><rect width="100" height="100" fill="#cfd6e0"/><circle cx="50" cy="40" r="18" fill="#9aa6b8"/><path d="M16 96c4-20 18-30 34-30s30 10 34 30Z" fill="#9aa6b8"/></svg>`;
+  const has = (id, f) => ({ team: ["linkedin-profile"] }[id] || ["linkedin-company", "linkedin-profile"]).includes(f);
+
+  // company page: the cover at 1128×191, the logo (128 px) over its bottom-left
+  const companyDesk = (id, av) => `<div><div class="cap">Company page · laptop</div><div class="card" style="width:1128px">
+      <img class="ban" src="${id}/linkedin-company.png" alt="">
+      <div class="body" style="padding-top:78px">
+        <div class="pglogo" style="left:24px;top:-64px;width:128px;height:128px"><img src="${av}" alt=""></div>
+        <div class="name" style="font-size:24px">Namzilabs</div>
+        <div class="line" style="font-size:16px;margin-top:4px">All your data in one place. Any metric, the whole funnel, the true numbers.</div>
+        <div class="meta" style="font-size:14px;margin-top:6px">Software Development</div>
+        <div class="btns" style="margin-top:14px"><span class="btn1" style="font-size:16px;padding:7px 18px">+ Follow</span><span class="btn2" style="font-size:16px;padding:6px 18px">Visit website</span></div>
+      </div></div></div>`;
+  // on a phone: the middle ~900 px of the cover, the logo smaller but still over the bottom-left
+  const companyPhone = (id, av) => `<div><div class="cap">Company page · phone</div><div class="phone">
+      <div class="bar"><span>9:41</span><span>●●●</span></div>
+      <div class="crop" style="height:83px"><img src="${id}/linkedin-company.png" alt="" style="width:489px"></div>
+      <div style="position:relative;padding:44px 16px 20px">
+        <div class="pglogo" style="left:16px;top:-36px;width:72px;height:72px"><img src="${av}" alt=""></div>
+        <div class="name" style="font-size:20px">Namzilabs</div>
+        <div class="line" style="font-size:14px;margin-top:3px">All your data in one place.</div>
+        <div class="btns" style="margin-top:12px"><span class="btn1" style="font-size:14px;padding:6px 16px">+ Follow</span><span class="btn2" style="font-size:14px;padding:5px 16px">Visit website</span></div>
+      </div></div></div>`;
+  // personal profile: the background at 1584×396 in an 804 px card (shown larger here), the photo over its bottom-left
+  const k = 1128 / 804;
+  const profileDesk = (id) => `<div><div class="cap">Personal profile · laptop</div><div class="card" style="width:1128px">
+      <img class="ban" src="${id}/linkedin-profile.png" alt="">
+      <div class="body" style="padding-top:${Math.round(96 * k)}px">
+        <div class="photo" style="left:${Math.round(24 * k)}px;top:${-Math.round(112 * k)}px;width:${Math.round(152 * k)}px;height:${Math.round(152 * k)}px">${person}</div>
+        <div class="name" style="font-size:30px">Your Name</div>
+        <div class="line" style="font-size:18px;margin-top:4px">Building Namzilabs · All your data in one place</div>
+        <div class="meta" style="font-size:16px;margin-top:6px">500+ connections</div>
+        <div class="btns" style="margin-top:14px"><span class="btn1" style="font-size:17px;padding:8px 20px">Connect</span><span class="btn2" style="font-size:17px;padding:7px 20px">Message</span></div>
+      </div></div></div>`;
+  // on a phone: the middle ~1200 px of the background, the photo big over its bottom-left
+  const profilePhone = (id) => `<div><div class="cap">Personal profile · phone</div><div class="phone">
+      <div class="bar"><span>9:41</span><span>●●●</span></div>
+      <div class="crop" style="height:129px"><img src="${id}/linkedin-profile.png" alt="" style="width:515px"></div>
+      <div style="position:relative;padding:62px 16px 20px">
+        <div class="photo" style="left:16px;top:-58px;width:104px;height:104px">${person}</div>
+        <div class="name" style="font-size:22px">Your Name</div>
+        <div class="line" style="font-size:15px;margin-top:3px">Building Namzilabs</div>
+        <div class="btns" style="margin-top:12px"><span class="btn1" style="font-size:14px;padding:6px 16px">Connect</span><span class="btn2" style="font-size:14px;padding:5px 16px">Message</span></div>
+      </div></div></div>`;
+
+  for (const [id, name, av] of KITS) {
+    if (ONLY && !ONLY.split(",").includes(id)) continue;
+    const rows = [];
+    if (has(id, "linkedin-company")) rows.push(`<div class="row">${companyDesk(id, av)}${companyPhone(id, av)}</div>`);
+    if (has(id, "linkedin-profile")) rows.push(`<div class="row">${profileDesk(id)}${profilePhone(id)}</div>`);
+    document.write(`<div class="canvas mock" data-still="mockups/linkedin-${id}">
+      <div class="ttl"><b>${name} on LinkedIn</b><span>linkedin-company.png on the page · linkedin-profile.png on your profile</span></div>${rows.join("")}</div>`);
+  }
+</script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

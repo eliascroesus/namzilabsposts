@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — precious scenes</title>
+<link rel="stylesheet" href="../../../lib/brand.css">
+<style>
+  /* The gold rings in front of a fiery mountain: the precious logo variant (a profile picture) and a
+     wide scene for posts and wallpapers. Render rings.html first (the 3D rings), then:
+       node tools/render-stills.mjs brand/logos/one-ring/scenes.html brand/logos/one-ring --ss 1 */
+  body { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; align-items: flex-start; background: #222; }
+  .canvas { flex: none; position: relative; overflow: hidden; background: #0a0404; }
+</style>
+</head>
+<body>
+<script src="../../../lib/motion.js"></script>
+<script src="../../../lib/volcano.js"></script>
+<script>
+  const scene = (id, W, H, v, r) => `<div class="canvas" data-still="${id}" style="width:${W}px;height:${H}px">${NZ.volcano({ W, H, ...v })}${NZ.oneRings({ ...r })}</div>`;
+  document.write(scene("precious-1024", 1024, 1024, { cx: 512, peak: 250, base: 700, seed: 11, flowDir: 0.35 }, { view: "square", cx: 512, cy: 640, w: 780 }));
+  document.write(scene("precious-wide", 1600, 900, { cx: 1000, peak: 170, base: 600, seed: 5 }, { view: "hero", cx: 800, cy: 610, w: 1000 }));
+</script>
+<script>NZ.still();</script>
+</body>
+</html>

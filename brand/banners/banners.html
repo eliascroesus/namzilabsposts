@@ -22,18 +22,6 @@
   .paper .grid88 { background-image: linear-gradient(to right, rgba(20,20,60,.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(20,20,60,.05) 1px, transparent 1px); }
   .ink2 { color: #fff; background: radial-gradient(45% 80% at 78% 40%, rgba(47,95,216,.38), transparent 70%), radial-gradient(40% 60% at 0% 100%, rgba(86,140,255,.14), transparent 70%), #07090f; }
   .namzi svg { overflow: visible; }
-  .rc { background: #fff; color: var(--ink); -webkit-mask: linear-gradient(#000 0 0) top / 100% calc(100% - 0.6em) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 0.8em 0.6em repeat-x; mask: linear-gradient(#000 0 0) top / 100% calc(100% - 0.6em) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 0.8em 0.6em repeat-x; box-shadow: 0 30px 60px rgba(0,0,0,.4); padding: 1.3em 1.4em 2em; }
-  .rc .h { font-size: .62em; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); text-align: center; }
-  .rc .d { border-top: 2px dashed #d5d8e3; margin: .7em 0; }
-  .rc .l { display: flex; justify-content: space-between; align-items: center; gap: 1em; padding: .22em 0; white-space: nowrap; }
-  .rc .l .k { color: var(--muted); font-weight: 500; }
-  .rc .l .v { font-weight: 700; font-variant-numeric: tabular-nums; display: inline-flex; align-items: center; gap: .3em; }
-  .rc .l .v .mark { width: 1.1em; height: 1.1em; }
-  .rc .l.sub { font-size: .88em; padding-left: .8em; }
-  .rc .l.sub .k, .rc .l.sub .v { color: var(--red); font-weight: 600; }
-  .rc .l.t { font-size: 1.45em; padding-top: .3em; }
-  .rc .l.t .k { color: var(--ink); font-weight: 750; }
-  .rc .l.t .v { font-weight: 800; }
   .disc { position: absolute; border-radius: 50%; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); display: grid; place-items: center; }
   .disc .mark { width: 56%; height: 56%; }
   .pill2 { position: absolute; display: inline-flex; align-items: center; gap: .5em; padding: .5em .9em .5em .55em; border-radius: 999px; background: #fff; color: var(--ink); font-weight: 700; letter-spacing: -0.02em; box-shadow: 0 16px 36px -12px rgba(0,0,0,.45); white-space: nowrap; }
@@ -46,18 +34,18 @@
   .leakpill { transform: translate(-50%, -50%); display: inline-flex; align-items: center; border-radius: 999px; background: #f0553d; color: #fff; font-weight: 750; letter-spacing: -0.01em; white-space: nowrap; box-shadow: 0 10px 24px -8px rgba(240,85,61,.7); z-index: 3; }
   .leakpill .dot.red { background: #fff; box-shadow: none; }
 
-  /* ── round 5: five more designs and five memes ── */
   .bn-sub .pill-sm { display: inline-flex; align-items: center; gap: .4em; }
   .aurora { color: var(--ink); background: radial-gradient(40% 70% at 12% 10%, rgba(111,139,255,.85), transparent 70%), radial-gradient(45% 80% at 90% 95%, rgba(176,140,255,.8), transparent 70%), radial-gradient(35% 60% at 95% 0%, rgba(127,224,255,.75), transparent 70%), #cdd8ff; }
   .neonbg { color: #fff; background: radial-gradient(45% 75% at 76% 50%, rgba(80,50,170,.45), transparent 70%), radial-gradient(60% 90% at 0% 100%, rgba(30,60,160,.25), transparent 70%), #07070d; }
   .bprint { color: #fff; background: linear-gradient(135deg, #1b47ad, #2354c2 60%, #1c4bb3); }
   .bprint .bpgrid { position: absolute; inset: 0; background-image: linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,.16) 1.5px, transparent 1.5px), linear-gradient(to bottom, rgba(255,255,255,.16) 1.5px, transparent 1.5px); background-size: 30px 30px, 30px 30px, 150px 150px, 150px 150px; }
-  .ember { color: #fff5e6; background: radial-gradient(50% 90% at 76% 70%, rgba(255,122,24,.5), transparent 70%), radial-gradient(40% 70% at 70% 100%, rgba(184,41,14,.45), transparent 70%), #0a0604; }
+  .ember { color: #fff5e6; background: #0a0404; }
   .blush { color: #3a1f2a; background: linear-gradient(135deg, #fde9ec, #f5ccd4); }
   .space { color: #fff; background: radial-gradient(40% 80% at 22% 20%, rgba(75,59,255,.35), transparent 70%), radial-gradient(45% 80% at 85% 90%, rgba(255,79,216,.22), transparent 70%), #05060f; }
   .yellow { color: var(--ink); background: #ffd84d; }
   .ruledpaper { color: var(--ink); background: repeating-linear-gradient(to bottom, transparent 0 55px, rgba(143,179,232,.45) 55px 57px), #fbfbf7; }
   .ruledpaper::before { content: ""; position: absolute; top: 0; bottom: 0; left: 64px; width: 2px; background: rgba(240,138,138,.65); z-index: 0; }
+  .simpsky { color: #10204a; background: linear-gradient(180deg, #3f98f7 0%, #69b4ff 45%, #a9d8ff 100%); }
   .fx2 { display: flex; align-items: center; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-2); white-space: nowrap; }
   .fx2 .t { display: inline-flex; align-items: center; gap: .4em; padding: .38em .75em .38em .42em; border-radius: 999px; background: var(--paper-2, #eef0f6); font-weight: 650; letter-spacing: -0.015em; }
   .fx2 .t .mark { width: 1.35em; height: 1.35em; }
@@ -70,7 +58,7 @@
   .blurnum { transform: translate(-50%, -50%); font-weight: 800; letter-spacing: -0.045em; color: rgba(40,48,130,.55); white-space: nowrap; }
   .glasscard { display: flex; flex-direction: column; justify-content: space-between; background: rgba(255,255,255,.42); -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3); border: 1.5px solid rgba(255,255,255,.8); box-shadow: 0 30px 70px -30px rgba(40,50,140,.55); color: var(--ink); }
   .glasscard .gh { display: flex; justify-content: space-between; align-items: center; gap: 1em; font-weight: 650; color: #4a4f66; white-space: nowrap; }
-  .glasscard .ok { display: inline-flex; align-items: center; gap: .4em; background: rgba(231,248,238,.9); color: #177a45; border-radius: 999px; padding: .25em .7em; font-size: .85em; font-weight: 700; }
+  .glasscard .ok { display: inline-flex; align-items: center; gap: .4em; background: rgba(231,248,238,.9); color: #177a45; border-radius: 999px; padding: .25em .7em; font-size: .85em; font-weight: 700; white-space: nowrap; }
   .glasscard .ok .dot { width: .55em; height: .55em; }
   .glasscard .gv { font-weight: 800; letter-spacing: -0.05em; line-height: 1; }
   .glasscard .gs { font-size: .82em; color: #4a4f66; font-weight: 550; white-space: nowrap; }
@@ -80,30 +68,55 @@
   .bp-lab .mark { width: 1.3em; height: 1.3em; }
   .bp-one { position: absolute; transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: .45em; background: #fff; color: var(--ink); font-weight: 750; border-radius: 999px; padding: .38em .85em .38em .4em; white-space: nowrap; box-shadow: 0 14px 30px -14px rgba(0,0,0,.6); }
   .bp-one .av { width: 1.5em; height: 1.5em; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center; font-size: .8em; font-weight: 800; }
-  .gb-col { position: absolute; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .55em; font-weight: 700; letter-spacing: -0.015em; }
-  .gb-col .lab { white-space: nowrap; }
   .sp-card { position: absolute; background: #fff; border-radius: .9em; box-shadow: 0 16px 34px -18px rgba(80,60,0,.55); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55em; text-align: center; font-weight: 700; letter-spacing: -0.015em; color: var(--ink); }
   .sp-card .cap { white-space: nowrap; }
   .ev-panel { position: absolute; background: #fff; border: 2px solid #2b2f3a; border-radius: .8em; box-shadow: 6px 8px 0 rgba(43,47,58,.9); }
   .ev-panel .lab { position: absolute; left: 50%; transform: translateX(-50%); font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; color: #2b2f3a; }
+
+  /* the epic line, for the precious parody only: a classical face, in gold, glowing */
+  .epic { font-family: "Cinzel", serif; font-weight: 700; letter-spacing: .005em; line-height: 1.04; text-wrap: balance;
+    background: linear-gradient(180deg, #fff4cf 8%, #f6c35c 52%, #c57b1c 96%); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 .16em rgba(255,110,20,.6)) drop-shadow(0 .05em .1em rgba(0,0,0,.6)); }
+
+  /* LinkedIn strips: a row of small things under (or beside) the headline */
+  .lrow { display: flex; align-items: center; white-space: nowrap; }
+  .lchip { display: inline-flex; align-items: center; gap: .55em; background: #fff; color: var(--ink); border-radius: .75em; padding: .45em .85em .45em .5em; box-shadow: 0 12px 26px -14px rgba(0,0,0,.55); }
+  .lchip .mark { width: 1.75em; height: 1.75em; flex: none; }
+  .lchip .lv { display: flex; flex-direction: column; line-height: 1.05; }
+  .lchip .lv span { font-size: .8em; color: var(--muted); font-weight: 600; }
+  .lchip .lv b { font-size: 1.3em; font-weight: 800; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; }
+  .lchip.leak { box-shadow: 0 0 0 .15em #f0553d, 0 12px 26px -14px rgba(0,0,0,.55); }
+  .larr { display: inline-flex; flex-direction: column; align-items: center; margin: 0 .5em; font-weight: 800; line-height: 1; color: rgba(255,255,255,.45); }
+  .paper .larr { color: #9aa0b4; }
+  .larr.red { color: #ff7a66; }
+  .larr em { font-style: normal; font-size: .72em; font-weight: 800; background: #f0553d; color: #fff; border-radius: 999px; padding: .22em .5em; margin-top: .28em; }
+  .excap { font-weight: 600; letter-spacing: .02em; opacity: .5; white-space: nowrap; }
+  .lglass { flex-direction: row; align-items: center; gap: .9em; width: max-content; padding: .55em 1.1em .55em 1.2em; border-radius: 1.1em; }
+  .lglass .gv { font-size: 2.1em; }
+  .wallcard { background: #fff; border: 1px solid var(--line); border-radius: 1.2em; box-shadow: 0 30px 60px -30px rgba(20,30,80,.5); display: flex; align-items: center; gap: 1em; }
+  .urlchip { display: inline-flex; align-items: center; gap: .5em; background: #fff; color: var(--ink); font-weight: 750; letter-spacing: -0.02em; border-radius: 999px; padding: .45em 1em .45em .5em; width: max-content; box-shadow: 0 16px 30px -16px rgba(0,0,0,.5); }
+  .urlchip .mk { width: 1.5em; height: 1.5em; border-radius: 50%; background: #14141c; display: grid; place-items: center; }
+  .urlchip .mk svg { width: 72%; height: 72%; }
 </style>
 </head>
 <body>
 <script src="../../assets/logos/marks.js"></script>
 <script src="../../lib/motion.js"></script>
 <script src="../../lib/mascot.js"></script>
+<script src="../../lib/volcano.js"></script>
 <script>
 /* ── the mark: two rings, empty in between (defined once, in lib/motion.js) ── */
 const MARK = (c, w) => NZ.MARK(c, w);
+const ONE_RING = "../logos/one-ring/"; // the 3D gold rings (brand/logos/one-ring/rings.html)
 
 /* ── platforms: size, where the words go, where the picture goes ────────
-   X and LinkedIn put the profile photo over the bottom-left, YouTube only
-   shows the middle 1546×423 on phones, and Facebook crops the sides on
-   mobile, so each platform gets its own safe layout. */
+   X puts the profile photo over the bottom-left, YouTube only shows the middle
+   1546×423 on phones, and Facebook crops the sides on mobile, so each platform
+   gets its own safe layout. LinkedIn has its own layouts (see ZONE below). */
 const P = {
   x:          { W: 1500, H: 500,  head: { x: 110, y: 112, w: 760, size: 86, sub: 27 }, vis: { cx: 1150, cy: 250, s: 1 },    lock: { x: 110, y: 50, size: 34 } },
-  linkedin:   { W: 1128, H: 191,  head: { x: 56, y: 50, w: 640, size: 42, sub: 0, oneLine: true }, vis: { cx: 940, cy: 96, s: 0.42 }, lock: null },
-  "linkedin-profile": { W: 1584, H: 396, head: { x: 560, y: 96, w: 600, size: 64, sub: 22 }, vis: { cx: 1330, cy: 198, s: 0.8 }, lock: null },
+  "linkedin-company": { W: 1128, H: 191, scale: 2 },
+  "linkedin-profile": { W: 1584, H: 396, scale: 2 },
   // YouTube shows the full 2560×1440 only on TVs; desktop shows the middle band (y 508–931), phones the middle 1546×423
   youtube:    { W: 2560, H: 1440, band: { y: 508, h: 423 }, head: { x: 560, y: 590, w: 820, size: 96, sub: 30 }, vis: { cx: 1720, cy: 720, s: 1.05 }, lock: { x: 560, y: 528, size: 38 } },
   facebook:   { W: 1640, H: 624,  head: { x: 300, y: 176, w: 700, size: 80, sub: 25 }, vis: { cx: 1190, cy: 312, s: 1 },   lock: { x: 300, y: 112, size: 34 } },
@@ -115,7 +128,29 @@ const P = {
   email:      { W: 1200, H: 300,  head: { x: 64, y: 118, w: 760, size: 46, sub: 0, oneLine: true }, vis: { cx: 1010, cy: 150, s: 0.5 }, lock: { x: 64, y: 50, size: 30 }, url: true, pill: false },
 };
 
-/* ── the five banners ───────────────────────────────────────────────── */
+/* ── LinkedIn ───────────────────────────────────────────────────────────
+   A company page shows its cover at 1128×191 with the page logo over the
+   bottom-left; a personal profile shows its background at 1584×396 with the
+   profile photo over the bottom-left (568×264). Phones show only the middle:
+   about 900 of the 1128, and 1200 of the 1584. So on LinkedIn every word and
+   every picture that matters sits inside ZONE, and only background art goes
+   outside it. Both are saved at 2× (2256×382, 3168×792) so text stays sharp. */
+const ZONE = {
+  "linkedin-company": { x0: 352, x1: 1004, y0: 24, y1: 167, head: 38, sub: 17, co: true },
+  "linkedin-profile": { x0: 612, x1: 1384, y0: 44, y1: 352, head: 70, sub: 26, co: false },
+};
+const subRow = (c, items, size, align = "left") => items && items.length ? `<div class="bn-sub" style="font-size:${size}px;color:${c.subColor};${align === "center" ? "justify-content:center;" : ""}">${items.map((x, i) => (i ? `<span class="sep">·</span>` : "") + `<span>${x}</span>`).join("")}</div>` : "";
+// a headline and its sub line, as one block
+function words(c, { head, sub = [], size, subSize, w, align = "left", cls = "bn-head" }) {
+  return `<div style="${w ? `width:${w}px;` : ""}text-align:${align};color:${c.fg}"><div class="${cls}" style="font-size:${size}px">${head}</div>${subRow(c, sub, subSize, align)}</div>`;
+}
+// a column of blocks, centred in the zone's height, starting at x
+function col(Z, x, w, blocks, gap = 0, align = "flex-start") {
+  return `<div class="bn" style="left:${x}px;top:${Z.y0}px;width:${w}px;height:${Z.y1 - Z.y0}px;display:flex;flex-direction:column;justify-content:center;align-items:${align};gap:${gap}px">${blocks.join("")}</div>`;
+}
+const exCap = (c, size) => `<div class="excap" style="font-size:${size}px;color:${c.fg}">Example data</div>`;
+
+/* ── the designs ────────────────────────────────────────────────────── */
 const CONCEPTS = {
   electric: {
     surface: "electric", fg: "#fff", subColor: "rgba(226,234,255,.85)",
@@ -124,15 +159,20 @@ const CONCEPTS = {
       const VH = p.band ? p.band.h : p.H, cy = p.band ? p.band.y + p.band.h / 2 : p.H / 2;
       // as big as the frame allows, without the ring reaching the words
       const room = (p.W - p.head.x - p.head.w - 40) / 0.584;
-      const h = Math.min(VH * (p === P.linkedin ? 1.55 : 1.3), room);
+      const h = Math.min(VH * 1.3, room);
       return `<div class="bn" style="left:${p.W - h * 0.74}px;top:${cy - h / 2}px;width:${h}px;height:${h}px;opacity:.96">${MARK("#fff")}</div>`;
+    },
+    li(p, pid, Z) {
+      const h = Z.co ? 300 : 580; // the ring bleeds off the right edge, where only phones crop it
+      return `<div class="bn" style="left:${p.W - h * 0.66}px;top:${p.H / 2 - h / 2}px;width:${h}px;height:${h}px;opacity:.96">${MARK("#fff")}</div>` +
+        col(Z, Z.x0, Z.co ? 540 : 560, [words(this, { head: this.head, sub: this.sub, size: Z.co ? 42 : 80, subSize: Z.sub })]);
     },
   },
   funnel: {
     surface: "ink2", fg: "#fff", subColor: "rgba(214,226,255,.7)",
     head: "See where your funnel <em>breaks.</em>", sub: ["across every tool", "cross-referenced", "true numbers"],
     visual: (p) => {
-      const s = p.vis.s * (p === P.linkedin ? 1.25 : 1), cx = p.vis.cx, cy = p.band ? p.band.y + p.band.h / 2 : p.vis.cy;
+      const s = p.vis.s, cx = p.vis.cx, cy = p.band ? p.band.y + p.band.h / 2 : p.vis.cy;
       const st = [["typeform", "Leads", "1,240"], ["calendly", "Booked", "412"], ["fathom", "Held", "263"], ["stripe", "Paid", "64"]];
       const bw = 520 * s, bh = 62 * s, gap = 18 * s, total = st.length * bh + (st.length - 1) * gap;
       const fr = [1, 0.82, 0.64, 0.47];
@@ -145,13 +185,16 @@ const CONCEPTS = {
       out += `<div class="bn leakpill" style="left:${cx}px;top:${yl}px;font-size:${19 * s}px;padding:${7 * s}px ${16 * s}px;gap:${9 * s}px"><span class="dot red" style="width:${11 * s}px;height:${11 * s}px"></span>36% of booked calls never happen</div>`;
       return out;
     },
+    li(p, pid, Z) {
+      return col(Z, Z.x0, Z.x1 - Z.x0, [words(this, { head: this.head, size: Z.co ? 36 : 68 }), funnelStrip(Z.co ? 14 : 21), exCap(this, Z.co ? 11 : 17)], Z.co ? 12 : 22);
+    },
   },
   sources: {
     surface: "paper", fg: "#14141c", subColor: "var(--muted)",
     head: "33 tools. One <em>place.</em>", sub: ["Build any metric across all of them"],
     visual: (p) => {
       const s = p.vis.s, cx = p.vis.cx, cy = p.band ? p.band.y + p.band.h / 2 : p.vis.cy;
-      const rx = (p === P.x ? 270 : 300) * s, ry = (p === P.linkedin || p === P.email ? 150 : 172) * s;
+      const rx = (p === P.x ? 270 : 300) * s, ry = (p === P.email ? 150 : 172) * s;
       const tools = ["calendly", "stripe", "shopify", "close", "gsheets", "klaviyo", "whop", "aircall", "hubspot", "instantly", "pipedrive", "mailchimp"].filter((t) => window.NZ_MARKS[t]);
       const n = tools.length;
       let out = `<svg class="bn" style="left:0;top:0;overflow:visible" width="${p.W}" height="${p.H}">`;
@@ -165,38 +208,59 @@ const CONCEPTS = {
       out += `<div class="bn" style="left:${cx - m / 2 - 22 * s}px;top:${cy - m / 2 - 22 * s}px;width:${m + 44 * s}px;height:${m + 44 * s}px;border-radius:28%;background:#14141c;box-shadow:0 24px 60px -18px rgba(20,30,80,.55);display:grid;place-items:center"><div style="width:${m * 0.82}px;height:${m * 0.82}px">${MARK("#fff")}</div></div>`;
       return out;
     },
+    li(p, pid, Z) {
+      const cy = (Z.y0 + Z.y1) / 2;
+      const vis = Z.co ? { cx: 888, cy, s: 0.3 } : { cx: 1196, cy, s: 0.56 };
+      return this.visual({ ...p, vis }) + col(Z, Z.x0, Z.co ? 380 : 390, [words(this, { head: this.head, sub: this.sub, size: Z.co ? 38 : 70, subSize: Z.co ? 15 : 24 })]);
+    },
   },
   namzi: {
     surface: "sky", fg: "#fff", subColor: "rgba(226,234,255,.82)",
     head: "True numbers, not <em>blurry</em> ones.", sub: ["Meet Namzi", "it cross-checks every tool"],
     visual: (p) => {
-      const w = p === P.linkedin ? 196 : 430 * p.vis.s;
+      const w = 430 * p.vis.s;
       const hh = w * 340 / 320;
       const floor = p.band ? p.band.y + p.band.h + 40 : p.H;
       const top = floor - hh * 0.93;
-      const pill = p === P.linkedin || p.pill === false ? "" : `<div class="pill2" style="font-size:${22 * p.vis.s}px;left:${p.vis.cx - w * 0.95}px;top:${(p.band ? p.band.y + p.band.h / 2 : p.vis.cy) - 60 * p.vis.s}px;transform:rotate(-4deg)"><span class="av">D</span>Dave · counted once</div>`;
+      const pill = p.pill === false ? "" : `<div class="pill2" style="font-size:${22 * p.vis.s}px;left:${p.vis.cx - w * 0.95}px;top:${(p.band ? p.band.y + p.band.h / 2 : p.vis.cy) - 60 * p.vis.s}px;transform:rotate(-4deg)"><span class="av">D</span>Dave · counted once</div>`;
       return `${pill}<div class="bn namzi" style="left:${p.vis.cx - w / 2 + 40 * p.vis.s}px;top:${top}px;width:${w}px">${NZ.mascot({ mood: "happy", pose: "wave", wave: 0.5, dark: true, shadow: false, fx: ["sparkle"] })}</div>`;
+    },
+    li(p, pid, Z) {
+      const w = Z.co ? 150 : 290, hh = (w * 340) / 320, nx = Z.co ? 846 : 1100;
+      const pill = Z.co ? "" : `<div class="pill2" style="font-size:22px;left:${nx - 130}px;top:50px;transform:rotate(-4deg)"><span class="av">D</span>Dave · counted once</div>`;
+      return pill + `<div class="bn namzi" style="left:${nx}px;top:${p.H - hh * 0.9}px;width:${w}px">${NZ.mascot({ mood: "happy", pose: "wave", wave: 0.5, dark: true, shadow: false, fx: ["sparkle"] })}</div>` +
+        col(Z, Z.x0, Z.co ? 460 : 470, [words(this, { head: this.head, sub: this.sub, size: Z.co ? 34 : 64, subSize: Z.co ? 16 : 25 })]);
     },
   },
   minimal: {
     surface: "ink2", fg: "#fff", subColor: "rgba(214,226,255,.66)", minimal: true,
     head: "", sub: [],
     visual: () => "",
+    li(p, pid, Z) {
+      const size = Z.co ? 56 : 96;
+      return `<div class="bn" style="left:${Z.x0}px;top:${Z.y0}px;width:${Z.x1 - Z.x0}px;height:${Z.y1 - Z.y0}px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff">
+        <div class="bn-lock" style="font-size:${size}px">${MARK("#fff")}<span>Namzilabs</span></div>
+        <div style="font-family:var(--serif);font-style:italic;font-size:${size * (Z.co ? 0.38 : 0.34)}px;color:${this.subColor};margin-top:${size * 0.16}px;letter-spacing:-0.01em;white-space:nowrap">All your data in one place. Any metric. The true numbers.</div></div>`;
+    },
   },
 
-  /* ── five more designs ───────────────────────────────────────────────── */
   formula: {
     surface: "paper", fg: "#14141c", subColor: "var(--muted)",
     head: "Build any metric, across any <em>tool.</em>", headShort: "Any metric, across any <em>tool.</em>",
     sub: ["revenue per lead", "show rate", "cost per held call"],
     visual: (p) => {
       const { cx, cy, s } = VC(p);
-      const h1 = 132 * s, h2 = 106 * s, gap = 22 * s, top = cy - (h1 + h2 + gap) / 2 - (p.band || p === P.linkedin || p === P.email ? 0 : 14 * s);
+      const h1 = 132 * s, h2 = 106 * s, gap = 22 * s, top = cy - (h1 + h2 + gap) / 2 - (p.band || p === P.email ? 0 : 14 * s);
       const row = (a, al, b, bl, val, cap, y, main) => `<div class="bn fx2${main ? " main" : ""}" style="left:${cx - 285 * s}px;top:${y}px;width:${570 * s}px;height:${(main ? h1 : h2)}px;font-size:${(main ? 23 : 20) * s}px;border-radius:${24 * s}px;padding:0 ${24 * s}px 0 ${18 * s}px">
           <span class="t"><span class="mark" data-src="${a}"></span>${al}</span><span class="op">÷</span><span class="t"><span class="mark" data-src="${b}"></span>${bl}</span><span class="eq">=</span><span class="val"><b>${val}</b><small>${cap}</small></span></div>`;
       let out = row("stripe", "Revenue", "typeform", "Leads", "$49.60", "revenue per lead", top, true) + row("fathom", "Held", "calendly", "Booked", "64%", "show rate", top + h1 + gap, false);
       if (demoCap(p)) out += `<div class="demo-cap" style="left:${cx}px;top:${top + h1 + h2 + gap + 16 * s}px;font-size:${15 * s}px;color:#14141c">Example data</div>`;
       return out;
+    },
+    li(p, pid, Z) {
+      const k = Z.co ? 1 : 1.55;
+      const card = `<div class="fx2 main" style="font-size:${15 * k}px;border-radius:${18 * k}px;padding:${9 * k}px ${16 * k}px ${9 * k}px ${10 * k}px;width:max-content;gap:0"><span class="t"><span class="mark" data-src="stripe"></span>Revenue</span><span class="op">÷</span><span class="t"><span class="mark" data-src="typeform"></span>Leads</span><span class="eq">=</span><span class="val" style="margin-left:0"><b>$49.60</b><small>revenue per lead · example</small></span></div>`;
+      return col(Z, Z.x0, Z.x1 - Z.x0, [words(this, { head: Z.co ? this.headShort : this.head, size: Z.co ? 38 : 66 }), card], Z.co ? 14 : 26);
     },
   },
   glass: {
@@ -205,7 +269,7 @@ const CONCEPTS = {
     visual: (p) => {
       const { cx, cy, s } = VC(p);
       const blurs = [["$51,900", -250, -125, 7], ["$48,200", 175, -150, 5], ["$31,900", 240, 118, 8], ["$4?,???", -235, 140, 6]];
-      let out = p === P.linkedin ? "" : blurs.map(([t, dx, dy, b]) => `<div class="bn blurnum" style="left:${cx + dx * s}px;top:${cy + dy * s}px;font-size:${42 * s}px;filter:blur(${b * s}px)">${t}</div>`).join("");
+      let out = blurs.map(([t, dx, dy, b]) => `<div class="bn blurnum" style="left:${cx + dx * s}px;top:${cy + dy * s}px;font-size:${42 * s}px;filter:blur(${b * s}px)">${t}</div>`).join("");
       const w = 430 * s, h = 214 * s;
       out += `<div class="bn glasscard" style="left:${cx - w / 2}px;top:${cy - h / 2}px;width:${w}px;height:${h}px;border-radius:${30 * s}px;padding:${24 * s}px ${30 * s}px;font-size:${19 * s}px">
         <div class="gh"><span>Revenue · this month</span><span class="ok"><span class="dot live"></span>matched · true</span></div>
@@ -213,6 +277,14 @@ const CONCEPTS = {
         <div class="gs">1,284 payments · 87 seen twice, counted once</div></div>`;
       if (demoCap(p)) out += `<div class="demo-cap" style="left:${cx}px;top:${cy + h / 2 + 18 * s}px;font-size:${15 * s}px;color:#14141c">Example data</div>`;
       return out;
+    },
+    li(p, pid, Z) {
+      const k = Z.co ? 1 : 1.6;
+      // blurry numbers out at the edges, where the photo or the crop can have them
+      const B = Z.co ? [["$51,900", 1060, 50, 5, 30], ["$48,200", 1080, 150, 4, 26], ["$4?,???", 180, 40, 5, 26]] : [["$51,900", 1480, 90, 7, 44], ["$48,200", 1500, 300, 6, 40], ["$31,900", 300, 70, 7, 40]];
+      const blur = B.map(([t, x, y, b, fs]) => `<div class="bn blurnum" style="left:${x}px;top:${y}px;font-size:${fs}px;filter:blur(${b}px)">${t}</div>`).join("");
+      const card = `<div class="glasscard lglass" style="font-size:${15 * k}px"><span class="gs">Revenue · this month</span><span class="gv">$46,180</span><span class="ok"><span class="dot live"></span>matched · true</span></div>`;
+      return blur + col(Z, Z.x0, Z.x1 - Z.x0, [words(this, { head: this.head, size: Z.co ? 38 : 70 }), card, exCap(this, Z.co ? 11 : 17)], Z.co ? 10 : 20);
     },
   },
   neon: {
@@ -222,8 +294,13 @@ const CONCEPTS = {
       const { cy } = VC(p);
       const VH = p.band ? p.band.h : p.H;
       const room = (p.W - p.head.x - p.head.w - 60) / 0.78;
-      const h = Math.min(VH * (p === P.linkedin ? 1.5 : 1.12), room);
+      const h = Math.min(VH * 1.12, room);
       return `<div class="bn" style="left:${p.vis.cx - h / 2}px;top:${cy - h / 2}px;width:${h}px;height:${h}px">${neonRings(h)}</div>`;
+    },
+    li(p, pid, Z) {
+      const h = Z.co ? 200 : 360, cx = Z.co ? 900 : 1262;
+      return `<div class="bn" style="left:${cx - h / 2}px;top:${p.H / 2 - h / 2}px;width:${h}px;height:${h}px">${neonRings(h)}</div>` +
+        col(Z, Z.x0, Z.co ? 440 : 520, [words(this, { head: this.head, sub: this.sub, size: Z.co ? 46 : 78, subSize: Z.sub })]);
     },
   },
   bigtype: {
@@ -232,8 +309,6 @@ const CONCEPTS = {
       // the words are the picture: two lines, as big as the safe area allows
       const L = {
         x: { lines: 2, size: 150, x: 1420, y: 64, align: "right", sub: 26 },
-        linkedin: { lines: 1, size: 70, x: 56, y: 58, align: "left", sub: 0 },
-        "linkedin-profile": { lines: 2, size: 128, x: 1500, y: 52, align: "right", sub: 22 },
         youtube: { lines: 2, size: 168, x: 1280, y: 548, align: "center", sub: 30 },
         facebook: { lines: 2, size: 160, x: 820, y: 118, align: "center", sub: 26 },
         "facebook-group": { lines: 2, size: 190, x: 820, y: 180, align: "center", sub: 30 },
@@ -246,19 +321,24 @@ const CONCEPTS = {
       if (L.sub) out += `<div class="bn" style="${pos};top:${L.y + L.size * 0.9 * L.lines + L.size * 0.22}px;font-size:${L.sub}px;font-weight:600;letter-spacing:-0.01em;color:rgba(226,234,255,.86);white-space:nowrap">33 tools · any metric · the true numbers</div>`;
       if (p.lock && L.align !== "center" && pid !== "email") out += `<div class="bn bn-lock" style="left:${L.align === "left" ? p.W - 64 - p.lock.size * 6.3 : p.lock.x}px;top:${p.lock.y}px;font-size:${p.lock.size}px;color:#fff">${MARK("#fff", 6)}<span>Namzilabs</span></div>`;
       if (pid === "facebook" || pid === "facebook-group" || pid === "youtube") out += `<div class="bn bn-lock" style="left:${L.x}px;transform:translateX(-50%);top:${pid === "youtube" ? 952 : p.H - (pid === "facebook" ? 70 : 96)}px;font-size:${pid === "youtube" ? 40 : 30}px;color:#fff;opacity:.92">${MARK("#fff", 6)}<span>Namzilabs</span></div>`;
-      if (pid === "linkedin") out += `<div class="bn" style="right:56px;top:${p.H / 2 - 56}px;width:112px;height:112px">${MARK("#fff", 7)}</div>`;
       if (pid === "email") out += `<div class="bn bn-lock" style="right:64px;top:${p.H / 2 - 24}px;font-size:38px;color:#fff">${MARK("#fff", 6)}<span>Namzilabs</span></div>`;
       if (p.url) out += `<div class="bn" style="left:${L.x}px;bottom:${pid === "email" ? 40 : 64}px;font-size:${pid === "email" ? 22 : 26}px;font-weight:700;letter-spacing:-0.015em;color:#fff;opacity:.85">namzilabs.co${pid === "email" ? "" : ` <span style="opacity:.6;font-weight:550">· free to start</span>`}</div>`;
       return out;
+    },
+    li(p, pid, Z) {
+      const h = Z.co ? 280 : 560;
+      const ring = `<div class="bn" style="left:${p.W - h * (Z.co ? 0.42 : 0.5)}px;top:${p.H / 2 - h / 2}px;width:${h}px;height:${h}px;opacity:.22">${MARK("#fff", 5)}</div>`;
+      const text = Z.co ? `Every tool. One <em>place.</em>` : `Every tool.<br>One <em>place.</em>`;
+      return ring + col(Z, Z.x0, Z.x1 - Z.x0, [`<div class="bigtype" style="font-size:${Z.co ? 60 : 118}px;color:#fff">${text}</div>`, Z.co ? "" : subRow(this, ["33 tools", "any metric", "the true numbers"], 26)], Z.co ? 0 : 22);
     },
   },
   blueprint: {
     surface: "bprint", fg: "#fff", subColor: "rgba(220,232,255,.82)", grid: false, extra: `<div class="bpgrid"></div>`,
     head: "Built to count everyone <em>once.</em>", headShort: "Count everyone <em>once.</em>",
     sub: ["cross-referenced across every tool"],
-    visual: (p) => {
+    visual: (p, pid, o = {}) => {
       const { cx, cy, s } = VC(p);
-      const k = s * (p === P.linkedin ? 1.2 : 1);
+      const k = s;
       const r = 118 * k, d = 110 * k, lx = cx - d / 2, rx = cx + d / 2, t = "#dde8ff";
       const cross = Math.sqrt(r * r - (d / 2) * (d / 2));
       let svg = `<svg class="bn" style="left:0;top:0;overflow:visible" width="${p.W}" height="${p.H}"><g fill="none" stroke="${t}">
@@ -268,29 +348,34 @@ const CONCEPTS = {
         <circle cx="${lx}" cy="${cy}" r="${r}" stroke="#fff" stroke-width="${5 * k}"/><circle cx="${rx}" cy="${cy}" r="${r}" stroke="#fff" stroke-width="${5 * k}"/>
         <path d="M${cx} ${cy + cross * 0.35}L${cx + 36 * k} ${cy + r + 34 * k}" stroke-width="${2 * k}"/>
       </g></svg>`;
-      if (p === P.linkedin) return svg;
-      svg += `<div class="bp-lab" style="font-size:${17 * s}px;left:${lx - r - 20 * s}px;top:${cy - r - 44 * s}px;transform:translateX(-30%)"><span class="mark" data-src="calendly"></span>dave@acme.co</div>`;
-      svg += `<div class="bp-lab" style="font-size:${17 * s}px;left:${rx + r * 0.2}px;top:${cy - r - 44 * s}px"><span class="mark" data-src="stripe"></span>Dave Smith</div>`;
-      svg += `<div class="bp-one" style="font-size:${19 * s}px;left:${cx + 60 * k}px;top:${cy + r + 52 * k}px"><span class="av">D</span>one person, counted once</div>`;
+      if (o.bare) return svg;
+      const ls = o.lab || s;
+      svg += `<div class="bp-lab" style="font-size:${17 * ls}px;left:${lx - r - 20 * s}px;top:${cy - r - 44 * s}px;transform:translateX(-30%)"><span class="mark" data-src="calendly"></span>dave@acme.co</div>`;
+      svg += `<div class="bp-lab" style="font-size:${17 * ls}px;left:${rx + r * 0.2}px;top:${cy - r - 44 * s}px"><span class="mark" data-src="stripe"></span>Dave Smith</div>`;
+      svg += `<div class="bp-one" style="font-size:${19 * ls}px;left:${cx + 60 * k}px;top:${cy + r + 52 * k}px"><span class="av">D</span>one person, counted once</div>`;
       return svg;
+    },
+    li(p, pid, Z) {
+      const vis = Z.co ? this.visual({ ...p, vis: { cx: 890, cy: 96, s: 0.4 } }, pid, { bare: true }) : this.visual({ ...p, vis: { cx: 1214, cy: 180, s: 0.64 } }, pid, { bare: true }) +
+        `<div class="bp-one" style="font-size:21px;left:1200px;top:322px"><span class="av">D</span>dave@acme.co = Dave Smith</div>` +
+        [["calendly", 1214 - 35 - 76], ["stripe", 1214 + 35 + 76]].map(([t, x]) => `<div class="disc" style="left:${x - 23}px;top:${180 - 23}px;width:46px;height:46px"><span class="mark" data-src="${t}"></span></div>`).join("");
+      return vis + col(Z, Z.x0, Z.co ? 420 : 420, [words(this, { head: Z.co ? this.headShort : this.head, sub: this.sub, size: Z.co ? 40 : 64, subSize: Z.co ? 16 : 24 })]);
     },
   },
 
   /* ── memes ────────────────────────────────────────────────────────────── */
   precious: {
-    surface: "ember", fg: "#fff4e2", subColor: "rgba(255,226,190,.78)", grid: false, meme: true,
-    head: "One place to rule them <em>all.</em>", sub: ["all your data", "any metric", "the true numbers"],
-    visual: (p) => {
-      const { cy } = VC(p);
-      const VH = p.band ? p.band.h : p.H;
-      const room = (p.W - p.head.x - p.head.w - 50) / 0.78;
-      const h = Math.min(VH * (p === P.linkedin ? 1.55 : 1.15), room);
-      let embers = "";
-      if (p !== P.linkedin) for (let i = 0; i < 16; i++) {
-        const a = rnd() * Math.PI * 2, dd = h * (0.45 + rnd() * 0.3), z = (3 + rnd() * 6) * p.vis.s;
-        embers += `<div class="bn" style="left:${p.vis.cx + Math.cos(a) * dd}px;top:${cy + Math.sin(a) * dd * 0.7}px;width:${z}px;height:${z}px;border-radius:50%;background:#ffb347;box-shadow:0 0 ${z * 3}px ${z}px rgba(255,140,40,.6);opacity:${0.4 + rnd() * 0.6}"></div>`;
-      }
-      return embers + `<div class="bn" style="left:${p.vis.cx - h / 2}px;top:${cy - h / 2}px;width:${h}px;height:${h}px">${goldRings(h)}</div>`;
+    // the gold rings, rendered in 3D, in front of a fiery mountain; the line in a classical face
+    surface: "ember", fg: "#fff4e2", subColor: "rgba(255,226,190,.8)", grid: false, meme: true, headCls: "epic", hs: 0.74,
+    head: "One place to rule them all.", sub: ["all your data", "any metric", "the true numbers"],
+    extra: (p, pid) => NZ.volcano({ W: p.W, H: p.H, ...VOLC[pid] }),
+    visual: (p, pid) => {
+      const [cx, cy, w] = { x: [1135, 318, 620], youtube: [1745, 742, 760], facebook: [1215, 372, 660], "facebook-group": [1250, 505, 700] }[pid];
+      return NZ.oneRings({ view: "hero", cx, cy, w, base: ONE_RING });
+    },
+    li(p, pid, Z) {
+      const r = Z.co ? NZ.oneRings({ view: "hero", cx: 872, cy: 116, w: 290, base: ONE_RING }) : NZ.oneRings({ view: "hero", cx: 1182, cy: 256, w: 420, base: ONE_RING });
+      return r + col(Z, Z.x0, Z.co ? 370 : 360, [words(this, { head: this.head, sub: this.sub, size: Z.co ? 28 : 52, subSize: Z.co ? 14 : 23, cls: "epic" })]);
     },
   },
   wedding: {
@@ -301,11 +386,13 @@ const CONCEPTS = {
       const { cy } = VC(p);
       const VH = p.band ? p.band.h : p.H;
       const room = (p.W - p.head.x - p.head.w - 50) / 0.78;
-      const h = Math.min(VH * (p === P.linkedin ? 1.5 : 0.98), room);
-      let sp = "";
-      const S = [[-0.46, -0.3, 0.07], [0.44, -0.36, 0.05], [0.5, 0.26, 0.06], [-0.4, 0.34, 0.045], [0.02, -0.46, 0.04]];
-      for (const [dx, dy, z] of S) sp += `<div class="bn" style="left:${p.vis.cx + dx * h - z * h / 2}px;top:${cy + dy * h - z * h / 2}px;width:${z * h}px;height:${z * h}px">${SPARK}</div>`;
-      return `<div class="bn" style="left:${p.vis.cx - h / 2}px;top:${cy - h / 2}px;width:${h}px;height:${h}px">${weddingRings(h)}</div>` + (p === P.linkedin ? "" : sp);
+      const h = Math.min(VH * 0.98, room);
+      return `<div class="bn" style="left:${p.vis.cx - h / 2}px;top:${cy - h / 2}px;width:${h}px;height:${h}px">${weddingRings(h)}</div>` + sparkles(p.vis.cx, cy, h);
+    },
+    li(p, pid, Z) {
+      const h = Z.co ? 190 : 330, cx = Z.co ? 890 : 1236, cy = p.H / 2;
+      return `<div class="bn" style="left:${cx - h / 2}px;top:${cy - h / 2}px;width:${h}px;height:${h}px">${weddingRings(h)}</div>` + (Z.co ? "" : sparkles(cx, cy, h)) +
+        col(Z, Z.x0, Z.co ? 410 : 470, [words(this, { head: this.headShort, sub: [this.sub[0]], size: Z.co ? 34 : 62, subSize: Z.co ? 15 : 24 })]);
     },
   },
   galaxy: {
@@ -314,23 +401,14 @@ const CONCEPTS = {
     sub: ["pick yours"],
     visual: (p, pid) => {
       // where the four levels may sit, per size (right of the words, inside each platform's safe area)
-      const A = { x: [720, 1470], linkedin: [720, 1100], "linkedin-profile": [1060, 1560], youtube: [1330, 2040], facebook: [880, 1600], "facebook-group": [900, 1600] }[pid];
+      const A = { x: [720, 1470], youtube: [1330, 2040], facebook: [880, 1600], "facebook-group": [900, 1600] }[pid];
       const { cy } = VC(p);
-      const steps = [["Checking Stripe", 0], ["14 open tabs", 0.3], ["A spreadsheet", 0.62], ["All of it, one place", 1]];
-      const sizes = [58, 72, 90, 126], colW = [150, 150, 150, 190], gap = 14;
-      const total = colW.reduce((a, b) => a + b, 0) + gap * 3;
+      const total = GAL.colW.reduce((a, b) => a + b, 0) + GAL.gap * 3;
       const k = Math.min((A[1] - A[0]) / total, p.vis.s * 1.25);
-      let x = (A[0] + A[1]) / 2 - (total * k) / 2;
-      const small = p === P.linkedin;
-      const ringY = cy - (small ? 4 : 18) * k;
-      return steps.map(([lab, g], i) => {
-        const m = sizes[i] * k, w = colW[i] * k;
-        const glow = g === 0 ? "none" : `drop-shadow(0 0 ${f2(4 + g * 16)}px rgba(143,176,255,${f2(0.35 + g * 0.6)})) drop-shadow(0 0 ${f2(g * 34)}px rgba(160,120,255,${f2(g * 0.8)})) drop-shadow(0 0 ${f2(g * g * 70)}px rgba(255,120,230,${f2(g * 0.55)}))`;
-        const out = `<div class="bn" style="left:${x + w / 2 - m / 2}px;top:${ringY - m / 2}px;width:${m}px;height:${m}px;filter:${glow}">${MARK(g === 0 ? "rgba(255,255,255,.38)" : `rgba(255,255,255,${f2(0.6 + g * 0.4)})`, 4 + g * 1.6)}</div>` +
-          (small ? "" : `<div class="bn" style="left:${x}px;width:${w}px;top:${ringY + 70 * k}px;text-align:center;font-weight:${i === 3 ? 800 : 650};letter-spacing:-0.015em;font-size:${(i === 3 ? 20 : 16.5) * k}px;color:rgba(255,255,255,${f2(0.5 + g * 0.5)});white-space:nowrap">${lab}</div>`);
-        x += w + gap * k;
-        return out;
-      }).join("");
+      return `<div class="bn" style="left:${(A[0] + A[1]) / 2 - (total * k) / 2}px;top:${cy - 18 * k - (GAL.sizes[3] * k) / 2}px">${galaxyRow(k)}</div>`;
+    },
+    li(p, pid, Z) {
+      return col(Z, Z.x0, Z.x1 - Z.x0, [words(this, { head: this.head, size: Z.co ? 30 : 60 }), `<div style="position:relative">${galaxyRow(Z.co ? 0.72 : 1.08, true)}</div>`], Z.co ? 6 : 14);
     },
   },
   starter: {
@@ -339,15 +417,19 @@ const CONCEPTS = {
     sub: ["no more of this"],
     visual: (p) => {
       const { cx, cy, s } = VC(p);
-      const k = s * (p === P.linkedin ? 1.08 : 1);
-      const items = p === P.linkedin ? [STARTER[0], STARTER[1], STARTER[5]] : STARTER;
-      const cols = p === P.linkedin ? 3 : 3, rows = p === P.linkedin ? 1 : 2;
-      const cw = (p === P.linkedin ? 150 : 178) * k, ch = (p === P.linkedin ? 150 : 172) * k, gap = 16 * k;
+      const cw = 178 * s, ch = 172 * s, gap = 16 * s, cols = 3, rows = 2;
       const W = cols * cw + (cols - 1) * gap, H = rows * ch + (rows - 1) * gap;
-      return items.map(([icon, cap], i) => {
-        const c = i % cols, r = Math.floor(i / cols);
-        return `<div class="sp-card" style="left:${cx - W / 2 + c * (cw + gap)}px;top:${cy - H / 2 + r * (ch + gap)}px;width:${cw}px;height:${ch}px;font-size:${(p === P.linkedin ? 17 : 17) * k}px;transform:rotate(${[-2, 1.5, -1, 2, -1.5, 1][i]}deg)"><div style="width:${(p === P.linkedin ? 80 : 92) * k}px;height:${(p === P.linkedin ? 80 : 92) * k}px">${icon}</div><div class="cap">${cap}</div></div>`;
-      }).join("");
+      return STARTER.map((it, i) => starterCard(it, i, cx - W / 2 + (i % cols) * (cw + gap), cy - H / 2 + Math.floor(i / cols) * (ch + gap), cw, ch, 17 * s, 92 * s)).join("");
+    },
+    li(p, pid, Z) {
+      if (Z.co) {
+        const cw = 108, ch = 118, gap = 12, x0 = Z.x1 - (3 * cw + 2 * gap);
+        return [0, 1, 5].map((j, i) => starterCard(STARTER[j], i, x0 + i * (cw + gap), p.H / 2 - ch / 2, cw, ch, 12, 56)).join("") +
+          col(Z, Z.x0, 300, [words(this, { head: this.head, size: 30 })]);
+      }
+      const cw = 136, ch = 150, gap = 14, n = 5, x0 = Z.x0 + (Z.x1 - Z.x0 - (n * cw + (n - 1) * gap)) / 2, y = 200;
+      return [0, 1, 2, 4, 5].map((j, i) => starterCard(STARTER[j], i, x0 + i * (cw + gap), y, cw, ch, 18, 74)).join("") +
+        `<div class="bn" style="left:${Z.x0}px;top:52px;width:${Z.x1 - Z.x0}px">${words(this, { head: this.head, size: 58, align: "center" })}</div>`;
     },
   },
   expectation: {
@@ -357,39 +439,81 @@ const CONCEPTS = {
     visual: (p) => {
       const { cy, s } = VC(p);
       const cx = p.vis.cx + (p === P.facebook || p === P["facebook-group"] ? 40 : 0);
-      const k = s * (p === P.linkedin ? 1.3 : 1);
-      const pw = 262 * k, ph = (p === P.linkedin ? 118 : 300) * k, gap = 30 * k;
-      const lx = cx - pw - gap / 2, rx = cx + gap / 2, top = cy - ph / 2 + (p === P.linkedin ? 0 : 16 * k);
-      const lab = (x, t) => p === P.linkedin ? "" : `<div class="lab" style="top:${-40 * k}px;font-size:${22 * k}px">${t}</div>`;
-      // expectation: a tidy funnel
-      let funnel = "";
-      const bars = p === P.linkedin ? [0.86, 0.62, 0.4] : [0.86, 0.68, 0.5, 0.34];
-      const bh = (p === P.linkedin ? 22 : 40) * k, bg = (p === P.linkedin ? 8 : 16) * k, bt = (ph - bars.length * bh - (bars.length - 1) * bg) / 2;
-      bars.forEach((f, i) => { funnel += `<div style="position:absolute;left:${(pw - pw * f) / 2}px;top:${bt + i * (bh + bg)}px;width:${pw * f}px;height:${bh}px;border-radius:${bh / 2.6}px;background:${i === 0 ? "#2f5fd8" : `rgba(47,95,216,${0.85 - i * 0.16})`}"></div>`; });
-      // reality: tools, tangled
-      const T = ["typeform", "calendly", "close", "stripe", "gsheets", "hubspot"].filter((t) => window.NZ_MARKS[t]);
-      const pts = [[0.2, 0.18], [0.78, 0.2], [0.5, 0.5], [0.16, 0.8], [0.82, 0.78], [0.48, 0.14]];
-      let lines = "", marks = "";
-      const pairs = [[0, 4], [1, 3], [5, 2], [2, 4], [0, 1], [3, 5], [1, 4], [0, 2], [5, 3], [2, 1]];
-      for (const [a, b] of pairs) {
-        const [x1, y1] = pts[a], [x2, y2] = pts[b];
-        lines += `<path d="M${x1 * pw} ${y1 * ph}C${(x1 + (rnd() - 0.5)) * pw} ${(y1 + rnd() - 0.3) * ph} ${(x2 + (rnd() - 0.5)) * pw} ${(y2 - rnd() + 0.3) * ph} ${x2 * pw} ${y2 * ph}" fill="none" stroke="${["#f0553d", "#2b2f3a", "#8a8fa3"][a % 3]}" stroke-width="${2.2 * k}" stroke-linecap="round" opacity=".75"/>`;
-      }
-      const ms = (p === P.linkedin ? 24 : 38) * k;
-      T.forEach((t, i) => { const [x, y] = pts[i]; marks += `<div style="position:absolute;left:${x * pw - ms / 2}px;top:${y * ph - ms / 2}px;width:${ms}px;height:${ms}px;border-radius:30%;background:#fff;box-shadow:0 0 0 ${2 * k}px #2b2f3a;display:grid;place-items:center"><span class="mark" data-src="${t}" style="width:70%;height:70%"></span></div>`; });
-      return `<div class="ev-panel" style="left:${lx}px;top:${top}px;width:${pw}px;height:${ph}px">${lab(0, "Expectation")}${funnel}</div>
-        <div class="ev-panel" style="left:${rx}px;top:${top}px;width:${pw}px;height:${ph}px">${lab(0, "Reality")}<svg style="position:absolute;inset:0;overflow:hidden;border-radius:.8em" width="${pw}" height="${ph}">${lines}</svg>${marks}</div>`;
+      return expPanels(cx, cy, s, false);
+    },
+    li(p, pid, Z) {
+      const vis = Z.co ? expPanels(852, 106, 0.52, true) : expPanels(1200, 214, 0.66, false, 22);
+      return vis + col(Z, Z.x0, Z.co ? 300 : 400, [words(this, { head: this.headShort, sub: Z.co ? [] : this.sub, size: Z.co ? 30 : 56, subSize: 23 })]);
+    },
+  },
+  donut: {
+    // the donut daydream: Namzi, a pink donut, and a dream of all your data in one place
+    surface: "simpsky", fg: "#0f1d4a", subColor: "rgba(15,29,74,.74)", grid: false, meme: true, hs: 0.9,
+    head: "Mmm… all your data in one <em>place.</em>", headShort: "Mmm… all your data, one <em>place.</em>",
+    sub: ["every tool", "any metric", "donut worry"],
+    extra: (p) => skyClouds(p),
+    visual: (p, pid) => {
+      const o = { x: { nx: 1225, nw: 250, bx: 1010, by: 175, bw: 330 }, youtube: { nx: 1880, nw: 300, bx: 1610, by: 690, bw: 400, floor: 960 }, facebook: { nx: 1210, nw: 270, bx: 1012, by: 212, bw: 330 }, "facebook-group": { nx: 1250, nw: 290, bx: 1080, by: 318, bw: 350 } }[pid];
+      return donutDream(p, o);
+    },
+    li(p, pid, Z) {
+      const o = Z.co ? { nx: 890, nw: 116, bx: 790, by: 70, bw: 150 } : { nx: 1170, nw: 216, bx: 1010, by: 128, bw: 250 };
+      return donutDream(p, o) + col(Z, Z.x0, Z.co ? 330 : 360, [words(this, { head: this.headShort, sub: Z.co ? [this.sub[2]] : this.sub.slice(1), size: Z.co ? 30 : 56, subSize: Z.co ? 15 : 24 })]);
+    },
+  },
+
+  /* ── made for LinkedIn ─────────────────────────────────────────────────── */
+  leak: {
+    surface: "paper", fg: "#14141c", subColor: "var(--muted)", sizes: ["linkedin-company", "linkedin-profile"],
+    head: "Your funnel has a <em>leak.</em>", sub: ["Namzilabs shows you exactly where"],
+    li(p, pid, Z) {
+      const pipe = leakyPipe(Z.co ? 640 : 772, Z.co ? 92 : 168, Z.co ? 1 : 1.7);
+      return col(Z, Z.x0, Z.x1 - Z.x0, [words(this, { head: this.head, sub: Z.co ? [] : this.sub, size: Z.co ? 34 : 64, subSize: 24 }), pipe], Z.co ? 6 : 12);
+    },
+  },
+  wall: {
+    surface: "paper", fg: "#14141c", subColor: "var(--muted)", grid: false, sizes: ["linkedin-company", "linkedin-profile"],
+    head: "33 tools. One <em>place.</em>", sub: ["connect them all", "build any metric", "see the whole funnel"],
+    extra: (p, pid) => logoWall(p, pid),
+    li(p, pid, Z) {
+      const k = Z.co ? 1 : 1.75;
+      const card = `<div class="wallcard" style="font-size:${16 * k}px;padding:${16 * k}px ${26 * k}px ${16 * k}px ${18 * k}px"><div style="width:${60 * k}px;height:${60 * k}px;border-radius:28%;background:#14141c;display:grid;place-items:center;flex:none"><div style="width:74%;height:74%">${MARK("#fff")}</div></div>${words(this, { head: this.head, sub: Z.co ? this.sub.slice(0, 2) : this.sub.slice(0, 2), size: 38 * k, subSize: 15 * k })}</div>`;
+      return col(Z, Z.x0, Z.x1 - Z.x0, [card], 0, "center");
+    },
+  },
+  team: {
+    surface: "electric", fg: "#fff", subColor: "rgba(226,234,255,.88)", sizes: ["linkedin-profile"],
+    head: "Building <em>Namzilabs.</em>", sub: ["All your data in one place", "the true numbers"],
+    li(p, pid, Z) {
+      const h = 600;
+      return `<div class="bn" style="left:${p.W - h * 0.62}px;top:${p.H / 2 - h / 2}px;width:${h}px;height:${h}px;opacity:.95">${MARK("#fff")}</div>` +
+        col(Z, Z.x0, 620, [words(this, { head: this.head, sub: this.sub, size: 86, subSize: 25 }), `<div class="urlchip" style="font-size:24px"><span class="mk">${MARK("#fff", 6)}</span>namzilabs.co</div>`], 26);
     },
   },
 };
 
-/* ── pieces the new designs share ─────────────────────────────────────── */
+/* ── pieces the designs share ─────────────────────────────────────────── */
 function f2(n) { return Math.round(n * 100) / 100; }
 function VC(p) { return { cx: p.vis.cx, cy: p.band ? p.band.y + p.band.h / 2 : p.vis.cy, s: p.vis.s }; }
-function demoCap(p) { return !(p === P.linkedin || p === P.email || p === P.og); }
+function demoCap(p) { return !(p === P.email || p === P.og); }
 let _seed = 11;
 function rnd() { return ((_seed = (_seed * 16807) % 2147483647) / 2147483647); }
 let _uid = 0;
+// the volcano behind the precious rings, per size (a generic one: no tower, no eye)
+const VOLC = {
+  x: { cx: 1150, peak: 64, base: 452, seed: 5, flowDir: 0.45 },
+  "linkedin-company": { cx: 884, peak: 16, base: 178, seed: 9, flow: false, embers: 34 },
+  "linkedin-profile": { cx: 1196, peak: 40, base: 352, seed: 5, flowDir: 0.32 },
+  youtube: { cx: 1750, peak: 470, base: 1010, seed: 5, flowDir: 0.42 },
+  facebook: { cx: 1230, peak: 66, base: 566, seed: 5, flowDir: 0.45 },
+  "facebook-group": { cx: 1262, peak: 124, base: 780, seed: 5, flowDir: 0.45 },
+};
+// the funnel as one row: four steps, the leak marked
+function funnelStrip(fs) {
+  const st = [["typeform", "Leads", "1,240"], ["calendly", "Booked", "412"], ["fathom", "Held", "263"], ["stripe", "Paid", "64"]];
+  return `<div class="lrow" style="font-size:${fs}px">${st.map(([t, l, v], i) => (i ? `<span class="larr${i === 2 ? " red" : ""}">→${i === 2 ? "<em>−36%</em>" : ""}</span>` : "") +
+    `<span class="lchip${i === 2 ? " leak" : ""}"><span class="mark" data-src="${t}"></span><span class="lv"><span>${l}</span><b>${v}</b></span></span>`).join("")}</div>`;
+}
 // shading across a ring's stroke (64-unit geometry), so it reads as a torus
 function tube(id, cx, w, stops) {
   const inner = 15 - w / 2, outer = 15 + w / 2;
@@ -401,13 +525,6 @@ function neonRings() {
     <g filter="url(#nb${u})"><circle cx="25" cy="32" r="15" fill="none" stroke="#4D8BFF" stroke-width="3.4"/><circle cx="39" cy="32" r="15" fill="none" stroke="#C45BFF" stroke-width="3.4"/></g>
     <g filter="url(#nc${u})"><circle cx="25" cy="32" r="15" fill="none" stroke="#7AA8FF" stroke-width="2.3"/><circle cx="39" cy="32" r="15" fill="none" stroke="#DA8CFF" stroke-width="2.3"/></g>
     <circle cx="25" cy="32" r="15" fill="none" stroke="#EEF4FF" stroke-width=".75"/><circle cx="39" cy="32" r="15" fill="none" stroke="#FAEEFF" stroke-width=".75"/></svg>`;
-}
-function goldRings() {
-  const u = ++_uid, G = [[0, "#6B4208"], [0.2, "#C8921F"], [0.42, "#FFF0B0"], [0.6, "#E2AE3A"], [0.82, "#9A6512"], [1, "#5A3606"]];
-  return `<svg viewBox="0 0 64 64" style="width:100%;height:100%;overflow:visible"><defs>${tube(`gL${u}`, 25, 4.4, G)}${tube(`gR${u}`, 39, 4.4, G)}<filter id="gg${u}" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter></defs>
-    <g filter="url(#gg${u})"><circle cx="25" cy="32" r="15" fill="none" stroke="#FF9A2E" stroke-width="4.4"/><circle cx="39" cy="32" r="15" fill="none" stroke="#FF9A2E" stroke-width="4.4"/></g>
-    <circle cx="25" cy="32" r="15" fill="none" stroke="url(#gL${u})" stroke-width="4.4"/><circle cx="39" cy="32" r="15" fill="none" stroke="url(#gR${u})" stroke-width="4.4"/>
-    <circle cx="25" cy="32" r="15" fill="none" stroke="rgba(255,248,220,.9)" stroke-width=".4" stroke-dasharray="8 86" stroke-dashoffset="33.5" transform="translate(-.4 -.4)"/><circle cx="39" cy="32" r="15" fill="none" stroke="rgba(255,248,220,.9)" stroke-width=".4" stroke-dasharray="8 86" stroke-dashoffset="33.5" transform="translate(-.4 -.4)"/></svg>`;
 }
 function weddingRings() {
   // gold on the left, platinum on the right, woven: each ring passes over the other once
@@ -425,7 +542,26 @@ function weddingRings() {
     <circle cx="25" cy="32" r="15" fill="none" stroke="rgba(255,255,255,.85)" stroke-width=".4" stroke-dasharray="7 87" stroke-dashoffset="32" transform="translate(-.35 -.35)"/><circle cx="39" cy="32" r="15" fill="none" stroke="rgba(255,255,255,.9)" stroke-width=".4" stroke-dasharray="7 87" stroke-dashoffset="33" transform="translate(-.35 -.35)"/></svg>`;
 }
 const SPARK = `<svg viewBox="-10 -10 20 20" style="width:100%;height:100%;overflow:visible"><path d="M0 -10Q0 0 10 0Q0 0 0 10Q0 0 -10 0Q0 0 0 -10Z" fill="#fff" opacity=".95"/></svg>`;
+function sparkles(cx, cy, h) {
+  const S = [[-0.46, -0.3, 0.07], [0.44, -0.36, 0.05], [0.5, 0.26, 0.06], [-0.4, 0.34, 0.045], [0.02, -0.46, 0.04]];
+  return S.map(([dx, dy, z]) => `<div class="bn" style="left:${cx + dx * h - (z * h) / 2}px;top:${cy + dy * h - (z * h) / 2}px;width:${z * h}px;height:${z * h}px">${SPARK}</div>`).join("");
+}
 const STARS = (() => { let s = ""; _seed = 5; for (let i = 0; i < 140; i++) { const x = rnd() * 100, y = rnd() * 100, z = rnd() < 0.9 ? 1 + rnd() * 1.6 : 2.6 + rnd() * 2.2; s += `<div style="position:absolute;left:${x.toFixed(2)}%;top:${y.toFixed(2)}%;width:${z.toFixed(1)}px;height:${z.toFixed(1)}px;border-radius:50%;background:#fff;opacity:${(0.3 + rnd() * 0.7).toFixed(2)}"></div>`; } return s; })();
+// galaxy brain: four levels, the rings glowing brighter as you go
+const GAL = { steps: [["Checking Stripe", 0], ["14 open tabs", 0.3], ["A spreadsheet", 0.62], ["All of it, one place", 1]], sizes: [58, 72, 90, 126], colW: [150, 150, 150, 190], gap: 14 };
+function galaxyRow(k, compact) {
+  const ringY = (GAL.sizes[3] * k) / 2;
+  let x = 0, out = "";
+  GAL.steps.forEach(([lab, g], i) => {
+    const m = GAL.sizes[i] * k, w = GAL.colW[i] * k;
+    const glow = g === 0 ? "none" : `drop-shadow(0 0 ${f2((4 + g * 16) * Math.min(1, k))}px rgba(143,176,255,${f2(0.35 + g * 0.6)})) drop-shadow(0 0 ${f2(g * 34 * Math.min(1, k))}px rgba(160,120,255,${f2(g * 0.8)})) drop-shadow(0 0 ${f2(g * g * 70 * Math.min(1, k))}px rgba(255,120,230,${f2(g * 0.55)}))`;
+    out += `<div class="bn" style="left:${x + w / 2 - m / 2}px;top:${ringY - m / 2}px;width:${m}px;height:${m}px;filter:${glow}">${MARK(g === 0 ? "rgba(255,255,255,.38)" : `rgba(255,255,255,${f2(0.6 + g * 0.4)})`, 4 + g * 1.6)}</div>` +
+      `<div class="bn" style="left:${x}px;width:${w}px;top:${ringY + (compact ? 36 : 70) * k}px;text-align:center;font-weight:${i === 3 ? 800 : 650};letter-spacing:-0.015em;font-size:${(i === 3 ? 20 : 16.5) * k * (compact ? 1.12 : 1)}px;color:rgba(255,255,255,${f2(0.5 + g * 0.5)});white-space:nowrap">${lab}</div>`;
+    x += w + GAL.gap * k;
+  });
+  const total = GAL.colW.reduce((a, b) => a + b, 0) + GAL.gap * 3;
+  return `<div style="position:relative;width:${total * k}px;height:${ringY + (compact ? 36 : 70) * k + 26 * k}px">${out}</div>`;
+}
 // the starter pack: six things everyone who has lost a number recognises
 const STARTER = [
   [`<svg viewBox="0 0 64 64"><rect x="4" y="14" width="56" height="40" rx="6" fill="#eef0f6" stroke="#2b2f3a" stroke-width="2.5"/>${Array.from({ length: 8 }, (_, i) => `<rect x="${6 + i * 6.8}" y="8" width="7.6" height="9" rx="2" fill="${i === 7 ? "#2f5fd8" : "#c9cedd"}" stroke="#2b2f3a" stroke-width="1.2"/>`).join("")}<rect x="12" y="26" width="40" height="4" rx="2" fill="#c9cedd"/><rect x="12" y="34" width="28" height="4" rx="2" fill="#c9cedd"/></svg>`, "14 open tabs"],
@@ -435,9 +571,112 @@ const STARTER = [
   [`<svg viewBox="0 0 64 64">${[["41", 4], ["38", 23], ["44", 42]].map(([n, x]) => `<rect x="${x}" y="18" width="18" height="28" rx="4" fill="#fff" stroke="#2b2f3a" stroke-width="2.2"/><text x="${x + 9}" y="36" text-anchor="middle" font-size="10" font-weight="800" fill="#2b2f3a" font-family="Inter, sans-serif">${n}</text>`).join("")}</svg>`, "Three answers"],
   [`<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#fff" stroke="#2b2f3a" stroke-width="2.5"/><path d="M32 16V32L42 38" stroke="#f0553d" stroke-width="3.5" stroke-linecap="round" fill="none"/><circle cx="32" cy="32" r="2.5" fill="#2b2f3a"/></svg>`, "Monday, 11:48 am"],
 ];
+function starterCard([icon, cap], i, x, y, cw, ch, fs, iz) {
+  return `<div class="sp-card" style="left:${x}px;top:${y}px;width:${cw}px;height:${ch}px;font-size:${fs}px;transform:rotate(${[-2, 1.5, -1, 2, -1.5, 1][i % 6]}deg)"><div style="width:${iz}px;height:${iz}px">${icon}</div><div class="cap">${cap}</div></div>`;
+}
+// expectation vs reality: a tidy funnel next to a tangle of tools
+function expPanels(cx, cy, k, small, labPx) {
+  const pw = 262 * k, ph = (small ? 190 : 300) * k, gap = 30 * k;
+  const lx = cx - pw - gap / 2, rx = cx + gap / 2, top = cy - ph / 2 + 16 * k;
+  const lab = (t) => `<div class="lab" style="top:${-(labPx ? labPx * 1.5 : (small ? 34 : 40) * k)}px;font-size:${labPx || (small ? 26 : 22) * k}px">${t}</div>`;
+  let funnel = "";
+  const bars = small ? [0.86, 0.62, 0.4] : [0.86, 0.68, 0.5, 0.34];
+  const bh = (small ? 34 : 40) * k, bg = (small ? 14 : 16) * k, bt = (ph - bars.length * bh - (bars.length - 1) * bg) / 2;
+  bars.forEach((f, i) => { funnel += `<div style="position:absolute;left:${(pw - pw * f) / 2}px;top:${bt + i * (bh + bg)}px;width:${pw * f}px;height:${bh}px;border-radius:${bh / 2.6}px;background:${i === 0 ? "#2f5fd8" : `rgba(47,95,216,${0.85 - i * 0.16})`}"></div>`; });
+  const T = ["typeform", "calendly", "close", "stripe", "gsheets", "hubspot"].filter((t) => window.NZ_MARKS[t]);
+  const pts = [[0.2, 0.18], [0.78, 0.2], [0.5, 0.5], [0.16, 0.8], [0.82, 0.78], [0.48, 0.14]];
+  let lines = "", marks = "";
+  const pairs = [[0, 4], [1, 3], [5, 2], [2, 4], [0, 1], [3, 5], [1, 4], [0, 2], [5, 3], [2, 1]];
+  _seed = 23;
+  for (const [a, b] of pairs) {
+    const [x1, y1] = pts[a], [x2, y2] = pts[b];
+    lines += `<path d="M${x1 * pw} ${y1 * ph}C${(x1 + (rnd() - 0.5)) * pw} ${(y1 + rnd() - 0.3) * ph} ${(x2 + (rnd() - 0.5)) * pw} ${(y2 - rnd() + 0.3) * ph} ${x2 * pw} ${y2 * ph}" fill="none" stroke="${["#f0553d", "#2b2f3a", "#8a8fa3"][a % 3]}" stroke-width="${2.2 * k * (small ? 1.4 : 1)}" stroke-linecap="round" opacity=".75"/>`;
+  }
+  const ms = (small ? 46 : 38) * k;
+  T.forEach((t, i) => { const [x, y] = pts[i]; marks += `<div style="position:absolute;left:${x * pw - ms / 2}px;top:${y * ph - ms / 2}px;width:${ms}px;height:${ms}px;border-radius:30%;background:#fff;box-shadow:0 0 0 ${2 * k}px #2b2f3a;display:grid;place-items:center"><span class="mark" data-src="${t}" style="width:70%;height:70%"></span></div>`; });
+  return `<div class="ev-panel" style="left:${lx}px;top:${top}px;width:${pw}px;height:${ph}px">${lab("Expectation")}${funnel}</div>
+    <div class="ev-panel" style="left:${rx}px;top:${top}px;width:${pw}px;height:${ph}px">${lab("Reality")}<svg style="position:absolute;inset:0;overflow:hidden;border-radius:.8em" width="${pw}" height="${ph}">${lines}</svg>${marks}</div>`;
+}
+// two donuts, overlapping like the mark's rings: one pink with sprinkles, one chocolate
+function donutRings() {
+  const u = ++_uid;
+  const SPR = ["#ffffff", "#ffd23f", "#4dc9ff", "#6be07a", "#ff5a5a", "#b28cff"];
+  _seed = 31;
+  const dn = (cx, icing, hi) => {
+    let s = "";
+    for (let i = 0; i < 30; i++) { const a = rnd() * Math.PI * 2, rr = 15 - 3 + rnd() * 6, x = cx + Math.cos(a) * rr, y = 32 + Math.sin(a) * rr; s += `<rect x="${f2(x - 0.9)}" y="${f2(y - 0.32)}" width="1.8" height=".64" rx=".32" fill="${SPR[i % SPR.length]}" transform="rotate(${f2(rnd() * 180)} ${f2(x)} ${f2(y)})"/>`; }
+    return `<g filter="url(#dsh${u})"><circle cx="${cx}" cy="32" r="15" fill="none" stroke="#000" stroke-width="11.8" opacity=".3"/></g><circle cx="${cx}" cy="32" r="15" fill="none" stroke="url(#dd${u})" stroke-width="11.8"/>` +
+      `<g filter="url(#di${u})"><circle cx="${cx}" cy="32" r="15" fill="none" stroke="${icing}" stroke-width="9.2"/></g><circle cx="${cx}" cy="32" r="15" fill="none" stroke="${hi}" stroke-width=".9" stroke-dasharray="12 90" stroke-dashoffset="24" transform="translate(-.8 -1)"/>${s}`;
+  };
+  return `<svg viewBox="0 0 64 64" style="width:100%;height:100%;overflow:visible"><defs>
+      <radialGradient id="dd${u}" gradientUnits="userSpaceOnUse" cx="24.2" cy="32" r="20.9"><stop offset=".43" stop-color="#A8652A"/><stop offset=".6" stop-color="#E7B37A"/><stop offset=".78" stop-color="#DDA25F"/><stop offset="1" stop-color="#9C5B22"/></radialGradient>
+      <filter id="di${u}" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".3" numOctaves="2" seed="2"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter>
+      <filter id="dsh${u}" x="-30%" y="-30%" width="160%" height="175%"><feGaussianBlur stdDeviation="1.6"/><feOffset dy="2"/></filter></defs>
+    ${dn(24.2, "#FF8FB3", "rgba(255,255,255,.55)")}${dn(39.8, "#6B3E26", "rgba(255,255,255,.35)")}</svg>`;
+}
+// a comic thought cloud (white, outlined), w wide, centred on (cx, cy)
+function thought(cx, cy, w, h, ink = "#0f1d4a") {
+  _seed = 41;
+  const n = 11, rx = w / 2, ry = h / 2, C = [];
+  for (let i = 0; i < n; i++) { const a = (i / n) * Math.PI * 2, r = Math.min(rx, ry) * (0.3 + rnd() * 0.08); C.push([cx + Math.cos(a) * (rx - r * 0.7), cy + Math.sin(a) * (ry - r * 0.7), r]); }
+  const circ = (sw, fill, stroke) => C.map(([x, y, r]) => `<circle cx="${f2(x)}" cy="${f2(y)}" r="${f2(r)}" fill="${fill}"${stroke ? ` stroke="${stroke}" stroke-width="${sw}"` : ""}/>`).join("") + `<ellipse cx="${cx}" cy="${cy}" rx="${f2(rx * 0.8)}" ry="${f2(ry * 0.72)}" fill="${fill}"${stroke ? ` stroke="${stroke}" stroke-width="${sw}"` : ""}/>`;
+  const sw = Math.max(2.5, w * 0.014);
+  return `<svg class="bn" style="left:0;top:0;overflow:visible" width="1" height="1"><g style="filter:drop-shadow(0 ${w * 0.03}px ${w * 0.04}px rgba(15,29,74,.25))">${circ(sw * 2, ink, ink)}${circ(0, "#fff")}</g></svg>`;
+}
+// Namzi, dreaming of donuts: holding one, and dreaming of the two in a thought cloud
+function donutDream(p, o) {
+  const nh = (o.nw * 340) / 320, floor = o.floor ?? p.H, top = floor - nh * 0.93;
+  const hx = o.nx + o.nw * 0.38, hy = top + nh * 0.2; // the top of Namzi's head
+  const bw = o.bw, bh = bw * 0.72, dm = bh * 0.92;
+  let dots = "";
+  [[0.25, 0.05], [0.5, 0.075], [0.75, 0.1]].forEach(([t, r]) => { const x = hx + (o.bx + bw * 0.28 - hx) * t, y = hy + (o.by + bh * 0.3 - hy) * t; dots += `<div class="bn" style="left:${x - bw * r / 2}px;top:${y - bw * r / 2}px;width:${bw * r}px;height:${bw * r}px;border-radius:50%;background:#fff;box-shadow:0 0 0 ${Math.max(2.5, bw * 0.014)}px #0f1d4a"></div>`; });
+  return thought(o.bx, o.by, bw, bh) + dots + `<div class="bn" style="left:${o.bx - dm / 2}px;top:${o.by - dm / 2}px;width:${dm}px;height:${dm}px">${donutRings()}</div>` +
+    `<div class="bn namzi" style="left:${o.nx}px;top:${top}px;width:${o.nw}px">${NZ.mascot({ mood: "dreamy", pose: "hold", prop: "donut", shadow: false })}</div>`;
+}
+// soft clouds for the donut sky
+function skyClouds(p) {
+  _seed = 7;
+  let s = "";
+  const C = [[0.05, 0.14, 0.5], [0.33, 0.03, 0.3], [0.6, 0.97, 0.46], [0.84, 0.07, 0.36], [0.2, 0.93, 0.36], [0.97, 0.6, 0.4]];
+  for (const [x, y, z] of C) {
+    const w = z * Math.min(p.H, 624) * 1.5, h = w * 0.45, cx = x * p.W, cy = y * p.H;
+    let c = "";
+    for (let i = 0; i < 6; i++) { const t = i / 5, r = h * (0.36 + Math.sin(t * Math.PI) * 0.3 + rnd() * 0.08); c += `<circle cx="${f2(cx - w / 2 + r + t * (w - 2 * r))}" cy="${f2(cy + h * 0.1 - Math.sin(t * Math.PI) * h * 0.16)}" r="${f2(r)}" fill="#fff"/>`; }
+    s += `<svg class="bn" style="left:0;top:0;overflow:visible;opacity:.85" width="1" height="1"><g>${c}<rect x="${f2(cx - w / 2 + h * 0.3)}" y="${f2(cy)}" width="${f2(w - h * 0.6)}" height="${f2(h * 0.46)}" rx="${f2(h * 0.23)}" fill="#fff"/></g></svg>`;
+  }
+  return s;
+}
+// the funnel as a pipe, leaking between booked and held
+function leakyPipe(W, H, k) {
+  const st = [["typeform", "Leads", "1,240"], ["calendly", "Booked", "412"], ["fathom", "Held", "263"], ["stripe", "Paid", "64"]];
+  const py = H * 0.34, pt = H * 0.3, seg = W / 4;
+  let out = `<svg style="position:absolute;left:0;top:0;overflow:visible" width="${W}" height="${H}"><defs><linearGradient id="pipeg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef2f9"/><stop offset=".35" stop-color="#ffffff"/><stop offset=".7" stop-color="#c9d1e2"/><stop offset="1" stop-color="#9aa5bd"/></linearGradient></defs>
+    <rect x="${2 * k}" y="${py - pt / 2}" width="${W - 4 * k}" height="${pt}" rx="${pt / 2}" fill="url(#pipeg)" stroke="#2b2f3a" stroke-width="${1.6 * k}"/>`;
+  for (let i = 1; i < 4; i++) out += `<rect x="${i * seg - 6 * k}" y="${py - pt / 2 - 5 * k}" width="${12 * k}" height="${pt + 10 * k}" rx="${3 * k}" fill="${i === 2 ? "#ffe1dc" : "#dfe5f0"}" stroke="${i === 2 ? "#f0553d" : "#2b2f3a"}" stroke-width="${1.6 * k}"/>`;
+  // the leak: drops falling out of the joint between booked and held
+  const lx = 2 * seg;
+  [[0, 0.62, 1], [-7, 0.8, 0.8], [6, 0.93, 0.65]].forEach(([dx, t, s]) => { const x = lx + dx * k, y = py + pt / 2 + (H - py - pt / 2) * (t - 0.5); out += `<path transform="translate(${x} ${y}) scale(${k * s})" d="M0 -9C3 -4 6 0 6 4A6 6 0 0 1 -6 4C-6 0 -3 -4 0 -9Z" fill="#2f5fd8" opacity=".85"/>`; });
+  out += `</svg>`;
+  st.forEach(([t, l, v], i) => {
+    out += `<div style="position:absolute;left:${i * seg + seg / 2}px;top:${py}px;transform:translate(-50%,-50%);display:flex;align-items:center;gap:${5 * k}px;font-size:${13 * k}px;font-weight:700;letter-spacing:-0.02em;white-space:nowrap;color:var(--ink)"><span class="mark" data-src="${t}" style="width:${18 * k}px;height:${18 * k}px"></span>${l} <b style="font-weight:800">${v}</b></div>`;
+  });
+  out += `<div style="position:absolute;left:${lx + 16 * k}px;top:${py + pt / 2 + 8 * k}px;display:inline-flex;align-items:center;gap:${5 * k}px;background:#f0553d;color:#fff;border-radius:999px;padding:${3 * k}px ${9 * k}px;font-size:${11.5 * k}px;font-weight:750;white-space:nowrap">36% of booked calls never happen</div>`;
+  out += `<div class="excap" style="position:absolute;left:${6 * k}px;top:${py + pt / 2 + 11 * k}px;font-size:${10 * k}px;color:#14141c">Example data</div>`;
+  return `<div style="position:relative;width:${W}px;height:${H}px">${out}</div>`;
+}
+// a wall of the tools Namzilabs connects, fading towards the middle
+function logoWall(p, pid) {
+  const co = pid === "linkedin-company", d = co ? 44 : 70, g = co ? 14 : 22;
+  const T = Object.keys(window.NZ_MARKS).filter((t) => window.NZ_MARKS[t].svg);
+  let s = "", i = 0;
+  for (let y = -d / 2, r = 0; y < p.H + d; y += d + g, r++) for (let x = (r % 2 ? -(d + g) / 2 : 0) - d / 2; x < p.W + d; x += d + g, i++) {
+    s += `<div class="disc" style="left:${x}px;top:${y}px;width:${d}px;height:${d}px"><span class="mark" data-src="${T[(i * 7 + r * 3) % T.length]}"></span></div>`;
+  }
+  return `<div style="position:absolute;inset:0;-webkit-mask-image:radial-gradient(${co ? "38% 90%" : "34% 80%"} at ${co ? 52 : 64}% 50%, transparent 58%, #000 92%);mask-image:radial-gradient(${co ? "38% 90%" : "34% 80%"} at ${co ? 52 : 64}% 50%, transparent 58%, #000 92%);opacity:.9">${s}</div>`;
+}
 
 // memes skip the link preview and the email signature: those stay on-brand
-const MEME_SIZES = ["x", "linkedin", "linkedin-profile", "youtube", "facebook", "facebook-group"];
+const MEME_SIZES = ["x", "linkedin-company", "linkedin-profile", "youtube", "facebook", "facebook-group"];
 
 function banner(cid, pid) {
   const c = CONCEPTS[cid], p = P[pid];
@@ -445,33 +684,36 @@ function banner(cid, pid) {
   el.className = `canvas ${c.surface}`;
   el.style.width = `${p.W}px`; el.style.height = `${p.H}px`;
   el.dataset.still = `${cid}/${pid}`;
-  let html = (c.grid === false ? "" : `<div class="grid88"></div>`) + (typeof c.extra === "function" ? c.extra() : c.extra || "");
-  if (c.layout) {
+  if (p.scale) el.dataset.scale = p.scale;
+  let html = (c.grid === false ? "" : `<div class="grid88"></div>`) + (typeof c.extra === "function" ? c.extra(p, pid) : c.extra || "");
+  if (ZONE[pid]) {
+    html += c.li(p, pid, ZONE[pid]);
+  } else if (c.layout) {
     html += c.layout(p, pid);
   } else if (c.minimal) {
     // one big lockup and the line, centred where the profile photo can't reach
-    const avoid = pid === "x" || pid === "linkedin-profile" ? p.W * 0.08 : 0;
-    const size = pid === "linkedin" ? 58 : pid === "email" ? 64 : pid === "youtube" ? 118 : Math.min(112, p.H * 0.23);
+    const avoid = pid === "x" ? p.W * 0.08 : 0;
+    const size = pid === "email" ? 64 : pid === "youtube" ? 118 : Math.min(112, p.H * 0.23);
     html += `<div class="bn" style="left:${avoid}px;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
       <div class="bn-lock" style="font-size:${size}px">${MARK("#fff")}<span>Namzilabs</span></div>
-      ${pid === "linkedin" || pid === "email" ? "" : `<div style="font-family:var(--serif);font-style:italic;font-size:${size * 0.42}px;color:${c.subColor};margin-top:${size * 0.18}px;letter-spacing:-0.01em">All your data in one place. Any metric. The true numbers.</div>`}</div>`;
+      ${pid === "email" ? "" : `<div style="font-family:var(--serif);font-style:italic;font-size:${size * 0.42}px;color:${c.subColor};margin-top:${size * 0.18}px;letter-spacing:-0.01em">All your data in one place. Any metric. The true numbers.</div>`}</div>`;
   } else {
     html += c.visual(p, pid);
     if (p.lock) html += `<div class="bn bn-lock" style="left:${p.lock.x}px;top:${p.lock.y}px;font-size:${p.lock.size}px;color:${c.fg}">${MARK(c.fg)}<span>Namzilabs</span></div>`;
     const sub = p.head.sub ? `<div class="bn-sub" style="font-size:${p.head.sub}px;color:${c.subColor}">${c.sub.map((x, i) => (i ? `<span class="sep">·</span>` : "") + `<span>${x}</span>`).join("")}</div>` : "";
     const head = p.head.oneLine && c.headShort ? c.headShort : c.head;
-    html += `<div class="bn" style="left:${p.head.x}px;top:${p.head.y}px;width:${p.head.w}px;color:${c.fg}"><div class="bn-head" style="font-size:${p.head.size * (p.head.oneLine ? 1 : c.hs || 1)}px${p.head.oneLine ? ";white-space:nowrap" : ""}">${head}</div>${sub}</div>`;
+    html += `<div class="bn" style="left:${p.head.x}px;top:${p.head.y}px;width:${p.head.w}px;color:${c.fg}"><div class="${c.headCls || "bn-head"}" style="font-size:${p.head.size * (p.head.oneLine ? 1 : c.hs || 1)}px${p.head.oneLine ? ";white-space:nowrap" : ""}">${head}</div>${sub}</div>`;
     if (p.url) html += `<div class="bn" style="left:${p.head.x}px;bottom:${p === P.email ? 40 : 64}px;font-size:${p === P.email ? 22 : 26}px;font-weight:700;letter-spacing:-0.015em;color:${c.fg};opacity:.85">namzilabs.co${p === P.email ? "" : ` <span style="opacity:.6;font-weight:550">· free to start</span>`}</div>`;
   }
   el.innerHTML = html;
   document.body.appendChild(el);
 }
 
-// ?only=neon,formula renders just those designs (handy while editing)
-const ONLY = new URLSearchParams(location.search).get("only");
+// ?only=neon,formula renders just those designs, ?sizes=linkedin-company,… just those sizes (handy while editing)
+const Q = new URLSearchParams(location.search), ONLY = Q.get("only"), SIZES = Q.get("sizes");
 for (const cid of Object.keys(CONCEPTS)) {
   if (ONLY && !ONLY.split(",").includes(cid)) continue;
-  for (const pid of CONCEPTS[cid].meme ? MEME_SIZES : Object.keys(P)) banner(cid, pid);
+  for (const pid of CONCEPTS[cid].sizes || (CONCEPTS[cid].meme ? MEME_SIZES : Object.keys(P))) if (!SIZES || SIZES.split(",").includes(pid)) banner(cid, pid);
 }
 NZ.still();
 </script>

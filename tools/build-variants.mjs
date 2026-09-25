@@ -4,7 +4,7 @@
 // Each is a self-contained 1024×1024 SVG (a full-bleed profile picture; platforms crop it to a
 // circle). brand/logos/variants.html renders the PNGs.
 //   node tools/build-variants.mjs  →  brand/logos/variants/<id>.svg + variants.json
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -139,16 +139,9 @@ add("neon", "Neon", "Grounds", "A neon sign on a dark wall: blue and violet tube
 }
 
 /* ── fun ──────────────────────────────────────────────────────────────── */
-{
-  const GOLD = [[0, "#6B4208"], [0.2, "#C8921F"], [0.42, "#FFF0B0"], [0.6, "#E2AE3A"], [0.82, "#9A6512"], [1, "#5A3606"]];
-  add("precious", "Precious", "Fun", "Two gold rings, glowing in the dark. The meme: one place to rule them all.",
-    bg("#0A0604") + `<circle cx="${C}" cy="${C + 60}" r="520" fill="url(#pf)"/>` +
-      `<g filter="url(#pg)">${rings("#FF9A2E", 44)}</g>` + ring(L, "url(#pgL)", 44) + ring(Rt, "url(#pgR)", 44) +
-      rings("rgba(255,248,220,.9)", 4, ` stroke-dasharray="80 860" stroke-dashoffset="335" transform="translate(-4 -4)"`),
-    `<radialGradient id="pf" cx=".5" cy=".55" r=".5"><stop offset="0" stop-color="#FF7A18" stop-opacity=".55"/><stop offset=".45" stop-color="#B8290E" stop-opacity=".28"/><stop offset="1" stop-color="#B8290E" stop-opacity="0"/></radialGradient>
-     ${tube("pgL", L, 44, GOLD)}${tube("pgR", Rt, 44, GOLD)}
-     <filter id="pg" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="24"/></filter>`, "precious");
-}
+// Precious is a render, not a drawing: the 3D gold rings (brand/logos/one-ring/rings.html) in front of
+// a fiery mountain (brand/logos/one-ring/scenes.html). So it ships as a PNG only.
+V.push({ id: "precious", name: "Precious", group: "Fun", note: "Two heavy gold bands with a glowing inscription, in front of a fiery mountain. One place to rule them all.", pairs: "precious", raster: "one-ring/precious-1024.png" });
 {
   let sp = "";
   for (let i = 0; i < 7; i++) {
@@ -183,13 +176,13 @@ add("coffee", "Coffee rings", "Fun", "Two mug stains on the desk of whoever stil
     }
     return `<g filter="url(#dsh)">${ring(cx, "#000", 118, ' opacity=".35"')}</g>${ring(cx, `url(#${id}d)`, 118)}<g filter="url(#${id})">${ring(cx, `url(#${id}i)`, 92)}</g>${ring(cx, "rgba(255,255,255,.4)", 9, ` transform="translate(-8 -10)" stroke-dasharray="120 900" stroke-dashoffset="240"`)}${s}`;
   };
-  add("donuts", "Donuts", "Fun", "Two donuts, holes intact. For the Friday post.",
+  add("donuts", "Donuts", "Fun", "Two donuts, holes intact. Mmm… all your data in one place.",
     bg("#CFE3FF") + donut(L - 8, "#FF8FB3", "di1") + donut(Rt + 8, "#6B3E26", "di2"),
     `${tube("di1d", L - 8, 118, [[0, "#A8652A"], [0.35, "#E7B37A"], [0.65, "#DDA25F"], [1, "#9C5B22"]])}${tube("di2d", Rt + 8, 118, [[0, "#A8652A"], [0.35, "#E7B37A"], [0.65, "#DDA25F"], [1, "#9C5B22"]])}
      ${tube("di1i", L - 8, 92, [[0, "#E25C8A"], [0.4, "#FFA6C4"], [0.7, "#FF8FB3"], [1, "#D9507F"]])}${tube("di2i", Rt + 8, 92, [[0, "#3E2214"], [0.4, "#8A5634"], [0.7, "#6B3E26"], [1, "#3A1F12"]])}
      <filter id="di1" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="2"/><feDisplacementMap in="SourceGraphic" scale="22"/></filter>
      <filter id="di2" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="22"/></filter>
-     <filter id="dsh" x="-30%" y="-30%" width="160%" height="175%"><feGaussianBlur stdDeviation="16"/><feOffset dy="20"/></filter>`);
+     <filter id="dsh" x="-30%" y="-30%" width="160%" height="175%"><feGaussianBlur stdDeviation="16"/><feOffset dy="20"/></filter>`, "donut");
 }
 {
   const buoy = (cx) => `<g filter="url(#lsh)">${ring(cx, "#000", 96, ' opacity=".3"')}</g>${ring(cx, "#FFFFFF", 96)}${ring(cx, "#E8412F", 96, ` stroke-dasharray="${f((2 * Math.PI * R) / 8)} ${f((2 * Math.PI * R) / 8)}" transform="rotate(22.5 ${cx} ${C})"`)}<circle cx="${cx}" cy="${C}" r="${R + 49}" fill="none" stroke="#C8392A" stroke-width="3" opacity=".5"/><circle cx="${cx}" cy="${C}" r="${R - 49}" fill="none" stroke="#C8392A" stroke-width="3" opacity=".5"/>`;
@@ -294,8 +287,12 @@ add("sticker", "Sticker", "Fun", "A die-cut sticker of the mark, slapped on a br
      <filter id="gsh2" x="-30%" y="-30%" width="160%" height="175%"><feGaussianBlur stdDeviation="14"/><feOffset dy="18"/><feComponentTransfer><feFuncA type="linear" slope=".28"/></feComponentTransfer></filter>`);
 }
 
-for (const v of V) writeFileSync(path.join(OUT, `${v.id}.svg`), v.svg);
-const meta = V.map(({ id, name, group, note, pairs }) => ({ id, name, group, note, pairs }));
+for (const v of V) {
+  const f = path.join(OUT, `${v.id}.svg`);
+  if (v.svg) writeFileSync(f, v.svg);
+  else if (existsSync(f)) rmSync(f); // a raster variant has no SVG
+}
+const meta = V.map(({ id, name, group, note, pairs, raster }) => ({ id, name, group, note, pairs, ...(raster ? { raster } : {}) }));
 writeFileSync(path.join(OUT, "variants.json"), JSON.stringify(meta, null, 2) + "\n");
 // the same list as a script, for the render pages (file:// pages can't fetch JSON)
 writeFileSync(path.join(OUT, "variants.js"), `window.NZ_VARIANTS = ${JSON.stringify(meta)};\n`);

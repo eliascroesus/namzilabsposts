@@ -126,15 +126,17 @@ function wordmark(text, size, tracking = -0.045) {
   const glyphs = font.stringToGlyphs(text);
   const scale = size / font.unitsPerEm;
   let x = 0;
-  const parts = [];
+  const parts = [], bb = { x1: Infinity, y1: Infinity, x2: -Infinity, y2: -Infinity };
   glyphs.forEach((g, i) => {
     const p = g.getPath(x, 0, size);
     parts.push(p.toPathData(2));
+    const b = p.getBoundingBox();
+    if (b.x2 > b.x1) Object.assign(bb, { x1: Math.min(bb.x1, b.x1), y1: Math.min(bb.y1, b.y1), x2: Math.max(bb.x2, b.x2), y2: Math.max(bb.y2, b.y2) });
     const kern = i < glyphs.length - 1 ? font.getKerningValue(g, glyphs[i + 1]) : 0;
     x += (g.advanceWidth + kern) * scale + (i < glyphs.length - 1 ? tracking * size : 0);
   });
   const capHeight = (font.tables.os2.sCapHeight || 0.727 * font.unitsPerEm) * scale;
-  return { d: parts.join(" "), width: x, capHeight };
+  return { d: parts.join(" "), width: x, capHeight, bbox: bb };
 }
 
 /* "namzılabs" with the i's dot replaced by a tiny Between mark (concept 10) */
@@ -214,6 +216,8 @@ for (const c of CONCEPTS) {
    empty, so it sits on any background: blue, ink, sky or paper. (Same
    geometry as NZ.RINGS in lib/motion.js.) Plus the "eclipse" alternate:
    two solid discs with the overlap knocked out, the boldest at avatar size. */
+const BASELINE = 32 + WM.capHeight / 2;
+const lock = (c) => `${MONO.rings(c)}<path transform="translate(${64 + 12} ${BASELINE})" d="${WM.d}" fill="${c}"/>`;
 const MONO = {
   rings: (c) => `<circle cx="25" cy="32" r="15" fill="none" stroke="${c}" stroke-width="4.6"/><circle cx="39" cy="32" r="15" fill="none" stroke="${c}" stroke-width="4.6"/>`,
   eclipse: (c) => `<path fill-rule="evenodd" fill="${c}" d="M25 14.7a17.3 17.3 0 1 0 0.001 0ZM39 14.7a17.3 17.3 0 1 0 0.001 0Z"/>`,
@@ -238,11 +242,53 @@ const GROUNDS = {
       writeFileSync(path.join(dir, `${pre}profile-${name}.svg`), svg("0 0 64 64", `${g.defs}<rect width="64" height="64" fill="${g.fill}"/><rect width="64" height="64" fill="${g.glow}"/>${scaled(draw(g.mark), 0.64)}`));
     }
   }
-  const baseline = 32 + WM.capHeight / 2;
   const width = Math.ceil(64 + 12 + WM.width + 4);
-  const lock = (c) => `${MONO.rings(c)}<path transform="translate(${64 + 12} ${baseline})" d="${WM.d}" fill="${c}"/>`;
   writeFileSync(path.join(dir, "lockup-ink.svg"), svg(`0 0 ${width} 64`, lock(INK)));
   writeFileSync(path.join(dir, "lockup-white.svg"), svg(`0 0 ${width} 64`, lock(WHITE)));
+}
+
+/* ── transparent files, for the website and anything else ───────────────
+   The symbol, the wordmark and the lockup in white, black (the brand's ink)
+   and blue, cropped tight to the artwork, with nothing behind them. The PNGs
+   are rendered by brand/logos/transparent.html. Plus the website icons. */
+{
+  const dir = path.join(OUT, "transparent");
+  mkdirSync(dir, { recursive: true });
+  const f1 = (n) => Math.round(n * 100) / 100;
+  const COLORS = { white: WHITE, black: INK, blue: BLUE_DEEP };
+  const pad = 0.3; // so anti-aliasing never clips an edge
+  const b = WM.bbox;
+  const box = {
+    symbol: [7.7 - pad, 14.7 - pad, 56.3 + pad, 49.3 + pad],
+    lockup: [7.7 - pad, Math.min(14.7, BASELINE + b.y1) - pad, 76 + b.x2 + pad, Math.max(49.3, BASELINE + b.y2) + pad],
+    wordmark: [b.x1 - pad, b.y1 - pad, b.x2 + pad, b.y2 + pad],
+  };
+  const art = { symbol: (c) => MONO.rings(c), lockup: (c) => lock(c), wordmark: (c) => `<path d="${WM.d}" fill="${c}"/>` };
+  const shown = { symbol: 160, lockup: 480, wordmark: 400 }; // a sensible default size when dropped in an <img>
+  const files = [];
+  for (const [kind, [x1, y1, x2, y2]] of Object.entries(box)) {
+    const w = x2 - x1, h = y2 - y1;
+    for (const [name, c] of Object.entries(COLORS)) {
+      const file = `namzilabs-${kind}-${name}`;
+      writeFileSync(path.join(dir, `${file}.svg`), svg(`${f1(x1)} ${f1(y1)} ${f1(w)} ${f1(h)}`, art[kind](c), shown[kind], f1((shown[kind] * h) / w)));
+      files.push({ file, kind, color: name, ratio: Math.round((w / h) * 10000) / 10000 });
+    }
+  }
+  // the render page reads this (file:// pages can't fetch JSON)
+  writeFileSync(path.join(dir, "files.js"), `window.NZ_TRANSPARENT = ${JSON.stringify(files)};\n`);
+}
+
+/* the website's icons: favicon (SVG + ICO), the home-screen icons and a manifest.
+   The PNGs and the ICO come from brand/logos/transparent.html. */
+{
+  const dir = path.join(OUT, "web");
+  mkdirSync(dir, { recursive: true });
+  const g = GROUNDS.blue, scaled = (inner, k) => `<g transform="translate(32 32) scale(${k}) translate(-32 -32)">${inner}</g>`;
+  writeFileSync(path.join(dir, "favicon.svg"), svg("0 0 64 64", `${g.defs}<rect width="64" height="64" rx="14.5" fill="${g.fill}"/><rect width="64" height="64" rx="14.5" fill="${g.glow}"/>${scaled(MONO.rings(WHITE), 0.82)}`));
+  writeFileSync(path.join(dir, "site.webmanifest"), JSON.stringify({
+    name: "Namzilabs", short_name: "Namzilabs", theme_color: "#2F5FD8", background_color: "#FFFFFF", display: "standalone",
+    icons: [{ src: "/icon-192.png", sizes: "192x192", type: "image/png" }, { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" }],
+  }, null, 2) + "\n");
 }
 
 writeFileSync(

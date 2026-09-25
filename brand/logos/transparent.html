@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — transparent logos and web icons</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  /* PNGs of the transparent logo files (white, black and blue; nothing behind them) and the website
+     icons. The SVGs come from tools/build-logos.mjs; this page only rasterises them:
+       node tools/build-logos.mjs && node tools/render-stills.mjs brand/logos/transparent.html brand/logos --ss 2 --alpha
+     then the favicon.ico from the 32 px PNG (see README). */
+  body { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; align-items: flex-start; background: #8a8fa3; }
+  .canvas { flex: none; background: transparent; }
+  .canvas img { width: 100%; height: 100%; display: block; }
+</style>
+</head>
+<body>
+<script src="transparent/files.js"></script>
+<script>
+  const SIZES = { symbol: [512, 2048], lockup: [1200, 2400], wordmark: [1200] };
+  for (const t of window.NZ_TRANSPARENT) for (const w of SIZES[t.kind]) {
+    document.write(`<div class="canvas" data-still="transparent/${t.file}-${w}" style="width:${w}px;height:${Math.round(w / t.ratio)}px"><img src="transparent/${t.file}.svg" alt=""></div>`);
+  }
+  // website icons: the favicon is the rounded blue tile; home-screen icons are full-bleed (the OS rounds them)
+  const WEB = [["web/favicon-32", "web/favicon.svg", 32], ["web/apple-touch-icon", "01-between-mono/profile-blue.svg", 180], ["web/icon-192", "01-between-mono/profile-blue.svg", 192], ["web/icon-512", "01-between-mono/profile-blue.svg", 512]];
+  for (const [name, src, w] of WEB) document.write(`<div class="canvas" data-still="${name}" style="width:${w}px;height:${w}px"><img src="${src}" alt=""></div>`);
+</script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

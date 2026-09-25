@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — the gold rings (3D)</title>
+<link rel="stylesheet" href="../../../lib/brand.css">
+<style>
+  /* The logo as two heavy gold bands, woven together like the mark, each carrying a glowing
+     inscription in our own words (a flowing script, not the film's lettering or Tengwar).
+     Rendered in 3D (three.js) to transparent PNGs, plus a "glow" pass (the letters alone, on black)
+     that the compositions blur and screen on top, so the writing blooms like hot metal.
+       node tools/render-stills.mjs brand/logos/one-ring/rings.html brand/logos/one-ring --ss 1 --alpha */
+  body { margin: 0; padding: 20px; display: flex; flex-wrap: wrap; gap: 20px; background: #333; }
+  .canvas { flex: none; background: transparent; }
+  .canvas canvas { display: block; width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<div class="canvas" data-still="rings-hero" style="width:2400px;height:1500px"></div>
+<div class="canvas" data-still="rings-hero-glow" style="width:2400px;height:1500px"></div>
+<div class="canvas" data-still="rings-square" style="width:1600px;height:1600px"></div>
+<div class="canvas" data-still="rings-square-glow" style="width:1600px;height:1600px"></div>
+<script type="importmap">{ "imports": { "three": "../../../node_modules/three/build/three.module.js", "three/addons/": "../../../node_modules/three/examples/jsm/" } }</script>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+const font = new FontFace("GreatVibes", "url(../../../assets/fonts/great-vibes.woff2)");
+await font.load();
+document.fonts.add(font);
+
+// the band's cross-section: domed outside, nearly flat inside, softly rounded edges (a "court" band,
+// heavy like the one in the films). Sampled evenly by arc length, so the inscription isn't stretched.
+const R = 1, H = 0.34, T = 0.13;
+function section(n = 220) {
+  const a = T / 2, b = H / 2, c = R + a, dense = [];
+  for (let i = 0; i <= 4000; i++) {
+    const t = -Math.PI / 2 + (i / 4000) * Math.PI * 2; // from the bottom, out and up the outer face, over, down the inside
+    const ct = Math.cos(t), st = Math.sin(t);
+    const p = ct >= 0 ? 0.5 : 0.28;
+    dense.push({ r: c + a * Math.sign(ct) * Math.abs(ct) ** p, y: b * Math.sign(st) * Math.abs(st) ** 0.24, t });
+  }
+  const len = [0];
+  for (let i = 1; i < dense.length; i++) len.push(len[i - 1] + Math.hypot(dense[i].r - dense[i - 1].r, dense[i].y - dense[i - 1].y));
+  const L = len[len.length - 1], pts = [];
+  let j = 0, sMid = 0;
+  for (let k = 0; k <= n; k++) {
+    const s = (k / n) * L;
+    while (j < len.length - 2 && len[j + 1] < s) j++;
+    const u = (s - len[j]) / (len[j + 1] - len[j] || 1), A = dense[j], B = dense[j + 1];
+    pts.push(new THREE.Vector2(A.r + (B.r - A.r) * u, A.y + (B.y - A.y) * u));
+  }
+  for (let i = 1; i < dense.length; i++) if (dense[i - 1].t < 0 && dense[i].t >= 0) sMid = len[i];
+  return { pts, L, vMid: sMid / L };
+}
+const SEC = section();
+
+// the inscription: one sentence that runs once around the band and meets itself exactly
+function inscription(phrases, { glowOnly = false } = {}) {
+  const W = 6144, circ = 2 * Math.PI * (R + T);
+  const Hc = Math.round((W * SEC.L) / circ); // the whole cross-section, so v maps 1:1 onto it
+  const c = document.createElement("canvas");
+  c.width = W; c.height = Hc;
+  const g = c.getContext("2d");
+  g.fillStyle = "#000"; g.fillRect(0, 0, W, Hc);
+  const yMid = (1 - SEC.vMid) * Hc; // canvas y of the middle of the outer face (textures are flipped)
+  const sep = "   ·   ";
+  let fs = 140;
+  g.font = `${fs}px GreatVibes`;
+  const seqW = g.measureText(phrases.join(sep) + sep).width;
+  fs = Math.min(fs * (W / seqW), 158); // fill the circumference exactly once
+  g.font = `${fs}px GreatVibes`;
+  const parts = phrases.map((p) => ({ p, w: g.measureText(p).width }));
+  const gap = (W - parts.reduce((s, q) => s + q.w, 0)) / parts.length;
+  g.textBaseline = "middle"; g.textAlign = "left";
+  // a hot core with a fiery halo, like writing that shows only in the fire
+  const passes = [[fs * 0.34, "rgba(255,60,8,.95)", "#ff5a14"], [fs * 0.12, "rgba(255,130,30,1)", "#ff9a2e"], [0, "rgba(0,0,0,0)", "#ffd36b"]];
+  for (const [blur, glow, fill] of passes) {
+    g.shadowBlur = blur; g.shadowColor = glow; g.fillStyle = fill;
+    for (const shift of [-W, 0, W]) { // draw across the seam so glyphs and glow wrap
+      let x = gap / 2 + shift;
+      for (const q of parts) {
+        g.fillText(q.p, x, yMid + fs * 0.1);
+        g.fillText("·", x + q.w + gap / 2 - fs * 0.06, yMid + fs * 0.02);
+        x += q.w + gap;
+      }
+    }
+  }
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 16;
+  t.wrapS = THREE.RepeatWrapping;
+  return t;
+}
+
+function band(phrases, glow) {
+  const geo = new THREE.LatheGeometry(SEC.pts, 360);
+  const tex = inscription(phrases);
+  const mat = glow
+    ? new THREE.MeshBasicMaterial({ map: tex })
+    : new THREE.MeshPhysicalMaterial({ color: 0xffcf7a, metalness: 1, roughness: 0.17, clearcoat: 0.5, clearcoatRoughness: 0.12, emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 1.9 });
+  return new THREE.Mesh(geo, mat);
+}
+
+function render(el, { fov, camY, camZ, glow }) {
+  const W = el.clientWidth, Hh = el.clientHeight;
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: !glow, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(1);
+  renderer.setSize(W, Hh, false);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = glow ? THREE.NoToneMapping : THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.08;
+  renderer.setClearColor(0x000000, glow ? 1 : 0);
+  el.appendChild(renderer.domElement);
+
+  const s = new THREE.Scene();
+  if (!glow) {
+    // reflections: a studio room warmed by the fire below, plus a strip of lava for the gold to catch
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    const env = new RoomEnvironment();
+    env.traverse((o) => { if (o.material && o.material.color) o.material.color.lerp(new THREE.Color(0xffa860), 0.4); });
+    const lava = new THREE.Mesh(new THREE.PlaneGeometry(40, 10), new THREE.MeshBasicMaterial({ color: new THREE.Color(9, 2.4, 0.35) }));
+    lava.position.set(0, -6, 5); lava.lookAt(0, 0, 0); env.add(lava);
+    const sky = new THREE.Mesh(new THREE.PlaneGeometry(30, 8), new THREE.MeshBasicMaterial({ color: new THREE.Color(2.2, 0.55, 0.18) }));
+    sky.position.set(0, 3, -9); sky.lookAt(0, 0, 0); env.add(sky);
+    s.environment = pmrem.fromScene(env, 0.02).texture;
+    const key = new THREE.DirectionalLight(0xfff0d0, 2.4); key.position.set(-3, 6, 4); s.add(key);
+    const fire = new THREE.PointLight(0xff5a14, 46, 12); fire.position.set(0.6, -1.3, 3); s.add(fire);
+    const rim = new THREE.PointLight(0xffb070, 22, 10); rim.position.set(2.6, 2.2, -2.6); s.add(rim);
+  }
+  // woven like the mark: centres 0.93 R apart, each tilted about the line between them,
+  // so one ring passes over the other at the front crossing and under it at the back
+  const tilt = THREE.MathUtils.degToRad(15), spread = 0.466 * (R + T / 2);
+  const a = band(["all your data in one place", "any metric", "the whole funnel", "every step", "the true numbers"], glow);
+  const b = band(["one place to rule them all", "every tool", "counted once", "cross-referenced", "free to start"], glow);
+  a.position.x = -spread; a.rotation.x = tilt; a.rotation.y = -0.7;
+  b.position.x = spread; b.rotation.x = -tilt; b.rotation.y = -1.18;
+  s.add(a, b);
+
+  const cam = new THREE.PerspectiveCamera(fov, W / Hh, 0.1, 50);
+  cam.position.set(0, camY, camZ); cam.lookAt(0, -0.04, 0);
+  renderer.render(s, cam);
+}
+
+const V = { hero: { fov: 26, camY: 2.25, camZ: 4.85 }, square: { fov: 30, camY: 3.8, camZ: 6.2 } };
+for (const [k, v] of Object.entries(V)) {
+  render(document.querySelector(`[data-still="rings-${k}"]`), { ...v, glow: false });
+  render(document.querySelector(`[data-still="rings-${k}-glow"]`), { ...v, glow: true });
+}
+window.__done = true;
+</script>
+<script>window.__ready = new Promise((r) => { const t = setInterval(() => { if (window.__done) { clearInterval(t); setTimeout(() => r(true), 300); } }, 50); });</script>
+</body>
+</html>
