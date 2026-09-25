@@ -44,9 +44,15 @@ const POST_AUD = {
   "25-horror-stories": ["founders"], "26-monday-scorecard": ["sales"], "27-namzi-never-says": ["everyone"], "28-tier-list": ["everyone"],
   "29-how-many-members": ["creators"], "30-list-vs-buyers": ["ecommerce"], "31-cost-per-held": ["agencies"], "32-book-sooner": ["sales"],
   "33-three-hours-later": ["founders"], "34-namzi-first-week": ["everyone"], "35-how-it-works": ["everyone"],
+  "36-my-precious": ["everyone"], "37-mmm-one-place": ["everyone", "ecommerce"], "38-same-person": ["sales"], "39-source-of-truth": ["founders"],
+  "40-everyone-pointing": ["founders", "sales"], "41-nah-yeah": ["agencies", "founders"], "42-this-is-fine": ["founders"], "43-pivot": ["agencies"],
+  "44-funnels-onions": ["sales", "agencies"],
 };
-const POST_NAMZI = new Set(["13-meet-namzi", "14-group-chat", "16-red-flags", "21-how-many-showed", "27-namzi-never-says", "34-namzi-first-week"]);
+const POST_NAMZI = new Set(["13-meet-namzi", "14-group-chat", "16-red-flags", "21-how-many-showed", "27-namzi-never-says", "34-namzi-first-week",
+  "36-my-precious", "37-mmm-one-place", "38-same-person", "39-source-of-truth", "40-everyone-pointing", "41-nah-yeah", "42-this-is-fine", "43-pivot", "44-funnels-onions"]);
 const PINNED = new Set(["35-how-it-works", "11-all-your-data"]);
+// the parody posts: famous scenes and meme formats, with Namzi in every role
+const POST_MEME = new Set(["36-my-precious", "37-mmm-one-place", "38-same-person", "39-source-of-truth", "40-everyone-pointing", "41-nah-yeah", "42-this-is-fine", "43-pivot", "44-funnels-onions"]);
 const VIDEO_AUD = {
   "01-three-answers": ["sales"], "02-three-steps": ["everyone"], "03-monday-907": ["everyone"], "04-receipts": ["everyone"],
   "05-ask-your-ai": ["everyone"], "06-logo-sting": ["everyone"], "07-meet-namzi": ["everyone"], "08-group-chat": ["ecommerce"],
@@ -107,7 +113,7 @@ function parsePost(dir) {
       return { kind: "x", title: s.title, blocks };
     }
     if (/^Alt text/i.test(s.title)) return { kind: "alt", title: s.title, text: body.split("\n").map((l) => l.replace(/^\s*-\s*/, "").replace(/\*\*/g, "")).filter(Boolean).join("\n\n") };
-    if (/^Claims check/i.test(s.title)) return { kind: "claims", title: s.title, text: body };
+    if (/^Claims( and IP)? check/i.test(s.title)) return { kind: "claims", title: s.title, text: body };
     return { kind: "md", title: s.title, text: body };
   });
   const files = readdirSync(path.join(ROOT, "posts", dir)).filter((f) => /\.(png)$/.test(f) && !f.includes("@2x"));
@@ -120,7 +126,7 @@ function parsePost(dir) {
   return {
     dir, num: num.trim(), title: t.join(" · ").trim(), for: meta.for || "", job: meta.job || "", format: meta.format || "",
     formatShort: ig > 1 ? `Carousel · ${ig} slides` : "Single image",
-    audiences: POST_AUD[dir] || ["everyone"], mascot: POST_NAMZI.has(dir), hold: /HOLD/.test(dir), pinned: PINNED.has(dir),
+    audiences: POST_AUD[dir] || ["everyone"], mascot: POST_NAMZI.has(dir), meme: POST_MEME.has(dir), hold: /HOLD/.test(dir), pinned: PINNED.has(dir),
     images, md, sections,
     pdf: existsSync(path.join(ROOT, "posts", dir, "linkedin-carousel.pdf")) ? { name: "linkedin-carousel.pdf", path: `posts/${dir}/linkedin-carousel.pdf`, size: size(`posts/${dir}/linkedin-carousel.pdf`) } : null,
   };
@@ -203,8 +209,27 @@ function build({ web }) {
   // the mark's variants: same two rings, different finishes and grounds (tools/build-variants.mjs)
   const variants = existsSync(path.join(ROOT, "brand/logos/variants/variants.json")) ? JSON.parse(read("brand/logos/variants/variants.json")).map((v) => {
     const png = `brand/logos/variants/${v.id}-1024.png`;
-    return { ...v, png: { name: `${v.id}-1024.png`, path: png, size: size(png) }, svg: { name: `${v.id}.svg`, text: read(`brand/logos/variants/${v.id}.svg`).trim() } };
+    return { ...v, png: { name: `${v.id}-1024.png`, path: png, size: size(png) }, svg: v.raster ? null : { name: `${v.id}.svg`, text: read(`brand/logos/variants/${v.id}.svg`).trim() } };
   }) : [];
+
+  // the logo with nothing behind it (white, black, blue) and the website icons (tools/build-logos.mjs)
+  const TR = "brand/logos/transparent/", HEX = { white: "#FFFFFF", black: "#14141C", blue: "#2F5FD8" };
+  const transparent = existsSync(path.join(ROOT, TR, "files.js")) ? Object.keys(HEX).map((color) => ({
+    color, hex: HEX[color],
+    files: ["symbol", "lockup", "wordmark"].flatMap((kind) => {
+      const base = `namzilabs-${kind}-${color}`;
+      const pngs = readdirSync(path.join(ROOT, TR)).filter((f) => f.startsWith(`${base}-`) && f.endsWith(".png")).map((f) => ({ f, w: parseInt(f.slice(base.length + 1), 10) })).sort((a, b) => a.w - b.w)
+        .map(({ f, w }) => ({ name: f, path: TR + f, size: size(TR + f), kind, label: `PNG ${w}` }));
+      return [{ name: `${base}.svg`, text: read(`${TR}${base}.svg`).trim(), type: "image/svg+xml", kind, label: "SVG" }, ...pngs];
+    }),
+  })) : [];
+  const WB = "brand/logos/web/";
+  const webIcons = existsSync(path.join(ROOT, WB)) ? {
+    files: readdirSync(path.join(ROOT, WB)).filter((f) => !f.endsWith(".md")).sort().map((f) => /\.(svg|webmanifest)$/.test(f)
+      ? { name: f, text: read(WB + f), type: f.endsWith(".svg") ? "image/svg+xml" : "application/manifest+json" }
+      : { name: f, path: WB + f, size: size(WB + f) }),
+    readme: existsSync(path.join(ROOT, WB, "README.md")) ? read(`${WB}README.md`) : "",
+  } : null;
 
   const stickers = JSON.parse(read("brand/mascot/stickers.json")).map((s) => {
     const p = `brand/mascot/${s.file}`;
@@ -231,13 +256,18 @@ function build({ web }) {
     ["galaxy", "Galaxy brain", "Levels of knowing your numbers.", VAR + "cosmic-1024.png", "meme"],
     ["starter", "Starter pack", "The \"where's our data?\" starter pack", VAR + "sticker-1024.png", "meme"],
     ["expectation", "Expectation vs reality", "Your funnel: expectation vs reality.", VAR + "sketch-1024.png", "meme"],
+    ["donut", "Donut daydream", "Mmm… all your data in one place.", VAR + "donuts-1024.png", "meme"],
+    ["leak", "Leaky funnel", "Your funnel has a leak.", MONO + "profile-ink-1024.png", "linkedin"],
+    ["wall", "Tool wall", "33 tools. One place.", MONO + "profile-paper-1024.png", "linkedin"],
+    ["team", "Team", "Building Namzilabs. For the people who work here.", MONO + "profile-blue-1024.png", "linkedin"],
   ];
-  const PLAT = [["x", "X header", "1500×500"], ["linkedin", "LinkedIn company", "1128×191"], ["linkedin-profile", "LinkedIn profile", "1584×396"], ["facebook", "Facebook page", "1640×624"], ["facebook-group", "Facebook group", "1640×856"], ["youtube", "YouTube", "2560×1440"], ["og", "Link preview", "1200×630"], ["email", "Email signature", "1200×300"]];
+  const PLAT = [["x", "X header", "1500×500"], ["linkedin-company", "LinkedIn company page", "2256×382: LinkedIn's 1128×191 at 2x. The cover of a company page."], ["linkedin-profile", "LinkedIn personal profile", "3168×792: LinkedIn's 1584×396 at 2x. The background on your own profile."], ["facebook", "Facebook page", "1640×624"], ["facebook-group", "Facebook group", "1640×856"], ["youtube", "YouTube", "2560×1440"], ["og", "Link preview", "1200×630"], ["email", "Email signature", "1200×300"]];
   const banners = existsSync(path.join(ROOT, "brand/banners")) ? {
     concepts: BN.filter(([id]) => existsSync(path.join(ROOT, "brand/banners", id))).map(([id, name, head, av, group]) => ({
       id, name, head, group,
       avatar: existsSync(path.join(ROOT, av)) ? { name: `profile-${id}-${path.basename(av)}`, path: av, size: size(av) } : null,
       mockup: existsSync(path.join(ROOT, `brand/banners/mockups/x-${id}.png`)) ? { name: `x-${id}.png`, path: `brand/banners/mockups/x-${id}.png`, size: size(`brand/banners/mockups/x-${id}.png`) } : null,
+      limock: existsSync(path.join(ROOT, `brand/banners/mockups/linkedin-${id}.png`)) ? { name: `linkedin-${id}.png`, path: `brand/banners/mockups/linkedin-${id}.png`, size: size(`brand/banners/mockups/linkedin-${id}.png`) } : null,
       files: PLAT.filter(([pid]) => existsSync(path.join(ROOT, `brand/banners/${id}/${pid}.png`))).map(([pid, label, dims]) => ({ name: `${pid}.png`, path: `brand/banners/${id}/${pid}.png`, size: size(`brand/banners/${id}/${pid}.png`), label, dims })),
     })),
     highlights: ["blue", "ink"].flatMap((bg) => existsSync(path.join(ROOT, `brand/banners/highlights/${bg}`)) ? readdirSync(path.join(ROOT, `brand/banners/highlights/${bg}`)).filter((f) => f.endsWith(".png")).sort().map((f) => ({ name: `${bg}-${f}`, label: f.replace(".png", "").replace("-", " "), bg, path: `brand/banners/highlights/${bg}/${f}`, size: size(`brand/banners/highlights/${bg}/${f}`) })) : []),
@@ -258,9 +288,9 @@ function build({ web }) {
 
   const all = {
     built: new Date().toISOString().slice(0, 10), repo: REPO, kit, kits: KITS, posts, videos,
-    logos: { concepts, overviews, wordmarks, variants }, banners, mascot: { stickers, avatars, boards: mboards }, docs, videoReadme: vm.md,
+    logos: { concepts, overviews, wordmarks, variants, transparent, web: webIcons }, banners, mascot: { stickers, avatars, boards: mboards }, docs, videoReadme: vm.md,
   };
-  if (kit === "content") return { ...all, logos: { concepts: [], overviews: [], wordmarks: [], variants: [] }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => !d.path.startsWith("brand/")) };
+  if (kit === "content") return { ...all, logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => !d.path.startsWith("brand/")) };
   if (kit === "brand") return { ...all, posts: [], videos: [], docs: docs.filter((d) => d.path.startsWith("brand/") || d.name === "STRATEGY.md") };
   return all;
 }
@@ -300,7 +330,7 @@ if (artifactDir) {
         if (existsSync(dst) && statSync(dst).mtimeMs > statSync(src).mtimeMs) continue;
         mkdirSync(path.dirname(dst), { recursive: true });
         // the launch-day "AI live" cuts aren't posted yet, so their copies here are lighter (masters stay in the repo)
-        const crf = f.includes("ai-live") ? "28" : "23";
+        const crf = f.includes("ai-live") ? "28" : "25";
         execFileSync(FF, ["-y", "-loglevel", "error", "-i", src, "-c:v", "libx264", "-preset", "slow", "-crf", crf, "-profile:v", "high", "-x264-params", "aq-mode=3", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an", dst]);
         console.log(`web copy: ${dir}/${f}`);
       }
@@ -318,7 +348,7 @@ if (artifactDir) {
   const m = build({ web: true });
   if (kit === "brand" && m.banners) {
     const jpg = (f) => { const jp = f.path.replace(/\.png$/, ".jpg"); return { ...f, name: f.name.replace(/\.png$/, ".jpg"), path: jp, size: statSync(webPath(jp)).size }; };
-    m.banners.concepts = m.banners.concepts.map((c) => ({ ...c, files: c.files.map(jpg), mockup: c.mockup && jpg(c.mockup) }));
+    m.banners.concepts = m.banners.concepts.map((c) => ({ ...c, files: c.files.map(jpg), mockup: c.mockup && jpg(c.mockup), limock: c.limock && jpg(c.limock) }));
     m.banners.highlights = m.banners.highlights.map(jpg);
     m.banners.jpg = true;
   }
@@ -337,7 +367,9 @@ if (artifactDir) {
   for (const c of m.logos.concepts) { c.pngs.forEach((p) => add(p.path)); if (c.board) add(c.board.path); }
   (m.logos.variants || []).forEach((v) => add(v.png.path));
   m.logos.overviews.forEach((b) => add(b.path));
-  if (m.banners) { m.banners.concepts.forEach((c) => { c.files.forEach((f) => add(f.path)); if (c.mockup) add(c.mockup.path); if (c.avatar) add(c.avatar.path); }); m.banners.highlights.forEach((h) => add(h.path)); }
+  if (m.banners) { m.banners.concepts.forEach((c) => { c.files.forEach((f) => add(f.path)); if (c.mockup) add(c.mockup.path); if (c.limock) add(c.limock.path); if (c.avatar) add(c.avatar.path); }); m.banners.highlights.forEach((h) => add(h.path)); }
+  (m.logos.transparent || []).forEach((t) => t.files.forEach((f) => f.path && add(f.path)));
+  if (m.logos.web) m.logos.web.files.forEach((f) => f.path && add(f.path));
   m.mascot.stickers.forEach((s) => add(s.png.path));
   m.mascot.avatars.forEach((a) => add(a.path));
   m.mascot.boards.forEach((b) => add(b.path));

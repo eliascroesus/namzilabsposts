@@ -1,0 +1,34 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   The parody posts (36–44): famous meme formats, with Namzi in every role.
+   Shared pieces only; each post draws its own scene.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* the caption on top, like a screenshot of a post */
+.mhead { font-size: 50px; font-weight: 750; letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; }
+.mhead em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+
+/* the picture: a rounded panel with its own scene */
+.panel { position: relative; overflow: hidden; border-radius: 30px; box-shadow: var(--shadow-2); isolation: isolate; }
+.panel.flat { box-shadow: none; }
+
+/* a speech bubble: white, ink outline, a tail that points at whoever is speaking (--tx, --ty) */
+.bubble { position: absolute; background: #fff; color: var(--ink); border: 5px solid #14141c; border-radius: 36px; padding: .45em .75em .5em; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; white-space: nowrap; z-index: 5; box-shadow: 0 16px 30px -18px rgba(0,0,0,.5); }
+.bubble::after { content: ""; position: absolute; width: 34px; height: 34px; background: #fff; border-right: 5px solid #14141c; border-bottom: 5px solid #14141c; left: var(--tx, 30%); bottom: -20px; transform: rotate(var(--tr, 45deg)); border-bottom-right-radius: 6px; }
+.bubble.top::after { bottom: auto; top: -20px; transform: rotate(225deg); }
+
+/* the meme's own labels, stuck on people and things */
+.mtag { position: absolute; background: #fff; color: #14141c; font-weight: 800; letter-spacing: -0.02em; padding: .22em .5em; border-radius: 8px; box-shadow: 0 0 0 3px #14141c; white-space: nowrap; z-index: 6; }
+
+/* film subtitles: white with a black outline */
+.subtitle { position: absolute; left: 0; right: 0; text-align: center; color: #fff; font-weight: 800; letter-spacing: -0.01em; paint-order: stroke fill; -webkit-text-stroke: 10px #000; z-index: 6; }
+
+/* the small print that explains the joke */
+.punch { font-size: 30px; line-height: 1.34; font-weight: 550; letter-spacing: -0.015em; color: var(--muted); }
+.punch b { color: var(--ink); font-weight: 750; }
+.sky .punch, .ink .punch { color: rgba(226, 234, 255, 0.8); }
+.sky .punch b, .ink .punch b { color: #fff; }
+
+/* the epic line, for the precious parody (Cinzel, gold, glowing) */
+.epic { font-family: "Cinzel", serif; font-weight: 700; letter-spacing: .005em; line-height: 1.06; text-wrap: balance;
+  background: linear-gradient(180deg, #fff4cf 8%, #f6c35c 52%, #c57b1c 96%); -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 .16em rgba(255,110,20,.6)) drop-shadow(0 .05em .1em rgba(0,0,0,.6)); }

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 40 — Everyone's pointing</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/meme.css">
+<style>
+  /* The "pointing at each other" meme from a famous superhero cartoon, played by three Namzis in
+     different colours (one per tool). Our own drawing of the format; no characters or stills. */
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .lair { position: relative; border-radius: 26px; overflow: hidden; border: 4px solid #0b0d16;
+    background: radial-gradient(40% 55% at 50% 40%, rgba(120,150,255,.28), transparent 70%), linear-gradient(180deg, #1c2233 0%, #121624 62%, #0d101b 62.2%, #090b13 100%); }
+  .lair::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 118px, rgba(255,255,255,.035) 118px 122px); }
+  .who { position: absolute; }
+  .who .namzi { width: 100%; }
+  .num { position: absolute; font-weight: 850; letter-spacing: -0.04em; }
+  .rcpt { background: #fff; color: var(--ink); border-radius: 26px; box-shadow: var(--shadow-3); display: grid; align-items: center; }
+  .rcpt .rows { display: flex; flex-direction: column; }
+  .rcpt .r { display: grid; grid-template-columns: 40px 1fr auto; gap: 14px; align-items: center; padding: 10px 0; border-bottom: 2px dashed #e1e4ee; letter-spacing: -0.015em; }
+  .rcpt .r .mark { width: 36px; height: 36px; }
+  .rcpt .r .k { font-weight: 650; }
+  .rcpt .r .k small { display: block; font-weight: 550; color: var(--red); font-size: .8em; margin-top: 2px; }
+  .rcpt .r .v { font-weight: 800; font-variant-numeric: tabular-nums; }
+  .rcpt .t { display: flex; justify-content: space-between; align-items: baseline; padding-top: 12px; font-weight: 800; letter-spacing: -0.03em; white-space: nowrap; gap: 16px; }
+  .rcpt .t b { color: var(--blue); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+
+<div class="canvas s-portrait ink frame" data-still="ig-01" style="padding:66px 70px 56px">
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Friday, 4:55 pm</span></div>
+  <div class="mhead" style="margin-top:26px;color:#fff;font-size:54px">"How many customers did we get this week?"</div>
+  <div id="ig" class="lair" style="margin-top:26px;height:620px"></div>
+  <div id="igr" style="margin-top:22px"></div>
+  <div class="foot" style="padding-top:18px"><span class="demo">A parody · example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x ink" data-still="x-01" style="padding:50px 60px">
+  <div class="mhead" style="position:relative;color:#fff;font-size:46px">"How many customers did we get this week?"</div>
+  <div style="position:relative;display:grid;grid-template-columns:860px 1fr;gap:26px;margin-top:24px;height:680px">
+    <div id="x" class="lair"></div>
+    <div style="display:flex;flex-direction:column;justify-content:center;gap:28px"><div id="xr"></div><span class="brandmini" style="align-self:flex-end;font-size:26px"><span class="logo" style="width:38px;height:38px"></span>Namzilabs</span></div>
+  </div>
+</div>
+
+<script>
+  // three Namzis, one per tool, each tinted and sure it's right
+  const who = (x, y, w, hue, flip, tag, n, k, tagDx = 0) => `<div class="who" style="left:${x}px;top:${y}px;width:${w}px">
+      <div class="namzi${flip ? " flip" : ""}" style="filter:hue-rotate(${hue}deg) saturate(1.15)">${NZ.mascot({ mood: "suspicious", pose: "point", shadow: false, dark: true })}</div>
+      <div class="mtag" style="left:${w * 0.18 + tagDx}px;top:${w * 0.62}px;font-size:${26 * k}px">${tag}</div>
+      <div class="bubble" style="left:${w * (flip ? 0.08 : 0.3)}px;top:${-w * 0.12}px;font-size:${46 * k}px;--tx:${flip ? "62%" : "22%"}">${n}</div></div>`;
+  const lair = (W, H, k) =>
+    who(W * 0.02, H * 0.34, W * 0.36, 55, false, "Stripe", "64!", k) +
+    who(W * 0.62, H * 0.34, W * 0.36, 175, true, "The CRM", "71!", k) +
+    who(W * 0.33, H * 0.08, W * 0.3, -85, true, "The spreadsheet", "58!", k * 0.92, -W * 0.04);
+  // the real Namzi, with the working
+  const receipt = (k, pad, namziW) => `<div class="rcpt" style="font-size:${26 * k}px;padding:${pad}px ${pad * 1.2}px;grid-template-columns:${namziW}px 1fr;gap:${pad}px">
+      <div class="namzi">${NZ.mascot({ mood: "smug", pose: "carry", prop: "receipt", shadow: false })}</div>
+      <div><div class="rows">
+        <div class="r"><span class="mark" data-src="stripe"></span><span class="k">Stripe 64<small>− 3 test payments</small></span><span class="v">61</span></div>
+        <div class="r"><span class="mark" data-src="close"></span><span class="k">CRM 71<small>− 10 duplicate contacts</small></span><span class="v">61</span></div>
+        <div class="r"><span class="mark" data-src="gsheets"></span><span class="k">Sheet 58<small>+ 3 not copied in yet</small></span><span class="v">61</span></div></div>
+        <div class="t"><span>Cross-referenced</span><b>61 customers</b></div></div></div>`;
+  document.getElementById("ig").innerHTML = lair(940, 620, 1);
+  document.getElementById("igr").innerHTML = receipt(0.95, 22, 190);
+  document.getElementById("x").innerHTML = lair(860, 680, 0.96);
+  document.getElementById("xr").innerHTML = receipt(0.92, 22, 108);
+</script>
+<script>NZ.still();</script>
+</body>
+</html>

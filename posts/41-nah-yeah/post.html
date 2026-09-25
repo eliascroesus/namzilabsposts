@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 41 — Nah / yeah</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/meme.css">
+<style>
+  /* The two-panel "nah / yeah" approval meme, played by Namzi. Our own drawing of the format. */
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .dr { display: grid; border: 4px solid #14141c; border-radius: 26px; overflow: hidden; background: #fff; }
+  .dr .pic { position: relative; overflow: hidden; border-right: 4px solid #14141c; }
+  .dr .pic.no { background: radial-gradient(70% 70% at 50% 40%, #ffe9e3, #ffc9bb); }
+  .dr .pic.yes { background: radial-gradient(70% 70% at 50% 40%, #e8efff, #c3d4ff); }
+  .dr .pic .namzi { position: absolute; left: 50%; transform: translateX(-50%); }
+  .dr .txt { display: flex; flex-direction: column; justify-content: center; font-weight: 750; letter-spacing: -0.03em; line-height: 1.12; }
+  .dr .row + .row { border-top: 4px solid #14141c; }
+  .dr .row { display: grid; }
+  .files { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+  .file { display: inline-flex; align-items: center; gap: 8px; font-size: .5em; font-weight: 650; color: var(--muted); background: #f3f4f8; border: 1px solid var(--line); border-radius: 10px; padding: 6px 10px; letter-spacing: -0.01em; }
+  .file i { width: 1.3em; height: 1.5em; border-radius: 3px; background: #1f9d55; display: inline-block; font-style: normal; }
+  .hub { display: flex; align-items: center; gap: 12px; margin-top: 24px; }
+  .hub .mark { width: 1.1em; height: 1.1em; }
+  .hub .arr { color: var(--faint); font-weight: 700; }
+  .hub .tile { width: 1.5em; height: 1.5em; border-radius: 28%; background: #14141c; display: grid; place-items: center; }
+  .hub .tile svg { width: 76%; height: 76%; }
+</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01" style="padding:66px 70px 56px">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Monday reporting</span></div>
+  <div id="ig" style="margin-top:30px;flex:1;display:flex"></div>
+  <div class="foot" style="padding-top:22px"><span class="demo">A parody</span><span class="site">namzilabs.co · free to start</span></div>
+</div>
+
+<div class="canvas s-x paper" data-still="x-01" style="padding:46px 60px">
+  <div class="ruled"></div>
+  <div id="x" style="position:relative;height:740px;display:flex"></div>
+  <div style="position:relative;display:flex;justify-content:flex-end;margin-top:22px"><span class="brandmini" style="font-size:26px"><span class="logo" style="width:38px;height:38px"></span>Namzilabs</span></div>
+</div>
+
+<script>
+  const meme = (picW, fs, nz) => `<div class="dr" style="flex:1;grid-template-rows:1fr 1fr">
+    <div class="row" style="grid-template-columns:${picW}px 1fr">
+      <div class="pic no"><div class="namzi" style="bottom:-6%;width:${nz}px">${NZ.mascot({ mood: "stern", pose: "nope", look: [-1, 0.1], shadow: false })}</div></div>
+      <div class="txt" style="font-size:${fs}px;padding:0 ${fs * 0.8}px">Exporting CSVs from 7 tools every Monday and gluing them into one spreadsheet
+        <div class="files">${["stripe_export.csv", "crm_contacts (3).csv", "calls_FINAL.xlsx"].map((n) => `<span class="file"><i></i>${n}</span>`).join("")}</div></div>
+    </div>
+    <div class="row" style="grid-template-columns:${picW}px 1fr">
+      <div class="pic yes"><div class="namzi" style="bottom:-6%;width:${nz}px">${NZ.mascot({ mood: "smug", pose: "point", look: [1, 0.1], shadow: false })}</div></div>
+      <div class="txt" style="font-size:${fs}px;padding:0 ${fs * 0.8}px">All your data in one place, already matched across every tool
+        <div class="hub" style="font-size:${fs}px">${["stripe", "calendly", "close", "typeform", "gsheets"].map((t) => `<span class="mark" data-src="${t}"></span>`).join("")}<span class="arr" style="font-size:.6em">→</span><span class="tile">${NZ.MARK("#fff", 5)}</span></div></div>
+    </div></div>`;
+  document.getElementById("ig").innerHTML = meme(390, 50, 410);
+  document.getElementById("x").innerHTML = meme(430, 46, 330);
+</script>
+<script>NZ.still();</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 37 — Mmm… one place</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/meme.css">
+<style>
+  /* A parody of a famous animated dad's donut daydream, played by Namzi: the "Mmm…" snowclone, a pink
+     donut, and a dream of the two-donut mark. No characters, stills or lettering from the show. */
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .simpsky { color: #0f1d4a; background: linear-gradient(180deg, #3f98f7 0%, #69b4ff 45%, #a9d8ff 100%); }
+  .simpsky .brandmini, .simpsky .site { color: #0f1d4a; }
+  .simpsky .count, .simpsky .demo { color: rgba(15,29,74,.62); }
+  .simpsky .swipe { color: #0f1d4a; }
+  .scene { position: absolute; inset: 0; }
+  .mmm { font-weight: 850; letter-spacing: -0.06em; line-height: .9; color: #0f1d4a; }
+  .dream { font-family: var(--serif); font-style: italic; color: #0f1d4a; text-align: center; letter-spacing: -0.01em; }
+  .legend { display: flex; flex-direction: column; gap: 16px; }
+  .legend .r { display: grid; grid-template-columns: 40px 44px 1fr auto auto; gap: 16px; align-items: center; font-size: 32px; letter-spacing: -0.02em; }
+  .legend .sw { width: 40px; height: 40px; border-radius: 12px; box-shadow: inset 0 0 0 2px rgba(0,0,0,.12); }
+  .legend .mark { width: 44px; height: 44px; }
+  .legend .nm { font-weight: 650; }
+  .legend .v { font-weight: 800; font-variant-numeric: tabular-nums; }
+  .legend .p { font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; width: 76px; text-align: right; }
+  .legend .tot { border-top: 2px dashed #cfd5e4; padding-top: 16px; }
+  .legend .tot .nm { font-weight: 800; }
+</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+<script src="../../lib/meme.js"></script>
+
+<!-- 1 · the daydream -->
+<div class="canvas s-portrait simpsky frame" data-still="ig-01" style="padding:70px 72px 60px">
+  <div class="scene" id="s1"></div>
+  <div class="top" style="position:relative;z-index:8"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">1 / 2</span></div>
+  <div class="mhead" style="position:relative;z-index:8;margin-top:30px;font-size:54px;color:#0f1d4a">Me when someone says "it's all in <em>one dashboard</em> now":</div>
+  <div class="foot" style="position:relative;z-index:8"><span class="demo">A parody. Namzi is doing a voice.</span><span class="swipe">Swipe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<!-- 2 · the donut chart -->
+<div class="canvas s-portrait paper frame" data-still="ig-02" style="padding:70px 80px 60px">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">2 / 2</span></div>
+  <h1 class="h1" style="margin-top:34px;font-size:104px">Mmm… donut <em>charts.</em></h1>
+  <p class="lead" style="margin-top:20px;font-size:32px">Revenue this month, by where it came from. Every payment matched to one customer and counted once.</p>
+  <div style="position:relative;display:flex;justify-content:center;margin-top:18px">
+    <div id="chart"></div>
+    <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center"><div style="font-size:64px;font-weight:800;letter-spacing:-0.05em">$46,180</div><div style="font-size:24px;font-weight:600;color:var(--muted);margin-top:4px">this month</div></div>
+  </div>
+  <div class="legend" style="margin-top:6px">
+    <div class="r"><span class="sw" style="background:#ff7eb3"></span><span class="mark" data-src="stripe"></span><span class="nm">Stripe</span><span class="v">$26,800</span><span class="p">58%</span></div>
+    <div class="r"><span class="sw" style="background:#6b3e26"></span><span class="mark" data-src="shopify"></span><span class="nm">Shopify</span><span class="v">$12,470</span><span class="p">27%</span></div>
+    <div class="r"><span class="sw" style="background:#ffd23f"></span><span class="mark" data-src="whop"></span><span class="nm">Whop</span><span class="v">$6,910</span><span class="p">15%</span></div>
+  </div>
+  <div class="punch" style="margin-top:26px"><b>Any metric, across all your tools.</b> Even the delicious ones.</div>
+  <div class="namzi" style="position:absolute;left:836px;top:690px;width:178px" id="n2"></div>
+  <div class="foot"><span class="demo">Example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<!-- X -->
+<div class="canvas s-x simpsky" data-still="x-01">
+  <div class="scene" id="sx"></div>
+  <div class="mhead" style="position:absolute;left:64px;top:56px;width:540px;z-index:8;font-size:48px">Me when someone says "it's all in <em>one dashboard</em> now":</div>
+  <span class="brandmini" style="position:absolute;left:64px;bottom:48px;z-index:8"><span class="logo"></span>Namzilabs</span>
+</div>
+
+<script>
+  const M = NZ.meme;
+  const dreamer = (x, y, w) => `<div class="namzi" style="position:absolute;left:${x}px;top:${y}px;width:${w}px;z-index:5">${NZ.mascot({ mood: "dreamy", pose: "hold", prop: "donut", shadow: false })}</div>`;
+  const dream = (cx, cy, w, h, dm, fs) =>
+    M.thought(cx, cy, w, h) +
+    `<div style="position:absolute;left:${cx - dm / 2}px;top:${cy - h * 0.3}px;width:${dm}px;height:${dm}px;z-index:2">${M.donutRings()}</div>` +
+    `<div class="dream" style="position:absolute;left:${cx - w * 0.36}px;width:${w * 0.72}px;top:${cy + h * 0.26 - fs * 0.2}px;font-size:${fs}px;z-index:2">all your data… in one place…</div>`;
+
+  // slide 1: clouds, the dream, Namzi drooling, and the line
+  document.getElementById("s1").innerHTML = M.clouds(1080, 1350, [[0.12, 0.3, 0.5], [0.88, 0.3, 0.42], [0.2, 0.95, 0.5], [0.74, 1.0, 0.5]], 0.72) +
+    dream(470, 640, 700, 470, 270, 36) +
+    M.trail(770, 930, 660, 820, 700) +
+    dreamer(630, 850, 400) +
+    `<div style="position:absolute;left:84px;top:930px;z-index:6"><div class="mmm" style="font-size:170px">Mmm…</div><div class="mmm" style="font-size:46px;letter-spacing:-0.035em;margin-top:14px;width:520px;line-height:1.08">all your data in one place.</div></div>`;
+
+  // slide 2: the chart, iced by source
+  document.getElementById("chart").innerHTML = M.donutChart(560, [[26800, "#ff7eb3"], [12470, "#6b3e26"], [6910, "#ffd23f"]]);
+  document.getElementById("n2").innerHTML = NZ.mascot({ mood: "happy", pose: "hold", prop: "donut", shadow: false });
+
+  // X: the dream in the middle, Namzi to the right
+  document.getElementById("sx").innerHTML = M.clouds(1600, 900, [[0.5, 0.06, 0.32], [0.93, 0.2, 0.34], [0.34, 0.97, 0.42], [0.72, 1.02, 0.4]], 0.8) +
+    dream(930, 360, 600, 420, 240, 32) +
+    M.trail(1235, 560, 1140, 470, 600) +
+    dreamer(1110, 470, 400) +
+    `<div style="position:absolute;left:64px;top:440px;z-index:6"><div class="mmm" style="font-size:150px">Mmm…</div><div class="mmm" style="font-size:44px;letter-spacing:-0.035em;margin-top:12px;line-height:1.08">all your data in one place.</div></div>`;
+</script>
+<script>NZ.hydrateMascots(); NZ.still();</script>
+</body>
+</html>

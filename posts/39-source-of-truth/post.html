@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 39 — Is this a single source of truth?</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/meme.css">
+<style>
+  /* The "is this a pigeon?" meme format, played by Namzi, with a spreadsheet for a butterfly.
+     Our own drawing of the format; nothing from the original show. */
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .still { position: relative; border: 4px solid #14141c; border-radius: 26px; overflow: hidden;
+    background: radial-gradient(60% 60% at 18% 20%, rgba(255,236,190,.95), transparent 70%), linear-gradient(180deg, #f1dfb8 0%, #e6c98f 58%, #9fb58a 58.2%, #7f9c6b 100%); }
+  .still .win { position: absolute; left: 5%; top: 8%; width: 24%; height: 42%; background: linear-gradient(180deg, #fffaf0, #fbe9c2); border: 8px solid #b88a4e; border-radius: 6px; }
+  .still .win::before, .still .win::after { content: ""; position: absolute; background: #b88a4e; }
+  .still .win::before { left: 50%; top: 0; bottom: 0; width: 6px; transform: translateX(-50%); }
+  .still .win::after { top: 50%; left: 0; right: 0; height: 6px; transform: translateY(-50%); }
+  .still .ray { position: absolute; left: 12%; top: 30%; width: 70%; height: 60%; background: linear-gradient(115deg, rgba(255,250,225,.55), transparent 60%); clip-path: polygon(0 0, 30% 0, 100% 100%, 45% 100%); }
+  .motion { position: absolute; }
+</style>
+</head>
+<body>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01" style="padding:66px 70px 56px">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Monday, 9:07</span></div>
+  <div id="ig" class="still" style="margin-top:28px;height:880px"></div>
+  <div class="punch" style="margin-top:26px">No. It's a copy of three tools from last Tuesday. <b>Namzilabs connects to the tools themselves,</b> so the numbers come from the source, matched across every tool.</div>
+  <div class="foot" style="padding-top:18px"><span class="demo">A parody</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper" data-still="x-01" style="padding:50px 60px">
+  <div class="ruled"></div>
+  <div id="x" class="still" style="height:700px"></div>
+  <div style="position:relative;display:flex;justify-content:space-between;align-items:center;margin-top:26px"><div class="punch" style="font-size:27px">No. <b>Namzilabs connects to the tools themselves,</b> so the numbers come from the source.</div><span class="brandmini" style="font-size:26px"><span class="logo" style="width:38px;height:38px"></span>Namzilabs</span></div>
+</div>
+
+<script>
+  // a spreadsheet with wings
+  const butterfly = (w) => `<svg viewBox="-110 -90 220 180" width="${w}" height="${w * 180 / 220}" style="overflow:visible">
+    <defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7fe0c0"/><stop offset=".55" stop-color="#2fb384"/><stop offset="1" stop-color="#1b7f5c"/></linearGradient>
+      <pattern id="cells" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M12 0V12M0 12H12" stroke="#fff" stroke-opacity=".45" stroke-width="1.4"/></pattern></defs>
+    <g stroke="#14141c" stroke-width="3.5" stroke-linejoin="round">
+      <path d="M-6 -6C-40 -80 -106 -70 -100 -24C-96 8 -40 10 -6 -2Z" fill="url(#wg)"/><path d="M-6 -6C-40 -80 -106 -70 -100 -24C-96 8 -40 10 -6 -2Z" fill="url(#cells)"/>
+      <path d="M6 -6C40 -80 106 -70 100 -24C96 8 40 10 6 -2Z" fill="url(#wg)"/><path d="M6 -6C40 -80 106 -70 100 -24C96 8 40 10 6 -2Z" fill="url(#cells)"/>
+      <path d="M-6 4C-36 12 -76 34 -62 62C-50 84 -18 58 -6 12Z" fill="url(#wg)"/><path d="M-6 4C-36 12 -76 34 -62 62C-50 84 -18 58 -6 12Z" fill="url(#cells)"/>
+      <path d="M6 4C36 12 76 34 62 62C50 84 18 58 6 12Z" fill="url(#wg)"/><path d="M6 4C36 12 76 34 62 62C50 84 18 58 6 12Z" fill="url(#cells)"/>
+      <rect x="-14" y="-34" width="28" height="70" rx="8" fill="#fff"/>
+      <path d="M-3 -38Q-12 -62 -24 -70M3 -38Q12 -62 24 -70" fill="none"/>
+    </g>
+    <circle cx="-24" cy="-70" r="4" fill="#14141c"/><circle cx="24" cy="-70" r="4" fill="#14141c"/>
+    <text x="0" y="-12" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#1b7f5c">X</text>
+    <path d="M-8 2H8M-8 12H8M-8 22H8" stroke="#1b7f5c" stroke-width="2.4" stroke-linecap="round"/>
+  </svg>`;
+  // Namzi big on the left, pointing up at the butterfly; each labelled, like the meme
+  const scene = (W, H, k, nw) => {
+    const nh = (nw * 340) / 320, nb = -H * 0.07, ntop = H - nb - nh;
+    return `<div class="win"></div><div class="ray"></div>
+    <div class="namzi" style="position:absolute;left:${W * 0.03}px;bottom:${nb}px;width:${nw}px">${NZ.mascot({ mood: "neutral", pose: "pointup", look: [0.9, -0.6], shadow: false })}</div>
+    <div class="motion" style="left:${W * 0.63}px;top:${H * 0.08}px;transform:rotate(-8deg)">${butterfly(W * 0.3)}</div>
+    <svg class="motion" style="left:${W * 0.91}px;top:${H * 0.12}px" width="${W * 0.07}" height="${H * 0.14}" viewBox="0 0 40 60"><path d="M4 8Q20 14 36 6M8 26Q22 30 38 24M4 44Q18 48 34 42" fill="none" stroke="#14141c" stroke-width="3" stroke-linecap="round" opacity=".5"/></svg>
+    <div class="mtag" style="left:${W * 0.03 + nw * 0.2}px;top:${ntop + nh * 0.5}px;font-size:${30 * k}px">Every founder on a Monday</div>
+    <div class="mtag" style="left:${W * 0.6}px;top:${H * 0.08 + W * 0.3 * 0.82 + 14}px;font-size:${30 * k}px">FINAL_final_v7 (2).xlsx</div>
+    <div class="subtitle" style="bottom:${H * 0.05}px;font-size:${62 * k}px">Is this a single source of truth?</div>`;
+  };
+  document.getElementById("ig").innerHTML = scene(940, 880, 1, 540);
+  document.getElementById("x").innerHTML = scene(1480, 700, 1.05, 560);
+</script>
+<script>NZ.still();</script>
+</body>
+</html>

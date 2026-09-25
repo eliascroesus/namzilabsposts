@@ -18,7 +18,7 @@ In code, the mark is defined once, as `NZ.RINGS` / `NZ.MARK` in [`lib/motion.js`
 |---|---|
 | Ring styles | Hairline, Bold, Gradient, Outline, Split, Linked (woven over and under) |
 | Grounds | Midnight grid, Blueprint, Glass, Neon, Chrome, Emboss |
-| Fun | Precious (gold), Wedding rings, Coffee rings, Donuts, Life rings, Pixel, Napkin sketch, Cosmic, Sticker, Soap bubbles, Balloon, Gummy rings |
+| Fun | Precious (3D gold, in front of a volcano), Wedding rings, Coffee rings, Donuts, Life rings, Pixel, Napkin sketch, Cosmic, Sticker, Soap bubbles, Balloon, Gummy rings |
 
 Each banner design has a variant made for it (see [`banners/README.md`](banners/README.md)). Rebuild with `node tools/build-variants.mjs`, then render with `node tools/render-stills.mjs brand/logos/variants.html brand/logos --ss 1`.
 
@@ -29,11 +29,15 @@ The folder [`logos/01-between-mono/`](logos/01-between-mono/) contains:
 - `lockup-ink.svg` and `lockup-white.svg`
 - the same set with an `eclipse-` prefix
 
+**Transparent files** for the website and anything else, in [`logos/transparent/`](logos/transparent/): the symbol, the lockup and the wordmark, each in white (`#FFFFFF`), black (the brand's ink, `#14141C`) and blue (`#2F5FD8`), as SVG plus PNGs (symbol 512 and 2048, lockup 1200 and 2400, wordmark 1200), cropped tight with nothing behind them. **Website icons** (favicon SVG and ICO, the iPhone and Android icons, a web manifest, and the `<head>` snippet) are in [`logos/web/`](logos/web/).
+
+**Precious** is the one variant that's a render, not a drawing: the two rings as heavy gold bands with a glowing inscription in our own words, made in 3D with three.js ([`logos/one-ring/rings.html`](logos/one-ring/rings.html)) and placed in front of a generic volcano ([`lib/volcano.js`](../lib/volcano.js)). It's a parody of a famous fantasy ring, so: no film lettering or inscription, no tower, no eye, and the Cinzel and Great Vibes fonts (both OFL) are for this parody only.
+
 The wordmark is outlined from Inter 800, so no file needs a font installed. The earlier concepts (02–10 and the original blue-lens 01) are still in [`logos/`](logos/) for reference, but they're retired: use only the mono mark and its variants.
 
 **Don't:** fill the space between the rings, add a coloured lens back, change the rings' spacing, put the ink tile on a busy photo, or stretch it. The primary mark is one colour: white on dark and blue, ink on light. The variants are for profile pictures and fun posts, not for the lockup on the website.
 
-**Banners:** fifteen designs. Ten are for every day: Electric, Funnel, Sources, Namzi, Minimal, Formula, Glass, Neon, Big type and Blueprint. Five are memes: Precious, Wedding, Galaxy brain, Starter pack, and Expectation vs reality. Each comes at every platform size (X, LinkedIn company and personal, Facebook page and group, YouTube, plus a link-preview card and an email signature for the everyday ten) with the profile picture made to go with it. There are also Instagram highlight covers. See [`banners/README.md`](banners/README.md).
+**Banners:** nineteen designs. Ten are for every day: Electric, Funnel, Sources, Namzi, Minimal, Formula, Glass, Neon, Big type and Blueprint. Six are memes: Precious, Donut daydream, Wedding, Galaxy brain, Starter pack, and Expectation vs reality. Three are made for LinkedIn: Leaky funnel, Tool wall and Team. Each comes at every platform size (X, LinkedIn company page and personal profile at 2x, Facebook page and group, YouTube, plus a link-preview card and an email signature for the everyday ten) with the profile picture made to go with it. **On LinkedIn, use the LinkedIn files, never the X header:** they keep every word clear of the page logo and the profile photo. There are also Instagram highlight covers. See [`banners/README.md`](banners/README.md).
 
 ## Mascot: Namzi
 
@@ -49,7 +53,8 @@ The wordmark is outlined from Inter 800, so no file needs a font installed. The 
 
 **Rules**
 - **Social only.** Never use Namzi in the product UI or on the landing page. The landing page's own design rules keep it mascot-free.
-- **At most 1 post in 4.** Namzi is a recurring guest, not the host. In this batch it appears in posts 13, 14, 16 and 21 and videos 07 and 08.
+- **At most 1 post in 4, except in meme weeks.** Namzi is a recurring guest, not the host. It appears in posts 13, 14, 16, 21, 27 and 34 and videos 07 and 08, and plays every part in the meme parodies (posts 36–44): spread those out, one or two a week.
+- **In a parody, Namzi does the voice.** It plays the role (the ring-obsessed creature, the donut-loving dad, the "this is fine" dog); it never becomes that character. No costumes, colours or features copied from the original.
 - **Namzi reacts; the numbers do the talking.** It never states a claim the brand couldn't, and the claims rules apply to it too.
 - Keep its colours: the blue body gradient, ink limbs on light surfaces, light limbs on dark (`dark: true`).
 
@@ -57,7 +62,7 @@ The wordmark is outlined from Inter 800, so no file needs a font installed. The 
 
 | Moods | Poses | Props | Effects |
 |---|---|---|---|
-| neutral, happy, joy, suspicious, sideeye, shocked, smug, sleepy, sad, stern, nervous | down, wave, up, hip, shrug, point, hold, holdL, think, facepalm, sign, carry | receipt, magnifier, redflag, greenflag, coffee | zzz, sweat, sparkle, exclaim, question, anger, hearts |
+| neutral, happy, joy, suspicious, sideeye, shocked, smug, sleepy, sad, stern, nervous, dreamy, obsessed | down, wave, up, hip, shrug, point, hold, holdL, think, facepalm, sign, carry, raise, both, pointup, nope | receipt, magnifier, redflag, greenflag, coffee, donut, ring | zzz, sweat, sparkle, exclaim, question, anger, hearts, drool, tears |
 
 **Exports:** [`mascot/stickers/`](mascot/stickers/) has 18 die-cut stickers (1024px PNG + SVG), and [`mascot/avatars/`](mascot/avatars/) has 3 square avatars. Rebuild them with `node tools/export-mascot.mjs`.
 

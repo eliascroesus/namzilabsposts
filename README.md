@@ -10,8 +10,8 @@ Everything here is made from code: HTML designs rendered to exact-size PNGs and 
 | **Pin these** 📌 | [Video 11, the explainer](videos/11-all-your-data/) (9:16 and 16:9) and [post 35, the how-it-works carousel](posts/35-how-it-works/post.md) (with a LinkedIn PDF). Banners for every platform are in [brand/banners/](brand/banners/) |
 | [**STRATEGY.md**](STRATEGY.md) | The plan: positioning, who we talk to (in order), pillars, cadence, hooks, CTAs, the first 90 days, what to pin, and the claims rules |
 | [**research/**](research/) | Four deep-research reports (about 45,000 words, 400+ sources): Framer & Base44, Attio & Mochi & premium SaaS, growth playbooks, and customers & competitors |
-| [**brand/**](brand/) | The primary mark (01 Between, mono), ten more logo concepts, [banners for every platform](brand/banners/), [Namzi the mascot](brand/mascot/) and the [brand kit](brand/BRAND_KIT.md) |
-| [**posts/**](posts/) | 35 ready-to-post pieces for Instagram, X and LinkedIn. Each has its images, captions, X copy, alt text and a claims check |
+| [**brand/**](brand/) | The primary mark (01 Between, mono), [transparent logo files](brand/logos/transparent/) and [website icons](brand/logos/web/), [banners for every platform](brand/banners/) (with LinkedIn-safe versions), [Namzi the mascot](brand/mascot/) and the [brand kit](brand/BRAND_KIT.md) |
+| [**posts/**](posts/) | 44 ready-to-post pieces for Instagram, X and LinkedIn, including 9 meme parodies starring Namzi. Each has its images, captions, X copy, alt text and a claims check |
 | [**videos/**](videos/) | 13 smooth motion videos at 60fps (the explainer in four cuts, plus two short cuts of it), with captions ([videos/README](videos/README.md)) |
 
 ---
@@ -24,7 +24,13 @@ Everything here is made from code: HTML designs rendered to exact-size PNGs and 
 
 <img src="brand/logos/boards/01-between-mono-variants.png" width="100%" alt="24 variants of the mark: ring styles, grounds and fun ones.">
 
-**24 variants** keep the two rings and change the finish and the ground: hairline, bold, gradient, woven, neon, glass, chrome, blueprint, and fun ones like gold "precious" rings, wedding rings, coffee stains, donuts and life rings. Each is an SVG and a 1024px profile picture in [`brand/logos/variants/`](brand/logos/variants/). See the [brand kit](brand/BRAND_KIT.md).
+**24 variants** keep the two rings and change the finish and the ground: hairline, bold, gradient, woven, neon, glass, chrome, blueprint, and fun ones like wedding rings, coffee stains, donuts and life rings. Each is an SVG and a 1024px profile picture in [`brand/logos/variants/`](brand/logos/variants/). See the [brand kit](brand/BRAND_KIT.md).
+
+<img src="brand/logos/one-ring/precious-wide.png" width="100%" alt="The two rings as heavy gold bands with a glowing inscription, in front of a fiery volcano.">
+
+**Precious.** The two rings rendered in 3D ([three.js](brand/logos/one-ring/rings.html)) as heavy gold bands, each with a glowing inscription in our own words ("all your data in one place", "one place to rule them all"), in front of a generic fiery mountain. It's a parody: no film lettering, no tower, no eye. It's the precious avatar, banner and post 36.
+
+**Transparent files for the website:** the symbol, the lockup and the wordmark in white, black and blue, as SVG and PNG, cropped tight, in [`brand/logos/transparent/`](brand/logos/transparent/). Favicons, home-screen icons and a web manifest (with the `<head>` snippet) are in [`brand/logos/web/`](brand/logos/web/).
 
 ---
 
@@ -33,11 +39,16 @@ Everything here is made from code: HTML designs rendered to exact-size PNGs and 
 <img src="brand/banners/mockups/x-electric.png" width="49%" alt="The Electric banner on an X profile"> <img src="brand/banners/mockups/x-neon.png" width="49%" alt="The Neon banner on an X profile">
 <img src="brand/banners/mockups/x-precious.png" width="49%" alt="The Precious meme banner on an X profile"> <img src="brand/banners/mockups/x-wedding.png" width="49%" alt="The Wedding meme banner on an X profile">
 
-Fifteen designs, each with the profile picture made to go with it:
+Nineteen designs, each with the profile picture made to go with it:
 - **Ten for every day:** Electric, Funnel, Sources, Namzi, Minimal, Formula, Glass, Neon, Big type, Blueprint
-- **Five memes:** Precious ("One place to rule them all"), Wedding ("Your Stripe and your CRM, finally married"), Galaxy brain, Starter pack, Expectation vs reality
+- **Six memes:** Precious ("One place to rule them all", 3D gold rings and a volcano), Donut daydream ("Mmm… all your data in one place"), Wedding ("Your Stripe and your CRM, finally married"), Galaxy brain, Starter pack, Expectation vs reality
+- **Three made for LinkedIn:** Leaky funnel, Tool wall, and Team (for the people who work here)
 
-Each comes at every size: X, LinkedIn company and profile, Facebook page and group, and YouTube. The everyday ten also come as a link-preview card and an email signature. There are also Instagram highlight covers. Sizes, safe areas, which kit to use where, and bio copy for every platform are in [brand/banners/README.md](brand/banners/README.md).
+Each comes at every size: X, LinkedIn company page and personal profile, Facebook page and group, and YouTube. The everyday ten also come as a link-preview card and an email signature. There are also Instagram highlight covers.
+
+<img src="brand/banners/mockups/linkedin-electric.png" width="100%" alt="The Electric banner on a LinkedIn company page and a personal profile, on a laptop and a phone">
+
+**LinkedIn has its own layouts.** `linkedin-company.png` is the cover of a company page; `linkedin-profile.png` is the background of a personal profile. The words sit clear of the page logo and the profile photo, and inside what phones show, and both are saved at 2× so they stay sharp. Don't upload the X header to LinkedIn: LinkedIn crops it and puts your photo over the words. There's a LinkedIn mock-up of every design in [`brand/banners/mockups/`](brand/banners/mockups/). Sizes, safe areas, which kit to use where, and bio copy for every platform are in [brand/banners/README.md](brand/banners/README.md).
 
 ---
 
@@ -47,7 +58,7 @@ Each comes at every size: X, LinkedIn company and profile, Facebook page and gro
 
 Namzi lives in the space between the logo's two rings: the overlap where two tools see the same person, given eyes, noodle arms and a stack of receipts. It counts everyone once, carries receipts, is deadpan but never mean, and is allergic to vanity metrics.
 
-- **Drawn in code:** [`lib/mascot.js`](lib/mascot.js) takes `NZ.mascot({ mood, pose, prop, fx })`. It has 11 moods, 12 poses and 5 props, and videos redraw it every frame.
+- **Drawn in code:** [`lib/mascot.js`](lib/mascot.js) takes `NZ.mascot({ mood, pose, prop, fx })`. It has 13 moods, 16 poses and 7 props (a donut and a gold ring among them), and videos redraw it every frame.
 - **Stickers:** 18 die-cut stickers (PNG + SVG) and 3 avatars in [`brand/mascot/`](brand/mascot/), ready for Instagram Stories, replies and GIPHY.
 - **Rules:** social only (never in the product or on the landing page), in at most 1 post in 4, and it reacts while the numbers do the talking.
 
@@ -67,7 +78,11 @@ Namzi lives in the space between the logo's two rings: the overlap where two too
 | <a href="posts/21-how-many-showed/post.md"><img src="posts/21-how-many-showed/ig-01.png" width="200"></a><br>**21** How many showed?<br><sub>Meme · sales teams · Namzi</sub> | <a href="posts/22-dictionary/post.md"><img src="posts/22-dictionary/ig-01.png" width="200"></a><br>**22** The Namzilabs dictionary<br><sub>Carousel · everyone</sub> | <a href="posts/23-eod-report/post.md"><img src="posts/23-eod-report/ig-01.png" width="200"></a><br>**23** The EOD report vs the receipts<br><sub>Single · sales teams</sub> | <a href="posts/24-reply-rate/post.md"><img src="posts/24-reply-rate/ig-01.png" width="200"></a><br>**24** 42 replies. 9 meetings.<br><sub>Carousel · agencies</sub> |
 | <a href="posts/25-horror-stories/post.md"><img src="posts/25-horror-stories/ig-01.png" width="200"></a><br>**25** Two-sentence horror stories<br><sub>Carousel · founders</sub> | <a href="posts/26-monday-scorecard/post.md"><img src="posts/26-monday-scorecard/ig-01.png" width="200"></a><br>**26** 5 numbers to check every Monday<br><sub>Single · sales teams</sub> | <a href="posts/27-namzi-never-says/post.md"><img src="posts/27-namzi-never-says/ig-01.png" width="200"></a><br>**27** Things Namzi will never say<br><sub>Single · everyone · Namzi</sub> | <a href="posts/28-tier-list/post.md"><img src="posts/28-tier-list/ig-01.png" width="200"></a><br>**28** Sources of truth, ranked<br><sub>Tier list · everyone</sub> |
 | <a href="posts/29-how-many-members/post.md"><img src="posts/29-how-many-members/ig-01.png" width="200"></a><br>**29** How many members do you actually have?<br><sub>Single · creators</sub> | <a href="posts/30-list-vs-buyers/post.md"><img src="posts/30-list-vs-buyers/ig-01.png" width="200"></a><br>**30** 1,269 customers you can't email<br><sub>Single · e-commerce</sub> | <a href="posts/31-cost-per-held/post.md"><img src="posts/31-cost-per-held/ig-01.png" width="200"></a><br>**31** It's not $71 a meeting<br><sub>Single · agencies</sub> | <a href="posts/32-book-sooner/post.md"><img src="posts/32-book-sooner/ig-01.png" width="200"></a><br>**32** The easiest show-rate fix<br><sub>Chart · sales teams</sub> |
-| <a href="posts/33-three-hours-later/post.md"><img src="posts/33-three-hours-later/ig-01.png" width="200"></a><br>**33** Three hours later<br><sub>Meme · brand owners</sub> | <a href="posts/34-namzi-first-week/post.md"><img src="posts/34-namzi-first-week/ig-01.png" width="200"></a><br>**34** Namzi's first week on the job<br><sub>Comic · everyone · Namzi</sub> | <a href="posts/35-how-it-works/post.md"><img src="posts/35-how-it-works/ig-01.png" width="200"></a><br>**35** 📌 How Namzilabs works<br><sub>Pinned carousel + LinkedIn PDF</sub> | |
+| <a href="posts/33-three-hours-later/post.md"><img src="posts/33-three-hours-later/ig-01.png" width="200"></a><br>**33** Three hours later<br><sub>Meme · brand owners</sub> | <a href="posts/34-namzi-first-week/post.md"><img src="posts/34-namzi-first-week/ig-01.png" width="200"></a><br>**34** Namzi's first week on the job<br><sub>Comic · everyone · Namzi</sub> | <a href="posts/35-how-it-works/post.md"><img src="posts/35-how-it-works/ig-01.png" width="200"></a><br>**35** 📌 How Namzilabs works<br><sub>Pinned carousel + LinkedIn PDF</sub> | <a href="posts/36-my-precious/post.md"><img src="posts/36-my-precious/ig-01.png" width="200"></a><br>**36** My precious<br><sub>Meme · fantasy-saga parody · Namzi</sub> |
+| <a href="posts/37-mmm-one-place/post.md"><img src="posts/37-mmm-one-place/ig-01.png" width="200"></a><br>**37** Mmm… one place<br><sub>Meme · donut-dad parody · Namzi</sub> | <a href="posts/38-same-person/post.md"><img src="posts/38-same-person/ig-01.png" width="200"></a><br>**38** They're the same person<br><sub>Meme · sales teams · Namzi</sub> | <a href="posts/39-source-of-truth/post.md"><img src="posts/39-source-of-truth/ig-01.png" width="200"></a><br>**39** Is this a single source of truth?<br><sub>Meme · founders · Namzi</sub> | <a href="posts/40-everyone-pointing/post.md"><img src="posts/40-everyone-pointing/ig-01.png" width="200"></a><br>**40** Everyone's pointing<br><sub>Meme · founders · Namzi</sub> |
+| <a href="posts/41-nah-yeah/post.md"><img src="posts/41-nah-yeah/ig-01.png" width="200"></a><br>**41** Nah / yeah<br><sub>Meme · agencies · Namzi</sub> | <a href="posts/42-this-is-fine/post.md"><img src="posts/42-this-is-fine/ig-01.png" width="200"></a><br>**42** This is fine<br><sub>Meme · founders · Namzi</sub> | <a href="posts/43-pivot/post.md"><img src="posts/43-pivot/ig-01.png" width="200"></a><br>**43** PIVOT!<br><sub>Meme · agencies · Namzi</sub> | <a href="posts/44-funnels-onions/post.md"><img src="posts/44-funnels-onions/ig-01.png" width="200"></a><br>**44** Funnels are like onions<br><sub>Meme · sales teams · Namzi</sub> |
+
+**The memes (36–44)** are parodies of famous scenes and meme formats, with Namzi playing every part. They borrow the joke's shape and catchphrase, never the characters, stills, logos or fonts, and each `post.md` ends with a claims and IP check. Post them as a playful week, one or two at a time between the explainers.
 
 Each post folder contains:
 - `ig-XX.png` at 1080×1350
@@ -136,12 +151,16 @@ node tools/render-stills.mjs posts/13-meet-namzi/post.html posts/13-meet-namzi
 node tools/render-video.mjs videos/07-meet-namzi/video.html videos/07-meet-namzi/meet-namzi-9x16.mp4 --ss 1
 node tools/build-logos.mjs && node tools/render-stills.mjs brand/logos/board.html brand/logos/boards
 node tools/render-stills.mjs brand/logos/profiles.html brand/logos --ss 1      # 1024px profile pictures
+node tools/render-stills.mjs brand/logos/one-ring/rings.html brand/logos/one-ring --ss 1 --alpha    # the 3D gold rings (three.js)
+node tools/render-stills.mjs brand/logos/one-ring/scenes.html brand/logos/one-ring --ss 1           # the rings in front of the volcano
 node tools/build-variants.mjs && node tools/render-stills.mjs brand/logos/variants.html brand/logos --ss 1   # the 24 logo variants + their board
+node tools/render-stills.mjs brand/logos/transparent.html brand/logos --ss 2 --alpha   # transparent PNGs + website icons
 node tools/render-stills.mjs brand/mascot/sheet.html brand/mascot/boards        # Namzi's character sheet
 node tools/export-mascot.mjs                                                   # stickers + avatars
-node tools/render-stills.mjs brand/banners/banners.html brand/banners --ss 1    # banners, every platform size
-node tools/render-stills.mjs brand/banners/banners.html brand/banners --ss 1 --query only=neon   # just one design
+node tools/render-stills.mjs brand/banners/banners.html brand/banners         # banners, every platform size (LinkedIn at 2x)
+node tools/render-stills.mjs brand/banners/banners.html brand/banners --query "only=neon&sizes=linkedin-company,linkedin-profile"   # one design, some sizes
 node tools/render-stills.mjs brand/banners/kits.html brand/banners --ss 1       # X profile mock-ups (banner + avatar)
+node tools/render-stills.mjs brand/banners/linkedin.html brand/banners --ss 1   # LinkedIn mock-ups (company page + profile, laptop + phone)
 node tools/render-video.mjs videos/11-all-your-data/video.html videos/11-all-your-data/all-your-data-16x9.mp4 --ss 1 --query "fmt=wide"
 node tools/render-video.mjs videos/11-all-your-data/video.html videos/12-funnel-breaks/funnel-breaks-9x16.mp4 --ss 1 --query "cut=funnel"   # a short cut of 11
 node tools/render-pdf.mjs posts/35-how-it-works posts/35-how-it-works/linkedin-carousel.pdf   # LinkedIn PDF carousel
@@ -154,7 +173,9 @@ node tools/build-preview.mjs                                                   #
 | `lib/post.css` | The post frame and post pieces |
 | `lib/motion.js` | The deterministic 60fps motion engine: bezier and spring easing, seekable timelines, a live player (R, F, Space) |
 | `lib/mascot.js` | Namzi, drawn in code: moods, poses, props and effects, as one SVG |
-| `assets/` | Vendored OFL fonts and connector marks (nominative use) |
+| `lib/meme.css`, `lib/meme.js` | Pieces for the parody posts: speech bubbles, subtitles, labels, clouds, a thought cloud, a donut chart that's a real donut, flames |
+| `lib/volcano.js` | The fiery mountain (a generic volcano, drawn in SVG) and the 3D gold rings placed by their own bounds |
+| `assets/` | Vendored OFL fonts (Inter, Instrument Serif, plus Cinzel and Great Vibes for the precious parody only) and connector marks (nominative use) |
 | `tools/` | Render stills, video and PDFs, sample frames, build logos, export the mascot, build the preview page |
 
 Open any `video.html` in a browser to watch it live. Every number shown in posts and videos is **example data**.

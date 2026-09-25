@@ -1,12 +1,25 @@
 # Banners and profile kits
 
-Fifteen banner designs, each exported at the exact size every platform asks for, and each with the profile picture made to go with it. Ten are for every day and lead with the core message: **all your data in one place, any metric, where the funnel breaks, the true numbers.** Five are memes, for launch weeks and a playful profile. There are also Instagram highlight covers.
+Nineteen banner designs, each exported at the exact size every platform asks for, and each with the profile picture made to go with it. Ten are for every day and lead with the core message: **all your data in one place, any metric, where the funnel breaks, the true numbers.** Six are memes, for launch weeks and a playful profile. Three are made for LinkedIn first. There are also Instagram highlight covers.
 
 ![Electric on an X profile](mockups/x-electric.png)
 
+## LinkedIn: which file goes where
+
+![Electric on a LinkedIn company page and a personal profile, on a laptop and on a phone](mockups/linkedin-electric.png)
+
+LinkedIn is the one platform where the wrong file really shows: it crops a banner to its own shape, then puts the page logo or your photo over the bottom-left. **Don't upload the X header to LinkedIn.** Every design has two LinkedIn files:
+
+| File | Upload it to | LinkedIn shows it at | Covered by | Phones show |
+|---|---|---|---|---|
+| `*/linkedin-company.png` (2256×382) | A **company page**: Edit page → Cover image | 1128×191 | the page logo, bottom-left (about 190×90 px) | the middle ~900 px |
+| `*/linkedin-profile.png` (3168×792) | Your **personal profile**: the pencil on your background photo | 1584×396 | your photo, bottom-left (about 570×265 px) | the middle ~1,200 px |
+
+Both are saved at twice LinkedIn's size, so text stays sharp on retina screens; LinkedIn scales them down. In both, every word and every picture sits in the safe zone (right of the logo or photo, inside what phones show), and only background art runs to the edges. There's a mock-up of each design on a company page and a profile, laptop and phone, in [`mockups/linkedin-*.png`](mockups/).
+
 ## Pick a kit
 
-Each kit is a banner and the avatar that goes with it. There's a mock-up of each on an X profile in [`mockups/`](mockups/).
+Each kit is a banner and the avatar that goes with it. There's a mock-up of each on an X profile and on LinkedIn in [`mockups/`](mockups/).
 
 **Everyday**
 
@@ -27,21 +40,30 @@ Each kit is a banner and the avatar that goes with it. There's a mock-up of each
 
 | Kit | Headline | Profile picture | Use it for |
 |---|---|---|---|
-| **Precious** | Two gold rings glowing in the dark: "One place to rule them *all.*" | `../logos/variants/precious-1024.png` | Launch week, a nerdy crowd |
+| **Precious** | The two rings as heavy gold bands (rendered in 3D) with a glowing inscription, in front of a fiery volcano: "One place to rule them all." | `../logos/variants/precious-1024.png` | Launch week, a nerdy crowd |
+| **Donut daydream** | Namzi with a pink donut, dreaming of two donuts overlapping like the logo: "Mmm… all your data in one *place.*" | `../logos/variants/donuts-1024.png` | Fridays, a playful profile |
 | **Wedding** | Gold and platinum rings: "Your Stripe and your CRM, finally *married.*" | `../logos/variants/wedding-1024.png` | Announcing a new integration |
 | **Galaxy brain** | Four levels, each ring brighter: checking Stripe → 14 tabs → a spreadsheet → all of it, one place | `../logos/variants/cosmic-1024.png` | Meme weeks on X |
 | **Starter pack** | 14 tabs, #REF!, "quick question…", a VLOOKUP, three answers, Monday 11:48 am | `../logos/variants/sticker-1024.png` | Relatable, shareable |
 | **Expectation vs reality** | A tidy funnel next to a tangle of tools | `../logos/variants/sketch-1024.png` | Sales and ops audiences |
 
-"One place to rule them all" plays on a famous line. It's parody wording only: no film or book names, art, fonts or quotes beyond the common phrase. If you'd rather not borrow it, use the Wedding or Neon kit instead.
+**Made for LinkedIn** (the two LinkedIn sizes only)
+
+| Kit | Headline | Profile picture | Use it for |
+|---|---|---|---|
+| **Leaky funnel** | The funnel as a pipe, leaking between booked and held: "Your funnel has a *leak.*" | `../logos/01-between-mono/profile-ink-1024.png` | Sales and agency founders on LinkedIn |
+| **Tool wall** | A wall of the tools Namzilabs connects around one card: "33 tools. One *place.*" | `../logos/01-between-mono/profile-paper-1024.png` | The company page |
+| **Team** | Brand blue, the mark and the URL: "Building *Namzilabs.*" | `../logos/01-between-mono/profile-blue-1024.png` | Everyone who works at Namzilabs, on their own profile (with their own photo) |
+
+Precious and Donut daydream are parodies. "One place to rule them all" plays on a famous line, and "Mmm… [food]" on a famous cartoon dad. Both borrow only the common phrase: no characters, film or show art, lettering or logos. The rings' inscription is our own words in a generic script (Great Vibes, OFL), the headline face is Cinzel (OFL), and the volcano is a generic one (no tower, no eye). If you'd rather not borrow them, use the Wedding or Neon kit instead.
 
 ## Every size
 
 | File | Size | Where | Safe area |
 |---|---|---|---|
 | `*/x.png` | 1500×500 | X header | The profile picture covers the bottom-left, so the words sit top-left. |
-| `*/linkedin.png` | 1128×191 | LinkedIn company page cover | A thin strip, one line of text. |
-| `*/linkedin-profile.png` | 1584×396 | LinkedIn personal profile | The photo sits bottom-left, so the words start at x=560. |
+| `*/linkedin-company.png` | 2256×382 (1128×191 at 2x) | LinkedIn company page cover | The page logo covers the bottom-left and phones show the middle ~900 px, so everything sits in x 352–1004 (at 1x). |
+| `*/linkedin-profile.png` | 3168×792 (1584×396 at 2x) | LinkedIn personal profile background | Your photo covers the bottom-left 568×264 and phones show the middle ~1,200 px, so everything sits in x 612–1384 (at 1x). |
 | `*/facebook.png` | 1640×624 | Facebook page cover | Phones crop the sides, so the words start at x=300. |
 | `*/facebook-group.png` | 1640×856 | Facebook group cover | Same side crop as the page cover. |
 | `*/youtube.png` | 2560×1440 | YouTube channel art | Everything important sits in the middle 1546×423, the only part phones show. |
@@ -49,7 +71,7 @@ Each kit is a banner and the avatar that goes with it. There's a mock-up of each
 | `*/email.png` | 1200×300 | Email-signature banner | Display it at 600×150. |
 | `highlights/blue/*.png`, `highlights/ink/*.png` | 1080×1920 | Instagram highlight covers: Start here, Metrics, Funnels, 33 tools, Namzi, FAQ | The icon sits inside the centre circle Instagram shows. |
 
-The memes come in the first six sizes only: the link preview and email signature should stay on-brand, so use an everyday design for those.
+The memes come in the first six sizes only: the link preview and email signature should stay on-brand, so use an everyday design for those. The three LinkedIn designs come in the two LinkedIn sizes only.
 
 Instagram, TikTok and Threads don't have banners. On those, the profile picture, the highlight covers and the pinned post (video 11 and post 35) do the job.
 
@@ -61,7 +83,7 @@ Instagram, TikTok and Threads don't have banners. On those, the profile picture,
 - app icons: `app-icon-*.svg`
 - lockups: `lockup-ink.svg` and `lockup-white.svg`
 
-The 24 variants (neon, glass, gold, wedding rings, donuts and more) are in `brand/logos/variants/`, each as an SVG and a 1024px PNG. The tables above say which one goes with which banner.
+The 24 variants (neon, glass, gold, wedding rings, donuts and more) are in `brand/logos/variants/`, each as an SVG and a 1024px PNG (Precious, a 3D render, is PNG only). The tables above say which one goes with which banner. For the website, use the transparent files in [`../logos/transparent/`](../logos/transparent/) and the icons in [`../logos/web/`](../logos/web/).
 
 ## Bio copy
 
@@ -86,10 +108,13 @@ The 24 variants (neon, glass, gold, wedding rings, donuts and more) are in `bran
 ## Re-render
 
 ```bash
-node tools/render-stills.mjs brand/banners/banners.html brand/banners --ss 1                  # every banner, every size
-node tools/render-stills.mjs brand/banners/banners.html brand/banners --ss 1 --query only=neon  # one design
-node tools/render-stills.mjs brand/banners/highlights.html brand/banners --ss 1               # Instagram highlight covers
-node tools/render-stills.mjs brand/banners/kits.html brand/banners --ss 1                     # X profile mock-ups
+node tools/render-stills.mjs brand/logos/one-ring/rings.html brand/logos/one-ring --ss 1 --alpha   # the 3D gold rings, first
+node tools/render-stills.mjs brand/banners/banners.html brand/banners                        # every banner, every size (LinkedIn at 2x)
+node tools/render-stills.mjs brand/banners/banners.html brand/banners --query "only=neon"    # one design
+node tools/render-stills.mjs brand/banners/banners.html brand/banners --query "sizes=linkedin-company,linkedin-profile"   # just the LinkedIn files
+node tools/render-stills.mjs brand/banners/highlights.html brand/banners --ss 1             # Instagram highlight covers
+node tools/render-stills.mjs brand/banners/kits.html brand/banners --ss 1                   # X profile mock-ups
+node tools/render-stills.mjs brand/banners/linkedin.html brand/banners --ss 1               # LinkedIn mock-ups
 ```
 
-Each banner is built from one config in `banners.html`: the platform's size, where its words go, and where its picture goes. Change a line there and re-render.
+Each banner is built from one config in `banners.html`: the platform's size, where its words go, and where its picture goes. LinkedIn layouts live in each design's `li()` and stay inside `ZONE`. Change a line there and re-render.

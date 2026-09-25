@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 42 — This is fine</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/meme.css">
+<style>
+  /* The "this is fine" room on fire, played by Namzi with a coffee. Our own drawing of the format;
+     nothing from the original comic. */
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .room { position: relative; overflow: hidden; border: 4px solid #14141c; border-radius: 26px;
+    background: linear-gradient(180deg, #3b2a24 0%, rgba(59,42,36,0) 30%), linear-gradient(180deg, #f6cf7a 0%, #efb85a 70%, #b8743a 70.2%, #9a5c2c 100%); }
+  .room.calm { background: linear-gradient(180deg, #eaf0ff 0%, #dde6ff 70%, #c7d3f2 70.2%, #b4c2e6 100%); }
+  .frame2 { position: absolute; background: #fffaf0; border: 8px solid #7a4a22; border-radius: 6px; box-shadow: 0 10px 20px -10px rgba(0,0,0,.4); }
+  .table { position: absolute; background: linear-gradient(180deg, #8a5226, #6d3f1c); border-radius: 10px 10px 4px 4px; box-shadow: 0 14px 0 -6px #4d2b12; }
+  .leg { position: absolute; background: #5a3416; border-radius: 4px; }
+  .burn { position: absolute; background: #fff; color: #14141c; font-weight: 750; letter-spacing: -0.02em; border-radius: 12px; padding: .35em .6em; box-shadow: 0 0 0 3px #14141c; white-space: nowrap; }
+  .burn::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: -.9em; height: 1.2em; background: radial-gradient(60% 100% at 50% 100%, #ffc23a 0 30%, #ff7a1a 55%, transparent 75%); filter: blur(1px); }
+  .ck { display: flex; flex-direction: column; gap: 22px; }
+  .ck .l { display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start; font-size: 34px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.25; }
+  .ck .l small { display: block; font-size: 27px; font-weight: 500; color: var(--muted); margin-top: 4px; }
+  .ck .b { width: 56px; height: 56px; border-radius: 16px; background: #e7f7ee; color: #16a34a; display: grid; place-items: center; }
+  .ck .b svg { width: 30px; height: 30px; }
+</style>
+</head>
+<body>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+<script src="../../lib/meme.js"></script>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01" style="padding:66px 70px 56px">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">1 / 2</span></div>
+  <div class="mhead" style="margin-top:26px">Me reconciling Stripe, the CRM and 3 spreadsheets at 11:48 on a <em>Monday:</em></div>
+  <div id="ig" class="room" style="margin-top:26px;height:960px"></div>
+  <div class="foot" style="padding-top:20px"><span class="demo">A parody. Namzi is doing a voice.</span><span class="swipe">Swipe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<div class="canvas s-portrait paper frame" data-still="ig-02" style="padding:66px 70px 56px">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">2 / 2</span></div>
+  <h1 class="h1" style="margin-top:30px;font-size:92px">It doesn't have to be fine. It can be <em>true.</em></h1>
+  <div id="ig2" class="room calm" style="margin-top:30px;height:380px"></div>
+  <div class="ck" style="margin-top:34px">
+    <div class="l"><span class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div>All your data in one place<small>33 tools, connected read-only. Nothing in them is ever changed.</small></div></div>
+    <div class="l"><span class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div>Every person matched and counted once<small>No more reconciling Stripe against the CRM by hand.</small></div></div>
+    <div class="l"><span class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div>See exactly where the funnel breaks<small>Any metric, across every tool, from first click to paid.</small></div></div>
+  </div>
+  <div style="margin-top:40px"><span class="btn">Start free, connect your first tool</span></div>
+  <div class="foot"><span class="site">namzilabs.co · free to start</span></div>
+</div>
+
+<div class="canvas s-x paper" data-still="x-01" style="padding:46px 60px">
+  <div class="ruled"></div>
+  <div class="mhead" style="position:relative;font-size:46px;width:1150px">Me reconciling Stripe, the CRM and 3 spreadsheets at 11:48 on a <em>Monday:</em></div>
+  <span class="brandmini" style="position:absolute;right:60px;top:52px;font-size:26px"><span class="logo" style="width:38px;height:38px"></span>Namzilabs</span>
+  <div id="x" class="room" style="margin-top:22px;height:680px"></div>
+</div>
+
+<script>
+  const M = NZ.meme;
+  // the room: a picture on the wall, a table, Namzi with a coffee, fire everywhere, burning tabs
+  const room = (W, H, k, fire) => {
+    const floor = H * 0.74, nzW = Math.min(W * 0.36, H * (W > 1200 ? 0.6 : 0.72)), nzH = (nzW * 340) / 320;
+    const nx = W * 0.3, tx = nx + nzW * 0.78, tw = W * 0.3, th = nzH * 0.34; // Namzi, and a table at waist height beside him
+    let s = `<div class="frame2" style="left:${W * 0.07}px;top:${H * (fire ? 0.13 : 0.1)}px;width:${W * 0.2}px;height:${W * 0.14}px;transform:rotate(-6deg)"><svg viewBox="0 0 100 70" width="100%" height="100%"><path d="M10 58L32 40L52 48L88 14" fill="none" stroke="${fire ? "#f0553d" : "#2f5fd8"}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+    if (fire) s += `<div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(40,26,20,.85) 0%, rgba(40,26,20,.3) 16%, transparent 28%)"></div>`;
+    // tall flames up both walls, a lower wall of fire along the back
+    if (fire) s += `<div style="position:absolute;left:${-W * 0.02}px;bottom:${H - floor - H * 0.02}px;width:${W * 0.3}px;height:${H * 0.62}px">${M.flames(W * 0.3, H * 0.62, 3, 1)}</div>` +
+      `<div style="position:absolute;right:${-W * 0.02}px;bottom:${H - floor - H * 0.02}px;width:${W * 0.3}px;height:${H * 0.66}px">${M.flames(W * 0.3, H * 0.66, 8, 1)}</div>` +
+      `<div style="position:absolute;left:0;right:0;bottom:${H - floor - H * 0.02}px;height:${H * 0.3}px;opacity:.95">${M.flames(W, H * 0.3, 5, 1)}</div>`;
+    s += `<div class="namzi" style="position:absolute;left:${nx}px;top:${floor - nzH * 0.9}px;width:${nzW}px">${NZ.mascot({ mood: "happy", pose: "hold", prop: fire ? "coffee" : "greenflag", fx: fire ? ["sweat"] : ["sparkle"], shadow: false })}</div>`;
+    s += `<div class="table" style="left:${tx}px;top:${floor - th}px;width:${tw}px;height:${H * 0.045}px"></div><div class="leg" style="left:${tx + tw * 0.08}px;top:${floor - th + H * 0.03}px;width:${W * 0.02}px;height:${th - H * 0.03}px"></div><div class="leg" style="left:${tx + tw * 0.86}px;top:${floor - th + H * 0.03}px;width:${W * 0.02}px;height:${th - H * 0.03}px"></div>`;
+    if (!fire) return s;
+    // the floor burns too, in front of everything
+    s += `<div style="position:absolute;left:0;right:0;bottom:0;height:${H - floor + H * 0.1}px">${M.flames(W, H - floor + H * 0.1, 12, 1)}</div>`;
+    s += [["#REF!", 0.68, 0.08, -8], ["FINAL_v7.xlsx", 0.05, 0.56, 6], ["Quick question…", 0.66, 0.3, 5], ["stripe_export (2).csv", 0.45, 0.05, -4]].map(([t, x, y, r]) => `<div class="burn" style="left:${W * x}px;top:${H * y}px;font-size:${24 * k}px;transform:rotate(${r}deg)">${t}</div>`).join("");
+    s += `<div class="bubble" style="left:${nx - nzW * 0.62}px;top:${Math.max(H * 0.05, floor - nzH * 1.2)}px;font-size:${56 * k}px;--tx:74%">This is fine.</div>`;
+    return s;
+  };
+  document.getElementById("ig").innerHTML = room(940, 960, 1, true);
+  document.getElementById("ig2").innerHTML = room(940, 380, 1, false);
+  document.getElementById("x").innerHTML = room(1480, 680, 1.05, true);
+</script>
+<script>NZ.still();</script>
+</body>
+</html>

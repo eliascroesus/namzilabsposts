@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 44 — Funnels are like onions</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/meme.css">
+<style>
+  /* "…are like onions: they have layers", the line from a famous animated ogre, said about funnels,
+     with Namzi in tears. Our own drawing; no characters, stills or lettering from the films. */
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .lab { position: absolute; display: flex; align-items: center; gap: 12px; white-space: nowrap; letter-spacing: -0.02em; }
+  .lab .mark { flex: none; }
+  .lab .t { font-weight: 650; color: var(--muted); }
+  .lab .v { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .lab.cry .t, .lab.cry .v { color: var(--red); }
+  .fried { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 6px; transform: rotate(6deg); }
+  .fried .cap { font-family: var(--serif); font-style: italic; color: var(--muted); white-space: nowrap; }
+</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01" style="padding:66px 72px 56px">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">A layered answer</span></div>
+  <h1 class="h1" style="margin-top:28px;font-size:104px">Funnels are like <em>onions.</em></h1>
+  <p class="lead" style="margin-top:14px;font-size:38px;color:var(--ink);font-weight:600">They have layers. And they make you cry.</p>
+  <div id="ig" style="position:relative;height:680px;margin-top:10px"></div>
+  <div class="punch"><b>Namzilabs puts every layer in one place, across every tool,</b> so you can see which one's making you cry.</div>
+  <div class="foot" style="padding-top:18px"><span class="demo">A parody · example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper" data-still="x-01" style="padding:56px 64px">
+  <div class="ruled"></div>
+  <div id="x" style="position:absolute;left:40px;top:40px;width:900px;height:820px"></div>
+  <div style="position:absolute;left:990px;top:120px;width:560px">
+    <h1 class="h1" style="font-size:84px">Funnels are like <em>onions.</em></h1>
+    <p class="lead" style="margin-top:16px;font-size:34px;color:var(--ink);font-weight:600">They have layers. And they make you cry.</p>
+    <div class="punch" style="margin-top:26px;font-size:28px"><b>Namzilabs puts every layer in one place,</b> across every tool, so you can see which one's making you cry.</div>
+    <span class="brandmini" style="margin-top:40px;font-size:28px"><span class="logo" style="width:40px;height:40px"></span>Namzilabs</span>
+  </div>
+</div>
+
+<script>
+  // an onion, cut across: skin, then one ring per funnel step, the leaky one marked
+  const onion = (R) => {
+    const rings = [1, 0.8, 0.6, 0.4, 0.2];
+    let s = `<defs><radialGradient id="flesh" cx=".42" cy=".38" r=".7"><stop offset="0" stop-color="#fffaf2"/><stop offset=".7" stop-color="#f6e6f0"/><stop offset="1" stop-color="#e9cfe1"/></radialGradient></defs>`;
+    s += `<circle r="${R * 1.07}" fill="#8e4d6c"/><circle r="${R * 1.03}" fill="#b56f8e"/>`;
+    rings.forEach((k, i) => { s += `<circle r="${R * k}" fill="url(#flesh)" stroke="${i === 2 ? "#f0553d" : "#b98aa6"}" stroke-width="${i === 2 ? 7 : 3.5}"/>`; });
+    s += `<path d="M${-R * 0.16} ${-R * 0.05}Q0 ${-R * 0.16} ${R * 0.14} ${-R * 0.02}" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".7"/>`;
+    return `<svg viewBox="${-R * 1.1} ${-R * 1.1} ${R * 2.2} ${R * 2.2}" width="${R * 2.2}" height="${R * 2.2}" style="position:absolute;left:0;top:0;overflow:visible;filter:drop-shadow(0 24px 30px rgba(80,30,60,.25))">${s}</svg>`;
+  };
+  // our logo, fried: two onion rings overlapping like the mark
+  const friedRings = (w) => {
+    let bumps = "";
+    for (const cx of [25, 39]) for (let i = 0; i < 26; i++) { const a = (i / 26) * Math.PI * 2, r = 15 + (i % 2 ? 2.4 : -2.4); bumps += `<circle cx="${(cx + Math.cos(a) * r).toFixed(2)}" cy="${(32 + Math.sin(a) * r).toFixed(2)}" r="${1.1 + (i % 3) * 0.25}" fill="#e7a849"/>`; }
+    return `<svg viewBox="4 10 56 44" width="${w}" height="${w * 44 / 56}"><g fill="none"><circle cx="25" cy="32" r="15" stroke="#b8701f" stroke-width="8.4"/><circle cx="39" cy="32" r="15" stroke="#b8701f" stroke-width="8.4"/><circle cx="25" cy="32" r="15" stroke="#f0b75a" stroke-width="6.4"/><circle cx="39" cy="32" r="15" stroke="#f0b75a" stroke-width="6.4"/></g>${bumps}</svg>`;
+  };
+  const steps = [["typeform", "Leads", "1,240"], ["calendly", "Booked", "412"], ["fathom", "Held", "263"], ["stripe", "Paid", "64"]];
+  const scene = (R, cx, cy, labX, fs, nz, nzX, nzY, fr) => {
+    let s = `<div style="position:absolute;left:${cx - R * 1.1}px;top:${cy - R * 1.1}px">${onion(R)}</div>`;
+    // one label per layer, each with a leader line to its ring
+    const ys = [-0.62, -0.26, 0.1, 0.46];
+    steps.forEach(([t, l, v], i) => {
+      const ry = cy + ys[i] * R * 1.1, rx = cx + R * [0.9, 0.7, 0.5, 0.3][i] * 0.98;
+      const cry = i === 2;
+      s += `<svg style="position:absolute;left:0;top:0;overflow:visible" width="1" height="1"><path d="M${rx} ${cy + ys[i] * R * 0.5}L${labX - 14} ${ry}" stroke="${cry ? "#f0553d" : "#9aa0b4"}" stroke-width="3" stroke-dasharray="${cry ? "0" : "6 6"}"/><circle cx="${rx}" cy="${cy + ys[i] * R * 0.5}" r="7" fill="${cry ? "#f0553d" : "#14141c"}"/></svg>`;
+      s += `<div class="lab${cry ? " cry" : ""}" style="left:${labX}px;top:${ry - fs * 0.8}px;font-size:${fs}px"><span class="mark" data-src="${t}" style="width:${fs * 1.4}px;height:${fs * 1.4}px"></span><span class="t">${l}</span><span class="v">${v}</span>${cry ? `<span style="font-size:.72em;font-weight:750;background:#f0553d;color:#fff;border-radius:999px;padding:.2em .6em">−36%</span>` : ""}</div>` +
+        (cry ? `<div class="lab cry" style="left:${labX + fs * 1.4 + 12}px;top:${ry + fs * 0.75}px;font-size:${fs * 0.8}px"><span class="t" style="font-style:italic;font-family:var(--serif);font-size:1.15em">the one that makes you cry</span></div>` : "");
+    });
+    s += `<div class="namzi" style="position:absolute;left:${nzX}px;top:${nzY}px;width:${nz}px">${NZ.mascot({ mood: "sad", pose: "shrug", fx: ["tears"], shadow: false })}</div>`;
+    s += `<div class="fried" style="left:${fr[0]}px;top:${fr[1]}px">${friedRings(fr[2])}<span class="cap" style="font-size:${fr[2] * 0.14}px">our logo, fried</span></div>`;
+    return s;
+  };
+  document.getElementById("ig").innerHTML = scene(250, 270, 330, 560, 30, 230, 720, 440, [660, -262, 150]);
+  document.getElementById("x").innerHTML = scene(280, 310, 420, 624, 26, 200, 660, 600, [1310, 560, 150]);
+</script>
+<script>NZ.still();</script>
+</body>
+</html>

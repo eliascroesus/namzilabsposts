@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 38 — They're the same person</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/meme.css">
+<style>
+  /* The "find the differences… they're the same picture" meme from a famous office sitcom, played by
+     Namzi. Our own drawing of the format; no characters or stills from the show. */
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .office { background: linear-gradient(180deg, #e9e2d3 0%, #ddd3c0 70%, #c9bca4 70.2%, #b9ab92 100%); }
+  .office::before { content: ""; position: absolute; left: 7%; top: 10%; width: 30%; height: 42%; background: linear-gradient(180deg, #f7f5ef, #eeeae0); border: 6px solid #b8ad98; border-radius: 6px; box-shadow: inset 0 0 0 2px #fff; }
+  .office::after { content: ""; position: absolute; right: 8%; top: 14%; width: 16%; height: 30%; background: repeating-linear-gradient(180deg, #cfc5b1 0 10px, #e2dac9 10px 20px); border-radius: 4px; opacity: .9; }
+  .cap { background: #fff; color: #14141c; font-weight: 700; letter-spacing: -0.02em; line-height: 1.18; padding: 22px 30px; }
+  .pcard { position: absolute; background: #fff; border-radius: 18px; box-shadow: 0 0 0 4px #14141c, 0 18px 30px -16px rgba(0,0,0,.5); padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; z-index: 6; }
+  .pcard .h { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+  .pcard .h .mark { width: 30px; height: 30px; }
+  .pcard .nm { font-size: 34px; font-weight: 800; letter-spacing: -0.03em; }
+  .pcard .em { font-size: 22px; font-weight: 600; color: var(--muted); }
+  .pcard .st { display: inline-flex; align-self: flex-start; font-size: 19px; font-weight: 750; padding: 5px 12px; border-radius: 999px; }
+  .facecrop { position: absolute; z-index: 5; }
+</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+
+<div class="canvas s-portrait paper frame" data-still="ig-01" style="padding:66px 70px 56px">
+  <div class="ruled"></div>
+  <div class="top"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">Spot the difference</span></div>
+  <div id="ig" style="margin-top:28px;display:flex;flex-direction:column;gap:18px"></div>
+  <div class="punch" style="margin-top:24px"><b>Namzilabs matches the same person across every tool,</b> so Dave is one customer, counted once. Not a lead in one tab and a stranger in another.</div>
+  <div class="foot" style="padding-top:18px"><span class="demo">A parody · example data</span><span class="site">namzilabs.co</span></div>
+</div>
+
+<div class="canvas s-x paper" data-still="x-01" style="padding:52px 60px">
+  <div class="ruled"></div>
+  <div id="x" style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:18px;height:700px"></div>
+  <div style="position:relative;display:flex;justify-content:space-between;align-items:center;margin-top:26px"><div class="punch" style="font-size:27px"><b>Namzilabs matches the same person across every tool,</b> so Dave is counted once.</div><span class="brandmini" style="font-size:26px"><span class="logo" style="width:38px;height:38px"></span>Namzilabs</span></div>
+</div>
+
+<script>
+  const cards = (W, H, k) => {
+    // the two "pictures": a lead in the CRM and a customer in Stripe
+    // held up, one in each hand
+    const cw = 262 * k, y = H * 0.2, gap = W * 0.085;
+    return `<div class="pcard" style="left:${W / 2 - gap - cw}px;top:${y}px;width:${cw}px;transform:rotate(-4deg);font-size:${k}em">
+        <div class="h"><span class="mark" data-src="pipedrive"></span>CRM · lead</div><div class="nm">Dave S.</div><div class="em">dave@acme.co</div><span class="st" style="background:#eef0f6;color:#4a4f66">Lead · Tue 3:12 pm</span></div>
+      <div class="pcard" style="left:${W / 2 + gap}px;top:${y}px;width:${cw}px;transform:rotate(4deg);font-size:${k}em">
+        <div class="h"><span class="mark" data-src="stripe"></span>Stripe · customer</div><div class="nm">Dave Smith</div><div class="em">dave@acme.co</div><span class="st" style="background:#e7f7ee;color:#177a45">Paid $1,200</span></div>`;
+  };
+  const panel1 = (W, H, capFs, k) => `<div class="panel flat" style="height:${H}px;border:4px solid #14141c;display:flex;flex-direction:column">
+      <div class="cap" style="font-size:${capFs}px;border-bottom:4px solid #14141c">Your CRM needs you to find the differences between this lead and this customer.</div>
+      <div class="office" style="position:relative;flex:1">${cards(W, H - capFs * 3.6, k)}
+        <div class="namzi" style="position:absolute;left:50%;bottom:-${H * 0.06}px;width:${W * 0.36}px;transform:translateX(-50%)">${NZ.mascot({ mood: "neutral", pose: "both", shadow: false })}</div></div></div>`;
+  const panel2 = (W, H, subFs) => `<div class="panel flat office" style="height:${H}px;border:4px solid #14141c">
+      <div class="facecrop" style="left:50%;top:${H * 0.04}px;width:${H * 0.92}px;transform:translateX(-50%)">${NZ.mascot({ mood: "stern", crop: "face", look: [0, 0.05] })}</div>
+      <div class="subtitle" style="bottom:${H * 0.07}px;font-size:${subFs}px">They're the same person.</div></div>`;
+
+  document.getElementById("ig").innerHTML = panel1(940, 520, 34, 1) + panel2(940, 420, 60);
+  document.getElementById("x").innerHTML = panel1(731, 700, 32, 0.96) + panel2(731, 700, 58);
+</script>
+<script>NZ.still();</script>
+</body>
+</html>

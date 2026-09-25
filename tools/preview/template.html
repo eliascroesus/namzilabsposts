@@ -168,6 +168,22 @@
   .pairrow img { width: 36px; height: 36px; border-radius: 50%; flex: none; }
   .pairrow span { flex: 1; font-size: 13px; color: var(--muted); line-height: 1.3; min-width: 0; }
   .badge.pin { background: #fff4e0; color: #9a5b00; }
+  .badge.meme { background: #fde8f1; color: #b0306a; }
+  /* transparent logo files: one card per colour, previewed on the ground it's made for */
+  .tgrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+  .tcard { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .tcard .tprev { height: 150px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 18px; }
+  .tcard .tprev img { display: block; max-width: 78%; height: 36px; width: auto; }
+  .tcard .tprev img.sym { height: 50px; }
+  .tcard .tbody { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .tcard .trow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .tcard .trow .k { font-size: 13px; font-weight: 650; color: var(--muted); min-width: 74px; }
+  .tcard .hex { font: 600 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--faint); }
+  .webcard { margin-top: 16px; display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px; box-shadow: var(--shadow); }
+  .webcard > div { min-width: 0; }
+  .webcard .fav { width: 96px; height: 96px; }
+  .webcard pre { margin: 8px 0 0; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); font: 12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-x: auto; white-space: pre; max-width: 100%; }
+  @media (max-width: 560px) { .webcard { grid-template-columns: minmax(0, 1fr); } .webcard .fav { width: 64px; height: 64px; } }
   .bgrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); }
   .bcard { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
   .bcard button.prev { display: block; width: 100%; border: 0; padding: 0; cursor: zoom-in; background: var(--surface-2); }
@@ -258,6 +274,10 @@
       <button class="btn" data-zip="logos">Download all logos</button></div>
     <div class="boards" id="lboards"></div>
     <div class="lgrid single" id="lgrid"></div>
+    <h3 class="subh" id="transhead">Transparent logo files</h3>
+    <p class="faint" id="transsub" style="margin:-4px 0 14px">For your website, decks and docs: the logo with nothing behind it, in white, black and blue. Cropped tight to the artwork. Use the SVG where you can; the PNGs are for places that won't take one.</p>
+    <div class="tgrid" id="tgrid"></div>
+    <div id="webicons"></div>
     <h3 class="subh" id="varhead">Variants</h3>
     <div class="filters" id="varfilters"></div>
     <div class="vargrid" id="vargrid"></div>
@@ -266,7 +286,11 @@
   <section id="banners">
     <div class="shead"><div><h2>Banners</h2><p id="bsub">Every design at every size: X, LinkedIn (company and profile), Facebook (page and group), YouTube, the link-preview card and an email signature, each with the profile picture made to go with it. Plus Instagram highlight covers.</p></div>
       <button class="btn" data-zip="banners">Download all banners</button></div>
+    <div class="note" id="linote" style="margin-bottom:16px"><b>LinkedIn: which file goes where.</b> <b>linkedin-company</b> is the cover of a company page (the page logo sits over its bottom-left). <b>linkedin-profile</b> is the background of your own profile (your photo sits over its bottom-left). Every word stays clear of both, and inside what phones show. Don't upload the X header to LinkedIn: it's a different shape, and LinkedIn crops it under your photo. Tap "See it on LinkedIn" on any design.</div>
     <div class="bgrid" id="bgrid"></div>
+    <h3 class="subh" id="lihead">Made for LinkedIn</h3>
+    <p class="faint" id="lisub" style="margin:-4px 0 14px">Designed for the narrow LinkedIn covers first. <b>Team</b> is for the people who work at Namzilabs, on their own profiles.</p>
+    <div class="bgrid" id="bgrid3"></div>
     <h3 class="subh" id="memehead">Memes</h3>
     <p class="faint" id="memesub" style="margin:-4px 0 14px">For launch weeks and a playful profile. They skip the link preview and email sizes, which stay on-brand.</p>
     <div class="bgrid" id="bgrid2"></div>
@@ -415,12 +439,14 @@
   const sets = {
     posts: () => M.posts.flatMap((p) => postFiles(p, `posts/${p.dir}/`)),
     videos: () => M.videos.length ? [...M.videos.flatMap((v) => [...v.files.map((f) => ({ ...f, zipPath: `videos/${v.dir}/${f.name}` })), { ...v.poster, zipPath: `videos/${v.dir}/poster.jpg` }]), { text: M.videoReadme, type: "text/markdown", zipPath: "videos/README.md" }] : [],
-    logos: () => [...M.logos.concepts.flatMap((l) => logoFiles(l, `logos/${l.id}/`)), ...M.logos.overviews.filter((b) => !M.logos.concepts.some((l) => l.board && l.board.path === b.path)).map((b) => ({ ...b, zipPath: `logos/${b.name}` })), ...M.logos.wordmarks.map((w) => ({ text: w.text, type: "image/svg+xml", zipPath: `logos/${w.name}` })), ...(M.logos.variants || []).flatMap((v) => [{ ...v.png, zipPath: `logos/variants/${v.png.name}` }, { text: v.svg.text, type: "image/svg+xml", zipPath: `logos/variants/${v.svg.name}` }])],
-    banners: () => M.banners ? [...M.banners.concepts.flatMap((c) => [...c.files.map((f) => ({ ...f, zipPath: `banners/${c.id}/${f.name}` })), ...(c.avatar ? [{ ...c.avatar, zipPath: `banners/${c.id}/profile-picture.png` }] : []), ...(c.mockup ? [{ ...c.mockup, zipPath: `banners/mockups/${c.mockup.name}` }] : [])]), ...M.banners.highlights.map((h) => ({ ...h, zipPath: `banners/instagram-highlights/${h.name}` })), { text: M.banners.readme, type: "text/markdown", zipPath: "banners/README.md" }] : [],
+    logos: () => [...M.logos.concepts.flatMap((l) => logoFiles(l, `logos/${l.id}/`)), ...M.logos.overviews.filter((b) => !M.logos.concepts.some((l) => l.board && l.board.path === b.path)).map((b) => ({ ...b, zipPath: `logos/${b.name}` })), ...M.logos.wordmarks.map((w) => ({ text: w.text, type: "image/svg+xml", zipPath: `logos/${w.name}` })), ...(M.logos.variants || []).flatMap((v) => [{ ...v.png, zipPath: `logos/variants/${v.png.name}` }, ...(v.svg ? [{ text: v.svg.text, type: "image/svg+xml", zipPath: `logos/variants/${v.svg.name}` }] : [])]), ...transFiles(), ...webFiles()],
+    banners: () => M.banners ? [...M.banners.concepts.flatMap((c) => [...c.files.map((f) => ({ ...f, zipPath: `banners/${c.id}/${f.name}` })), ...(c.avatar ? [{ ...c.avatar, zipPath: `banners/${c.id}/profile-picture.png` }] : []), ...(c.mockup ? [{ ...c.mockup, zipPath: `banners/mockups/${c.mockup.name}` }] : []), ...(c.limock ? [{ ...c.limock, zipPath: `banners/mockups/${c.limock.name}` }] : [])]), ...M.banners.highlights.map((h) => ({ ...h, zipPath: `banners/instagram-highlights/${h.name}` })), { text: M.banners.readme, type: "text/markdown", zipPath: "banners/README.md" }] : [],
     mascot: () => [...M.mascot.stickers.flatMap((s) => [{ ...s.png, zipPath: `namzi/stickers/${s.png.name}` }, { text: s.svg, type: "image/svg+xml", zipPath: `namzi/stickers/${s.png.name.replace(".png", ".svg")}` }]), ...M.mascot.avatars.map((a) => ({ ...a, zipPath: `namzi/avatars/${a.name}` })), ...M.mascot.boards.map((b) => ({ ...b, zipPath: `namzi/${b.name}` }))],
     docs: () => M.docs.map((d) => ({ ...d, zipPath: `docs/${d.name}` })),
   };
   const root = M.kit === "brand" ? "namzilabs-brand" : "namzilabs-content";
+  function transFiles(color) { return (M.logos.transparent || []).filter((t) => !color || t.color === color).flatMap((t) => t.files.map((f) => ({ ...f, zipPath: `logos/transparent/${f.name}` }))); }
+  function webFiles() { return M.logos.web ? [...M.logos.web.files.map((f) => ({ ...f, zipPath: `logos/website-icons/${f.name}` })), ...(M.logos.web.readme ? [{ text: M.logos.web.readme, type: "text/markdown", zipPath: "logos/website-icons/README.md" }] : [])] : []; }
   sets.all = () => ["posts", "videos", "logos", "banners", "mascot", "docs"].flatMap((k) => sets[k]().map((f) => ({ ...f, zipPath: `${root}/${f.zipPath}` })));
   const zipNames = { all: `${root}.zip`, posts: "namzilabs-posts.zip", videos: "namzilabs-videos.zip", logos: "namzilabs-logos.zip", banners: "namzilabs-banners.zip", mascot: "namzi-mascot.zip", docs: "namzilabs-docs.zip" };
   const bytes = (fs) => fs.reduce((n, f) => n + (f.size || (f.text ? f.text.length : 0)), 0);
@@ -456,17 +482,17 @@
 
   /* ── posts ──────────────────────────────────────────────────────────── */
   let pf = "all";
-  const pcount = (k) => (k === "all" ? M.posts.length : k === "namzi" ? M.posts.filter((p) => p.mascot).length : M.posts.filter((p) => p.audiences.includes(k)).length);
+  const pcount = (k) => (k === "all" ? M.posts.length : k === "namzi" ? M.posts.filter((p) => p.mascot).length : k === "meme" ? M.posts.filter((p) => p.meme).length : M.posts.filter((p) => p.audiences.includes(k)).length);
   function renderPostFilters() {
-    const keys = ["all", ...Object.keys(AUD).filter((k) => pcount(k)), "namzi"];
-    $("#pfilters").innerHTML = keys.map((k) => `<button class="chip${pf === k ? " on" : ""}" data-f="${k}">${k === "all" ? "All" : k === "namzi" ? "With Namzi" : AUD[k]}<span class="n">${pcount(k)}</span></button>`).join("");
+    const keys = ["all", ...(pcount("meme") ? ["meme"] : []), ...Object.keys(AUD).filter((k) => pcount(k)), "namzi"];
+    $("#pfilters").innerHTML = keys.map((k) => `<button class="chip${pf === k ? " on" : ""}" data-f="${k}">${k === "all" ? "All" : k === "namzi" ? "With Namzi" : k === "meme" ? "Memes" : AUD[k]}<span class="n">${pcount(k)}</span></button>`).join("");
   }
   $("#pfilters").addEventListener("click", (e) => { const b = e.target.closest("[data-f]"); if (!b) return; pf = b.dataset.f; renderPostFilters(); renderPosts(); });
   function renderPosts() {
-    const list = M.posts.filter((p) => pf === "all" || (pf === "namzi" ? p.mascot : p.audiences.includes(pf))).sort((a, b) => b.pinned - a.pinned);
+    const list = M.posts.filter((p) => pf === "all" || (pf === "namzi" ? p.mascot : pf === "meme" ? p.meme : p.audiences.includes(pf))).sort((a, b) => b.pinned - a.pinned);
     $("#pgrid").innerHTML = list.map((p) => {
       const cover = p.images[0];
-      const badges = [p.pinned ? '<span class="badge pin">📌 Pin this</span>' : "", ...p.audiences.map((a) => `<span class="badge aud">${esc(AUD[a])}</span>`), p.mascot ? '<span class="badge nz">Namzi</span>' : "", p.hold ? '<span class="badge hold">Hold until live</span>' : "", `<span class="badge">${esc(p.formatShort)}</span>`].join("");
+      const badges = [p.pinned ? '<span class="badge pin">📌 Pin this</span>' : "", ...p.audiences.map((a) => `<span class="badge aud">${esc(AUD[a])}</span>`), p.meme ? '<span class="badge meme">Meme</span>' : "", p.mascot ? '<span class="badge nz">Namzi</span>' : "", p.hold ? '<span class="badge hold">Hold until live</span>' : "", `<span class="badge">${esc(p.formatShort)}</span>`].join("");
       return `<article class="card"><button class="thumb" data-open="${p.dir}" aria-label="Open ${esc(p.title)}"><img loading="lazy" src="${esc(cover.path)}" alt="${esc(p.title)}">${p.images.length > 1 ? `<span class="count">${p.images.length} images</span>` : ""}</button>
         <div class="cbody"><div class="ctitle"><span class="no">${p.num}</span>${esc(p.title)}</div><div class="badges">${badges}</div>
         <div class="cact"><button class="btn small" data-open="${p.dir}">Open</button><button class="btn small" data-pzip="${p.dir}" title="Images + captions">${ICON_DL}ZIP<span class="sz">&nbsp;· ${mb(bytes(postFiles(p)))}</span></button></div></div></article>`;
@@ -605,6 +631,38 @@
     const z = e.target.closest("[data-lz]"); if (z) { const l = M.logos.concepts.find((x) => x.id === z.dataset.lz); saveZip(`namzilabs-logo-${l.id}.zip`, logoFiles(l)); }
   });
 
+  /* the transparent files: one card per colour */
+  const TR = M.logos.transparent || [];
+  const svgUrl = (t) => `data:image/svg+xml;charset=utf-8,${encodeURIComponent(t)}`;
+  const GROUND = { white: "#14141c", black: "#f4f5f9", blue: "#ffffff" };
+  if (TR.length) {
+    $("#tgrid").innerHTML = TR.map((t) => {
+      const by = (k) => t.files.filter((f) => f.kind === k);
+      const sym = by("symbol").find((f) => f.text), lock = by("lockup").find((f) => f.text);
+      const row = (k, lab) => `<div class="trow"><span class="k">${lab}</span>${by(k).map((f) => `<button class="btn small" data-tf="${t.color}|${f.name}">${ICON_DL}${esc(f.label)}</button>`).join("")}</div>`;
+      return `<article class="tcard"><div class="tprev" style="background:${GROUND[t.color]}${t.color === "blue" ? ";box-shadow:inset 0 -1px 0 var(--line)" : ""}"><img class="sym" src="${svgUrl(sym.text)}" alt=""><img src="${svgUrl(lock.text)}" alt="Namzilabs lockup in ${t.color}"></div>
+        <div class="tbody"><div class="ctitle" style="text-transform:capitalize">${esc(t.color)} <span class="hex">${esc(t.hex)}</span></div>
+        ${row("symbol", "Symbol")}${row("lockup", "Lockup")}${row("wordmark", "Wordmark")}
+        <div class="cact" style="margin-top:auto"><button class="btn small" data-tz="${t.color}">${ICON_DL}All ${esc(t.color)} files (ZIP)</button></div></div></article>`;
+    }).join("");
+    $("#tgrid").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-tf]");
+      if (b) { const [color, name] = b.dataset.tf.split("|"); const f = TR.find((t) => t.color === color).files.find((x) => x.name === name); return saveOne(f, f.name); }
+      const z = e.target.closest("[data-tz]"); if (z) saveZip(`namzilabs-logo-${z.dataset.tz}.zip`, transFiles(z.dataset.tz));
+    });
+  } else ["#transhead", "#transsub", "#tgrid"].forEach((q) => $(q).classList.add("hidden"));
+  if (M.logos.web) {
+    const W = M.logos.web, fav = W.files.find((f) => f.name === "favicon.svg");
+    const snippet = (W.readme.match(/```html\n([\s\S]*?)```/) || [, ""])[1].trim();
+    $("#webicons").innerHTML = `<div class="webcard">${fav ? `<img class="fav" src="${svgUrl(fav.text)}" alt="The favicon">` : ""}<div><div class="ctitle">Website icons</div>
+      <div class="faint" style="font-size:14px;margin-top:4px">The favicon, the iPhone and Android home-screen icons and a web manifest. Put them in your site's root and paste this into the page's &lt;head&gt;:</div>
+      <pre>${esc(snippet)}</pre><div class="files" style="margin-top:10px">${W.files.map((f, i) => `<button class="btn small" data-wf="${i}">${ICON_DL}${esc(f.name)}</button>`).join("")}<button class="btn small" data-wz>${ICON_DL}All website icons (ZIP)</button></div></div></div>`;
+    $("#webicons").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-wf]"); if (b) { const f = W.files[Number(b.dataset.wf)]; return saveOne(f, f.name); }
+      if (e.target.closest("[data-wz]")) saveZip("namzilabs-website-icons.zip", webFiles());
+    });
+  }
+
   const VARS = M.logos.variants || [];
   let vgf = "all";
   function renderVariants() {
@@ -612,7 +670,7 @@
     $("#varfilters").innerHTML = groups.map((g) => `<button class="chip${vgf === g ? " on" : ""}" data-vg="${esc(g)}">${g === "all" ? "All" : esc(g)}<span class="n">${g === "all" ? VARS.length : VARS.filter((v) => v.group === g).length}</span></button>`).join("");
     $("#vargrid").innerHTML = VARS.filter((v) => vgf === "all" || v.group === vgf).map((v) => {
       const pair = v.pairs && M.banners ? M.banners.concepts.find((c) => c.id === v.pairs) : null;
-      return `<div class="var"><button class="pv" data-img="${esc(v.png.path)}" aria-label="Open ${esc(v.name)}"><img loading="lazy" src="${esc(v.png.path)}" alt="${esc(v.name)}: a variant of the Namzilabs logo"></button><b>${esc(v.name)}</b><span class="faint">${esc(v.note)}${pair ? ` Goes with the ${esc(pair.name)} banner.` : ""}</span><div class="row"><button class="btn small" data-vp="${esc(v.id)}">${ICON_DL}PNG</button><button class="btn small" data-vs="${esc(v.id)}">${ICON_DL}SVG</button></div></div>`;
+      return `<div class="var"><button class="pv" data-img="${esc(v.png.path)}" aria-label="Open ${esc(v.name)}"><img loading="lazy" src="${esc(v.png.path)}" alt="${esc(v.name)}: a variant of the Namzilabs logo"></button><b>${esc(v.name)}</b><span class="faint">${esc(v.note)}${pair ? ` Goes with the ${esc(pair.name)} banner.` : ""}</span><div class="row"><button class="btn small" data-vp="${esc(v.id)}">${ICON_DL}PNG</button>${v.svg ? `<button class="btn small" data-vs="${esc(v.id)}">${ICON_DL}SVG</button>` : ""}</div></div>`;
     }).join("");
   }
   if (VARS.length) {
@@ -627,16 +685,19 @@
   /* ── banners ────────────────────────────────────────────────────────── */
   if (M.banners) {
     const card = (c) => {
-      const x = c.files.find((f) => /^x\.(png|jpg)$/.test(f.name)) || c.files[0];
-      return `<article class="bcard"><button class="prev" data-img="${esc(c.mockup ? c.mockup.path : x.path)}" aria-label="Preview ${esc(c.name)}"><img loading="lazy" src="${esc(x.path)}" alt="${esc(c.name)} banner"></button>
+      const x = c.files.find((f) => /^x\.(png|jpg)$/.test(f.name)) || c.files.find((f) => f.name.startsWith("linkedin-profile")) || c.files[0];
+      return `<article class="bcard"><button class="prev" data-img="${esc(c.mockup ? c.mockup.path : c.limock ? c.limock.path : x.path)}" aria-label="Preview ${esc(c.name)}"><img loading="lazy" src="${esc(x.path)}" alt="${esc(c.name)} banner"></button>
         <div class="cbody"><div class="ctitle">${esc(c.name)}${c.id === "electric" ? ' <span class="badge pin">Start here</span>' : ""}</div><div class="faint">${esc(c.head)}</div>
         ${c.avatar ? `<div class="pairrow"><img loading="lazy" src="${esc(c.avatar.path)}" alt=""><span>The profile picture made for it</span><button class="btn small" data-ba="${c.id}">${ICON_DL}PNG</button></div>` : ""}
+        ${c.limock ? `<div class="files"><button class="btn small" data-img="${esc(c.limock.path)}">See it on LinkedIn</button>${c.mockup ? `<button class="btn small" data-img="${esc(c.mockup.path)}">See it on X</button>` : ""}</div>` : ""}
         <div class="files">${c.files.map((f) => `<button class="btn small" data-bf="${c.id}|${f.name}" title="${esc(f.dims)}">${ICON_DL}${esc(f.label)}</button>`).join("")}</div>
         <div class="cact"><button class="btn small" data-bz="${c.id}">${ICON_DL}Every size (ZIP) · ${mb(c.files.reduce((n, f) => n + f.size, 0) + (c.avatar ? c.avatar.size : 0))}</button></div></div></article>`;
     };
-    const designs = M.banners.concepts.filter((c) => c.group !== "meme"), memes = M.banners.concepts.filter((c) => c.group === "meme");
+    const designs = M.banners.concepts.filter((c) => c.group === "design"), memes = M.banners.concepts.filter((c) => c.group === "meme"), li = M.banners.concepts.filter((c) => c.group === "linkedin");
     $("#bgrid").innerHTML = designs.map(card).join("");
     $("#bgrid2").innerHTML = memes.map(card).join("");
+    $("#bgrid3").innerHTML = li.map(card).join("");
+    if (!li.length) ["#lihead", "#lisub", "#bgrid3"].forEach((q) => $(q).classList.add("hidden"));
     if (!memes.length) ["#memehead", "#memesub", "#bgrid2"].forEach((q) => $(q).classList.add("hidden"));
     const onBanner = (e) => {
       const a = e.target.closest("[data-ba]");
@@ -644,10 +705,11 @@
       const f = e.target.closest("[data-bf]");
       if (f) { const [id, name] = f.dataset.bf.split("|"); const c = M.banners.concepts.find((x) => x.id === id); const file = c.files.find((x) => x.name === name); return saveOne(file, `namzilabs-banner-${id}-${file.name}`); }
       const z = e.target.closest("[data-bz]");
-      if (z) { const c = M.banners.concepts.find((x) => x.id === z.dataset.bz); saveZip(`namzilabs-banner-${c.id}.zip`, [...c.files.map((f) => ({ ...f, zipPath: `${c.id}/${f.name}` })), ...(c.avatar ? [{ ...c.avatar, zipPath: `${c.id}/profile-picture.png` }] : []), ...(c.mockup ? [{ ...c.mockup, zipPath: `${c.id}/x-profile-mockup.${c.mockup.name.split(".").pop()}` }] : [])]); }
+      if (z) { const c = M.banners.concepts.find((x) => x.id === z.dataset.bz); saveZip(`namzilabs-banner-${c.id}.zip`, [...c.files.map((f) => ({ ...f, zipPath: `${c.id}/${f.name}` })), ...(c.avatar ? [{ ...c.avatar, zipPath: `${c.id}/profile-picture.png` }] : []), ...(c.mockup ? [{ ...c.mockup, zipPath: `${c.id}/x-profile-mockup.${c.mockup.name.split(".").pop()}` }] : []), ...(c.limock ? [{ ...c.limock, zipPath: `${c.id}/linkedin-mockup.${c.limock.name.split(".").pop()}` }] : [])]); }
     };
     $("#bgrid").addEventListener("click", onBanner);
     $("#bgrid2").addEventListener("click", onBanner);
+    $("#bgrid3").addEventListener("click", onBanner);
     $("#hgrid").innerHTML = M.banners.highlights.map((h, i) => `<div class="sticker"><div class="checker" style="aspect-ratio:9/16;padding:0"><img loading="lazy" src="${esc(h.path)}" alt="Highlight cover: ${esc(h.label)}" style="object-fit:cover"></div><div class="row"><span class="lab">${esc(h.label)} · ${esc(h.bg)}</span><span class="sbtns"><button class="btn small" data-hl="${i}">${ICON_DL}${h.name.endsWith(".jpg") ? "JPG" : "PNG"}</button></span></div></div>`).join("");
     $("#hgrid").addEventListener("click", (e) => { const b = e.target.closest("[data-hl]"); if (b) { const h = M.banners.highlights[Number(b.dataset.hl)]; saveOne(h, `namzilabs-highlight-${h.name}`); } });
   }
@@ -666,7 +728,7 @@
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-img]"); if (!b) return;
     const path = b.dataset.img;
-    const all = [...M.logos.overviews, ...M.mascot.boards, ...M.logos.concepts.map((l) => l.board).filter(Boolean), ...(M.logos.variants || []).map((v) => v.png), ...(M.banners ? M.banners.concepts.flatMap((c) => [...c.files, ...(c.mockup ? [c.mockup] : []), ...(c.avatar ? [c.avatar] : [])]) : [])];
+    const all = [...M.logos.overviews, ...M.mascot.boards, ...M.logos.concepts.map((l) => l.board).filter(Boolean), ...(M.logos.variants || []).map((v) => v.png), ...(M.banners ? M.banners.concepts.flatMap((c) => [...c.files, ...(c.mockup ? [c.mockup] : []), ...(c.limock ? [c.limock] : []), ...(c.avatar ? [c.avatar] : [])]) : [])];
     const f = all.find((x) => x.path === path);
     cur = null;
     $("#mttl").textContent = f.name;

@@ -47,8 +47,12 @@
     ["galaxy", V + "cosmic-1024.png", "Meme · cosmic avatar"],
     ["starter", V + "sticker-1024.png", "Meme · sticker avatar"],
     ["expectation", V + "sketch-1024.png", "Meme · napkin avatar"],
+    ["donut", V + "donuts-1024.png", "Meme · donuts avatar"],
   ];
+  // ?only=precious,donut renders just those
+  const ONLY = new URLSearchParams(location.search).get("only");
   for (const [id, av, lab] of KITS) {
+    if (ONLY && !ONLY.split(",").includes(id)) continue;
     document.write(`<div class="canvas mock" data-still="mockups/x-${id}">
       <div class="top"><span class="arrow">←</span><div><b>Namzilabs</b><span>Posts</span></div><span class="kitlab">${lab}</span></div>
       <img class="banner" src="${id}/x.png" alt="">

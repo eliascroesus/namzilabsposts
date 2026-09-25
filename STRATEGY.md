@@ -71,7 +71,7 @@ Why this order: group 1 feels the cross-tool pain hardest and has no good tool f
 | **One place / the funnel** | The core message: all your data in one place, any metric, and where the funnel breaks across tools. Pinned everywhere. | 20% | Post 35 (pinned), 30, 29, 31, video 11 (pinned) |
 | **Receipts (proof)** | A number that unfolds into its working. The proof behind "true numbers", not the headline. | 10% | Post 08, 20, 23, video 04, 09, 10 |
 | **Recipes: "Tool A + Tool B = metric"** | One cross-tool metric: formula, why it matters, example. A series with a post for every useful source pair. | 25% | Post 02, 04, 05, 06, 07, 24, 26, 32 |
-| **Relatable pain** | POV, memes, bingo cards, group chats, tier lists, horror stories, Monday-morning chaos. Made to be sent. Namzi, the mascot, lives here. | 20% | Post 03, 13–19, 21, 22, 25, 27, 28, 33, 34, video 03, 07, 08 |
+| **Relatable pain** | POV, memes, bingo cards, group chats, tier lists, horror stories, Monday-morning chaos. Made to be sent. Namzi, the mascot, lives here. | 20% | Post 03, 13–19, 21, 22, 25, 27, 28, 33, 34, the meme parodies 36–44, video 03, 07, 08 |
 | **Watch me build** | 15–30s product demos: Get data → Match → Calculate → Publish. | 15% | Video 02, video 01 |
 | **Build in public** | Founder receipts: numbers first, one honest admission, then what's next. | 10% | Post 10 |
 
@@ -176,8 +176,8 @@ Lead with the headline: all your data in one place, any metric, where the funnel
 | Instagram | Reel: video 11 (9:16). Carousel: post 35 | Highlight covers: `highlights/blue/*` | same |
 | Facebook page | Video 11 (9:16 Reel or 16:9 post) | `electric/facebook.png` | same |
 | Facebook group | Post 35 as an album | `electric/facebook-group.png` | same |
-| LinkedIn company page | Post 35 as a PDF (`linkedin-carousel.pdf`) + video 11 (16:9) | `electric/linkedin.png` | same |
-| LinkedIn (founder) | Video 11 (16:9) in Featured | `funnel/linkedin-profile.png` | your own photo |
+| LinkedIn company page | Post 35 as a PDF (`linkedin-carousel.pdf`) + video 11 (16:9) | `electric/linkedin-company.png` (never the X header: LinkedIn crops it under the logo) | same |
+| LinkedIn (founder) | Video 11 (16:9) in Featured | `funnel/linkedin-profile.png` (or `team/linkedin-profile.png` for everyone on the team) | your own photo |
 | YouTube | Video 11 (16:9) as the channel trailer | `electric/youtube.png` | same |
 | Website / link previews | — | `electric/og.png` as the share image | — |
 | Email signature | — | `electric/email.png` | — |
@@ -225,6 +225,8 @@ This batch leans funnier (bingo, group chats, dictionary entries, a red-string b
 | 86 | Post 27 (Namzi never says) | Post 27 | — |
 | 88 | "Month 3 in numbers" | Same | Best performer, recut with a new hook |
 | 89 | Namzi sticker drop: stickers in Stories, reply with them all week | Stories | — |
+
+**The meme week (any time after day 30).** Posts 36–44 are parodies of famous scenes and meme formats, with Namzi in every part: the ring-obsessed creature (36), the donut daydream (37), "they're the same person" (38), "is this a pigeon?" (39), everyone pointing (40), "nah / yeah" (41), "this is fine" (42), "PIVOT!" (43) and "funnels are like onions" (44). Each one still teaches one thing: one place (36, 37, 41), matching the same person (38, 40), connecting at the source (39), counted once (42), any metric (43), where the funnel breaks (44). Post one or two a week, not all at once, and pair a meme week with the Precious or Donut daydream banner. Swap post 36 for a different one if the audience is mostly B2B; 38, 40 and 44 do best on LinkedIn.
 
 **When the AI connection is live:** post 12 and video 05 (the launch), swap in video 11's `-ai-live` cuts wherever it's pinned, and remove the "coming soon" badge from post 35, slide 6.
 

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 36 — My precious</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/meme.css">
+<style>
+  /* A parody of the ring-obsessed creature from a certain fantasy saga, played by Namzi: the gold rings
+     are our logo (rendered in 3D), the mountain is a generic volcano. No characters, stills or lettering
+     from the films. Needs brand/logos/one-ring/rings-*.png (render rings.html first). */
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+  .dark { background: #0b0605; color: #fff4e2; }
+  .scene { position: absolute; inset: 0; }
+  .whisper { position: absolute; font-family: "Great Vibes", cursive; color: #ffd98a; text-shadow: 0 0 18px rgba(255,140,40,.8); z-index: 6; white-space: nowrap; }
+  .verse { display: flex; flex-direction: column; gap: 46px; }
+  .verse .l { display: grid; grid-template-columns: 64px 1fr; gap: 22px; align-items: start; }
+  .verse .n { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font-family: "Cinzel", serif; font-weight: 700; font-size: 28px; color: #2a1405; background: radial-gradient(circle at 35% 30%, #fff1c4, #e2a53a 60%, #9a6512); box-shadow: 0 0 24px rgba(255,140,40,.45); }
+  .verse .t { font-size: 44px; }
+  .verse .x { font-size: 27px; line-height: 1.34; color: rgba(255,226,190,.82); margin-top: 8px; font-weight: 500; letter-spacing: -0.01em; }
+  .verse .x b { color: #fff4e2; font-weight: 700; }
+  .dark .brandmini .logo svg rect { fill: rgba(255,255,255,.14); }
+  .dark .site, .dark .brandmini { color: #fff4e2; }
+  .dark .count, .dark .demo { color: rgba(255,226,190,.6); }
+</style>
+</head>
+<body>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/mascot.js"></script>
+<script src="../../lib/volcano.js"></script>
+
+<!-- 1 · the scene -->
+<div class="canvas s-portrait dark frame" data-still="ig-01" style="padding:70px 70px 60px">
+  <div class="scene" id="s1"></div>
+  <div class="top" style="position:relative;z-index:8"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">1 / 2</span></div>
+  <div class="mhead" style="position:relative;z-index:8;margin-top:34px;font-size:56px;color:#fff4e2">Me after finally getting all our data in <em>one place:</em></div>
+  <div class="foot" style="position:relative;z-index:8"><span class="demo">A parody. Namzi is doing a voice.</span><span class="swipe" style="color:#ffd98a">Swipe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</div>
+
+<!-- 2 · the verse, and what each line means -->
+<div class="canvas s-portrait dark frame" data-still="ig-02" style="padding:70px 76px 64px">
+  <div class="scene" id="s2"></div>
+  <div class="top" style="position:relative;z-index:8"><span class="brandmini"><span class="logo"></span>Namzilabs</span><span class="count">2 / 2</span></div>
+  <div class="verse" style="position:relative;z-index:8;margin-top:330px">
+    <div class="l"><span class="n">1</span><div><div class="epic t">One place to rule them all,</div><div class="x"><b>All your data, one dashboard.</b> Revenue, leads, calls and customers, side by side.</div></div></div>
+    <div class="l"><span class="n">2</span><div><div class="epic t">one place to find them,</div><div class="x"><b>33 tools connect in a few clicks,</b> read-only. Nothing in them is ever changed.</div></div></div>
+    <div class="l"><span class="n">3</span><div><div class="epic t">one place to bring them all</div><div class="x"><b>The same person, matched across every tool</b> and counted once. Dave, dave@ and D. Smith are one customer.</div></div></div>
+    <div class="l"><span class="n">4</span><div><div class="epic t">and in one funnel bind them.</div><div class="x"><b>Build any metric and see exactly where the funnel breaks,</b> from first click to paid.</div></div></div>
+  </div>
+  <div class="foot" style="position:relative;z-index:8"><span class="site">namzilabs.co · free to start</span></div>
+</div>
+
+<!-- X -->
+<div class="canvas s-x dark" data-still="x-01">
+  <div class="scene" id="sx"></div>
+  <div class="mhead" style="position:absolute;left:64px;top:56px;width:720px;z-index:8;font-size:54px;color:#fff4e2">Me after finally getting all our data in <em>one place:</em></div>
+  <span class="brandmini" style="position:absolute;right:64px;bottom:48px;z-index:8;color:#fff4e2"><span class="logo"></span>Namzilabs</span>
+</div>
+
+<script>
+  const R = "../../brand/logos/one-ring/";
+  // Namzi, reaching for the rings (flip: facing left, so the reaching hand points at them)
+  const namzi = (x, y, w, flip) => `<div class="namzi${flip ? " flip" : ""}" style="position:absolute;left:${x}px;top:${y}px;width:${w}px;z-index:5;filter:drop-shadow(0 0 30px rgba(255,120,30,.35))">${NZ.mascot({ mood: "obsessed", pose: "wave", wave: -0.5, shadow: false, dark: true })}</div>`;
+  const bubble = (x, y, fs, text, tx = "18%") => `<div class="bubble" style="left:${x}px;top:${y}px;font-size:${fs}px;--tx:${tx}">${text}</div>`;
+
+  // slide 1: the rings float over the lava; Namzi reaches for them
+  document.getElementById("s1").innerHTML = NZ.volcano({ W: 1080, H: 1350, cx: 700, peak: 330, base: 860, seed: 12, flowDir: 0.3 }) +
+    `<div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,4,3,.92) 0%, rgba(8,4,3,.55) 22%, transparent 36%, transparent 80%, rgba(8,4,3,.75) 100%)"></div>` +
+    NZ.oneRings({ view: "hero", cx: 510, cy: 640, w: 720, base: R }) +
+    namzi(660, 860, 370, true) +
+    bubble(110, 905, 64, "My precious…", "86%") +
+    `<div class="whisper" style="left:96px;top:1080px;font-size:52px;transform:rotate(-4deg)">all of it… in one place…</div>`;
+
+  // slide 2: the rings on top, the verse below
+  document.getElementById("s2").innerHTML = NZ.volcano({ W: 1080, H: 1350, cx: 760, peak: 90, base: 420, seed: 4, flow: false, embers: 120 }) +
+    `<div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,4,3,.2) 0%, rgba(8,4,3,.5) 26%, rgba(8,4,3,.9) 40%, rgba(8,4,3,.96) 100%)"></div>` +
+    NZ.oneRings({ view: "hero", cx: 540, cy: 250, w: 520, base: R });
+
+  // X: the mountain to the right, Namzi and the rings in front
+  document.getElementById("sx").innerHTML = NZ.volcano({ W: 1600, H: 900, cx: 1120, peak: 150, base: 640, seed: 12, flowDir: 0.45 }) +
+    `<div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(8,4,3,.9) 0%, rgba(8,4,3,.55) 34%, transparent 55%)"></div>` +
+    NZ.oneRings({ view: "hero", cx: 1060, cy: 560, w: 720, base: R }) +
+    namzi(90, 470, 400) +
+    bubble(420, 300, 64, "My precious…", "14%") +
+    `<div class="whisper" style="left:470px;top:760px;font-size:46px;transform:rotate(-4deg)">all of it… in one place…</div>`;
+</script>
+<script>NZ.hydrateMascots(); NZ.still();</script>
+</body>
+</html>
