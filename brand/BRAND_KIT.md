@@ -2,50 +2,44 @@
 
 Everything a post or video needs so the brand reads as one brand. The source of truth in code is [`lib/brand.css`](../lib/brand.css).
 
-![Logo concepts](logos/boards/00-overview.png)
+![The primary mark](logos/boards/01-between-mono.png)
 
-![Logo concepts, round two](logos/boards/00-overview-2.png)
+![Two rings, endless ways: the variants](logos/boards/01-between-mono-variants.png)
 
 ## Logo
 
-**Primary: 01 · Between, mono** ([board](logos/boards/01-between-mono.png)). It's the same mark with no blue lens: the two tools and their overlap in one colour, so it works on blue, ink, sky or paper and stays clear at 24px. Use `01-between-mono/profile-blue-1024.png` as the profile picture everywhere. The eclipse alternate (`eclipse-*`), with the overlap knocked out, is the boldest at tiny sizes.
+**The mark: 01 · Between, mono** ([board](logos/boards/01-between-mono.png)). Two tools as two rings, overlapping, in one colour, with the space between them left empty. Whatever sits behind the mark shows through the overlap. It works on blue, ink, sky or paper and stays clear at 24px. Use `01-between-mono/profile-blue-1024.png` as the profile picture everywhere. The eclipse alternate (`eclipse-*`), with solid discs and the overlap cut out, is the boldest at tiny sizes.
 
-**The original concept: 01 · Between.** Your tools are the circles; the number you need lives in the overlap. The blue lens is literally "the number between your tools". It also reads as matching: the same person, seen by two tools at once. It holds up as a 24px avatar, which is where social logos live.
+In code, the mark is defined once, as `NZ.RINGS` / `NZ.MARK` in [`lib/motion.js`](../lib/motion.js): every post, video and banner draws it from there. `tools/build-logos.mjs` writes the SVG files with the same geometry: two rings of radius 15, 14 apart, stroke 4.6, on a 64-unit grid.
 
-| Concept | Idea | Board |
-|---|---|---|
-| **01 Between** ⭐ | Two tools, one overlap | [board](logos/boards/01-between.png) |
-| 02 Converge | Many sources in, one number out | [board](logos/boards/02-converge.png) |
-| 03 Receipt | Every number shows its working | [board](logos/boards/03-receipt.png) |
-| 04 Bridge | An "n" standing on two tools | [board](logos/boards/04-bridge.png) |
-| 05 Merge | Today's two-dot mark, touching | [board](logos/boards/05-merge.png) |
-| **06 Namzi** · social twin | The lens from 01 with a face: the mascot as a mark | [board](logos/boards/06-namzi.png) |
-| 07 Hash | # is the number; the blue square is the space between the lines | [board](logos/boards/07-hash.png) |
-| 08 Wire | A flow wire from a tool to the answer, bent into a Z | [board](logos/boards/08-wire.png) |
-| 09 Pillars | An N: two tools apart, and the blue line that connects them | [board](logos/boards/09-pillars.png) |
-| 10 Tittle | Lowercase wordmark; the i is dotted with the Between mark | [board](logos/boards/10-tittle.png) |
+**Variants** ([board](logos/boards/01-between-mono-variants.png)): the same two rings with a different finish or ground. There are 24, in [`logos/variants/`](logos/variants/), each as an SVG and a 1024px profile picture:
 
-Each concept folder in [`logos/`](logos/) contains:
-- `symbol-color.svg` for light backgrounds
-- `symbol-white.svg` for dark backgrounds
-- `symbol-ink.svg`, one colour
-- `app-icon.svg` (ink tile) and `app-icon-sky.svg` (blue tile)
-- `lockup-light.svg` and `lockup-dark.svg` (for 10 Tittle, the lockups are the lowercase wordmark itself)
-- `profile.svg` and `profile-1024.png`: a full-bleed square for profile pictures
+| Group | Variants |
+|---|---|
+| Ring styles | Hairline, Bold, Gradient, Outline, Split, Linked (woven over and under) |
+| Grounds | Midnight grid, Blueprint, Glass, Neon, Chrome, Emboss |
+| Fun | Precious (gold), Wedding rings, Coffee rings, Donuts, Life rings, Pixel, Napkin sketch, Cosmic, Sticker, Soap bubbles, Balloon, Gummy rings |
 
-The wordmark is outlined from Inter 800, so no file needs a font installed. Rebuild with `node tools/build-logos.mjs`.
+Each banner design has a variant made for it (see [`banners/README.md`](banners/README.md)). Rebuild with `node tools/build-variants.mjs`, then render with `node tools/render-stills.mjs brand/logos/variants.html brand/logos --ss 1`.
 
-**Profile pictures:** use `01-between/profile-1024.png`. It's the ink square at 1024×1024, and the mark sits comfortably inside the circle crop X and Instagram apply. For a friendlier account, such as a "Namzi" reply persona, use `06-namzi/profile-1024.png` or one of the mascot avatars in [`mascot/avatars/`](mascot/avatars/).
+The folder [`logos/01-between-mono/`](logos/01-between-mono/) contains:
+- `symbol-ink.svg` and `symbol-white.svg`
+- `app-icon-{blue,ink,sky,paper}.svg`
+- `profile-{blue,ink,sky,paper}.svg` and their 1024px PNGs (full-bleed squares; X and Instagram crop them to a circle)
+- `lockup-ink.svg` and `lockup-white.svg`
+- the same set with an `eclipse-` prefix
 
-**Don't:** add a coloured lens back, add effects, put the ink tile on a busy photo, or stretch it. The mark is one colour: white on dark and blue, ink on light.
+The wordmark is outlined from Inter 800, so no file needs a font installed. The earlier concepts (02–10 and the original blue-lens 01) are still in [`logos/`](logos/) for reference, but they're retired: use only the mono mark and its variants.
 
-**Banners:** five designs (Electric, Funnel, Sources, Namzi, Minimal), each at every platform size: X, LinkedIn company and personal, Facebook page and group, YouTube, a link-preview card and an email signature. There are also Instagram highlight covers. See [`banners/README.md`](banners/README.md).
+**Don't:** fill the space between the rings, add a coloured lens back, change the rings' spacing, put the ink tile on a busy photo, or stretch it. The primary mark is one colour: white on dark and blue, ink on light. The variants are for profile pictures and fun posts, not for the lockup on the website.
+
+**Banners:** fifteen designs. Ten are for every day: Electric, Funnel, Sources, Namzi, Minimal, Formula, Glass, Neon, Big type and Blueprint. Five are memes: Precious, Wedding, Galaxy brain, Starter pack, and Expectation vs reality. Each comes at every platform size (X, LinkedIn company and personal, Facebook page and group, YouTube, plus a link-preview card and an email signature for the everyday ten) with the profile picture made to go with it. There are also Instagram highlight covers. See [`banners/README.md`](banners/README.md).
 
 ## Mascot: Namzi
 
 ![Namzi](mascot/boards/01-character.png)
 
-**Namzi is the blue lens from the logo, with a face.** It's the overlap where two tools see the same person, the number between them, given eyes, noodle arms and a stack of receipts. It gives the brand a character people remember and send to each other, without changing the logo.
+**Namzi lives in the space between the logo's two rings.** It's the overlap where two tools see the same person, given a face, eyes, noodle arms and a stack of receipts. It gives the brand a character people remember and send to each other, without changing the logo.
 
 **Personality**
 - Counts everyone once: Dave, dave@ and Dave M. are one Dave.
@@ -77,7 +71,7 @@ The wordmark is outlined from Inter 800, so no file needs a font installed. Rebu
 | Hairline | `#E7E8F0` | Borders |
 | Muted | `#5C5C6B` | Secondary text |
 | **Blue (action)** | `#2F5FD8` | Buttons, links, the **one** accent per image |
-| Brand blue | `#568CFF` | The product's own blue; the logo's lens on dark |
+| Brand blue | `#568CFF` | The product's own blue |
 | Sky gradient | `#16305E → #22438F → #2B53AE` | Dark "sky" panels, i.e. a published number |
 | Live green | `#34C759` | "Live / recomputed" dots only |
 | Signal red | `#F0553D` | A disagreement, a no-show, something excluded |

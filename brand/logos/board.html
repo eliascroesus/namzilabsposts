@@ -87,13 +87,13 @@
   <div class="left">
     <div>
       <div class="num">01 · Primary mark · mono</div>
-      <div class="name">Between, <em>fixed.</em></div>
-      <div class="idea">No blue lens. The same two tools and the overlap, filled in, drawn in one colour, so it sits on blue, ink, sky or paper and holds at 24px.</div>
+      <div class="name">Between, <em>open.</em></div>
+      <div class="idea">Two tools as two rings, overlapping, in one colour, with the space between them left empty. It sits on blue, ink, sky or paper and holds at 24px.</div>
       <div style="display:flex;align-items:center;gap:18px;margin-top:30px">
-        <img src="01-between/app-icon.svg" style="width:92px;height:92px;border-radius:21px;opacity:.9">
-        <span style="font-size:34px;color:var(--faint)">→</span>
         <img src="01-between-mono/app-icon-ink.svg" style="width:92px;height:92px;border-radius:21px">
         <img src="01-between-mono/app-icon-blue.svg" style="width:92px;height:92px;border-radius:21px">
+        <img src="01-between-mono/app-icon-sky.svg" style="width:92px;height:92px;border-radius:21px">
+        <img src="01-between-mono/app-icon-paper.svg" style="width:92px;height:92px;border-radius:21px;box-shadow:0 0 0 1px #e4e6ef">
       </div>
     </div>
     <div class="icons">
@@ -118,7 +118,7 @@
         <div class="av" style="width:24px;height:24px"><img src="01-between-mono/profile-ink.svg" style="transform:none"></div>
         <div class="post">
           <div class="av" style="width:48px;height:48px"><img src="01-between-mono/profile-blue.svg" style="transform:none"></div>
-          <div><div class="who">Namzilabs <span>@namzilabs · 2h</span></div><div class="txt">Every number shows its working. Here's ours.</div></div>
+          <div><div class="who">Namzilabs <span>@namzilabs · 2h</span></div><div class="txt">All your data, one place. Say hi to the new mark.</div></div>
         </div>
       </div>
     </div>
@@ -199,6 +199,11 @@
 </script>
 <script src="../../assets/logos/marks.js"></script>
 <script src="../../lib/motion.js"></script>
-<script>NZ.still();</script>
+<script>
+  // --query only=<board> renders just that board
+  const only = new URLSearchParams(location.search).get("only");
+  if (only) document.querySelectorAll(".canvas[data-still]").forEach((c) => { if (c.dataset.still !== only) c.remove(); });
+  NZ.still();
+</script>
 </body>
 </html>

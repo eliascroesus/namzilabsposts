@@ -68,12 +68,23 @@
   :focus-visible { outline: 3px solid var(--accent-line); outline-offset: 2px; border-radius: 8px; }
 
   /* nav */
-  nav.tabs { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  /* the kit switch: a top bar that stays put, with the section tabs sticking under it */
+  .kitbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: color-mix(in srgb, var(--bg) 90%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .kb { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 56px; }
+  .kb-brand { display: flex; align-items: center; gap: 9px; font-weight: 750; letter-spacing: -0.02em; font-size: 16px; white-space: nowrap; min-width: 0; }
+  .kb-brand svg { width: 28px; height: 28px; border-radius: 7px; flex: none; }
+  .kb-seg { display: inline-flex; flex: none; padding: 3px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--line); }
+  .kb-seg a { display: inline-flex; align-items: center; gap: 5px; padding: 7px 13px; border-radius: 9px; font-size: 14px; font-weight: 650; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  .kb-seg a[aria-current="page"] { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+  .kb-seg a:not([aria-current]):hover { color: var(--text); background: color-mix(in srgb, var(--surface) 50%, transparent); }
+  .kb-seg .ext { font-size: 12px; opacity: .65; }
+  @media (max-width: 440px) { .kb-brand span { display: none; } .kb-seg a { padding: 7px 11px; } }
+  nav.tabs { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 57px); z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   nav.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
   nav.tabs a { flex: none; text-decoration: none; color: var(--muted); font-weight: 650; font-size: 14px; padding: 12px 12px; border-bottom: 2px solid transparent; }
   nav.tabs a.on { color: var(--text); border-bottom-color: var(--accent); }
 
-  section { padding: 34px 0 10px; scroll-margin-top: 50px; }
+  section { padding: 34px 0 10px; scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 112px); } /* under the kit bar and the tabs */
   .shead { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 20px; margin-bottom: 18px; }
   h2 { font-size: clamp(28px, 4.4vw, 40px); letter-spacing: -0.04em; line-height: 1; margin: 0; font-weight: 800; }
   .shead p { margin: 6px 0 0; color: var(--muted); max-width: 620px; }
@@ -116,6 +127,8 @@
   /* logos */
   .boards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); margin-bottom: 18px; }
   .boards button { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; padding: 0; cursor: zoom-in; background: var(--surface); }
+  /* boards of any shape share one frame; a tall board shows its top and opens whole */
+  .boards button img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
   .lgrid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); }
   .licon { padding: 18px; background: var(--surface-2); display: grid; place-items: center; }
   .licon svg { width: 62%; height: auto; border-radius: 22%; box-shadow: 0 16px 40px -18px rgba(20,30,80,.55); }
@@ -140,9 +153,20 @@
   .doc .t b { display: block; font-size: 15px; letter-spacing: -0.01em; }
   .doc .t span { font-size: 13px; color: var(--muted); }
 
-  .xlink { display: flex; align-items: center; gap: 14px; margin-top: 18px; padding: 14px 18px; border-radius: 16px; background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--text); text-decoration: none; font-weight: 650; font-size: 15px; max-width: 640px; }
-  .xlink b { color: var(--accent); }
-  .xlink .go { margin-left: auto; color: var(--accent); white-space: nowrap; }
+  /* the primary logo card spans the row; the variants sit in a grid of circles below it */
+  .lgrid.single { grid-template-columns: 1fr; }
+  .lgrid.single .card { display: grid; grid-template-columns: minmax(160px, 240px) 1fr; }
+  @media (max-width: 640px) { .lgrid.single .card { grid-template-columns: 1fr; } }
+  .vargrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 22px 18px; }
+  .var { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .var .pv { padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 50%; }
+  .var .pv img { width: 100%; aspect-ratio: 1; border-radius: 50%; display: block; box-shadow: var(--shadow); }
+  .var b { font-size: 15px; letter-spacing: -0.01em; margin-top: 4px; }
+  .var .faint { font-size: 13px; line-height: 1.4; }
+  .var .row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 2px; } /* buttons line up across a row */
+  .pairrow { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 12px; background: var(--surface-2); }
+  .pairrow img { width: 36px; height: 36px; border-radius: 50%; flex: none; }
+  .pairrow span { flex: 1; font-size: 13px; color: var(--muted); line-height: 1.3; min-width: 0; }
   .badge.pin { background: #fff4e0; color: #9a5b00; }
   .bgrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); }
   .bcard { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
@@ -193,8 +217,12 @@
   .hidden { display: none !important; }
 </style>
 
+<div class="kitbar"><div class="wrap kb">
+  <span class="kb-brand"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#14141c"/><circle cx="26.4" cy="32" r="12" fill="none" stroke="#fff" stroke-width="4"/><circle cx="37.6" cy="32" r="12" fill="none" stroke="#fff" stroke-width="4"/></svg><span>Namzilabs</span></span>
+  <nav class="kb-seg" id="kbseg" aria-label="Switch kit"></nav>
+</div></div>
+
 <header class="wrap hero">
-  <div class="brandrow"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#14141c"/><path d="M32 20.4a13 13 0 0 1 0 23.2a13 13 0 0 1 0-23.2Z" fill="#fff"/><circle cx="26" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.6"/><circle cx="38" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.6"/></svg>Namzilabs <span class="kit">Content kit</span></div>
   <h1 id="h1">Everything, ready to <em>post.</em></h1>
   <p class="sub" id="sub"></p>
   <div class="cta">
@@ -204,7 +232,6 @@
   </div>
   <div class="stats" id="stats"></div>
   <p class="faint" id="dlnote" style="margin:14px 0 0">Every download asks you to confirm the save.</p>
-  <a class="xlink hidden" id="xlink" target="_blank" rel="noopener"></a>
 </header>
 
 <nav class="tabs"><div class="wrap" id="tabs">
@@ -227,22 +254,28 @@
   </section>
 
   <section id="logos">
-    <div class="shead"><div><h2>Logos</h2><p><b>01 Between, mono</b> is the primary mark: the two tools and their overlap in one colour, with no blue lens. Profile pictures come in four colourways plus the eclipse alternate. The other ten concepts are below, each as SVGs and a 1024px profile picture.</p></div>
+    <div class="shead"><div><h2>Logo</h2><p>One mark: two tools as two rings, overlapping, with the space between them left empty. It comes in four colourways and the eclipse alternate, plus variants that change the rings' finish and the ground behind them. Every banner design has one made for it.</p></div>
       <button class="btn" data-zip="logos">Download all logos</button></div>
     <div class="boards" id="lboards"></div>
-    <div class="lgrid" id="lgrid"></div>
+    <div class="lgrid single" id="lgrid"></div>
+    <h3 class="subh" id="varhead">Variants</h3>
+    <div class="filters" id="varfilters"></div>
+    <div class="vargrid" id="vargrid"></div>
   </section>
 
   <section id="banners">
-    <div class="shead"><div><h2>Banners</h2><p>Five designs, each at every size: X, LinkedIn (company and profile), Facebook (page and group), YouTube, the link-preview card and an email signature. Plus Instagram highlight covers.</p></div>
+    <div class="shead"><div><h2>Banners</h2><p id="bsub">Every design at every size: X, LinkedIn (company and profile), Facebook (page and group), YouTube, the link-preview card and an email signature, each with the profile picture made to go with it. Plus Instagram highlight covers.</p></div>
       <button class="btn" data-zip="banners">Download all banners</button></div>
     <div class="bgrid" id="bgrid"></div>
+    <h3 class="subh" id="memehead">Memes</h3>
+    <p class="faint" id="memesub" style="margin:-4px 0 14px">For launch weeks and a playful profile. They skip the link preview and email sizes, which stay on-brand.</p>
+    <div class="bgrid" id="bgrid2"></div>
     <h3 class="subh">Instagram highlight covers</h3>
     <div class="sgrid" id="hgrid"></div>
   </section>
 
   <section id="mascot">
-    <div class="shead"><div><h2>Meet <em>Namzi.</em></h2><p>The blue lens from the logo, with a face. For social only: stickers for Stories and replies, and avatars for profile pictures.</p></div>
+    <div class="shead"><div><h2>Meet <em>Namzi.</em></h2><p>The space between the logo's two rings, with a face. For social only: stickers for Stories and replies, and avatars for profile pictures.</p></div>
       <button class="btn" data-zip="mascot">Download Namzi pack</button></div>
     <div class="boards" id="mboards"></div>
     <div class="sgrid" id="sgrid"></div>
@@ -382,8 +415,8 @@
   const sets = {
     posts: () => M.posts.flatMap((p) => postFiles(p, `posts/${p.dir}/`)),
     videos: () => M.videos.length ? [...M.videos.flatMap((v) => [...v.files.map((f) => ({ ...f, zipPath: `videos/${v.dir}/${f.name}` })), { ...v.poster, zipPath: `videos/${v.dir}/poster.jpg` }]), { text: M.videoReadme, type: "text/markdown", zipPath: "videos/README.md" }] : [],
-    logos: () => [...M.logos.concepts.flatMap((l) => logoFiles(l, `logos/${l.id}/`)), ...M.logos.overviews.map((b) => ({ ...b, zipPath: `logos/${b.name}` })), ...M.logos.wordmarks.map((w) => ({ text: w.text, type: "image/svg+xml", zipPath: `logos/${w.name}` }))],
-    banners: () => M.banners ? [...M.banners.concepts.flatMap((c) => [...c.files.map((f) => ({ ...f, zipPath: `banners/${c.id}/${f.name}` })), ...(c.mockup ? [{ ...c.mockup, zipPath: `banners/mockups/${c.mockup.name}` }] : [])]), ...M.banners.highlights.map((h) => ({ ...h, zipPath: `banners/instagram-highlights/${h.name}` })), { text: M.banners.readme, type: "text/markdown", zipPath: "banners/README.md" }] : [],
+    logos: () => [...M.logos.concepts.flatMap((l) => logoFiles(l, `logos/${l.id}/`)), ...M.logos.overviews.filter((b) => !M.logos.concepts.some((l) => l.board && l.board.path === b.path)).map((b) => ({ ...b, zipPath: `logos/${b.name}` })), ...M.logos.wordmarks.map((w) => ({ text: w.text, type: "image/svg+xml", zipPath: `logos/${w.name}` })), ...(M.logos.variants || []).flatMap((v) => [{ ...v.png, zipPath: `logos/variants/${v.png.name}` }, { text: v.svg.text, type: "image/svg+xml", zipPath: `logos/variants/${v.svg.name}` }])],
+    banners: () => M.banners ? [...M.banners.concepts.flatMap((c) => [...c.files.map((f) => ({ ...f, zipPath: `banners/${c.id}/${f.name}` })), ...(c.avatar ? [{ ...c.avatar, zipPath: `banners/${c.id}/profile-picture.png` }] : []), ...(c.mockup ? [{ ...c.mockup, zipPath: `banners/mockups/${c.mockup.name}` }] : [])]), ...M.banners.highlights.map((h) => ({ ...h, zipPath: `banners/instagram-highlights/${h.name}` })), { text: M.banners.readme, type: "text/markdown", zipPath: "banners/README.md" }] : [],
     mascot: () => [...M.mascot.stickers.flatMap((s) => [{ ...s.png, zipPath: `namzi/stickers/${s.png.name}` }, { text: s.svg, type: "image/svg+xml", zipPath: `namzi/stickers/${s.png.name.replace(".png", ".svg")}` }]), ...M.mascot.avatars.map((a) => ({ ...a, zipPath: `namzi/avatars/${a.name}` })), ...M.mascot.boards.map((b) => ({ ...b, zipPath: `namzi/${b.name}` }))],
     docs: () => M.docs.map((d) => ({ ...d, zipPath: `docs/${d.name}` })),
   };
@@ -403,26 +436,22 @@
   if (M.kit === "brand") {
     $("#h1").innerHTML = "The brand, ready to <em>use.</em>";
     document.title = "Namzilabs Brand Kit";
-    document.querySelector(".kit").textContent = "Brand kit";
-  } else if (M.kit === "content") {
-    document.querySelector(".kit").textContent = "Content kit";
   }
-  const other = M.kit === "content" ? M.kits.brand : M.kit === "brand" ? M.kits.content : null;
-  if (other && other.url) {
-    const x = $("#xlink");
-    x.href = other.url; x.classList.remove("hidden");
-    x.innerHTML = M.kit === "content" ? `<span>Logos, banners and Namzi are in the <b>Brand Kit</b></span><span class="go">Open ↗</span>` : `<span>Posts and videos are in the <b>Content Kit</b></span><span class="go">Open ↗</span>`;
-  }
+  // switch kits from the top bar; the other kit is its own page, so it opens in a new tab
+  if ((M.kit === "content" || M.kit === "brand") && M.kits.content.url && M.kits.brand.url) {
+    const tab = (id, label) => id === M.kit ? `<a aria-current="page">${label}</a>` : `<a href="${esc(M.kits[id].url)}" target="_blank" rel="noopener">${label}<span class="ext" aria-hidden="true">↗</span></a>`;
+    $("#kbseg").innerHTML = tab("content", "Content kit") + tab("brand", "Brand kit");
+  } else $("#kbseg").remove(); // the repo copy holds both kits on one page
 
   /* ── header ─────────────────────────────────────────────────────────── */
   const nSlides = M.posts.reduce((n, p) => n + p.images.length, 0);
   $("#sub").textContent = M.kit === "brand"
-    ? `The fixed primary logo, ${M.logos.concepts.length - 1} more logo concepts, ${M.banners ? M.banners.concepts.length : 0} banner designs at every platform size, and Namzi the mascot. Preview anything and download single files or whole sets.`
+    ? `The logo and ${(M.logos.variants || []).length} variants of it, ${M.banners ? M.banners.concepts.length : 0} banner designs at every platform size (each with its own profile picture), and Namzi the mascot. Preview anything and download single files or whole sets.${M.banners && M.banners.jpg ? " Banners are visually lossless JPGs; PNG masters are in the repo." : ""}`
     : `${M.posts.length} posts (${nSlides} images) and ${M.videos.length} videos, including the pinned explainer. Preview anything, copy the captions, and download single files or whole sets.${M.kit === "content" ? " Images are visually lossless JPGs; PNG masters are in the repo." : ""}`;
   $("#allsize").textContent = `ZIP · ${mb(bytes(sets.all()))}`;
   $("#repo").href = M.repo.url;
   const nBanners = M.banners ? M.banners.concepts.reduce((n, c) => n + c.files.length, 0) : 0;
-  $("#stats").innerHTML = [["Posts", M.posts.length], ["Images", nSlides], ["Videos", M.videos.length], ["Logo concepts", M.logos.concepts.length], ["Banners", nBanners], ["Stickers", M.mascot.stickers.length]].filter(([, v]) => v).map(([k, v]) => `<span class="stat"><b>${v}</b> ${k}</span>`).join("");
+  $("#stats").innerHTML = [["Posts", M.posts.length], ["Images", nSlides], ["Videos", M.videos.length], ["Logo variants", (M.logos.variants || []).length], ["Banner designs", M.banners ? M.banners.concepts.length : 0], ["Banners", nBanners], ["Stickers", M.mascot.stickers.length]].filter(([, v]) => v).map(([k, v]) => `<span class="stat"><b>${v}</b> ${k}</span>`).join("");
   $("#gen").textContent = `Built ${M.built}.`;
 
   /* ── posts ──────────────────────────────────────────────────────────── */
@@ -576,22 +605,50 @@
     const z = e.target.closest("[data-lz]"); if (z) { const l = M.logos.concepts.find((x) => x.id === z.dataset.lz); saveZip(`namzilabs-logo-${l.id}.zip`, logoFiles(l)); }
   });
 
+  const VARS = M.logos.variants || [];
+  let vgf = "all";
+  function renderVariants() {
+    const groups = ["all", ...new Set(VARS.map((v) => v.group))];
+    $("#varfilters").innerHTML = groups.map((g) => `<button class="chip${vgf === g ? " on" : ""}" data-vg="${esc(g)}">${g === "all" ? "All" : esc(g)}<span class="n">${g === "all" ? VARS.length : VARS.filter((v) => v.group === g).length}</span></button>`).join("");
+    $("#vargrid").innerHTML = VARS.filter((v) => vgf === "all" || v.group === vgf).map((v) => {
+      const pair = v.pairs && M.banners ? M.banners.concepts.find((c) => c.id === v.pairs) : null;
+      return `<div class="var"><button class="pv" data-img="${esc(v.png.path)}" aria-label="Open ${esc(v.name)}"><img loading="lazy" src="${esc(v.png.path)}" alt="${esc(v.name)}: a variant of the Namzilabs logo"></button><b>${esc(v.name)}</b><span class="faint">${esc(v.note)}${pair ? ` Goes with the ${esc(pair.name)} banner.` : ""}</span><div class="row"><button class="btn small" data-vp="${esc(v.id)}">${ICON_DL}PNG</button><button class="btn small" data-vs="${esc(v.id)}">${ICON_DL}SVG</button></div></div>`;
+    }).join("");
+  }
+  if (VARS.length) {
+    renderVariants();
+    $("#varfilters").addEventListener("click", (e) => { const b = e.target.closest("[data-vg]"); if (!b) return; vgf = b.dataset.vg; renderVariants(); });
+    $("#vargrid").addEventListener("click", (e) => {
+      const p = e.target.closest("[data-vp]"); if (p) { const v = VARS.find((x) => x.id === p.dataset.vp); return saveOne(v.png, `namzilabs-logo-${v.png.name}`); }
+      const s2 = e.target.closest("[data-vs]"); if (s2) { const v = VARS.find((x) => x.id === s2.dataset.vs); return saveOne({ text: v.svg.text, type: "image/svg+xml" }, `namzilabs-logo-${v.svg.name}`); }
+    });
+  } else ["#varhead", "#varfilters", "#vargrid"].forEach((q) => $(q).classList.add("hidden"));
+
   /* ── banners ────────────────────────────────────────────────────────── */
   if (M.banners) {
-    $("#bgrid").innerHTML = M.banners.concepts.map((c) => {
-      const x = c.files.find((f) => f.name === "x.png") || c.files[0];
+    const card = (c) => {
+      const x = c.files.find((f) => /^x\.(png|jpg)$/.test(f.name)) || c.files[0];
       return `<article class="bcard"><button class="prev" data-img="${esc(c.mockup ? c.mockup.path : x.path)}" aria-label="Preview ${esc(c.name)}"><img loading="lazy" src="${esc(x.path)}" alt="${esc(c.name)} banner"></button>
         <div class="cbody"><div class="ctitle">${esc(c.name)}${c.id === "electric" ? ' <span class="badge pin">Start here</span>' : ""}</div><div class="faint">${esc(c.head)}</div>
+        ${c.avatar ? `<div class="pairrow"><img loading="lazy" src="${esc(c.avatar.path)}" alt=""><span>The profile picture made for it</span><button class="btn small" data-ba="${c.id}">${ICON_DL}PNG</button></div>` : ""}
         <div class="files">${c.files.map((f) => `<button class="btn small" data-bf="${c.id}|${f.name}" title="${esc(f.dims)}">${ICON_DL}${esc(f.label)}</button>`).join("")}</div>
-        <div class="cact"><button class="btn small" data-bz="${c.id}">${ICON_DL}Every size (ZIP) · ${mb(c.files.reduce((n, f) => n + f.size, 0))}</button></div></div></article>`;
-    }).join("");
-    $("#bgrid").addEventListener("click", (e) => {
+        <div class="cact"><button class="btn small" data-bz="${c.id}">${ICON_DL}Every size (ZIP) · ${mb(c.files.reduce((n, f) => n + f.size, 0) + (c.avatar ? c.avatar.size : 0))}</button></div></div></article>`;
+    };
+    const designs = M.banners.concepts.filter((c) => c.group !== "meme"), memes = M.banners.concepts.filter((c) => c.group === "meme");
+    $("#bgrid").innerHTML = designs.map(card).join("");
+    $("#bgrid2").innerHTML = memes.map(card).join("");
+    if (!memes.length) ["#memehead", "#memesub", "#bgrid2"].forEach((q) => $(q).classList.add("hidden"));
+    const onBanner = (e) => {
+      const a = e.target.closest("[data-ba]");
+      if (a) { const c = M.banners.concepts.find((x) => x.id === a.dataset.ba); return saveOne(c.avatar, `namzilabs-profile-${c.id}.png`); }
       const f = e.target.closest("[data-bf]");
       if (f) { const [id, name] = f.dataset.bf.split("|"); const c = M.banners.concepts.find((x) => x.id === id); const file = c.files.find((x) => x.name === name); return saveOne(file, `namzilabs-banner-${id}-${file.name}`); }
       const z = e.target.closest("[data-bz]");
-      if (z) { const c = M.banners.concepts.find((x) => x.id === z.dataset.bz); saveZip(`namzilabs-banner-${c.id}.zip`, [...c.files.map((f) => ({ ...f, zipPath: `${c.id}/${f.name}` })), ...(c.mockup ? [{ ...c.mockup, zipPath: `${c.id}/x-profile-mockup.png` }] : [])]); }
-    });
-    $("#hgrid").innerHTML = M.banners.highlights.map((h, i) => `<div class="sticker"><div class="checker" style="aspect-ratio:9/16;padding:0"><img loading="lazy" src="${esc(h.path)}" alt="Highlight cover: ${esc(h.label)}" style="object-fit:cover"></div><div class="row"><span class="lab">${esc(h.label)} · ${esc(h.bg)}</span><span class="sbtns"><button class="btn small" data-hl="${i}">${ICON_DL}PNG</button></span></div></div>`).join("");
+      if (z) { const c = M.banners.concepts.find((x) => x.id === z.dataset.bz); saveZip(`namzilabs-banner-${c.id}.zip`, [...c.files.map((f) => ({ ...f, zipPath: `${c.id}/${f.name}` })), ...(c.avatar ? [{ ...c.avatar, zipPath: `${c.id}/profile-picture.png` }] : []), ...(c.mockup ? [{ ...c.mockup, zipPath: `${c.id}/x-profile-mockup.${c.mockup.name.split(".").pop()}` }] : [])]); }
+    };
+    $("#bgrid").addEventListener("click", onBanner);
+    $("#bgrid2").addEventListener("click", onBanner);
+    $("#hgrid").innerHTML = M.banners.highlights.map((h, i) => `<div class="sticker"><div class="checker" style="aspect-ratio:9/16;padding:0"><img loading="lazy" src="${esc(h.path)}" alt="Highlight cover: ${esc(h.label)}" style="object-fit:cover"></div><div class="row"><span class="lab">${esc(h.label)} · ${esc(h.bg)}</span><span class="sbtns"><button class="btn small" data-hl="${i}">${ICON_DL}${h.name.endsWith(".jpg") ? "JPG" : "PNG"}</button></span></div></div>`).join("");
     $("#hgrid").addEventListener("click", (e) => { const b = e.target.closest("[data-hl]"); if (b) { const h = M.banners.highlights[Number(b.dataset.hl)]; saveOne(h, `namzilabs-highlight-${h.name}`); } });
   }
 
@@ -609,7 +666,7 @@
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-img]"); if (!b) return;
     const path = b.dataset.img;
-    const all = [...M.logos.overviews, ...M.mascot.boards, ...M.logos.concepts.map((l) => l.board).filter(Boolean), ...(M.banners ? M.banners.concepts.flatMap((c) => [...c.files, ...(c.mockup ? [c.mockup] : [])]) : [])];
+    const all = [...M.logos.overviews, ...M.mascot.boards, ...M.logos.concepts.map((l) => l.board).filter(Boolean), ...(M.logos.variants || []).map((v) => v.png), ...(M.banners ? M.banners.concepts.flatMap((c) => [...c.files, ...(c.mockup ? [c.mockup] : []), ...(c.avatar ? [c.avatar] : [])]) : [])];
     const f = all.find((x) => x.path === path);
     cur = null;
     $("#mttl").textContent = f.name;

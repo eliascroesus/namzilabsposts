@@ -162,16 +162,16 @@
   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px" id="xsteps"></div>
 </div>
 
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
 <script>
-  const MARK = `<svg viewBox="0 0 64 64"><path d="M32 18.73A15 15 0 0 1 32 45.27A15 15 0 0 1 32 18.73Z" fill="#fff"/><circle cx="25" cy="32" r="15" fill="none" stroke="#fff" stroke-width="4.6"/><circle cx="39" cy="32" r="15" fill="none" stroke="#fff" stroke-width="4.6"/></svg>`;
+  const MARK = NZ.MARK("#fff");
   document.getElementById("bigmark").innerHTML = MARK;
   const T = [["calendly", "Calendly"], ["stripe", "Stripe"], ["shopify", "Shopify"], ["close", "Close"], ["klaviyo", "Klaviyo"], ["ganalytics", "Analytics"], ["typeform", "Typeform"], ["aircall", "Aircall"], ["whop", "Whop"], ["gsheets", "Sheets"], ["fathom", "Fathom"]];
   document.getElementById("g12").innerHTML = T.map(([k, n]) => `<div class="gt"><span class="dot live"></span><span class="mark" data-src="${k}"></span>${n}</div>`).join("") + `<div class="gt more">+22<small>more</small></div>`;
   const S = [["1", "Connect every tool", "33 tools, read-only, no code"], ["2", "Cross-reference", "The same person, matched across tools"], ["3", "Build any metric", "Show rate, revenue per lead, cost per held meeting…"], ["4", "Find where the funnel breaks", "Booked → held: 36% never happen"]];
   document.getElementById("xsteps").innerHTML = S.map(([n, t, s], i) => `<div style="display:flex;gap:20px;align-items:center;padding:22px 26px;border-radius:26px;background:${i === 3 ? "linear-gradient(135deg,#16305e,#2b53ae)" : "#fff"};color:${i === 3 ? "#fff" : "var(--ink)"};border:1px solid var(--line);box-shadow:var(--shadow-2)"><span style="width:58px;height:58px;border-radius:17px;background:${i === 3 ? "#fff" : "var(--blue)"};color:${i === 3 ? "var(--blue)" : "#fff"};display:grid;place-items:center;font-size:28px;font-weight:800;flex:none">${n}</span><div><div style="font-size:32px;font-weight:750;letter-spacing:-0.02em">${t}</div><div style="font-size:22px;font-weight:550;opacity:.7;margin-top:4px">${s}</div></div></div>`).join("");
+  NZ.still();
 </script>
-<script src="../../assets/logos/marks.js"></script>
-<script src="../../lib/motion.js"></script>
-<script>NZ.still();</script>
 </body>
 </html>

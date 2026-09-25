@@ -22,15 +22,13 @@
   <div class="stage">
     <div class="mark-big" id="mk">
       <svg viewBox="0 0 64 64">
-        <defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fb2ff"/><stop offset="1" stop-color="#568cff"/></linearGradient></defs>
-        <g id="lensG" style="transform-origin:32px 32px"><path d="M32 18.73A15 15 0 0 1 32 45.27A15 15 0 0 1 32 18.73Z" fill="#fff"/></g>
         <circle id="rl" cx="25" cy="32" r="15" fill="none" stroke="#fff" stroke-width="4.6"/>
         <circle id="rr" cx="39" cy="32" r="15" fill="none" stroke="#fff" stroke-width="4.6"/>
       </svg>
     </div>
   </div>
   <div class="abs word" id="wordA" style="left:384px;top:468px"><div class="wm" id="wm">Namzilabs</div></div>
-  <div class="abs word" id="wordB" style="left:0;top:690px;width:1080px;text-align:center"><div class="tl" id="tg">The number <em>between</em> your tools.</div></div>
+  <div class="abs word" id="wordB" style="left:0;top:690px;width:1080px;text-align:center"><div class="tl" id="tg">All your data. One <em>place.</em></div></div>
 </div>
 <script src="../../assets/logos/marks.js"></script>
 <script src="../../lib/motion.js"></script>
@@ -42,8 +40,7 @@ const $ = (id) => document.getElementById(id);
 // two tools arrive from either side…
 tl.add("#rl", { at: 0.15, dur: 1.1, ease: E.springSoft, from: { x: -46, opacity: 0 }, to: { x: 0, opacity: 1 } });
 tl.add("#rr", { at: 0.15, dur: 1.1, ease: E.springSoft, from: { x: 46, opacity: 0 }, to: { x: 0, opacity: 1 } });
-// …and the number between them lights up
-tl.add("#lensG", { at: 0.95, dur: 0.9, ease: E.back, from: { sy: 0, sx: 0.4, opacity: 0 }, to: { sy: 1, sx: 1, opacity: 1 } });
+// …and the space between them lights up (the rings stay empty; the glow sits behind them)
 tl.add("#flash", { at: 0.95, dur: 0.5, ease: E.out, from: { scale: 0.3, opacity: 0 }, to: { scale: 1, opacity: 1 } });
 tl.add("#flash", { at: 1.45, dur: 1.4, ease: E.out, to: { scale: 1.2, opacity: 0.45 } });
 // the mark steps left; the name slides out from behind it
@@ -55,7 +52,6 @@ tl.every((t) => {
   if (t > 3.2) {
     const k = Math.sin((t - 3.2) * 2.2);
     $("flash").style.opacity = String(0.45 + k * 0.08);
-    $("lensG").style.filter = `brightness(${1 + k * 0.06})`;
   }
 });
 NZ.mount(tl, { width: 1080, height: 1080 });

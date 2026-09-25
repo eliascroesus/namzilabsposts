@@ -209,12 +209,13 @@ for (const c of CONCEPTS) {
   writeFileSync(path.join(dir, "lockup-light.svg"), svg(`0 0 ${width} 64`, lock(onLight, INK)));
   writeFileSync(path.join(dir, "lockup-dark.svg"), svg(`0 0 ${width} 64`, lock(onDark, WHITE)));
 }
-/* ── 01 Between, mono: the primary mark, with no blue in the middle ─────
-   The same two tools and overlap as 01, drawn in one colour, so it sits on
-   any background: blue, ink, sky or paper. Plus the "eclipse" alternate
-   (the overlap knocked out), which is the boldest at avatar size. */
+/* ── 01 Between, mono: the primary mark ────────────────────────────────
+   Two rings, overlapping, in one colour, with the space between them left
+   empty, so it sits on any background: blue, ink, sky or paper. (Same
+   geometry as NZ.RINGS in lib/motion.js.) Plus the "eclipse" alternate:
+   two solid discs with the overlap knocked out, the boldest at avatar size. */
 const MONO = {
-  lens: (c) => `<path d="M32 18.73A15 15 0 0 1 32 45.27A15 15 0 0 1 32 18.73Z" fill="${c}"/><circle cx="25" cy="32" r="15" fill="none" stroke="${c}" stroke-width="4.6"/><circle cx="39" cy="32" r="15" fill="none" stroke="${c}" stroke-width="4.6"/>`,
+  rings: (c) => `<circle cx="25" cy="32" r="15" fill="none" stroke="${c}" stroke-width="4.6"/><circle cx="39" cy="32" r="15" fill="none" stroke="${c}" stroke-width="4.6"/>`,
   eclipse: (c) => `<path fill-rule="evenodd" fill="${c}" d="M25 14.7a17.3 17.3 0 1 0 0.001 0ZM39 14.7a17.3 17.3 0 1 0 0.001 0Z"/>`,
 };
 const GROUNDS = {
@@ -228,7 +229,7 @@ const GROUNDS = {
   mkdirSync(dir, { recursive: true });
   const scaled = (inner, k) => `<g transform="translate(32 32) scale(${k}) translate(-32 -32)">${inner}</g>`;
   for (const [style, draw] of Object.entries(MONO)) {
-    const pre = style === "lens" ? "" : "eclipse-";
+    const pre = style === "rings" ? "" : "eclipse-";
     writeFileSync(path.join(dir, `${pre}symbol-ink.svg`), svg("0 0 64 64", draw(INK)));
     writeFileSync(path.join(dir, `${pre}symbol-white.svg`), svg("0 0 64 64", draw(WHITE)));
     for (const [name, g] of Object.entries(GROUNDS)) {
@@ -239,7 +240,7 @@ const GROUNDS = {
   }
   const baseline = 32 + WM.capHeight / 2;
   const width = Math.ceil(64 + 12 + WM.width + 4);
-  const lock = (c) => `${MONO.lens(c)}<path transform="translate(${64 + 12} ${baseline})" d="${WM.d}" fill="${c}"/>`;
+  const lock = (c) => `${MONO.rings(c)}<path transform="translate(${64 + 12} ${baseline})" d="${WM.d}" fill="${c}"/>`;
   writeFileSync(path.join(dir, "lockup-ink.svg"), svg(`0 0 ${width} 64`, lock(INK)));
   writeFileSync(path.join(dir, "lockup-white.svg"), svg(`0 0 ${width} 64`, lock(WHITE)));
 }
@@ -247,7 +248,7 @@ const GROUNDS = {
 writeFileSync(
   path.join(OUT, "concepts.json"),
   JSON.stringify([
-    { id: "01-between-mono", name: "Between · mono", idea: "The primary mark: 01's two tools and their overlap, drawn in one colour, so it sits on blue, ink, sky or paper with no blue lens. The eclipse alternate knocks the overlap out for the boldest avatar." },
+    { id: "01-between-mono", name: "Between · mono", idea: "The primary mark: two tools as two rings, overlapping, in one colour, with the space between them left empty. It sits on blue, ink, sky or paper. The eclipse alternate uses solid discs with the overlap knocked out, the boldest at avatar size." },
     ...CONCEPTS.map(({ id, name, idea }) => ({ id, name, idea })),
   ], null, 2) + "\n",
 );

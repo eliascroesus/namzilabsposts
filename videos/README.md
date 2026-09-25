@@ -9,7 +9,7 @@ Smooth product-style motion videos, built in HTML and rendered **frame by frame 
 | 03 | **Monday, 9:07 am.** A question, 14 tabs, the clock racing to 11:48 — then one tab with the answer. | 16s | Everyone (relatable) | [`03-monday-907/monday-907-9x16.mp4`](03-monday-907/monday-907-9x16.mp4) |
 | 04 | **Every number shows its working.** A revenue number prints its own receipt; refunds and test payments get thrown out. | 16s | Everyone (brand) | [`04-receipts/receipts-9x16.mp4`](04-receipts/receipts-9x16.mp4) |
 | 05 | **Ask your AI.** ⚠️ HOLD until the AI connection (MCP) is live in production. | 17s | Everyone | [`05-ask-your-ai/ask-your-ai-9x16.mp4`](05-ask-your-ai/ask-your-ai-9x16.mp4) |
-| 06 | **Logo sting.** Two rings meet; the overlap lights up; the name slides out. | 6s | Intro / outro | [`06-logo-sting/logo-sting-1x1.mp4`](06-logo-sting/logo-sting-1x1.mp4) |
+| 06 | **Logo sting.** Two rings meet, the space between them glows, and the name slides out. | 6s | Intro / outro | [`06-logo-sting/logo-sting-1x1.mp4`](06-logo-sting/logo-sting-1x1.mp4) |
 | 07 | **Meet Namzi.** The logo's rings meet, the lens lights up, and Namzi pops out of it: it lives between your tools, counts everyone once, and brings receipts. | 14s | Everyone (mascot intro) | [`07-meet-namzi/meet-namzi-9x16.mp4`](07-meet-namzi/meet-namzi-9x16.mp4) |
 | 08 | **If your tools had a group chat.** Shopify celebrates, Klaviyo takes credit, GA disagrees, and Namzi peeks in, then answers with a receipt. | 16s | E-commerce | [`08-group-chat/group-chat-9x16.mp4`](08-group-chat/group-chat-9x16.mp4) |
 | 09 | **The EOD report vs the receipts.** A setter's end-of-day report, checked line by line against Aircall and Calendly. | 14s | Sales teams | [`09-eod-report/eod-report-9x16.mp4`](09-eod-report/eod-report-9x16.mp4) |
@@ -69,7 +69,7 @@ node tools/render-video.mjs videos/11-all-your-data/video.html videos/13-true-nu
 
 **05 · Ask your AI** — launch-day caption is in [`../posts/12-ask-your-ai-HOLD/post.md`](../posts/12-ask-your-ai-HOLD/post.md).
 
-**06 · Logo sting** — use it as the first 2 seconds of longer videos, or post it alone on day 1 with "Namzilabs. The number between your tools."
+**06 · Logo sting** — use it as the first 2 seconds of longer videos, or post it alone on day 1 with "Namzilabs. All your data, one place."
 
 **11 · All your data. One place. (the pinned explainer)**
 

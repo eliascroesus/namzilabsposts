@@ -6,6 +6,7 @@
 //   node tools/render-stills.mjs posts/01-between/post.html posts/01-between
 //     --ss 2      supersample factor (default 2)
 //     --keep2x    also keep the full-resolution render as name@2x.png
+//     --query     k=v&… passed to the page (banners.html takes only=neon,formula)
 import { execFileSync } from "node:child_process";
 import { mkdirSync, rmSync } from "node:fs";
 import path from "node:path";
@@ -24,7 +25,9 @@ mkdirSync(outDir, { recursive: true });
 
 const browser = await launch();
 const page = await browser.newPage({ viewport: { width: 1700, height: 1000 }, deviceScaleFactor: ss });
-await page.goto(pathToFileURL(path.resolve(input)).href + "?capture=1");
+// --query k=v&… is passed to the page (e.g. --query only=neon to render one banner design)
+const query = flag(argv, "query", "");
+await page.goto(pathToFileURL(path.resolve(input)).href + "?capture=1" + (query ? "&" + query : ""));
 await page.evaluate(() => window.__ready);
 
 const canvases = page.locator(".canvas[data-still]");

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs — logo variants</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<style>
+  /* Renders every variant of the mark as a 1024×1024 profile picture, plus one board with the whole family.
+     node tools/build-variants.mjs && node tools/render-stills.mjs brand/logos/variants.html brand/logos --ss 1 */
+  body { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; align-items: flex-start; }
+  .canvas { flex: none; }
+  .pp { width: 1024px; height: 1024px; }
+  .pp img { width: 100%; height: 100%; display: block; }
+  .board { width: 2400px; background: #f4f5f9; color: var(--ink); padding: 110px 120px 120px; display: flex; flex-direction: column; gap: 70px; }
+  .board .top { display: flex; justify-content: space-between; align-items: flex-end; gap: 60px; }
+  .board h1 { font-size: 120px; font-weight: 800; letter-spacing: -0.055em; line-height: .92; margin: 0; }
+  .board h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .board .lede { font-size: 34px; line-height: 1.35; color: var(--muted); max-width: 900px; letter-spacing: -0.012em; }
+  .board .grp { display: flex; flex-direction: column; gap: 34px; }
+  .board .grp h2 { font-size: 26px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); margin: 0; }
+  .board .row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 44px 40px; }
+  .board .it { display: flex; flex-direction: column; gap: 18px; }
+  .board .it img { width: 100%; aspect-ratio: 1; border-radius: 50%; display: block; box-shadow: 0 30px 60px -30px rgba(20,30,80,.35); }
+  .board .it b { font-size: 30px; font-weight: 750; letter-spacing: -0.02em; }
+  .board .it span { font-size: 22px; color: var(--muted); line-height: 1.3; margin-top: -10px; }
+</style>
+</head>
+<body>
+<script src="variants/variants.js"></script>
+<script>
+  // core colourways and the eclipse alternate come from build-logos; the rest from build-variants
+  const CORE = [
+    ["01-between-mono/profile-blue.svg", "Blue", "The primary avatar"], ["01-between-mono/profile-ink.svg", "Ink", "For dark profiles"],
+    ["01-between-mono/profile-sky.svg", "Sky", "Deep blue"], ["01-between-mono/profile-paper.svg", "Paper", "For light profiles"],
+    ["01-between-mono/eclipse-profile-blue.svg", "Eclipse", "Solid discs, overlap cut out"], ["01-between-mono/eclipse-profile-ink.svg", "Eclipse · ink", "The boldest at tiny sizes"],
+  ];
+  const V = window.NZ_VARIANTS;
+  for (const v of V) document.write(`<div class="canvas pp" data-still="variants/${v.id}-1024"><img src="variants/${v.id}.svg" alt=""></div>`);
+  const item = (src, name, note) => `<div class="it"><img src="${src}" alt=""><b>${name}</b><span>${note}</span></div>`;
+  const groups = [["The mark", CORE.map(([s, n, t]) => item(s, n, t))]];
+  for (const g of ["Ring styles", "Grounds", "Fun"]) groups.push([g, V.filter((v) => v.group === g).map((v) => item(`variants/${v.id}.svg`, v.name, v.note.split(".")[0] + "."))]);
+  document.write(`<div class="canvas board" data-still="boards/01-between-mono-variants" style="height:auto">
+    <div class="top"><h1>Two rings.<br>Endless <em>ways.</em></h1><div class="lede">The mark never changes: two tools as two rings, overlapping, with the space between them left empty. Only the rings' finish and the ground behind them change.</div></div>
+    ${groups.map(([h, items]) => `<div class="grp"><h2>${h}</h2><div class="row">${items.join("")}</div></div>`).join("")}
+  </div>`);
+</script>
+<script src="../../lib/motion.js"></script>
+<script>NZ.still();</script>
+</body>
+</html>

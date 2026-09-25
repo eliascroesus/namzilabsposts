@@ -18,31 +18,26 @@ Everything here is made from code: HTML designs rendered to exact-size PNGs and 
 
 ## Logos
 
-<img src="brand/logos/boards/01-between-mono.png" width="100%" alt="The primary mark: 01 Between, mono, with no blue lens.">
+<img src="brand/logos/boards/01-between-mono.png" width="100%" alt="The primary mark: two rings, overlapping, with the space between them left empty.">
 
-**Primary: 01 · Between, mono.** Two tools and the overlap between them, in one colour, with no blue lens. It works on blue, ink, sky or paper and stays clear at 24px. Profile pictures in four colourways, plus the eclipse alternate, are in [`brand/logos/01-between-mono/`](brand/logos/01-between-mono/).
+**The mark: 01 · Between, mono.** Two tools as two rings, overlapping, in one colour, with the space between them left empty. It works on blue, ink, sky or paper and stays clear at 24px. Profile pictures in four colourways, plus the eclipse alternate, are in [`brand/logos/01-between-mono/`](brand/logos/01-between-mono/).
 
-<img src="brand/logos/boards/00-overview.png" width="100%" alt="Five logo concepts. Recommended: Between.">
+<img src="brand/logos/boards/01-between-mono-variants.png" width="100%" alt="24 variants of the mark: ring styles, grounds and fun ones.">
 
-<img src="brand/logos/boards/00-overview-2.png" width="100%" alt="Five more concepts: Namzi, Hash, Wire, Pillars and Tittle.">
-
-**06 · Namzi** is the social twin: the same lens with a face, for avatars and stickers. Every concept has SVGs (colour, white, ink, app icons, lockups) and a 1024px profile picture. See the [boards](brand/logos/boards/) and the [brand kit](brand/BRAND_KIT.md).
+**24 variants** keep the two rings and change the finish and the ground: hairline, bold, gradient, woven, neon, glass, chrome, blueprint, and fun ones like gold "precious" rings, wedding rings, coffee stains, donuts and life rings. Each is an SVG and a 1024px profile picture in [`brand/logos/variants/`](brand/logos/variants/). See the [brand kit](brand/BRAND_KIT.md).
 
 ---
 
 ## Banners
 
-<img src="brand/banners/mockups/x-electric.png" width="49%" alt="The Electric banner on an X profile"> <img src="brand/banners/mockups/x-funnel.png" width="49%" alt="The Funnel banner on an X profile">
+<img src="brand/banners/mockups/x-electric.png" width="49%" alt="The Electric banner on an X profile"> <img src="brand/banners/mockups/x-neon.png" width="49%" alt="The Neon banner on an X profile">
+<img src="brand/banners/mockups/x-precious.png" width="49%" alt="The Precious meme banner on an X profile"> <img src="brand/banners/mockups/x-wedding.png" width="49%" alt="The Wedding meme banner on an X profile">
 
-Five designs (Electric, Funnel, Sources, Namzi, Minimal), each at every size:
-- X
-- LinkedIn company and profile
-- Facebook page and group
-- YouTube
-- the link-preview card
-- an email signature
+Fifteen designs, each with the profile picture made to go with it:
+- **Ten for every day:** Electric, Funnel, Sources, Namzi, Minimal, Formula, Glass, Neon, Big type, Blueprint
+- **Five memes:** Precious ("One place to rule them all"), Wedding ("Your Stripe and your CRM, finally married"), Galaxy brain, Starter pack, Expectation vs reality
 
-There are also Instagram highlight covers. Sizes, safe areas, which kit to use where, and bio copy for every platform are in [brand/banners/README.md](brand/banners/README.md).
+Each comes at every size: X, LinkedIn company and profile, Facebook page and group, and YouTube. The everyday ten also come as a link-preview card and an email signature. There are also Instagram highlight covers. Sizes, safe areas, which kit to use where, and bio copy for every platform are in [brand/banners/README.md](brand/banners/README.md).
 
 ---
 
@@ -141,9 +136,12 @@ node tools/render-stills.mjs posts/13-meet-namzi/post.html posts/13-meet-namzi
 node tools/render-video.mjs videos/07-meet-namzi/video.html videos/07-meet-namzi/meet-namzi-9x16.mp4 --ss 1
 node tools/build-logos.mjs && node tools/render-stills.mjs brand/logos/board.html brand/logos/boards
 node tools/render-stills.mjs brand/logos/profiles.html brand/logos --ss 1      # 1024px profile pictures
+node tools/build-variants.mjs && node tools/render-stills.mjs brand/logos/variants.html brand/logos --ss 1   # the 24 logo variants + their board
 node tools/render-stills.mjs brand/mascot/sheet.html brand/mascot/boards        # Namzi's character sheet
 node tools/export-mascot.mjs                                                   # stickers + avatars
 node tools/render-stills.mjs brand/banners/banners.html brand/banners --ss 1    # banners, every platform size
+node tools/render-stills.mjs brand/banners/banners.html brand/banners --ss 1 --query only=neon   # just one design
+node tools/render-stills.mjs brand/banners/kits.html brand/banners --ss 1       # X profile mock-ups (banner + avatar)
 node tools/render-video.mjs videos/11-all-your-data/video.html videos/11-all-your-data/all-your-data-16x9.mp4 --ss 1 --query "fmt=wide"
 node tools/render-video.mjs videos/11-all-your-data/video.html videos/12-funnel-breaks/funnel-breaks-9x16.mp4 --ss 1 --query "cut=funnel"   # a short cut of 11
 node tools/render-pdf.mjs posts/35-how-it-works posts/35-how-it-works/linkedin-carousel.pdf   # LinkedIn PDF carousel

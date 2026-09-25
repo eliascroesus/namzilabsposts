@@ -29,12 +29,24 @@
 <body>
 <script>
   const BIO = "All your data in one place. Connect 33 tools, build any metric, and see exactly where your funnel breaks. True numbers, cross-referenced. Free to start.";
+  // each banner design and the profile picture made to go with it
+  const M = "../logos/01-between-mono/", V = "../logos/variants/";
   const KITS = [
-    ["electric", "../logos/01-between-mono/profile-blue-1024.png", "Electric · blue avatar"],
-    ["funnel", "../logos/01-between-mono/profile-ink-1024.png", "Funnel · ink avatar"],
-    ["sources", "../logos/01-between-mono/profile-ink-1024.png", "Sources · ink avatar"],
+    ["electric", M + "profile-blue-1024.png", "Electric · blue avatar"],
+    ["funnel", M + "profile-ink-1024.png", "Funnel · ink avatar"],
+    ["sources", M + "profile-ink-1024.png", "Sources · ink avatar"],
     ["namzi", "../mascot/avatars/namzi-avatar-sky.png", "Namzi · mascot avatar"],
-    ["minimal", "../logos/01-between-mono/eclipse-profile-blue-1024.png", "Minimal · eclipse avatar"],
+    ["minimal", V + "midnight-1024.png", "Minimal · midnight avatar"],
+    ["formula", V + "hairline-1024.png", "Formula · hairline avatar"],
+    ["glass", V + "glass-1024.png", "Glass · glass avatar"],
+    ["neon", V + "neon-1024.png", "Neon · neon avatar"],
+    ["bigtype", V + "bold-1024.png", "Big type · bold avatar"],
+    ["blueprint", V + "blueprint-1024.png", "Blueprint · blueprint avatar"],
+    ["precious", V + "precious-1024.png", "Meme · precious avatar"],
+    ["wedding", V + "wedding-1024.png", "Meme · wedding avatar"],
+    ["galaxy", V + "cosmic-1024.png", "Meme · cosmic avatar"],
+    ["starter", V + "sticker-1024.png", "Meme · sticker avatar"],
+    ["expectation", V + "sketch-1024.png", "Meme · napkin avatar"],
   ];
   for (const [id, av, lab] of KITS) {
     document.write(`<div class="canvas mock" data-still="mockups/x-${id}">
@@ -44,7 +56,7 @@
       <div class="btn2">Edit profile</div>
       <div class="info"><div class="name">Namzilabs</div><div class="handle">@namzilabs</div>
         <div class="bio">${BIO}</div>
-        <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="#71767b" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Between your tools</span><span><svg viewBox="0 0 24 24" fill="none" stroke="#71767b" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg><a>namzilabs.co</a></span></div>
+        <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="#71767b" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>All your data, one place</span><span><svg viewBox="0 0 24 24" fill="none" stroke="#71767b" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg><a>namzilabs.co</a></span></div>
       </div></div>`);
   }
 </script>

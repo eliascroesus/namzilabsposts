@@ -37,8 +37,9 @@
     <div class="stage">
     <div class="abs flash" id="flash"></div>
     <svg class="abs rings" id="rings" viewBox="0 0 1000 740">
-      <defs><linearGradient id="lensg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a3c1ff"/><stop offset=".5" stop-color="#6593ff"/><stop offset="1" stop-color="#3566e0"/></linearGradient></defs>
-      <g id="lens" style="transform-origin:500px 370px"><path d="M500 122A280 280 0 0 1 500 618A280 280 0 0 1 500 122Z" fill="url(#lensg)"/></g>
+      <defs><filter id="soft" x="-60%" y="-40%" width="220%" height="180%"><feGaussianBlur stdDeviation="30"/></filter></defs>
+      <!-- the space between the rings lights up (a glow behind them, never a fill), and Namzi steps out of it -->
+      <g id="lens" style="transform-origin:500px 370px"><ellipse cx="500" cy="370" rx="104" ry="200" fill="#6f9bff" opacity=".8" filter="url(#soft)"/></g>
       <circle id="rl" cx="370" cy="370" r="280" fill="none" stroke="#14141c" stroke-width="10"/>
       <circle id="rr" cx="630" cy="370" r="280" fill="none" stroke="#14141c" stroke-width="10"/>
     </svg>

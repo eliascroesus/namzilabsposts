@@ -186,7 +186,7 @@ function build({ web }) {
     }];
   });
 
-  const concepts = JSON.parse(read("brand/logos/concepts.json")).map((c) => {
+  const concepts = JSON.parse(read("brand/logos/concepts.json")).filter((c) => c.id === "01-between-mono").map((c) => {
     const dir = `brand/logos/${c.id}`;
     const orderList = ["symbol-color", "symbol-white", "symbol-ink", "app-icon", "app-icon-sky", "app-icon-blue", "app-icon-ink", "app-icon-paper", "lockup-light", "lockup-dark", "lockup-ink", "lockup-white", "profile"];
     const svgs = readdirSync(path.join(ROOT, dir)).filter((f) => f.endsWith(".svg"))
@@ -198,8 +198,13 @@ function build({ web }) {
     const profile = pngs.find((p) => p.name === "profile-1024.png" || p.name === "profile-blue-1024.png") || null;
     return { ...c, svgs, pngs, profile, primary: c.id === "01-between-mono", board: existsSync(path.join(ROOT, board)) ? { name: `${c.id}.png`, path: board, size: size(board) } : null };
   });
-  const overviews = ["01-between-mono.png", "00-overview.png", "00-overview-2.png"].filter((f) => existsSync(path.join(ROOT, "brand/logos/boards", f))).map((f) => ({ name: f, path: `brand/logos/boards/${f}`, size: size(`brand/logos/boards/${f}`) }));
+  const overviews = ["01-between-mono-variants.png", "01-between-mono.png"].filter((f) => existsSync(path.join(ROOT, "brand/logos/boards", f))).map((f) => ({ name: f, path: `brand/logos/boards/${f}`, size: size(`brand/logos/boards/${f}`) }));
   const wordmarks = ["wordmark-ink.svg", "wordmark-white.svg"].map((name) => ({ name, text: read(`brand/logos/${name}`).trim() }));
+  // the mark's variants: same two rings, different finishes and grounds (tools/build-variants.mjs)
+  const variants = existsSync(path.join(ROOT, "brand/logos/variants/variants.json")) ? JSON.parse(read("brand/logos/variants/variants.json")).map((v) => {
+    const png = `brand/logos/variants/${v.id}-1024.png`;
+    return { ...v, png: { name: `${v.id}-1024.png`, path: png, size: size(png) }, svg: { name: `${v.id}.svg`, text: read(`brand/logos/variants/${v.id}.svg`).trim() } };
+  }) : [];
 
   const stickers = JSON.parse(read("brand/mascot/stickers.json")).map((s) => {
     const p = `brand/mascot/${s.file}`;
@@ -209,11 +214,29 @@ function build({ web }) {
   const avatars = Object.keys(AV).filter((f) => existsSync(path.join(ROOT, "brand/mascot/avatars", f))).map((f) => ({ name: f, label: AV[f], path: `brand/mascot/avatars/${f}`, size: size(`brand/mascot/avatars/${f}`) }));
   const mboards = readdirSync(path.join(ROOT, "brand/mascot/boards")).filter((f) => f.endsWith(".png")).sort().map((f) => ({ name: `namzi-${f}`, path: `brand/mascot/boards/${f}`, size: size(`brand/mascot/boards/${f}`) }));
 
-  const BN = [["electric", "Electric", "All your data. One place."], ["funnel", "Funnel", "See where your funnel breaks."], ["sources", "Sources", "33 tools. One place."], ["namzi", "Namzi", "True numbers, not blurry ones."], ["minimal", "Minimal", "The lockup and the line"]];
+  const MONO = "brand/logos/01-between-mono/", VAR = "brand/logos/variants/";
+  const BN = [
+    ["electric", "Electric", "All your data. One place.", MONO + "profile-blue-1024.png", "design"],
+    ["funnel", "Funnel", "See where your funnel breaks.", MONO + "profile-ink-1024.png", "design"],
+    ["sources", "Sources", "33 tools. One place.", MONO + "profile-ink-1024.png", "design"],
+    ["namzi", "Namzi", "True numbers, not blurry ones.", "brand/mascot/avatars/namzi-avatar-sky.png", "design"],
+    ["minimal", "Minimal", "The lockup and the line", VAR + "midnight-1024.png", "design"],
+    ["formula", "Formula", "Build any metric, across any tool.", VAR + "hairline-1024.png", "design"],
+    ["glass", "Glass", "See your business clearly.", VAR + "glass-1024.png", "design"],
+    ["neon", "Neon", "Stop building blind.", VAR + "neon-1024.png", "design"],
+    ["bigtype", "Big type", "Every tool. One place.", VAR + "bold-1024.png", "design"],
+    ["blueprint", "Blueprint", "Built to count everyone once.", VAR + "blueprint-1024.png", "design"],
+    ["precious", "Precious", "One place to rule them all.", VAR + "precious-1024.png", "meme"],
+    ["wedding", "Wedding", "Your Stripe and your CRM, finally married.", VAR + "wedding-1024.png", "meme"],
+    ["galaxy", "Galaxy brain", "Levels of knowing your numbers.", VAR + "cosmic-1024.png", "meme"],
+    ["starter", "Starter pack", "The \"where's our data?\" starter pack", VAR + "sticker-1024.png", "meme"],
+    ["expectation", "Expectation vs reality", "Your funnel: expectation vs reality.", VAR + "sketch-1024.png", "meme"],
+  ];
   const PLAT = [["x", "X header", "1500×500"], ["linkedin", "LinkedIn company", "1128×191"], ["linkedin-profile", "LinkedIn profile", "1584×396"], ["facebook", "Facebook page", "1640×624"], ["facebook-group", "Facebook group", "1640×856"], ["youtube", "YouTube", "2560×1440"], ["og", "Link preview", "1200×630"], ["email", "Email signature", "1200×300"]];
   const banners = existsSync(path.join(ROOT, "brand/banners")) ? {
-    concepts: BN.filter(([id]) => existsSync(path.join(ROOT, "brand/banners", id))).map(([id, name, head]) => ({
-      id, name, head,
+    concepts: BN.filter(([id]) => existsSync(path.join(ROOT, "brand/banners", id))).map(([id, name, head, av, group]) => ({
+      id, name, head, group,
+      avatar: existsSync(path.join(ROOT, av)) ? { name: `profile-${id}-${path.basename(av)}`, path: av, size: size(av) } : null,
       mockup: existsSync(path.join(ROOT, `brand/banners/mockups/x-${id}.png`)) ? { name: `x-${id}.png`, path: `brand/banners/mockups/x-${id}.png`, size: size(`brand/banners/mockups/x-${id}.png`) } : null,
       files: PLAT.filter(([pid]) => existsSync(path.join(ROOT, `brand/banners/${id}/${pid}.png`))).map(([pid, label, dims]) => ({ name: `${pid}.png`, path: `brand/banners/${id}/${pid}.png`, size: size(`brand/banners/${id}/${pid}.png`), label, dims })),
     })),
@@ -235,9 +258,9 @@ function build({ web }) {
 
   const all = {
     built: new Date().toISOString().slice(0, 10), repo: REPO, kit, kits: KITS, posts, videos,
-    logos: { concepts, overviews, wordmarks }, banners, mascot: { stickers, avatars, boards: mboards }, docs, videoReadme: vm.md,
+    logos: { concepts, overviews, wordmarks, variants }, banners, mascot: { stickers, avatars, boards: mboards }, docs, videoReadme: vm.md,
   };
-  if (kit === "content") return { ...all, logos: { concepts: [], overviews: [], wordmarks: [] }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => !d.path.startsWith("brand/")) };
+  if (kit === "content") return { ...all, logos: { concepts: [], overviews: [], wordmarks: [], variants: [] }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => !d.path.startsWith("brand/")) };
   if (kit === "brand") return { ...all, posts: [], videos: [], docs: docs.filter((d) => d.path.startsWith("brand/") || d.name === "STRATEGY.md") };
   return all;
 }
@@ -281,7 +304,22 @@ if (artifactDir) {
       }
     }
   }
+  if (kit === "brand") {
+    const walk = (d) => readdirSync(path.join(ROOT, d), { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(`${d}/${e.name}`) : e.name.endsWith(".png") ? [`${d}/${e.name}`] : []);
+    for (const p of walk("brand/banners")) {
+      const src = path.join(ROOT, p), dst = webPath(p.replace(/\.png$/, ".jpg"));
+      if (existsSync(dst) && statSync(dst).mtimeMs > statSync(src).mtimeMs) continue;
+      mkdirSync(path.dirname(dst), { recursive: true });
+      execFileSync(FF, ["-y", "-loglevel", "error", "-i", src, "-q:v", "2", "-pix_fmt", "yuvj444p", dst]);
+    }
+  }
   const m = build({ web: true });
+  if (kit === "brand" && m.banners) {
+    const jpg = (f) => { const jp = f.path.replace(/\.png$/, ".jpg"); return { ...f, name: f.name.replace(/\.png$/, ".jpg"), path: jp, size: statSync(webPath(jp)).size }; };
+    m.banners.concepts = m.banners.concepts.map((c) => ({ ...c, files: c.files.map(jpg), mockup: c.mockup && jpg(c.mockup) }));
+    m.banners.highlights = m.banners.highlights.map(jpg);
+    m.banners.jpg = true;
+  }
   if (kit === "content") {
     for (const p of m.posts) p.images = p.images.map((i) => {
       const jp = i.path.replace(/\.png$/, ".jpg");
@@ -295,8 +333,9 @@ if (artifactDir) {
   for (const p of m.posts) { p.images.forEach((i) => add(i.path)); if (p.pdf) add(p.pdf.path); }
   for (const v of m.videos) { v.files.forEach((f) => add(f.path)); add(v.poster.path); }
   for (const c of m.logos.concepts) { c.pngs.forEach((p) => add(p.path)); if (c.board) add(c.board.path); }
+  (m.logos.variants || []).forEach((v) => add(v.png.path));
   m.logos.overviews.forEach((b) => add(b.path));
-  if (m.banners) { m.banners.concepts.forEach((c) => { c.files.forEach((f) => add(f.path)); if (c.mockup) add(c.mockup.path); }); m.banners.highlights.forEach((h) => add(h.path)); }
+  if (m.banners) { m.banners.concepts.forEach((c) => { c.files.forEach((f) => add(f.path)); if (c.mockup) add(c.mockup.path); if (c.avatar) add(c.avatar.path); }); m.banners.highlights.forEach((h) => add(h.path)); }
   m.mascot.stickers.forEach((s) => add(s.png.path));
   m.mascot.avatars.forEach((a) => add(a.path));
   m.mascot.boards.forEach((b) => add(b.path));
