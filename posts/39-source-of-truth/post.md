@@ -9,23 +9,59 @@
 
 ## Instagram caption
 
-> FINAL_final_v7 (2).xlsx is not a source of truth. It's a copy of three tools from last Tuesday, glued together by whoever had time.
+> Nothing says "single source of truth" like a file called FINAL_final_v7 (2).xlsx. 🦋
 >
-> Namzilabs connects to the tools themselves (read-only), so every number comes from the source and is matched across every tool. No exports, no v8.
+> It's not a source.
+> It's a copy.
+> Of three tools.
+> From last Tuesday.
+> Glued together by whoever had time.
 >
-> Free to start → link in bio.
+> And the (2) means there's another one somewhere.
 >
-> #startup #founders #spreadsheets #saas #meme
+> So Monday, 9:07 starts with "which version is this?" instead of the number.
+>
+> Namzilabs connects to the tools themselves (read-only), so every number comes from the source, matched across every tool. No exports. No v8.
+>
+> Comment METRICS and I'll send you the setup.
+>
+> #founders #spreadsheets #startuplife #businessmemes
 
 ## X
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
 
-> is this a single source of truth?
+> nothing says single source of truth like FINAL_final_v7 (2).xlsx.
+>
+> and the (2) means there's another one somewhere.
 
-**First reply:**
+**First reply** (this is where the link goes):
 
-> no. it's a copy of three tools from last tuesday. namzilabs connects to the tools themselves, so the numbers come from the source → namzilabs.co
+> it's not a source. it's a copy of three tools from last tuesday.
+>
+> namzilabs connects to the tools themselves (read-only), so the numbers come from the source, matched across every tool. no exports, no v8.
+>
+> free to start, no card: namzilabs.co
+
+## LinkedIn
+
+Post `ig-01.png` with:
+
+> Every founder on a Monday, pointing at FINAL_final_v7 (2).xlsx: "Is this a single source of truth?" 🦋
+>
+> No. It's a copy of three tools from last Tuesday, glued together by whoever had time.
+>
+> A spreadsheet can't be a source of truth. At best it's a copy of one. The sources are the tools themselves: Stripe, the CRM, the calendar.
+>
+> Every export is a snapshot. Every snapshot gets edited. By Monday there are two versions, and the meeting starts with "which one is this?" instead of the number.
+>
+> The fix isn't a better template. It's skipping the copy: connect to the tools directly (read-only), match the same people across them and build the numbers from the source.
+>
+> That's what Namzilabs does. No exports, no v8.
+>
+> What's the highest version number your "final" report has ever reached?
+>
+> Free to start, no card: namzilabs.co
 
 ## Alt text
 
@@ -35,3 +71,4 @@ A meme in the style of "is this a pigeon?". Namzi, the blue Namzilabs mascot, la
 
 - A parody of a meme format. Namzi plays the part; nothing is taken from the original show.
 - "Connects to the tools themselves", "read-only" and "matched across every tool" are approved. Don't add a sync frequency.
+- "Comment METRICS" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (METRICS).

@@ -474,7 +474,7 @@ Here's how to find your leak 👇
 
 1. Connect every step: your form, your calendar, your call recorder and your payments.
 2. Build the funnel: leads → booked → held → paid, with one person per row across every tool.
-3. The biggest drop between two steps is your leak. Fix that one first.
+3. Look at the drop between each pair of steps. The one you didn't expect is your leak, and for most sales teams it's booked → held: the calls that never happen.
 
 Start free (no card): namzilabs.co
 ```

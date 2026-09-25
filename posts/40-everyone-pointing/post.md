@@ -9,33 +9,75 @@
 
 ## Instagram caption
 
-> "How many customers did we get this week?"
+> The most dangerous question at 4:55 on a Friday:
+> "How many customers did we get this week?" 😬
 >
 > Stripe: 64!
 > The CRM: 71!
 > The spreadsheet: 58!
 >
-> They're all pointing at each other, and they're all a little bit wrong. Stripe counts 3 test payments. The CRM has 10 duplicate contacts. The sheet hasn't caught up.
+> Everyone's pointing at everyone. 👉
+> And everyone's a little bit wrong.
 >
-> Cross-referenced, it's 61. Namzilabs matches the same customers across every tool and shows the working, so the answer is the same whoever asks.
+> Stripe counted 3 test payments.
+> The CRM has 10 duplicate contacts.
+> The sheet is 3 customers behind.
 >
-> Free to start → link in bio.
+> The real answer is 61. None of them had it.
 >
-> #founders #sales #saas #startup #meme
+> Namzilabs matches the same customers across every tool and shows the working, so the answer is the same whoever asks.
+>
+> Comment METRICS and I'll send you the setup.
+>
+> (Example data.)
+>
+> #founders #salesteam #startuplife #businessmemes
 
 ## X
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
 
-> "how many customers did we get this week?"
+> the most dangerous question at 4:55 on a friday:
 >
-> stripe: 64
-> crm: 71
-> the spreadsheet: 58
+> "how many customers did we get this week?"
 
-**First reply:**
+**First reply** (this is where the link goes):
 
-> cross-referenced it's 61. 3 test payments, 10 duplicate contacts, 3 not copied in yet. namzilabs shows the working → namzilabs.co
+> stripe says 64 (3 were test payments).
+> the crm says 71 (10 duplicate contacts).
+> the sheet says 58 (3 not copied in yet).
+>
+> the real answer is 61. none of them had it.
+>
+> namzilabs shows the working. free to start, no card: namzilabs.co
+>
+> (example numbers)
+
+## LinkedIn
+
+Post `ig-01.png` with:
+
+> "How many customers did we get this week?"
+>
+> Stripe: 64. The CRM: 71. The spreadsheet: 58.
+>
+> Friday, 4:55 pm, and everyone's pointing at everyone.
+>
+> Here's the thing: none of them is lying. Each one is wrong in its own predictable way.
+>
+> Stripe counts test payments. 64 minus 3 is 61.
+> The CRM counts duplicate contacts. 71 minus 10 is 61.
+> The sheet misses whatever nobody copied in yet. 58 plus 3 is 61.
+>
+> The real answer, 61, wasn't on anyone's screen.
+>
+> That's why picking the "right" tool never ends the argument. What ends it is matching the same customers across all of them, dropping the noise and showing the working, so anyone can check it.
+>
+> That's what Namzilabs does. Same answer, whoever asks.
+>
+> Which of the three would you have reported?
+>
+> (Example numbers. Free to start at namzilabs.co)
 
 ## Alt text
 
@@ -45,3 +87,4 @@
 
 - A parody of a meme format with our own characters (three recoloured Namzis). Nothing from the original cartoon.
 - Example data. "Matches the same customers across every tool" and "shows the working" are approved. Test payments and duplicates are real causes the product handles.
+- "Comment METRICS" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (METRICS).
