@@ -9,7 +9,6 @@
    ───────────────────────────────────────────────────────────────────────── */
 
 .electric { color: #fff; background: radial-gradient(70% 60% at 12% 0%, rgba(140, 175, 255, 0.45), transparent 60%), radial-gradient(60% 50% at 100% 100%, rgba(20, 40, 160, 0.45), transparent 60%), linear-gradient(135deg, #2451c4 0%, #2f5fd8 50%, #3d6df2 100%); }
-.scene { color: #fff; }
 
 /* ── the frame ─────────────────────────────────────────────────────────── */
 .st { padding: 0 84px; display: flex; flex-direction: column; }
@@ -17,18 +16,19 @@
 .st.feed .main { margin-top: 176px; }
 .st .hlchip { position: absolute; top: 228px; left: 84px; display: inline-flex; align-items: center; gap: 14px; height: 64px; padding: 0 26px 0 10px; border-radius: 999px; font-size: 26px; font-weight: 680; letter-spacing: -0.015em; background: rgba(20, 20, 40, 0.06); color: var(--ink-2); }
 .st.feed .hlchip { top: 72px; }
-.st .hlchip i { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; overflow: hidden; flex: none; }
+.st .hlchip i { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; overflow: hidden; flex: none; background: linear-gradient(160deg, #4174f4 0%, #2f5fd8 55%, #2651c6 100%); }
+.st .hlchip i.w { background: #fff; }
 .st .hlchip i svg { width: 30px; height: 30px; overflow: visible; }
 .st .hlchip .n { color: var(--faint); font-weight: 600; margin-left: 4px; font-variant-numeric: tabular-nums; }
-.sky .hlchip, .ink .hlchip, .electric .hlchip, .scene .hlchip { background: rgba(255, 255, 255, 0.13); color: #fff; }
-.sky .hlchip .n, .ink .hlchip .n, .electric .hlchip .n, .scene .hlchip .n { color: rgba(226, 234, 255, 0.66); }
+.sky .hlchip, .ink .hlchip, .electric .hlchip { background: rgba(255, 255, 255, 0.13); color: #fff; }
+.sky .hlchip .n, .ink .hlchip .n, .electric .hlchip .n { color: rgba(226, 234, 255, 0.66); }
 .st .sth { font-size: 100px; font-weight: 800; letter-spacing: -0.048em; line-height: 0.96; text-wrap: balance; }
 .st .sth em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; padding-right: 0.04em; }
 .st .sth.sm { font-size: 84px; }
 .st .sb { margin-top: 30px; font-size: 40px; line-height: 1.3; font-weight: 450; letter-spacing: -0.015em; color: var(--muted); text-wrap: pretty; }
-.sky .sb, .ink .sb, .electric .sb, .scene .sb { color: rgba(228, 236, 255, 0.8); }
+.sky .sb, .ink .sb, .electric .sb { color: rgba(228, 236, 255, 0.8); }
 .st .sb b { color: var(--ink); font-weight: 700; }
-.sky .sb b, .ink .sb b, .electric .sb b, .scene .sb b { color: #fff; }
+.sky .sb b, .ink .sb b, .electric .sb b { color: #fff; }
 .st .viz { margin-top: 64px; }
 .st .foot { position: absolute; left: 84px; right: 84px; bottom: 318px; display: flex; justify-content: space-between; align-items: center; }
 .st.feed .foot { bottom: 64px; }
@@ -36,11 +36,15 @@
 .st .tap { display: inline-flex; align-items: center; gap: 12px; font-size: 27px; font-weight: 650; letter-spacing: -0.01em; color: rgba(255, 255, 255, 0.78); }
 .st .tap svg { width: 30px; height: 30px; }
 
-/* ── the title card: the highlight's 3D cover, big ─────────────────────── */
-.st .cover { position: absolute; left: 50%; top: 150px; width: 1040px; height: 1040px; transform: translateX(-50%); -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000 58%, transparent 100%); mask-image: radial-gradient(50% 50% at 50% 50%, #000 58%, transparent 100%); }
-.st .ttl { position: absolute; left: 84px; right: 84px; top: 1150px; }
+/* ── the title card: the highlight's cover, big, so the first frame matches the circle you tapped ── */
+.st .hero { position: absolute; left: 0; right: 0; top: 430px; display: grid; place-items: center; }
+.st .hero .disc { width: 600px; height: 600px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(90% 70% at 50% 0%, rgba(255, 255, 255, 0.16), transparent 70%), linear-gradient(160deg, #4174f4 0%, #2f5fd8 55%, #2651c6 100%); box-shadow: 0 0 0 16px rgba(255, 255, 255, 0.07), 0 0 0 18px rgba(255, 255, 255, 0.16), 0 70px 120px -50px rgba(0, 8, 40, 0.7); }
+.st .hero .disc.w { background: #fff; }
+.paper .hero .disc { box-shadow: 0 0 0 16px rgba(47, 95, 216, 0.07), 0 0 0 18px rgba(47, 95, 216, 0.14), 0 60px 110px -50px rgba(20, 40, 110, 0.55); }
+.st .hero svg { width: 378px; height: 378px; overflow: visible; }
+.st .ttl { position: absolute; left: 84px; right: 84px; top: 1150px; text-align: center; }
 .st .ttl .sth { font-size: 150px; }
-.st .ttl .sb { font-size: 44px; margin-top: 26px; }
+.st .ttl .sb { font-size: 44px; margin: 26px auto 0; max-width: 860px; }
 
 /* ── the ask: start free, or a DM keyword ──────────────────────────────── */
 .st .cta .sth { font-size: 150px; }

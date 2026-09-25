@@ -1,8 +1,8 @@
 # Instagram highlights
 
-Eleven highlights, in the order someone landing on the profile needs them: **what it is**, then **the five features**, then **the four use cases** (one per audience), then **the FAQ**. Every highlight is a short run of stories that ends in one ask, and every one has a cover to match, in two styles.
+Eleven highlights, in the order someone landing on the profile needs them: **what it is**, then **the five features**, then **the four use cases** (one per audience), then **the FAQ**. Every highlight is a short run of stories that ends in one ask, and every one has a cover to match: one clean icon, the same one that opens its first story.
 
-![The highlight row with the icon covers](covers/icons/rows/ink.png)
+![The highlight row with the blue covers](covers/icons/rows/blue.png)
 
 | # | Highlight | What it's for | Stories | The ask |
 |---|---|---|---|---|
@@ -26,7 +26,7 @@ The numbers are one example business all the way through (1,240 leads, 412 booke
 2. **Post the stories in order**, one story per frame (`NN-name/story-01.png`, `story-02.png`…). Posting a highlight's stories over a day or two also reaches the people who already follow you.
 3. **Add the sticker** where the table below says. The frames leave room for it: the link sticker goes under the "Tap the link" arrow.
 4. **Save them to a new highlight** named exactly as in the table. The short names fit under the circle.
-5. **Set the cover**: Edit highlight → Edit cover → pick the cover from your camera roll. Use one set for every circle: [`covers/3d/`](covers/3d/) or one colourway of [`covers/icons/`](covers/icons/).
+5. **Set the cover**: Edit highlight → Edit cover → pick the cover from your camera roll. Use one colourway for every circle: [`covers/icons/blue/`](covers/icons/blue/) unless you have a reason to pick another.
 6. **Set up the replies.** A reply to a story is a DM, so the use-case highlights ask people to reply with a keyword (SHOWUP, HELD, LAUNCH, LIST). The DM for each is in [`brand/COPY.md`](../brand/COPY.md). Answer by hand while it's quiet, or set it up in ManyChat.
 
 ## Stickers
@@ -51,16 +51,36 @@ The use-case highlights end on "Reply below" with the keyword; they don't need a
 
 ## Covers
 
-Two sets. Pick one and use it for all eleven.
+One icon per highlight, and nothing else on the cover: no mascot, no words (the name sits under the circle already). The icons are drawn on one 96-unit grid with one stroke weight and round caps, and each has the same three layers: an outline, a soft fill inside it and one solid accent (the tallest bar, the badge with the 1, the receipt's total, the leak). So they read as one set, and they stay clear at the size the profile shows them.
 
-- **3D** ([`covers/3d/`](covers/3d/)): Namzi, in 3D, in a small lit scene per highlight: standing in the overlap of the two rings (Start here), pointing at a rising chart (Any KPI), studying a leaking funnel (Funnel), leaning on a giant 1 (Count once), holding a receipt that reaches the floor (Receipts), holding every tool like balloons (Connect), in a headset ringing the sales bell (Sales teams), presenting a client report (Agencies), in front of a ring light (Creators), carrying shopping bags (E-com), and thinking next to a question mark (FAQ). Playful and character-led; each has its own colour.
-- **Icons** ([`covers/icons/`](covers/icons/)): one clean icon per highlight, drawn on one grid with one stroke weight and one accent, in four colourways: **blue**, **ink**, **paper** and **color** (each highlight's own colour, matching the 3D set). Previews of the whole row: [`covers/icons/rows/`](covers/icons/rows/).
+| Highlight | Icon |
+|---|---|
+| Start here | The mark: two rings, overlapping, nothing in between |
+| Any KPI | Three rising bars on a baseline |
+| Funnel | A funnel, and the drop it's losing |
+| Count once | One person, with a 1 |
+| Receipts | A receipt, the total underlined |
+| Connect | A plug |
+| Sales teams | A headset |
+| Agencies | A client report on an easel, trending up |
+| Creators | A phone with play |
+| E-com | A shopping bag |
+| FAQ | A speech bubble with a question mark |
 
-![Every cover, 3D and icon](covers/row-3d.png)
+Four colourways in [`covers/icons/`](covers/icons/). Pick one and use it for every circle:
 
-![How the profile reads with the 3D covers](covers/profile-3d.png)
+- **Blue** ([`blue/`](covers/icons/blue/)): white icons on the brand blue. The default; it matches the profile picture and works in light and dark mode.
+- **Ink** ([`ink/`](covers/icons/ink/)): white on near-black, the accent in blue. Quieter and more premium, best if the feed is dark.
+- **Paper** ([`paper/`](covers/icons/paper/)): ink on light grey, the accent in blue. The most minimal.
+- **Spectrum** ([`spectrum/`](covers/icons/spectrum/)): white on a colour that runs from blue to pink along the row. The playful one; it only works in the order above.
 
-All covers are 1080×1080, with everything that matters inside the circle Instagram crops them to.
+![Every cover in every colourway](covers/all-covers.png)
+
+How the profile reads, in light mode with the blue covers and in dark mode with the ink ones:
+
+<img src="covers/profile-light.png" width="49%"> <img src="covers/profile-dark.png" width="49%">
+
+Each highlight's first story opens on its cover, big, so the first thing someone sees after tapping a circle is the circle they tapped. All covers are 1080×1080, with the icon well inside the circle Instagram crops them to.
 
 ## The posts that go with them
 
@@ -69,11 +89,10 @@ Posts 45 to 52 are the same features and use cases as feed carousels, built from
 ## Re-render
 
 ```bash
-node tools/render-stills.mjs highlights/covers.html highlights/covers/3d --ss 2        # the 3D covers (three.js)
-node tools/render-stills.mjs highlights/icons.html highlights/covers/icons --ss 2      # the icon covers, all four colourways
+node tools/render-stills.mjs highlights/icons.html highlights/covers --ss 2            # every cover, all four colourways, the rows and all-covers.png
 node tools/render-stills.mjs highlights/stories.html highlights --ss 2                 # every story
 node tools/render-stills.mjs highlights/stories.html highlights --ss 2 --query "only=funnel"   # one highlight
-node tools/render-stills.mjs highlights/profile.html highlights/covers --ss 2          # the profile previews
+node tools/render-stills.mjs highlights/profile.html highlights/covers --ss 2          # the profile previews (render the covers first)
 ```
 
-Where things live: the stories are written in [`stories.js`](stories.js) (every frame's words and numbers, the purpose of each highlight and its stickers); the pieces they're built from are [`lib/story.js`](../lib/story.js) and [`lib/story.css`](../lib/story.css); the icons are [`lib/hlicons.js`](../lib/hlicons.js); 3D Namzi is [`lib/namzi3d.js`](../lib/namzi3d.js) and the props are [`lib/props3d.js`](../lib/props3d.js).
+Where things live: the stories are written in [`stories.js`](stories.js) (every frame's words and numbers, the purpose of each highlight and its stickers); the pieces they're built from are [`lib/story.js`](../lib/story.js) and [`lib/story.css`](../lib/story.css); the icons are [`lib/hlicons.js`](../lib/hlicons.js) (the covers, the big one on each first story and the small one in every story's corner), and the colourways are in [`icons.html`](icons.html).

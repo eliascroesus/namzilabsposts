@@ -2,41 +2,53 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Namzilabs · highlight icons</title>
+<title>Namzilabs · highlight covers</title>
 <link rel="stylesheet" href="../lib/brand.css">
 <style>
-  /* The clean set: one icon per highlight, drawn on one 96-unit grid with one stroke weight,
-     round caps and one accent each, in four colourways. Square, centred for the circle crop.
-       node tools/render-stills.mjs highlights/icons.html highlights/covers/icons --ss 2 */
+  /* The highlight covers: one icon per highlight (lib/hlicons.js), in four colourways.
+     Square, with the icon centred and sized for the circle Instagram crops the cover to.
+       node tools/render-stills.mjs highlights/icons.html highlights/covers --ss 2 */
   body { margin: 0; padding: 20px; display: flex; flex-wrap: wrap; gap: 20px; background: #333; }
   .ic { width: 1080px; height: 1080px; position: relative; overflow: hidden; display: grid; place-items: center; }
-  .ic svg { width: 520px; height: 520px; overflow: visible; }
+  .ic svg { width: 680px; height: 680px; overflow: visible; }
+  /* the row as the profile shows it, one per colourway */
   .strip { flex: none; width: 2200px; height: 330px; display: flex; align-items: center; justify-content: center; gap: 34px; padding: 0 40px; }
-  .strip .c { width: 158px; flex: none; display: flex; flex-direction: column; align-items: center; gap: 16px; font: 650 22px/1 var(--sans); letter-spacing: -0.01em; }
-  .strip .c i { width: 158px; height: 158px; border-radius: 50%; overflow: hidden; display: grid; place-items: center; box-shadow: 0 0 0 5px var(--ringc), 0 0 0 9px var(--ringbg); }
-  .strip .c i svg { width: 74px; height: 74px; overflow: visible; }
+  .strip .c { width: 158px; flex: none; display: flex; flex-direction: column; align-items: center; gap: 16px; font: 600 22px/1 var(--sans); letter-spacing: -0.01em; }
+  .strip .c i, .all .c i { border-radius: 50%; overflow: hidden; display: grid; place-items: center; }
+  .strip .c i { width: 158px; height: 158px; box-shadow: 0 0 0 5px var(--gap), 0 0 0 7px var(--ring); }
+  .strip .c i svg { width: 99px; height: 99px; }
+  /* every cover in every colourway, for the docs */
+  .all { flex: none; width: 2200px; padding: 70px 80px 80px; display: flex; flex-direction: column; gap: 26px; background: #0c0d11; color: #fff; font-family: var(--sans); }
+  .all h3 { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin: 26px 0 0; display: flex; gap: 14px; align-items: baseline; }
+  .all h3:first-child { margin-top: 0; }
+  .all h3 span { font-size: 22px; font-weight: 500; color: #a4a8b8; }
+  .all .row { display: grid; grid-template-columns: repeat(11, 1fr); gap: 26px; }
+  .all .c { display: flex; flex-direction: column; align-items: center; gap: 14px; font-size: 21px; font-weight: 600; white-space: nowrap; }
+  .all .c i { width: 100%; aspect-ratio: 1; box-shadow: 0 0 0 4px #0c0d11, 0 0 0 6px #363636; }
+  .all .c i svg { width: 63%; height: 63%; }
 </style>
 </head>
 <body>
 <script src="../lib/motion.js"></script>
 <script src="../lib/hlicons.js"></script>
 <script>
-  // the icons themselves live in lib/hlicons.js (the story chips use them too)
-  const NAMES = NZ.HL_NAMES, HUE = NZ.HL_HUE, IDS = NZ.HL_IDS;
-
-  /* colourways: background, primary, accent, the "bad" colour (the funnel's leak), and the badge's cut-out */
+  const NAMES = NZ.HL_NAMES, IDS = NZ.HL_IDS;
+  // spectrum: one hue per circle, blue to pink along the row, in the order the profile shows them
+  const SPECTRUM = [222, 232, 242, 252, 262, 272, 284, 296, 308, 320, 332];
+  const hueOf = (id) => SPECTRUM[IDS.indexOf(id)];
   const WAYS = {
-    blue: { bg: () => "radial-gradient(70% 60% at 22% 12%, rgba(150,185,255,.5), transparent 60%), radial-gradient(60% 50% at 100% 100%, rgba(20,40,160,.45), transparent 60%), linear-gradient(135deg,#2451c4 0%,#2f5fd8 50%,#3d6df2 100%)", p: "#ffffff", a: "#bcd1ff", bad: "#ff9a86", cut: "#2f5fd8", ring: "#2f5fd8", text: "#14141c", page: "#f6f7fb" },
-    ink: { bg: () => "radial-gradient(55% 45% at 50% 42%, rgba(47,95,216,.42), transparent 72%), #07090f", p: "#ffffff", a: "#6f9bff", bad: "#f0553d", cut: "#07090f", ring: "#1b2033", text: "#fff", page: "#07090f" },
-    paper: { bg: () => "radial-gradient(60% 50% at 20% 10%, rgba(86,140,255,.16), transparent 70%), radial-gradient(50% 40% at 90% 95%, rgba(143,178,255,.16), transparent 70%), #f6f7fb", p: "#14141c", a: "#2f5fd8", bad: "#f0553d", cut: "#f6f7fb", ring: "#dfe3ee", text: "#14141c", page: "#ffffff" },
-    color: { bg: (id) => `radial-gradient(70% 60% at 25% 15%, hsla(${HUE[id]},95%,72%,.55), transparent 60%), linear-gradient(145deg, hsl(${HUE[id]},62%,${HUE[id] === 44 || HUE[id] === 38 ? 42 : 34}%), hsl(${HUE[id]},70%,16%))`, p: "#ffffff", a: "rgba(255,255,255,.62)", bad: "#ffb3a3", cut: null, ring: null, text: "#fff", page: "#0b0c10" },
+    blue: { label: "the brand blue, for any profile", bg: () => "radial-gradient(90% 70% at 50% 0%, rgba(255,255,255,.16), transparent 70%), linear-gradient(160deg, #4174f4 0%, #2f5fd8 55%, #2651c6 100%)", c: { p: "#fff", t: "rgba(255,255,255,.2)", a: "#fff", bad: "#ffb1a1" }, page: "#ffffff", ring: "#dbdbdb", text: "#14141c" },
+    ink: { label: "near-black with a blue accent", bg: () => "radial-gradient(50% 50% at 50% 50%, rgba(47,95,216,.4), transparent 78%), #07090f", c: { p: "#fff", t: "rgba(111,155,255,.22)", a: "#6f9bff", bad: "#ff6a52" }, page: "#000000", ring: "#363636", text: "#f3f4f8" },
+    paper: { label: "light, ink and blue", bg: () => "#f6f7fb", c: { p: "#14141c", t: "rgba(47,95,216,.13)", a: "#2f5fd8", bad: "#f0553d" }, page: "#ffffff", ring: "#dbdbdb", text: "#14141c" },
+    spectrum: { label: "blue to pink along the row", bg: (id) => `radial-gradient(90% 70% at 50% 0%, rgba(255,255,255,.18), transparent 70%), linear-gradient(160deg, hsl(${hueOf(id)},78%,60%) 0%, hsl(${hueOf(id)},66%,47%) 100%)`, c: { p: "#fff", t: "rgba(255,255,255,.22)", a: "#fff", bad: "#ffe2da" }, page: "#000000", ring: "#363636", text: "#f3f4f8" },
   };
-  const svg = (id, w) => NZ.HL_ICON(id, w.p, w.a, w.bad, w.cut ?? `hsl(${HUE[id]},62%,34%)`);
+  let all = "";
   for (const [way, w] of Object.entries(WAYS)) {
-    for (const id of IDS) document.write(`<div class="canvas ic" data-still="${way}/${id}" style="background:${w.bg(id)}">${svg(id, w)}</div>`);
-    // a strip of the whole row as Instagram shows it, for the docs and the kit
-    document.write(`<div class="canvas strip" data-still="rows/${way}" style="background:${w.page};color:${w.text}">${IDS.map((id) => `<div class="c"><i style="background:${w.bg(id)};--ringc:${w.page};--ringbg:${way === "paper" ? "#dfe3ee" : "rgba(255,255,255,.18)"}">${svg(id, w)}</i>${NAMES[id]}</div>`).join("")}</div>`);
+    for (const id of IDS) document.write(`<div class="canvas ic" data-still="icons/${way}/${id}" style="background:${w.bg(id)}">${NZ.HL_ICON(id, w.c)}</div>`);
+    document.write(`<div class="canvas strip" data-still="icons/rows/${way}" style="background:${w.page};color:${w.text};--gap:${w.page};--ring:${w.ring}">${IDS.map((id) => `<div class="c"><i style="background:${w.bg(id)}">${NZ.HL_ICON(id, w.c)}</i>${NAMES[id]}</div>`).join("")}</div>`);
+    all += `<h3>${way[0].toUpperCase() + way.slice(1)}<span>${w.label}</span></h3><div class="row">${IDS.map((id) => `<div class="c"><i style="background:${w.bg(id)}">${NZ.HL_ICON(id, w.c)}</i>${NAMES[id]}</div>`).join("")}</div>`;
   }
+  document.write(`<div class="canvas all" data-still="all-covers">${all}</div>`);
   NZ.still();
 </script>
 </body>

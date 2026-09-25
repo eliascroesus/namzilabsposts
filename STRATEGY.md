@@ -186,7 +186,7 @@ Lead with the headline: all your data in one place, any metric, where the funnel
 
 Instagram has no banner; the row of highlights under the bio does that job, and it's the second thing a visitor reads after the bio. Eleven, in this order: **Start here** (what it is, in seven taps), the five features (**Any KPI, Funnel, Count once, Receipts, Connect**), the four use cases (**Sales teams, Agencies, Creators, E-com**, one per audience in the order we talk to them) and **FAQ**. Each ends in one ask: the link sticker (start free) for the features, a reply keyword for the use cases (SHOWUP, HELD, LAUNCH, LIST: a story reply is a DM), a question for the FAQ.
 
-Build them from the last to the first (Instagram puts the newest at the front), with one cover set for all of them: Namzi in 3D, or the clean icons. Everything, including the sticker for each story, is in [`highlights/README.md`](highlights/README.md). The feature and use-case posts (45 to 52) are the same pieces as feed carousels; post them two a week in days 31 to 60, each pointing to its highlight.
+Build them from the last to the first (Instagram puts the newest at the front), with one cover colourway for all of them (blue unless you have a reason). Everything, including the sticker for each story, is in [`highlights/README.md`](highlights/README.md). The feature and use-case posts (45 to 52) are the same pieces as feed carousels; post them two a week in days 31 to 60, each pointing to its highlight.
 
 ### Days 31 to 60: the proof batch
 

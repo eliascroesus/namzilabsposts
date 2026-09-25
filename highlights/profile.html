@@ -6,7 +6,8 @@
 <link rel="stylesheet" href="../lib/brand.css">
 <style>
   /* How the profile reads with the highlights up: picture, bio, the highlight row, the first posts.
-     A preview in our own layout (not a copy of any app's screen), in dark and light.
+     A preview in our own layout (not a copy of any app's screen): light mode with the blue covers,
+     dark mode with the ink ones.
        node tools/render-stills.mjs highlights/profile.html highlights/covers --ss 2 */
   body { display: flex; gap: 40px; padding: 40px; align-items: flex-start; }
   .pf { flex: none; width: 1080px; height: 1760px; padding: 64px 0 0; font-family: var(--sans); }
@@ -30,12 +31,6 @@
   .pf .grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-top: 1px solid var(--line); padding-top: 4px; }
   .pf .grid div { aspect-ratio: 3 / 4; overflow: hidden; }
   .pf .grid img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-  .wide { flex: none; width: 2200px; height: 800px; padding: 70px 80px; display: flex; flex-direction: column; gap: 50px; background: #0c0d11; color: #fff; }
-  .wide h3 { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; }
-  .wide .row2 { display: grid; grid-template-columns: repeat(11, 1fr); gap: 26px; }
-  .wide .row2 .c { display: flex; flex-direction: column; align-items: center; gap: 16px; font-size: 24px; font-weight: 650; white-space: nowrap; }
-  .wide .row2 .c i { width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 5px #23252e; display: block; }
-  .wide .row2 .c i img { width: 100%; height: 100%; display: block; }
 </style>
 </head>
 <body>
@@ -53,10 +48,8 @@
     <div class="row">${IDS.map((id) => `<div class="c"><i><img src="${cover(id)}" alt=""></i>${NAMES[id]}</div>`).join("")}</div>
     <div class="grid">${GRID.map((d) => `<div><img src="../posts/${d}/ig-01.png" alt=""></div>`).join("")}</div>
   </div>`;
-  document.body.insertAdjacentHTML("beforeend", profile("profile-3d", "dark", (id) => `covers/3d/${id}.png`));
-  document.body.insertAdjacentHTML("beforeend", profile("profile-icons", "light", (id) => `covers/icons/ink/${id}.png`));
-  // every cover in one row, for the docs
-  document.body.insertAdjacentHTML("beforeend", `<div class="canvas wide" data-still="row-3d"><h3>The 3D covers</h3><div class="row2">${IDS.map((id) => `<div class="c"><i><img src="covers/3d/${id}.png" alt=""></i>${NAMES[id]}</div>`).join("")}</div><h3>The icon covers · color</h3><div class="row2">${IDS.map((id) => `<div class="c"><i><img src="covers/icons/color/${id}.png" alt=""></i>${NAMES[id]}</div>`).join("")}</div></div>`);
+  document.body.insertAdjacentHTML("beforeend", profile("profile-light", "light", (id) => `covers/icons/blue/${id}.png`));
+  document.body.insertAdjacentHTML("beforeend", profile("profile-dark", "dark", (id) => `covers/icons/ink/${id}.png`));
   document.querySelectorAll(".bio").forEach((b) => (b.textContent = bio));
   NZ.still();
 </script>

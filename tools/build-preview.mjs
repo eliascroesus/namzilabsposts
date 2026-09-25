@@ -181,25 +181,24 @@ function duration(p) {
 
 /* ── the Instagram highlights: highlights/stories.js is the one source ─── */
 function highlightsData() {
-  const H = "highlights";
+  const H = "highlights", WAYS = ["blue", "ink", "paper", "spectrum"];
   if (!existsSync(path.join(ROOT, H, "stories.js"))) return null;
   const pieces = new Proxy({}, { get: () => () => "" });            // the frames' pictures aren't needed here
   const ctx = { NZ: { STORY: { C: pieces } } };
   vm.runInNewContext(read(`${H}/stories.js`), ctx);
   const ic = { window: {} };
   vm.runInNewContext(read("lib/hlicons.js"), ic);
-  const { HL_NAMES: NAMES, HL_HUE: HUE } = ic.window.NZ;
+  const { HL_NAMES: NAMES } = ic.window.NZ;
   const file = (p, name = path.basename(p)) => (existsSync(path.join(ROOT, p)) ? { name, path: p, size: size(p), ...(p.endsWith(".png") ? pngSize(p) : {}) } : null);
   const list = (ctx.NZ.HIGHLIGHTS || []).map((h, k) => {
     const n = String(k + 1).padStart(2, "0"), dir = `${H}/${n}-${h.id}`;
     const frames = h.frames.map((f, i) => ({ ...file(`${dir}/story-${String(i + 1).padStart(2, "0")}.png`), head: String(f.h || "").replace(/\*/g, ""), kw: f.kw || "" })).filter((f) => f.path);
     return {
-      id: h.id, n, dir, name: NAMES[h.id], hue: HUE[h.id], purpose: h.purpose || "", stickers: h.stickers || {}, frames,
-      cover3d: file(`${H}/covers/3d/${h.id}.png`, `${n}-${h.id}-3d.png`),
-      icons: Object.fromEntries(["blue", "ink", "paper", "color"].map((w) => [w, file(`${H}/covers/icons/${w}/${h.id}.png`, `${n}-${h.id}-${w}.png`)])),
+      id: h.id, n, dir, name: NAMES[h.id], purpose: h.purpose || "", stickers: h.stickers || {}, frames,
+      icons: Object.fromEntries(WAYS.map((w) => [w, file(`${H}/covers/icons/${w}/${h.id}.png`, `${n}-${h.id}-${w}.png`)])),
     };
   });
-  const extras = [["covers/profile-3d.png", "Profile preview · 3D covers"], ["covers/profile-icons.png", "Profile preview · icon covers"], ["covers/row-3d.png", "Every cover in a row"], ...["blue", "ink", "paper", "color"].map((w) => [`covers/icons/rows/${w}.png`, `The icon row · ${w}`])]
+  const extras = [["covers/profile-light.png", "Profile preview · light mode, blue covers"], ["covers/profile-dark.png", "Profile preview · dark mode, ink covers"], ["covers/all-covers.png", "Every cover, every colourway"], ...WAYS.map((w) => [`covers/icons/rows/${w}.png`, `The row · ${w}`])]
     .map(([p, label]) => { const f = file(`${H}/${p}`, p.replace(/\//g, "-").replace("covers-", "")); return f && { ...f, label }; }).filter(Boolean);
   return { list, extras, readme: read(`${H}/README.md`) };
 }
@@ -348,7 +347,7 @@ function build({ web }) {
   if (kit === "content") return { ...all, highlights: null, videos: web ? videos.map((v) => { const files = v.files.filter((f) => !f.name.includes("ai-live")); return { ...v, files, file: files[0] }; }) : videos, logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => !d.path.startsWith("brand/") || d.path === "brand/COPY.md") };
   // every banner's name, for the "goes with the … banner" lines in kits that don't carry the banners themselves
   const bannerNames = banners ? Object.fromEntries(banners.concepts.map((c) => [c.id, c.name])) : {};
-  if (kit === "brand") return { ...all, highlights: highlights && { ...highlights, list: highlights.list.map((h) => ({ ...h, frames: [] })), extras: highlights.extras.filter((e) => /^(row-3d|icons-rows)/.test(e.name)) }, bannerNames, posts: [], videos: [], banners: banners && { ...banners, concepts: [] }, docs: docs.filter((d) => d.path.startsWith("brand/") || d.name === "STRATEGY.md") };
+  if (kit === "brand") return { ...all, highlights: highlights && { ...highlights, list: highlights.list.map((h) => ({ ...h, frames: [] })), extras: highlights.extras.filter((e) => /^(profile|all-covers|icons-rows)/.test(e.name)) }, bannerNames, posts: [], videos: [], banners: banners && { ...banners, concepts: [] }, docs: docs.filter((d) => d.path.startsWith("brand/") || d.name === "STRATEGY.md") };
   if (kit === "highlights") return { ...all, bannerNames, posts: [], videos: [], logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => d.path === "highlights/README.md" || d.path === "brand/COPY.md") };
   if (kit === "banners") return { ...all, highlights: null, bannerNames, posts: [], videos: [], logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, mascot: { stickers: [], avatars: [], boards: [] }, banners: banners && { ...banners, highlights: [], concepts: banners.concepts.map((c) => ({ ...c, mockup: null, limock: null })) }, docs: docs.filter((d) => d.path === "brand/banners/README.md" || d.path === "brand/COPY.md") };
   return { ...all, bannerNames };
@@ -418,7 +417,7 @@ if (artifactDir) {
   const m = build({ web: true });
   if ((kit === "highlights" || kit === "brand") && m.highlights) {
     const jpg = (f) => { if (!f || f.path.includes("/covers/icons/")) return f; const jp = f.path.replace(/\.png$/, ".jpg"); return { ...f, name: f.name.replace(/\.png$/, ".jpg"), path: jp, size: statSync(webPath(jp)).size }; };
-    m.highlights.list = m.highlights.list.map((h) => ({ ...h, frames: h.frames.map(jpg), cover3d: jpg(h.cover3d) }));
+    m.highlights.list = m.highlights.list.map((h) => ({ ...h, frames: h.frames.map(jpg) }));
     m.highlights.extras = m.highlights.extras.map(jpg);
   }
   if ((kit === "brand" || kit === "banners") && m.banners) {
@@ -449,7 +448,7 @@ if (artifactDir) {
   m.mascot.avatars.forEach((a) => add(a.path));
   m.mascot.boards.forEach((b) => add(b.path));
   m.docs.forEach((d) => add(d.path));
-  if (m.highlights) { m.highlights.list.forEach((h) => { h.frames.forEach((f) => add(f.path)); if (h.cover3d) add(h.cover3d.path); Object.values(h.icons).forEach((f) => f && add(f.path)); }); m.highlights.extras.forEach((f) => add(f.path)); }
+  if (m.highlights) { m.highlights.list.forEach((h) => { h.frames.forEach((f) => add(f.path)); Object.values(h.icons).forEach((f) => f && add(f.path)); }); m.highlights.extras.forEach((f) => add(f.path)); }
   writeFileSync(path.join(artifactDir, "files.json"), JSON.stringify(files, null, 1));
   const total = Object.values(files).reduce((n, src) => n + statSync(path.isAbsolute(src) ? src : path.join(ROOT, src)).size, 0) + statSync(path.join(artifactDir, "page.html")).size;
   console.log(`${kit} kit: ${Object.keys(files).length} files + page, ${(total / 1e6).toFixed(1)} MB → ${artifactDir}`);

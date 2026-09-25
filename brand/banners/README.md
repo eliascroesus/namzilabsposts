@@ -94,7 +94,7 @@ Precious and Donut daydream are parodies. "One place to rule them all" plays on 
 | `*/youtube.png` | 2560×1440 | YouTube channel art | Everything important sits in the middle 1546×423, the only part phones show. Desktops show that full-width band (y 508 to 931), so scenes with ground or a horizon put it inside the band. |
 | `*/og.png` | 1200×630 | Link preview when someone shares namzilabs.co (X, LinkedIn, Facebook, Slack, iMessage) | Set it as the site's `og:image`. |
 | `*/email.png` | 1200×300 | Email-signature banner | Display it at 600×150. |
-| [`../../highlights/covers/`](../../highlights/covers/) | 1080×1080 | Instagram highlight covers for all eleven highlights: Namzi in 3D, and clean icons in four colourways | Everything that matters sits inside the circle Instagram crops to. |
+| [`../../highlights/covers/`](../../highlights/covers/) | 1080×1080 | Instagram highlight covers for all eleven highlights: one clean icon each, in four colourways | Everything that matters sits inside the circle Instagram crops to. |
 
 The memes and the games & films come in the first six sizes only: the link preview and email signature should stay on-brand, so use an everyday design for those. The three LinkedIn designs come in the two LinkedIn sizes only.
 

@@ -354,7 +354,7 @@
     <div id="hlstories"><div class="hlrow" id="hlrow" role="tablist" aria-label="Highlight"></div>
     <div class="hld" id="hld"></div></div>
     <h3 class="subh" id="hlcovhead">Covers</h3>
-    <p class="faint" id="hlcovnote" style="margin:-4px 0 14px">Two sets: pick one and use it for every circle. The 3D covers put Namzi in each highlight's scene; the icon covers are one clean icon per highlight, in four colourways. All 1080×1080, made for the circle crop.</p>
+    <p class="faint" id="hlcovnote" style="margin:-4px 0 14px">One clean icon per highlight, in four colourways. Blue is the brand blue and works on any profile; pick one and use it for every circle. All 1080×1080, made for the circle crop.</p>
     <div class="hlbar"><div class="ptabs" id="hlcovtabs" role="tablist" aria-label="Cover set"></div><button class="btn small" id="hlcovzip"></button></div>
     <div class="hlcov" id="hlcov"></div>
     <h3 class="subh">See it on a profile</h3>
@@ -542,7 +542,7 @@
   const postFiles = (p, prefix = `${p.dir}/`) => [...p.images.map((im) => ({ ...im, zipPath: prefix + im.name })), ...(p.pdf ? [{ ...p.pdf, zipPath: prefix + p.pdf.name }] : []), { text: p.md, type: "text/markdown", zipPath: prefix + "captions.md" }];
   const logoFiles = (l, prefix = `${l.id}/`) => [...l.svgs.map((s) => ({ text: s.text, type: "image/svg+xml", zipPath: prefix + s.name })), ...l.pngs.map((p) => ({ ...p, zipPath: prefix + p.name })), ...(l.board ? [{ ...l.board, zipPath: prefix + "board.png" }] : [])];
   const extOf = (n) => n.slice(n.lastIndexOf("."));
-  const hlFiles = (h, prefix = `${h.n}-${h.id}/`) => [...h.frames.map((f) => ({ ...f, zipPath: prefix + f.name })), ...(h.cover3d ? [{ ...h.cover3d, zipPath: prefix + "cover-3d" + extOf(h.cover3d.name) }] : []), ...Object.entries(h.icons).filter(([, f]) => f).map(([w, f]) => ({ ...f, zipPath: prefix + `cover-icon-${w}.png` }))];
+  const hlFiles = (h, prefix = `${h.n}-${h.id}/`) => [...h.frames.map((f) => ({ ...f, zipPath: prefix + f.name })), ...Object.entries(h.icons).filter(([, f]) => f).map(([w, f]) => ({ ...f, zipPath: prefix + `cover-${w}.png` }))];
   const sets = {
     highlights: () => M.highlights ? [...M.highlights.list.flatMap((h) => hlFiles(h, `highlights/${h.n}-${h.id}/`)), ...M.highlights.extras.map((f) => ({ ...f, zipPath: `highlights/previews/${f.name}` })), { text: M.highlights.readme, type: "text/markdown", zipPath: "highlights/README.md" }] : [],
     posts: () => M.posts.flatMap((p) => postFiles(p, `posts/${p.dir}/`)),
@@ -600,7 +600,7 @@
   const nDesigns = M.banners ? M.banners.concepts.length : 0;
   const nStories = M.highlights ? M.highlights.list.reduce((n, h) => n + h.frames.length, 0) : 0;
   $("#sub").textContent = M.kit === "highlights"
-    ? `${M.highlights.list.length} Instagram highlights: ${nStories} stories in order, the sticker for each, and two sets of covers, Namzi in 3D and clean icons in four colourways. Plus the bios that go above them. Stories are visually lossless JPGs; PNG masters are in the repo.`
+    ? `${M.highlights.list.length} Instagram highlights: ${nStories} stories in order, the sticker for each, and the covers: one clean icon per highlight, in four colourways. Plus the bios that go above them. Stories are visually lossless JPGs; PNG masters are in the repo.`
     : M.kit === "brand"
     ? `The logo and ${(M.logos.variants || []).length} variants of it (including the game-style ones), transparent files, website icons, Namzi the mascot and Instagram highlight covers. Preview anything and download single files or whole sets. The banners have their own kit.`
     : M.kit === "banners"
@@ -616,7 +616,7 @@
   {
     const link = (id, label) => M.kits[id] && M.kits[id].url ? `<a href="${esc(M.kits[id].url)}" target="_blank" rel="noopener">${label} ↗</a>` : "";
     const notes = {
-      content: link("highlights", "Highlights Kit") && `<b>The Instagram highlights</b> (every story, the stickers and both sets of covers) are in the ${link("highlights", "Highlights Kit")}.`,
+      content: link("highlights", "Highlights Kit") && `<b>The Instagram highlights</b> (every story, the stickers and the covers) are in the ${link("highlights", "Highlights Kit")}.`,
       brand: [link("banners", "Banner Kit") && `<b>Looking for the banners?</b> Every design, at every platform size and with its profile picture, is in the ${link("banners", "Banner Kit")}.`, link("highlights", "Highlights Kit") && `The highlight stories that go with the covers below are in the ${link("highlights", "Highlights Kit")}.`].filter(Boolean).join(" "),
       highlights: link("content", "Content Kit") && `<b>The posts that go with them</b> (45 to 52: the same features and use cases as feed carousels) are in the ${link("content", "Content Kit")}.`,
     };
@@ -626,12 +626,12 @@
   /* ── highlights ─────────────────────────────────────────────────────── */
   if (has.highlights) {
     const L = M.highlights.list;
-    const WAYS = [["3d", "3D"], ["blue", "Icons · blue"], ["ink", "Icons · ink"], ["paper", "Icons · paper"], ["color", "Icons · colour"]].filter(([k]) => L.some((h) => (k === "3d" ? h.cover3d : h.icons[k])));
-    let sel = 0, way = WAYS.length ? WAYS[0][0] : "3d";
-    const coverOf = (h, w = way) => (w === "3d" ? h.cover3d : h.icons[w]);
+    const WAYS = [["blue", "Blue"], ["ink", "Ink"], ["paper", "Paper"], ["spectrum", "Spectrum"]].filter(([k]) => L.some((h) => h.icons[k]));
+    let sel = 0, way = WAYS.length ? WAYS[0][0] : "blue";
+    const coverOf = (h, w = way) => h.icons[w];
     const wayFiles = () => L.map((h) => coverOf(h)).filter(Boolean).map((f) => ({ ...f, zipPath: `covers-${way}/${f.name}` }));
     function renderHL() {
-      $("#hlrow").innerHTML = L.map((h, i) => `<button class="hlc${i === sel ? " on" : ""}" role="tab" aria-selected="${i === sel}" data-hl="${i}"><i><img loading="lazy" src="${esc((h.cover3d || h.icons.ink).path)}" alt=""></i>${esc(h.name)}</button>`).join("");
+      $("#hlrow").innerHTML = L.map((h, i) => `<button class="hlc${i === sel ? " on" : ""}" role="tab" aria-selected="${i === sel}" data-hl="${i}"><i><img loading="lazy" src="${esc((h.icons.blue || Object.values(h.icons).find(Boolean)).path)}" alt=""></i>${esc(h.name)}</button>`).join("");
       const h = L[sel], kw = h.frames.find((f) => f.kw);
       const stk = Object.entries(h.stickers).map(([n, t]) => `<div><b>Story ${esc(n)}:</b> ${esc(t)}</div>`).join("");
       $("#hld").innerHTML = `<div class="top"><div><h3>${esc(h.n)} · ${esc(h.name)}</h3><p>${esc(h.purpose)}</p></div><div class="cact"><button class="btn small" data-hlopen="${sel}">Open</button><button class="btn small" data-hlzip="${sel}">${ICON_DL}ZIP<span class="sz">&nbsp;· ${mb(bytes(hlFiles(h)))}</span></button></div></div>
@@ -666,7 +666,7 @@
       showImg(0);
       $("#modal").classList.add("open"); document.body.style.overflow = "hidden";
     }
-    if (hlStories) renderHL(); else { $("#hlstories").classList.add("hidden"); $("#highlights h2").innerHTML = "Highlight <em>covers.</em>"; $("#hlsub").textContent = "One cover per Instagram highlight, in two sets: Namzi in 3D, and clean icons in four colourways. Pick one set and use it for every circle."; $("#hlcovhead").classList.add("hidden"); $("#hlcovnote").textContent = "Every cover is 1080×1080, with everything that matters inside the circle Instagram crops it to."; document.querySelector('#tabs a[href="#highlights"]').textContent = "Highlight covers"; const z = document.querySelector('#highlights [data-zip="highlights"]'); if (z && z.firstChild) z.firstChild.textContent = "Download highlight covers"; }
+    if (hlStories) renderHL(); else { $("#hlstories").classList.add("hidden"); $("#highlights h2").innerHTML = "Highlight <em>covers.</em>"; $("#hlsub").textContent = "One cover per Instagram highlight: a clean icon, in four colourways. Pick one colourway and use it for every circle."; $("#hlcovhead").classList.add("hidden"); $("#hlcovnote").textContent = "Every cover is 1080×1080, with everything that matters inside the circle Instagram crops it to."; document.querySelector('#tabs a[href="#highlights"]').textContent = "Highlight covers"; const z = document.querySelector('#highlights [data-zip="highlights"]'); if (z && z.firstChild) z.firstChild.textContent = "Download highlight covers"; }
     renderCovers();
     $("#hlboards").innerHTML = M.highlights.extras.map((f, k) => `<button data-hlx="${k}" aria-label="${esc(f.label)}"><img loading="lazy" src="${esc(f.path)}" alt="${esc(f.label)}"><span>${esc(f.label)}</span></button>`).join("");
     $("#highlights").addEventListener("click", (e) => {
