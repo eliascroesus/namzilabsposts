@@ -1,11 +1,12 @@
 #!/usr/bin/env node
-// Check every line of profile and company copy (brand/copy/copy.mjs) and write brand/COPY.md.
+// Check every line of profile and company copy (brand/copy/copy.mjs), write brand/COPY.md, and
+// copy the day-1 bios into brand/banners/README.md.
 //
 //   node tools/build-copy.mjs
 //
 // Fails if any line has an em or en dash, or runs over its platform's limit. Lengths are counted
 // the strict way (UTF-16 units, so an emoji counts as 2), which is how the stingiest platforms count.
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import copy from "../brand/copy/copy.mjs";
@@ -33,5 +34,16 @@ for (const g of copy.groups) {
   }
 }
 writeFileSync(path.join(ROOT, "brand/COPY.md"), md);
+
+// The day-1 bios (items marked `day1`) also sit in the banners README, next to the banners they go with.
+const README = path.join(ROOT, "brand/banners/README.md");
+const START = "<!-- day1:start", END = "<!-- day1:end -->";
+const src = readFileSync(README, "utf8");
+const a = src.indexOf(START), b = src.indexOf(END);
+if (a < 0 || b < a) { console.error("brand/banners/README.md: the day1 markers are missing"); process.exit(1); }
+const day1 = copy.groups.flatMap((g) => g.items).filter((it) => it.day1);
+const block = "<!-- day1:start: written by tools/build-copy.mjs from brand/copy/copy.mjs, so edit it there -->\n"
+  + day1.map((it) => `**${it.day1}**\n\`\`\`text\n${it.text}\n\`\`\`\n`).join("\n") + END;
+writeFileSync(README, src.slice(0, a) + block + src.slice(b + END.length));
 const n = copy.groups.reduce((a, g) => a + g.items.length, 0);
-console.log(`brand/COPY.md: ${n} lines of copy in ${copy.groups.length} groups, all within their limits`);
+console.log(`brand/COPY.md: ${n} lines of copy in ${copy.groups.length} groups, all within their limits; ${day1.length} day-1 bios in brand/banners/README.md`);

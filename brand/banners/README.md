@@ -114,32 +114,34 @@ The 33 variants (neon, glass, gold, wedding rings, donuts, and nine game-style o
 
 Every bio, tagline and company description lives in [`../COPY.md`](../COPY.md), checked against each platform's character limit, with copy buttons in the Content Kit. The ones to paste on day 1:
 
+<!-- day1:start: written by tools/build-copy.mjs from brand/copy/copy.mjs, so edit it there -->
 **Instagram and Threads**
 ```text
-Stripe, Calendly & your CRM in one place 📍
-See your real show rate & where your funnel leaks
+All your business data in one place 📍
+Build any KPI. Trust every number.
 Free to start, no card ⬇️
 ```
 
 **X**
 ```text
-All your data in one place 📍 Connect Stripe, Calendly, your CRM + 30 more tools, count every customer once, see where your funnel leaks. Free to start ⬇️
-```
-
-**LinkedIn company tagline**
-```text
-All your data in one place. Connect your tools, count every customer once, see exactly where your funnel breaks.
-```
-
-**Facebook page intro**
-```text
-All your data in one place. Connect your tools, see where your funnel leaks. Free to start, no card.
+All your business data in one place 📍 Build any metric or KPI, trust every number, and see exactly where your funnel leaks. Free to start, no card ⬇️
 ```
 
 **TikTok**
 ```text
-All your sales data in one place 📍 Find your funnel leaks. Free ⬇️
+All your business data in one place 📍 Build any KPI. Start free ⬇️
 ```
+
+**Facebook page intro**
+```text
+All your business data in one place. Build any KPI and see where your funnel leaks. Free to start.
+```
+
+**LinkedIn company tagline**
+```text
+All your company data in one place. Build any KPI, trust every number and see where your funnel breaks.
+```
+<!-- day1:end -->
 
 The LinkedIn About, the YouTube channel description, the website and Product Hunt copy, and the DM replies for every comment keyword are in [`../COPY.md`](../COPY.md).
 

@@ -122,6 +122,7 @@ Lead with **all your data in one place**, then **any metric**, then **where the 
 ## Voice
 
 - Plain, specific, a little dry. Short sentences, second person.
+- **Broad first.** Bios, taglines and descriptions promise the whole thing (all your data in one place, any metric or KPI) and never list tools: a list reads as "it only works with those". Posts use tool names as examples inside a scene.
 - Show the working: say what's counted and what isn't.
 - Lead with the number or the argument, never with "Introducing…".
 - Say "booked, held, no-show, setter, closer" to sales teams and "launch, list, cart" to creators, in their words.

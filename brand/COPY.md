@@ -5,9 +5,10 @@ Bios, taglines, company descriptions and replies, ready to paste. Every one says
 ## How we write
 
 - **Hook first.** The first line has to stop the scroll on its own: a number, a contradiction, a question they've asked themselves, or a scene they recognise. "Calendly says 41. Close says 38." Never warm up.
+- **Broad first, names second.** Lead with the whole promise: all your data in one place, any metric or KPI. A list of tools makes Namzilabs sound like it only works with those, so bios, taglines and descriptions name categories (your CRM, your calendar, your checkout) or nothing. Tool names belong in posts, as examples inside a scene.
 - **One idea per line.** Short sentences. A blank line between beats. If a sentence needs a comma and an "and", it's probably two lines.
 - **Their words, not ours.** Booked, held, no-show, show rate, cash collected, setter, closer, EOD report, launch, list, "the numbers don't match". Never "leverage", "unlock", "seamless", "supercharge" or "game-changer".
-- **Specific beats clever.** Real tool names, real-looking numbers, real moments (Monday 9:07, the Friday EOD report). Every example number is labelled as example data.
+- **Specific beats clever.** In posts: real tool names, real-looking numbers, real moments (Monday 9:07, the Friday EOD report). Every example number is labelled as example data.
 - **Pain, cost, fix, offer.** Name the problem, say what it costs them, show the fix in one line, then the offer. What it does, why it matters, what to do next.
 - **One ask per post.** One main ask: comment a keyword for the DM, or link in bio, or "free to start, no card". A "send this to your setter" line on top is fine. Never three asks.
 - **No em dashes, ever.** Use a full stop, a comma, a colon or brackets. Write ranges out: "2 to 3 days", never two numbers joined by a dash.
@@ -17,18 +18,18 @@ Bios, taglines, company descriptions and replies, ready to paste. Every one says
 
 The three things every piece of copy has to land: what it does, why they need it, and the offer.
 
-**One-liner** · 185/200 characters
+**One-liner** · 156/200 characters
 
 ```text
-Namzilabs puts all your business data in one place: it connects the tools you already use, counts every customer once across all of them, and shows you exactly where your funnel breaks.
+Namzilabs puts all your business data in one place, so you can build any metric or KPI from it, trust every number and see exactly where your funnel breaks.
 ```
 
 **Elevator pitch (30 seconds)**
 
 ```text
-Your leads are in Typeform, your calls are in Calendly, your deals are in your CRM and your money is in Stripe. Every tool shows you a slice, so every number is a guess and every Monday starts with exports.
+Your business runs on a dozen tools. Leads in your forms. Calls in your calendar. Deals in your CRM. Cash in your checkout. Each one shows you a slice, none of them agree, and every Monday starts with exports.
 
-Namzilabs connects all of them, matches the same person across every tool and lets you build any metric you want, like show rate or revenue per lead. You see exactly where the funnel breaks, and every number shows its working.
+Namzilabs puts all of that data in one place. It connects your tools, matches the same customer across all of them and counts each one once. Then you build any metric or KPI you want, like show rate or revenue per lead, and see exactly where your funnel breaks. Every number shows its working, so you can trust it.
 
 It's free to start, no card.
 ```
@@ -36,13 +37,13 @@ It's free to start, no card.
 **What it does**
 
 ```text
-Connect every tool you use. Match every customer across them. Build any metric. See exactly where the funnel breaks.
+Connect your tools. Match every customer across them. Build any metric or KPI. See exactly where your funnel breaks.
 ```
 
 **Why they need it**
 
 ```text
-Because your tools disagree. Calendly says 41, your CRM says 38, the sheet says 44. We count each person once, so you get one number you can trust.
+Because your tools disagree. Your calendar says 41 calls, your CRM says 38, the spreadsheet says 44. We count each person once, so you get one number you can trust.
 ```
 
 **The offer**
@@ -66,6 +67,13 @@ Everywhere: banners, the site, the lockup.
 
 ```text
 All your data. One place.
+```
+
+**The promise** · 34/60 characters  
+Right under the primary: the two things people want once their data is in one place.
+
+```text
+Build any KPI. Trust every number.
 ```
 
 **The proof** · 44/60 characters  
@@ -103,11 +111,11 @@ Pairs with Namzi.
 True numbers, not blurry ones.
 ```
 
-**Playful 2** · 67/80 characters  
+**Playful 2** · 38/80 characters  
 Launches, memes, a lighter profile.
 
 ```text
-Your Stripe, your CRM and your calendar. Finally on speaking terms.
+Your tools, finally on speaking terms.
 ```
 
 **Builders** · 59/80 characters  
@@ -133,91 +141,127 @@ Your Monday report, done before Monday.
 
 ## Bios
 
-Built like the best creator-tool bios: line 1 is the hook, line 2 says what it does and who it's for, line 3 is the offer and points at the link. Paste them as they are, line breaks included.
+Line 1 says what it is, as wide as it goes: all your data, one place. Line 2 says what you get from it. Line 3 is the offer, pointing at the link. No tool names in a bio: a list makes it sound like it only works with those. Paste them as they are, line breaks included.
 
-**Instagram (recommended)** · 119/150 characters  
-For the main account. Show rate is the number our first audience lives by.
+**Instagram (recommended)** · 99/150 characters  
+For the main account. The whole promise, then what you get from it, then the offer.
 
 ```text
-Stripe, Calendly & your CRM in one place 📍
-See your real show rate & where your funnel leaks
+All your business data in one place 📍
+Build any KPI. Trust every number.
 Free to start, no card ⬇️
 ```
 
-**Instagram (creators)** · 113/150 characters  
-For a launch week, or if the audience is mostly creators.
+**Instagram (with the funnel)** · 135/150 characters  
+The same bio with the reason sales teams buy. Use it while most followers are sales teams.
+
+```text
+All your business data in one place 📍
+Build any KPI. Trust every number.
+See exactly where your funnel leaks
+Free to start, no card ⬇️
+```
+
+**Instagram (pain first)** · 120/150 characters  
+Opens on the problem everyone has. Good for a playful, meme-heavy feed.
+
+```text
+10 tools. 10 different numbers. 🙃
+We put all your business data in one place
+Build any KPI you can trust. Start free ⬇️
+```
+
+**Instagram (sales teams)** · 106/150 characters  
+An account only for coaching and info-product sales teams.
+
+```text
+All your sales data in one place 📍
+Show rate, cash collected & any KPI you want
+Free to start, no card ⬇️
+```
+
+**Instagram (agencies)** · 106/150 characters  
+An account for outbound and appointment-setting agencies.
+
+```text
+All your client data in one place 📍
+Cost per held meeting & any KPI, per client
+Free to start, no card ⬇️
+```
+
+**Instagram (creators)** · 106/150 characters  
+For a launch week, or an audience that's mostly creators.
 
 ```text
 All your launch data in one place 📍
-Whop, Stripe & your list, every buyer counted once
+Every buyer counted once. Any KPI you want.
 Free to start, no card ⬇️
 ```
 
-**Instagram (founders)** · 115/150 characters
-
-```text
-Your tools disagree. We count every customer once.
-All your data in one place, any metric
-Free to start, no card ⬇️
-```
-
-**Instagram (with proof, later)** · 103/150 characters  
-Proof first, the way the best creator tools do it. Use it only once the numbers are real and you're allowed to share them. Until then, use one above.
+**Instagram (with proof, later)** · 99/150 characters  
+Proof first, the way the best creator tools do it. Use it only once the numbers are real and you're allowed to share them. Until then, use the recommended one.
 
 ```text
 [$X] tracked across [N] businesses
-All your data in one place for sales teams
+All your business data in one place 📍
 Free to start, no card ⬇️
 ```
 
-**X** · 154/160 characters
+**Instagram name (searchable)** · 23/30 characters  
+Instagram searches the name field, so it carries the words people look for.
 
 ```text
-All your data in one place 📍 Connect Stripe, Calendly, your CRM + 30 more tools, count every customer once, see where your funnel leaks. Free to start ⬇️
+Namzilabs | Data & KPIs
 ```
 
-**X (short)** · 134/160 characters
+**X** · 150/160 characters
 
 ```text
-Your tools disagree. We count every customer once. All your data in one place, any metric, the true numbers. Free to start, no card ⬇️
+All your business data in one place 📍 Build any metric or KPI, trust every number, and see exactly where your funnel leaks. Free to start, no card ⬇️
+```
+
+**X (short)** · 88/160 characters
+
+```text
+All your business data in one place. Build any KPI. Trust every number. Free to start ⬇️
 ```
 
 **TikTok** · 67/80 characters
 
 ```text
-All your sales data in one place 📍 Find your funnel leaks. Free ⬇️
+All your business data in one place 📍 Build any KPI. Start free ⬇️
 ```
 
-**Threads** · 119/150 characters
+**Threads** · 99/150 characters
 
 ```text
-Stripe, Calendly & your CRM in one place 📍
-See your real show rate & where your funnel leaks
+All your business data in one place 📍
+Build any KPI. Trust every number.
 Free to start, no card ⬇️
 ```
 
-**Facebook page intro** · 100/101 characters
+**Facebook page intro** · 98/101 characters
 
 ```text
-All your data in one place. Connect your tools, see where your funnel leaks. Free to start, no card.
+All your business data in one place. Build any KPI and see where your funnel leaks. Free to start.
 ```
 
-**LinkedIn company tagline** · 112/120 characters
+**LinkedIn company tagline** · 103/120 characters
 
 ```text
-All your data in one place. Connect your tools, count every customer once, see exactly where your funnel breaks.
+All your company data in one place. Build any KPI, trust every number and see where your funnel breaks.
 ```
 
-**LinkedIn headline (founder)** · 173/220 characters
+**LinkedIn headline (founder)** · 165/220 characters
 
 ```text
-Founder, Namzilabs · All your business data in one place: connect your tools, count every customer once, see exactly where your funnel breaks · Free to start at namzilabs.co
+Founder at Namzilabs · All your company data in one place: build any KPI, trust every number and see exactly where your funnel breaks · Free to start at namzilabs.co
 ```
 
-**LinkedIn headline (team)** · 113/220 characters
+**LinkedIn headline (team)** · 105/220 characters
 
 ```text
-[Role] at Namzilabs · We put all your business data in one place, so you can see exactly where your funnel breaks
+[Role] at Namzilabs · All your company data in one place, so you can build any KPI and trust every number
 ```
 
 **YouTube channel tagline** · 85/100 characters
@@ -230,68 +274,68 @@ Short videos on the numbers that run a business, and where your funnel really br
 
 From one sentence to the full LinkedIn About. Pick the longest one the field allows.
 
-**One sentence** · 140/160 characters
+**One sentence** · 143/160 characters
 
 ```text
-Namzilabs connects your tools, counts every customer once across all of them, and shows you exactly where your funnel breaks. Free to start.
+Namzilabs puts all your business data in one place, so you can build any metric or KPI and see exactly where your funnel breaks. Free to start.
 ```
 
-**Short (directories, Crunchbase, bios with room)** · 277/300 characters
+**Short (directories, Crunchbase, bios with room)** · 271/300 characters
 
 ```text
-Namzilabs puts all your business data in one place. Connect 33 tools (Stripe, Calendly, Close, Shopify, Whop, Typeform, Fathom and more), match every customer across them, build any metric and see exactly where your funnel breaks. No code, never edits your data, free to start.
+Namzilabs puts all your business data in one place. Connect the tools you already use (CRM, calendar, payments, forms, email, calls and more), match every customer across them, then build any metric or KPI and see exactly where your funnel breaks. No code. Free to start.
 ```
 
-**Facebook page description** · 226/255 characters
+**Facebook page description** · 229/255 characters
 
 ```text
-All your business data in one place. Connect Stripe, Calendly, your CRM and 30 more tools, count every customer once, build any metric and see exactly where your funnel breaks. No code. Free to start, no card, at namzilabs.co.
+All your business data in one place. Connect your tools, count every customer once, build any metric or KPI and see exactly where your funnel breaks. No code, and it never edits your data. Free to start, no card, at namzilabs.co.
 ```
 
-**Medium (G2, Capterra, app listings, Facebook About)** · 652/900 characters
+**Medium (G2, Capterra, app listings, Facebook About)** · 795/900 characters
 
 ```text
-Your business runs on a dozen tools, and none of them sees the whole customer. Calendly knows who booked. Your CRM knows what the reps logged. Stripe knows who paid. So every report is a guess, and every Monday starts with exports.
+Your business runs on a dozen tools, and none of them sees the whole customer. Your calendar knows who booked. Your CRM knows what the reps logged. Your checkout knows who paid. So every report is a guess, and every Monday starts with exports.
 
-Namzilabs connects all of them in one place. It matches the same person across every tool by email or phone, counts each customer and each meeting once, and lets you build any metric: show rate, cost per held meeting, revenue per lead, speed to lead, revenue from your list. You see exactly where your funnel breaks, and every number shows its working.
+Namzilabs puts all of it in one place. It connects the tools you already use, from your CRM and calendar to payments, forms, email and calls, matches the same person across all of them by email or phone, and counts each customer and each meeting once. Then you build any metric or KPI you want: show rate, cost per held meeting, revenue per lead, speed to lead, revenue from your list, or your own. You see exactly where your funnel breaks, and every number shows its working.
 
-33 tools. No code. Never edits your data. Free to start, no card.
+33 integrations. No code. Never edits your data. Free to start, no card.
 ```
 
-**LinkedIn About (long)** · 1094/2000 characters
+**LinkedIn About (long)** · 1125/2000 characters
 
 ```text
-Your business runs on a stack of tools. Leads in Typeform. Calls in Calendly. Deals in your CRM. Payments in Stripe. None of them sees the whole customer, so every report is a guess and every Monday starts with exports and VLOOKUPs.
+Your business runs on a stack of tools. Leads in your forms. Calls in your calendar. Deals in your CRM. Cash in your checkout. None of them sees the whole customer, so every report is a guess and every Monday starts with exports and VLOOKUPs.
 
-Namzilabs puts all of it in one place.
+Namzilabs puts all your company data in one place.
 
-→ Connect 33 tools with no code: Stripe, Calendly, Close, Pipedrive, Attio, Shopify, Whop, Typeform, Fathom, Klaviyo and more. Read-only: we never edit your data.
+→ Connect the tools you already use, with no code: CRMs, calendars, payments, forms, email, calls, spreadsheets, and any tool that can send a webhook. Read-only: we never edit your data.
 → Match every customer across every tool by email or phone, so each person and each meeting is counted once.
-→ Build any metric across tools: show rate, cost per held meeting, revenue per lead, speed to lead, revenue from your list.
+→ Build any metric or KPI across tools: show rate, cost per held meeting, revenue per lead, speed to lead, revenue from your list, or your own.
 → See exactly where your funnel breaks, from the first form to the payment.
 
 Every number shows its working: which sources it read, what it matched and what it left out. So when someone asks "where did that number come from?", you have the answer.
 
-Built for coaching and info-product sales teams, outbound agencies, creators and e-commerce brands who are done reconciling spreadsheets.
+Built for sales teams, agencies, creators and e-commerce brands who are done reconciling spreadsheets.
 
 Free to start, no card: namzilabs.co
 ```
 
-**YouTube channel description** · 478/1000 characters
+**YouTube channel description** · 404/1000 characters
 
 ```text
 Short videos on the numbers that actually run a business: show rate, speed to lead, cost per held meeting, revenue per lead, and where your funnel really breaks.
 
-Made by Namzilabs, the place all your business data comes together. Connect the tools you already use (Stripe, Calendly, your CRM, Shopify, Whop, Typeform, Fathom and 26 more), count every customer once, and build any metric without code or spreadsheets.
+Made by Namzilabs, the one place for all your business data. Connect the tools you already use, count every customer once, and build any metric or KPI without code or spreadsheets.
 
 New videos every week. Free to start, no card: namzilabs.co
 ```
 
-**Press boilerplate (About Namzilabs)** · 379/700 characters
+**Press boilerplate (About Namzilabs)** · 413/700 characters
 
 ```text
 About Namzilabs
-Namzilabs puts all of a business's data in one place. It connects 33 tools, from Stripe and Calendly to Shopify, Whop and Fathom, matches the same customer across all of them, and lets teams build any metric and see exactly where their funnel breaks. Every number shows its working, and Namzilabs never edits the data it reads. It's free to start at namzilabs.co.
+Namzilabs puts all of a company's data in one place. It connects the tools a business already runs on, from CRMs and calendars to payments, forms and email, matches the same customer across all of them, and lets teams build any metric or KPI and see exactly where their funnel breaks. Every number shows its working, and Namzilabs never edits the data it reads. It's free to start at namzilabs.co.
 ```
 
 ## Website and link previews
@@ -304,10 +348,10 @@ For namzilabs.co and anywhere a link unfurls.
 All your data. One place.
 ```
 
-**Hero subheadline** · 129/180 characters
+**Hero subheadline** · 146/180 characters
 
 ```text
-Connect the tools you already use, count every customer once, and see exactly where your funnel breaks. No code. No spreadsheets.
+Connect the tools you already use. Build any metric or KPI across all of them, and see exactly where your funnel breaks. No code, no spreadsheets.
 ```
 
 **Primary button** · 19/30 characters
@@ -331,7 +375,7 @@ Namzilabs: all your business data in one place
 **Meta description** · 146/155 characters
 
 ```text
-Connect Stripe, Calendly, your CRM and 30 more tools. Count every customer once, build any metric and see where your funnel breaks. Free to start.
+All your business data in one place. Connect your tools, build any metric or KPI and see exactly where your funnel breaks. Free to start, no card.
 ```
 
 **Link preview title (og:title)** · 37/70 characters
@@ -340,38 +384,38 @@ Connect Stripe, Calendly, your CRM and 30 more tools. Count every customer once,
 All your data. One place. | Namzilabs
 ```
 
-**Link preview text (og:description)** · 131/200 characters
+**Link preview text (og:description)** · 147/200 characters
 
 ```text
-Every tool you use, every customer counted once, any metric you want. See exactly where your funnel breaks. Free to start, no card.
+All your business data in one place. Build any metric or KPI, trust every number, and see exactly where your funnel breaks. Free to start, no card.
 ```
 
 ## Launch copy (Product Hunt and directories)
 
 Fill the brackets with the founder's own words. Never invent a story or a result.
 
-**Product Hunt tagline** · 49/60 characters
+**Product Hunt tagline** · 51/60 characters
 
 ```text
-All your business data in one place, counted once
+All your business data in one place. Build any KPI.
 ```
 
-**Product Hunt description** · 229/260 characters
+**Product Hunt description** · 220/260 characters
 
 ```text
-Namzilabs connects the tools your business runs on (Stripe, Calendly, your CRM, Shopify and 29 more), matches every customer across them and lets you build any metric. See exactly where your funnel breaks. No code. Free to start.
+Namzilabs puts all your business data in one place. Connect the tools you already use, match every customer across them, and build any metric or KPI you want. See exactly where your funnel breaks. No code. Free to start.
 ```
 
-**Maker's first comment** · 682/1200 characters
+**Maker's first comment** · 703/1200 characters
 
 ```text
 Hey Product Hunt 👋
 
-If you've ever sat in a meeting where Calendly said 41 calls, the CRM said 38 and the spreadsheet said 44, you know why we built Namzilabs.
+If you've ever sat in a meeting where the calendar said 41 calls, the CRM said 38 and the spreadsheet said 44, you know why we built Namzilabs.
 
-None of those tools is wrong. Each one only sees its own slice. So we connect all of them, match the same person across every tool, and count each customer and each meeting once.
+None of those tools is wrong. Each one only sees its own slice. So we put all the data in one place, match the same person across every tool, and count each customer and each meeting once.
 
-Then you can build any metric you want (show rate, cost per held meeting, revenue per lead) and see exactly where your funnel breaks. Every number shows its working.
+Then you can build any metric or KPI you want (show rate, cost per held meeting, revenue per lead) and see exactly where your funnel breaks. Every number shows its working.
 
 [Why you built it, in your own words: one or two lines.]
 
@@ -415,7 +459,7 @@ Invite one person and get a month free.
 **Reply to "what do you do?"**
 
 ```text
-We put all your business data in one place. Connect your tools, we match every customer across them, and you can build any metric and see where your funnel breaks. Free to start: namzilabs.co
+We put all your business data in one place, so you can build any KPI from it, trust every number and see exactly where your funnel breaks. Free to start: namzilabs.co
 ```
 
 **Email signature**
