@@ -9,38 +9,74 @@
 
 ## Instagram caption
 
-> Cost per held meeting — the agency metric your client actually pays for.
+> Your client doesn't pay for booked meetings.
+> They pay for the ones that happened.
 >
-> 112 replies. 41 booked. 33 held.
-> Per booked meeting: $69.54. Per held meeting: $86.40.
+> Same campaign 👇
+> 112 replies (Instantly)
+> 41 booked (Calendly)
+> 33 held (Fathom)
 >
-> The difference is the 8 no-shows your report doesn't show, because "held" lives in a different tool than "booked".
+> Cost per booked meeting: $69.54
+> Cost per held meeting: $86.40
 >
-> Namzilabs reads your sequencer, your calendar and your notetaker together, and reports the meetings that happened.
+> The gap is 8 no-shows your report doesn't show.
 >
-> Send this to the agency owner who still reports booked calls.
+> Why? "Booked" lives in your calendar. "Held" lives in your notetaker. Nobody joins them, so the report shows the prettier number.
 >
-> #leadgeneration #coldemail #appointmentsetting #agencyowner #b2bsales
+> It looks great. Right up until the client counts the calls themselves.
+>
+> Namzilabs reads your sequencer, your calendar and your notetaker together, matches every prospect across them, and reports the meetings that actually happened.
+>
+> Comment HELD and I'll send you the setup.
+>
+> (Example data.)
+>
+> #appointmentsetting #leadgeneration #coldemail #agencyowner #b2bsales
 
 ## X
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
 
-> Hot take: "meetings booked" is a vanity metric.
+> hot take: "meetings booked" is a vanity metric.
 >
-> Your client pays for meetings that happened.
+> your client pays for meetings that happened.
 >
-> Same campaign:
-> cost per booked meeting → $69.54
-> cost per held meeting → $86.40
+> same campaign:
+> cost per booked meeting: $69.54
+> cost per held meeting: $86.40
 >
-> Which one is on your client report?
+> which one is on your client report?
 
-**First reply:**
+**First reply** (this is where the link goes):
 
-> Why most reports show the wrong one: "booked" lives in the calendar, "held" lives in the notetaker or CRM. Nobody joins them.
+> why most reports show the first one: "booked" lives in the calendar, "held" lives in the notetaker. nobody joins them.
 >
-> We did: namzilabs.co (free, no card)
+> we built namzilabs to join them per prospect, with the working shown.
+>
+> free to start, no card: namzilabs.co
+
+## LinkedIn
+
+> Booked is a vanity metric.
+>
+> Same outbound campaign:
+> 112 replies. 41 meetings booked. 33 actually held.
+>
+> Cost per booked meeting: $69.54.
+> Cost per held meeting: $86.40.
+>
+> Most agency reports show the first number. Not because anyone's hiding anything. "Booked" lives in the calendar, "held" lives in the notetaker, and nobody joins the two.
+>
+> But your client isn't paying for calendar invites. They're paying for conversations that happened. The 8 no-shows are in their numbers, even when they're not in yours.
+>
+> Report held, and you're showing clients the number they already care about. Before they work it out themselves.
+>
+> That's what Namzilabs does. It reads your sequencer (Instantly, Smartlead or lemlist), your calendar and your notetaker together, matches each prospect across them, and counts every meeting once.
+>
+> Agency owners: which number is on your client report today?
+>
+> (Example numbers. Free to start at namzilabs.co)
 
 ## Alt text
 
@@ -51,3 +87,4 @@
 - Example data, labelled on the image.
 - Spend ($2,851) is an example total, e.g. tool costs and hours kept in a sheet.
 - Ad-spend connectors are not live, so this post doesn't mention ads.
+- "Comment HELD" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (HELD).

@@ -9,33 +9,72 @@
 
 ## Instagram caption
 
-> Klaviyo attributed revenue vs Shopify sales — why they never match.
+> Klaviyo says email drove $31.9k.
+> Google Analytics says email made $22.4k.
+> Shopify says you sold $48.2k in total.
 >
-> Klaviyo says email drove $31.9k. Google Analytics says the email channel made $22.4k. Shopify says you sold $48.2k in total.
+> Every tool takes credit. 🙃
 >
-> Every tool takes credit. None of them answers the simple question: how much came from people who are actually on your list?
+> So which number goes in the report?
 >
-> Namzilabs matches Shopify orders to Klaviyo profiles by email, leaves refunds out, and shows the working. Not attribution — just matching, which you can check.
+> Try a simpler question: how much came from people who are actually on your list?
 >
-> #shopify #klaviyo #emailmarketing #ecommercetips #dtcbrand
+> That one doesn't need attribution. It needs matching.
+> Every Shopify order, matched to a Klaviyo profile by email, refunds left out.
+>
+> 781 orders matched.
+> 12 refunds left out.
+> $29.4k. 61% of sales.
+>
+> And because it's matching, you can check it.
+>
+> That's what Namzilabs does. It connects Shopify and Klaviyo, matches the same customer across both, and shows its working.
+>
+> Comment LIST and I'll send you the setup.
+>
+> (Example data.)
+>
+> #shopify #klaviyo #emailmarketing #ecommerce #dtcbrand
 
 ## X
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
 
-> Klaviyo: "email drove $31.9k"
-> GA: "email made $22.4k"
-> Shopify: "you sold $48.2k"
+> klaviyo: "email drove $31.9k"
+> google analytics: "email made $22.4k"
+> shopify: "you sold $48.2k"
 >
-> Every tool takes credit.
+> every tool takes credit.
 >
-> The question nobody's dashboard answers: how much came from people who are *actually on your list*?
+> the question none of them answers: how much came from people who are actually on your list?
 
-**First reply:**
+**First reply** (this is where the link goes):
 
-> Match Shopify orders to Klaviyo profiles by email, drop refunds, show the working. $29.4k — 61% of sales, in this example.
+> match shopify orders to klaviyo profiles by email, leave refunds out, show the working.
 >
-> Not attribution, just matching → namzilabs.co
+> in this example: $29.4k, 61% of sales. not attribution, just matching.
+>
+> free to start, no card: namzilabs.co
+
+## LinkedIn
+
+> Klaviyo says email drove $31.9k. Google Analytics says $22.4k. Shopify says total sales were $48.2k.
+>
+> If you run an e-commerce brand, you've sat in the meeting where these three numbers argue with each other.
+>
+> Every tool takes credit, because every tool counts by its own rules. None of them is lying. None of them answers the question you actually need answered:
+>
+> How much revenue came from people who are on your list?
+>
+> That one doesn't need attribution. It needs matching. Take every Shopify order, match it to a Klaviyo profile by email, and leave refunds out.
+>
+> In this example: 781 orders matched, 12 refunds left out, $29.4k. That's 61% of sales, and anyone on the team can check how it was counted.
+>
+> That's what Namzilabs does. It connects Shopify, Klaviyo and 31 more tools, matches the same customer across them, and shows the working behind every number.
+>
+> Which number does your team plan on today: Klaviyo's, GA's or Shopify's?
+>
+> (Example numbers. Free to start at namzilabs.co)
 
 ## Alt text
 
@@ -45,3 +84,4 @@
 
 - Example data. The image says "matching, not attribution".
 - **Don't** mention Meta, TikTok or Google Ads, ROAS or MER until those connectors are approved and live.
+- "Comment LIST" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (LIST).

@@ -10,31 +10,72 @@
 
 ## Instagram caption
 
-> Every number you report should come with a receipt.
+> A number without a receipt is an opinion.
 >
-> Which sources it read. How many records came in. What was the same thing seen twice. What was left out — and why.
+> Every number you report should come with one:
+> Which sources it read.
+> How many records came in.
+> What it saw twice and counted once.
+> What it left out, and why.
 >
-> Revenue: $48,200. Six payments left out: four refunds and two test payments. Counting them would have made the number look better than it is.
+> Here's September's revenue with its receipt:
+> Stripe and Whop read. 1,284 payments in.
+> 87 seen twice, counted once.
+> 6 left out: 4 refunds, 2 test payments.
+> Revenue: $48,200.
 >
-> That's how every number in Namzilabs works. If you can't explain it, you can't defend it.
+> Count the 87 twice and keep the 6, and revenue looks better than it is. Right up until someone asks where it came from. 👀
 >
-> #dataliteracy #businessmetrics #founders #reporting #kpis
+> If you can't explain it, you can't defend it.
+>
+> That's how every number in Namzilabs works. It connects your tools, matches the same customer across them, and shows its working. So the number survives the meeting.
+>
+> Comment METRICS and I'll send you the setup for your first number.
+>
+> (Example data.)
+>
+> #founders #businessmetrics #kpis #reporting #salesteam
 
 ## X
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
+
+> a number without a receipt is an opinion.
+>
+> which sources did it read?
+> what did it count twice?
+> what did it leave out, and why?
+>
+> if your dashboard can't answer those three, you can't defend the number in the meeting.
+
+**First reply** (this is where the link goes):
+
+> every number in namzilabs comes with that receipt: the sources it read, what it matched, what it left out and why.
+>
+> free to start, no card: namzilabs.co
+
+## LinkedIn
 
 > A number without a receipt is an opinion.
 >
-> Which sources did it read?
-> What did it count twice?
-> What did it leave out — and why?
+> Think about the last number someone challenged in a meeting. It usually goes like this: "Where's that from?" "The dashboard." "Which dashboard?" And the number loses.
 >
-> If your dashboard can't answer those three, you can't defend the number in the meeting.
-
-**First reply:**
-
-> Every number in Namzilabs ships with that receipt → namzilabs.co
+> Every number you report should come with a receipt:
+>
+> → Which sources it read
+> → How many records came in
+> → What it saw twice and counted once
+> → What it left out, and why
+>
+> Here's one month of revenue with its receipt: Stripe and Whop read, 1,284 payments in, 87 seen twice and counted once, 6 left out (4 refunds, 2 test payments). Revenue: $48,200.
+>
+> Count the duplicates twice and keep the refunds, and the number looks better than it is. Right up until someone checks.
+>
+> That's how every number in Namzilabs works. It connects your tools, matches the same customer across them, and shows its working, so the number survives the meeting.
+>
+> What's the number your team argues about most?
+>
+> (Example numbers. Free to start at namzilabs.co)
 
 ## Alt text
 
@@ -43,3 +84,4 @@
 ## Claims check
 
 - Example data. "Shows its working" is a real product behaviour: sources read, matched, excluded and why.
+- "Comment METRICS" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (METRICS).

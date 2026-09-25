@@ -10,41 +10,71 @@
 
 ## X (founder's voice)
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
 
-> I spent the last 10 weeks building Namzilabs.
+> what's the real number when your tools disagree?
 >
-> 850 commits. 4,064 tests. 33 tools it reads directly.
-> 8 landing page rebuilds (I know).
-> 0 customers.
+> i spent 10 weeks building the answer:
 >
-> It answers one question: what's the real number, when your tools disagree?
+> 850 commits
+> 4,064 tests, all passing
+> 33 tools it reads directly
+> 8 landing page rebuilds (i know)
+> 0 customers. yet.
 >
-> Looking for my first 10 teams. Reply if yours disagree.
+> looking for my first 10 teams. reply FIRST10 if yours disagree.
 
-**First reply:**
+**First reply** (this is where the link goes):
 
-> What it does: connects your calendar, CRM, outreach and payments, matches the same person across them, and builds the numbers none of them can — each one with a receipt.
+> what it does: connects your calendar, crm, outreach and payments, matches the same person across all of them, and builds the numbers none of them can show you. every number with its receipt.
 >
-> namzilabs.co — free, no card.
+> free to start, no card: namzilabs.co
 
 ## Instagram caption (founder's voice)
 
-> Ten weeks. 850 commits. 4,064 tests. 33 tools it reads directly. Eight landing pages. Zero customers.
+> 10 weeks. 850 commits. 4,064 passing tests.
+> 0 customers. 🧾
 >
-> Namzilabs answers one question: what's the real number, when Calendly, your CRM and your spreadsheet all disagree?
+> That's my build receipt for Namzilabs, 16 July to 23 September. Plus 33 tools it reads directly, and 8 landing page rebuilds (I know).
 >
-> I'm looking for the first 10 teams to use it. If your numbers disagree with each other, DM me the word FIRST10.
+> What it does: puts all your business data in one place. It connects the tools you already use, matches the same person across every one of them, and gives you the real number when Calendly, your CRM and your spreadsheet disagree. Every number shows its working.
 >
-> #buildinpublic #startup #founderjourney #saas #indiehacker
+> What it doesn't have yet: its first 10 teams.
+>
+> If your numbers disagree with each other, I'll set it up with you myself.
+>
+> Comment FIRST10 and I'll DM you.
+>
+> #buildinpublic #founders #startup #saas #salesteam
 
 ## Follow-up rhythm (the Base44 pattern)
 
-Post the next receipt every 2–4 weeks: "Week 14: 10 teams, 3 bugs, 1 thing I got wrong." Lead with a number, admit something, then say what's next.
+Post the next receipt every 2 to 4 weeks: "Week 14: 10 teams, 3 bugs, 1 thing I got wrong." Lead with a number, admit something, then say what's next.
+
+## LinkedIn (founder's voice)
+
+> I spent the last 10 weeks building Namzilabs. Here's the receipt.
+>
+> 16 July to 23 September:
+> → 850 commits
+> → 4,064 tests, all passing
+> → 33 tools it reads directly
+> → 8 landing page rebuilds (I know)
+> → 0 customers. Yet.
+>
+> The last line is the one that matters.
+>
+> Namzilabs answers one question: what's the real number when your tools disagree? Calendly, your CRM and your spreadsheet each see a slice, so each one tells you something different. Namzilabs connects them, matches the same person across every tool, counts each customer once, and shows its working.
+>
+> Now I'm looking for my first 10 teams. Sales teams with setters and closers, outbound agencies, creators, e-commerce brands: anyone whose numbers don't match. I'll set it up with you myself.
+>
+> Comment FIRST10 and I'll message you.
+>
+> Free to start, no card: namzilabs.co
 
 ## Alt text
 
-- A paper receipt: "Namzilabs · build receipt, 16 Jul → 23 Sep 2026". Weeks 10, commits 850, tests passing 4,064, tools read directly 33, landing page rebuilds 8, customers 0 — yet. Looking for: my first 10 teams.
+- A paper receipt: "Namzilabs · build receipt, 16 Jul → 23 Sep 2026". Weeks 10, commits 850, tests passing 4,064, tools read directly 33, landing page rebuilds 8, customers 0 (yet). Looking for: my first 10 teams.
 
 ## Claims check
 
@@ -52,3 +82,4 @@ Post the next receipt every 2–4 weeks: "Week 14: 10 teams, 3 bugs, 1 thing I g
 - 4,064 tests: the test suite's pass count.
 - 33 tools: live, connectable sources. 36 exist in code, but 3 ads connectors await approval.
 - "0 customers": change it if that's no longer true on posting day.
+- "Comment FIRST10" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (FIRST10).
