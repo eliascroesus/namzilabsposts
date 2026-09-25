@@ -287,6 +287,133 @@ add("sticker", "Sticker", "Fun", "A die-cut sticker of the mark, slapped on a br
      <filter id="gsh2" x="-30%" y="-30%" width="160%" height="175%"><feGaussianBlur stdDeviation="14"/><feOffset dy="18"/><feComponentTransfer><feFuncA type="linear" slope=".28"/></feComponentTransfer></filter>`);
 }
 
+/* ── games: the mark played by the games and films the pop banners borrow from ──
+   Our own drawings of a format (a maze, an 8-bit level, a cave, a VS screen, …); no characters,
+   sprites, names or lettering from any of them. Each pairs with its banner. */
+// the rings as squares: one cell wherever its centre falls on either ring; paint(x, y, d, a) picks the colour
+// (d = distance from the ring's centre line, a = angle round the ring)
+function pixelRings(cell, paint, w = W) {
+  let s = "";
+  for (let y = cell / 2; y < 1024; y += cell) for (let x = cell / 2; x < 1024; x += cell) {
+    const d1 = Math.hypot(x - L, y - C) - R, d2 = Math.hypot(x - Rt, y - C) - R;
+    const on1 = Math.abs(d1) <= w / 2, on2 = Math.abs(d2) <= w / 2;
+    if (!on1 && !on2) continue;
+    const cx = on1 ? L : Rt, d = on1 ? d1 : d2, a = Math.atan2(y - C, x - cx);
+    const fill = paint(x, y, d, a, on1 ? 0 : 1);
+    if (fill) s += `<rect x="${x - cell / 2}" y="${y - cell / 2}" width="${cell}" height="${cell}" fill="${fill}"/>`;
+  }
+  return s;
+}
+const glowF = (id, sd, o = 1) => `<filter id="${id}" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="${sd}" result="b"/><feComponentTransfer in="b" result="c"><feFuncA type="linear" slope="${o}"/></feComponentTransfer><feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+{
+  // chomper: the left ring opens a mouth and eats its way along a row of pellets, in a maze
+  const a0 = (32 * Math.PI) / 180, P = (a) => `${f(L + R * Math.cos(a))} ${f(C + R * Math.sin(a))}`;
+  const mouthRing = `<path d="M${P(Math.PI + a0)}A${R} ${R} 0 1 1 ${P(Math.PI - a0)}" fill="none" stroke="#FFD23F" stroke-width="${W + 10}"/>`;
+  let pel = "";
+  for (let x = 96; x < L - R + 20; x += 52) pel += `<rect x="${x - 9}" y="${C - 9}" width="18" height="18" fill="#FFD9C2"/>`;
+  for (let x = Rt + R + 60; x < 940; x += 52) pel += `<rect x="${x - 9}" y="${C - 9}" width="18" height="18" fill="#FFD9C2"/>`;
+  const wall = (x, y, w, h, r) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="none" stroke="#2946FF" stroke-width="16"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="none" stroke="#05050F" stroke-width="5"/>`;
+  add("chomper", "Chomper", "Games", "The left ring opens wide and eats the duplicates, one pellet at a time. Pairs with the maze-chase banner.",
+    bg("#05050F") + `<g filter="url(#chw)">${wall(40, 40, 944, 944, 90)}${wall(150, 170, 724, 56, 28)}${wall(150, 798, 724, 56, 28)}</g>` + pel +
+      `<circle cx="938" cy="${C}" r="24" fill="#FFD9C2" filter="url(#chg)"/><g filter="url(#chg)">${mouthRing}${ring(Rt, "#FFD23F", W + 10)}</g>`,
+    glowF("chg", 10, 0.9) + glowF("chw", 6, 0.8), "arcade");
+}
+{
+  // 8-bit coins: the rings as gold blocks over a pixel sky, on a row of bricks
+  const u = 32, gold = (x, y, d) => (d < -18 ? "#FFF0A8" : d > 16 ? "#C98A00" : "#FFD23F");
+  let bricks = `<rect y="864" width="1024" height="160" fill="#C96A32"/>`;
+  for (let r = 0; r < 5; r++) { bricks += `<rect y="${864 + r * 32}" width="1024" height="4" fill="#6E2D0C"/>`; for (let x = (r % 2) * 32; x < 1024; x += 64) bricks += `<rect x="${x}" y="${864 + r * 32}" width="4" height="32" fill="#6E2D0C"/>`; }
+  const cloud = (x, y, k) => [[2, 0, 4, 1], [1, 1, 7, 1], [0, 2, 10, 2], [1, 4, 8, 1]].map(([a, b, w, h]) => `<rect x="${x + a * k}" y="${y + b * k}" width="${w * k}" height="${h * k}" fill="#FFFFFF"/>`).join("");
+  add("coins", "8-bit coins", "Games", "The rings as blocky gold coins over a pixel sky. Pairs with the platformer banner.",
+    bg("#6B9CFF") + cloud(96, 110, 18) + cloud(700, 70, 14) + `<path d="M620 864Q800 640 980 864Z" fill="#3FBF55" stroke="#1D7A2E" stroke-width="8"/>` + bricks +
+      `<g shape-rendering="crispEdges">${pixelRings(u, () => "#5A2A06", 104)}${pixelRings(u, gold, 70)}</g>`, "", "platformer");
+}
+{
+  // diamond rings: the rings as cut diamond blocks, set in stone
+  seed = 77;
+  let stone = "";
+  for (let y = 0; y < 1024; y += 32) for (let x = 0; x < 1024; x += 32) stone += `<rect x="${x}" y="${y}" width="32" height="32" fill="${["#7D7D7D", "#727272", "#868686", "#6A6A6A", "#8F8F8F"][Math.floor(rnd() * 5)]}"/>`;
+  const dia = (x, y, d) => { const r = rnd(); return r < 0.06 ? "#FFFFFF" : d < -14 ? "#C9FFF8" : d > 14 ? "#1F9E96" : r < 0.5 ? "#4DE0D6" : "#3CCBC2"; };
+  add("diamond", "Diamond rings", "Games", "The rings mined out of stone, one diamond block at a time. Pairs with the crafting banner.",
+    `<g shape-rendering="crispEdges">${stone}<rect width="1024" height="1024" fill="#000" opacity=".18"/>${pixelRings(32, () => "#0D3B38", 108)}${pixelRings(32, dia, 72)}</g>`, "", "crafting");
+}
+{
+  // falling blocks: each ring stacked from bevelled squares, one colour per piece
+  const PAL = ["#8B5CF6", "#2F5FD8", "#F59E0B", "#22C55E", "#EAB308", "#EF4444", "#06B6D4"];
+  const u = 40;
+  let cells = "";
+  for (let y = u / 2; y < 1024; y += u) for (let x = u / 2; x < 1024; x += u) {
+    const d1 = Math.hypot(x - L, y - C) - R, d2 = Math.hypot(x - Rt, y - C) - R;
+    if (Math.abs(d1) > 30 && Math.abs(d2) > 30) continue;
+    const k = Math.abs(d1) <= 30 ? 0 : 1, a = Math.atan2(y - C, x - (k ? Rt : L)), c = PAL[(Math.floor(((a + Math.PI) / (Math.PI * 2)) * 9) + k * 4) % PAL.length];
+    cells += `<rect x="${x - u / 2}" y="${y - u / 2}" width="${u}" height="${u}" fill="${c}"/><path d="M${x - u / 2 + 3} ${y + u / 2 - 3}V${y - u / 2 + 3}H${x + u / 2 - 3}" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="6"/><path d="M${x + u / 2 - 3} ${y - u / 2 + 3}V${y + u / 2 - 3}H${x - u / 2 + 3}" fill="none" stroke="#000" stroke-opacity=".3" stroke-width="6"/>`;
+  }
+  add("blocks", "Falling blocks", "Games", "Each ring stacked from falling-block pieces. Everything fits. Pairs with the falling-blocks banner.",
+    bg("#0B0E1A") + grid(40, "#FFFFFF", 0.05) + `<g shape-rendering="crispEdges">${cells}</g>`, "", "blocks");
+}
+{
+  // code rain: green glowing rings with the numbers falling behind them
+  seed = 88;
+  let rain = "";
+  const chars = "0123456789$%+=";
+  for (let x = 16; x < 1024; x += 30) {
+    const len = 8 + Math.floor(rnd() * 20), start = rnd() * 1200 - 200;
+    for (let k = 0; k < len; k++) { const y = start + k * 32; if (y < 0 || y > 1040) continue; rain += `<text x="${x}" y="${f(y)}" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="28" fill="${k === len - 1 ? "#E8FFE9" : "#27E36B"}" opacity="${f(k === len - 1 ? 1 : 0.12 + (k / len) * 0.55)}">${chars[Math.floor(rnd() * chars.length)]}</text>`; }
+  }
+  add("coderain", "Code rain", "Games", "The rings glowing green in a rain of numbers. Take the red pill. Pairs with the pill-choice banner.",
+    bg("#020604") + rain + `<g filter="url(#crg)">${rings("#27E36B", W + 8)}</g>` + rings("#D9FFE3", 12),
+    glowF("crg", 18, 1), "redpill");
+}
+{
+  // fighter: a VS screen, one ring each side, sparks where they meet
+  const spark = (x, y, r) => `<path d="M${x} ${y - r}L${x + r * 0.25} ${y - r * 0.25}L${x + r} ${y}L${x + r * 0.25} ${y + r * 0.25}L${x} ${y + r}L${x - r * 0.25} ${y + r * 0.25}L${x - r} ${y}L${x - r * 0.25} ${y - r * 0.25}Z" fill="#FFF3B0" stroke="#14141C" stroke-width="6" stroke-linejoin="round"/>`;
+  add("fighter", "Fighter", "Games", "Stripe in the red corner, your CRM in the blue, sparks where they cross. Pairs with the VS banner.",
+    bg("url(#fvR)") + `<path d="M0 0H640L384 1024H0Z" fill="url(#fvL)"/><rect width="1024" height="1024" fill="url(#fvh)"/>` +
+      rings("#14141C", W + 26) + ring(L, "#FF7A2E", W) + ring(Rt, "#4F7DFF", W) + spark(C, C - CROSS_Y, 44) + spark(C, C + CROSS_Y, 34),
+    `<linearGradient id="fvL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF7A2E"/><stop offset=".6" stop-color="#E2311D"/><stop offset="1" stop-color="#8E0F14"/></linearGradient>
+     <linearGradient id="fvR" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4F7DFF"/><stop offset=".6" stop-color="#2F4FD8"/><stop offset="1" stop-color="#151F6B"/></linearGradient>
+     <pattern id="fvh" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="12" cy="12" r="4.4" fill="#000" opacity=".16"/></pattern>`, "versus");
+}
+{
+  // synthwave: neon rings over a striped sun and a grid running to the horizon
+  let gridL = "";
+  for (let i = -12; i <= 12; i++) gridL += `<path d="M${C + i * 22} 700L${C + i * 150} 1024" stroke="#FF4FD8" stroke-width="3" opacity=".7"/>`;
+  for (let k = 0; k < 9; k++) { const y = 700 + Math.pow(k / 8, 1.8) * 324; gridL += `<path d="M0 ${f(y)}H1024" stroke="#FF4FD8" stroke-width="3" opacity=".7"/>`; }
+  let cuts = "";
+  for (let k = 0; k < 6; k++) cuts += `<rect x="200" y="${560 + k * 24}" width="624" height="${6 + k * 2.4}" fill="#000"/>`;
+  add("synthwave", "Synthwave", "Games", "Neon rings over a striped sun and an endless grid. Need for speed. Pairs with the jet-at-sunset banner.",
+    bg("url(#swS)") + `<mask id="swM"><rect width="1024" height="1024" fill="#fff"/>${cuts}</mask><circle cx="${C}" cy="560" r="300" fill="url(#swSun)" mask="url(#swM)"/>` +
+      `<rect y="700" width="1024" height="324" fill="#1A0630"/>${gridL}<rect y="696" width="1024" height="6" fill="#FF8AE6"/>` +
+      `<g filter="url(#swg)">${ring(L, "#FF4FD8", W)}${ring(Rt, "#38E1FF", W)}</g>` + ring(L, "#FFD6F6", 10) + ring(Rt, "#D6F8FF", 10),
+    `<linearGradient id="swS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12062B"/><stop offset=".55" stop-color="#4A0F5E"/><stop offset=".7" stop-color="#9C1F6E"/></linearGradient>
+     <linearGradient id="swSun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE66B"/><stop offset=".6" stop-color="#FF8A3D"/><stop offset="1" stop-color="#FF3D8B"/></linearGradient>${glowF("swg", 14, 1)}`, "speed");
+}
+{
+  // the cave: two fires, and the rings in gold between them, yours to take
+  const FL = ["....R.....", "...RR....R", "...ROR..RR", "..ROOR.RR.", ".RROYORRR.", ".ROYYOOR..", "RROYWYOR..", "ROYWWYOOR.", "ROYWWWYOR.", "RROYWWYORR", ".RROYYORR.", "..RROORR.."];
+  const FC = { R: "#D6260F", O: "#FF6A1F", Y: "#FFC93A", W: "#FFF1B0" };
+  const flame = (x, y, u, flip) => FL.map((r, j) => [...r].map((ch, i) => (FC[ch] ? `<rect x="${flip ? x + (9 - i) * u : x + i * u}" y="${y + j * u}" width="${u}" height="${u}" fill="${FC[ch]}"/>` : "")).join("")).join("");
+  const gold = (x, y, d) => (d < -14 ? "#FFF0A8" : d > 14 ? "#C98A00" : "#FFD23F");
+  add("cave", "The cave", "Games", "Two fires in the dark and the rings in gold between them. It's dangerous to report alone: take this. Pairs with the cave banner.",
+    bg("#000") + `<circle cx="120" cy="820" r="170" fill="url(#cvG)"/><circle cx="904" cy="820" r="170" fill="url(#cvG)"/><ellipse cx="${C}" cy="${C}" rx="380" ry="260" fill="url(#cvG)" opacity=".7"/>` +
+      `<g shape-rendering="crispEdges">${flame(55, 720, 13, false)}${flame(839, 720, 13, true)}${pixelRings(24, () => "#5A2A06", 92)}${pixelRings(24, gold, 64)}</g>`,
+    `<radialGradient id="cvG"><stop offset="0" stop-color="#FFB13A" stop-opacity=".3"/><stop offset="1" stop-color="#FFB13A" stop-opacity="0"/></radialGradient>`, "quest");
+}
+{
+  // the lights: each ring a string of Christmas lights on a dark wallpaper
+  const COL = ["#FF4B3E", "#FFD23F", "#3EE07A", "#4FA8FF", "#FF6FCF", "#FF9A2E"];
+  let wall = "";
+  for (let y = 0; y < 1024; y += 128) for (let x = (y / 128) % 2 ? 64 : 0; x < 1024 + 64; x += 128) wall += `<g transform="translate(${x} ${y})" opacity=".45"><circle r="20" fill="#8A6A3A"/><circle r="9" fill="#C9A060"/>${[0, 72, 144, 216, 288].map((a) => `<ellipse cx="${f(Math.cos((a * Math.PI) / 180) * 28)}" cy="${f(Math.sin((a * Math.PI) / 180) * 28)}" rx="13" ry="8" transform="rotate(${a} ${f(Math.cos((a * Math.PI) / 180) * 28)} ${f(Math.sin((a * Math.PI) / 180) * 28)})" fill="#5D6B3A"/>`).join("")}</g>`;
+  let bulbs = "", k = 0;
+  for (const [cx, off] of [[L, 0.2], [Rt, 0.5]]) for (let i = 0; i < 10; i++) {
+    const a = off + (i / 10) * Math.PI * 2, x = cx + Math.cos(a) * R, y = C + Math.sin(a) * R, deg = (a * 180) / Math.PI + 90;
+    bulbs += `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(deg)})"><rect x="-12" y="-8" width="24" height="20" rx="4" fill="#2A2A2A"/><ellipse cx="0" cy="-40" rx="23" ry="34" fill="${COL[k++ % COL.length]}" filter="url(#ltg)"/><ellipse cx="-7" cy="-50" rx="6" ry="11" fill="#fff" opacity=".7"/></g>`;
+  }
+  add("lights", "Christmas lights", "Games", "Each ring a string of coloured bulbs on a dark wallpaper. Right here. Pairs with the lights banner.",
+    bg("#3B3A26") + wall + `<rect width="1024" height="1024" fill="url(#ltv)"/>` + rings("#1B1A14", 12) + bulbs,
+    `${glowF("ltg", 12, 1)}<radialGradient id="ltv" cx=".5" cy=".5" r=".75"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/></radialGradient>`, "lights");
+}
+
 for (const v of V) {
   const f = path.join(OUT, `${v.id}.svg`);
   if (v.svg) writeFileSync(f, v.svg);

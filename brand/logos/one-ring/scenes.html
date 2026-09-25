@@ -17,8 +17,9 @@
 <script src="../../../lib/volcano.js"></script>
 <script>
   const scene = (id, W, H, v, r) => `<div class="canvas" data-still="${id}" style="width:${W}px;height:${H}px">${NZ.volcano({ W, H, ...v })}${NZ.oneRings({ ...r })}</div>`;
-  document.write(scene("precious-1024", 1024, 1024, { cx: 512, peak: 250, base: 700, seed: 11, flowDir: 0.35 }, { view: "square", cx: 512, cy: 640, w: 780 }));
-  document.write(scene("precious-wide", 1600, 900, { cx: 1000, peak: 170, base: 600, seed: 5 }, { view: "hero", cx: 800, cy: 610, w: 1000 }));
+  // the rings stand in front of the mountain like the logo; the crater glows through the gap between them
+  document.write(scene("precious-1024", 1024, 1024, { cx: 512, peak: 360, base: 820, seed: 11, flowDir: 0.35 }, { view: "hero", cx: 512, cy: 560, w: 800 }));
+  document.write(scene("precious-wide", 1600, 900, { cx: 800, peak: 300, base: 700, seed: 5 }, { view: "hero", cx: 800, cy: 470, w: 920 }));
 </script>
 <script>NZ.still();</script>
 </body>

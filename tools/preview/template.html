@@ -190,6 +190,29 @@
   .bcard button.prev img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; }
   .bcard .cbody { gap: 10px; }
   .subh { font-size: 20px; letter-spacing: -0.02em; margin: 28px 0 12px; }
+  /* banners by platform: every design at the platform's real shape, with its profile picture roughly where the photo sits */
+  .ptabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px 2px 6px; margin: 0 -2px 10px; }
+  .ptab { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: 14px; padding: 9px 14px; font-weight: 700; font-size: 14px; cursor: pointer; color: var(--muted); display: flex; flex-direction: column; align-items: flex-start; gap: 1px; text-align: left; }
+  .ptab small { font-weight: 550; font-size: 12px; color: var(--faint); }
+  .ptab.on { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .ptab.on small { color: color-mix(in srgb, var(--bg) 72%, transparent); }
+  .pguide { margin-bottom: 14px; }
+  .pgrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); }
+  .pgrid.tall { grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+  .pcard { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .pcard .mock { position: relative; display: block; width: 100%; border: 0; padding: 0; margin: 0; background: var(--surface); cursor: zoom-in; container-type: inline-size; text-align: left; }
+  .pcard .cover { position: relative; display: block; aspect-ratio: var(--ar); overflow: hidden; background: var(--surface-2); }
+  .pcard .cover img { width: 100%; height: 100%; object-fit: cover; }
+  .pcard .band { position: absolute; left: 0; right: 0; top: 35.3%; height: 29.4%; outline: 2px dashed rgba(255,255,255,.95); box-shadow: 0 0 0 9999px rgba(0,0,0,.3); }
+  .pcard .band::after { content: "desktop"; position: absolute; right: 8px; top: 6px; font-size: 11px; font-weight: 700; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+  .pcard .below { display: flex; flex-direction: column; justify-content: center; gap: 7px; height: calc(var(--d) * (1 - var(--k)) * 100cqw + 16px); padding-left: calc((var(--x) + var(--d)) * 100cqw + 14px); border-bottom: 1px solid var(--line); }
+  .pcard .below i { display: block; height: 9px; width: 42%; border-radius: 9px; background: var(--line); }
+  .pcard .below i + i { width: 26%; }
+  .pcard .av { position: absolute; left: calc(var(--x) * 100cqw); top: calc(var(--hr) * 100cqw - var(--d) * var(--k) * 100cqw); width: calc(var(--d) * 100cqw); height: auto; aspect-ratio: 1; box-shadow: 0 0 0 3px var(--surface); background: var(--surface); }
+  .pcard .av.c { border-radius: 50%; }
+  .pcard .av.sq { border-radius: 12%; }
+  .pcard .ctitle .badge { vertical-align: 2px; margin-left: 4px; }
+  @media (max-width: 480px) { .kb-seg .kx { display: none; } }
   .vcuts { display: flex; flex-wrap: wrap; gap: 6px; }
   .note { border: 1px solid var(--line); background: var(--surface); border-radius: 16px; padding: 14px 16px; font-size: 14px; color: var(--muted); }
   .note b { color: var(--text); }
@@ -251,7 +274,7 @@
 </header>
 
 <nav class="tabs"><div class="wrap" id="tabs">
-  <a href="#posts">Posts</a><a href="#videos">Videos</a><a href="#logos">Logos</a><a href="#banners">Banners</a><a href="#mascot">Namzi</a><a href="#docs">Docs</a>
+  <a href="#posts">Posts</a><a href="#videos">Videos</a><a href="#logos">Logos</a><a href="#platforms">By platform</a><a href="#banners">Banners</a><a href="#mascot">Namzi</a><a href="#docs">Docs</a>
 </div></nav>
 
 <main class="wrap">
@@ -283,14 +306,27 @@
     <div class="vargrid" id="vargrid"></div>
   </section>
 
+  <section id="platforms">
+    <div class="shead"><div><h2>Banners by <em>platform.</em></h2><p>Pick where it's going. Every design is shown at that platform's real shape, with the profile picture made for it roughly where your photo or logo sits.</p></div>
+      <button class="btn" id="plzip"></button></div>
+    <div class="ptabs" id="pltabs" role="tablist" aria-label="Platform"></div>
+    <div class="note pguide" id="plguide"></div>
+    <div class="filters" id="plfilt"></div>
+    <div class="pgrid" id="plgrid"></div>
+  </section>
+
   <section id="banners">
     <div class="shead"><div><h2>Banners</h2><p id="bsub">Every design at every size: X, LinkedIn (company and profile), Facebook (page and group), YouTube, the link-preview card and an email signature, each with the profile picture made to go with it. Plus Instagram highlight covers.</p></div>
       <button class="btn" data-zip="banners">Download all banners</button></div>
     <div class="note" id="linote" style="margin-bottom:16px"><b>LinkedIn: which file goes where.</b> <b>linkedin-company</b> is the cover of a company page (the page logo sits over its bottom-left). <b>linkedin-profile</b> is the background of your own profile (your photo sits over its bottom-left). Every word stays clear of both, and inside what phones show. Don't upload the X header to LinkedIn: it's a different shape, and LinkedIn crops it under your photo. Tap "See it on LinkedIn" on any design.</div>
+    <div class="note hidden" id="bkmoved" style="margin-bottom:16px"></div>
     <div class="bgrid" id="bgrid"></div>
     <h3 class="subh" id="lihead">Made for LinkedIn</h3>
     <p class="faint" id="lisub" style="margin:-4px 0 14px">Designed for the narrow LinkedIn covers first. <b>Team</b> is for the people who work at Namzilabs, on their own profiles.</p>
     <div class="bgrid" id="bgrid3"></div>
+    <h3 class="subh" id="pophead">Games &amp; films</h3>
+    <p class="faint" id="popsub" style="margin:-4px 0 14px">Famous games, films and series, played by Namzi and the rings: the format and the joke, never the characters. Each has its own game-style logo.</p>
+    <div class="bgrid" id="bgrid4"></div>
     <h3 class="subh" id="memehead">Memes</h3>
     <p class="faint" id="memesub" style="margin:-4px 0 14px">For launch weeks and a playful profile. They skip the link preview and email sizes, which stay on-brand.</p>
     <div class="bgrid" id="bgrid2"></div>
@@ -444,7 +480,7 @@
     mascot: () => [...M.mascot.stickers.flatMap((s) => [{ ...s.png, zipPath: `namzi/stickers/${s.png.name}` }, { text: s.svg, type: "image/svg+xml", zipPath: `namzi/stickers/${s.png.name.replace(".png", ".svg")}` }]), ...M.mascot.avatars.map((a) => ({ ...a, zipPath: `namzi/avatars/${a.name}` })), ...M.mascot.boards.map((b) => ({ ...b, zipPath: `namzi/${b.name}` }))],
     docs: () => M.docs.map((d) => ({ ...d, zipPath: `docs/${d.name}` })),
   };
-  const root = M.kit === "brand" ? "namzilabs-brand" : "namzilabs-content";
+  const root = M.kit === "brand" ? "namzilabs-brand" : M.kit === "banners" ? "namzilabs-banners" : "namzilabs-content";
   function transFiles(color) { return (M.logos.transparent || []).filter((t) => !color || t.color === color).flatMap((t) => t.files.map((f) => ({ ...f, zipPath: `logos/transparent/${f.name}` }))); }
   function webFiles() { return M.logos.web ? [...M.logos.web.files.map((f) => ({ ...f, zipPath: `logos/website-icons/${f.name}` })), ...(M.logos.web.readme ? [{ text: M.logos.web.readme, type: "text/markdown", zipPath: "logos/website-icons/README.md" }] : [])] : []; }
   sets.all = () => ["posts", "videos", "logos", "banners", "mascot", "docs"].flatMap((k) => sets[k]().map((f) => ({ ...f, zipPath: `${root}/${f.zipPath}` })));
@@ -457,27 +493,35 @@
   });
 
   /* ── which kit is this? hide what it doesn't carry ──────────────────── */
-  const has = { posts: M.posts.length > 0, videos: M.videos.length > 0, logos: M.logos.concepts.length > 0, banners: !!(M.banners && M.banners.concepts.length), mascot: M.mascot.stickers.length > 0, docs: M.docs.length > 0 };
+  const has = { posts: M.posts.length > 0, videos: M.videos.length > 0, logos: M.logos.concepts.length > 0, platforms: !!(M.banners && M.banners.concepts.length), banners: !!(M.banners && (M.kit === "brand" ? M.banners.highlights.length : M.kit !== "banners" && M.banners.concepts.length)), mascot: M.mascot.stickers.length > 0, docs: M.docs.length > 0 };
   for (const [k, v] of Object.entries(has)) if (!v) { document.getElementById(k).classList.add("hidden"); const a = document.querySelector(`#tabs a[href="#${k}"]`); if (a) a.classList.add("hidden"); }
   if (M.kit === "brand") {
     $("#h1").innerHTML = "The brand, ready to <em>use.</em>";
     document.title = "Namzilabs Brand Kit";
   }
-  // switch kits from the top bar; the other kit is its own page, so it opens in a new tab
-  if ((M.kit === "content" || M.kit === "brand") && M.kits.content.url && M.kits.brand.url) {
-    const tab = (id, label) => id === M.kit ? `<a aria-current="page">${label}</a>` : `<a href="${esc(M.kits[id].url)}" target="_blank" rel="noopener">${label}<span class="ext" aria-hidden="true">↗</span></a>`;
-    $("#kbseg").innerHTML = tab("content", "Content kit") + tab("brand", "Brand kit");
-  } else $("#kbseg").remove(); // the repo copy holds both kits on one page
+  if (M.kit === "banners") {
+    $("#h1").innerHTML = "Every banner, every <em>platform.</em>";
+    document.title = "Namzilabs Banner Kit";
+  }
+  // switch kits from the top bar; each kit is its own page, so the others open in a new tab
+  const KT = [["content", "Content"], ["brand", "Brand"], ["banners", "Banner"]].filter(([id]) => id === M.kit || (M.kits[id] && M.kits[id].url));
+  if (M.kit !== "all" && KT.length > 1) {
+    const tab = (id, label) => id === M.kit ? `<a aria-current="page">${label}<span class="kx"> kit</span></a>` : `<a href="${esc(M.kits[id].url)}" target="_blank" rel="noopener">${label}<span class="kx"> kit</span><span class="ext" aria-hidden="true">↗</span></a>`;
+    $("#kbseg").innerHTML = KT.map(([id, label]) => tab(id, label)).join("");
+  } else $("#kbseg").remove(); // the repo copy holds every kit on one page
 
   /* ── header ─────────────────────────────────────────────────────────── */
   const nSlides = M.posts.reduce((n, p) => n + p.images.length, 0);
+  const nDesigns = M.banners ? M.banners.concepts.length : 0;
   $("#sub").textContent = M.kit === "brand"
-    ? `The logo and ${(M.logos.variants || []).length} variants of it, ${M.banners ? M.banners.concepts.length : 0} banner designs at every platform size (each with its own profile picture), and Namzi the mascot. Preview anything and download single files or whole sets.${M.banners && M.banners.jpg ? " Banners are visually lossless JPGs; PNG masters are in the repo." : ""}`
+    ? `The logo and ${(M.logos.variants || []).length} variants of it (including the game-style ones), transparent files, website icons, Namzi the mascot and Instagram highlight covers. Preview anything and download single files or whole sets. The banners have their own kit.`
+    : M.kit === "banners"
+    ? `${nDesigns} banner designs, each at every size it's made for: LinkedIn company and profile, Facebook page and group, X and YouTube, plus a link preview and an email signature for the brand designs. Pick a platform to see every design at its real shape, with the profile picture made for it.${M.banners && M.banners.jpg ? " Banners are visually lossless JPGs; PNG masters are in the repo." : ""}`
     : `${M.posts.length} posts (${nSlides} images) and ${M.videos.length} videos, including the pinned explainer. Preview anything, copy the captions, and download single files or whole sets.${M.kit === "content" ? " Images are visually lossless JPGs; PNG masters are in the repo." : ""}`;
   $("#allsize").textContent = `ZIP · ${mb(bytes(sets.all()))}`;
   $("#repo").href = M.repo.url;
   const nBanners = M.banners ? M.banners.concepts.reduce((n, c) => n + c.files.length, 0) : 0;
-  $("#stats").innerHTML = [["Posts", M.posts.length], ["Images", nSlides], ["Videos", M.videos.length], ["Logo variants", (M.logos.variants || []).length], ["Banner designs", M.banners ? M.banners.concepts.length : 0], ["Banners", nBanners], ["Stickers", M.mascot.stickers.length]].filter(([, v]) => v).map(([k, v]) => `<span class="stat"><b>${v}</b> ${k}</span>`).join("");
+  $("#stats").innerHTML = [["Posts", M.posts.length], ["Images", nSlides], ["Videos", M.videos.length], ["Logo variants", (M.logos.variants || []).length], ["Banner designs", nDesigns], ["Banners", nBanners], ["Platforms", M.kit === "banners" ? 8 : 0], ["Stickers", M.mascot.stickers.length]].filter(([, v]) => v).map(([k, v]) => `<span class="stat"><b>${v}</b> ${k}</span>`).join("");
   $("#gen").textContent = `Built ${M.built}.`;
 
   /* ── posts ──────────────────────────────────────────────────────────── */
@@ -669,7 +713,7 @@
     const groups = ["all", ...new Set(VARS.map((v) => v.group))];
     $("#varfilters").innerHTML = groups.map((g) => `<button class="chip${vgf === g ? " on" : ""}" data-vg="${esc(g)}">${g === "all" ? "All" : esc(g)}<span class="n">${g === "all" ? VARS.length : VARS.filter((v) => v.group === g).length}</span></button>`).join("");
     $("#vargrid").innerHTML = VARS.filter((v) => vgf === "all" || v.group === vgf).map((v) => {
-      const pair = v.pairs && M.banners ? M.banners.concepts.find((c) => c.id === v.pairs) : null;
+      const pair = v.pairs && M.bannerNames && M.bannerNames[v.pairs] ? { name: M.bannerNames[v.pairs] } : null;
       return `<div class="var"><button class="pv" data-img="${esc(v.png.path)}" aria-label="Open ${esc(v.name)}"><img loading="lazy" src="${esc(v.png.path)}" alt="${esc(v.name)}: a variant of the Namzilabs logo"></button><b>${esc(v.name)}</b><span class="faint">${esc(v.note)}${pair ? ` Goes with the ${esc(pair.name)} banner.` : ""}</span><div class="row"><button class="btn small" data-vp="${esc(v.id)}">${ICON_DL}PNG</button>${v.svg ? `<button class="btn small" data-vs="${esc(v.id)}">${ICON_DL}SVG</button>` : ""}</div></div>`;
     }).join("");
   }
@@ -693,12 +737,24 @@
         <div class="files">${c.files.map((f) => `<button class="btn small" data-bf="${c.id}|${f.name}" title="${esc(f.dims)}">${ICON_DL}${esc(f.label)}</button>`).join("")}</div>
         <div class="cact"><button class="btn small" data-bz="${c.id}">${ICON_DL}Every size (ZIP) · ${mb(c.files.reduce((n, f) => n + f.size, 0) + (c.avatar ? c.avatar.size : 0))}</button></div></div></article>`;
     };
-    const designs = M.banners.concepts.filter((c) => c.group === "design"), memes = M.banners.concepts.filter((c) => c.group === "meme"), li = M.banners.concepts.filter((c) => c.group === "linkedin");
+    const designs = M.banners.concepts.filter((c) => c.group === "design"), memes = M.banners.concepts.filter((c) => c.group === "meme"), li = M.banners.concepts.filter((c) => c.group === "linkedin"), pop = M.banners.concepts.filter((c) => c.group === "pop");
     $("#bgrid").innerHTML = designs.map(card).join("");
     $("#bgrid2").innerHTML = memes.map(card).join("");
     $("#bgrid3").innerHTML = li.map(card).join("");
+    $("#bgrid4").innerHTML = pop.map(card).join("");
     if (!li.length) ["#lihead", "#lisub", "#bgrid3"].forEach((q) => $(q).classList.add("hidden"));
     if (!memes.length) ["#memehead", "#memesub", "#bgrid2"].forEach((q) => $(q).classList.add("hidden"));
+    if (!pop.length) ["#pophead", "#popsub", "#bgrid4"].forEach((q) => $(q).classList.add("hidden"));
+    if (!designs.length) ["#linote", "#bgrid"].forEach((q) => $(q).classList.add("hidden"));
+    // the brand kit keeps the highlight covers; the banners themselves live in the banner kit
+    if (M.kit === "brand") {
+      $("#bsub").textContent = "Instagram highlight covers, in blue and ink.";
+      if (M.kits.banners && M.kits.banners.url) { $("#bkmoved").innerHTML = `<b>Looking for the banners?</b> Every design, at every platform size and with its profile picture, is in the <a href="${esc(M.kits.banners.url)}" target="_blank" rel="noopener">Banner Kit ↗</a>, sorted by platform: LinkedIn, Facebook, X and YouTube.`; $("#bkmoved").classList.remove("hidden"); }
+      document.querySelector('#tabs a[href="#banners"]').textContent = "Highlights";
+      $("#banners h2").textContent = "Highlight covers";
+      $("#hgrid").previousElementSibling.classList.add("hidden");
+      const bz = document.querySelector('#banners [data-zip="banners"]'); if (bz && bz.firstChild) bz.firstChild.textContent = "Download highlight covers";
+    }
     const onBanner = (e) => {
       const a = e.target.closest("[data-ba]");
       if (a) { const c = M.banners.concepts.find((x) => x.id === a.dataset.ba); return saveOne(c.avatar, `namzilabs-profile-${c.id}.png`); }
@@ -707,9 +763,53 @@
       const z = e.target.closest("[data-bz]");
       if (z) { const c = M.banners.concepts.find((x) => x.id === z.dataset.bz); saveZip(`namzilabs-banner-${c.id}.zip`, [...c.files.map((f) => ({ ...f, zipPath: `${c.id}/${f.name}` })), ...(c.avatar ? [{ ...c.avatar, zipPath: `${c.id}/profile-picture.png` }] : []), ...(c.mockup ? [{ ...c.mockup, zipPath: `${c.id}/x-profile-mockup.${c.mockup.name.split(".").pop()}` }] : []), ...(c.limock ? [{ ...c.limock, zipPath: `${c.id}/linkedin-mockup.${c.limock.name.split(".").pop()}` }] : [])]); }
     };
-    $("#bgrid").addEventListener("click", onBanner);
-    $("#bgrid2").addEventListener("click", onBanner);
-    $("#bgrid3").addEventListener("click", onBanner);
+    ["#bgrid", "#bgrid2", "#bgrid3", "#bgrid4"].forEach((q) => $(q).addEventListener("click", onBanner));
+
+    /* banners by platform */
+    const PL = [
+      { id: "linkedin-company", label: "LinkedIn company", w: 1128, h: 191, av: { s: "sq", d: 0.105, x: 0.024, k: 0.56 }, guide: "<b>The cover of a company page.</b> 1128×191; these files are 2x (2256×382) so they stay sharp. The page logo sits over the bottom-left and phones crop the sides, so every word stays clear of both." },
+      { id: "linkedin-profile", label: "LinkedIn profile", w: 1584, h: 396, av: { s: "c", d: 0.165, x: 0.03, k: 0.62 }, guide: "<b>The background on your own profile.</b> 1584×396; these files are 2x (3168×792). Your photo sits over the bottom-left and phones crop the sides, so every word stays clear of both. Don't upload the X header here: it's a different shape." },
+      { id: "facebook", label: "Facebook page", w: 1640, h: 624, av: { s: "c", d: 0.2, x: 0.02, k: 0.42 }, guide: "<b>A Facebook page cover.</b> 1640×624. Phones crop the sides, so the words sit in the middle third, centred top to bottom." },
+      { id: "facebook-group", label: "Facebook group", w: 1640, h: 856, av: null, guide: "<b>A Facebook group cover.</b> 1640×856. No photo covers it; the words sit in the middle so phones keep them." },
+      { id: "x", label: "X", w: 1500, h: 500, av: { s: "c", d: 0.2, x: 0.027, k: 0.52 }, guide: "<b>The X header.</b> 1500×500. Your photo covers the bottom-left, so the words stay above and to the right of it." },
+      { id: "youtube", label: "YouTube", w: 2560, h: 1440, av: null, band: true, guide: "<b>YouTube channel art.</b> 2560×1440. TVs show all of it, desktops only the middle band (outlined) and phones a little less, so everything that matters sits in the band." },
+      { id: "og", label: "Link preview", w: 1200, h: 630, av: null, guide: "<b>The card when someone shares namzilabs.co.</b> 1200×630. The brand designs have one." },
+      { id: "email", label: "Email signature", w: 1200, h: 300, av: null, guide: "<b>A banner for your email signature.</b> 1200×300, shown at 600×150. The brand designs have one." },
+    ];
+    const GR = [["all", "All"], ["pop", "Games & films"], ["meme", "Memes"], ["design", "Brand"], ["linkedin", "Made for LinkedIn"]];
+    const GNAME = Object.fromEntries(GR), GORD = { pop: 0, linkedin: 1, design: 2, meme: 3 };
+    const fileFor = (c, P) => c.files.find((f) => f.name.startsWith(P.id + "."));
+    let plat = "linkedin-company", pg = "all";
+    const pcard = (c, P) => {
+      const f = fileFor(c, P), a = P.av, vars = a ? `--d:${a.d};--x:${a.x};--k:${a.k}` : "";
+      return `<article class="pcard"><button class="mock" data-img="${esc(f.path)}" style="--ar:${P.w}/${P.h};--hr:${(P.h / P.w).toFixed(4)}" aria-label="Open the ${esc(c.name)} banner for ${esc(P.label)}">
+          <span class="cover"><img loading="lazy" src="${esc(f.path)}" alt="${esc(c.name)} banner, ${esc(P.label)} size">${P.band ? '<span class="band"></span>' : ""}</span>
+          ${a ? `<span class="below" style="${vars}"><i></i><i></i></span>${c.avatar ? `<img class="av ${a.s}" style="${vars}" loading="lazy" src="${esc(c.avatar.path)}" alt="">` : ""}` : ""}</button>
+        <div class="cbody"><div class="ctitle">${esc(c.name)} <span class="badge">${esc(GNAME[c.group] || "")}</span></div><div class="faint">${esc(c.head)}</div>
+          <div class="cact"><button class="btn small" data-pf="${esc(c.id)}">${ICON_DL}${esc(P.label)} · ${f.name.split(".").pop().toUpperCase()} · ${mb(f.size)}</button>${c.avatar ? `<button class="btn small" data-ba="${esc(c.id)}">${ICON_DL}Profile picture</button>` : ""}<button class="btn small" data-bz="${esc(c.id)}">${ICON_DL}Every size</button></div></div></article>`;
+    };
+    function renderPlatforms() {
+      const P = PL.find((p) => p.id === plat);
+      const at = M.banners.concepts.filter((c) => fileFor(c, P)).sort((a, b) => (GORD[a.group] ?? 9) - (GORD[b.group] ?? 9)), list = at.filter((c) => pg === "all" || c.group === pg);
+      $("#pltabs").innerHTML = PL.map((p) => { const n = M.banners.concepts.filter((c) => fileFor(c, p)).length; return n ? `<button class="ptab${p.id === plat ? " on" : ""}" role="tab" aria-selected="${p.id === plat}" data-pl="${p.id}">${esc(p.label)}<small>${n} designs</small></button>` : ""; }).join("");
+      $("#plguide").innerHTML = P.guide;
+      $("#plfilt").innerHTML = GR.map(([g, label]) => { const n = g === "all" ? at.length : at.filter((c) => c.group === g).length; return n ? `<button class="chip${pg === g ? " on" : ""}" data-pg="${g}">${esc(label)}<span class="n">${n}</span></button>` : ""; }).join("");
+      $("#plgrid").className = `pgrid${P.h / P.w > 0.45 ? " tall" : ""}`;
+      $("#plgrid").innerHTML = list.map((c) => pcard(c, P)).join("") || `<p class="faint">No designs in this group at this size.</p>`;
+      $("#plzip").innerHTML = `${ICON_DL}All ${esc(P.label)} banners · ${mb(list.reduce((n, c) => n + fileFor(c, P).size + (c.avatar ? c.avatar.size : 0), 0))}`;
+    }
+    renderPlatforms();
+    $("#pltabs").addEventListener("click", (e) => { const b = e.target.closest("[data-pl]"); if (!b) return; plat = b.dataset.pl; if (pg !== "all" && !M.banners.concepts.some((c) => c.group === pg && fileFor(c, PL.find((p) => p.id === plat)))) pg = "all"; renderPlatforms(); });
+    $("#plfilt").addEventListener("click", (e) => { const b = e.target.closest("[data-pg]"); if (!b) return; pg = b.dataset.pg; renderPlatforms(); });
+    $("#plgrid").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-pf]");
+      if (b) { const c = M.banners.concepts.find((x) => x.id === b.dataset.pf), P = PL.find((p) => p.id === plat), f = fileFor(c, P); return saveOne(f, `namzilabs-banner-${c.id}-${f.name}`); }
+      onBanner(e);
+    });
+    $("#plzip").addEventListener("click", () => {
+      const P = PL.find((p) => p.id === plat), list = M.banners.concepts.filter((c) => fileFor(c, P) && (pg === "all" || c.group === pg));
+      saveZip(`namzilabs-banners-${P.id}.zip`, list.flatMap((c) => { const f = fileFor(c, P); return [{ ...f, zipPath: `${P.id}/${c.id}.${f.name.split(".").pop()}` }, ...(c.avatar ? [{ ...c.avatar, zipPath: `${P.id}/profile-pictures/${c.id}.png` }] : [])]; }));
+    });
     $("#hgrid").innerHTML = M.banners.highlights.map((h, i) => `<div class="sticker"><div class="checker" style="aspect-ratio:9/16;padding:0"><img loading="lazy" src="${esc(h.path)}" alt="Highlight cover: ${esc(h.label)}" style="object-fit:cover"></div><div class="row"><span class="lab">${esc(h.label)} · ${esc(h.bg)}</span><span class="sbtns"><button class="btn small" data-hl="${i}">${ICON_DL}${h.name.endsWith(".jpg") ? "JPG" : "PNG"}</button></span></div></div>`).join("");
     $("#hgrid").addEventListener("click", (e) => { const b = e.target.closest("[data-hl]"); if (b) { const h = M.banners.highlights[Number(b.dataset.hl)]; saveOne(h, `namzilabs-highlight-${h.name}`); } });
   }

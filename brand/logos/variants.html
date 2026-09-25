@@ -41,7 +41,7 @@
   for (const v of V) document.write(`<div class="canvas pp" data-still="variants/${v.id}-1024"><img src="${src(v)}" alt=""></div>`);
   const item = (src, name, note) => `<div class="it"><img src="${src}" alt=""><b>${name}</b><span>${note}</span></div>`;
   const groups = [["The mark", CORE.map(([s, n, t]) => item(s, n, t))]];
-  for (const g of ["Ring styles", "Grounds", "Fun"]) groups.push([g, V.filter((v) => v.group === g).map((v) => item(src(v), v.name, v.note.split(".")[0] + "."))]);
+  for (const g of ["Ring styles", "Grounds", "Fun", "Games"]) groups.push([g, V.filter((v) => v.group === g).map((v) => item(src(v), v.name, v.note.split(".")[0] + "."))]);
   document.write(`<div class="canvas board" data-still="boards/01-between-mono-variants" style="height:auto">
     <div class="top"><h1>Two rings.<br>Endless <em>ways.</em></h1><div class="lede">The mark never changes: two tools as two rings, overlapping, with the space between them left empty. Only the rings' finish and the ground behind them change.</div></div>
     ${groups.map(([h, items]) => `<div class="grp"><h2>${h}</h2><div class="row">${items.join("")}</div></div>`).join("")}

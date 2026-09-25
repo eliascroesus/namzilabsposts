@@ -31,7 +31,7 @@ document.fonts.add(font);
 
 // the band's cross-section: domed outside, nearly flat inside, softly rounded edges (a "court" band,
 // heavy like the one in the films). Sampled evenly by arc length, so the inscription isn't stretched.
-const R = 1, H = 0.34, T = 0.13;
+const R = 1, H = 0.44, T = 0.2;
 function section(n = 220) {
   const a = T / 2, b = H / 2, c = R + a, dense = [];
   for (let i = 0; i <= 4000; i++) {
@@ -65,10 +65,10 @@ function inscription(phrases, { glowOnly = false } = {}) {
   g.fillStyle = "#000"; g.fillRect(0, 0, W, Hc);
   const yMid = (1 - SEC.vMid) * Hc; // canvas y of the middle of the outer face (textures are flipped)
   const sep = "   ·   ";
-  let fs = 140;
+  let fs = 180;
   g.font = `${fs}px GreatVibes`;
   const seqW = g.measureText(phrases.join(sep) + sep).width;
-  fs = Math.min(fs * (W / seqW), 158); // fill the circumference exactly once
+  fs = Math.min(fs * (W / seqW), 196); // fill the circumference exactly once
   g.font = `${fs}px GreatVibes`;
   const parts = phrases.map((p) => ({ p, w: g.measureText(p).width }));
   const gap = (W - parts.reduce((s, q) => s + q.w, 0)) / parts.length;
@@ -98,11 +98,12 @@ function band(phrases, glow) {
   const tex = inscription(phrases);
   const mat = glow
     ? new THREE.MeshBasicMaterial({ map: tex })
-    : new THREE.MeshPhysicalMaterial({ color: 0xffcf7a, metalness: 1, roughness: 0.17, clearcoat: 0.5, clearcoatRoughness: 0.12, emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 1.9 });
+    : new THREE.MeshPhysicalMaterial({ color: 0xffcf7a, metalness: 1, roughness: 0.17, clearcoat: 0.5, clearcoatRoughness: 0.12, emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 2.8 });
   return new THREE.Mesh(geo, mat);
 }
 
-function render(el, { fov, camY, camZ, glow }) {
+function render(el, o) {
+  const glow = o.glow;
   const W = el.clientWidth, Hh = el.clientHeight;
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: !glow, preserveDrawingBuffer: true });
   renderer.setPixelRatio(1);
@@ -128,21 +129,28 @@ function render(el, { fov, camY, camZ, glow }) {
     const fire = new THREE.PointLight(0xff5a14, 46, 12); fire.position.set(0.6, -1.3, 3); s.add(fire);
     const rim = new THREE.PointLight(0xffb070, 22, 10); rim.position.set(2.6, 2.2, -2.6); s.add(rim);
   }
-  // woven like the mark: centres 0.93 R apart, each tilted about the line between them,
-  // so one ring passes over the other at the front crossing and under it at the back
-  const tilt = THREE.MathUtils.degToRad(15), spread = 0.466 * (R + T / 2);
+  // the mark, in gold: two rings standing side by side, the same size, overlapping exactly like the logo
+  // (centres 14/15 of the ring's radius apart). Each leans back a little so the glowing inscription on
+  // its outer face shows along the bottom; the right ring sits a touch further back so the two bands
+  // pass in front of each other instead of through each other.
+  const tilt = THREE.MathUtils.degToRad(o.tilt ?? 30), Rm = R + T / 2, gap = (14 / 15) * Rm, back = 0.62;
   const a = band(["all your data in one place", "any metric", "the whole funnel", "every step", "the true numbers"], glow);
   const b = band(["one place to rule them all", "every tool", "counted once", "cross-referenced", "free to start"], glow);
-  a.position.x = -spread; a.rotation.x = tilt; a.rotation.y = -0.7;
-  b.position.x = spread; b.rotation.x = -tilt; b.rotation.y = -1.18;
+  for (const [m, x, z, spin] of [[a, -gap / 2, 0, 0.9], [b, gap / 2, -back, 2.4]]) {
+    m.rotation.order = "XYZ";
+    m.rotation.x = Math.PI / 2 - tilt; // stand up, then lean the top away
+    m.rotation.y = spin; // turn the band on its own axis, so each shows a different part of its inscription
+    m.position.set(x, 0, z);
+  }
+  b.scale.setScalar((o.camZ + back) / o.camZ); // the back ring is further away: scale it so both read the same size
   s.add(a, b);
 
-  const cam = new THREE.PerspectiveCamera(fov, W / Hh, 0.1, 50);
-  cam.position.set(0, camY, camZ); cam.lookAt(0, -0.04, 0);
+  const cam = new THREE.PerspectiveCamera(o.fov, W / Hh, 0.1, 80);
+  cam.position.set(0, o.camY, o.camZ); cam.lookAt(0, o.lookY ?? 0, -back / 2);
   renderer.render(s, cam);
 }
 
-const V = { hero: { fov: 26, camY: 2.25, camZ: 4.85 }, square: { fov: 30, camY: 3.8, camZ: 6.2 } };
+const V = { hero: { fov: 13.5, camY: 0.35, camZ: 12, lookY: -0.05 }, square: { fov: 19, camY: 0.35, camZ: 12, lookY: -0.05 } };
 for (const [k, v] of Object.entries(V)) {
   render(document.querySelector(`[data-still="rings-${k}"]`), { ...v, glow: false });
   render(document.querySelector(`[data-still="rings-${k}-glow"]`), { ...v, glow: true });

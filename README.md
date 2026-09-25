@@ -22,13 +22,13 @@ Everything here is made from code: HTML designs rendered to exact-size PNGs and 
 
 **The mark: 01 · Between, mono.** Two tools as two rings, overlapping, in one colour, with the space between them left empty. It works on blue, ink, sky or paper and stays clear at 24px. Profile pictures in four colourways, plus the eclipse alternate, are in [`brand/logos/01-between-mono/`](brand/logos/01-between-mono/).
 
-<img src="brand/logos/boards/01-between-mono-variants.png" width="100%" alt="24 variants of the mark: ring styles, grounds and fun ones.">
+<img src="brand/logos/boards/01-between-mono-variants.png" width="100%" alt="33 variants of the mark: ring styles, grounds, fun ones and game-style ones.">
 
-**24 variants** keep the two rings and change the finish and the ground: hairline, bold, gradient, woven, neon, glass, chrome, blueprint, and fun ones like wedding rings, coffee stains, donuts and life rings. Each is an SVG and a 1024px profile picture in [`brand/logos/variants/`](brand/logos/variants/). See the [brand kit](brand/BRAND_KIT.md).
+**33 variants** keep the two rings and change the finish and the ground: hairline, bold, gradient, woven, neon, glass, chrome, blueprint, fun ones like wedding rings, coffee stains, donuts and life rings, and nine game-style ones that go with the games & films banners (a maze chomper, 8-bit coins, diamond rings, falling blocks, code rain, a VS screen, synthwave, a cave with two fires, Christmas lights). Each is an SVG and a 1024px profile picture in [`brand/logos/variants/`](brand/logos/variants/). See the [brand kit](brand/BRAND_KIT.md).
 
 <img src="brand/logos/one-ring/precious-wide.png" width="100%" alt="The two rings as heavy gold bands with a glowing inscription, in front of a fiery volcano.">
 
-**Precious.** The two rings rendered in 3D ([three.js](brand/logos/one-ring/rings.html)) as heavy gold bands, each with a glowing inscription in our own words ("all your data in one place", "one place to rule them all"), in front of a generic fiery mountain. It's a parody: no film lettering, no tower, no eye. It's the precious avatar, banner and post 36.
+**Precious.** The two rings rendered in 3D ([three.js](brand/logos/one-ring/rings.html)) as heavy gold bands, side by side and overlapping like the mark, each with a glowing inscription in our own words ("all your data in one place", "one place to rule them all"), in front of a generic fiery mountain. It's a parody: no film lettering, no tower, no eye. It's the precious avatar, banner and post 36.
 
 **Transparent files for the website:** the symbol, the lockup and the wordmark in white, black and blue, as SVG and PNG, cropped tight, in [`brand/logos/transparent/`](brand/logos/transparent/). Favicons, home-screen icons and a web manifest (with the `<head>` snippet) are in [`brand/logos/web/`](brand/logos/web/).
 
@@ -39,12 +39,13 @@ Everything here is made from code: HTML designs rendered to exact-size PNGs and 
 <img src="brand/banners/mockups/x-electric.png" width="49%" alt="The Electric banner on an X profile"> <img src="brand/banners/mockups/x-neon.png" width="49%" alt="The Neon banner on an X profile">
 <img src="brand/banners/mockups/x-precious.png" width="49%" alt="The Precious meme banner on an X profile"> <img src="brand/banners/mockups/x-wedding.png" width="49%" alt="The Wedding meme banner on an X profile">
 
-Nineteen designs, each with the profile picture made to go with it:
+Thirty-five designs, each with the profile picture made to go with it:
 - **Ten for every day:** Electric, Funnel, Sources, Namzi, Minimal, Formula, Glass, Neon, Big type, Blueprint
-- **Six memes:** Precious ("One place to rule them all", 3D gold rings and a volcano), Donut daydream ("Mmm… all your data in one place"), Wedding ("Your Stripe and your CRM, finally married"), Galaxy brain, Starter pack, Expectation vs reality
+- **Sixteen games & films:** Platformer ("Thank you! But your revenue is in another tab. Not anymore…"), Maze chase ("Eat the duplicates"), The cave ("It's dangerous to report alone. Take this."), Wild no-show, Versus ("Stripe vs your CRM"), Crafting, Falling blocks, Revenue puzzle, Achievement, Game over, Emergency meeting, Red pill, Opening crawl, Need for speed, Bigger spreadsheet, Christmas lights. Homages to the format and the joke, never the characters; code in [`brand/banners/pop.js`](brand/banners/pop.js)
+- **Six memes:** Precious ("One place to rule them all", 3D gold rings and a volcano), Donut daydream ("Mmm… all your data in one place", a yellow cartoon hand and a donut), Wedding ("Your Stripe and your CRM, finally married"), Galaxy brain, Starter pack, Expectation vs reality
 - **Three made for LinkedIn:** Leaky funnel, Tool wall, and Team (for the people who work here)
 
-Each comes at every size: X, LinkedIn company page and personal profile, Facebook page and group, and YouTube. The everyday ten also come as a link-preview card and an email signature. There are also Instagram highlight covers.
+Each comes at every size: X, LinkedIn company page and personal profile, Facebook page and group (words centred top to bottom), and YouTube. The everyday ten also come as a link-preview card and an email signature. There are also Instagram highlight covers. The **Banner Kit** shows them all sorted by platform, at each platform's real shape.
 
 <img src="brand/banners/mockups/linkedin-electric.png" width="100%" alt="The Electric banner on a LinkedIn company page and a personal profile, on a laptop and a phone">
 
@@ -116,9 +117,10 @@ All thirteen are rendered frame by frame at 60fps (1080×1920; the sting is 1080
 
 You can download single files, a whole post, a whole section, or everything as one ZIP.
 
-- **Published copies:** the page is published as two private Artifacts, so each fits in one version:
-  - the **Content Kit**: posts and videos. Post images are visually lossless JPGs; videos are web-compressed copies (CRF 23).
-  - the **Brand Kit**: logos, banners and Namzi.
+- **Published copies:** the page is published as three private Artifacts, so each fits in one version (a bar at the top switches between them):
+  - the **Content Kit**: posts and videos. Post images are visually lossless JPGs; videos are web-compressed copies (CRF 25).
+  - the **Brand Kit**: logos (with every variant), transparent files, website icons, Namzi and highlight covers.
+  - the **Banner Kit**: every banner, sorted by platform (LinkedIn company, LinkedIn profile, Facebook page and group, X, YouTube, link preview, email), each shown at the platform's real shape with its profile picture. Download one file, one design at every size, or a whole platform.
 
   The full-quality PNG and MP4 masters are here in the repo.
 - **Locally:** run `npx serve .` (or `python3 -m http.server`) in the repo root and open `/preview.html`. ZIP downloads need a server, not `file://`.
@@ -153,7 +155,7 @@ node tools/build-logos.mjs && node tools/render-stills.mjs brand/logos/board.htm
 node tools/render-stills.mjs brand/logos/profiles.html brand/logos --ss 1      # 1024px profile pictures
 node tools/render-stills.mjs brand/logos/one-ring/rings.html brand/logos/one-ring --ss 1 --alpha    # the 3D gold rings (three.js)
 node tools/render-stills.mjs brand/logos/one-ring/scenes.html brand/logos/one-ring --ss 1           # the rings in front of the volcano
-node tools/build-variants.mjs && node tools/render-stills.mjs brand/logos/variants.html brand/logos --ss 1   # the 24 logo variants + their board
+node tools/build-variants.mjs && node tools/render-stills.mjs brand/logos/variants.html brand/logos --ss 1   # the 33 logo variants + their board
 node tools/render-stills.mjs brand/logos/transparent.html brand/logos --ss 2 --alpha   # transparent PNGs + website icons
 node tools/render-stills.mjs brand/mascot/sheet.html brand/mascot/boards        # Namzi's character sheet
 node tools/export-mascot.mjs                                                   # stickers + avatars
@@ -175,7 +177,7 @@ node tools/build-preview.mjs                                                   #
 | `lib/mascot.js` | Namzi, drawn in code: moods, poses, props and effects, as one SVG |
 | `lib/meme.css`, `lib/meme.js` | Pieces for the parody posts: speech bubbles, subtitles, labels, clouds, a thought cloud, a donut chart that's a real donut, flames |
 | `lib/volcano.js` | The fiery mountain (a generic volcano, drawn in SVG) and the 3D gold rings placed by their own bounds |
-| `assets/` | Vendored OFL fonts (Inter, Instrument Serif, plus Cinzel and Great Vibes for the precious parody only) and connector marks (nominative use) |
+| `assets/` | Vendored fonts (Inter, Instrument Serif; Cinzel and Great Vibes for the precious parody; Press Start 2P and Permanent Marker for the games & films banners; all OFL except Permanent Marker, Apache 2.0) and connector marks (nominative use) |
 | `tools/` | Render stills, video and PDFs, sample frames, build logos, export the mascot, build the preview page |
 
 Open any `video.html` in a browser to watch it live. Every number shown in posts and videos is **example data**.

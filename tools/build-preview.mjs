@@ -3,7 +3,8 @@
 //
 //   node tools/build-preview.mjs                              → preview.html (everything; open it through a local server)
 //   node tools/build-preview.mjs --artifact DIR --kit content → DIR/page.html + DIR/files.json: posts, videos, docs
-//   node tools/build-preview.mjs --artifact DIR --kit brand   → the same for logos, banners, Namzi
+//   node tools/build-preview.mjs --artifact DIR --kit brand   → the same for logos, Namzi, highlight covers
+//   node tools/build-preview.mjs --artifact DIR --kit banners → every banner, by platform, with its profile picture
 //
 // For the published Content Kit, post images are served as visually lossless JPGs
 // and videos as web-compressed copies (both made into DIR/web/), so the page fits
@@ -26,6 +27,7 @@ const kit = flag(argv, "kit", "all");
 const KITS = {
   content: { url: "https://claude.ai/artifact/NaEiTHhgzhRd5EMTTh5syU", title: "Content Kit" },
   brand: { url: "https://claude.ai/artifact/8wEv8d2VnWHqqmHusbJHvh", title: "Brand Kit" },
+  banners: { url: "https://claude.ai/artifact/V4VH9xB5sb6Bhtz3rSwNSN", title: "Banner Kit" },
 };
 
 const REPO = {
@@ -260,6 +262,23 @@ function build({ web }) {
     ["leak", "Leaky funnel", "Your funnel has a leak.", MONO + "profile-ink-1024.png", "linkedin"],
     ["wall", "Tool wall", "33 tools. One place.", MONO + "profile-paper-1024.png", "linkedin"],
     ["team", "Team", "Building Namzilabs. For the people who work here.", MONO + "profile-blue-1024.png", "linkedin"],
+    // games, films and series: the format and the joke, played by Namzi and the rings (brand/banners/pop.js)
+    ["platformer", "Platformer", "Thank you! But your revenue is in another tab.", VAR + "coins-1024.png", "pop"],
+    ["arcade", "Maze chase", "Eat the duplicates.", VAR + "chomper-1024.png", "pop"],
+    ["quest", "The cave", "It's dangerous to report alone. Take this.", VAR + "cave-1024.png", "pop"],
+    ["wild", "Wild no-show", "A wild no-show appeared!", VAR + "pixel-1024.png", "pop"],
+    ["versus", "Versus", "Stripe vs your CRM.", VAR + "fighter-1024.png", "pop"],
+    ["crafting", "Crafting", "Craft any metric.", VAR + "diamond-1024.png", "pop"],
+    ["blocks", "Falling blocks", "Finally, everything fits.", VAR + "blocks-1024.png", "pop"],
+    ["guess", "Revenue puzzle", "Stop guessing your revenue.", VAR + "split-1024.png", "pop"],
+    ["achievement", "Achievement", "Achievement unlocked: the true numbers.", VAR + "gradient-1024.png", "pop"],
+    ["gameover", "Game over", "Your funnel just lost a life.", VAR + "chomper-1024.png", "pop"],
+    ["meeting", "Emergency meeting", "Who's double counting your customers?", VAR + "cosmic-1024.png", "pop"],
+    ["redpill", "Red pill", "Take the red pill. See your real numbers.", VAR + "coderain-1024.png", "pop"],
+    ["crawl", "Opening crawl", "A long time ago, in a spreadsheet far, far away…", VAR + "midnight-1024.png", "pop"],
+    ["speed", "Need for speed", "The need for speed to lead.", VAR + "synthwave-1024.png", "pop"],
+    ["bigger", "Bigger spreadsheet", "You're gonna need a bigger spreadsheet.", VAR + "lifebuoy-1024.png", "pop"],
+    ["lights", "Christmas lights", "Still asking the walls where your numbers are?", VAR + "lights-1024.png", "pop"],
   ];
   const PLAT = [["x", "X header", "1500×500"], ["linkedin-company", "LinkedIn company page", "2256×382: LinkedIn's 1128×191 at 2x. The cover of a company page."], ["linkedin-profile", "LinkedIn personal profile", "3168×792: LinkedIn's 1584×396 at 2x. The background on your own profile."], ["facebook", "Facebook page", "1640×624"], ["facebook-group", "Facebook group", "1640×856"], ["youtube", "YouTube", "2560×1440"], ["og", "Link preview", "1200×630"], ["email", "Email signature", "1200×300"]];
   const banners = existsSync(path.join(ROOT, "brand/banners")) ? {
@@ -291,14 +310,17 @@ function build({ web }) {
     logos: { concepts, overviews, wordmarks, variants, transparent, web: webIcons }, banners, mascot: { stickers, avatars, boards: mboards }, docs, videoReadme: vm.md,
   };
   if (kit === "content") return { ...all, logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => !d.path.startsWith("brand/")) };
-  if (kit === "brand") return { ...all, posts: [], videos: [], docs: docs.filter((d) => d.path.startsWith("brand/") || d.name === "STRATEGY.md") };
-  return all;
+  // every banner's name, for the "goes with the … banner" lines in kits that don't carry the banners themselves
+  const bannerNames = banners ? Object.fromEntries(banners.concepts.map((c) => [c.id, c.name])) : {};
+  if (kit === "brand") return { ...all, bannerNames, posts: [], videos: [], banners: banners && { ...banners, concepts: [] }, docs: docs.filter((d) => d.path.startsWith("brand/") || d.name === "STRATEGY.md") };
+  if (kit === "banners") return { ...all, bannerNames, posts: [], videos: [], logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, mascot: { stickers: [], avatars: [], boards: [] }, banners: banners && { ...banners, highlights: [], concepts: banners.concepts.map((c) => ({ ...c, mockup: null, limock: null })) }, docs: docs.filter((d) => d.path === "brand/banners/README.md") };
+  return { ...all, bannerNames };
 }
 
 function page(manifest) {
   const tpl = read("tools/preview/template.html");
   const json = JSON.stringify(manifest).replace(/</g, "\\u003c");
-  const title = manifest.kit === "brand" ? "Namzilabs Brand Kit" : "Namzilabs Content Kit";
+  const title = manifest.kit === "brand" ? "Namzilabs Brand Kit" : manifest.kit === "banners" ? "Namzilabs Banner Kit" : "Namzilabs Content Kit";
   return tpl.replace("<title>Namzilabs Content Kit</title>", `<title>${title}</title>`).replace("<!--MANIFEST-->", `<script type="application/json" id="manifest">${json}</script>`);
 }
 
@@ -336,9 +358,10 @@ if (artifactDir) {
       }
     }
   }
-  if (kit === "brand") {
+  if (kit === "brand" || kit === "banners") {
     const walk = (d) => readdirSync(path.join(ROOT, d), { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(`${d}/${e.name}`) : e.name.endsWith(".png") ? [`${d}/${e.name}`] : []);
-    for (const p of walk("brand/banners")) {
+    for (const p of walk(kit === "brand" ? "brand/banners/highlights" : "brand/banners")) {
+      if (kit === "banners" && /^brand\/banners\/(highlights|mockups)\//.test(p)) continue; // the banner kit draws its mock-ups live
       const src = path.join(ROOT, p), dst = webPath(p.replace(/\.png$/, ".jpg"));
       if (existsSync(dst) && statSync(dst).mtimeMs > statSync(src).mtimeMs) continue;
       mkdirSync(path.dirname(dst), { recursive: true });
@@ -346,7 +369,7 @@ if (artifactDir) {
     }
   }
   const m = build({ web: true });
-  if (kit === "brand" && m.banners) {
+  if ((kit === "brand" || kit === "banners") && m.banners) {
     const jpg = (f) => { const jp = f.path.replace(/\.png$/, ".jpg"); return { ...f, name: f.name.replace(/\.png$/, ".jpg"), path: jp, size: statSync(webPath(jp)).size }; };
     m.banners.concepts = m.banners.concepts.map((c) => ({ ...c, files: c.files.map(jpg), mockup: c.mockup && jpg(c.mockup), limock: c.limock && jpg(c.limock) }));
     m.banners.highlights = m.banners.highlights.map(jpg);

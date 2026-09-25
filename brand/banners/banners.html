@@ -97,6 +97,26 @@
   .urlchip { display: inline-flex; align-items: center; gap: .5em; background: #fff; color: var(--ink); font-weight: 750; letter-spacing: -0.02em; border-radius: 999px; padding: .45em 1em .45em .5em; width: max-content; box-shadow: 0 16px 30px -16px rgba(0,0,0,.5); }
   .urlchip .mk { width: 1.5em; height: 1.5em; border-radius: 50%; background: #14141c; display: grid; place-items: center; }
   .urlchip .mk svg { width: 72%; height: 72%; }
+
+  /* the game, film and series banners (brand/banners/pop.js) */
+  .pop-text { position: absolute; display: flex; flex-direction: column; z-index: 4; }
+  .pop-text .bn-lock { position: static; }
+  .pop-text .pk { font-weight: 800; letter-spacing: .14em; text-transform: uppercase; margin-bottom: .7em; white-space: nowrap; }
+  .pk-alarm { font-weight: 900 !important; font-style: italic; letter-spacing: .01em !important; color: #ff3b30 !important; -webkit-text-stroke: .12em #fff; paint-order: stroke fill; line-height: 1; margin-bottom: .35em !important; }
+  .pk-serif { font-family: var(--serif); font-style: italic; font-weight: 400 !important; letter-spacing: 0 !important; text-transform: none !important; line-height: 1; margin-bottom: .2em !important; }
+  .pk-pixel { font-family: "Press Start 2P"; font-weight: 400 !important; letter-spacing: 0 !important; }
+  .ph { text-wrap: balance; }
+  .ph-inter { font-weight: 800; letter-spacing: -0.045em; line-height: .98; }
+  .ph-inter-glow { font-weight: 800; letter-spacing: -0.045em; line-height: .98; text-shadow: 0 0 .28em rgba(60,255,130,.55); }
+  .ph-pixel { font-family: "Press Start 2P"; text-transform: uppercase; line-height: 1.4; text-shadow: 0 0 .4em rgba(255,210,63,.55); }
+  .ph-pixel-shadow { font-family: "Press Start 2P"; text-transform: uppercase; line-height: 1.4; -webkit-text-stroke: .16em #1c2b12; paint-order: stroke fill; text-shadow: .16em .16em 0 #1c2b12; }
+  .ph-dialog { font-family: "Press Start 2P"; text-transform: uppercase; line-height: 1.65; background: #000; color: #fff; padding: .95em 1.05em; box-shadow: 0 0 0 .2em #fff, 0 0 0 .36em #000; align-self: flex-start; }
+  .ph-dialog .dl2 { display: block; margin-top: .85em; color: #ffd23f; }
+  .ph-pixel-plain { font-family: "Press Start 2P"; text-transform: uppercase; line-height: 1.45; }
+  .ph-fight { font-weight: 900; font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; line-height: .95; -webkit-text-stroke: .09em #14141c; paint-order: stroke fill; text-shadow: .05em .07em 0 #14141c; }
+  .ph-intro { font-weight: 500; letter-spacing: -0.012em; line-height: 1.22; }
+  .ph-speed { font-weight: 900; font-style: italic; text-transform: uppercase; letter-spacing: -0.025em; line-height: .95; background: linear-gradient(180deg, #fff 20%, #ffe0b8 55%, #ff9a52 92%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 .04em .05em rgba(0,0,0,.55)); }
+  .pop-text .ps { font-weight: 560; letter-spacing: -0.012em; line-height: 1.3; margin-top: .75em; }
 </style>
 </head>
 <body>
@@ -104,6 +124,7 @@
 <script src="../../lib/motion.js"></script>
 <script src="../../lib/mascot.js"></script>
 <script src="../../lib/volcano.js"></script>
+<script src="pop.js"></script>
 <script>
 /* ── the mark: two rings, empty in between (defined once, in lib/motion.js) ── */
 const MARK = (c, w) => NZ.MARK(c, w);
@@ -119,9 +140,11 @@ const P = {
   "linkedin-profile": { W: 1584, H: 396, scale: 2 },
   // YouTube shows the full 2560×1440 only on TVs; desktop shows the middle band (y 508–931), phones the middle 1546×423
   youtube:    { W: 2560, H: 1440, band: { y: 508, h: 423 }, head: { x: 560, y: 590, w: 820, size: 96, sub: 30 }, vis: { cx: 1720, cy: 720, s: 1.05 }, lock: { x: 560, y: 528, size: 38 } },
-  facebook:   { W: 1640, H: 624,  head: { x: 300, y: 176, w: 700, size: 80, sub: 25 }, vis: { cx: 1190, cy: 312, s: 1 },   lock: { x: 300, y: 112, size: 34 } },
-  // Facebook group cover: phones crop the sides too, so the words stay inside x 300–1340
-  "facebook-group": { W: 1640, H: 856, head: { x: 300, y: 300, w: 700, size: 88, sub: 27 }, vis: { cx: 1275, cy: 428, s: 0.98 }, lock: { x: 300, y: 228, size: 36 }, pill: false },
+  // Facebook page cover: phones show only the middle (x 265–1375) and the page photo overlaps the
+  // bottom-left on desktop, so the words start at x 380 and sit in the middle, top to bottom
+  facebook:   { W: 1640, H: 624,  head: { x: 380, y: 176, w: 560, size: 72, sub: 23 }, vis: { cx: 1228, cy: 312, s: 0.95 }, lock: { x: 380, y: 112, size: 32 }, center: 40, pill: false },
+  // Facebook group cover: phones crop the sides too, so the words stay inside x 300–1340, centred top to bottom
+  "facebook-group": { W: 1640, H: 856, head: { x: 300, y: 300, w: 640, size: 82, sub: 26 }, vis: { cx: 1300, cy: 428, s: 0.95 }, lock: { x: 300, y: 228, size: 36 }, pill: false, center: 0 },
   // the card X, LinkedIn, Facebook, Slack and iMessage show when someone shares namzilabs.co
   og:         { W: 1200, H: 630,  head: { x: 72, y: 180, w: 560, size: 70, sub: 23 }, vis: { cx: 930, cy: 330, s: 0.86 }, lock: { x: 72, y: 70, size: 32 }, url: true, pill: false },
   // an email-signature strip (shown at 600×150)
@@ -370,11 +393,11 @@ const CONCEPTS = {
     head: "One place to rule them all.", sub: ["all your data", "any metric", "the true numbers"],
     extra: (p, pid) => NZ.volcano({ W: p.W, H: p.H, ...VOLC[pid] }),
     visual: (p, pid) => {
-      const [cx, cy, w] = { x: [1135, 318, 620], youtube: [1745, 742, 760], facebook: [1215, 372, 660], "facebook-group": [1250, 505, 700] }[pid];
+      const [cx, cy, w] = { x: [1130, 250, 600], youtube: [1740, 720, 560], facebook: [1240, 312, 540], "facebook-group": [1295, 428, 600] }[pid];
       return NZ.oneRings({ view: "hero", cx, cy, w, base: ONE_RING });
     },
     li(p, pid, Z) {
-      const r = Z.co ? NZ.oneRings({ view: "hero", cx: 872, cy: 116, w: 290, base: ONE_RING }) : NZ.oneRings({ view: "hero", cx: 1182, cy: 256, w: 420, base: ONE_RING });
+      const r = Z.co ? NZ.oneRings({ view: "hero", cx: 878, cy: 95, w: 240, base: ONE_RING }) : NZ.oneRings({ view: "hero", cx: 1182, cy: 200, w: 390, base: ONE_RING });
       return r + col(Z, Z.x0, Z.co ? 370 : 360, [words(this, { head: this.head, sub: this.sub, size: Z.co ? 28 : 52, subSize: Z.co ? 14 : 23, cls: "epic" })]);
     },
   },
@@ -447,17 +470,17 @@ const CONCEPTS = {
     },
   },
   donut: {
-    // the donut daydream: Namzi, a pink donut, and a dream of all your data in one place
+    // the donut daydream, cartoon-dad style: a yellow hand holding a bitten pink donut, dreaming of the two donuts
     surface: "simpsky", fg: "#0f1d4a", subColor: "rgba(15,29,74,.74)", grid: false, meme: true, hs: 0.9,
     head: "Mmm… all your data in one <em>place.</em>", headShort: "Mmm… all your data, one <em>place.</em>",
     sub: ["every tool", "any metric", "donut worry"],
     extra: (p) => skyClouds(p),
     visual: (p, pid) => {
-      const o = { x: { nx: 1225, nw: 250, bx: 1010, by: 175, bw: 330 }, youtube: { nx: 1880, nw: 300, bx: 1610, by: 690, bw: 400, floor: 960 }, facebook: { nx: 1210, nw: 270, bx: 1012, by: 212, bw: 330 }, "facebook-group": { nx: 1250, nw: 290, bx: 1080, by: 318, bw: 350 } }[pid];
+      const o = { x: { hx: 1330, hw: 270, bx: 1010, by: 165, bw: 330 }, youtube: { hx: 1930, hw: 280, bx: 1600, by: 690, bw: 390, floor: 1000 }, facebook: { hx: 1255, hw: 250, bx: 1020, by: 190, bw: 320 }, "facebook-group": { hx: 1280, hw: 290, bx: 1050, by: 290, bw: 350 } }[pid];
       return donutDream(p, o);
     },
     li(p, pid, Z) {
-      const o = Z.co ? { nx: 890, nw: 116, bx: 790, by: 70, bw: 150 } : { nx: 1170, nw: 216, bx: 1010, by: 128, bw: 250 };
+      const o = Z.co ? { hx: 948, hw: 96, bx: 808, by: 72, bw: 150 } : { hx: 1290, hw: 180, bx: 1060, by: 130, bw: 250 };
       return donutDream(p, o) + col(Z, Z.x0, Z.co ? 330 : 360, [words(this, { head: this.headShort, sub: Z.co ? [this.sub[2]] : this.sub.slice(1), size: Z.co ? 30 : 56, subSize: Z.co ? 15 : 24 })]);
     },
   },
@@ -623,15 +646,34 @@ function thought(cx, cy, w, h, ink = "#0f1d4a") {
   const sw = Math.max(2.5, w * 0.014);
   return `<svg class="bn" style="left:0;top:0;overflow:visible" width="1" height="1"><g style="filter:drop-shadow(0 ${w * 0.03}px ${w * 0.04}px rgba(15,29,74,.25))">${circ(sw * 2, ink, ink)}${circ(0, "#fff")}</g></svg>`;
 }
-// Namzi, dreaming of donuts: holding one, and dreaming of the two in a thought cloud
+// a yellow cartoon hand (three fingers and a thumb, a white shirt cuff) holding a bitten pink donut
+function donutHand() {
+  const u = ++_uid, INK = "#14141c", Y = "#ffd90f";
+  _seed = 51;
+  let icing = "";
+  for (let i = 0; i <= 60; i++) { const a = (i / 60) * Math.PI * 2, r = 80 + 4 * Math.sin(a * 7 + 0.4) + 2 * Math.sin(a * 13); icing += `${i ? "L" : "M"}${f2(150 + Math.cos(a) * r)} ${f2(128 + Math.sin(a) * r)}`; }
+  const SPR = ["#fff", "#ffd23f", "#4dc9ff", "#6be07a", "#ff5a5a", "#b28cff"];
+  let sp = "";
+  for (let i = 0; i < 34; i++) { const a = rnd() * Math.PI * 2, r = 44 + rnd() * 32, x = 150 + Math.cos(a) * r, y = 128 + Math.sin(a) * r; sp += `<rect x="${f2(x - 7)}" y="${f2(y - 2.4)}" width="14" height="4.8" rx="2.4" fill="${SPR[i % SPR.length]}" transform="rotate(${f2(rnd() * 180)} ${f2(x)} ${f2(y)})"/>`; }
+  const finger = (x, y, h, r) => `<g transform="rotate(${r} ${x + 16} ${y + h})"><rect x="${x}" y="${y}" width="32" height="${h}" rx="16" fill="${Y}" stroke="${INK}" stroke-width="6"/></g>`;
+  return `<svg viewBox="0 0 300 400" style="width:100%;height:100%;overflow:visible"><defs><mask id="bite${u}" maskUnits="userSpaceOnUse" x="0" y="0" width="300" height="400"><rect width="300" height="400" fill="#fff"/><circle cx="214" cy="48" r="28" fill="#000"/><circle cx="238" cy="80" r="26" fill="#000"/><circle cx="190" cy="34" r="20" fill="#000"/></mask></defs>
+    <path d="M104 1400V300Q104 286 118 286H196Q210 286 210 300V1400Z" fill="#fff" stroke="${INK}" stroke-width="6"/><path d="M104 318H210" stroke="${INK}" stroke-width="5"/>
+    <path d="M118 292C112 262 100 236 96 212C92 186 124 174 150 176C184 178 214 190 212 222C210 246 198 268 196 292Z" fill="${Y}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>
+    <g mask="url(#bite${u})"><circle cx="150" cy="128" r="96" fill="#d99a52" stroke="${INK}" stroke-width="6"/><path d="${icing}Z" fill="#ff7eb3" stroke="#e0579a" stroke-width="2"/><circle cx="150" cy="128" r="31" fill="#d99a52"/><circle cx="150" cy="128" r="24" fill="#8fc3ff" stroke="${INK}" stroke-width="6"/>${sp}
+      <path d="M92 76A76 76 0 0 1 150 50" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="7" stroke-linecap="round"/></g>
+    <path d="M186 22A26 26 0 0 1 212 22M214 48A26 26 0 0 1 244 64M242 82A26 26 0 0 1 244 106" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round" opacity=".0"/>
+    ${finger(104, 170, 70, -14)}${finger(138, 176, 74, -2)}${finger(172, 176, 70, 10)}
+    <path d="M100 236C78 222 66 196 76 176C84 160 104 164 110 180C116 196 118 214 124 232" fill="${Y}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/></svg>`;
+}
+// the dream: a thought cloud with the two-donut mark, rising from a hand (off-camera, someone is very hungry)
 function donutDream(p, o) {
-  const nh = (o.nw * 340) / 320, floor = o.floor ?? p.H, top = floor - nh * 0.93;
-  const hx = o.nx + o.nw * 0.38, hy = top + nh * 0.2; // the top of Namzi's head
+  const hh = o.hw * (400 / 300), floor = o.floor ?? p.H, top = floor - hh * 0.97; // (the sleeve runs on below the frame)
+  const tx = o.hx - o.hw * 0.1, ty = top + hh * 0.05; // where the dream rises from: just above the donut
   const bw = o.bw, bh = bw * 0.72, dm = bh * 0.92;
   let dots = "";
-  [[0.25, 0.05], [0.5, 0.075], [0.75, 0.1]].forEach(([t, r]) => { const x = hx + (o.bx + bw * 0.28 - hx) * t, y = hy + (o.by + bh * 0.3 - hy) * t; dots += `<div class="bn" style="left:${x - bw * r / 2}px;top:${y - bw * r / 2}px;width:${bw * r}px;height:${bw * r}px;border-radius:50%;background:#fff;box-shadow:0 0 0 ${Math.max(2.5, bw * 0.014)}px #0f1d4a"></div>`; });
+  [[0.25, 0.05], [0.5, 0.075], [0.75, 0.1]].forEach(([t, r]) => { const x = tx + (o.bx + bw * 0.28 - tx) * t, y = ty + (o.by + bh * 0.3 - ty) * t; dots += `<div class="bn" style="left:${x - bw * r / 2}px;top:${y - bw * r / 2}px;width:${bw * r}px;height:${bw * r}px;border-radius:50%;background:#fff;box-shadow:0 0 0 ${Math.max(2.5, bw * 0.014)}px #0f1d4a"></div>`; });
   return thought(o.bx, o.by, bw, bh) + dots + `<div class="bn" style="left:${o.bx - dm / 2}px;top:${o.by - dm / 2}px;width:${dm}px;height:${dm}px">${donutRings()}</div>` +
-    `<div class="bn namzi" style="left:${o.nx}px;top:${top}px;width:${o.nw}px">${NZ.mascot({ mood: "dreamy", pose: "hold", prop: "donut", shadow: false })}</div>`;
+    `<div class="bn" style="left:${o.hx - o.hw / 2}px;top:${top}px;width:${o.hw}px;height:${hh}px;transform:rotate(-8deg);transform-origin:50% 100%;filter:drop-shadow(0 ${o.hw * 0.04}px ${o.hw * 0.05}px rgba(15,29,74,.25))">${donutHand()}</div>`;
 }
 // soft clouds for the donut sky
 function skyClouds(p) {
@@ -675,18 +717,57 @@ function logoWall(p, pid) {
   return `<div style="position:absolute;inset:0;-webkit-mask-image:radial-gradient(${co ? "38% 90%" : "34% 80%"} at ${co ? 52 : 64}% 50%, transparent 58%, #000 92%);mask-image:radial-gradient(${co ? "38% 90%" : "34% 80%"} at ${co ? 52 : 64}% 50%, transparent 58%, #000 92%);opacity:.9">${s}</div>`;
 }
 
+/* ── the game, film and series banners: one layout for every size ─────────
+   T is where the words go, A where the picture goes. Words stay clear of the
+   X and Facebook profile photos, inside LinkedIn's safe zones, and inside
+   what phones show. The picture sits on the ground or the sea line when the
+   scene has one. */
+const POP_BOX = {
+  x: { T: { x: 100, y: 40, w: 600, h: 282, v: "top" }, A: { x: 740, y: 30, w: 730, h: 440 }, head: 62, sub: 21, lock: 28, kick: 15 },
+  "linkedin-company": { T: { x: 352, y: 18, w: 372, h: 155 }, A: { x: 734, y: 10, w: 270, h: 171 }, head: 27, sub: 13, kick: 10 },
+  "linkedin-profile": { T: { x: 612, y: 44, w: 380, h: 308 }, A: { x: 1002, y: 30, w: 382, h: 336 }, head: 42, sub: 17, kick: 13 },
+  youtube: { T: { x: 560, y: 520, w: 760, h: 400 }, A: { x: 1340, y: 512, w: 710, h: 416 }, head: 80, sub: 27, lock: 34, kick: 20 },
+  facebook: { T: { x: 380, y: 50, w: 520, h: 484 }, A: { x: 912, y: 50, w: 463, h: 524 }, head: 56, sub: 20, lock: 28, kick: 15 },
+  "facebook-group": { T: { x: 300, y: 100, w: 580, h: 656 }, A: { x: 895, y: 100, w: 560, h: 656 }, head: 66, sub: 23, lock: 32, kick: 17 },
+};
+const PH = { "ph-pixel-plain": 0.7, "ph-inter": 0.92, "ph-inter-glow": 0.9, "ph-pixel": 0.8, "ph-pixel-shadow": 0.8, "ph-dialog": 0.4, "ph-fight": 1, "ph-intro": 0.62, "ph-speed": 0.96 };
+function popLayout(c, p, pid) {
+  const B = POP_BOX[pid], co = pid === "linkedin-company", li = pid.startsWith("linkedin");
+  const A = { ...B.A }, T = { ...B.T };
+  if (c.groundH) A.floor = p.H - c.groundH(p.H, pid);
+  if (c.seaY) A.floor = c.seaY(p.H, pid);
+  // a heads-up display across the top pushes the words and the picture down
+  if (c.hud && pid === "x") { T.y += 20; T.h -= 20; A.y += 26; A.h -= 26; }
+  if (c.hud && pid === "youtube") { T.y += 44; T.h -= 44; A.y += 40; A.h -= 40; }
+  if (c.groundH) T.h = Math.min(T.h, A.floor - 14 - T.y); // words stay off the ground
+  let html = c.bg(p.W, p.H, pid, A) + (c.hud ? c.hud(p.W, p.H, pid) : "") + c.art(A, pid);
+  const head = co ? c.short : c.head, sub = c.subSizes && !c.subSizes.includes(pid) ? "" : co ? c.subShort : c.sub;
+  const lock = !li && B.lock ? `<div class="bn-lock" style="font-size:${B.lock}px;color:${c.lockColor};margin-bottom:${f2(B.lock * 0.6)}px">${MARK(c.lockColor)}<span>Namzilabs</span></div>` : "";
+  const kick = c.kicker && !co ? `<div class="pk ${c.kickerClass || ""}" style="font-size:${f2(B.kick * (c.kickerScale || 1))}px;color:${c.kickColor || c.fg}">${c.kicker}</div>` : "";
+  if (c.scrim) html += `<div class="bn" style="left:${f2(T.x - T.w * 0.28)}px;top:${f2(T.y - T.h * 0.3)}px;width:${f2(T.w * 1.56)}px;height:${f2(T.h * 1.6)}px;background:radial-gradient(closest-side, ${c.scrim}, ${c.scrim.replace(/[\d.]+\)$/, "0)")});z-index:3"></div>`;
+  html += `<div class="pop-text" style="left:${T.x}px;top:${T.y}px;width:${T.w}px;height:${T.h}px;justify-content:${T.v === "top" ? "flex-start" : "center"};color:${c.fg}">${lock}${kick}<div class="ph ${c.headClass}" style="font-size:${f2(B.head * (PH[c.headClass] || 1))}px">${head}</div>${sub ? `<div class="ps" style="font-size:${B.sub}px;color:${c.subColor}">${sub}</div>` : ""}</div>`;
+  return html;
+}
+for (const id of POP.IDS) CONCEPTS[id] = { ...POP[id], pop: true, meme: true, grid: false };
+
 // memes skip the link preview and the email signature: those stay on-brand
 const MEME_SIZES = ["x", "linkedin-company", "linkedin-profile", "youtube", "facebook", "facebook-group"];
 
 function banner(cid, pid) {
   const c = CONCEPTS[cid], p = P[pid];
   const el = document.createElement("div");
-  el.className = `canvas ${c.surface}`;
+  el.className = c.pop ? "canvas" : `canvas ${c.surface}`;
+  if (c.pop) el.style.background = c.surface;
   el.style.width = `${p.W}px`; el.style.height = `${p.H}px`;
   el.dataset.still = `${cid}/${pid}`;
   if (p.scale) el.dataset.scale = p.scale;
   let html = (c.grid === false ? "" : `<div class="grid88"></div>`) + (typeof c.extra === "function" ? c.extra(p, pid) : c.extra || "");
-  if (ZONE[pid]) {
+  if (c.pop) {
+    // every size of a design sits on the same page, so its SVG ids get the size added, or url(#…) would
+    // find the first size's gradient
+    const u = `${cid}-${pid}`;
+    html += popLayout(c, p, pid).replace(/\bid="([^"]+)"/g, `id="$1-${u}"`).replace(/url\(#([^)]+)\)/g, `url(#$1-${u})`);
+  } else if (ZONE[pid]) {
     html += c.li(p, pid, ZONE[pid]);
   } else if (c.layout) {
     html += c.layout(p, pid);
@@ -699,10 +780,17 @@ function banner(cid, pid) {
       ${pid === "email" ? "" : `<div style="font-family:var(--serif);font-style:italic;font-size:${size * 0.42}px;color:${c.subColor};margin-top:${size * 0.18}px;letter-spacing:-0.01em">All your data in one place. Any metric. The true numbers.</div>`}</div>`;
   } else {
     html += c.visual(p, pid);
-    if (p.lock) html += `<div class="bn bn-lock" style="left:${p.lock.x}px;top:${p.lock.y}px;font-size:${p.lock.size}px;color:${c.fg}">${MARK(c.fg)}<span>Namzilabs</span></div>`;
     const sub = p.head.sub ? `<div class="bn-sub" style="font-size:${p.head.sub}px;color:${c.subColor}">${c.sub.map((x, i) => (i ? `<span class="sep">·</span>` : "") + `<span>${x}</span>`).join("")}</div>` : "";
     const head = p.head.oneLine && c.headShort ? c.headShort : c.head;
-    html += `<div class="bn" style="left:${p.head.x}px;top:${p.head.y}px;width:${p.head.w}px;color:${c.fg}"><div class="${c.headCls || "bn-head"}" style="font-size:${p.head.size * (p.head.oneLine ? 1 : c.hs || 1)}px${p.head.oneLine ? ";white-space:nowrap" : ""}">${head}</div>${sub}</div>`;
+    const headHtml = `<div class="${c.headCls || "bn-head"}" style="font-size:${p.head.size * (p.head.oneLine ? 1 : c.hs || 1)}px${p.head.oneLine ? ";white-space:nowrap" : ""}">${head}</div>${sub}`;
+    if (p.center != null) {
+      // the lockup, the line and the sub as one block, centred top to bottom (a little higher by p.center)
+      html += `<div class="bn" style="left:${p.head.x}px;top:0;width:${p.head.w}px;height:${p.H}px;padding-bottom:${p.center}px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;color:${c.fg}">
+        ${p.lock ? `<div class="bn-lock" style="font-size:${p.lock.size}px;color:${c.fg};margin-bottom:${p.lock.size * 0.95}px">${MARK(c.fg)}<span>Namzilabs</span></div>` : ""}${headHtml}</div>`;
+    } else {
+      if (p.lock) html += `<div class="bn bn-lock" style="left:${p.lock.x}px;top:${p.lock.y}px;font-size:${p.lock.size}px;color:${c.fg}">${MARK(c.fg)}<span>Namzilabs</span></div>`;
+      html += `<div class="bn" style="left:${p.head.x}px;top:${p.head.y}px;width:${p.head.w}px;color:${c.fg}">${headHtml}</div>`;
+    }
     if (p.url) html += `<div class="bn" style="left:${p.head.x}px;bottom:${p === P.email ? 40 : 64}px;font-size:${p === P.email ? 22 : 26}px;font-weight:700;letter-spacing:-0.015em;color:${c.fg};opacity:.85">namzilabs.co${p === P.email ? "" : ` <span style="opacity:.6;font-weight:550">· free to start</span>`}</div>`;
   }
   el.innerHTML = html;
@@ -715,7 +803,20 @@ for (const cid of Object.keys(CONCEPTS)) {
   if (ONLY && !ONLY.split(",").includes(cid)) continue;
   for (const pid of CONCEPTS[cid].sizes || (CONCEPTS[cid].meme ? MEME_SIZES : Object.keys(P))) if (!SIZES || SIZES.split(",").includes(pid)) banner(cid, pid);
 }
-NZ.still();
+// a long headline on a short size shrinks, words and all, until the block fits its box (and so stays clear of
+// the profile photo and the crops)
+function fitPopText() {
+  for (const el of document.querySelectorAll(".pop-text")) {
+    const kids = [...el.children], fs = kids.map((c) => parseFloat(c.style.fontSize) || 0);
+    for (let k = 1, i = 0; i < 14; i++) {
+      const box = el.getBoundingClientRect(), r = kids.map((c) => c.getBoundingClientRect());
+      if (Math.min(...r.map((q) => q.top)) >= box.top - 1 && Math.max(...r.map((q) => q.bottom)) <= box.bottom + 1 && r.every((q) => q.right <= box.right + 1)) break;
+      k *= 0.95;
+      kids.forEach((c, j) => { if (fs[j]) c.style.fontSize = `${fs[j] * k}px`; });
+    }
+  }
+}
+window.__ready = document.fonts.ready.then(() => { fitPopText(); return POP.pixelate(); }).then(() => { NZ.still(); return window.__ready; });
 </script>
 </body>
 </html>

@@ -12,13 +12,14 @@ Everything a post or video needs so the brand reads as one brand. The source of 
 
 In code, the mark is defined once, as `NZ.RINGS` / `NZ.MARK` in [`lib/motion.js`](../lib/motion.js): every post, video and banner draws it from there. `tools/build-logos.mjs` writes the SVG files with the same geometry: two rings of radius 15, 14 apart, stroke 4.6, on a 64-unit grid.
 
-**Variants** ([board](logos/boards/01-between-mono-variants.png)): the same two rings with a different finish or ground. There are 24, in [`logos/variants/`](logos/variants/), each as an SVG and a 1024px profile picture:
+**Variants** ([board](logos/boards/01-between-mono-variants.png)): the same two rings with a different finish or ground. There are 33, in [`logos/variants/`](logos/variants/), each as an SVG and a 1024px profile picture:
 
 | Group | Variants |
 |---|---|
 | Ring styles | Hairline, Bold, Gradient, Outline, Split, Linked (woven over and under) |
 | Grounds | Midnight grid, Blueprint, Glass, Neon, Chrome, Emboss |
 | Fun | Precious (3D gold, in front of a volcano), Wedding rings, Coffee rings, Donuts, Life rings, Pixel, Napkin sketch, Cosmic, Sticker, Soap bubbles, Balloon, Gummy rings |
+| Games | Chomper (the left ring eats pellets in a maze), 8-bit coins, Diamond rings, Falling blocks, Code rain, Fighter (VS screen), Synthwave, The cave (two fires and the rings in gold), Christmas lights. Each goes with a games & films banner. |
 
 Each banner design has a variant made for it (see [`banners/README.md`](banners/README.md)). Rebuild with `node tools/build-variants.mjs`, then render with `node tools/render-stills.mjs brand/logos/variants.html brand/logos --ss 1`.
 
@@ -31,13 +32,13 @@ The folder [`logos/01-between-mono/`](logos/01-between-mono/) contains:
 
 **Transparent files** for the website and anything else, in [`logos/transparent/`](logos/transparent/): the symbol, the lockup and the wordmark, each in white (`#FFFFFF`), black (the brand's ink, `#14141C`) and blue (`#2F5FD8`), as SVG plus PNGs (symbol 512 and 2048, lockup 1200 and 2400, wordmark 1200), cropped tight with nothing behind them. **Website icons** (favicon SVG and ICO, the iPhone and Android icons, a web manifest, and the `<head>` snippet) are in [`logos/web/`](logos/web/).
 
-**Precious** is the one variant that's a render, not a drawing: the two rings as heavy gold bands with a glowing inscription in our own words, made in 3D with three.js ([`logos/one-ring/rings.html`](logos/one-ring/rings.html)) and placed in front of a generic volcano ([`lib/volcano.js`](../lib/volcano.js)). It's a parody of a famous fantasy ring, so: no film lettering or inscription, no tower, no eye, and the Cinzel and Great Vibes fonts (both OFL) are for this parody only.
+**Precious** is the one variant that's a render, not a drawing: the two rings as heavy gold bands, side by side and overlapping like the mark, with a glowing inscription in our own words, made in 3D with three.js ([`logos/one-ring/rings.html`](logos/one-ring/rings.html)) and placed in front of a generic volcano ([`lib/volcano.js`](../lib/volcano.js)). It's a parody of a famous fantasy ring, so: no film lettering or inscription, no tower, no eye, and the Cinzel and Great Vibes fonts (both OFL) are for this parody only.
 
 The wordmark is outlined from Inter 800, so no file needs a font installed. The earlier concepts (02–10 and the original blue-lens 01) are still in [`logos/`](logos/) for reference, but they're retired: use only the mono mark and its variants.
 
 **Don't:** fill the space between the rings, add a coloured lens back, change the rings' spacing, put the ink tile on a busy photo, or stretch it. The primary mark is one colour: white on dark and blue, ink on light. The variants are for profile pictures and fun posts, not for the lockup on the website.
 
-**Banners:** nineteen designs. Ten are for every day: Electric, Funnel, Sources, Namzi, Minimal, Formula, Glass, Neon, Big type and Blueprint. Six are memes: Precious, Donut daydream, Wedding, Galaxy brain, Starter pack, and Expectation vs reality. Three are made for LinkedIn: Leaky funnel, Tool wall and Team. Each comes at every platform size (X, LinkedIn company page and personal profile at 2x, Facebook page and group, YouTube, plus a link-preview card and an email signature for the everyday ten) with the profile picture made to go with it. **On LinkedIn, use the LinkedIn files, never the X header:** they keep every word clear of the page logo and the profile photo. There are also Instagram highlight covers. See [`banners/README.md`](banners/README.md).
+**Banners:** thirty-five designs. Ten are for every day: Electric, Funnel, Sources, Namzi, Minimal, Formula, Glass, Neon, Big type and Blueprint. Sixteen play famous games, films and series (a pixel platformer, a maze chase, a cave, a turn-based battle, a VS screen, a crafting grid, falling blocks, a word puzzle, achievement toasts, a game-over screen, an emergency meeting, a pill choice, an opening crawl, jets at sunset, a shark fin, Christmas lights), with Namzi and the rings in every part: the format and the joke, never the characters, sprites, names, logos or lettering. Six are memes: Precious, Donut daydream, Wedding, Galaxy brain, Starter pack, and Expectation vs reality. Three are made for LinkedIn: Leaky funnel, Tool wall and Team. Each comes at every platform size (X, LinkedIn company page and personal profile at 2x, Facebook page and group, YouTube, plus a link-preview card and an email signature for the everyday ten) with the profile picture made to go with it. **On LinkedIn, use the LinkedIn files, never the X header:** they keep every word clear of the page logo and the profile photo. There are also Instagram highlight covers. See [`banners/README.md`](banners/README.md).
 
 ## Mascot: Namzi
 
@@ -89,6 +90,7 @@ The wordmark is outlined from Inter 800, so no file needs a font installed. The 
 - **Instrument Serif italic** for **exactly one word per headline**, the word that carries the meaning: "Three *answers.*", "shows its *working.*"
 - Numbers always use tabular figures.
 - Both fonts are OFL-licensed and vendored in [`assets/fonts/`](../assets/fonts/).
+- Parodies only: Cinzel and Great Vibes (OFL) for Precious, Press Start 2P (OFL) for the pixel games, Permanent Marker (Apache 2.0) for the Christmas-lights letters. Their licences sit next to them in `assets/fonts/`. Never use them outside those designs.
 
 ## Layout
 

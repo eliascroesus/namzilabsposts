@@ -167,5 +167,68 @@
     "group": "Fun",
     "note": "Two peach-ring sweets, rolled in sugar. Sweet numbers only.",
     "pairs": null
+  },
+  {
+    "id": "chomper",
+    "name": "Chomper",
+    "group": "Games",
+    "note": "The left ring opens wide and eats the duplicates, one pellet at a time. Pairs with the maze-chase banner.",
+    "pairs": "arcade"
+  },
+  {
+    "id": "coins",
+    "name": "8-bit coins",
+    "group": "Games",
+    "note": "The rings as blocky gold coins over a pixel sky. Pairs with the platformer banner.",
+    "pairs": "platformer"
+  },
+  {
+    "id": "diamond",
+    "name": "Diamond rings",
+    "group": "Games",
+    "note": "The rings mined out of stone, one diamond block at a time. Pairs with the crafting banner.",
+    "pairs": "crafting"
+  },
+  {
+    "id": "blocks",
+    "name": "Falling blocks",
+    "group": "Games",
+    "note": "Each ring stacked from falling-block pieces. Everything fits. Pairs with the falling-blocks banner.",
+    "pairs": "blocks"
+  },
+  {
+    "id": "coderain",
+    "name": "Code rain",
+    "group": "Games",
+    "note": "The rings glowing green in a rain of numbers. Take the red pill. Pairs with the pill-choice banner.",
+    "pairs": "redpill"
+  },
+  {
+    "id": "fighter",
+    "name": "Fighter",
+    "group": "Games",
+    "note": "Stripe in the red corner, your CRM in the blue, sparks where they cross. Pairs with the VS banner.",
+    "pairs": "versus"
+  },
+  {
+    "id": "synthwave",
+    "name": "Synthwave",
+    "group": "Games",
+    "note": "Neon rings over a striped sun and an endless grid. Need for speed. Pairs with the jet-at-sunset banner.",
+    "pairs": "speed"
+  },
+  {
+    "id": "cave",
+    "name": "The cave",
+    "group": "Games",
+    "note": "Two fires in the dark and the rings in gold between them. It's dangerous to report alone: take this. Pairs with the cave banner.",
+    "pairs": "quest"
+  },
+  {
+    "id": "lights",
+    "name": "Christmas lights",
+    "group": "Games",
+    "note": "Each ring a string of coloured bulbs on a dark wallpaper. Right here. Pairs with the lights banner.",
+    "pairs": "lights"
   }
 ]
