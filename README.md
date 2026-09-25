@@ -43,9 +43,9 @@ Each comes at every size: X, LinkedIn company and profile, Facebook page and gro
 
 ## Namzi, the mascot
 
-<img src="brand/mascot/boards/01-character.png" width="100%" alt="Meet Namzi: the blue lens from the logo, with a face.">
+<img src="brand/mascot/boards/01-character.png" width="100%" alt="Meet Namzi: the space between the logo's two rings, with a face.">
 
-Namzi is the blue lens from the logo: the overlap where two tools see the same person, given eyes, noodle arms and a stack of receipts. It counts everyone once, carries receipts, is deadpan but never mean, and is allergic to vanity metrics.
+Namzi lives in the space between the logo's two rings: the overlap where two tools see the same person, given eyes, noodle arms and a stack of receipts. It counts everyone once, carries receipts, is deadpan but never mean, and is allergic to vanity metrics.
 
 - **Drawn in code:** [`lib/mascot.js`](lib/mascot.js) takes `NZ.mascot({ mood, pose, prop, fx })`. It has 11 moods, 12 poses and 5 props, and videos redraw it every frame.
 - **Stickers:** 18 die-cut stickers (PNG + SVG) and 3 avatars in [`brand/mascot/`](brand/mascot/), ready for Instagram Stories, replies and GIPHY.

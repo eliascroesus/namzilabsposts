@@ -299,7 +299,9 @@ if (artifactDir) {
         const src = path.join(ROOT, "videos", dir, f), dst = webPath(`videos/${dir}/${f}`);
         if (existsSync(dst) && statSync(dst).mtimeMs > statSync(src).mtimeMs) continue;
         mkdirSync(path.dirname(dst), { recursive: true });
-        execFileSync(FF, ["-y", "-loglevel", "error", "-i", src, "-c:v", "libx264", "-preset", "slow", "-crf", "23", "-profile:v", "high", "-x264-params", "aq-mode=3", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an", dst]);
+        // the launch-day "AI live" cuts aren't posted yet, so their copies here are lighter (masters stay in the repo)
+        const crf = f.includes("ai-live") ? "28" : "23";
+        execFileSync(FF, ["-y", "-loglevel", "error", "-i", src, "-c:v", "libx264", "-preset", "slow", "-crf", crf, "-profile:v", "high", "-x264-params", "aq-mode=3", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an", dst]);
         console.log(`web copy: ${dir}/${f}`);
       }
     }
