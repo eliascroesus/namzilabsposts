@@ -253,5 +253,5 @@
 .st.x .sth { font-size: 84px; margin-top: 44px; }
 .st.x .sb { font-size: 30px; margin-top: 22px; }
 .st.x .xfoot { margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
-.st.x .main.center { position: static; flex: 1; margin: 0; display: flex; flex-direction: column; justify-content: center; }
+.st.x .main.center { position: static; flex: 1; min-width: 0; margin: 0; display: flex; flex-direction: column; justify-content: center; }
 .st.x .viz { margin-top: 0; }

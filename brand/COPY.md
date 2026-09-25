@@ -469,9 +469,9 @@ We put all your business data in one place, so you can build any KPI from it, tr
 All your data in one place · namzilabs.co
 ```
 
-## DM replies for comment keywords
+## DM replies for keywords
 
-When someone comments a keyword, send the matching reply. Each gives the exact setup in three steps, then the link. Answer by hand while volume is low, or paste them into ManyChat.
+When someone comments a keyword on a post, or replies one to a highlight story, send the matching reply. Each gives the exact setup in three steps, then the link. Answer by hand while volume is low, or paste them into ManyChat.
 
 **SHOWUP (show rate)**
 

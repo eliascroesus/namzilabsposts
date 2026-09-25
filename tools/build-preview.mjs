@@ -31,7 +31,7 @@ const KITS = {
   content: { url: "https://claude.ai/artifact/NaEiTHhgzhRd5EMTTh5syU", title: "Content Kit" },
   brand: { url: "https://claude.ai/artifact/8wEv8d2VnWHqqmHusbJHvh", title: "Brand Kit" },
   banners: { url: "https://claude.ai/artifact/V4VH9xB5sb6Bhtz3rSwNSN", title: "Banner Kit" },
-  highlights: { url: "", title: "Highlights Kit" },
+  highlights: { url: "https://claude.ai/artifact/SrKfquPCQiYmddZKyhq4kC", title: "Highlights Kit" },
 };
 
 const REPO = {

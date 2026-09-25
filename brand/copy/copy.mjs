@@ -130,8 +130,8 @@ export default {
     },
     {
       id: "dms",
-      title: "DM replies for comment keywords",
-      intro: "When someone comments a keyword, send the matching reply. Each gives the exact setup in three steps, then the link. Answer by hand while volume is low, or paste them into ManyChat.",
+      title: "DM replies for keywords",
+      intro: "When someone comments a keyword on a post, or replies one to a highlight story, send the matching reply. Each gives the exact setup in three steps, then the link. Answer by hand while volume is low, or paste them into ManyChat.",
       items: [
         { label: "SHOWUP (show rate)", text: "Here's the show rate setup 👇\n\n1. Connect your calendar (Calendly or Cal.com) for booked calls, and Fathom or your CRM for the calls that actually happened.\n2. Build show rate: held ÷ booked, matched by each lead's email, so a reschedule or a duplicate booking counts once.\n3. Split it by setter, by source or by week, and you'll see exactly where people stop showing up.\n\nStart free (no card): namzilabs.co\n\nReply with your stack and I'll tell you exactly what to connect." },
         { label: "HELD (cost per held meeting)", text: "Here's cost per held meeting 👇\n\n1. Connect your outbound tool (Instantly, Smartlead or lemlist), your calendar and Fathom.\n2. Count held meetings per client, matched by the prospect's email, so one meeting booked twice counts once.\n3. Cost per held meeting = what the client pays ÷ meetings that happened. That's the number they actually care about.\n\nStart free (no card): namzilabs.co" },

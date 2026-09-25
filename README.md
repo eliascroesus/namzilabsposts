@@ -137,7 +137,7 @@ You can download single files, a whole post, a whole section, or everything as o
    - no invented proof
    - label demo data
    - nothing about the AI connection or ad platforms until they're live
-2. Set up the **comment-keyword DMs** (SHOWUP, METRICS, SPEED, LAUNCH, FIRST10), with ManyChat or by hand.
+2. Set up the **keyword DMs** (SHOWUP, HELD, SPEED, LEAK, LAUNCH, LIST, METRICS, FIRST10), with ManyChat or by hand. People comment them on posts and reply them to the highlight stories; every reply is written out in [`brand/COPY.md`](brand/COPY.md).
 3. Set up every profile the same way: the **profile picture** (`brand/logos/01-between-mono/profile-blue-1024.png`), the matching **banner** from [`brand/banners/`](brand/banners/), and the **bio** from [its README](brand/banners/README.md). On Instagram, add the **highlights** from [`highlights/`](highlights/README.md), built from the last (FAQ) to the first (Start here). Pin **video 11** everywhere and **post 35** on Instagram and LinkedIn (the full list is in [STRATEGY.md, "Pin these first"](STRATEGY.md#pin-these-first-all-platforms)).
 4. Follow the **calendar** in [STRATEGY.md §9](STRATEGY.md#9-the-first-30-days), plus 30 to 50 replies a day in the niche.
 
