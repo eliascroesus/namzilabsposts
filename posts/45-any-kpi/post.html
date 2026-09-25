@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 45 · Your show rate lives in two tools</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/story.css">
+<style>body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/hlicons.js"></script>
+<script src="../../lib/story.js"></script>
+<script src="../../highlights/stories.js"></script>
+<script>
+  // Feature spotlight: Any KPI. Same pieces and numbers as the Any KPI highlight.
+  const f = NZ.HIGHLIGHTS.find((h) => h.id === "any-kpi").frames;
+  NZ.STORY.post("any-kpi", [
+    { h: "Your show rate lives in two *tools.*", sub: "Your CRM has the calls held. Your calendar has the calls booked. Neither can divide one by the other.", viz: f[1].viz, demo: true },
+    f[2], f[3], f[4],
+    { cta: true, bg: "electric", h: "Which one would you *build?*", sub: "Comment METRICS and we'll send you the recipe.", kw: "METRICS", offer: "Free to start, no card." },
+  ], { chip: "Feature · Any KPI", x: { h: "Your show rate lives in two *tools.*", sub: "Namzilabs builds any KPI across them. No code.", viz: f[1].viz, demo: true } });
+</script>
+</body>
+</html>

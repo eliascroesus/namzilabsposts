@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 50 · Stop reporting booked meetings</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/story.css">
+<style>body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/hlicons.js"></script>
+<script src="../../lib/story.js"></script>
+<script src="../../highlights/stories.js"></script>
+<script>
+  // Use case: agencies. Same pieces and numbers as the Agencies highlight (and post 31).
+  const f = NZ.HIGHLIGHTS.find((h) => h.id === "agencies").frames;
+  NZ.STORY.post("agencies", [
+    { h: "Stop reporting booked *meetings.*", sub: "Your client pays for the ones that happened.", viz: f[1].viz, demo: true },
+    f[2], f[3],
+    { cta: true, bg: "electric", h: "Want the exact *setup?*", tsize: 112, sub: "Comment HELD and we'll send you how to build cost per held meeting for every client.", kw: "HELD", offer: "Free to start, no card." },
+  ], { chip: "Use case · Agencies", x: { h: "Stop reporting booked *meetings.*", sub: "Cost per held meeting, per client, with the receipt.", viz: f[1].viz, demo: true } });
+</script>
+</body>
+</html>

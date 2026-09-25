@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 52 · What does your email list really make?</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/story.css">
+<style>body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/hlicons.js"></script>
+<script src="../../lib/story.js"></script>
+<script src="../../highlights/stories.js"></script>
+<script>
+  // Use case: e-commerce. Same pieces and numbers as the E-com highlight (and post 06).
+  const f = NZ.HIGHLIGHTS.find((h) => h.id === "e-com").frames;
+  NZ.STORY.post("e-com", [
+    { h: "What does your email list *really* make?", viz: f[1].viz, demo: true },
+    f[2], f[3],
+    { cta: true, bg: "electric", h: "Want the exact *setup?*", tsize: 112, sub: "Comment LIST and we'll send you how to match your orders to your list.", kw: "LIST", offer: "Free to start, no card." },
+  ], { chip: "Use case · E-com", x: { bg: "sky", h: "What does your email list *really* make?", sub: "Match orders to subscribers. Matching, not attribution.", viz: f[2].viz, demo: true } });
+</script>
+</body>
+</html>

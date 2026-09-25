@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs · highlight stories</title>
+<link rel="stylesheet" href="../lib/brand.css">
+<link rel="stylesheet" href="../lib/post.css">
+<link rel="stylesheet" href="../lib/story.css">
+<style>
+  /* Every story in every highlight (the frames are in stories.js), 1080×1920.
+       node tools/render-stills.mjs highlights/stories.html highlights --ss 2
+       node tools/render-stills.mjs highlights/stories.html highlights --ss 2 --query "only=funnel"   (one highlight) */
+  body { display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; align-items: flex-start; }
+</style>
+</head>
+<body>
+<script src="../assets/logos/marks.js"></script>
+<script src="../lib/motion.js"></script>
+<script src="../lib/hlicons.js"></script>
+<script src="../lib/story.js"></script>
+<script src="stories.js"></script>
+<script>
+  const only = new URLSearchParams(location.search).get("only");
+  NZ.HIGHLIGHTS.forEach((hl, k) => {
+    if (only && !only.split(",").includes(hl.id)) return;
+    const dir = `${String(k + 1).padStart(2, "0")}-${hl.id}`;
+    hl.frames.forEach((f, i) => {
+      document.body.insertAdjacentHTML("beforeend", NZ.STORY.frame({ ...f, hl: hl.id, i: i + 1, n: hl.frames.length, still: `${dir}/story-${String(i + 1).padStart(2, "0")}` }));
+    });
+  });
+  NZ.STORY.ready();
+</script>
+</body>
+</html>

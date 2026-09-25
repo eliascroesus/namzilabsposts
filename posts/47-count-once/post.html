@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 47 · You don't have 1,318 leads. You have 1,240.</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/story.css">
+<style>body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/hlicons.js"></script>
+<script src="../../lib/story.js"></script>
+<script src="../../highlights/stories.js"></script>
+<script>
+  // Feature spotlight: Count once. Same pieces and numbers as the Count once highlight.
+  const f = NZ.HIGHLIGHTS.find((h) => h.id === "count-once").frames;
+  NZ.STORY.post("count-once", [
+    { h: "You don't have 1,318 leads. You have *1,240.*", viz: f[3].viz, demo: true },
+    f[1], f[2],
+    { cta: true, bg: "electric", h: "Count every customer *once.*", tsize: 112, sub: "Comment METRICS and we'll show you how it works on your tools.", kw: "METRICS", offer: "Free to start, no card." },
+  ], { chip: "Feature · Count once", x: { h: "You don't have 1,318 leads. You have *1,240.*", sub: "Namzilabs counts every customer once, across every tool.", viz: f[3].viz, demo: true } });
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs · highlight icons</title>
+<link rel="stylesheet" href="../lib/brand.css">
+<style>
+  /* The clean set: one icon per highlight, drawn on one 96-unit grid with one stroke weight,
+     round caps and one accent each, in four colourways. Square, centred for the circle crop.
+       node tools/render-stills.mjs highlights/icons.html highlights/covers/icons --ss 2 */
+  body { margin: 0; padding: 20px; display: flex; flex-wrap: wrap; gap: 20px; background: #333; }
+  .ic { width: 1080px; height: 1080px; position: relative; overflow: hidden; display: grid; place-items: center; }
+  .ic svg { width: 520px; height: 520px; overflow: visible; }
+  .strip { flex: none; width: 2200px; height: 330px; display: flex; align-items: center; justify-content: center; gap: 34px; padding: 0 40px; }
+  .strip .c { width: 158px; flex: none; display: flex; flex-direction: column; align-items: center; gap: 16px; font: 650 22px/1 var(--sans); letter-spacing: -0.01em; }
+  .strip .c i { width: 158px; height: 158px; border-radius: 50%; overflow: hidden; display: grid; place-items: center; box-shadow: 0 0 0 5px var(--ringc), 0 0 0 9px var(--ringbg); }
+  .strip .c i svg { width: 74px; height: 74px; overflow: visible; }
+</style>
+</head>
+<body>
+<script src="../lib/motion.js"></script>
+<script src="../lib/hlicons.js"></script>
+<script>
+  // the icons themselves live in lib/hlicons.js (the story chips use them too)
+  const NAMES = NZ.HL_NAMES, HUE = NZ.HL_HUE, IDS = NZ.HL_IDS;
+
+  /* colourways: background, primary, accent, the "bad" colour (the funnel's leak), and the badge's cut-out */
+  const WAYS = {
+    blue: { bg: () => "radial-gradient(70% 60% at 22% 12%, rgba(150,185,255,.5), transparent 60%), radial-gradient(60% 50% at 100% 100%, rgba(20,40,160,.45), transparent 60%), linear-gradient(135deg,#2451c4 0%,#2f5fd8 50%,#3d6df2 100%)", p: "#ffffff", a: "#bcd1ff", bad: "#ff9a86", cut: "#2f5fd8", ring: "#2f5fd8", text: "#14141c", page: "#f6f7fb" },
+    ink: { bg: () => "radial-gradient(55% 45% at 50% 42%, rgba(47,95,216,.42), transparent 72%), #07090f", p: "#ffffff", a: "#6f9bff", bad: "#f0553d", cut: "#07090f", ring: "#1b2033", text: "#fff", page: "#07090f" },
+    paper: { bg: () => "radial-gradient(60% 50% at 20% 10%, rgba(86,140,255,.16), transparent 70%), radial-gradient(50% 40% at 90% 95%, rgba(143,178,255,.16), transparent 70%), #f6f7fb", p: "#14141c", a: "#2f5fd8", bad: "#f0553d", cut: "#f6f7fb", ring: "#dfe3ee", text: "#14141c", page: "#ffffff" },
+    color: { bg: (id) => `radial-gradient(70% 60% at 25% 15%, hsla(${HUE[id]},95%,72%,.55), transparent 60%), linear-gradient(145deg, hsl(${HUE[id]},62%,${HUE[id] === 44 || HUE[id] === 38 ? 42 : 34}%), hsl(${HUE[id]},70%,16%))`, p: "#ffffff", a: "rgba(255,255,255,.62)", bad: "#ffb3a3", cut: null, ring: null, text: "#fff", page: "#0b0c10" },
+  };
+  const svg = (id, w) => NZ.HL_ICON(id, w.p, w.a, w.bad, w.cut ?? `hsl(${HUE[id]},62%,34%)`);
+  for (const [way, w] of Object.entries(WAYS)) {
+    for (const id of IDS) document.write(`<div class="canvas ic" data-still="${way}/${id}" style="background:${w.bg(id)}">${svg(id, w)}</div>`);
+    // a strip of the whole row as Instagram shows it, for the docs and the kit
+    document.write(`<div class="canvas strip" data-still="rows/${way}" style="background:${w.page};color:${w.text}">${IDS.map((id) => `<div class="c"><i style="background:${w.bg(id)};--ringc:${w.page};--ringbg:${way === "paper" ? "#dfe3ee" : "rgba(255,255,255,.18)"}">${svg(id, w)}</i>${NAMES[id]}</div>`).join("")}</div>`);
+  }
+  NZ.still();
+</script>
+</body>
+</html>
