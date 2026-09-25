@@ -219,6 +219,10 @@
   .pcard .av.c { border-radius: 50%; }
   .pcard .av.sq { border-radius: 12%; }
   .pcard .ctitle .badge { vertical-align: 2px; margin-left: 4px; }
+  .pcard .btn.cur { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .pcard .btn.cur:hover { filter: brightness(1.06); }
+  .pcard .osz { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding-top: 10px; border-top: 1px solid var(--line); }
+  .pcard .osz > span { flex: 0 0 100%; font-size: 12px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; color: var(--faint); }
   @media (max-width: 480px) { .kb-seg .kx { display: none; } }
   .vcuts { display: flex; flex-wrap: wrap; gap: 6px; }
   .note { border: 1px solid var(--line); background: var(--surface); border-radius: 16px; padding: 14px 16px; font-size: 14px; color: var(--muted); }
@@ -774,14 +778,14 @@
 
     /* banners by platform */
     const PL = [
-      { id: "linkedin-company", label: "LinkedIn company", w: 1128, h: 191, av: { s: "sq", d: 0.105, x: 0.024, k: 0.56 }, guide: "<b>The cover of a company page.</b> 1128×191; these files are 2x (2256×382) so they stay sharp. The page logo sits over the bottom-left and phones crop the sides, so every word stays clear of both." },
-      { id: "linkedin-profile", label: "LinkedIn profile", w: 1584, h: 396, av: { s: "c", d: 0.165, x: 0.03, k: 0.62 }, guide: "<b>The background on your own profile.</b> 1584×396; these files are 2x (3168×792). Your photo sits over the bottom-left and phones crop the sides, so every word stays clear of both. Don't upload the X header here: it's a different shape." },
-      { id: "facebook", label: "Facebook page", w: 1640, h: 624, av: { s: "c", d: 0.2, x: 0.02, k: 0.42 }, guide: "<b>A Facebook page cover.</b> 1640×624. Phones crop the sides, so the words sit in the middle third, centred top to bottom." },
-      { id: "facebook-group", label: "Facebook group", w: 1640, h: 856, av: null, guide: "<b>A Facebook group cover.</b> 1640×856. No photo covers it; the words sit in the middle so phones keep them." },
-      { id: "x", label: "X", w: 1500, h: 500, av: { s: "c", d: 0.2, x: 0.027, k: 0.52 }, guide: "<b>The X header.</b> 1500×500. Your photo covers the bottom-left, so the words stay above and to the right of it." },
-      { id: "youtube", label: "YouTube", w: 2560, h: 1440, av: null, band: true, guide: "<b>YouTube channel art.</b> 2560×1440. TVs show all of it, desktops only the middle band (outlined) and phones a little less, so everything that matters sits in the band." },
-      { id: "og", label: "Link preview", w: 1200, h: 630, av: null, guide: "<b>The card when someone shares namzilabs.co.</b> 1200×630. The brand designs have one." },
-      { id: "email", label: "Email signature", w: 1200, h: 300, av: null, guide: "<b>A banner for your email signature.</b> 1200×300, shown at 600×150. The brand designs have one." },
+      { id: "linkedin-company", label: "LinkedIn company", dims: "2256×382", w: 1128, h: 191, av: { s: "sq", d: 0.105, x: 0.024, k: 0.56 }, guide: "<b>The cover of a company page.</b> 1128×191; these files are 2x (2256×382) so they stay sharp. The page logo sits over the bottom-left and phones crop the sides, so every word stays clear of both." },
+      { id: "linkedin-profile", label: "LinkedIn profile", dims: "3168×792", w: 1584, h: 396, av: { s: "c", d: 0.165, x: 0.03, k: 0.62 }, guide: "<b>The background on your own profile.</b> 1584×396; these files are 2x (3168×792). Your photo sits over the bottom-left and phones crop the sides, so every word stays clear of both. Don't upload the X header here: it's a different shape." },
+      { id: "facebook", label: "Facebook page", dims: "1640×624", w: 1640, h: 624, av: { s: "c", d: 0.2, x: 0.02, k: 0.42 }, guide: "<b>A Facebook page cover.</b> 1640×624. Phones crop the sides, so the words sit in the middle third, centred top to bottom." },
+      { id: "facebook-group", label: "Facebook group", dims: "1640×856", w: 1640, h: 856, av: null, guide: "<b>A Facebook group cover.</b> 1640×856. No photo covers it; the words sit in the middle so phones keep them." },
+      { id: "x", label: "X", dims: "1500×500", w: 1500, h: 500, av: { s: "c", d: 0.2, x: 0.027, k: 0.52 }, guide: "<b>The X header.</b> 1500×500. Your photo covers the bottom-left, so the words stay above and to the right of it." },
+      { id: "youtube", label: "YouTube", dims: "2560×1440", w: 2560, h: 1440, av: null, band: true, guide: "<b>YouTube channel art.</b> 2560×1440. TVs show all of it, desktops only the middle band (outlined) and phones a little less, so everything that matters sits in the band." },
+      { id: "og", label: "Link preview", dims: "1200×630", w: 1200, h: 630, av: null, guide: "<b>The card when someone shares namzilabs.co.</b> 1200×630. The brand designs have one." },
+      { id: "email", label: "Email signature", dims: "1200×300", w: 1200, h: 300, av: null, guide: "<b>A banner for your email signature.</b> 1200×300, shown at 600×150. The brand designs have one." },
     ];
     const GR = [["all", "All"], ["pop", "Games & films"], ["meme", "Memes"], ["design", "Brand"], ["linkedin", "Made for LinkedIn"]];
     const GNAME = Object.fromEntries(GR), GORD = { pop: 0, linkedin: 1, design: 2, meme: 3 };
@@ -793,7 +797,8 @@
           <span class="cover"><img loading="lazy" src="${esc(f.path)}" alt="${esc(c.name)} banner, ${esc(P.label)} size">${P.band ? '<span class="band"></span>' : ""}</span>
           ${a ? `<span class="below" style="${vars}"><i></i><i></i></span>${c.avatar ? `<img class="av ${a.s}" style="${vars}" loading="lazy" src="${esc(c.avatar.path)}" alt="">` : ""}` : ""}</button>
         <div class="cbody"><div class="ctitle">${esc(c.name)} <span class="badge">${esc(GNAME[c.group] || "")}</span></div><div class="faint">${esc(c.head)}</div>
-          <div class="cact"><button class="btn small" data-pf="${esc(c.id)}">${ICON_DL}${esc(P.label)} · ${f.name.split(".").pop().toUpperCase()} · ${mb(f.size)}</button>${c.avatar ? `<button class="btn small" data-ba="${esc(c.id)}">${ICON_DL}Profile picture</button>` : ""}<button class="btn small" data-bz="${esc(c.id)}">${ICON_DL}Every size</button></div></div></article>`;
+          <div class="cact"><button class="btn small cur" data-pf="${esc(c.id)}|${P.id}">${ICON_DL}${esc(P.label)} · ${f.name.split(".").pop().toUpperCase()} · ${mb(f.size)}</button>${c.avatar ? `<button class="btn small" data-ba="${esc(c.id)}">${ICON_DL}Profile picture</button>` : ""}<button class="btn small" data-bz="${esc(c.id)}">${ICON_DL}Every size (ZIP) · ${mb(c.files.reduce((n, x) => n + x.size, 0) + (c.avatar ? c.avatar.size : 0))}</button></div>
+          ${(() => { const others = PL.filter((p) => p.id !== P.id).map((p) => [p, fileFor(c, p)]).filter(([, g]) => g); return others.length ? `<div class="osz"><span>Other sizes</span>${others.map(([p, g]) => `<button class="btn small" data-pf="${esc(c.id)}|${p.id}" title="${esc(p.label)}: ${esc(p.dims)}, ${g.name.split(".").pop().toUpperCase()}, ${mb(g.size)}">${ICON_DL}${esc(p.label)}</button>`).join("")}</div>` : ""; })()}</div></article>`;
     };
     function renderPlatforms() {
       const P = PL.find((p) => p.id === plat);
@@ -810,7 +815,7 @@
     $("#plfilt").addEventListener("click", (e) => { const b = e.target.closest("[data-pg]"); if (!b) return; pg = b.dataset.pg; renderPlatforms(); });
     $("#plgrid").addEventListener("click", (e) => {
       const b = e.target.closest("[data-pf]");
-      if (b) { const c = M.banners.concepts.find((x) => x.id === b.dataset.pf), P = PL.find((p) => p.id === plat), f = fileFor(c, P); return saveOne(f, `namzilabs-banner-${c.id}-${f.name}`); }
+      if (b) { const [id, pid] = b.dataset.pf.split("|"), c = M.banners.concepts.find((x) => x.id === id), f = fileFor(c, PL.find((p) => p.id === pid)); return saveOne(f, `namzilabs-banner-${c.id}-${f.name}`); }
       onBanner(e);
     });
     $("#plzip").addEventListener("click", () => {
@@ -839,7 +844,7 @@
     const f = all.find((x) => x.path === path);
     cur = null;
     $("#mttl").textContent = f.name;
-    $("#mzip").innerHTML = `${ICON_DL}PNG · ${mb(f.size)}`;
+    $("#mzip").innerHTML = `${ICON_DL}${f.name.split(".").pop().toUpperCase()} · ${mb(f.size)}`;
     $("#mzip").onclick = () => saveOne(f, f.name);
     $("#mbody").innerHTML = `<div class="stage" style="grid-column:1/-1"><img src="${esc(path)}" alt="${esc(f.name)}" style="max-height:80vh"></div>`;
     $("#modal").classList.add("open"); $("#sheet").scrollTop = 0; document.body.style.overflow = "hidden";
