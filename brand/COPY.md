@@ -9,7 +9,7 @@ Bios, taglines, company descriptions and replies, ready to paste. Every one says
 - **Their words, not ours.** Booked, held, no-show, show rate, cash collected, setter, closer, EOD report, launch, list, "the numbers don't match". Never "leverage", "unlock", "seamless", "supercharge" or "game-changer".
 - **Specific beats clever.** Real tool names, real-looking numbers, real moments (Monday 9:07, the Friday EOD report). Every example number is labelled as example data.
 - **Pain, cost, fix, offer.** Name the problem, say what it costs them, show the fix in one line, then the offer. What it does, why it matters, what to do next.
-- **One ask per post.** Comment a keyword for the DM, or link in bio, or "free to start, no card". Never three asks at once.
+- **One ask per post.** One main ask: comment a keyword for the DM, or link in bio, or "free to start, no card". A "send this to your setter" line on top is fine. Never three asks.
 - **No em dashes. Ever..** Use a full stop, a comma, a colon or brackets. Write ranges out: "2 to 3 days", never two numbers joined by a dash.
 - **Proof we can stand behind.** No "#1", no "trusted by", no customer counts, no "10x", no "free forever". 33 tools, never edits your data, no code, free to start with no card. AI and ad platforms are "coming soon" until they're live.
 
@@ -488,6 +488,8 @@ Here's your launch in one number 👇
 2. Launch revenue, with every buyer counted once even if they paid in two places.
 3. Revenue per subscriber = launch revenue ÷ your list. Now you know what one more subscriber is worth.
 
+Running a membership? Same setup: your real member count is the people paying in Whop or Stripe right now, matched by email, each person once. Failed payments and people still tagged after they cancelled drop out.
+
 Start free (no card): namzilabs.co
 ```
 
@@ -511,7 +513,10 @@ Which one first? Reply with one:
 • cost per held meeting
 • revenue per lead
 • speed to lead
+• reply-to-meeting rate
 • revenue from your list
+• your EOD numbers (dials, conversations, booked)
+• the Monday scorecard (show rate, close rate on held calls, cash collected, speed to lead, refund rate)
 
 The setup is always the same: connect the tools that hold each half, pick what to divide by what, and it stays live and shows its working.
 

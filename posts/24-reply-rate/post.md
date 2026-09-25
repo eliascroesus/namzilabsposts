@@ -9,21 +9,35 @@
 
 ## Instagram caption
 
-> 42 replies. 9 meetings. Where did the other 33 go? 🤔
+> 42 replies. 9 meetings.
+> Where did the other 33 go? 🤔
 >
-> Reply rate tells you the copy works. It doesn't tell you whether anyone followed up, or whether the lead ever booked.
+> Reply rate says the copy works.
+> It doesn't say anyone booked.
 >
-> The number to report is reply-to-meeting rate: Calendly bookings matched to Instantly replies by email, booked ÷ replied. In this example, 9 ÷ 42 = 21%.
+> 33 people replied and never made it to a calendar. Maybe nobody followed up. Maybe the link broke. Nobody noticed, because the replies live in Instantly and the meetings live in Calendly.
+>
+> The number to report is reply-to-meeting rate:
+>
+> 1️⃣ Replies from Instantly, bookings from Calendly
+> 2️⃣ Match them by email
+> 3️⃣ Booked ÷ replied
+>
+> Here: 9 ÷ 42 = 21%.
 >
 > Your client pays for meetings, not replies. Add Fathom and you can show booked vs held too.
 >
-> Comment METRICS and I'll send you the 3-step flow.
+> Namzilabs puts Instantly, Calendly and Fathom in one place, matches replies to bookings by email, and keeps it live per campaign or per client.
+>
+> Comment METRICS and I'll send you the setup.
+>
+> (Example data.)
 >
 > #leadgeneration #coldemail #appointmentsetting #agencyowner #outbound
 
 ## X
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
 
 > 42 replies.
 > 9 meetings.
@@ -31,17 +45,44 @@
 >
 > reply rate says the copy works. reply-to-meeting rate says whether anyone followed up.
 
-**Thread:**
+**First reply** (this is where the link goes):
 
-> 1/ The recipe: replies from Instantly, bookings from Calendly, matched by email. Booked ÷ replied.
+> the recipe: replies from Instantly, bookings from Calendly, matched by email. booked ÷ replied.
+>
+> here it's 9 ÷ 42 = 21% (example data). Namzilabs keeps it live, per campaign or per client, no code: namzilabs.co (free, no card)
 
-> 2/ Here it's 9 ÷ 42 = 21%. Track it per campaign or per client, live. No Monday screenshots.
+**Thread** (post as replies under the first one):
 
-> 3/ Your client pays for meetings, not replies. Add Fathom to count the meetings that actually happened.
+> 2/ why it matters: your client pays for meetings, not replies. a great reply rate with a weak reply-to-meeting rate is a follow-up problem, not a copy problem.
+>
+> 3/ add Fathom and count the meetings that actually happened. booked vs held, per client.
+>
+> 4/ same recipe with Smartlead or lemlist. no monday screenshots.
 
-**First reply** (link):
+## LinkedIn
 
-> Build it in three steps, no code → namzilabs.co
+> 42 replies. 9 meetings. Where did the other 33 go?
+>
+> If you run an outbound or appointment-setting agency, you know this one. The campaign "worked". The client's calendar says otherwise.
+>
+> Reply rate tells you the copy works. It doesn't tell you whether anyone booked.
+>
+> The number worth reporting is reply-to-meeting rate:
+>
+> → Replies from Instantly (or Smartlead, or lemlist)
+> → Bookings from Calendly
+> → Matched by email: the lead who replied is the person who booked
+> → Booked ÷ replied
+>
+> In this example, 9 ÷ 42 = 21%. So 33 people replied and never made it to a calendar.
+>
+> Your client pays for meetings, not replies. Add Fathom and you can show booked vs held too, per campaign or per client, live. No Monday screenshots.
+>
+> That's what Namzilabs does: your outbound tool, your calendar and your call recorder in one place, each prospect matched across them.
+>
+> What do you report to clients today: replies, booked, or held?
+>
+> (Example numbers. Free to start at namzilabs.co)
 
 ## Alt text
 
@@ -55,3 +96,4 @@
 - Example data: 9 ÷ 42 = 21.4%, shown as 21%.
 - Say "replies", not "positive replies". Don't claim Namzilabs reads reply sentiment.
 - Instantly, Smartlead, lemlist, Calendly and Fathom are live connectors.
+- "Comment METRICS" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (METRICS).

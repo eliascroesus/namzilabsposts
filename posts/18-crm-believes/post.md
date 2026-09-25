@@ -13,32 +13,63 @@
 >
 > ❌ Dave, dave@ and Dave M. are three leads. (It's one Dave.)
 > ❌ A call rescheduled three times is three calls.
+> ❌ "Test Test" is your hottest lead. (Booked four calls this week.)
+> ❌ A refunded deal is still closed-won.
+> ❌ Your setter booked 41 calls. (19 of them happened.)
+>
+> Bless it. It only sees itself.
+>
+> Calendly sees bookings. Stripe sees refunds. Your dialer sees calls. Your CRM sees whatever someone remembered to log.
+>
+> And your show rate, your setter's pay and your forecast all sit on the tool that thinks Dave is three people.
+>
+> Namzilabs reads your tools together, matches the same person by email or phone, and counts each call once. With the working shown.
+>
+> Comment SHOWUP and I'll send you the show-rate setup.
+>
+> (Example data.)
+>
+> #salesteam #highticketsales #appointmentsetting #setter #closer
+
+## X
+
+**Post** (image `x-01.png`, no link in the post):
+
+> your CRM thinks Dave, dave@ and Dave M. are three different leads.
+>
+> it also thinks "Test Test" is your hottest lead.
+>
+> what does yours believe?
+
+**First reply** (this is where the link goes):
+
+> it's not your CRM's fault. it only sees itself.
+>
+> match the same person across Calendly, your CRM and Stripe by email or phone, and count each call once. that's what Namzilabs does: namzilabs.co (free, no card)
+
+## LinkedIn
+
+> Things your CRM currently believes:
+>
+> ❌ Dave, dave@ and Dave M. are three leads. (It's one Dave.)
+> ❌ A call rescheduled three times is three calls.
 > ❌ "Test Test" is your hottest lead.
 > ❌ A refunded deal is still closed-won.
 > ❌ Your setter booked 41 calls. (19 of them happened.)
 >
-> None of this is your CRM's fault. It only sees itself. Calendly sees bookings, Stripe sees refunds, your dialer sees calls.
+> None of this is the CRM's fault. It only sees itself.
 >
-> Namzilabs reads them together, matches the same person across your tools by email or phone, and counts each call once, with the working shown.
+> Calendly knows who booked. Stripe knows who refunded. The dialer knows who picked up. The CRM knows what somebody remembered to log.
 >
-> Comment SHOWUP and I'll send you the show-rate setup. Send this to your sales manager. 👀
+> If you run a sales team, your show rate, your setters' pay and your forecast all sit on top of that last one.
 >
-> #salesteam #highticketsales #setter #closer #crm
-
-## X
-
-**Post** (image `x-01.png`):
-
-> things your CRM currently believes:
+> The fix is to read them together: match the same person across every tool by email or phone, count each call once, and keep a receipt of what was matched and what was left out.
 >
-> – dave, dave@ and Dave M. are three leads
-> – a call rescheduled 3 times is 3 calls
-> – "Test Test" is your hottest lead
-> – a refunded deal is still closed-won
-
-**First reply:**
-
-> It only sees itself. Match the same person across Calendly, Close and Stripe by email or phone, count each call once → namzilabs.co
+> That's what Namzilabs does.
+>
+> What's the strangest thing your CRM believes right now?
+>
+> (Example numbers. Free to start at namzilabs.co)
 
 ## Alt text
 
@@ -49,3 +80,4 @@
 
 - Example data (41 booked, 19 held). "By email or phone" is how matching works today.
 - Don't name a specific CRM as "the" culprit. The joke is about any single tool seeing only itself.
+- "Comment SHOWUP" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (SHOWUP).

@@ -9,42 +9,83 @@
 
 ## Instagram caption
 
-> Two-sentence horror stories for founders. 🕯️ Based on true dashboards.
+> The dashboard said we were up 23%.
+> Then someone checked whether it counted refunds. 🕯️
 >
-> 1. The dashboard said we were up 23%. Then someone checked whether it counted refunds.
-> 2. Our show rate hit 92%. It was counting reschedules as shows.
-> 3. We finally had one number everyone agreed on. Nobody knew where it came from.
-> 4. The VA quit on a Friday. The formulas were in her head.
+> Two-sentence horror stories for founders. Swipe for three more, lights on.
 >
-> Which one kept you up? Tell us yours in the comments. 👻
+> Every one of them is the same monster: a number with no working.
 >
-> Every number in Namzilabs shows its working: what it read, what it left out, and why. Sleep better. Free to start.
+> The scary part isn't the wrong number.
+> It's finding out after you've hired on it, spent on it, or paid commission on it.
 >
-> #founders #startup #smallbusiness #entrepreneurlife #businessmetrics
+> The fix is boring. Show the working.
+>
+> Every number should say which tools it read, what it left out (refunds, test payments, reschedules), and why.
+>
+> That's how every number works in Namzilabs. It updates itself too, so nobody's formulas live in their head.
+>
+> Comment METRICS and I'll send you the setup for your first one.
+>
+> (Example numbers. Made-up stories, real problems.)
+>
+> #founders #startup #smallbusiness #businessmetrics #entrepreneurlife
 
 ## X
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
 
-> two-sentence horror story:
+> two-sentence horror story for founders:
 >
 > the dashboard said we were up 23%.
 > then someone checked whether it counted refunds.
+>
+> got one? two sentences. go.
 
-**Thread:**
+**First reply** (this is where the link goes):
 
-> our show rate hit 92%.
+> every story like this is the same monster: a number with no working.
+>
+> in namzilabs every number says which tools it read, what it left out and why, and it updates itself.
+>
+> free to start, no card: namzilabs.co
+>
+> (made-up stories, example numbers)
+
+**Thread** (three more stories, as replies under the first one):
+
+> 2/ our show rate hit 92%.
 > it was counting reschedules as shows.
-
-> we finally had one number everyone agreed on.
+>
+> 3/ we finally had one number everyone agreed on.
 > nobody knew where it came from.
-
-> the VA quit on a Friday.
+>
+> 4/ the VA quit on a friday.
 > the formulas were in her head.
 
-**First reply** (link):
+## LinkedIn
 
-> Every number with its working shown, so none of these happen to you → namzilabs.co
+> Two-sentence horror stories for founders.
+>
+> The dashboard said we were up 23%. Then someone checked whether it counted refunds.
+>
+> Our show rate hit 92%. It was counting reschedules as shows.
+>
+> We finally had one number everyone agreed on. Nobody knew where it came from.
+>
+> The VA quit on a Friday. The formulas were in her head.
+>
+> Funny, until it's your dashboard.
+>
+> Every one of them is the same problem: a number with no working. And the scary part isn't the wrong number. It's finding out after you've hired on it, spent on it or paid commission on it.
+>
+> The fix is boring. Every number should say which tools it read, what it left out (refunds, test payments, reschedules) and why. And it should update itself, so nobody's formulas live in their head.
+>
+> That's how every number works in Namzilabs.
+>
+> Got one of your own? Two sentences. The comments are open.
+>
+> (Example numbers. Made-up stories, real problems. Free to start, no card: namzilabs.co)
 
 ## Alt text
 
@@ -60,3 +101,4 @@
 
 - No product numbers. The stories are jokes about common failures, not real customers.
 - "Updates itself" means live sources recompute; that's true today.
+- "Comment METRICS" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (METRICS).

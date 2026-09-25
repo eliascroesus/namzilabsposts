@@ -9,7 +9,8 @@
 
 ## Instagram caption
 
-> Sources of truth, ranked. 🏆 Fight us in the comments.
+> Your bank statement is only A tier. 🏆
+> Here's what beat it, and where your CRM landed.
 >
 > S: a number with its receipt
 > A: your payment processor, the bank statement
@@ -18,30 +19,61 @@
 > D: the sheet called FINAL_v7, screenshots in Slack
 > F: "trust me", "roughly", the number in the pitch deck
 >
-> What would you move up? What would you move down? 👇
+> Why is a receipt above the bank? The bank is right about the money, but it sees one payout from Stripe, not the customers inside it.
 >
-> A receipt beats everything because you can check it. Every number in Namzilabs comes with one: what it read, what it matched and what it left out.
+> A number with its receipt shows its working: which tools it read, who it matched, what it left out. You can check it without asking anyone.
 >
-> #founders #startup #tierlist #businessmetrics #dataanalytics
+> Everything below S ends the same way: someone asks "where's this from?" and the meeting stops.
+>
+> Every number in Namzilabs comes with its receipt. Free to start, no card.
+>
+> What would you move? Fight us in the comments. 👇
+>
+> #founders #startup #tierlist #businessmetrics #smallbusiness
 
 ## X
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
 
-> sources of truth, ranked
+> sources of truth, ranked:
 >
 > S: a number with its receipt
 > A: payment processor, bank statement
-> B: the CRM (if everyone logs everything)
+> B: the crm (if everyone logs everything)
 > C: the dashboard from 2023
-> D: FINAL_v7.xlsx, screenshots in slack
+> D: FINAL_v7, screenshots in slack
 > F: "trust me", "roughly", the pitch deck
 >
-> fight me
+> what would you move?
 
-**First reply:**
+**First reply** (this is where the link goes):
 
-> S tier is S tier because you can check it → namzilabs.co
+> S tier is S tier because you can check it: which tools it read, who it matched, what it left out.
+>
+> every number in namzilabs comes with one. free to start, no card: namzilabs.co
+
+## LinkedIn
+
+> We ranked the sources of truth in a typical business. The bank statement only made A tier.
+>
+> S: a number with its receipt
+> A: your payment processor, the bank statement
+> B: your CRM (if everyone logs everything)
+> C: the dashboard someone built in 2023
+> D: the sheet called FINAL_v7, screenshots in Slack
+> F: "trust me", "roughly", the number in the pitch deck
+>
+> Why is a receipt above the bank? The bank is right about the money. But it sees one payout from Stripe, not the customers inside it.
+>
+> A number with its receipt shows its working: which tools it read, who it matched and what it left out. Anyone can check it without asking the person who built it.
+>
+> Everything below S tier ends the same way: someone asks "where did this come from?" and the meeting stops.
+>
+> Every number in Namzilabs comes with its receipt.
+>
+> What would you move up or down?
+>
+> Free to start, no card: namzilabs.co
 
 ## Alt text
 

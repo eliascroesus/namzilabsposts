@@ -9,25 +9,33 @@
 
 ## Instagram caption
 
-> The Monday scorecard: 5 numbers every coaching sales team should check. 📋
+> The 5 numbers your Monday sales meeting should start with. 📌
 >
-> 1. **Show rate** = held ÷ booked (Calendly + your CRM)
-> 2. **Close rate on held calls** = won ÷ held, not won ÷ booked (CRM + Fathom)
-> 3. **Cash collected** = paid minus refunds (Stripe / Whop)
-> 4. **Speed to lead** = median time from form to first call (form + dialer)
-> 5. **Refund rate, 30 days** = refunded ÷ paid (Stripe + CRM)
+> The formula for each, and the two tools it needs:
 >
-> Every one of these needs two tools that don't talk to each other. That's why most teams guess.
+> 1️⃣ Show rate = held ÷ booked (Calendly + your CRM)
+> 2️⃣ Close rate on held calls = won ÷ held, not won ÷ booked (your CRM + Fathom)
+> 3️⃣ Cash collected = paid, minus refunds (Stripe + Whop)
+> 4️⃣ Speed to lead = median time from form to first call (Typeform + Aircall)
+> 5️⃣ Refund rate, 30 days = refunded ÷ paid (Stripe + your CRM)
 >
-> Namzilabs builds each one from the tools directly, matches the same person across them, and shows the working.
+> Notice the pattern? Every number needs two tools that don't talk to each other.
 >
-> Comment METRICS and I'll send you the scorecard setup. Save this for Monday. 📌
+> So most teams guess, and Monday turns into an argument about whose number is right.
 >
-> #salesmanagement #highticketsales #kpis #salesteam #coachingbusiness
+> How to read it: in this example, show rate is up 4 points and close rate on held calls is down 2. More people showing up, fewer buying. That's your Monday conversation.
+>
+> Namzilabs builds all five straight from your tools, matches the same person across them, and keeps them live, with the working shown.
+>
+> Comment METRICS and I'll send you the setup.
+>
+> (Example data.)
+>
+> #salesteam #highticketsales #coachingbusiness #salesmanagement #kpis
 
 ## X
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
 
 > the monday scorecard for coaching sales teams:
 >
@@ -37,11 +45,43 @@
 > 4. speed to lead (median, not average)
 > 5. refund rate, 30 days
 >
-> every one needs two tools.
+> every one needs two tools. that's why most teams guess.
 
-**First reply:**
+**First reply** (this is where the link goes):
 
-> Build all five from Calendly, your CRM, Stripe and your dialer, with the working shown → namzilabs.co
+> build all five from calendly, your crm, stripe and your dialer, every person matched once, with the working shown.
+>
+> free to start, no card: namzilabs.co
+
+**Optional thread** (post as replies under the first one):
+
+> 2/ close rate on booked calls blames your closers for no-shows they never saw. divide by held.
+>
+> 3/ speed to lead: use the median. one lead called three days late wrecks an average.
+>
+> 4/ cash collected: take refunds off, or you're celebrating money that leaves next month.
+
+## LinkedIn
+
+> The 5 numbers a coaching sales team should check every Monday, and the formula for each.
+>
+> 1. Show rate: held ÷ booked
+> 2. Close rate on held calls: won ÷ held (not won ÷ booked)
+> 3. Cash collected: paid, minus refunds
+> 4. Speed to lead: the median time from form to first call
+> 5. Refund rate at 30 days: refunded ÷ paid
+>
+> Here's the catch. Every one of them needs two tools.
+>
+> Show rate needs your calendar and your CRM. Close rate needs your CRM and your call recorder. Cash needs every place people pay you. Speed to lead needs your form and your dialer.
+>
+> Those tools don't talk to each other, so most teams skip the number or guess it. And a sales meeting built on guesses turns into an argument about whose number is right.
+>
+> We built Namzilabs to connect both sides, match the same person across them, and keep all five live, with the working shown.
+>
+> What would be number 6 on your scorecard?
+>
+> (Example data. Free to start, no card: namzilabs.co)
 
 ## Alt text
 
@@ -51,3 +91,4 @@
 
 - Example data. All the tools shown (Calendly, Close, Fathom, Stripe, Whop, Typeform, Aircall) are live connectors.
 - "Median, not average" matches how post 07 defines speed to lead.
+- "Comment METRICS" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (METRICS).

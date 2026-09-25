@@ -9,24 +9,27 @@
 
 ## Instagram caption
 
-> Things Namzi will never say: 🙅
+> Namzi will never say these six things.
+> Your last Monday meeting said at least three. 👀
 >
-> ❌ "Roughly."
-> ❌ "Trust me."
-> ❌ "It's in a spreadsheet somewhere."
-> ❌ "A test payment is still a sale."
-> ❌ "Booked, held… close enough."
-> ❌ "I tidied up your CRM for you."
+> "Roughly."
+> "Trust me."
+> "It's in a spreadsheet somewhere."
+> "A test payment is still a sale."
+> "Booked, held… close enough."
+> "I tidied up your CRM for you."
 >
-> Namzi reads your tools, counts everyone once, shows the working, and never edits your data.
+> Namzi is the little blue one that lives between the two rings in our logo. Deadpan. Strict. Allergic to "close enough".
+>
+> Every line on that list is a rule Namzilabs is built on: all your data in one place, booked and held counted separately, test payments left out, the working shown on every number. And it never edits your data. Free to start, no card.
 >
 > What else should Namzi never say? Best reply gets drawn into the next one. 👇
 >
-> #saas #startup #founders #mascot #businessmetrics
+> #founders #salesteam #businessmetrics #saas #smallbusiness
 
 ## X
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
 
 > things Namzi will never say:
 >
@@ -36,10 +39,35 @@
 > "a test payment is still a sale."
 > "booked, held… close enough."
 > "I tidied up your CRM for you."
+>
+> what else goes on the list?
 
-**First reply:**
+**First reply** (this is where the link goes):
 
-> It reads, it matches, it shows the working. It never edits your data → namzilabs.co
+> Namzi lives between the two rings in our logo. namzilabs is the tool: it connects your tools, counts every customer once, shows the working, and never edits your data.
+>
+> free to start, no card: namzilabs.co
+
+## LinkedIn
+
+> Our mascot has six rules. All of them are things it will never say.
+>
+> "Roughly."
+> "Trust me."
+> "It's in a spreadsheet somewhere."
+> "A test payment is still a sale."
+> "Booked, held… close enough."
+> "I tidied up your CRM for you."
+>
+> That's Namzi, the little blue shape between the two rings in our logo: the overlap where two tools finally see the same person.
+>
+> The joke only works because you've heard every one of those in a meeting.
+>
+> Each one is also a rule we built Namzilabs on: all your data in one place, booked and held counted separately, test payments left out, the working shown on every number. And it never edits your data.
+>
+> Which one have you heard most this month?
+>
+> Free to start, no card: namzilabs.co
 
 ## Alt text
 

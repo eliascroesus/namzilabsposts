@@ -10,30 +10,59 @@
 ## Instagram caption
 
 > Meet Namzi. 👋
+> It has trust issues. With your numbers.
 >
-> Namzi lives in the overlap between your tools, the bit where Calendly and Stripe finally see the same person.
+> Namzi lives in the gap between your tools. Literally: it's the bit between the two rings in our logo, where Calendly and Stripe finally agree it's the same person.
 >
-> It has one job: count everyone once, and show the working. It's allergic to vanity metrics, and it carries receipts everywhere.
+> Deadpan. Never mean. Allergic to vanity metrics.
 >
-> Swipe for its dating profile. It's looking for someone who doesn't count refunds as revenue.
+> Swipe for its dating profile. If you run a sales team, the dealbreaker will feel personal. 💔
 >
-> Say hi in the comments. Namzi replies (deadpan).
+> Its day job: Namzilabs puts all your tools in one place, counts every customer once, and shows the working on every number. 33 tools, no code, and it never edits your data.
 >
-> #saas #startup #founders #mascot #businessmetrics
+> Comment METRICS and I'll send you the setup for the number you trust least. 👀
+>
+> #founders #salesteam #coachingbusiness #businessmetrics #smallbusiness
 
 ## X
 
-**Post** (image `x-01.png`):
+**Post** (image `x-01.png`, no link in the post):
 
-> meet Namzi.
+> meet Namzi. it has trust issues.
 >
-> it lives between your tools, counts everyone once, and carries receipts.
+> won't believe a revenue number with no source.
+> won't count Dave, dave@ and Dave M. as three people.
+> won't call it "held" if they didn't show.
 >
-> dealbreaker: calling it "held" when they didn't show.
+> honestly? green flags.
 
-**First reply:**
+**First reply** (this is where the link goes):
 
-> Namzi is the blue lens from our logo: the overlap where two tools see the same person. Free to start, no card → namzilabs.co
+> Namzi is the bit between the two rings in our logo: the overlap where two tools see the same person.
+>
+> Namzilabs puts all your tools in one place, counts every customer once and shows the working. free to start, no card: namzilabs.co
+
+## LinkedIn
+
+> We gave the gap between your tools a face.
+>
+> Meet Namzi. 👋
+>
+> Our logo is two overlapping rings. Namzi lives in the overlap: the spot where Calendly and Stripe finally agree they're looking at the same person.
+>
+> It has a dating profile, and it's brutal:
+>
+> Most irrational fear: a revenue number with no source.
+> I'll fall for you if: you count each sale once.
+> Dealbreaker: calling it "held" when they didn't show.
+>
+> It's deadpan, never mean. It teases the number, never the person.
+>
+> Namzi is also the shortest explanation of Namzilabs. We connect the tools you already use (33 of them, no code), match the same customer across all of them by email or phone, count each one once, and show the working behind every number. It never edits your data.
+>
+> Which number in your business would Namzi refuse to date?
+>
+> Free to start, no card: namzilabs.co
 
 ## Alt text
 
@@ -46,3 +75,4 @@
 
 - "33 tools" = the live connectors. "Never edits your data" is the approved wording.
 - Namzi is for social only. Keep it out of the product and the landing page.
+- "Comment METRICS" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (METRICS).
