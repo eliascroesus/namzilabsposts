@@ -1,6 +1,6 @@
 # Banners and profile kits
 
-Thirty-five banner designs, each exported at the exact size every platform asks for, and each with the profile picture made to go with it. Ten are for every day and lead with the core message: **all your data in one place, any metric, where the funnel breaks, the true numbers.** Sixteen play famous games, films and series (a maze chase, a pixel platformer, a VS screen, an opening crawl…), six are memes, and three are made for LinkedIn first. There are also Instagram highlight covers.
+Thirty-five banner designs, each exported at the exact size every platform asks for, and each with the profile picture made to go with it. Ten are for every day and lead with the core message: **all your data in one place, any metric, where the funnel breaks, the true numbers.** Sixteen play famous games, films and series (a maze chase, a pixel platformer, a VS screen, an opening crawl…), six are memes, and three are made for LinkedIn first. The Instagram highlight covers live with the highlights, in [`../../highlights/`](../../highlights/README.md).
 
 The **Banner Kit** shows all of them sorted by platform (LinkedIn company, LinkedIn profile, Facebook page, Facebook group, X, YouTube, link preview, email), each at the platform's real shape with its profile picture roughly where your photo sits, and downloads a whole platform in one go. The Brand Kit links to it.
 
@@ -94,7 +94,7 @@ Precious and Donut daydream are parodies. "One place to rule them all" plays on 
 | `*/youtube.png` | 2560×1440 | YouTube channel art | Everything important sits in the middle 1546×423, the only part phones show. Desktops show that full-width band (y 508 to 931), so scenes with ground or a horizon put it inside the band. |
 | `*/og.png` | 1200×630 | Link preview when someone shares namzilabs.co (X, LinkedIn, Facebook, Slack, iMessage) | Set it as the site's `og:image`. |
 | `*/email.png` | 1200×300 | Email-signature banner | Display it at 600×150. |
-| `highlights/blue/*.png`, `highlights/ink/*.png` | 1080×1920 | Instagram highlight covers: Start here, Metrics, Funnels, 33 tools, Namzi, FAQ | The icon sits inside the centre circle Instagram shows. |
+| [`../../highlights/covers/`](../../highlights/covers/) | 1080×1080 | Instagram highlight covers for all eleven highlights: Namzi in 3D, and clean icons in four colourways | Everything that matters sits inside the circle Instagram crops to. |
 
 The memes and the games & films come in the first six sizes only: the link preview and email signature should stay on-brand, so use an everyday design for those. The three LinkedIn designs come in the two LinkedIn sizes only.
 
@@ -153,7 +153,7 @@ node tools/render-stills.mjs brand/banners/banners.html brand/banners           
 node tools/render-stills.mjs brand/banners/banners.html brand/banners --query "only=neon"    # one design
 node tools/render-stills.mjs brand/banners/banners.html brand/banners --query "only=platformer,arcade"   # games & films (pop.js)
 node tools/render-stills.mjs brand/banners/banners.html brand/banners --query "sizes=linkedin-company,linkedin-profile"   # just the LinkedIn files
-node tools/render-stills.mjs brand/banners/highlights.html brand/banners --ss 1             # Instagram highlight covers
+node tools/render-stills.mjs highlights/icons.html highlights/covers/icons --ss 2           # Instagram highlight covers (see highlights/README.md)
 node tools/render-stills.mjs brand/banners/kits.html brand/banners --ss 1                   # X profile mock-ups
 node tools/render-stills.mjs brand/banners/linkedin.html brand/banners --ss 1               # LinkedIn mock-ups
 ```

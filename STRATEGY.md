@@ -173,7 +173,7 @@ Lead with the headline: all your data in one place, any metric, where the funnel
 | Platform | Pin | Banner (brand/banners/) | Profile picture |
 |---|---|---|---|
 | X | Video 11 (16:9), or post 35's `x-01.png` | `electric/x.png` | `brand/logos/01-between-mono/profile-blue-1024.png` |
-| Instagram | Reel: video 11 (9:16). Carousel: post 35 | Highlight covers: `highlights/blue/*` | same |
+| Instagram | Reel: video 11 (9:16). Carousel: post 35 | No banner: the eleven highlights do that job ([`highlights/`](highlights/README.md)) | same |
 | Facebook page | Video 11 (9:16 Reel or 16:9 post) | `electric/facebook.png` | same |
 | Facebook group | Post 35 as an album | `electric/facebook-group.png` | same |
 | LinkedIn company page | Post 35 as a PDF (`linkedin-carousel.pdf`) + video 11 (16:9) | `electric/linkedin-company.png` (never the X header: LinkedIn crops it under the logo) | same |
@@ -181,6 +181,12 @@ Lead with the headline: all your data in one place, any metric, where the funnel
 | YouTube | Video 11 (16:9) as the channel trailer | `electric/youtube.png` | same |
 | Website / link previews |  | `electric/og.png` as the share image |  |
 | Email signature |  | `electric/email.png` |  |
+
+### Instagram highlights (before day 1)
+
+Instagram has no banner; the row of highlights under the bio does that job, and it's the second thing a visitor reads after the bio. Eleven, in this order: **Start here** (what it is, in seven taps), the five features (**Any KPI, Funnel, Count once, Receipts, Connect**), the four use cases (**Sales teams, Agencies, Creators, E-com**, one per audience in the order we talk to them) and **FAQ**. Each ends in one ask: the link sticker (start free) for the features, a reply keyword for the use cases (SHOWUP, HELD, LAUNCH, LIST: a story reply is a DM), a question for the FAQ.
+
+Build them from the last to the first (Instagram puts the newest at the front), with one cover set for all of them: Namzi in 3D, or the clean icons. Everything, including the sticker for each story, is in [`highlights/README.md`](highlights/README.md). The feature and use-case posts (45 to 52) are the same pieces as feed carousels; post them two a week in days 31 to 60, each pointing to its highlight.
 
 ### Days 31 to 60: the proof batch
 

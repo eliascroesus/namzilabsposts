@@ -5,6 +5,7 @@
 //   node tools/build-preview.mjs --artifact DIR --kit content → DIR/page.html + DIR/files.json: posts, videos, docs
 //   node tools/build-preview.mjs --artifact DIR --kit brand   → the same for logos, Namzi, highlight covers
 //   node tools/build-preview.mjs --artifact DIR --kit banners → every banner, by platform, with its profile picture
+//   node tools/build-preview.mjs --artifact DIR --kit highlights → the Instagram highlights: stories, covers, stickers
 //
 // For the published Content Kit, post images are served as visually lossless JPGs
 // and videos as web-compressed copies (both made into DIR/web/), so the page fits
@@ -13,6 +14,7 @@
 // Everything on the page comes from the files themselves: post.md captions, image
 // sizes, video lengths, logo SVGs, the sticker list. Re-run it after adding content.
 import { execFileSync } from "node:child_process";
+import vm from "node:vm";
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { ffmpegPath, flag } from "./lib.mjs";
@@ -29,6 +31,7 @@ const KITS = {
   content: { url: "https://claude.ai/artifact/NaEiTHhgzhRd5EMTTh5syU", title: "Content Kit" },
   brand: { url: "https://claude.ai/artifact/8wEv8d2VnWHqqmHusbJHvh", title: "Brand Kit" },
   banners: { url: "https://claude.ai/artifact/V4VH9xB5sb6Bhtz3rSwNSN", title: "Banner Kit" },
+  highlights: { url: "", title: "Highlights Kit" },
 };
 
 const REPO = {
@@ -50,6 +53,9 @@ const POST_AUD = {
   "36-my-precious": ["everyone"], "37-mmm-one-place": ["everyone", "ecommerce"], "38-same-person": ["sales"], "39-source-of-truth": ["founders"],
   "40-everyone-pointing": ["founders", "sales"], "41-nah-yeah": ["agencies", "founders"], "42-this-is-fine": ["founders"], "43-pivot": ["agencies"],
   "44-funnels-onions": ["sales", "agencies"],
+  // the feature and use-case series, one per Instagram highlight
+  "45-any-kpi": ["everyone"], "46-find-the-leak": ["sales"], "47-count-once": ["everyone"], "48-show-the-receipt": ["founders", "everyone"],
+  "49-sales-team-monday": ["sales"], "50-agency-reporting": ["agencies"], "51-launch-number": ["creators"], "52-list-revenue": ["ecommerce"],
 };
 const POST_NAMZI = new Set(["13-meet-namzi", "14-group-chat", "16-red-flags", "21-how-many-showed", "27-namzi-never-says", "34-namzi-first-week",
   "36-my-precious", "37-mmm-one-place", "38-same-person", "39-source-of-truth", "40-everyone-pointing", "41-nah-yeah", "42-this-is-fine", "43-pivot", "44-funnels-onions"]);
@@ -171,6 +177,31 @@ function duration(p) {
   catch (e) { out = String(e.stderr || ""); }
   const m = out.match(/Duration:\s*(\d+):(\d+):([\d.]+)/);
   return m ? Math.round(Number(m[1]) * 3600 + Number(m[2]) * 60 + Number(m[3])) + "s" : "";
+}
+
+/* ── the Instagram highlights: highlights/stories.js is the one source ─── */
+function highlightsData() {
+  const H = "highlights";
+  if (!existsSync(path.join(ROOT, H, "stories.js"))) return null;
+  const pieces = new Proxy({}, { get: () => () => "" });            // the frames' pictures aren't needed here
+  const ctx = { NZ: { STORY: { C: pieces } } };
+  vm.runInNewContext(read(`${H}/stories.js`), ctx);
+  const ic = { window: {} };
+  vm.runInNewContext(read("lib/hlicons.js"), ic);
+  const { HL_NAMES: NAMES, HL_HUE: HUE } = ic.window.NZ;
+  const file = (p, name = path.basename(p)) => (existsSync(path.join(ROOT, p)) ? { name, path: p, size: size(p), ...(p.endsWith(".png") ? pngSize(p) : {}) } : null);
+  const list = (ctx.NZ.HIGHLIGHTS || []).map((h, k) => {
+    const n = String(k + 1).padStart(2, "0"), dir = `${H}/${n}-${h.id}`;
+    const frames = h.frames.map((f, i) => ({ ...file(`${dir}/story-${String(i + 1).padStart(2, "0")}.png`), head: String(f.h || "").replace(/\*/g, ""), kw: f.kw || "" })).filter((f) => f.path);
+    return {
+      id: h.id, n, dir, name: NAMES[h.id], hue: HUE[h.id], purpose: h.purpose || "", stickers: h.stickers || {}, frames,
+      cover3d: file(`${H}/covers/3d/${h.id}.png`, `${n}-${h.id}-3d.png`),
+      icons: Object.fromEntries(["blue", "ink", "paper", "color"].map((w) => [w, file(`${H}/covers/icons/${w}/${h.id}.png`, `${n}-${h.id}-${w}.png`)])),
+    };
+  });
+  const extras = [["covers/profile-3d.png", "Profile preview · 3D covers"], ["covers/profile-icons.png", "Profile preview · icon covers"], ["covers/row-3d.png", "Every cover in a row"], ...["blue", "ink", "paper", "color"].map((w) => [`covers/icons/rows/${w}.png`, `The icon row · ${w}`])]
+    .map(([p, label]) => { const f = file(`${H}/${p}`, p.replace(/\//g, "-").replace("covers-", "")); return f && { ...f, label }; }).filter(Boolean);
+  return { list, extras, readme: read(`${H}/README.md`) };
 }
 
 function build({ web }) {
@@ -300,30 +331,33 @@ function build({ web }) {
     ["brand/BRAND_KIT.md", "Brand kit", "Logo, colour, type, layout, message, motion and voice"],
     ["brand/COPY.md", "Bios and copy", "Every bio, tagline, company description and DM reply, checked against each platform's limit"],
     ["brand/banners/README.md", "Banners", "Every banner size, which design to use where, and the bios to paste on day 1"],
+    ["highlights/README.md", "Highlights", "The eleven Instagram highlights: what each is for, the order to build them in, the stickers and the covers"],
     ["research/01-framer-and-base44.md", "Research 01 · Framer & Base44", "How the fastest-growing product companies make content"],
     ["research/02-attio-mochi-premium-saas.md", "Research 02 · Attio, Mochi & premium SaaS", "Brand, tone and motion of premium SaaS"],
     ["research/03-growth-content-playbook.md", "Research 03 · Growth playbook", "What converts on X, Instagram and TikTok"],
     ["research/04-icp-and-competitor-positioning.md", "Research 04 · Customers & competitors", "ICPs, their words, and where Namzilabs wins"],
     ["README.md", "README", "What's in the repo and how to re-render"],
   ];
-  const docs = DOCS.filter(([p]) => existsSync(path.join(ROOT, p))).map(([p, title, desc]) => ({ name: path.basename(p), path: p, title, desc, size: size(p) }));
+  const docs = DOCS.filter(([p]) => existsSync(path.join(ROOT, p))).map(([p, title, desc]) => ({ name: p === "highlights/README.md" ? "HIGHLIGHTS.md" : path.basename(p), path: p, title, desc, size: size(p) }));
+  const highlights = highlightsData();
 
   const all = {
-    built: new Date().toISOString().slice(0, 10), repo: REPO, kit, kits: KITS, posts, videos, copy: COPY,
+    built: new Date().toISOString().slice(0, 10), repo: REPO, kit, kits: KITS, posts, videos, copy: COPY, highlights,
     logos: { concepts, overviews, wordmarks, variants, transparent, web: webIcons }, banners, mascot: { stickers, avatars, boards: mboards }, docs, videoReadme: vm.md,
   };
-  if (kit === "content") return { ...all, logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => !d.path.startsWith("brand/") || d.path === "brand/COPY.md") };
+  if (kit === "content") return { ...all, highlights: null, videos: web ? videos.map((v) => { const files = v.files.filter((f) => !f.name.includes("ai-live")); return { ...v, files, file: files[0] }; }) : videos, logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => !d.path.startsWith("brand/") || d.path === "brand/COPY.md") };
   // every banner's name, for the "goes with the … banner" lines in kits that don't carry the banners themselves
   const bannerNames = banners ? Object.fromEntries(banners.concepts.map((c) => [c.id, c.name])) : {};
-  if (kit === "brand") return { ...all, bannerNames, posts: [], videos: [], banners: banners && { ...banners, concepts: [] }, docs: docs.filter((d) => d.path.startsWith("brand/") || d.name === "STRATEGY.md") };
-  if (kit === "banners") return { ...all, bannerNames, posts: [], videos: [], logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, mascot: { stickers: [], avatars: [], boards: [] }, banners: banners && { ...banners, highlights: [], concepts: banners.concepts.map((c) => ({ ...c, mockup: null, limock: null })) }, docs: docs.filter((d) => d.path === "brand/banners/README.md" || d.path === "brand/COPY.md") };
+  if (kit === "brand") return { ...all, highlights: highlights && { ...highlights, list: highlights.list.map((h) => ({ ...h, frames: [] })), extras: highlights.extras.filter((e) => /^(row-3d|icons-rows)/.test(e.name)) }, bannerNames, posts: [], videos: [], banners: banners && { ...banners, concepts: [] }, docs: docs.filter((d) => d.path.startsWith("brand/") || d.name === "STRATEGY.md") };
+  if (kit === "highlights") return { ...all, bannerNames, posts: [], videos: [], logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, banners: null, mascot: { stickers: [], avatars: [], boards: [] }, docs: docs.filter((d) => d.path === "highlights/README.md" || d.path === "brand/COPY.md") };
+  if (kit === "banners") return { ...all, highlights: null, bannerNames, posts: [], videos: [], logos: { concepts: [], overviews: [], wordmarks: [], variants: [], transparent: [], web: null }, mascot: { stickers: [], avatars: [], boards: [] }, banners: banners && { ...banners, highlights: [], concepts: banners.concepts.map((c) => ({ ...c, mockup: null, limock: null })) }, docs: docs.filter((d) => d.path === "brand/banners/README.md" || d.path === "brand/COPY.md") };
   return { ...all, bannerNames };
 }
 
 function page(manifest) {
   const tpl = read("tools/preview/template.html");
   const json = JSON.stringify(manifest).replace(/</g, "\\u003c");
-  const title = manifest.kit === "brand" ? "Namzilabs Brand Kit" : manifest.kit === "banners" ? "Namzilabs Banner Kit" : "Namzilabs Content Kit";
+  const title = manifest.kit === "brand" ? "Namzilabs Brand Kit" : manifest.kit === "banners" ? "Namzilabs Banner Kit" : manifest.kit === "highlights" ? "Namzilabs Highlights Kit" : "Namzilabs Content Kit";
   return tpl.replace("<title>Namzilabs Content Kit</title>", `<title>${title}</title>`).replace("<!--MANIFEST-->", `<script type="application/json" id="manifest">${json}</script>`);
 }
 
@@ -350,7 +384,7 @@ if (artifactDir) {
       }
     }
     for (const dir of readdirSync(path.join(ROOT, "videos")).filter((d) => /^\d\d-/.test(d))) {
-      for (const f of readdirSync(path.join(ROOT, "videos", dir)).filter((f) => f.endsWith(".mp4"))) {
+      for (const f of readdirSync(path.join(ROOT, "videos", dir)).filter((f) => f.endsWith(".mp4") && !f.includes("ai-live"))) {
         const src = path.join(ROOT, "videos", dir, f), dst = webPath(`videos/${dir}/${f}`);
         if (existsSync(dst) && statSync(dst).mtimeMs > statSync(src).mtimeMs) continue;
         mkdirSync(path.dirname(dst), { recursive: true });
@@ -363,7 +397,7 @@ if (artifactDir) {
   }
   if (kit === "brand" || kit === "banners") {
     const walk = (d) => readdirSync(path.join(ROOT, d), { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(`${d}/${e.name}`) : e.name.endsWith(".png") ? [`${d}/${e.name}`] : []);
-    for (const p of walk(kit === "brand" ? "brand/banners/highlights" : "brand/banners")) {
+    for (const p of kit === "brand" ? [] : walk("brand/banners")) {
       if (kit === "banners" && /^brand\/banners\/(highlights|mockups)\//.test(p)) continue; // the banner kit draws its mock-ups live
       const src = path.join(ROOT, p), dst = webPath(p.replace(/\.png$/, ".jpg"));
       if (existsSync(dst) && statSync(dst).mtimeMs > statSync(src).mtimeMs) continue;
@@ -371,7 +405,22 @@ if (artifactDir) {
       execFileSync(FF, ["-y", "-loglevel", "error", "-i", src, "-q:v", "2", "-pix_fmt", "yuvj444p", dst]);
     }
   }
+  if (kit === "highlights" || kit === "brand") {
+    // the stories and the 3D covers as visually lossless JPGs; the flat icon covers stay PNG (they're small and crisp)
+    const walk = (d) => readdirSync(path.join(ROOT, d), { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(`${d}/${e.name}`) : e.name.endsWith(".png") ? [`${d}/${e.name}`] : []);
+    for (const p of walk(kit === "brand" ? "highlights/covers" : "highlights").filter((p) => !p.includes("/covers/icons/"))) {
+      const src = path.join(ROOT, p), dst = webPath(p.replace(/\.png$/, ".jpg"));
+      if (existsSync(dst) && statSync(dst).mtimeMs > statSync(src).mtimeMs) continue;
+      mkdirSync(path.dirname(dst), { recursive: true });
+      execFileSync(FF, ["-y", "-loglevel", "error", "-i", src, "-q:v", "2", "-pix_fmt", "yuvj444p", dst]);
+    }
+  }
   const m = build({ web: true });
+  if ((kit === "highlights" || kit === "brand") && m.highlights) {
+    const jpg = (f) => { if (!f || f.path.includes("/covers/icons/")) return f; const jp = f.path.replace(/\.png$/, ".jpg"); return { ...f, name: f.name.replace(/\.png$/, ".jpg"), path: jp, size: statSync(webPath(jp)).size }; };
+    m.highlights.list = m.highlights.list.map((h) => ({ ...h, frames: h.frames.map(jpg), cover3d: jpg(h.cover3d) }));
+    m.highlights.extras = m.highlights.extras.map(jpg);
+  }
   if ((kit === "brand" || kit === "banners") && m.banners) {
     const jpg = (f) => { const jp = f.path.replace(/\.png$/, ".jpg"); return { ...f, name: f.name.replace(/\.png$/, ".jpg"), path: jp, size: statSync(webPath(jp)).size }; };
     m.banners.concepts = m.banners.concepts.map((c) => ({ ...c, files: c.files.map(jpg), mockup: c.mockup && jpg(c.mockup), limock: c.limock && jpg(c.limock) }));
@@ -400,6 +449,7 @@ if (artifactDir) {
   m.mascot.avatars.forEach((a) => add(a.path));
   m.mascot.boards.forEach((b) => add(b.path));
   m.docs.forEach((d) => add(d.path));
+  if (m.highlights) { m.highlights.list.forEach((h) => { h.frames.forEach((f) => add(f.path)); if (h.cover3d) add(h.cover3d.path); Object.values(h.icons).forEach((f) => f && add(f.path)); }); m.highlights.extras.forEach((f) => add(f.path)); }
   writeFileSync(path.join(artifactDir, "files.json"), JSON.stringify(files, null, 1));
   const total = Object.values(files).reduce((n, src) => n + statSync(path.isAbsolute(src) ? src : path.join(ROOT, src)).size, 0) + statSync(path.join(artifactDir, "page.html")).size;
   console.log(`${kit} kit: ${Object.keys(files).length} files + page, ${(total / 1e6).toFixed(1)} MB → ${artifactDir}`);

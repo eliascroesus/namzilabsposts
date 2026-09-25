@@ -12,7 +12,8 @@ Everything here is made from code: HTML designs rendered to exact-size PNGs and 
 | [**STRATEGY.md**](STRATEGY.md) | The plan: positioning, who we talk to (in order), pillars, cadence, hooks, CTAs, the first 90 days, what to pin, and the claims rules |
 | [**research/**](research/) | Four deep-research reports (about 45,000 words, 400+ sources): Framer & Base44, Attio & Mochi & premium SaaS, growth playbooks, and customers & competitors |
 | [**brand/**](brand/) | The primary mark (01 Between, mono), [transparent logo files](brand/logos/transparent/) and [website icons](brand/logos/web/), [banners for every platform](brand/banners/) (with LinkedIn-safe versions), [Namzi the mascot](brand/mascot/) and the [brand kit](brand/BRAND_KIT.md) |
-| [**posts/**](posts/) | 44 ready-to-post pieces for Instagram, X and LinkedIn, including 9 meme parodies starring Namzi. Each has its images, an Instagram caption, X posts, a LinkedIn post, alt text and a claims check |
+| [**highlights/**](highlights/) ✨ | Eleven Instagram highlights in the order a visitor needs them (Start here, five features, four use cases, FAQ): 63 stories, the sticker for each, and two cover sets, Namzi in 3D and clean icons in four colourways ([highlights/README](highlights/README.md)) |
+| [**posts/**](posts/) | 52 ready-to-post pieces for Instagram, X and LinkedIn, including 9 meme parodies starring Namzi and 8 feature and use-case carousels (45 to 52) that match the highlights. Each has its images, an Instagram caption, X posts, a LinkedIn post, alt text and a claims check |
 | [**videos/**](videos/) | 13 smooth motion videos at 60fps (the explainer in four cuts, plus two short cuts of it), with captions ([videos/README](videos/README.md)) |
 
 ---
@@ -46,7 +47,7 @@ Thirty-five designs, each with the profile picture made to go with it:
 - **Six memes:** Precious ("One place to rule them all", 3D gold rings and a volcano), Donut daydream ("Mmm… all your data in one place", a yellow cartoon hand and a donut), Wedding ("Your Stripe and your CRM, finally married"), Galaxy brain, Starter pack, Expectation vs reality
 - **Three made for LinkedIn:** Leaky funnel, Tool wall, and Team (for the people who work here)
 
-Each comes at every size: X, LinkedIn company page and personal profile, Facebook page and group (words centred top to bottom), and YouTube. The everyday ten also come as a link-preview card and an email signature. There are also Instagram highlight covers. The **Banner Kit** shows them all sorted by platform, at each platform's real shape.
+Each comes at every size: X, LinkedIn company page and personal profile, Facebook page and group (words centred top to bottom), and YouTube. The everyday ten also come as a link-preview card and an email signature. The Instagram highlight covers live with [the highlights](highlights/). The **Banner Kit** shows them all sorted by platform, at each platform's real shape.
 
 <img src="brand/banners/mockups/linkedin-electric.png" width="100%" alt="The Electric banner on a LinkedIn company page and a personal profile, on a laptop and a phone">
 
@@ -118,8 +119,9 @@ All thirteen are rendered frame by frame at 60fps (1080×1920; the sting is 1080
 
 You can download single files, a whole post, a whole section, or everything as one ZIP.
 
-- **Published copies:** the page is published as three private Artifacts, so each fits in one version (a bar at the top switches between them):
-  - the **Content Kit**: posts and videos. Post images are visually lossless JPGs; videos are web-compressed copies (CRF 25).
+- **Published copies:** the page is published as four Artifacts, so each fits in one version (a bar at the top switches between them):
+  - the **Content Kit**: bios, posts and videos. Post images are visually lossless JPGs; videos are web-compressed copies (CRF 25). The launch-day "AI live" cuts of video 11 stay in the repo until the AI connection is live.
+  - the **Highlights Kit**: the eleven Instagram highlights, every story in order with its sticker, both cover sets and profile previews.
   - the **Brand Kit**: logos (with every variant), transparent files, website icons, Namzi and highlight covers.
   - the **Banner Kit**: every banner, sorted by platform (LinkedIn company, LinkedIn profile, Facebook page and group, X, YouTube, link preview, email), each shown at the platform's real shape with its profile picture. Download one file, one design at every size, or a whole platform.
 
@@ -136,7 +138,7 @@ You can download single files, a whole post, a whole section, or everything as o
    - label demo data
    - nothing about the AI connection or ad platforms until they're live
 2. Set up the **comment-keyword DMs** (SHOWUP, METRICS, SPEED, LAUNCH, FIRST10), with ManyChat or by hand.
-3. Set up every profile the same way: the **profile picture** (`brand/logos/01-between-mono/profile-blue-1024.png`), the matching **banner** from [`brand/banners/`](brand/banners/), and the **bio** from [its README](brand/banners/README.md). Pin **video 11** everywhere and **post 35** on Instagram and LinkedIn (the full list is in [STRATEGY.md, "Pin these first"](STRATEGY.md#pin-these-first-all-platforms)).
+3. Set up every profile the same way: the **profile picture** (`brand/logos/01-between-mono/profile-blue-1024.png`), the matching **banner** from [`brand/banners/`](brand/banners/), and the **bio** from [its README](brand/banners/README.md). On Instagram, add the **highlights** from [`highlights/`](highlights/README.md), built from the last (FAQ) to the first (Start here). Pin **video 11** everywhere and **post 35** on Instagram and LinkedIn (the full list is in [STRATEGY.md, "Pin these first"](STRATEGY.md#pin-these-first-all-platforms)).
 4. Follow the **calendar** in [STRATEGY.md §9](STRATEGY.md#9-the-first-30-days), plus 30 to 50 replies a day in the niche.
 
 ---

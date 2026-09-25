@@ -67,8 +67,8 @@
       purpose: "Matching: the same customer across tools, counted once.",
       frames: [
         { title: true, h: "Count *once.*", sub: "Dave, dave@ and Dave M. are one Dave." },
-        { h: "The same person shows up in every tool, a little *differently.*", hsm: true, viz: C.match({ recs: [{ src: "calendly", t: "dave@acme.co" }, { src: "close", t: "Dave M.", ind: 120 }, { src: "aircall", t: "+44 7700 900123", ind: 40 }, { src: "stripe", t: "Dave Miller", ind: 170 }] }), demo: true },
-        { h: "Namzilabs matches them into one *person.*", hsm: true, sub: "By email or phone, automatically.", viz: C.match({ recs: [{ src: "calendly", t: "dave@acme.co" }, { src: "close", t: "Dave M.", ind: 120 }, { src: "stripe", t: "Dave Miller", ind: 60 }], person: { av: "D", nm: "Dave Miller", sub: "4 tools · one person", facts: [["Booked", "2 calls"], ["Rescheduled", "once"], ["Held", "1 call"], ["Paid", "$2,000"]] } }), vizTop: 44, demo: true },
+        { h: "The same person shows up in every tool, a little *differently.*", hsm: true, viz: C.match({ recs: [{ src: "calendly", t: "dave@example.com" }, { src: "close", t: "Dave M.", ind: 120 }, { src: "aircall", t: "+44 7700 900123", ind: 40 }, { src: "stripe", t: "Dave Miller", ind: 170 }] }), demo: true },
+        { h: "Namzilabs matches them into one *person.*", hsm: true, sub: "By email or phone, automatically.", viz: C.match({ recs: [{ src: "calendly", t: "dave@example.com" }, { src: "close", t: "Dave M.", ind: 120 }, { src: "stripe", t: "Dave Miller", ind: 60 }], person: { av: "D", nm: "Dave Miller", sub: "4 tools · one person", facts: [["Booked", "2 calls"], ["Rescheduled", "once"], ["Held", "1 call"], ["Paid", "$2,000"]] } }), vizTop: 44, demo: true },
         { h: "So you count people, not *rows.*", viz: C.rows([{ k: "Leads", s: "Typeform + Close", a: "1,318", b: "1,240" }, { k: "Calls booked", s: "Calendly", a: "431", b: "412" }, { k: "Buyers", s: "Stripe + Whop", a: "67", b: "64" }]), demo: true },
         START(),
       ],
@@ -107,10 +107,10 @@
         { h: "Monday, *9:07.*", viz: C.msg({ av: "J", nm: "Jordan", sub: "Head of sales · 9:07 am", tx: "What was our show rate last week?", color: "#f5a524" }) + `<div style="height:44px"></div>` + C.chores(["Export Calendly", "Export Close", "Paste both into “show-up tracker FINAL v3”", "Argue about which number is right"]) },
         { h: "Now it's already *there.*", sub: "Your Monday scorecard, live.", viz: C.kpis([{ l: "Show rate", v: "71%", d: "+4 pts", dd: "up", src: ["calendly", "close"] }, { l: "Close rate, held calls", v: "24%", d: "−2 pts", dd: "down", src: ["close", "fathom"] }, { l: "Cash collected", v: "$61.4k", d: "+9%", dd: "up", src: ["stripe", "whop"] }, { l: "Speed to lead", v: "6 min", d: "3 min faster", dd: "up", src: ["typeform", "aircall"] }, { l: "30-day refund rate", v: "3.1%", d: "+0.4 pts", dd: "down", src: ["stripe", "close"], wide: true }]), demo: true },
         { h: "By setter, by closer, by *source.*", sub: "See who's closing and who needs help, every week.", viz: C.table({ th: ["Cash collected by closer", "Last week"], rows: [{ nm: "Maya", sub: "11 deals", pct: 100, v: "$24.8k", color: "#2f5fd8" }, { nm: "Theo", sub: "9 deals", pct: 85, v: "$21.1k", color: "#8b5cf6" }, { nm: "Sam", sub: "7 deals", pct: 62, v: "$15.5k", color: "#16a34a" }] }), demo: true },
-        { bg: "sky", h: "Booked is a hope. Held is a *number.*", sub: "149 calls never happened. Now you can see which ones, and why.", viz: C.twoup({ l: "Booked", v: "412", src: ["calendly"], ghost: true }, { l: "Held", v: "263", src: ["fathom"], blue: true }), demo: true },
+        { bg: "sky", h: "Booked is a hope. Held is a *number.*", sub: "149 calls never happened. Now you can see which ones, and why.", viz: C.twoup({ l: "Booked, 30 days", v: "412", src: ["calendly"], ghost: true }, { l: "Held, 30 days", v: "263", src: ["fathom"], blue: true }), demo: true },
         DM("SHOWUP", "what to connect and how to build your show rate"),
       ],
-      stickers: { 2: "Poll sticker: \"How long does your Monday report take?\" (Under 30 min / Over an hour).", 6: "Nothing: the ask is the DM keyword." },
+      stickers: { 2: "Poll sticker: \"How long does your Monday report take?\" (Under 30 min / Over an hour)." },
     },
     {
       id: "agencies",

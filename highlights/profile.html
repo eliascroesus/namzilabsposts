@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Namzilabs · profile preview</title>
+<link rel="stylesheet" href="../lib/brand.css">
+<style>
+  /* How the profile reads with the highlights up: picture, bio, the highlight row, the first posts.
+     A preview in our own layout (not a copy of any app's screen), in dark and light.
+       node tools/render-stills.mjs highlights/profile.html highlights/covers --ss 2 */
+  body { display: flex; gap: 40px; padding: 40px; align-items: flex-start; }
+  .pf { flex: none; width: 1080px; height: 1760px; padding: 64px 0 0; font-family: var(--sans); }
+  .pf.dark { background: #0c0d11; color: #f3f4f8; --soft: #a4a8b8; --line: #23252e; --btn: #22242c; }
+  .pf.light { background: #ffffff; color: #14141c; --soft: #5c5c6b; --line: #e7e8f0; --btn: #eef0f5; }
+  .pf .hd { display: flex; align-items: center; gap: 44px; padding: 0 56px; }
+  .pf .av { width: 210px; height: 210px; border-radius: 50%; overflow: hidden; flex: none; box-shadow: 0 0 0 6px var(--line); }
+  .pf .av img { width: 100%; height: 100%; display: block; }
+  .pf .nm { font-size: 52px; font-weight: 800; letter-spacing: -0.035em; }
+  .pf .cat { margin-top: 8px; font-size: 32px; color: var(--soft); font-weight: 500; }
+  .pf .bio { margin: 40px 56px 0; font-size: 36px; line-height: 1.42; font-weight: 500; letter-spacing: -0.01em; white-space: pre-line; }
+  .pf .lnk { margin: 12px 56px 0; font-size: 34px; font-weight: 650; color: #6f9bff; }
+  .pf.light .lnk { color: var(--blue); }
+  .pf .btns { display: flex; gap: 18px; margin: 40px 56px 0; }
+  .pf .btns span { flex: 1; height: 88px; border-radius: 22px; display: grid; place-items: center; font-size: 32px; font-weight: 700; background: var(--btn); }
+  .pf .btns span.go { background: #2f5fd8; color: #fff; }
+  .pf .row { display: flex; gap: 34px; margin: 52px 0 0 48px; overflow: hidden; width: calc(100% - 48px); }
+  .pf .row .c { flex: none; width: 176px; display: flex; flex-direction: column; align-items: center; gap: 16px; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+  .pf .row .c i { width: 176px; height: 176px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 5px var(--line); display: block; }
+  .pf .row .c i img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .pf .grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-top: 1px solid var(--line); padding-top: 4px; }
+  .pf .grid div { aspect-ratio: 3 / 4; overflow: hidden; }
+  .pf .grid img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .wide { flex: none; width: 2200px; height: 800px; padding: 70px 80px; display: flex; flex-direction: column; gap: 50px; background: #0c0d11; color: #fff; }
+  .wide h3 { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; }
+  .wide .row2 { display: grid; grid-template-columns: repeat(11, 1fr); gap: 26px; }
+  .wide .row2 .c { display: flex; flex-direction: column; align-items: center; gap: 16px; font-size: 24px; font-weight: 650; white-space: nowrap; }
+  .wide .row2 .c i { width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 5px #23252e; display: block; }
+  .wide .row2 .c i img { width: 100%; height: 100%; display: block; }
+</style>
+</head>
+<body>
+<script src="../lib/motion.js"></script>
+<script src="../lib/hlicons.js"></script>
+<script type="module">
+  import COPY from "../brand/copy/copy.mjs";
+  const bio = COPY.groups.find((g) => g.id === "bios").items.find((i) => i.label === "Instagram (recommended)").text;
+  const IDS = NZ.HL_IDS, NAMES = NZ.HL_NAMES;
+  const GRID = ["35-how-it-works", "11-sources-wall", "45-any-kpi", "46-find-the-leak", "49-sales-team-monday", "51-launch-number"];
+  const profile = (still, theme, cover) => `<div class="canvas pf ${theme}" data-still="${still}">
+    <div class="hd"><span class="av"><img src="../brand/logos/01-between-mono/profile-blue-1024.png" alt=""></span><div><div class="nm">Namzilabs</div><div class="cat">Software company</div></div></div>
+    <div class="bio"></div><div class="lnk">namzilabs.co</div>
+    <div class="btns"><span class="go">Follow</span><span>Message</span></div>
+    <div class="row">${IDS.map((id) => `<div class="c"><i><img src="${cover(id)}" alt=""></i>${NAMES[id]}</div>`).join("")}</div>
+    <div class="grid">${GRID.map((d) => `<div><img src="../posts/${d}/ig-01.png" alt=""></div>`).join("")}</div>
+  </div>`;
+  document.body.insertAdjacentHTML("beforeend", profile("profile-3d", "dark", (id) => `covers/3d/${id}.png`));
+  document.body.insertAdjacentHTML("beforeend", profile("profile-icons", "light", (id) => `covers/icons/ink/${id}.png`));
+  // every cover in one row, for the docs
+  document.body.insertAdjacentHTML("beforeend", `<div class="canvas wide" data-still="row-3d"><h3>The 3D covers</h3><div class="row2">${IDS.map((id) => `<div class="c"><i><img src="covers/3d/${id}.png" alt=""></i>${NAMES[id]}</div>`).join("")}</div><h3>The icon covers · color</h3><div class="row2">${IDS.map((id) => `<div class="c"><i><img src="covers/icons/color/${id}.png" alt=""></i>${NAMES[id]}</div>`).join("")}</div></div>`);
+  document.querySelectorAll(".bio").forEach((b) => (b.textContent = bio));
+  NZ.still();
+</script>
+</body>
+</html>

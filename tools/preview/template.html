@@ -79,6 +79,8 @@
   .kb-seg a:not([aria-current]):hover { color: var(--text); background: color-mix(in srgb, var(--surface) 50%, transparent); }
   .kb-seg .ext { font-size: 12px; opacity: .65; }
   @media (max-width: 440px) { .kb-brand span { display: none; } .kb-seg a { padding: 7px 11px; } }
+  /* four kits on a phone: tighter tabs, no arrows, and a scroll instead of an overflow if it still doesn't fit */
+  @media (max-width: 480px) { .kb-seg { max-width: calc(100vw - 72px); overflow-x: auto; scrollbar-width: none; } .kb-seg a { padding: 7px 9px; font-size: 13px; } .kb-seg .ext { display: none; } }
   nav.tabs { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 57px); z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   nav.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
   nav.tabs a { flex: none; text-decoration: none; color: var(--muted); font-weight: 650; font-size: 14px; padding: 12px 12px; border-bottom: 2px solid transparent; }
@@ -190,6 +192,32 @@
   .bcard button.prev img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; }
   .bcard .cbody { gap: 10px; }
   .subh { font-size: 20px; letter-spacing: -0.02em; margin: 28px 0 12px; }
+  /* highlights: the circles, like a profile, then the stories of the one you pick */
+  .hlrow { display: flex; gap: 14px; overflow-x: auto; scrollbar-width: none; padding: 6px 4px 12px; margin: 0 -4px 6px; }
+  .hlc { flex: none; width: 88px; display: flex; flex-direction: column; align-items: center; gap: 8px; border: 0; background: none; cursor: pointer; font: 650 12.5px/1.2 var(--sans, system-ui); color: var(--muted); padding: 0; white-space: nowrap; }
+  .hlc i { width: 80px; height: 80px; border-radius: 50%; overflow: hidden; display: block; box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--line); transition: box-shadow .2s; }
+  .hlc i img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hlc.on { color: var(--text); }
+  .hlc.on i { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+  .hld { border: 1px solid var(--line); background: var(--surface); border-radius: 20px; padding: 18px; box-shadow: var(--shadow); }
+  .hld .top { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: flex-start; justify-content: space-between; }
+  .hld h3 { margin: 0; font-size: 22px; letter-spacing: -0.02em; }
+  .hld p { margin: 6px 0 0; color: var(--muted); font-size: 14px; max-width: 640px; }
+  .hlstrip { display: flex; gap: 10px; overflow-x: auto; padding: 14px 2px 6px; }
+  .hlstrip button { flex: none; width: 128px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; padding: 0; background: var(--surface-2); cursor: zoom-in; position: relative; }
+  .hlstrip button img { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; }
+  .hlstrip button span { position: absolute; left: 6px; top: 6px; background: rgba(10,12,20,.72); color: #fff; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 2px 7px; }
+  .hlstk { margin-top: 10px; display: grid; gap: 6px; font-size: 13.5px; color: var(--muted); }
+  .hlstk b { color: var(--text); }
+  .hlcov { display: grid; gap: 14px 12px; grid-template-columns: repeat(auto-fill, minmax(min(29%, 112px), 1fr)); }
+  .hlcov .c { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .hlcov .c i { width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; display: block; box-shadow: 0 0 0 1px var(--line); }
+  .hlcov .c i img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hlcov .c .lab { font-size: 12.5px; font-weight: 650; }
+  .hlcov .c .btn { width: 100%; justify-content: center; }
+  .hlbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .hlbar .ptabs { margin: 0; }
+  #hlboards button span { display: block; padding: 10px 12px; font-size: 13px; font-weight: 650; text-align: left; color: var(--text); }
   /* banners by platform: every design at the platform's real shape, with its profile picture roughly where the photo sits */
   .ptabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px 2px 6px; margin: 0 -2px 10px; }
   .ptab { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: 14px; padding: 9px 14px; font-weight: 700; font-size: 14px; cursor: pointer; color: var(--muted); display: flex; flex-direction: column; align-items: flex-start; gap: 1px; text-align: left; }
@@ -290,10 +318,11 @@
   </div>
   <div class="stats" id="stats"></div>
   <p class="faint" id="dlnote" style="margin:14px 0 0">Every download asks you to confirm the save.</p>
+  <div class="note hidden" id="kitnote" style="margin-top:16px"></div>
 </header>
 
 <nav class="tabs"><div class="wrap" id="tabs">
-  <a href="#copy">Bios &amp; copy</a><a href="#posts">Posts</a><a href="#videos">Videos</a><a href="#logos">Logos</a><a href="#platforms">By platform</a><a href="#banners">Banners</a><a href="#mascot">Namzi</a><a href="#docs">Docs</a>
+  <a href="#copy">Bios &amp; copy</a><a href="#posts">Posts</a><a href="#videos">Videos</a><a href="#highlights">Highlights</a><a href="#logos">Logos</a><a href="#platforms">By platform</a><a href="#banners">Banners</a><a href="#mascot">Namzi</a><a href="#docs">Docs</a>
 </div></nav>
 
 <main class="wrap">
@@ -317,6 +346,19 @@
       <button class="btn" data-zip="videos">Download all videos</button></div>
     <div class="filters" id="vfilters"></div>
     <div class="vgrid" id="vgrid"></div>
+  </section>
+
+  <section id="highlights">
+    <div class="shead"><div><h2>Instagram <em>highlights.</em></h2><p id="hlsub">Eleven highlights, in the order a visitor needs them: what it is, the five features, the four use cases, then the FAQ. Tap a circle to see its stories and the sticker to add; open it to step through them.</p></div>
+      <button class="btn" data-zip="highlights">Download all highlights</button></div>
+    <div id="hlstories"><div class="hlrow" id="hlrow" role="tablist" aria-label="Highlight"></div>
+    <div class="hld" id="hld"></div></div>
+    <h3 class="subh" id="hlcovhead">Covers</h3>
+    <p class="faint" style="margin:-4px 0 14px">Two sets: pick one and use it for every circle. The 3D covers put Namzi in each highlight's scene; the icon covers are one clean icon per highlight, in four colourways. All 1080×1080, made for the circle crop.</p>
+    <div class="hlbar"><div class="ptabs" id="hlcovtabs" role="tablist" aria-label="Cover set"></div><button class="btn small" id="hlcovzip"></button></div>
+    <div class="hlcov" id="hlcov"></div>
+    <h3 class="subh">See it on a profile</h3>
+    <div class="boards" id="hlboards"></div>
   </section>
 
   <section id="logos">
@@ -499,7 +541,10 @@
   /* ── file sets for ZIPs ─────────────────────────────────────────────── */
   const postFiles = (p, prefix = `${p.dir}/`) => [...p.images.map((im) => ({ ...im, zipPath: prefix + im.name })), ...(p.pdf ? [{ ...p.pdf, zipPath: prefix + p.pdf.name }] : []), { text: p.md, type: "text/markdown", zipPath: prefix + "captions.md" }];
   const logoFiles = (l, prefix = `${l.id}/`) => [...l.svgs.map((s) => ({ text: s.text, type: "image/svg+xml", zipPath: prefix + s.name })), ...l.pngs.map((p) => ({ ...p, zipPath: prefix + p.name })), ...(l.board ? [{ ...l.board, zipPath: prefix + "board.png" }] : [])];
+  const extOf = (n) => n.slice(n.lastIndexOf("."));
+  const hlFiles = (h, prefix = `${h.n}-${h.id}/`) => [...h.frames.map((f) => ({ ...f, zipPath: prefix + f.name })), ...(h.cover3d ? [{ ...h.cover3d, zipPath: prefix + "cover-3d" + extOf(h.cover3d.name) }] : []), ...Object.entries(h.icons).filter(([, f]) => f).map(([w, f]) => ({ ...f, zipPath: prefix + `cover-icon-${w}.png` }))];
   const sets = {
+    highlights: () => M.highlights ? [...M.highlights.list.flatMap((h) => hlFiles(h, `highlights/${h.n}-${h.id}/`)), ...M.highlights.extras.map((f) => ({ ...f, zipPath: `highlights/previews/${f.name}` })), { text: M.highlights.readme, type: "text/markdown", zipPath: "highlights/README.md" }] : [],
     posts: () => M.posts.flatMap((p) => postFiles(p, `posts/${p.dir}/`)),
     videos: () => M.videos.length ? [...M.videos.flatMap((v) => [...v.files.map((f) => ({ ...f, zipPath: `videos/${v.dir}/${f.name}` })), { ...v.poster, zipPath: `videos/${v.dir}/poster.jpg` }]), { text: M.videoReadme, type: "text/markdown", zipPath: "videos/README.md" }] : [],
     logos: () => [...M.logos.concepts.flatMap((l) => logoFiles(l, `logos/${l.id}/`)), ...M.logos.overviews.filter((b) => !M.logos.concepts.some((l) => l.board && l.board.path === b.path)).map((b) => ({ ...b, zipPath: `logos/${b.name}` })), ...M.logos.wordmarks.map((w) => ({ text: w.text, type: "image/svg+xml", zipPath: `logos/${w.name}` })), ...(M.logos.variants || []).flatMap((v) => [{ ...v.png, zipPath: `logos/variants/${v.png.name}` }, ...(v.svg ? [{ text: v.svg.text, type: "image/svg+xml", zipPath: `logos/variants/${v.svg.name}` }] : [])]), ...transFiles(), ...webFiles()],
@@ -507,11 +552,11 @@
     mascot: () => [...M.mascot.stickers.flatMap((s) => [{ ...s.png, zipPath: `namzi/stickers/${s.png.name}` }, { text: s.svg, type: "image/svg+xml", zipPath: `namzi/stickers/${s.png.name.replace(".png", ".svg")}` }]), ...M.mascot.avatars.map((a) => ({ ...a, zipPath: `namzi/avatars/${a.name}` })), ...M.mascot.boards.map((b) => ({ ...b, zipPath: `namzi/${b.name}` }))],
     docs: () => M.docs.map((d) => ({ ...d, zipPath: `docs/${d.name}` })),
   };
-  const root = M.kit === "brand" ? "namzilabs-brand" : M.kit === "banners" ? "namzilabs-banners" : "namzilabs-content";
+  const root = M.kit === "brand" ? "namzilabs-brand" : M.kit === "banners" ? "namzilabs-banners" : M.kit === "highlights" ? "namzilabs-highlights" : "namzilabs-content";
   function transFiles(color) { return (M.logos.transparent || []).filter((t) => !color || t.color === color).flatMap((t) => t.files.map((f) => ({ ...f, zipPath: `logos/transparent/${f.name}` }))); }
   function webFiles() { return M.logos.web ? [...M.logos.web.files.map((f) => ({ ...f, zipPath: `logos/website-icons/${f.name}` })), ...(M.logos.web.readme ? [{ text: M.logos.web.readme, type: "text/markdown", zipPath: "logos/website-icons/README.md" }] : [])] : []; }
-  sets.all = () => ["posts", "videos", "logos", "banners", "mascot", "docs"].flatMap((k) => sets[k]().map((f) => ({ ...f, zipPath: `${root}/${f.zipPath}` })));
-  const zipNames = { all: `${root}.zip`, posts: "namzilabs-posts.zip", videos: "namzilabs-videos.zip", logos: "namzilabs-logos.zip", banners: "namzilabs-banners.zip", mascot: "namzi-mascot.zip", docs: "namzilabs-docs.zip" };
+  sets.all = () => ["posts", "videos", "highlights", "logos", "banners", "mascot", "docs"].flatMap((k) => sets[k]().map((f) => ({ ...f, zipPath: `${root}/${f.zipPath}` })));
+  const zipNames = { all: `${root}.zip`, highlights: M.kit === "brand" ? "namzilabs-highlight-covers.zip" : "namzilabs-highlights.zip", posts: "namzilabs-posts.zip", videos: "namzilabs-videos.zip", logos: "namzilabs-logos.zip", banners: "namzilabs-banners.zip", mascot: "namzi-mascot.zip", docs: "namzilabs-docs.zip" };
   const bytes = (fs) => fs.reduce((n, f) => n + (f.size || (f.text ? f.text.length : 0)), 0);
   document.querySelectorAll("[data-zip]").forEach((b) => {
     const k = b.dataset.zip;
@@ -520,7 +565,8 @@
   });
 
   /* ── which kit is this? hide what it doesn't carry ──────────────────── */
-  const has = { copy: !!(M.copy && M.copy.groups.length), posts: M.posts.length > 0, videos: M.videos.length > 0, logos: M.logos.concepts.length > 0, platforms: !!(M.banners && M.banners.concepts.length), banners: !!(M.banners && (M.kit === "brand" ? M.banners.highlights.length : M.kit !== "banners" && M.banners.concepts.length)), mascot: M.mascot.stickers.length > 0, docs: M.docs.length > 0 };
+  const hlStories = !!(M.highlights && M.highlights.list.some((h) => h.frames.length));
+  const has = { highlights: !!(M.highlights && M.highlights.list.length), copy: !!(M.copy && M.copy.groups.length), posts: M.posts.length > 0, videos: M.videos.length > 0, logos: M.logos.concepts.length > 0, platforms: !!(M.banners && M.banners.concepts.length), banners: !!(M.banners && (M.kit === "brand" ? M.banners.highlights.length : M.kit !== "banners" && M.banners.concepts.length)), mascot: M.mascot.stickers.length > 0, docs: M.docs.length > 0 };
   for (const [k, v] of Object.entries(has)) if (!v) { document.getElementById(k).classList.add("hidden"); const a = document.querySelector(`#tabs a[href="#${k}"]`); if (a) a.classList.add("hidden"); }
   if (M.kit === "brand") {
     $("#h1").innerHTML = "The brand, ready to <em>use.</em>";
@@ -530,13 +576,20 @@
     $("#h1").innerHTML = "Every banner, every <em>platform.</em>";
     document.title = "Namzilabs Banner Kit";
   }
+  if (M.kit === "highlights") {
+    $("#h1").innerHTML = "Every highlight, ready to <em>post.</em>";
+    document.title = "Namzilabs Highlights Kit";
+    // the highlights first, then the bios that sit above them on the profile
+    $("#copy").before($("#highlights"));
+    $('#tabs a[href="#copy"]').before($('#tabs a[href="#highlights"]'));
+  }
   // the bios lead the Content Kit; the other kits keep their own files first and the bios just before the docs
   if (M.kit === "banners" || M.kit === "brand") {
     $("#docs").before($("#copy"));
     $('#tabs a[href="#docs"]').before($('#tabs a[href="#copy"]'));
   }
   // switch kits from the top bar; each kit is its own page, so the others open in a new tab
-  const KT = [["content", "Content"], ["brand", "Brand"], ["banners", "Banner"]].filter(([id]) => id === M.kit || (M.kits[id] && M.kits[id].url));
+  const KT = [["content", "Content"], ["highlights", "Highlights"], ["brand", "Brand"], ["banners", "Banner"]].filter(([id]) => id === M.kit || (M.kits[id] && M.kits[id].url));
   if (M.kit !== "all" && KT.length > 1) {
     const tab = (id, label) => id === M.kit ? `<a aria-current="page">${label}<span class="kx"> kit</span></a>` : `<a href="${esc(M.kits[id].url)}" target="_blank" rel="noopener">${label}<span class="kx"> kit</span><span class="ext" aria-hidden="true">↗</span></a>`;
     $("#kbseg").innerHTML = KT.map(([id, label]) => tab(id, label)).join("");
@@ -545,7 +598,10 @@
   /* ── header ─────────────────────────────────────────────────────────── */
   const nSlides = M.posts.reduce((n, p) => n + p.images.length, 0);
   const nDesigns = M.banners ? M.banners.concepts.length : 0;
-  $("#sub").textContent = M.kit === "brand"
+  const nStories = M.highlights ? M.highlights.list.reduce((n, h) => n + h.frames.length, 0) : 0;
+  $("#sub").textContent = M.kit === "highlights"
+    ? `${M.highlights.list.length} Instagram highlights: ${nStories} stories in order, the sticker for each, and two sets of covers, Namzi in 3D and clean icons in four colourways. Plus the bios that go above them. Stories are visually lossless JPGs; PNG masters are in the repo.`
+    : M.kit === "brand"
     ? `The logo and ${(M.logos.variants || []).length} variants of it (including the game-style ones), transparent files, website icons, Namzi the mascot and Instagram highlight covers. Preview anything and download single files or whole sets. The banners have their own kit.`
     : M.kit === "banners"
     ? `${nDesigns} banner designs, each at every size it's made for: LinkedIn company and profile, Facebook page and group, X and YouTube, plus a link preview and an email signature for the brand designs. Pick a platform to see every design at its real shape, with the profile picture made for it and the bio to paste under it.${M.banners && M.banners.jpg ? " Banners are visually lossless JPGs; PNG masters are in the repo." : ""}`
@@ -554,8 +610,76 @@
   $("#repo").href = M.repo.url;
   const nBanners = M.banners ? M.banners.concepts.reduce((n, c) => n + c.files.length, 0) : 0;
   const nCopy = M.copy ? M.copy.groups.reduce((n, g) => n + g.items.length, 0) : 0;
-  $("#stats").innerHTML = [["Bios & lines", M.kit === "content" || M.kit === "all" ? nCopy : 0], ["Posts", M.posts.length], ["Images", nSlides], ["Videos", M.videos.length], ["Logo variants", (M.logos.variants || []).length], ["Banner designs", nDesigns], ["Banners", nBanners], ["Platforms", M.kit === "banners" ? 8 : 0], ["Stickers", M.mascot.stickers.length]].filter(([, v]) => v).map(([k, v]) => `<span class="stat"><b>${v}</b> ${k}</span>`).join("");
+  $("#stats").innerHTML = [["Highlights", M.kit === "highlights" || M.kit === "all" ? (M.highlights ? M.highlights.list.length : 0) : 0], ["Stories", nStories], ["Bios & lines", M.kit === "content" || M.kit === "all" ? nCopy : 0], ["Posts", M.posts.length], ["Images", nSlides], ["Videos", M.videos.length], ["Logo variants", (M.logos.variants || []).length], ["Banner designs", nDesigns], ["Banners", nBanners], ["Platforms", M.kit === "banners" ? 8 : 0], ["Stickers", M.mascot.stickers.length]].filter(([, v]) => v).map(([k, v]) => `<span class="stat"><b>${v}</b> ${k}</span>`).join("");
   $("#gen").textContent = `Built ${M.built}.`;
+
+  {
+    const link = (id, label) => M.kits[id] && M.kits[id].url ? `<a href="${esc(M.kits[id].url)}" target="_blank" rel="noopener">${label} ↗</a>` : "";
+    const notes = {
+      content: link("highlights", "Highlights Kit") && `<b>The Instagram highlights</b> (every story, the stickers and both sets of covers) are in the ${link("highlights", "Highlights Kit")}.`,
+      brand: [link("banners", "Banner Kit") && `<b>Looking for the banners?</b> Every design, at every platform size and with its profile picture, is in the ${link("banners", "Banner Kit")}.`, link("highlights", "Highlights Kit") && `The highlight stories that go with the covers below are in the ${link("highlights", "Highlights Kit")}.`].filter(Boolean).join(" "),
+      highlights: link("content", "Content Kit") && `<b>The posts that go with them</b> (45 to 52: the same features and use cases as feed carousels) are in the ${link("content", "Content Kit")}.`,
+    };
+    if (notes[M.kit]) { $("#kitnote").innerHTML = notes[M.kit]; $("#kitnote").classList.remove("hidden"); }
+  }
+
+  /* ── highlights ─────────────────────────────────────────────────────── */
+  if (has.highlights) {
+    const L = M.highlights.list;
+    const WAYS = [["3d", "3D"], ["blue", "Icons · blue"], ["ink", "Icons · ink"], ["paper", "Icons · paper"], ["color", "Icons · colour"]].filter(([k]) => L.some((h) => (k === "3d" ? h.cover3d : h.icons[k])));
+    let sel = 0, way = WAYS.length ? WAYS[0][0] : "3d";
+    const coverOf = (h, w = way) => (w === "3d" ? h.cover3d : h.icons[w]);
+    const wayFiles = () => L.map((h) => coverOf(h)).filter(Boolean).map((f) => ({ ...f, zipPath: `covers-${way}/${f.name}` }));
+    function renderHL() {
+      $("#hlrow").innerHTML = L.map((h, i) => `<button class="hlc${i === sel ? " on" : ""}" role="tab" aria-selected="${i === sel}" data-hl="${i}"><i><img loading="lazy" src="${esc((h.cover3d || h.icons.ink).path)}" alt=""></i>${esc(h.name)}</button>`).join("");
+      const h = L[sel], kw = h.frames.find((f) => f.kw);
+      const stk = Object.entries(h.stickers).map(([n, t]) => `<div><b>Story ${esc(n)}:</b> ${esc(t)}</div>`).join("");
+      $("#hld").innerHTML = `<div class="top"><div><h3>${esc(h.n)} · ${esc(h.name)}</h3><p>${esc(h.purpose)}</p></div><div class="cact"><button class="btn small" data-hlopen="${sel}">Open</button><button class="btn small" data-hlzip="${sel}">${ICON_DL}ZIP<span class="sz">&nbsp;· ${mb(bytes(hlFiles(h)))}</span></button></div></div>
+        <div class="hlstrip">${h.frames.map((f, i) => `<button data-hlf="${i}" aria-label="Story ${i + 1}: ${esc(f.head)}"><img loading="lazy" src="${esc(f.path)}" alt=""><span>${i + 1}</span></button>`).join("")}</div>
+        ${stk || kw ? `<div class="hlstk">${stk}${kw ? `<div><b>The ask:</b> reply ${esc(kw.kw)} to the last story (a story reply is a DM). The reply to send back is in Bios &amp; copy.</div>` : ""}</div>` : ""}`;
+    }
+    function renderCovers() {
+      $("#hlcovtabs").innerHTML = WAYS.map(([k, lab]) => `<button class="ptab${way === k ? " on" : ""}" role="tab" aria-selected="${way === k}" data-way="${k}">${lab}</button>`).join("");
+      $("#hlcov").innerHTML = L.map((h, i) => { const f = coverOf(h); return f ? `<div class="c"><i><img loading="lazy" src="${esc(f.path)}" alt="${esc(h.name)} cover"></i><span class="lab">${esc(h.name)}</span><button class="btn small" data-hlcov="${i}">${ICON_DL}${f.name.endsWith(".jpg") ? "JPG" : "PNG"}</button></div>` : ""; }).join("");
+      $("#hlcovzip").innerHTML = `${ICON_DL}This set <span class="faint">${mb(bytes(wayFiles()))}</span>`;
+    }
+    function openHL(i, at = 0) {
+      const h = L[i];
+      cur = { images: h.frames, title: `${h.n} · ${h.name}`, dir: `highlight-${h.n}-${h.id}`, md: h.frames.map((f, j) => `${j + 1}. ${f.head}`).join("\n") }; curIdx = 0;
+      $("#mttl").textContent = cur.title;
+      $("#mzip").innerHTML = `${ICON_DL}Highlight ZIP`;
+      $("#mzip").onclick = () => saveZip(`namzilabs-highlight-${h.n}-${h.id}.zip`, hlFiles(h));
+      const stk = Object.entries(h.stickers).map(([n, t]) => `Story ${n}: ${t}`).join("\n");
+      $("#mbody").innerHTML = `<div class="viewer"><div class="stage"><img id="mimg" alt=""></div><div class="strip" id="mstrip">${h.frames.map((im, j) => `<button data-i="${j}" aria-label="${esc(im.name)}"><img loading="lazy" src="${esc(im.path)}" alt=""></button>`).join("")}</div>
+        <div class="vactions"><button class="btn small" id="mone">${ICON_DL}<span id="monelab"></span></button></div></div>
+        <div><dl class="meta"><dt>For</dt><dd>${esc(h.purpose)}</dd><dt>Stories</dt><dd>${h.frames.length}, in this order</dd></dl>${stk ? capBlock("Stickers", stk) : ""}${capBlock("Every story, in order", cur.md)}</div>`;
+      showImg(at);
+      $("#modal").classList.add("open"); $("#sheet").scrollTop = 0; document.body.style.overflow = "hidden"; $("#mclose").focus();
+    }
+    function openPreview(k) {
+      const f = M.highlights.extras[k];
+      cur = { images: [f], title: f.label, dir: "highlights", md: "" }; curIdx = 0;
+      $("#mttl").textContent = f.label;
+      $("#mzip").innerHTML = `${ICON_DL}${f.name.endsWith(".jpg") ? "JPG" : "PNG"}`;
+      $("#mzip").onclick = () => saveOne(f, `namzilabs-${f.name}`);
+      $("#mbody").innerHTML = `<div class="viewer"><div class="stage"><img id="mimg" alt=""></div><div class="vactions"><button class="btn small" id="mone">${ICON_DL}<span id="monelab"></span></button></div></div><div></div>`;
+      showImg(0);
+      $("#modal").classList.add("open"); document.body.style.overflow = "hidden";
+    }
+    if (hlStories) renderHL(); else { $("#hlstories").classList.add("hidden"); $("#highlights h2").innerHTML = "Highlight <em>covers.</em>"; $("#hlsub").textContent = "One cover per Instagram highlight, in two sets: Namzi in 3D, and clean icons in four colourways. Pick one set and use it for every circle."; $("#hlcovhead").classList.add("hidden"); document.querySelector('#tabs a[href="#highlights"]').textContent = "Highlight covers"; const z = document.querySelector('#highlights [data-zip="highlights"]'); if (z && z.firstChild) z.firstChild.textContent = "Download highlight covers"; }
+    renderCovers();
+    $("#hlboards").innerHTML = M.highlights.extras.map((f, k) => `<button data-hlx="${k}" aria-label="${esc(f.label)}"><img loading="lazy" src="${esc(f.path)}" alt="${esc(f.label)}"><span>${esc(f.label)}</span></button>`).join("");
+    $("#highlights").addEventListener("click", (e) => {
+      const c = e.target.closest("[data-hl]"); if (c) { sel = Number(c.dataset.hl); return renderHL(); }
+      const o = e.target.closest("[data-hlopen]"); if (o) return openHL(Number(o.dataset.hlopen));
+      const f = e.target.closest("[data-hlf]"); if (f) return openHL(sel, Number(f.dataset.hlf));
+      const z = e.target.closest("[data-hlzip]"); if (z) { const h = L[Number(z.dataset.hlzip)]; return saveZip(`namzilabs-highlight-${h.n}-${h.id}.zip`, hlFiles(h)); }
+      const w = e.target.closest("[data-way]"); if (w) { way = w.dataset.way; return renderCovers(); }
+      const d = e.target.closest("[data-hlcov]"); if (d) { const h = L[Number(d.dataset.hlcov)], file = coverOf(h); return saveOne(file, `namzilabs-highlight-cover-${way}-${h.id}${extOf(file.name)}`); }
+      if (e.target.closest("#hlcovzip")) return saveZip(`namzilabs-highlight-covers-${way}.zip`, wayFiles());
+      const x = e.target.closest("[data-hlx]"); if (x) return openPreview(Number(x.dataset.hlx));
+    });
+  }
 
   /* ── posts ──────────────────────────────────────────────────────────── */
   let pf = "all";
