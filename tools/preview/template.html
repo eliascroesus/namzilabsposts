@@ -530,6 +530,11 @@
     $("#h1").innerHTML = "Every banner, every <em>platform.</em>";
     document.title = "Namzilabs Banner Kit";
   }
+  // the bios lead the Content Kit; the other kits keep their own files first and the bios just before the docs
+  if (M.kit === "banners" || M.kit === "brand") {
+    $("#docs").before($("#copy"));
+    $('#tabs a[href="#docs"]').before($('#tabs a[href="#copy"]'));
+  }
   // switch kits from the top bar; each kit is its own page, so the others open in a new tab
   const KT = [["content", "Content"], ["brand", "Brand"], ["banners", "Banner"]].filter(([id]) => id === M.kit || (M.kits[id] && M.kits[id].url));
   if (M.kit !== "all" && KT.length > 1) {
@@ -543,7 +548,7 @@
   $("#sub").textContent = M.kit === "brand"
     ? `The logo and ${(M.logos.variants || []).length} variants of it (including the game-style ones), transparent files, website icons, Namzi the mascot and Instagram highlight covers. Preview anything and download single files or whole sets. The banners have their own kit.`
     : M.kit === "banners"
-    ? `${nDesigns} banner designs, each at every size it's made for: LinkedIn company and profile, Facebook page and group, X and YouTube, plus a link preview and an email signature for the brand designs. Pick a platform to see every design at its real shape, with the profile picture made for it.${M.banners && M.banners.jpg ? " Banners are visually lossless JPGs; PNG masters are in the repo." : ""}`
+    ? `${nDesigns} banner designs, each at every size it's made for: LinkedIn company and profile, Facebook page and group, X and YouTube, plus a link preview and an email signature for the brand designs. Pick a platform to see every design at its real shape, with the profile picture made for it and the bio to paste under it.${M.banners && M.banners.jpg ? " Banners are visually lossless JPGs; PNG masters are in the repo." : ""}`
     : `Every bio and tagline, ${M.posts.length} posts (${nSlides} images) and ${M.videos.length} videos, including the pinned explainer. Copy the bios and captions, preview anything, and download single files or whole sets.${M.kit === "content" ? " Images are visually lossless JPGs; PNG masters are in the repo." : ""}`;
   $("#allsize").textContent = `ZIP · ${mb(bytes(sets.all()))}`;
   $("#repo").href = M.repo.url;
