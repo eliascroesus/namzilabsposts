@@ -29,6 +29,7 @@
 > You're all looking at the same working.
 >
 > That's every number in Namzilabs. Tap it and see how it was made.
+> Each one is a flow you can open: its steps, and where its data comes from.
 > Every source named. Every rule visible. Every customer counted once.
 >
 > And it's read-only. It never edits your data.
@@ -57,7 +58,7 @@
 
 **First reply** (this is where the link goes):
 
-> every number in namzilabs shows its working: which sources it read, what it matched, what it left out.
+> every number in namzilabs is a flow you can open. it shows its working: which sources it read, what it matched, what it left out.
 >
 > all your data in one place. any kpi, no code. it never edits your data.
 >
@@ -80,7 +81,7 @@
 >
 > Now nobody's arguing about whose sheet is right. Everyone's looking at the same working.
 >
-> That's how every number in Namzilabs works. It puts all your business data in one place and lets you build any KPI with no code. Tap any number and you see how it was made: every source named, every rule visible, every customer counted once. And it's read-only: it never edits your data.
+> That's how every number in Namzilabs works. It puts all your business data in one place and lets you build any KPI with no code. Tap any number and you see how it was made: every source named, every rule visible, every customer counted once. Each number is a flow you can open, step by step, down to where its data comes from. And it's read-only: it never edits your data.
 >
 > Free to start, no card. Invite one person and get a month free: namzilabs.co
 >
@@ -97,7 +98,7 @@
 
 ## Claims check
 
-- 263 ÷ 412 = 64%. Same example business as the highlights. Every slide with numbers says "Example data".
+- 263 ÷ 412 = 64%. Same example business as the highlights. Every slide with example numbers says "Example data". Slide 3 is a real screenshot of the Flows list, labelled "Real screenshot"; the captions describe it but never quote it.
 - "Never edits your data" (not "can't change anything").
 - The ask is the link in bio (free to start, no card). No comment keyword.
 - The pieces and numbers are the same as the matching Instagram highlight (`highlights/`), so the post and the highlight back each other up.

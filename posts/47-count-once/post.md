@@ -38,6 +38,10 @@
 >
 > Dave becomes one card: booked 2 calls, rescheduled once, held 1, paid $2,000.
 >
+> And it's not magic. Matching is one step, and you can see it:
+> Combine puts a person's records on one line.
+> Match keeps only the ones that appear in another step.
+>
 > Count every customer once, and your numbers stop arguing with each other.
 >
 > Comment METRICS and I'll show you how it works on your tools.
@@ -65,7 +69,7 @@
 
 **First reply** (this is where the link goes):
 
-> namzilabs puts all your data in one place and matches the same person across every tool, by email or phone. every customer counted once, so you count people, not rows.
+> namzilabs puts all your data in one place and matches the same person across every tool, by email or phone. not magic: one step you can see. every customer counted once, so you count people, not rows.
 >
 > free to start, no card: namzilabs.co
 
@@ -87,6 +91,8 @@
 > Tools count rows. A business runs on people. So the totals come out too big: 1,318 lead rows for 1,240 people, 431 bookings for 412 people, 67 buyer rows for 64 buyers. Every rate built on those totals is off too. Your cost per lead, for one, looks cheaper than it is.
 >
 > Namzilabs puts all your business data in one place and matches the same person across every tool, by email or phone, automatically. Dave becomes one person who booked 2 calls, rescheduled once, held 1 and paid $2,000.
+>
+> It isn't magic, either. Matching is one step in the flow builder, and you can see it: Combine puts a person's records on one line, and Match keeps only the ones that appear in another step.
 >
 > Count every customer once, and your numbers stop arguing with each other.
 >

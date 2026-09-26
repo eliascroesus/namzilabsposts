@@ -9,21 +9,78 @@
 
 ## Instagram caption
 
-TODO
+> Every KPI you've ever built is the same three moves. 🛠️
+>
+> In a spreadsheet, they go like this:
+> Export the rows.
+> Delete the ones that don't count.
+> Write a formula. Hope it survives Monday.
+>
+> In Namzilabs, they're the flow builder. This is the real one:
+>
+> 1️⃣ Get the records. Pull them from any app you've connected: bookings from Calendly, calls from Close, payments from Stripe.
+> 2️⃣ Narrow them down. A time period, then "only continue if" a field matches a value. Test bookings out. Refunds out.
+> 3️⃣ Turn them into a number. Count, total or average into one number, or one number per value: per setter, per source.
+>
+> Then it lives on your dashboard, next to every other metric you build.
+>
+> No code. No SQL. No formula to babysit.
+>
+> Show rate. Booking rate. Revenue per lead. Your own.
+> Which one would you build first?
+> Comment METRICS and I'll send you the recipe.
+>
+> Free to start, no card.
+>
+> #kpis #nocode #salesteam #founders #businessmetrics
 
 ## X
 
 **Post** (image `x-01.png`, no link in the post):
 
-TODO
+> every kpi you've ever built is the same three moves:
+>
+> get the records.
+> narrow them down.
+> turn them into a number.
+>
+> a spreadsheet just makes you do all three again every monday.
 
 **First reply** (this is where the link goes):
 
-TODO
+> namzilabs puts all your business data in one place, and the three moves are its flow builder: get data, filter, summarize. no code, no sql. build a metric once and it lives on your dashboard.
+>
+> free to start, no card: namzilabs.co
+
+**Optional thread** (post as replies under the first one):
+
+> 2/ get the records: pull them from any app you've connected. bookings from calendly, calls from close, payments from stripe.
+>
+> 3/ narrow them down: a time period, then "only continue if" a field matches a value. test bookings out, refunds out.
+>
+> 4/ turn them into a number: count, total or average into one number, or one number per value of a field, like per setter or per source.
 
 ## LinkedIn
 
-TODO
+> Every KPI you've ever built is the same three moves.
+>
+> Get the records. Narrow them down. Turn them into a number.
+>
+> In a spreadsheet, that means exporting from two tools, deleting the rows that don't count and writing a formula you hope still works next Monday.
+>
+> In Namzilabs, the three moves are the flow builder:
+>
+> 1. Get the records. Pull them from any app you've connected: bookings from Calendly, calls from Close, payments from Stripe.
+> 2. Narrow them down. Pick a time period, then "only continue if" a field matches a value. Test bookings and refunds out.
+> 3. Turn them into a number. Count, total or average into one number, or one number per value of a field, like per setter or per source.
+>
+> Then the metric lives on your dashboard, next to every other one you build.
+>
+> No code, no SQL, and it never edits your data.
+>
+> Which KPI would you build first? Comment METRICS and I'll send you the recipe.
+>
+> (Free to start, no card: namzilabs.co)
 
 ## Alt text
 

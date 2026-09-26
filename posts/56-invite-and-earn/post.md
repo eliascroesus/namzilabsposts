@@ -9,21 +9,69 @@
 
 ## Instagram caption
 
-TODO
+> Invite ten people. Get a year free. 🎁
+>
+> Here's the whole thing, straight from the app:
+>
+> 1 person joins with your link: 1 month free
+> 3 people: 3 months free
+> 5 people: 6 months free
+> 10 people: 1 year free
+>
+> An invite counts when the person joins with your link.
+>
+> You already know who needs it.
+> The head of sales who rebuilds the show-up tracker every Monday.
+> The agency owner whose client keeps asking where a number came from.
+> The founder with twelve tools and no total.
+>
+> Namzilabs puts all their business data in one place, so they can build any KPI and trust the number.
+>
+> Sign up with the link in bio 👆
+> Then open Invite & earn, copy your link and send it to them.
+>
+> Free to start, no card.
+>
+> #founders #salesteam #agencyowner #kpis #businessmetrics
 
 ## X
 
 **Post** (image `x-01.png`, no link in the post):
 
-TODO
+> invite ten people. get a year free.
+>
+> 1 joins with your link: a month free
+> 3: three months
+> 5: six months
+> 10: a whole year
+>
+> you already know someone rebuilding the same spreadsheet every monday. start there.
 
 **First reply** (this is where the link goes):
 
-TODO
+> namzilabs puts all your business data in one place, so you can build any kpi and trust the number.
+>
+> start free, no card: namzilabs.co
+> then copy your link from invite & earn. an invite counts when they join with it.
 
 ## LinkedIn
 
-TODO
+> Invite ten people to Namzilabs. Get a year free.
+>
+> Here's the whole thing, straight from the app:
+>
+> 1 person joins with your link: 1 month free
+> 3 people: 3 months free
+> 5 people: 6 months free
+> 10 people: 1 year free
+>
+> An invite counts when the person joins with your link.
+>
+> You probably already know who needs it. The head of sales who rebuilds the show-up tracker every Monday. The agency owner whose client keeps asking where a number came from. The founder with twelve tools and no single total.
+>
+> Namzilabs puts all their business data in one place, so they can build any KPI, count every customer once and trust the number.
+>
+> Start free, no card, then copy your link from Invite & earn: namzilabs.co
 
 ## Alt text
 

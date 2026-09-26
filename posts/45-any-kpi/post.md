@@ -22,13 +22,14 @@
 > Revenue per lead? The cash is in Stripe. The leads are in Typeform.
 >
 > Namzilabs puts all your business data in one place.
-> Then you build any KPI from it in three steps:
+> Then you build any KPI from it in three moves:
 >
-> 1️⃣ Pick your sources: the tools that hold each half.
-> 2️⃣ Match and filter: every customer counted once, test bookings and refunds out.
-> 3️⃣ Calculate: it stays live and shows its working.
+> 1️⃣ Get the records from any app you've connected.
+> 2️⃣ Narrow them down: keep only the ones that count. Test bookings and refunds out.
+> 3️⃣ Turn them into a number: count, total, average, compare.
 >
 > No code. No SQL.
+> Every customer counted once. It stays live and shows its working.
 >
 > Show rate, matched per person: 64%.
 > Revenue per lead, refunds out: $49.52.
@@ -59,7 +60,7 @@
 
 **First reply** (this is where the link goes):
 
-> namzilabs puts all your business data in one place, so the ÷ lives there instead. pick your sources, every customer is matched and counted once, and it stays live with its working shown. no code.
+> namzilabs puts all your data in one place, so the ÷ lives there instead. three moves: get the records, narrow them down, turn them into a number. every customer counted once. it stays live and shows its working. no code.
 >
 > free to start, no card: namzilabs.co
 
@@ -94,13 +95,13 @@
 >
 > Most KPIs worth having work the same way. Revenue per lead needs your payments and your forms. Cost per held meeting needs your calendar and your call recorder. Revenue per subscriber needs your checkout and your email list.
 >
-> Namzilabs puts all your business data in one place. Then any KPI is three steps:
+> Namzilabs puts all your business data in one place. Then any KPI is three moves, right in the app:
 >
-> 1. Pick your sources: the tools that hold each half of the number.
-> 2. Match and filter: every customer counted once, test bookings and refunds out.
-> 3. Calculate: it stays live, and it shows its working.
+> 1. Get the records from the apps you've connected: bookings from Calendly, calls from Close.
+> 2. Narrow them down: keep only the ones that count. Test bookings and refunds out.
+> 3. Turn them into a number: count, total, average, compare. Here, held ÷ booked.
 >
-> No code, no SQL. In this example: a 64% show rate, and $49.52 of revenue per lead.
+> No code, no SQL. Every customer is counted once, it stays live, and it shows its working. In this example: a 64% show rate, and $49.52 of revenue per lead.
 >
 > If it lives in your tools, you can count it.
 >

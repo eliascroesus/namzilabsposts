@@ -31,9 +31,9 @@
 > One person per row: Dave booked, didn't show, rebooked, showed up and paid $2,000.
 > One Dave. Not two bookings.
 >
-> Then split show rate by setter:
-> Ana 74%. Cal 66%. Ben 51%.
-> Now you know where to look first.
+> Then split it by source.
+> TikTok, Instagram and Facebook each get their own funnel, with the rate between every step.
+> Now you know which one to fix first.
 >
 > Where does yours leak?
 > Comment LEAK and I'll send you the exact setup.
@@ -73,12 +73,9 @@
 >
 > count bookings and he's two calls and a no-show. count people and he's one customer who showed up and paid.
 >
-> 3/ then split show rate by setter, last 30 days:
-> ana 74% (148 booked)
-> cal 66% (125 booked)
-> ben 51% (139 booked)
+> 3/ then split it by source. tiktok, instagram and facebook each get their own funnel: leads, booked, showed, customers, with the rate between each step.
 >
-> same funnel, three very different show rates. now you know where to look first.
+> one blended funnel can't tell you which channel leaks. three can.
 
 ## LinkedIn
 
@@ -99,7 +96,7 @@
 >
 > Namzilabs puts all your business data in one place and follows each person from form to payment, one person per row. A reschedule is one person, not two bookings.
 >
-> Then split it by setter, source or week. Show rate by setter here: Ana 74%, Cal 66%, Ben 51%. So you fix the right thing.
+> Then split it by source. TikTok, Instagram and Facebook each get their own funnel, from lead to booked to showed to customer, with the rate between every step. So you fix the right one.
 >
 > Where does your funnel leak? Comment LEAK and I'll send you the exact setup.
 >
@@ -116,7 +113,7 @@
 
 ## Claims check
 
-- 412 booked and 263 held means 149 calls didn't happen: 36%. The setters add up (148 + 139 + 125 = 412 booked, 263 held).
-- Same example business as the Funnel highlight and post 35. Every slide with numbers says "Example data".
+- 412 booked and 263 held means 149 calls didn't happen: 36%.
+- Same example business as the Funnel highlight and post 35. Every slide with example numbers says "Example data". Slide 4 is a real screenshot of the Leads view, labelled "Real screenshot"; the captions name its three sources but never quote its numbers.
 - "Comment LEAK" needs a DM auto-reply set up (ManyChat or by hand) before posting. The DM reply is in [`brand/COPY.md`](../../brand/COPY.md) (LEAK).
 - The pieces and numbers are the same as the matching Instagram highlight (`highlights/`), so the post and the highlight back each other up.
