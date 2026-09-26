@@ -111,7 +111,7 @@
 ## Alt text
 
 - **ig-01:** "Your show rate lives in two tools." A formula card: calls held (Close) divided by calls booked (Calendly), last 30 days, matched per person, equals a show rate of 64%. Example data.
-- **ig-02:** "Build one in three steps." No code, no SQL. 1: pick your sources. 2: match and filter, every customer counted once, test bookings and refunds out. 3: calculate; it stays live and shows its working.
+- **ig-02:** "Build it in three moves." Right in the app, no code, no SQL. A real screenshot of the Namzilabs flow builder: a card titled "Build a metric in three moves": 1, get the records, from an app you've connected; 2, narrow them down, keep only the ones that count; 3, turn them into a number: count, total, average, compare. A "Start with Get data" button.
 - **ig-03:** "Revenue per lead, from two tools." Cash collected (Stripe) divided by leads (Typeform), last 30 days, paid only, refunds out, equals $49.52. Example data.
 - **ig-04:** "Ideas to steal." KPIs grouped by team. Sales teams: show rate, close rate on held calls, cash collected, speed to lead. Agencies: cost per held meeting, reply-to-meeting rate. Creators: launch revenue, revenue per subscriber, paying members. E-commerce: revenue from your list, repeat purchase rate.
 - **ig-05:** "Which one would you build?" Comment METRICS and we'll send you the recipe. Free to start, no card.

@@ -110,7 +110,7 @@
 - **ig-01:** "36% of your booked calls never happen." A funnel across tools: leads 1,240 (Typeform), 33% book a call; booked 412 (Calendly), 36% no-show, fix this first, highlighted in red; held 263 (Fathom), 24% close; paid 64 (Stripe). Example data.
 - **ig-02:** "Each tool sees one step." Form filled: only Typeform sees this. Call booked: only Calendly. Call held: only Fathom. Paid: only Stripe.
 - **ig-03:** "One person per row." Dave's path: filled the form Mon 9:02 am, booked a call Mon 9:14 am, didn't show Thu 3:00 pm (no-show), rebooked Fri 10:30 am (same Dave), call held Tue 4:00 pm, paid $2,000 Tue 4:41 pm. Example data.
-- **ig-04:** "Split it by setter, source or week." Show rate by setter, last 30 days: Ana 74% (148 booked), Ben 51% (139 booked, in red), Cal 66% (125 booked). Example data.
+- **ig-04:** "Split it by source." Each source gets its own funnel, so you fix the right one. Real screenshots of the Leads view: three funnels, one per source (TikTok, Instagram, Facebook), each running from leads to booked leads, call shows and customers, with the conversion rate between each step.
 - **ig-05:** "Where does yours leak?" Comment LEAK and we'll send you the exact setup. Free to start, no card.
 - **x-01:** "36% of booked calls never happen." with the same four-step funnel. Example data.
 

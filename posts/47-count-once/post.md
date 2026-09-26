@@ -4,8 +4,8 @@
 |---|---|
 | **For** | Anyone whose numbers don't match between tools |
 | **Job** | Feature spotlight: Count once. The matching, shown on one person, and what it does to the totals. |
-| **Format** | Instagram carousel (4 slides) · X image |
-| **Files** | `ig-01.png` … `ig-04.png` (1080×1350) · `x-01.png` (1600×900) |
+| **Format** | Instagram carousel (5 slides) · X image |
+| **Files** | `ig-01.png` … `ig-05.png` (1080×1350) · `x-01.png` (1600×900) |
 
 ## Instagram caption
 
@@ -99,7 +99,8 @@
 - **ig-01:** "You don't have 1,318 leads. You have 1,240." Rows versus people: leads 1,318 rows, 1,240 people (Typeform + Close); calls booked 431 rows, 412 people (Calendly); buyers 67 rows, 64 people (Stripe + Whop). Example data.
 - **ig-02:** "The same person shows up in every tool, a little differently." dave@example.com in Calendly, Dave M. in Close, +44 7700 900123 in Aircall, Dave Miller in Stripe. Example data.
 - **ig-03:** "Namzilabs matches them into one person." By email or phone, automatically. Three records become one card: Dave Miller, 4 tools, one person. Booked 2 calls, rescheduled once, held 1 call, paid $2,000. Example data.
-- **ig-04:** "Count every customer once." Comment METRICS and we'll show you how it works on your tools. Free to start, no card.
+- **ig-04:** "Matching is one step." Combine puts a person's records on one line; Match keeps only the ones that appear in another step. A real screenshot of the flow builder's step list (Get data, Combine, Match, Filter, Split) with Combine and Match highlighted.
+- **ig-05:** "Count every customer once." Comment METRICS and we'll show you how it works on your tools. Free to start, no card.
 - **x-01:** "You don't have 1,318 leads. You have 1,240." with the rows-versus-people card. Example data.
 
 ## Claims check

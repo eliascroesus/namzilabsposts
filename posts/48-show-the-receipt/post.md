@@ -4,8 +4,8 @@
 |---|---|
 | **For** | Founders and heads of sales who have to defend a number |
 | **Job** | Feature spotlight: Receipts. Trust: every number shows its working, and it never edits your data. |
-| **Format** | Instagram carousel (4 slides) · X image |
-| **Files** | `ig-01.png` … `ig-04.png` (1080×1350) · `x-01.png` (1600×900) |
+| **Format** | Instagram carousel (5 slides) · X image |
+| **Files** | `ig-01.png` … `ig-05.png` (1080×1350) · `x-01.png` (1600×900) |
 
 ## Instagram caption
 
@@ -90,8 +90,9 @@
 
 - **ig-01:** "Tap any number. See how it was made." A receipt for show rate, last 30 days: calls booked 431 (Calendly), booked twice counted once minus 19, people who booked 412; calls held 272 (Close), test and internal calls left out minus 9, people who showed 263; show rate 64%. "Read 2 sources · matched by email". Example data.
 - **ig-02:** "Where's that number from?" A chat. Head of sales: "Where's the 64% from? My sheet says 68." You: "Calendly bookings, matched to Close by email. 19 double bookings counted once, 9 test calls left out. Receipt attached." Example data.
-- **ig-03:** "Nothing hidden. Nothing edited." Every source named. Every rule visible. Every customer counted once. Read-only: it never edits your data.
-- **ig-04:** "Start free." No card. Link in bio. All your data in one place; any KPI, no code; it never edits your data.
+- **ig-03:** "Every number is a flow you can open." Each one lists its steps and where its data comes from. A real screenshot of the Flows list: Leads (41 steps), Instagram, Facebook and TikTok (9 steps each), Breakdown (23 steps) and Where from (5 steps), each reading from Google Sheets, with the date it was last edited.
+- **ig-04:** "Nothing hidden. Nothing edited." Every source named. Every rule visible. Every customer counted once. Read-only: it never edits your data.
+- **ig-05:** "Start free." No card. Link in bio. All your data in one place; any KPI, no code; it never edits your data.
 - **x-01:** "Every number shows its working." with the show-rate receipt. Example data.
 
 ## Claims check
