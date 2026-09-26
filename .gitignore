@@ -2,3 +2,6 @@ node_modules/
 *.log
 .DS_Store
 **/*@2x.png
+
+# raw screenshots with real data, while they are being cleaned (see screenshots/README.md)
+screenshots/private/
