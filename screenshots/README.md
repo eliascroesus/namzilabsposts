@@ -51,8 +51,34 @@ What the highlights and posts can use, most important first. Capture what exists
 | 15 | Sign-up | The first screen someone sees: free to start, no card | Start here, FAQ |
 | 16 | Webhooks | The webhook setup (URL and secret blurred) | Connect, FAQ |
 
+## What's here
+
+The twelve real screens, renamed for what they show. [`shots.js`](shots.js) is the same list for the code: each image's size, what it shows, the named crops the highlights and posts use, and the regions that are always blurred (the workspace name, the referral link). A crop is drawn with `NZ.STORY.C.shot({ src, crop })` (in [`lib/story.js`](../lib/story.js)) as a clean app window, with optional numbered focus rings.
+
+| Screen | File | What it shows | Used in |
+|---|---|---|---|
+| Dashboard · Overview | [`app/overview.png`](app/overview.png) | Leads, booked leads, calls showed, customers, revenue and AOV; booking, show-up and close rates; revenue by week | Start here (5), post 53 |
+| Dashboard · Calls | [`app/calls.png`](app/calls.png) | Show-up rate and speed to lead by week; leads by source; show-up rate split by time of day and reply | Sales teams (3, 4) |
+| Dashboard · Money | [`app/money.png`](app/money.png) | Revenue, customers, AOV, payday share; revenue per closer (by ID); revenue and response time by week | Not used yet |
+| Dashboard · Leads | [`app/leads.png`](app/leads.png) | One funnel per source (TikTok, Instagram, Facebook), leads to booked to showed to customers, with the rate between each step; close rate per source | Start here (6), Funnel (3, 5), posts 46, 53, 55 |
+| Dashboard · a custom view | [`app/board.png`](app/board.png) | Metrics as cards in groups (Leads, Facebook, Instagram, TikTok, Revenue), each with when it last updated | Any KPI (5), post 54 |
+| Dashboard · Calendar | [`app/calendar.png`](app/calendar.png) | Revenue per day for a month, shaded by share of the best day; best day, average day, days with data | Creators (4), post 53 |
+| Flows | [`app/flows.png`](app/flows.png) | Every metric as a flow: its steps, its source, when it was edited, on or off | Receipts (4), post 48 |
+| Flow builder · new | [`app/flow-new.png`](app/flow-new.png) | "Build a metric in three moves": get the records, narrow them down, turn them into a number | Any KPI (3), FAQ (3), posts 45, 53, 54 |
+| Flow builder · add a step | [`app/flow-steps.png`](app/flow-steps.png) | The steps: Get data, Combine, Match, Filter, Split, Summarize, Break down | Any KPI (4), Count once (4), E-com (4), posts 47, 53, 54 |
+| Flow builder · Filter | [`app/flow-filter.png`](app/flow-filter.png) | A two-step flow (a Google Sheet, then a Filter) and the Filter's rules: time period, only continue if a field matches a value | Receipts (5), post 54 |
+| Apps | [`app/apps.png`](app/apps.png) | Every integration as a card: what it reads, instant or scheduled sync, Google Sheets connected | Connect (3, 4), Agencies (3), post 53 |
+| Invite & earn | [`app/invite.png`](app/invite.png) | The referral tiers: 1 invite a month free, 3 three months, 5 six months, 10 a year (and the account's own link, never shown) | FAQ (2), post 56 |
+
+The numbers in "Used in" are the story's position in its highlight. Every image made from these is labelled "Real screenshot"; the captions describe what a screen does and never quote its numbers.
+
+### Worth checking in the app
+
+- **Instagram and Facebook look swapped somewhere.** The Leads view says IG Leads 359 and FB Leads 265, while the lead-source pie on Calls says Facebook 359 and Instagram 265, and the custom view's Facebook group shows "Facebook 359" above "FB Leads 265". The stories avoid putting two of these side by side, but it's worth fixing before someone else notices.
+- **The Apps page says 35 apps;** the content says 33 tools. If 35 is right, the copy should move to 35 (bios, posts, highlights).
+
 ## Where they go
 
 - **`inbox/`**: what arrives, as it arrived. Emptied as it's sorted.
-- **`screenshots/<area>/`**: sorted, cropped and cleaned, named for what they show (`funnel/by-setter-dark.png`). The areas follow the highlights: `dashboard`, `connect`, `metrics`, `funnel`, `people`, `receipts`, `sales`, `agencies`, `creators`, `e-com`, `onboarding`.
+- **`app/`**: sorted, renamed for what they show, and catalogued in [`shots.js`](shots.js). Crops and blurs happen when a frame is drawn, so the originals stay whole.
 - **`screenshots/private/`**: raw originals with real data, while they're being cleaned. Git ignores it, so nothing in it is ever committed.

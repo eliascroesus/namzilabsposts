@@ -4,21 +4,21 @@ Eleven highlights, in the order someone landing on the profile needs them: **wha
 
 ![The highlight row with the blue covers](covers/icons/rows/blue.png)
 
-| # | Highlight | What it's for | Stories | The ask |
-|---|---|---|---|---|
-| 01 | **Start here** | What Namzilabs is, in seven taps: your tools disagree, all your data in one place, any KPI, where the funnel breaks | 7 | Link sticker: start free |
-| 02 | **Any KPI** | The metric builder: a number that lives in two tools, three steps, ideas to steal | 6 | Link sticker |
-| 03 | **Funnel** | Where it breaks: each tool sees one step, one person per row, split by setter | 6 | Link sticker |
-| 04 | **Count once** | Matching: dave@, Dave M. and Dave Miller are one person; rows become people | 5 | Link sticker |
-| 05 | **Receipts** | Proof: every number shows its working, and it never edits your data | 5 | Link sticker |
-| 06 | **Connect** | Does it work with my stack? The whole list, how connecting works, the webhook, what's coming | 6 | Link sticker |
-| 07 | **Sales teams** | Use case: Monday 9:07, the live scorecard, by setter and closer, booked vs held | 6 | Reply SHOWUP |
-| 08 | **Agencies** | Use case: held meetings, cost per held meeting per client, the receipt for the report | 5 | Reply HELD |
-| 09 | **Creators** | Use case: three dashboards into one launch number, then the numbers creators want | 5 | Reply LAUNCH |
-| 10 | **E-com** | Use case: every tool takes credit; revenue from your list, matched, not attributed | 5 | Reply LIST |
-| 11 | **FAQ** | Free? Code? My data? My tools? Ads and AI? | 7 | Reply with a question |
+| # | Highlight | What it's for | Stories | Real screens | The ask |
+|---|---|---|---|---|---|
+| 01 | **Start here** | What Namzilabs is, in seven taps: your tools disagree, all your data in one place, any KPI, where the funnel breaks | 7 | The dashboard; the funnel per source | Link sticker: start free |
+| 02 | **Any KPI** | The metric builder: a number that lives in two tools, built in three moves, every step, one board, ideas to steal | 7 | Three moves; the step list; a board of metrics | Link sticker |
+| 03 | **Funnel** | Where it breaks: each tool sees one step, the real funnel, one person per row, split by source | 6 | The funnel; one funnel per source | Link sticker |
+| 04 | **Count once** | Matching: dave@, Dave M. and Dave Miller are one person, and the step that does it; rows become people | 6 | Combine and Match | Link sticker |
+| 05 | **Receipts** | Proof: every number shows its working, every metric is a flow you can open, every rule is readable, and it never edits your data | 7 | The flows list; a filter's rules | Link sticker |
+| 06 | **Connect** | Does it work with my stack? The whole list, the real Apps page, the webhook, what's coming | 6 | The Apps page; the webhook | Link sticker |
+| 07 | **Sales teams** | Use case: Monday 9:07, show rate and speed to lead live, split any way, booked vs held | 6 | The Calls view, both columns | Reply SHOWUP |
+| 08 | **Agencies** | Use case: held meetings, the tools you already run, cost per held meeting per client, the receipt for the report | 6 | Instantly and Calendly | Reply HELD |
+| 09 | **Creators** | Use case: three dashboards into one launch number, every day of the launch, the numbers creators want | 6 | The revenue calendar | Reply LAUNCH |
+| 10 | **E-com** | Use case: every tool takes credit; revenue from your list, matched, not attributed, in three steps | 6 | Get data, Match, Summarize | Reply LIST |
+| 11 | **FAQ** | Free? Code? My data? My tools? Ads and AI? | 7 | The invite tiers; three moves | Reply with a question |
 
-The numbers are one example business all the way through (1,240 leads, 412 booked, 263 held, 64 paid; the creators' $43,000 launch; the store's $29.4k from its list), the same as the posts, and every frame with numbers says "Example data".
+Two kinds of story. **The idea, drawn**: one example business all the way through (1,240 leads, 412 booked, 263 held, 64 paid; the creators' $43,000 launch; the store's $29.4k from its list), the same as the posts, labelled "Example data". **The real thing**: crops of the app itself, from [`screenshots/`](../screenshots/README.md), labelled "Real screenshot", wherever a story says how it looks inside. The real screens' numbers are never quoted in the text.
 
 ## Put them up
 
@@ -34,12 +34,12 @@ The numbers are one example business all the way through (1,240 leads, 412 booke
 | Highlight | Story | Sticker |
 |---|---|---|
 | Start here | 7 | Link sticker (namzilabs.co), under the arrow |
-| Any KPI | 5 | Poll: "Which would you build first?" (Show rate / Cash collected) |
-| Any KPI | 6 | Link sticker, under the arrow |
+| Any KPI | 6 | Poll: "Which would you build first?" (Show rate / Cash collected) |
+| Any KPI | 7 | Link sticker, under the arrow |
 | Funnel | 3 | Question: "Where does your funnel leak?" |
 | Funnel | 6 | Link sticker, under the arrow |
-| Count once | 5 | Link sticker, under the arrow |
-| Receipts | 5 | Link sticker, under the arrow |
+| Count once | 6 | Link sticker, under the arrow |
+| Receipts | 7 | Link sticker, under the arrow |
 | Connect | 2 | Question: "Which tool should be next?" |
 | Connect | 6 | Link sticker, under the arrow |
 | Sales teams | 2 | Poll: "How long does your Monday report take?" (Under 30 min / Over an hour) |
@@ -84,7 +84,7 @@ Each highlight's first story opens on its cover, big, so the first thing someone
 
 ## The posts that go with them
 
-Posts 45 to 52 are the same features and use cases as feed carousels, built from the same frames: [45 Any KPI](../posts/45-any-kpi/), [46 Funnel](../posts/46-find-the-leak/), [47 Count once](../posts/47-count-once/), [48 Receipts](../posts/48-show-the-receipt/), [49 Sales teams](../posts/49-sales-team-monday/), [50 Agencies](../posts/50-agency-reporting/), [51 Creators](../posts/51-launch-number/) and [52 E-com](../posts/52-list-revenue/). A post can point to its highlight ("the full walkthrough is in the Funnel highlight"), and the highlight backs the post up.
+Posts 45 to 52 are the same features and use cases as feed carousels, built from the same frames: [45 Any KPI](../posts/45-any-kpi/), [46 Funnel](../posts/46-find-the-leak/), [47 Count once](../posts/47-count-once/), [48 Receipts](../posts/48-show-the-receipt/), [49 Sales teams](../posts/49-sales-team-monday/), [50 Agencies](../posts/50-agency-reporting/), [51 Creators](../posts/51-launch-number/) and [52 E-com](../posts/52-list-revenue/). A post can point to its highlight ("the full walkthrough is in the Funnel highlight"), and the highlight backs the post up. Posts [53 to 56](../posts/53-inside-namzilabs/) are made of real screens only: the product tour, the flow builder move by move, one funnel per source, and the invite tiers.
 
 ## Re-render
 
@@ -95,4 +95,4 @@ node tools/render-stills.mjs highlights/stories.html highlights --ss 2 --query "
 node tools/render-stills.mjs highlights/profile.html highlights/covers --ss 2          # the profile previews (render the covers first)
 ```
 
-Where things live: the stories are written in [`stories.js`](stories.js) (every frame's words and numbers, the purpose of each highlight and its stickers); the pieces they're built from are [`lib/story.js`](../lib/story.js) and [`lib/story.css`](../lib/story.css); the icons are [`lib/hlicons.js`](../lib/hlicons.js) (the covers, the big one on each first story and the small one in every story's corner), and the colourways are in [`icons.html`](icons.html).
+Where things live: the stories are written in [`stories.js`](stories.js) (every frame's words and numbers, the purpose of each highlight and its stickers); the pieces they're built from are [`lib/story.js`](../lib/story.js) and [`lib/story.css`](../lib/story.css); the real screens and their crops are [`screenshots/shots.js`](../screenshots/shots.js); the icons are [`lib/hlicons.js`](../lib/hlicons.js) (the covers, the big one on each first story and the small one in every story's corner), and the colourways are in [`icons.html`](icons.html).

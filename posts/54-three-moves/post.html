@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 54 · Build any metric in three moves</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/story.css">
+<style>body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/hlicons.js"></script>
+<script src="../../lib/story.js"></script>
+<script src="../../screenshots/shots.js"></script>
+<script>NZ.ROOT = "../../";</script>
+<script src="../../highlights/stories.js"></script>
+<script>
+  // Feature spotlight: the flow builder, move by move, in the real app. Screens and crops: screenshots/shots.js.
+  const { C } = NZ.STORY, SHOT = "Real screenshot";
+  NZ.STORY.post("any-kpi", [
+    { bg: "sky", h: "Build any metric in three *moves.*", sub: "The real flow builder. No code, no SQL.", viz: C.shot({ src: "flow-new", crop: "card", w: 820 }), demo: SHOT },
+    { h: "1. Get the *records.*", sub: "Pull them from any app you've connected.", viz: C.shot({ src: "flow-steps", crop: "data", rings: [{ at: "getdata", n: 1 }], w: 720 }), demo: SHOT },
+    { bg: "sky", h: "2. Narrow them *down.*", sub: "Keep only the ones that count, in plain words.", viz: C.shot({ src: "flow-filter", crop: "rules", w: 820 }), demo: SHOT },
+    { h: "3. Turn them into a *number.*", sub: "Count, total, average, or one number per value.", viz: C.shot({ src: "flow-steps", crop: "calc", rings: [{ at: "summarize", n: 3 }, { at: "breakdown" }], w: 760 }), demo: SHOT },
+    { bg: "sky", h: "Then it lives on your *dashboard.*", sub: "Every metric you build, on one board.", viz: C.shot({ src: "board", crop: "leads", w: 560 }), demo: SHOT },
+    { cta: true, bg: "electric", h: "Which one would you *build?*", sub: "Comment METRICS and we'll send you the recipe.", kw: "METRICS", offer: "Free to start, no card." },
+  ], { chip: "Feature · Flow builder", x: { bg: "sky", h: "Build any metric in three *moves.*", sub: "Get the records. Narrow them down. Turn them into a number.", viz: C.shot({ src: "flow-new", crop: "card", w: 640 }), demo: SHOT } });
+</script>
+</body>
+</html>

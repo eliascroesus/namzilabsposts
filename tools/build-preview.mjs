@@ -56,6 +56,8 @@ const POST_AUD = {
   // the feature and use-case series, one per Instagram highlight
   "45-any-kpi": ["everyone"], "46-find-the-leak": ["sales"], "47-count-once": ["everyone"], "48-show-the-receipt": ["founders", "everyone"],
   "49-sales-team-monday": ["sales"], "50-agency-reporting": ["agencies"], "51-launch-number": ["creators"], "52-list-revenue": ["ecommerce"],
+  // real screens of the app (screenshots/)
+  "53-inside-namzilabs": ["everyone"], "54-three-moves": ["everyone"], "55-funnel-per-source": ["sales"], "56-invite-and-earn": ["everyone"],
 };
 const POST_NAMZI = new Set(["13-meet-namzi", "14-group-chat", "16-red-flags", "21-how-many-showed", "27-namzi-never-says", "34-namzi-first-week",
   "36-my-precious", "37-mmm-one-place", "38-same-person", "39-source-of-truth", "40-everyone-pointing", "41-nah-yeah", "42-this-is-fine", "43-pivot", "44-funnels-onions"]);

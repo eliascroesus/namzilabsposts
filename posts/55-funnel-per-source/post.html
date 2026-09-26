@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 55 · Every source gets its own funnel</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/story.css">
+<style>body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/hlicons.js"></script>
+<script src="../../lib/story.js"></script>
+<script src="../../screenshots/shots.js"></script>
+<script>NZ.ROOT = "../../";</script>
+<script src="../../highlights/stories.js"></script>
+<script>
+  // Single image: the Leads view, one funnel per source. Screens and crops: screenshots/shots.js.
+  const { C } = NZ.STORY, SHOT = "Real screenshot";
+  NZ.STORY.post("funnel", [
+    { h: "Every source gets its own *funnel.*", sub: "Leads, booked, showed, customers. See which one leaks.", viz: C.shots([{ src: "leads", crop: "tt", bar: false, w: 640 }, { src: "leads", crop: "ig", bar: false, w: 640 }, { src: "leads", crop: "fb", bar: false, w: 640 }], { gap: 20 }), demo: SHOT },
+  ], { chip: "Feature · Funnel", x: { h: "Every source gets its own *funnel.*", sub: "Leads to customers, and the drop between each step, per source.", viz: C.shot({ src: "leads", crop: "ig", w: 760 }), demo: SHOT } });
+</script>
+</body>
+</html>

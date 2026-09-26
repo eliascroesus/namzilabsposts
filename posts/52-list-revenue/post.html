@@ -13,15 +13,17 @@
 <script src="../../lib/motion.js"></script>
 <script src="../../lib/hlicons.js"></script>
 <script src="../../lib/story.js"></script>
+<script src="../../screenshots/shots.js"></script>
+<script>NZ.ROOT = "../../";</script>
 <script src="../../highlights/stories.js"></script>
 <script>
   // Use case: e-commerce. Same pieces and numbers as the E-com highlight (and post 06).
-  const f = NZ.HIGHLIGHTS.find((h) => h.id === "e-com").frames;
+  const f = NZ.FRAMES["e-com"];
   NZ.STORY.post("e-com", [
-    { h: "What does your email list *really* make?", viz: f[1].viz, demo: true },
-    f[2], f[3],
+    { h: "What does your email list *really* make?", viz: f.credit.viz, demo: true },
+    f.match, f.week,
     { cta: true, bg: "electric", h: "Want the exact *setup?*", tsize: 112, sub: "Comment LIST and we'll send you how to match your orders to your list.", kw: "LIST", offer: "Free to start, no card." },
-  ], { chip: "Use case · E-com", x: { bg: "sky", h: "What does your email list *really* make?", sub: "Match orders to subscribers. Matching, not attribution.", viz: f[2].viz, demo: true } });
+  ], { chip: "Use case · E-com", x: { bg: "sky", h: "What does your email list *really* make?", sub: "Match orders to subscribers. Matching, not attribution.", viz: f.match.viz, demo: true } });
 </script>
 </body>
 </html>

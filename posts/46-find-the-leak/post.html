@@ -13,15 +13,17 @@
 <script src="../../lib/motion.js"></script>
 <script src="../../lib/hlicons.js"></script>
 <script src="../../lib/story.js"></script>
+<script src="../../screenshots/shots.js"></script>
+<script>NZ.ROOT = "../../";</script>
 <script src="../../highlights/stories.js"></script>
 <script>
   // Feature spotlight: Funnel. Same pieces and numbers as the Funnel highlight.
-  const f = NZ.HIGHLIGHTS.find((h) => h.id === "funnel").frames;
+  const f = NZ.FRAMES["funnel"];
   NZ.STORY.post("funnel", [
-    { bg: "sky", h: "36% of your booked calls never *happen.*", viz: f[2].viz, demo: true },
-    f[1], f[3], f[4],
+    { bg: "sky", h: "36% of your booked calls never *happen.*", viz: f.whole.viz, demo: true },
+    f.each, f.row, f.sources,
     { cta: true, bg: "electric", h: "Where does yours *leak?*", sub: "Comment LEAK and we'll send you the exact setup.", kw: "LEAK", offer: "Free to start, no card." },
-  ], { chip: "Feature · Funnel", x: { bg: "sky", h: "36% of booked calls never *happen.*", sub: "See exactly where your funnel breaks, across every tool.", viz: f[2].viz, demo: true } });
+  ], { chip: "Feature · Funnel", x: { bg: "sky", h: "36% of booked calls never *happen.*", sub: "See exactly where your funnel breaks, across every tool.", viz: f.whole.viz, demo: true } });
 </script>
 </body>
 </html>

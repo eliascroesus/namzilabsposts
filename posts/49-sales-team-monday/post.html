@@ -13,15 +13,17 @@
 <script src="../../lib/motion.js"></script>
 <script src="../../lib/hlicons.js"></script>
 <script src="../../lib/story.js"></script>
+<script src="../../screenshots/shots.js"></script>
+<script>NZ.ROOT = "../../";</script>
 <script src="../../highlights/stories.js"></script>
 <script>
   // Use case: sales teams. Same pieces and numbers as the Sales teams highlight (and post 26).
-  const f = NZ.HIGHLIGHTS.find((h) => h.id === "sales-teams").frames;
+  const f = NZ.FRAMES["sales-teams"];
   NZ.STORY.post("sales-teams", [
-    { h: "Your Monday report, done before *Monday.*", viz: f[2].viz, demo: true },
-    f[1], f[3], f[4],
+    { h: "Your Monday report, done before *Monday.*", viz: f.now.viz, demo: true },
+    f.monday, f.closer, f.booked,
     { cta: true, bg: "electric", h: "Want the exact *setup?*", tsize: 112, sub: "Comment SHOWUP and we'll send you what to connect and how to build your show rate.", kw: "SHOWUP", offer: "Free to start, no card." },
-  ], { chip: "Use case · Sales teams", x: { h: "Your Monday report, done before *Monday.*", sub: "Show rate, close rate, cash collected, speed to lead. Live.", viz: f[2].viz, demo: true } });
+  ], { chip: "Use case · Sales teams", x: { h: "Your Monday report, done before *Monday.*", sub: "Show rate, close rate, cash collected, speed to lead. Live.", viz: f.now.viz, demo: true } });
 </script>
 </body>
 </html>

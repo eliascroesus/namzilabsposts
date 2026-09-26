@@ -13,15 +13,17 @@
 <script src="../../lib/motion.js"></script>
 <script src="../../lib/hlicons.js"></script>
 <script src="../../lib/story.js"></script>
+<script src="../../screenshots/shots.js"></script>
+<script>NZ.ROOT = "../../";</script>
 <script src="../../highlights/stories.js"></script>
 <script>
   // Use case: creators. Same pieces and numbers as the Creators highlight (and post 05).
-  const f = NZ.HIGHLIGHTS.find((h) => h.id === "creators").frames;
+  const f = NZ.FRAMES["creators"];
   NZ.STORY.post("creators", [
-    { h: "What did your launch *actually* make?", viz: f[1].viz, demo: true },
-    f[2], f[3],
+    { h: "What did your launch *actually* make?", viz: f.dashboards.viz, demo: true },
+    f.once, f.want,
     { cta: true, bg: "electric", h: "Want the exact *setup?*", tsize: 112, sub: "Comment LAUNCH and we'll send you how to see your launch, and your members, in one number.", kw: "LAUNCH", offer: "Free to start, no card." },
-  ], { chip: "Use case · Creators", x: { bg: "sky", h: "What did your launch *actually* make?", sub: "Three dashboards. Every buyer counted once. One number.", viz: f[2].viz, demo: true } });
+  ], { chip: "Use case · Creators", x: { bg: "sky", h: "What did your launch *actually* make?", sub: "Three dashboards. Every buyer counted once. One number.", viz: f.once.viz, demo: true } });
 </script>
 </body>
 </html>

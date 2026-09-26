@@ -13,15 +13,17 @@
 <script src="../../lib/motion.js"></script>
 <script src="../../lib/hlicons.js"></script>
 <script src="../../lib/story.js"></script>
+<script src="../../screenshots/shots.js"></script>
+<script>NZ.ROOT = "../../";</script>
 <script src="../../highlights/stories.js"></script>
 <script>
   // Use case: agencies. Same pieces and numbers as the Agencies highlight (and post 31).
-  const f = NZ.HIGHLIGHTS.find((h) => h.id === "agencies").frames;
+  const f = NZ.FRAMES["agencies"];
   NZ.STORY.post("agencies", [
-    { h: "Stop reporting booked *meetings.*", sub: "Your client pays for the ones that happened.", viz: f[1].viz, demo: true },
-    f[2], f[3],
+    { h: "Stop reporting booked *meetings.*", sub: "Your client pays for the ones that happened.", viz: f.booked.viz, demo: true },
+    f.cost, f.receipt,
     { cta: true, bg: "electric", h: "Want the exact *setup?*", tsize: 112, sub: "Comment HELD and we'll send you how to build cost per held meeting for every client.", kw: "HELD", offer: "Free to start, no card." },
-  ], { chip: "Use case · Agencies", x: { h: "Stop reporting booked *meetings.*", sub: "Cost per held meeting, per client, with the receipt.", viz: f[1].viz, demo: true } });
+  ], { chip: "Use case · Agencies", x: { h: "Stop reporting booked *meetings.*", sub: "Cost per held meeting, per client, with the receipt.", viz: f.booked.viz, demo: true } });
 </script>
 </body>
 </html>

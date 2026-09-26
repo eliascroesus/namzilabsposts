@@ -13,15 +13,17 @@
 <script src="../../lib/motion.js"></script>
 <script src="../../lib/hlicons.js"></script>
 <script src="../../lib/story.js"></script>
+<script src="../../screenshots/shots.js"></script>
+<script>NZ.ROOT = "../../";</script>
 <script src="../../highlights/stories.js"></script>
 <script>
   // Feature spotlight: Receipts. Same pieces and numbers as the Receipts highlight.
-  const f = NZ.HIGHLIGHTS.find((h) => h.id === "receipts").frames;
+  const f = NZ.FRAMES["receipts"];
   NZ.STORY.post("receipts", [
-    { h: "Tap any number. See how it was *made.*", viz: f[1].viz, demo: true },
-    f[2], f[3],
+    { h: "Tap any number. See how it was *made.*", viz: f.receipt.viz, demo: true },
+    f.chat, f.flows, f.badges,
     { cta: true, bg: "electric", h: "Start *free.*", sub: "No card. Link in bio.", ticks: ["All your data in one place", "Any KPI, no code", "It never edits your data"] },
-  ], { chip: "Feature · Receipts", x: { h: "Every number shows its *working.*", sub: "Which sources it read, what it matched, what it left out.", viz: f[1].viz, demo: true } });
+  ], { chip: "Feature · Receipts", x: { h: "Every number shows its *working.*", sub: "Which sources it read, what it matched, what it left out.", viz: f.receipt.viz, demo: true } });
 </script>
 </body>
 </html>

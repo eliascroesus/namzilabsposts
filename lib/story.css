@@ -57,6 +57,21 @@
 .st .kw .ic svg { width: 46px; height: 46px; }
 .st .offer { margin-top: 30px; font-size: 32px; font-weight: 600; color: rgba(235, 241, 255, 0.86); letter-spacing: -0.012em; }
 
+/* ── real screenshots (screenshots/shots.js): a crop in a clean app window ── */
+.shots { display: flex; flex-direction: column; align-items: center; }
+.viz > .shot { margin: 0 auto; }
+.shotgap { height: 40px; }
+.shot { width: 100%; flex: none; border-radius: 26px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px rgba(20, 20, 40, 0.08), 0 44px 90px -34px rgba(10, 20, 60, 0.5), 0 14px 30px -14px rgba(10, 20, 60, 0.22); }
+.sky .shot, .ink .shot, .electric .shot { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 60px 110px -30px rgba(0, 4, 20, 0.75); }
+.shot .wbar { height: 58px; display: flex; align-items: center; gap: 10px; padding: 0 22px; background: #f4f5f8; border-bottom: 1px solid #e4e6ee; color: #6b6d7c; }
+.shot .wbar i { width: 15px; height: 15px; border-radius: 50%; background: #d8dbe3; flex: none; }
+.shot .wbar span { margin-left: 12px; font-size: 22px; font-weight: 650; letter-spacing: -0.01em; white-space: nowrap; }
+.shot .vp { position: relative; overflow: hidden; }
+.shot .vp img { position: absolute; display: block; max-width: none; height: auto; }
+.shot .mask { position: absolute; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); background: rgba(24, 24, 32, 0.35); border-radius: 10px; }
+.shot .ring { position: absolute; border: 5px solid #2f5fd8; border-radius: 20px; box-shadow: 0 0 0 9px rgba(47, 95, 216, 0.16); }
+.shot .ring .n { position: absolute; right: 22px; top: -29px; width: 54px; height: 54px; border-radius: 50%; background: #2f5fd8; color: #fff; font-size: 29px; font-weight: 800; display: grid; place-items: center; box-shadow: 0 8px 18px rgba(20, 40, 120, 0.35); }
+
 /* ── KPI tiles ─────────────────────────────────────────────────────────── */
 .kg { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
 .kt { background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 30px; padding: 32px 32px 34px; box-shadow: var(--shadow-2); }

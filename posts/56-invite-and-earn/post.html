@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 56 · Invite ten, get a year free</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/story.css">
+<style>body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/hlicons.js"></script>
+<script src="../../lib/story.js"></script>
+<script src="../../screenshots/shots.js"></script>
+<script>NZ.ROOT = "../../";</script>
+<script src="../../highlights/stories.js"></script>
+<script>
+  // Single image: the Invite & earn tiers, from the app. Screens and crops: screenshots/shots.js.
+  const { C } = NZ.STORY, SHOT = "Real screenshot";
+  const tiers = C.shots([{ src: "invite", crop: "tiers12", bar: false }, { src: "invite", crop: "tiers34", bar: false }], { gap: 16 });
+  NZ.STORY.post("start-here", [
+    { bg: "sky", h: "Invite ten. Get a *year* free.", sub: "Everyone who joins with your link earns you free months. One is a month. Ten is a year.", viz: tiers, demo: SHOT },
+  ], { chip: "Invite & earn", x: { bg: "sky", h: "Invite ten. Get a *year* free.", sub: "One person joins with your link: a month free. Ten: a whole year.", viz: tiers, demo: SHOT } });
+</script>
+</body>
+</html>

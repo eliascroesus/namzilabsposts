@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post 53 · Namzilabs, from the inside</title>
+<link rel="stylesheet" href="../../lib/brand.css">
+<link rel="stylesheet" href="../../lib/post.css">
+<link rel="stylesheet" href="../../lib/story.css">
+<style>body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }</style>
+</head>
+<body>
+<script src="../../assets/logos/marks.js"></script>
+<script src="../../lib/motion.js"></script>
+<script src="../../lib/hlicons.js"></script>
+<script src="../../lib/story.js"></script>
+<script src="../../screenshots/shots.js"></script>
+<script>NZ.ROOT = "../../";</script>
+<script src="../../highlights/stories.js"></script>
+<script>
+  // The product tour: real screens of the app, one idea per slide. Screens and crops: screenshots/shots.js.
+  const { C } = NZ.STORY, SHOT = "Real screenshot";
+  NZ.STORY.post("start-here", [
+    { bg: "sky", h: "This is Namzilabs. From the *inside.*", sub: "Real screens. Swipe for the tour.", viz: C.shot({ src: "overview", crop: "dash", w: 800 }), demo: SHOT },
+    { h: "See exactly where your funnel *breaks.*", sub: "Every source gets its own funnel.", viz: C.shots([{ src: "leads", crop: "ig", bar: false, w: 760 }, { src: "leads", crop: "fb", bar: false, w: 760 }], { gap: 22 }), demo: SHOT },
+    { bg: "sky", h: "Build any KPI in three *moves.*", sub: "Get the records. Narrow them down. Turn them into a number.", viz: C.shot({ src: "flow-new", crop: "card", w: 820 }), demo: SHOT },
+    { h: "Every step you *need.*", sub: "Match, filter, split, total. No code.", viz: C.shot({ src: "flow-steps", crop: "all", w: 640 }), demo: SHOT },
+    { bg: "sky", h: "Your best day, at a *glance.*", sub: "Revenue by day, shaded against the best one.", viz: C.shot({ src: "calendar", crop: "month", w: 720 }), demo: SHOT },
+    { h: "Plug in your *tools.*", sub: "Each app says what it reads, and how often it syncs.", viz: C.shot({ src: "apps", crop: "grid", w: 860 }), demo: SHOT },
+    { cta: true, bg: "electric", h: "Start *free.*", sub: "No card. Invite one person and get a month free.", ticks: ["All your data in one place", "Any KPI, no code", "It never edits your data"] },
+  ], { chip: "Inside Namzilabs", x: { bg: "sky", h: "This is Namzilabs. From the *inside.*", sub: "All your data in one place. Any KPI. Where the funnel breaks.", viz: C.shot({ src: "overview", crop: "dash", w: 700 }), demo: SHOT } });
+</script>
+</body>
+</html>
