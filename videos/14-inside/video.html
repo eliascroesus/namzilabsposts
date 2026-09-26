@@ -7,7 +7,7 @@
 <style>
   /* One file, two formats:  ?fmt=tall (1080×1920, default)  ·  ?fmt=wide (1920×1080).
      Every screen is a real screenshot (screenshots/app, catalogued in screenshots/shots.js),
-     cropped to a named crop and shown in a clean app window. */
+     shown through one of its named crops in a clean app window. */
   .world { position: absolute; inset: 0; }
   .abs { position: absolute; }
   .wmask { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.04em 0.14em 0; margin-bottom: -0.14em; }
@@ -27,7 +27,9 @@
   .win .vp { position: relative; overflow: hidden; }
   .win .cam { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
   .win img { position: absolute; display: block; max-width: none; height: auto; }
-  .pc { position: absolute; overflow: hidden; }
+  /* a piece: one rect of the same screenshot, lifted out so it can move on its own */
+  .pw { position: absolute; }
+  .pw > .clip { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; }
   .cover { position: absolute; }
   .sweep { position: absolute; overflow: hidden; }
   .sweep .cover { top: 0; bottom: 0; }
@@ -57,7 +59,7 @@
     <div class="capbox" id="b0"><span class="pill" id="pill"><span class="dot live"></span>Real screens</span><h1 class="cap" id="c0">Here's what's <em>inside.</em></h1></div>
     <div class="capbox" id="b1"><h1 class="cap" id="c1">Every number, on one <em>screen.</em></h1></div>
     <div class="capbox" id="b2"><h1 class="cap" id="c2">See exactly where it <em>breaks.</em></h1></div>
-    <div class="capbox" id="b3"><h1 class="cap" id="c3">Any KPI, in three <em>moves.</em></h1></div>
+    <div class="capbox" id="b3"><h1 class="cap" id="c3">Any KPI,<br>in three <em>moves.</em></h1></div>
     <div class="capbox" id="b4"><h1 class="cap" id="c4">Plug in your <em>tools.</em></h1><div class="kick" id="k4">33 tools. No code.</div></div>
     <div class="capbox" id="b5"><h1 class="cap" id="c5">Your best day, at a <em>glance.</em></h1></div>
 
@@ -82,21 +84,26 @@ $("cv").style.width = W + "px"; $("cv").style.height = H + "px";
 
 /* ── layout per format ───────────────────────────────────────────────────
    tall: captions across the top (inside the story-safe zone), the window below
-   wide: captions on the left, the window on the right                          */
+   wide: captions on the left, the window on the right
+   fan: where the hook's three screens sit, as [dx, dy, scale, rotate] from the window centre */
 const L = WIDE
-  ? { cap: 92, hook: 124, cx: 1350, cy: 548, w: { dash: 860, fanL: 940, fanR: 700, fun: 940, card: 760, steps: 560, apps: 920, cal: 700 },
-      fan: { dash: [0, 40, 0.62], L: [-270, -150, 0.5, -8], R: [265, -95, 0.42, 8] } }
-  : { cap: 100, hook: 132, cx: 540, cy: 1050, w: { dash: 960, fanL: 960, fanR: 800, fun: 960, card: 880, steps: 680, apps: 960, cal: 800 },
+  ? { cap: 92, hook: 116, cx: 1350, cy: 548, w: { dash: 860, fanL: 940, fanR: 700, fun: 900, card: 760, steps: 560, apps: 920, cal: 690 },
+      fan: { dash: [0, 40, 0.62], L: [-250, -160, 0.5, -8], R: [250, -105, 0.42, 8] } }
+  : { cap: 100, hook: 132, cx: 540, cy: 1060, w: { dash: 960, fanL: 960, fanR: 800, fun: 960, card: 880, steps: 660, apps: 960, cal: 800 },
       fan: { dash: [0, 95, 0.6], L: [-232, -168, 0.52, -8], R: [236, -120, 0.4, 8] } };
 
 ["b0", "b1", "b2", "b3", "b4", "b5"].forEach((id) => {
   const b = $(id);
-  if (WIDE) Object.assign(b.style, { left: "110px", top: "0px", width: "700px", height: H + "px", justifyContent: "center" });
+  if (WIDE) Object.assign(b.style, { left: "110px", top: "0px", width: "720px", height: H + "px", justifyContent: "center" });
   else Object.assign(b.style, { left: "90px", top: id === "b0" ? "250px" : "270px", width: "900px" });
   b.querySelector(".cap").style.fontSize = (id === "b0" ? L.hook : L.cap) + "px";
 });
-Object.assign($("bloom").style, WIDE ? { left: "460px", top: "40px" } : { left: "40px", top: "400px" });
-if (!WIDE) $("endBig").style.width = "900px";   // "All your data." over "One place."
+if (WIDE) Object.assign($("bloom").style, { left: "460px", top: "40px" });
+else {
+  Object.assign($("bloom").style, { left: "40px", top: "330px" });
+  $("endBig").style.width = "900px";            // "All your data." over "One place."
+  $("end").style.paddingBottom = "160px";        // sits where 04's does
+}
 
 /* ── the windows ─────────────────────────────────────────────────────────
    A crop of a real screenshot at width w. Everything inside the window (the
@@ -111,59 +118,59 @@ function win(id, src, crop, w) {
   const el = document.createElement("div");
   el.className = "win"; el.id = id;
   Object.assign(el.style, { width: w + "px", left: `${L.cx - w / 2}px`, top: `${Math.round(L.cy - h / 2)}px` });
-  el.innerHTML = `<div class="wbar"><i></i><i></i><i></i><span>${s.title}</span></div><div class="vp" style="height:${vh}px"><div class="cam" id="${id}Cam" style="width:${w}px;height:${vh}px"><img src="${ROOT + s.file}" alt="" style="width:${s.w * k}px;left:${-cx * k}px;top:${-cy * k}px"></div></div>`;
+  el.innerHTML = `<div class="wbar"><i></i><i></i><i></i><span>${s.title}</span></div><div class="vp" style="height:${vh}px"><div class="cam" style="width:${w}px;height:${vh}px"><img src="${ROOT + s.file}" alt="" style="width:${s.w * k}px;left:${-cx * k}px;top:${-cy * k}px"></div></div>`;
   $("wins").appendChild(el);
   const cam = el.querySelector(".cam");
-  const box = ([bx, by, bw, bh], pad = 0) => ({ left: `${(bx - pad - cx) * k}px`, top: `${(by - pad - cy) * k}px`, width: `${(bw + pad * 2) * k}px`, height: `${(bh + pad * 2) * k}px` });
+  // a rect in image pixels, as CSS relative to an origin (the crop's corner, or a piece's)
+  const box = ([bx, by, bw, bh], pad = 0, [ox, oy] = [cx, cy]) => ({ left: `${(bx - pad - ox) * k}px`, top: `${(by - pad - oy) * k}px`, width: `${(bw + pad * 2) * k}px`, height: `${(bh + pad * 2) * k}px` });
+  const add = (d, into) => ((into || cam).appendChild(d), d);
   const W0 = { el, id, s, k, w, vh, h, crop: c, cam, box };
-  // a piece: the same screenshot, clipped to one rect of it, so that rect can move on its own
-  W0.piece = (rect, { pad = 0, radius = 0, cls = "" } = {}) => {
+  // a piece: the same screenshot clipped to one rect, so that rect can move on its own.
+  // `into` nests it in another piece (it then moves with it).
+  W0.piece = (rect, { pad = 0, radius = 0, cls = "", into = null } = {}) => {
     const d = document.createElement("div");
-    d.className = "pc " + cls;
-    Object.assign(d.style, box(rect, pad), { borderRadius: `${radius * k}px` });
-    d.innerHTML = `<img src="${ROOT + s.file}" alt="" style="width:${s.w * k}px;left:${-(rect[0] - pad) * k}px;top:${-(rect[1] - pad) * k}px">`;
-    cam.appendChild(d);
-    return d;
+    d.className = "pw " + cls;
+    d._o = [rect[0] - pad, rect[1] - pad];
+    Object.assign(d.style, box(rect, pad, into ? into._o : [cx, cy]), { borderRadius: `${radius * k}px` });
+    d.innerHTML = `<div class="clip"><img src="${ROOT + s.file}" alt="" style="width:${s.w * k}px;left:${-d._o[0] * k}px;top:${-d._o[1] * k}px"></div>`;
+    return add(d, into);
   };
   W0.cover = (rect, color, pad = 0) => {
     const d = document.createElement("div");
     d.className = "cover";
     Object.assign(d.style, box(rect, pad), { background: color });
-    cam.appendChild(d);
-    return d;
+    return add(d);
   };
   W0.ring = (rect, n, pad = 0) => {
     const d = document.createElement("b");
     d.className = "ring";
     Object.assign(d.style, box(rect, pad));
     d.innerHTML = n ? `<span class="n">${n}</span>` : "";
-    cam.appendChild(d);
-    return d;
+    return add(d);
   };
   return W0;
 }
-const place = (w0, [dx, dy, sc, rot = 0]) => ({ x: dx, y: dy, scale: sc, rotate: rot });
+const place = ([dx, dy, sc, rot = 0]) => ({ x: dx, y: dy, scale: sc, rotate: rot });
 
-// the hook's fan: three screens, the middle one is the dashboard that scene 2 opens on
+// 1 · the hook's fan: three screens; the middle one is the dashboard scene 2 opens on
 const fanL = win("fanL", "leads", "ig", L.w.fanL);
 const fanR = win("fanR", "calendar", "month", L.w.fanR);
 const dash = win("dash", "overview", "dash", L.w.dash);
-// 3 · the funnel: the Instagram funnel card, drawn left to right
-const fun = win("fun", "leads", "ig", L.w.fun);
-// 4 · build any KPI: the three-moves card, then the step picker
+// 3 · the funnel: the Instagram funnel card and its close rate
+const fun = win("fun", "leads", "igclose", L.w.fun);
+// 4 · any KPI: the three-moves card, then the step picker
 const card = win("card", "flow-new", "card", L.w.card);
 const steps = win("steps", "flow-steps", "all", L.w.steps);
 // 5 · the apps
 const apps = win("apps", "apps", "grid", L.w.apps);
 // 6 · the calendar
 const cal = win("cal", "calendar", "month", L.w.cal);
-$("wins").insertBefore(fanL.el, dash.el);
-$("wins").insertBefore(fanR.el, dash.el);
 
-/* scene details, in image pixels (see screenshots/shots.js) */
-// the funnel card's inside, and its three rate pills
+/* scene details, in image pixels (screenshots/app/*.png) */
+// the funnel card's inside, its three rate pills, and the close-rate card below it
 const FUN_IN = [1984, 292, 1373, 603];
 const PILLS = [[2208, 648, 122, 42], [2536, 648, 122, 42], [2864, 648, 122, 42]];
+const CLOSE_IN = [1984, 932, 1373, 204];
 const FEATHER = 150;
 const sw = document.createElement("div");
 sw.className = "sweep";
@@ -172,24 +179,26 @@ const swW = FUN_IN[2] * fun.k;
 sw.innerHTML = `<div class="cover" id="fcover" style="left:${-FEATHER}px;width:${swW + FEATHER}px;background:linear-gradient(90deg, rgba(255,255,255,0), #fff ${FEATHER}px)"></div>`;
 fun.cam.appendChild(sw);
 const pings = PILLS.map((r) => fun.piece(r, { radius: 21, cls: "ping" }));
+fun.cover(CLOSE_IN, "#fff");                                   // blank until the funnel has drawn
+const closeRate = fun.piece([1984, 940, 700, 190]);            // then its number rises in
 
 // the step picker: Get data, Match, Summarize
 const I = SH["flow-steps"].items;
 const rings = [["getdata", 1], ["match", 2], ["summarize", 3]].map(([it, n]) => steps.ring(I[it], n, 6));
 
-// the apps: four cards on the page, and Google Sheets' "Connected" badge
+// the apps: four cards land on the page; Google Sheets' "Connected" badge rides on its card
 const CARDS = [[903, 492, 676, 472], [1627, 492, 676, 472], [903, 1012, 676, 472], [1627, 1012, 676, 472]];
 const BADGE = [2046, 1046, 223, 40];
 apps.el.querySelector(".vp").style.background = "#f3f3f3";
-apps.el.querySelector(".cam img").style.visibility = "hidden";
+apps.el.querySelector(".cam > img").style.visibility = "hidden";
 const cards = CARDS.map((r) => apps.piece(r, { pad: 4 }));
-const badge = apps.piece(BADGE, { pad: 1, radius: 7 });
+const badge = apps.piece(BADGE, { pad: 1, radius: 7, into: cards[3] });
 const halo = document.createElement("i");
 halo.className = "halo";
-Object.assign(halo.style, apps.box(BADGE, 3));
-apps.cam.appendChild(halo);
+Object.assign(halo.style, apps.box(BADGE, 3, cards[3]._o));
+cards[3].appendChild(halo);
 
-// the calendar: fourteen days fill in, then the camera pushes toward the best day
+// the calendar: fourteen days fill in, then the camera pushes toward the best one
 const COLS = [604, 999, 1395], ROWS = [563, 755, 948, 1141, 1333], CELL = [379, 176];
 const DAYS = [];
 ROWS.forEach((y, r) => COLS.forEach((x, c) => { if (!(r === 4 && c === 2)) DAYS.push([x, y, CELL[0], CELL[1]]); }));
@@ -198,13 +207,10 @@ const cells = DAYS.map((d) => cal.piece(d, { pad: 3 }));
 const BEST = [999, 1333, 380, 177];
 const bestRing = cal.ring(BEST, null, 9);
 
-/* ── the camera inside a window: a view is [x, y, w] in the crop's own pixels ──
-   (the height follows the window's shape). Views stay inside the named crop, and
-   moving between two of them never leaves it: the edges move monotonically.   */
-function view(w0, [vx, vy, vw]) {
-  const s = w0.crop[2] / vw;
-  return { tx: -(vx - w0.crop[0] * 0) * w0.k * s, ty: -vy * w0.k * s, s };
-}
+/* ── the camera inside a window: a view is [x, y, w] in the crop's own pixels
+   (its height follows the window's shape). Every view sits inside the named crop,
+   and a move between two of them never leaves it: each edge moves monotonically. */
+const view = (w0, [vx, vy, vw]) => { const s = w0.crop[2] / vw; return { tx: -vx * w0.k * s, ty: -vy * w0.k * s, s }; };
 function camMove(w0, from, to, at, dur, ease) {
   const a = view(w0, from), b = view(w0, to);
   tl.call(at, dur, (p) => {
@@ -215,20 +221,21 @@ function camMove(w0, from, to, at, dur, ease) {
 
 /* ── timeline ─────────────────────────────────────────────────────────── */
 const { ease: E } = NZ;
-const tl = new NZ.Timeline({ duration: 21.4, tail: 1.6 });
+const tl = new NZ.Timeline({ duration: 21.6, tail: 1.6 });
 const words = (id, at, gap = 0.06) => tl.stagger(NZ.splitWords("#" + id), { at, dur: 0.75, ease: E.out, from: { y: 150 }, to: { y: 0 } }, gap);
 const out = (sel, at) => tl.add(sel, { at, dur: 0.4, ease: E.in, to: { opacity: 0, y: -40, blur: 8 } });
 const winIn = (w0, at) => tl.add(w0.el, { at, dur: 1.0, ease: E.spring, from: { y: 150, scale: 0.96, opacity: 0 }, to: { y: 0, scale: 1, opacity: 1 } });
 const winOut = (w0, at) => tl.add(w0.el, { at, dur: 0.45, ease: E.in, to: { y: -70, scale: 0.97, opacity: 0, blur: 10 } });
-// when does an eased 0..1 move reach p? (so the pills ping as the sweep passes them)
+// when does an eased 0..1 move reach p? (so each pill pings as the sweep passes it)
 const when = (ease, p) => { let lo = 0, hi = 1; for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; if (ease(m) < p) lo = m; else hi = m; } return (lo + hi) / 2; };
 
 // 1 · Here's what's inside: the pill, the line, and a fan of three real screens
 tl.add("#pill", { at: 0.1, dur: 0.7, ease: E.out, from: { opacity: 0, y: 24 }, to: { opacity: 1, y: 0 } });
 words("c0", 0.2, 0.08);
 [[fanL, L.fan.L, 0.5], [fanR, L.fan.R, 0.62], [dash, L.fan.dash, 0.74]].forEach(([w0, f, at]) => {
-  const p = place(w0, f);
-  tl.add(w0.el, { at, dur: 1.1, ease: E.spring, from: { ...p, y: p.y + 220, opacity: 0, rotate: p.rotate * 0.3 }, to: { ...p, opacity: 1 } });
+  const p = place(f);
+  tl.add(w0.el, { at, dur: 1.1, ease: E.spring, from: { ...p, y: p.y + 220, rotate: p.rotate * 0.3 }, to: p });
+  tl.add(w0.el, { at, dur: 0.3, ease: E.out, from: { opacity: 0 }, to: { opacity: 1 } });
 });
 out("#b0", 2.0);
 tl.add(fanL.el, { at: 2.0, dur: 0.6, ease: E.in, to: { x: L.fan.L[0] - 460, y: L.fan.L[1] + 60, rotate: -20, opacity: 0, blur: 6 } });
@@ -237,68 +244,73 @@ tl.add(fanR.el, { at: 2.0, dur: 0.6, ease: E.in, to: { x: L.fan.R[0] + 460, y: L
 // 2 · the dashboard: the fan's middle screen opens up, then a slow push toward the KPI cards
 tl.add(dash.el, { at: 2.0, dur: 1.05, ease: E.inOut, to: { x: 0, y: 0, scale: 1 } });
 words("c1", 2.4, 0.05);
-camMove(dash, [0, 0, 1426], [0, 110, 1188], 3.0, 2.5, E.inOutSoft);
-out("#b1", 5.5);
-winOut(dash, 5.5);
+camMove(dash, [0, 0, 1426], [0, 110, 1188], 3.0, 2.4, E.inOutSoft);
+out("#b1", 5.4);
+winOut(dash, 5.4);
 
-// 3 · the funnel: the card draws itself left to right, and each step's rate pings as it passes
-words("c2", 5.85, 0.05);
-winIn(fun, 5.9);
-const SW_AT = 6.35, SW_DUR = 1.8, SW_EASE = E.inOutSoft;
+// 3 · the funnel: the card draws itself left to right, each step's rate pings as the line passes it,
+//     then the close rate comes in underneath
+words("c2", 5.75, 0.05);
+winIn(fun, 5.8);
+const SW_AT = 6.05, SW_DUR = 2.0, SW_EASE = NZ.bezier(0.3, 0.05, 0.7, 0.95);
 tl.add("#fcover", { at: SW_AT, dur: SW_DUR, ease: SW_EASE, from: { x: 0 }, to: { x: swW + FEATHER } });
 PILLS.forEach((r, i) => {
-  const cxp = (r[0] + r[2] / 2 - FUN_IN[0]) * fun.k;           // the pill's centre, inside the sweep
-  const at = SW_AT + SW_DUR * when(SW_EASE, (cxp + FEATHER * 0.5) / (swW + FEATHER));
-  tl.add(pings[i], { at, dur: 0.32, ease: E.back, from: { opacity: 0, scale: 1 }, to: { opacity: 1, scale: 1.3 } });
-  tl.add(pings[i], { at: at + 0.55, dur: 0.45, ease: E.inOut, to: { opacity: 0, scale: 1 } });
+  const mid = (r[0] + r[2] / 2 - FUN_IN[0]) * fun.k;           // the pill's centre, inside the sweep
+  const at = SW_AT + SW_DUR * when(SW_EASE, (mid + FEATHER * 0.5) / (swW + FEATHER));
+  tl.add(pings[i], { at, dur: 0.28, ease: E.back, from: { opacity: 0, scale: 1 }, to: { opacity: 1, scale: 1.28 } });
+  tl.add(pings[i], { at: at + 0.5, dur: 0.4, ease: E.inOut, to: { opacity: 0, scale: 1 } });
 });
-out("#b2", 9.0);
-winOut(fun, 9.0);
+tl.add(closeRate, { at: SW_AT + SW_DUR - 0.1, dur: 0.7, ease: E.out, from: { opacity: 0, y: 18 }, to: { opacity: 1, y: 0 } });
+out("#b2", 8.9);
+winOut(fun, 8.9);
 
-// 4 · any KPI in three moves: the card, then the step picker with 1, 2, 3 ringed
-words("c3", 9.35, 0.05);
-winIn(card, 9.4);
-camMove(card, [0, 0, 1080], [60, 60, 980], 9.6, 1.6, E.inOutSoft);
-tl.add(card.el, { at: 11.0, dur: 0.45, ease: E.in, to: { x: -160, opacity: 0, blur: 8, scale: 0.97 } });
-tl.add(steps.el, { at: 11.1, dur: 0.95, ease: E.spring, from: { x: 180, opacity: 0, scale: 0.97 }, to: { x: 0, opacity: 1, scale: 1 } });
+// 4 · any KPI in three moves: the card, a swipe to the step picker, then 1, 2 and 3 ringed
+words("c3", 9.25, 0.05);
+winIn(card, 9.3);
+camMove(card, [0, 0, 1080], [60, 60, 980], 9.5, 1.5, E.inOutSoft);
+// the swipe: sideways under the tall captions, upward in the wide right-hand column
+const SWIPE = WIDE ? "y" : "x", GO = WIDE ? 1000 : 1060;
+tl.add(card.el, { at: 10.85, dur: 0.8, ease: E.inOutSoft, to: { [SWIPE]: -GO } });
+tl.add(steps.el, { at: 10.85, dur: 0.8, ease: E.inOutSoft, from: { [SWIPE]: GO }, to: { [SWIPE]: 0 } });
 rings.forEach((r, i) => {
-  const at = 11.65 + i * 0.42;
+  const at = 11.7 + i * 0.4;
   tl.add(r, { at, dur: 0.5, ease: E.back, from: { opacity: 0, scale: 1.08 }, to: { opacity: 1, scale: 1 } });
   tl.add(r.querySelector(".n"), { at: at + 0.08, dur: 0.5, ease: E.back, from: { scale: 0 }, to: { scale: 1 } });
 });
-out("#b3", 13.0);
-winOut(steps, 13.0);
+out("#b3", 13.2);
+winOut(steps, 13.2);
 
 // 5 · plug in your tools: the apps land one by one, and the connected one says so
-words("c4", 13.35, 0.05);
-tl.add("#k4", { at: 13.8, dur: 0.7, ease: E.out, from: { opacity: 0, y: 20 }, to: { opacity: 1, y: 0 } });
-winIn(apps, 13.4);
-cards.forEach((c, i) => tl.add(c, { at: 13.65 + i * 0.12, dur: 0.8, ease: E.spring, from: { opacity: 0, y: 40, scale: 0.94 }, to: { opacity: 1, y: 0, scale: 1 } }));
-tl.add(badge, { at: 14.65, dur: 0.2, ease: E.out, to: { scale: 1.18 } });
-tl.add(badge, { at: 14.85, dur: 0.6, ease: E.spring, to: { scale: 1 } });
-tl.add(halo, { at: 14.65, dur: 0.9, ease: E.out, from: { opacity: 0.9, scale: 1 }, to: { opacity: 0, scale: 1.5 } });
-tl.add(halo, { at: 15.25, dur: 0.9, ease: E.out, from: { opacity: 0.9, scale: 1 }, to: { opacity: 0, scale: 1.5 } });
-out("#b4", 16.0);
-winOut(apps, 16.0);
+words("c4", 13.55, 0.05);
+tl.add("#k4", { at: 14.0, dur: 0.7, ease: E.out, from: { opacity: 0, y: 20 }, to: { opacity: 1, y: 0 } });
+winIn(apps, 13.6);
+cards.forEach((c, i) => tl.add(c, { at: 13.85 + i * 0.12, dur: 0.8, ease: E.spring, from: { opacity: 0, y: 40, scale: 0.94 }, to: { opacity: 1, y: 0, scale: 1 } }));
+tl.add(badge, { at: 14.85, dur: 0.2, ease: E.out, to: { scale: 1.18 } });
+tl.add(badge, { at: 15.05, dur: 0.6, ease: E.spring, to: { scale: 1 } });
+tl.set(halo, 0, { opacity: 0 });
+tl.add(halo, { at: 14.85, dur: 0.9, ease: E.out, from: { opacity: 0.9, scale: 1 }, to: { opacity: 0, scale: 1.5 } });
+tl.add(halo, { at: 15.45, dur: 0.9, ease: E.out, from: { opacity: 0.9, scale: 1 }, to: { opacity: 0, scale: 1.5 } });
+out("#b4", 16.1);
+winOut(apps, 16.1);
 
 // 6 · the calendar: the days fill in, then a push toward the best one
-words("c5", 16.35, 0.05);
-winIn(cal, 16.4);
-cells.forEach((c, i) => tl.add(c, { at: 16.6 + i * 0.045, dur: 0.6, ease: E.out, from: { opacity: 0, scale: 0.9 }, to: { opacity: 1, scale: 1 } }));
-camMove(cal, [0, 0, 1230], [219, 477, 820], 17.35, 1.55, E.inOutSoft);
-tl.add(bestRing, { at: 18.35, dur: 0.55, ease: E.back, from: { opacity: 0, scale: 1.12 }, to: { opacity: 1, scale: 1 } });
-out("#b5", 19.0);
-winOut(cal, 19.0);
+words("c5", 16.45, 0.05);
+winIn(cal, 16.5);
+cells.forEach((c, i) => tl.add(c, { at: 16.7 + i * 0.045, dur: 0.6, ease: E.out, from: { opacity: 0, scale: 0.9 }, to: { opacity: 1, scale: 1 } }));
+camMove(cal, [0, 0, 1230], [219, 477, 820], 17.45, 1.5, E.inOutSoft);
+tl.add(bestRing, { at: 18.5, dur: 0.55, ease: E.back, from: { opacity: 0, scale: 1.12 }, to: { opacity: 1, scale: 1 } });
+out("#b5", 19.2);
+winOut(cal, 19.2);
 
 // 7 · end card
-tl.add("#bloom", { at: 19.2, dur: 2.0, ease: E.out, from: { scale: 0.4, opacity: 0 }, to: { scale: 1.1, opacity: 1 } });
-tl.stagger(NZ.splitWords("#endBig"), { at: 19.3, dur: 0.8, ease: E.out, from: { y: 160 }, to: { y: 0 } }, 0.07);
-tl.add("#lock", { at: 20.1, dur: 1.0, ease: E.spring, from: { scale: 0.8, opacity: 0, y: 20 }, to: { scale: 1, opacity: 1, y: 0 } });
-tl.add("#go", { at: 20.5, dur: 0.9, ease: E.spring, from: { scale: 0.85, opacity: 0 }, to: { scale: 1, opacity: 1 } });
+tl.add("#bloom", { at: 19.4, dur: 2.0, ease: E.out, from: { scale: 0.4, opacity: 0 }, to: { scale: 1.1, opacity: 1 } });
+tl.stagger(NZ.splitWords("#endBig"), { at: 19.5, dur: 0.8, ease: E.out, from: { y: 160 }, to: { y: 0 } }, 0.07);
+tl.add("#lock", { at: 20.3, dur: 1.0, ease: E.spring, from: { scale: 0.8, opacity: 0, y: 20 }, to: { scale: 1, opacity: 1, y: 0 } });
+tl.add("#go", { at: 20.7, dur: 0.9, ease: E.spring, from: { scale: 0.85, opacity: 0 }, to: { scale: 1, opacity: 1 } });
 
 tl.every((t) => {
   $("ruled").style.transform = `translate3d(0, ${-(t * 6) % 88}px, 0)`;
-  if (t > 21.2) $("bloom").style.opacity = String(0.85 + Math.sin((t - 21.2) * 1.8) * 0.15);
+  if (t > 21.4) $("bloom").style.opacity = String(0.85 + Math.sin((t - 21.4) * 1.8) * 0.15);
   $("world").style.transform = `scale(${1 + Math.min(t, 24) * 0.001})`;
 });
 
