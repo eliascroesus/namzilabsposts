@@ -68,7 +68,7 @@ const VIDEO_AUD = {
   "01-three-answers": ["sales"], "02-three-steps": ["everyone"], "03-monday-907": ["everyone"], "04-receipts": ["everyone"],
   "05-ask-your-ai": ["everyone"], "06-logo-sting": ["everyone"], "07-meet-namzi": ["everyone"], "08-group-chat": ["ecommerce"],
   "09-eod-report": ["sales"], "10-launch-receipt": ["creators"], "11-all-your-data": ["everyone"],
-  "12-funnel-breaks": ["sales", "everyone"], "13-true-numbers": ["everyone"],
+  "12-funnel-breaks": ["sales", "everyone"], "13-true-numbers": ["everyone"], "14-inside": ["everyone"],
 };
 const VIDEO_NAMZI = new Set(["07-meet-namzi", "08-group-chat"]);
 
@@ -374,14 +374,14 @@ if (artifactDir) {
   const FF = ffmpegPath();
   const webPath = (p) => path.join(artifactDir, "web", p);
   if (kit === "content") {
-    // visually lossless JPGs for the post images; web-sized videos
+    // near-lossless JPGs for the post images (q 3, full colour: keeps the kit under the 64 MB artifact limit); web-sized videos
     for (const dir of readdirSync(path.join(ROOT, "posts"))) {
       if (!existsSync(path.join(ROOT, "posts", dir, "post.md"))) continue;
       for (const f of readdirSync(path.join(ROOT, "posts", dir)).filter((f) => /^(ig|x)-\d+\.png$/.test(f))) {
         const src = path.join(ROOT, "posts", dir, f), dst = webPath(`posts/${dir}/${f.replace(".png", ".jpg")}`);
         if (existsSync(dst) && statSync(dst).mtimeMs > statSync(src).mtimeMs) continue;
         mkdirSync(path.dirname(dst), { recursive: true });
-        execFileSync(FF, ["-y", "-loglevel", "error", "-i", src, "-q:v", "2", "-pix_fmt", "yuvj444p", dst]);
+        execFileSync(FF, ["-y", "-loglevel", "error", "-i", src, "-q:v", "3", "-pix_fmt", "yuvj444p", dst]);
       }
     }
     for (const dir of readdirSync(path.join(ROOT, "videos")).filter((d) => /^\d\d-/.test(d))) {
