@@ -8,8 +8,9 @@
 //   node tools/build-preview.mjs --artifact DIR --kit highlights → the Instagram highlights: stories, covers, stickers
 //
 // For the published Content Kit, post images are served as visually lossless JPGs
-// and videos as web-compressed copies (both made into DIR/web/), so the page fits
-// one artifact version. The PNG and full-quality MP4 masters stay in the repo.
+// and videos as web-compressed copies (both made into DIR/web/), so the page stays
+// light (an artifact takes 64 MB per publish and 256 MB per version). The PNG and
+// full-quality MP4 masters stay in the repo.
 //
 // Everything on the page comes from the files themselves: post.md captions, image
 // sizes, video lengths, logo SVGs, the sticker list. Re-run it after adding content.
@@ -374,7 +375,7 @@ if (artifactDir) {
   const FF = ffmpegPath();
   const webPath = (p) => path.join(artifactDir, "web", p);
   if (kit === "content") {
-    // near-lossless JPGs for the post images (q 3, full colour: keeps the kit under the 64 MB artifact limit); web-sized videos
+    // near-lossless JPGs for the post images (q 3, full colour: a third of the PNGs' weight); web-sized videos
     for (const dir of readdirSync(path.join(ROOT, "posts"))) {
       if (!existsSync(path.join(ROOT, "posts", dir, "post.md"))) continue;
       for (const f of readdirSync(path.join(ROOT, "posts", dir)).filter((f) => /^(ig|x)-\d+\.png$/.test(f))) {
