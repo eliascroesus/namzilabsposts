@@ -18,6 +18,7 @@ Smooth product-style motion videos, built in HTML and rendered **frame by frame 
 | 12 | **See where your funnel breaks.** A 13-second cut of 11: five funnel steps across five tools, the leak (booked → held) lights up red, then the end card. | 13s | Sales teams, everyone | [`12-funnel-breaks/funnel-breaks-9x16.mp4`](12-funnel-breaks/funnel-breaks-9x16.mp4) |
 | 13 | **True numbers, not blurry ones.** A 26-second cut of 11: 12 tools, 12 slices, a blurry guess; then one place, the same person matched across tools, and the number comes into focus. | 26s | Everyone | [`13-true-numbers/true-numbers-9x16.mp4`](13-true-numbers/true-numbers-9x16.mp4) |
 | 14 | **Inside Namzilabs.** A tour of the real app, built from real screenshots: the dashboard with every number on one screen, a funnel that draws itself left to right, a metric in three moves, the apps, and the calendar's best day. 9:16 and 16:9 (`?fmt=wide`). | 23s | Everyone | [`14-inside/inside-9x16.mp4`](14-inside/inside-9x16.mp4) · [`16x9`](14-inside/inside-16x9.mp4) |
+| 15 | **The real app, in seven seconds.** A motion showcase cut from real screens: the dashboard swings up in 3D, the camera dives into its KPI cards, whips to the flow builder (the three steps ringed 1, 2, 3), two funnels (Instagram and Facebook) draw themselves with every rate ringed, and the logo lands. For a Reel, an ad, a launch opener or a landing page. 9:16 and 16:9 (`?fmt=wide`). | 7s | Everyone | [`15-showcase/showcase-9x16.mp4`](15-showcase/showcase-9x16.mp4) · [`16x9`](15-showcase/showcase-16x9.mp4) |
 
 Each folder has `poster.jpg` (a still for thumbnails) and `video.html`. Open the HTML in a browser to watch it live: **R** replays, **F** goes fullscreen, **Space** pauses.
 
@@ -287,6 +288,33 @@ Pin it everywhere: 9:16 on Instagram, TikTok, Facebook Reels and YouTube Shorts;
   > Plug in your tools (33 of them, no code). Namzilabs never edits your data. It puts all of it in one place, so you can build any KPI you want.
   >
   > 23 seconds inside the app 👇
+  >
+  > Free to start, no card: namzilabs.co
+
+**15 · The real app, in seven seconds**
+- **Reels / TikTok:**
+  > All your data. One place. 📍
+  >
+  > Any KPI, built in three moves.
+  > A funnel for every source, so you see exactly where it breaks.
+  >
+  > Real screens from the app, not a mockup.
+  >
+  > Free to start, no card. Link in bio.
+  >
+  > #saas #dashboard #kpis #businessmetrics #founders
+- **X:**
+  > 7 seconds inside namzilabs.
+  >
+  > real screens. no mockups.
+  >
+  > (first reply: namzilabs.co, free to start)
+- **LinkedIn:**
+  > Seven seconds inside Namzilabs, and every screen is real.
+  >
+  > All your data in one place. Any KPI, built in three moves. A funnel for every source, so you can see exactly where it breaks.
+  >
+  > Plug in your tools (33 of them, no code). Namzilabs never edits your data.
   >
   > Free to start, no card: namzilabs.co
 
