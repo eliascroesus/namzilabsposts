@@ -210,7 +210,7 @@ function build({ web }) {
   const posts = readdirSync(path.join(ROOT, "posts")).filter((d) => existsSync(path.join(ROOT, "posts", d, "post.md"))).sort().map(parsePost);
 
   const vm = videoMeta();
-  const CUT = (f) => (f.includes("16x9") ? "16:9" : f.includes("1x1") ? "1:1" : "9:16") + (f.includes("ai-live") ? " · AI live" : "");
+  const CUT = (f) => (f.includes("16x9") ? "16:9" : f.includes("4x3") ? "4:3" : f.includes("1x1") ? "1:1" : "9:16") + (f.includes("ai-live") ? " · AI live" : "");
   const videos = readdirSync(path.join(ROOT, "videos")).filter((d) => /^\d\d-/.test(d)).sort().flatMap((dir) => {
     const mp4s = readdirSync(path.join(ROOT, "videos", dir)).filter((f) => f.endsWith(".mp4"))
       .sort((a, b) => (a.includes("ai-live") - b.includes("ai-live")) || (b.includes("9x16") - a.includes("9x16")));

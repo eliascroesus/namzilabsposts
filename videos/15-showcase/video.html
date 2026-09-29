@@ -8,10 +8,11 @@
   /* Seven seconds of the real app on a dark stage: the dashboard swings up in 3D, the camera
      dives into its KPI cards, whips to the flow builder (steps ringed 1, 2, 3), then to two
      funnels (one per source) that draw themselves, and lands on the logo.
-     One file, two formats:  ?fmt=tall (1080×1920, default)  ·  ?fmt=wide (1920×1080).
+     One file, three formats:  ?fmt=tall (1080×1920, default)  ·  ?fmt=wide (1920×1080)  ·  ?fmt=4x3 (1440×1080).
      Every screen is a real screenshot (screenshots/app, crops in screenshots/shots.js).
        node tools/render-video.mjs videos/15-showcase/video.html videos/15-showcase/showcase-9x16.mp4
-       node tools/render-video.mjs videos/15-showcase/video.html videos/15-showcase/showcase-16x9.mp4 --query fmt=wide */
+       node tools/render-video.mjs videos/15-showcase/video.html videos/15-showcase/showcase-16x9.mp4 --query fmt=wide
+       node tools/render-video.mjs videos/15-showcase/video.html videos/15-showcase/showcase-4x3.mp4 --query fmt=4x3 */
   .stage { position: absolute; inset: 0; overflow: hidden; color: #fff;
     background: radial-gradient(120% 80% at 50% 110%, #0d1a3d 0%, rgba(13, 26, 61, 0) 60%), linear-gradient(180deg, #05070d 0%, #070b16 100%); }
   .glow { position: absolute; border-radius: 50%; pointer-events: none;
@@ -84,27 +85,38 @@
 <script src="../../screenshots/shots.js"></script>
 <script src="../../lib/motion.js"></script>
 <script>
-const WIDE = new URLSearchParams(location.search).get("fmt") === "wide";
-const W = WIDE ? 1920 : 1080, H = WIDE ? 1080 : 1920;
+const FMT = { wide: [1920, 1080], "4x3": [1440, 1080] }[new URLSearchParams(location.search).get("fmt")] ? new URLSearchParams(location.search).get("fmt") : "tall";
+const [W, H] = { tall: [1080, 1920], wide: [1920, 1080], "4x3": [1440, 1080] }[FMT];
 const cv = document.getElementById("cv");
 cv.style.width = W + "px"; cv.style.height = H + "px";
 const E = NZ.ease, $ = (id) => document.getElementById(id);
 const SH = NZ.SHOTS;
 
 /* ── layout, per format ─────────────────────────────────────────────── */
-const L = WIDE ? {
+const L = {
+  wide: {
   cap: { x: 120, y: 118, size: 104 }, kick: { x: 124, y: 60 },
   hero: { w: 1560, cx: 1010, cy: 585 }, kpiW: 1240, diveY: 655,
   card: { w: 680, cx: 740, cy: 655 }, steps: { w: 510, cx: 1320, cy: 645 },
   funnel: { w: 860, at: [{ cx: 505, cy: 650, ry: 9 }, { cx: 1415, cy: 650, ry: -9 }] },
   glow: { s: 1500, x: 960, y: 560 }, mark: 230,
-} : {
+  },
+  // 4:3: the wide layout, drawn in: the funnels stack, staggered, instead of sitting side by side
+  "4x3": {
+  cap: { x: 100, y: 112, size: 96 }, kick: { x: 104, y: 54 },
+  hero: { w: 1400, cx: 790, cy: 590 }, kpiW: 1160, diveY: 660,
+  card: { w: 600, cx: 520, cy: 655 }, steps: { w: 470, cx: 1010, cy: 645 },
+  funnel: { w: 780, at: [{ cx: 650, cy: 468, ry: -5 }, { cx: 800, cy: 852, ry: 5 }] },
+  glow: { s: 1400, x: 720, y: 560 }, mark: 220,
+  },
+  tall: {
   cap: { x: 90, y: 262, size: 128 }, kick: { x: 94, y: 170 },
   hero: { w: 1640, cx: 575, cy: 990 }, kpiW: 960, diveY: 1037,
   card: { w: 720, cx: 470, cy: 900 }, steps: { w: 600, cx: 640, cy: 1230 },
   funnel: { w: 980, at: [{ cx: 540, cy: 805, ry: -5 }, { cx: 540, cy: 1310, ry: 5 }] },
   glow: { s: 1500, x: 540, y: 1000 }, mark: 250,
-};
+  },
+}[FMT];
 
 /* ── a window: a crop of a real screen, sized to w, with px() for image → window coordinates ── */
 function win(src, crop, w, parent = $("scene")) {
